@@ -1,40 +1,121 @@
 version: "3.8"
 
 services:
-  shop:
-    image: dockware/dev:6.6.9.0   # oder passende Version zum Kunden
-    container_name: highway-shop
+  # Shopware 6.6.9 Application Container
+  app:
+    image: dockware/dev:6.6.9.0
+    container_name: highway-shop-app
     ports:
-      - "8088:88"        # Shop Frontend/Admin
-      - "9999:9999"      # xdebug, falls nötig
+      - "8088:80"        # Shop Frontend/Admin
+      - "9999:9999"      # Xdebug
+      - "8888:22"        # SSH (optional)
     environment:
-      - XDEBUG_ENABLED=1
+      # PHP Configuration
       - PHP_VERSION=8.2
+      - XDEBUG_ENABLED=1
+      - XDEBUG_MODE=debug,coverage
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_PORT=9003
+
+      # Database Connection (connect to external db service)
+      - DATABASE_URL=mysql://shopware:shopware@db:3306/shopware
+
+      # Shopware Configuration
+      - APP_ENV=dev
+      - APP_URL=http://localhost:8088
+      - APP_SECRET=devsecret123456789
+
+      # Disable Elasticsearch for local dev
+      - SHOPWARE_ES_ENABLED=0
+      - SHOPWARE_ES_INDEXING_ENABLED=0
+
     volumes:
-      # Code-Bind-Mount (wichtig!)
+      # Bind mount entire project (preserves node_modules, vendor)
       - .:/var/www/html
 
-      # Optional: wenn du Medien nicht im Repo hast, aber lokal spiegeln willst:
-      # - ./_local_media:/var/www/html/public/media
+      # Persist Shopware caches
+      - app_cache:/var/www/html/var/cache
+      - app_log:/var/www/html/var/log
 
-    # Falls du die eingebaute MySQL nutzen willst:
-    # environment:
-    #   - MYSQL_USER=shopware
-    #   - MYSQL_PASSWORD=shopware
-    #   - MYSQL_DATABASE=shopware
-    #   - MYSQL_ROOT_PASSWORD=root
+      # Optional: Local media folder (if not in repo)
+      # - ./local_media:/var/www/html/public/media
+
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - highway-network
+    # Increase shared memory for MySQL
+    shm_size: 256mb
+
+  # MariaDB Database
   db:
     image: mariadb:10.11
-    container_name: kunde-shop-db
+    container_name: highway-shop-db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: shopware
       MYSQL_USER: shopware
       MYSQL_PASSWORD: shopware
+      # Performance tuning
+      MYSQL_INNODB_BUFFER_POOL_SIZE: 2G
+      MYSQL_INNODB_LOG_FILE_SIZE: 256M
     ports:
-      - "3307:3306"
+      - "3307:3306"  # Expose on host for external tools (e.g., TablePlus, Sequel Pro)
     volumes:
       - db_data:/var/lib/mysql
+      # Auto-import SQL dump on first start
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      # Custom MySQL config
+      - ./docker/mysql/conf.d:/etc/mysql/conf.d
+    networks:
+      - highway-network
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_allowed_packet=256M
+      - --innodb-buffer-pool-size=2G
+
+  # Optional: phpMyAdmin for DB management
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: highway-shop-phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 256M
+    ports:
+      - "8089:80"
+    depends_on:
+      - db
+    networks:
+      - highway-network
+
+  # Optional: Mailhog for local email testing
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: highway-shop-mailhog
+    ports:
+      - "8025:8025"  # Web UI
+      - "1025:1025"  # SMTP
+    networks:
+      - highway-network
 
 volumes:
   db_data:
+    driver: local
+  app_cache:
+    driver: local
+  app_log:
+    driver: local
+
+networks:
+  highway-network:
+    driver: bridge

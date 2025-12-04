@@ -9,9 +9,16 @@
 .env
 .env.local
 .env.*.local
+.env.docker
 /config/jwt/
 /config/secrets/
 install.lock
+
+# Docker local files
+docker/mysql/init/*.sql
+docker/mysql/init/*.sql.gz
+docker/mysql/init/*.sql.bz2
+!docker/mysql/init/README.md
 
 # Cache & Logs
 /var/cache/*
@@ -69,6 +76,9 @@ yarn.lock
 *.tmp
 *.old
 .backup/
+backups/
+*.sql
+*.sql.gz
 
 ###############################################################################
 # KEEP THESE IN REPO:
