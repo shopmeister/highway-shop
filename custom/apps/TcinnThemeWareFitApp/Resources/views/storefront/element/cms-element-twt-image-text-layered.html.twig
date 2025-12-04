@@ -1,0 +1,160 @@
+{# ThemeWare® CMS element "Image & text layered" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtImageTextLayered = element.fieldConfig.elements %}
+
+{% set twtImgTxtLyrdHeadline = element.translated.config.headline.value %}
+{% set twtImgTxtLyrdText = element.translated.config.text.value %}
+
+{# Tab "Layout" #}
+{% set twtImgTxtLyrdLayoutType = twtImageTextLayered.layoutType.value %}
+{% set twtImgTxtLyrdArrangement = twtImageTextLayered.arrangement.value %}
+{% set twtImgTxtLyrdBackgroundColor = twtImageTextLayered.backgroundColor.value %}
+
+{% set twtImgTxtLyrdFontFamily = twtImageTextLayered.fontFamily.value %}
+{% set twtImgTxtLyrdFontFamilyHeadline = twtImageTextLayered.fontFamilyHeadline.value %}
+{% set twtImgTxtLyrdTextColor = twtImageTextLayered.textColor.value %}
+{% set twtImgTxtLyrdTextColorHeadline = twtImageTextLayered.textColorHeadline.value %}
+{% set twtImgTxtLyrdTextAlignment = twtImageTextLayered.textAlignment.value %}
+
+{% set twtImgTxtLyrdBgOverlay = twtImageTextLayered.bgOverlay.value %}
+
+{# @TODO... #}
+
+{# Tab "SEO" #}
+{% set twtImgTxtLyrdHtmlTag = twtImageTextLayered.htmlTag.value %}
+{% if twtImgTxtLyrdHtmlTag is empty %}
+    {% set twtImgTxtLyrdHtmlTag = 'p' %}
+{% endif %}
+{% set twtImgTxtLyrdHtmlTagClass = twtImageTextLayered.htmlTagClass.value %}
+
+{% set twtImgTxtLyrdLzyLdng = twtImageTextLayered.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtImgTxtLyrdCssClass = twtImageTextLayered.cssClass.value %}
+{% set twtImgTxtLyrdCssClassHeadline = twtImageTextLayered.cssClassHeadline.value %}
+{% set twtImgTxtLyrdCssClassText = twtImageTextLayered.cssClassText.value %}
+
+{# Set title attribute #}
+{# INFO: 'Text' (mandatory) #}
+{# => 'Headline' > shortened 'Text'* #}
+{# @TODO: Add title to seo config ? #}
+{% if twtImgTxtLyrdHeadline %}
+    {% set title = twtImgTxtLyrdHeadline %}
+{% else %}
+    {% set title = twtImgTxtLyrdText|striptags|raw|length > 25 ? twtImgTxtLyrdText|striptags|raw|slice(0, 25) ~ '...' : twtImgTxtLyrdText|striptags|raw %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{% if element.translated.config.displayMode.value == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{% set contentClasses = ['content'] %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtImgTxtLyrdLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_image_text_layered %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }} is-{{ twtImgTxtLyrdLayoutType }}{% if twtImgTxtLyrdArrangement == 'reverse' %} is-reverse{% endif %}{% if twtImgTxtLyrdCssClass is not empty %} {{ twtImgTxtLyrdCssClass }}{% endif %}"
+         {% if twtImgTxtLyrdBackgroundColor %}style="background-color: {{ twtImgTxtLyrdBackgroundColor }}"{% endif %}>
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_image_text_layered_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-link-color: {{ twtImgTxtLyrdTextColor }};
+        {% block element_twt_image_text_layered_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {% block element_twt_image_text_layered_container %}
+            <div class="twt-image-text-layered-container cms-container is-{{ element.translated.config.displayMode.value }}">
+
+                {% block element_twt_image_text_layered_inner %}
+                    {# ThemeWare: Set text element #}
+                    {% set imageTextLayered %}
+                        <div class="twt-image-text-layered-content-container cms-content-container content-container">
+                            <div class="twt-image-text-layered-content {{ contentClasses|sort|join(' ') }}"
+                                 style="text-align: {{ twtImgTxtLyrdTextAlignment }}; background-color: {{ twtImgTxtLyrdBgOverlay }};">
+                                {# Headline #}
+                                {% if element.translated.config.headline.value %}
+                                    <{{ twtImgTxtLyrdHtmlTag }} class="twt-image-text-layered-headline headline {{ twtImgTxtLyrdHtmlTagClass }} twt-font-family-{{ twtImgTxtLyrdFontFamilyHeadline }}{% if twtImgTxtLyrdCssClassHeadline is not empty %} {{ twtImgTxtLyrdCssClassHeadline }}{% endif %}"
+                                       style="color: {{ twtImgTxtLyrdTextColorHeadline }};">
+                                        <span>{{ element.translated.config.headline.value }}</span>
+                                    </{{ twtImgTxtLyrdHtmlTag }}>
+                                {% endif %}
+
+                                {# Text (mandatory) #}
+                                <div class="twt-image-text-layered-text text{% if twtImgTxtLyrdFontFamily !='base' %} twt-font-family-{{ twtImgTxtLyrdFontFamily }}{% endif %}{% if twtImgTxtLyrdCssClassText is not empty %} {{ twtImgTxtLyrdCssClassText }}{% endif %}"
+                                     style="color: {{ twtImgTxtLyrdTextColor }};">
+                                    {{ element.translated.config.text.value|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endset %}
+
+                    {# ThemeWare: Set image element #}
+                    {% set imageElement %}
+                        {% block element_twt_image_text_layered_image_container %}
+                            {% if element.data.media.url %}
+                                <div class="twt-image-text-layered-image-container {# w-100 #} cms-image-container image-container is-{{ element.translated.config.displayMode.value }}"
+                                    {% if element.translated.config.minHeight.value and element.translated.config.displayMode.value == 'cover' %} style="min-height: {{ element.translated.config.minHeight.value }};"{% endif %}>
+
+                                    {% block element_twt_image_text_layered_image_media %}
+                                        {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                        {% set attributes = {
+                                            class: 'cms-image',
+                                            alt: (element.data.media.translated.alt ?: ''),
+                                            title: (element.data.media.translated.title ?: title),
+                                            loading: lazyloading
+                                        } %}
+
+                                        {% if element.translated.config.displayMode.value == 'cover' or element.translated.config.displayMode.value == 'contain' %}
+                                            {% set attributes = attributes|merge({ 'data-object-fit': element.translated.config.displayMode.value }) %}
+                                        {% endif %}
+
+                                        {% sw_thumbnails 'cms-image-thumbnails' with {
+                                            media: element.data.media
+                                        } %}
+                                    {% endblock %}
+                                </div>
+
+                                {# ThemeWare: Load text element #}
+                                {{ imageTextLayered }}
+                            {% endif %}
+                        {% endblock %}
+                    {% endset %}
+
+                    {# ThemeWare: Load image element #}
+                    {{ imageElement }}
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+
+    </div>
+{% endblock %}

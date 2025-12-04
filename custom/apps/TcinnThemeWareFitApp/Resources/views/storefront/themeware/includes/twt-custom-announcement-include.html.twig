@@ -1,0 +1,16 @@
+{# ThemeWare® 'Custom announcement' content #}
+{#
+    @Storefront/storefront/themeware/includes/twt-custom-announcement-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{% block twt_custom_announcement_inner %}
+    <div class="twt-announcement-inner">
+
+        {% block twt_custom_announcement_content %}
+            {{ 'twt.extension.customAnnouncement.content'|trans|raw }}
+        {% endblock %}
+
+    </div>
+{% endblock %}

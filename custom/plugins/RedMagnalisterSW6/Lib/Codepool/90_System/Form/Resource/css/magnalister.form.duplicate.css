@@ -1,0 +1,146 @@
+/*
+ * 888888ba                 dP  .88888.                    dP
+ * 88    `8b                88 d8'   `88                   88
+ * 88aaaa8P' .d8888b. .d888b88 88        .d8888b. .d8888b. 88  .dP  .d8888b.
+ * 88   `8b. 88ooood8 88'  `88 88   YP88 88ooood8 88'  `"" 88888"   88'  `88
+ * 88     88 88.  ... 88.  .88 Y8.   .88 88.  ... 88.  ... 88  `8b. 88.  .88
+ * dP     dP `88888P' `88888P8  `88888'  `88888P' `88888P' dP   `YP `88888P'
+ *
+ *                          m a g n a l i s t e r
+ *                                      boost your Online-Shop
+ *
+ * -----------------------------------------------------------------------------
+ * (c) 2010 - 2025 RedGecko GmbH -- http://www.redgecko.de
+ *     Released under the MIT License (Expat)
+ * -----------------------------------------------------------------------------
+ */
+
+.magnalisterForm div.duplicate {
+    display: table;
+    width: 100%;
+}
+.magnalisterForm div.duplicate > div {
+    border-style: solid dashed;
+    border-color: #dadada #dadada;
+    border-width: 1px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    position: relative;
+}
+.magnalisterForm div.duplicate > div > * {
+    padding: 14px;
+}
+
+.magnalisterForm #amazon_config_prepare_fieldset_b2b div.duplicate > div > div {
+    padding: 0;
+}
+
+#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) td.input div.duplicate > div,
+#otto_config_order_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate > div {
+    border: unset;
+}
+
+#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) td.input div.duplicate > div:not(:last-child),
+#otto_config_order_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate > div:not(:last-child) {
+    border-bottom: 1px solid #dadada;
+}
+
+#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) td.input div.duplicate > div > div,
+#otto_config_order_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate > div > div {
+    padding: 0;
+}
+
+#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) td.input,
+#otto_config_order_fieldset_orderstatus tr:nth-child(5) td.input {
+    padding-top: 0;
+}
+
+.amazon_config_shippinglabel_field_shippinglabel_default_dimension > div > table > tbody > tr > td:first-child,
+.otto_config_order_field_orderstatus_shippedaddress > div > table > tbody > tr > td:first-child {
+    padding-left: 0;
+}
+
+
+
+.magnalisterForm #amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate div {
+   /* width: 100%;*/
+    padding-left: 0;
+}
+input.ml-js-form-duplicate-radiogroup{
+    margin: -1px 3px 0 5px;
+}
+
+div#content .magnalisterForm div.duplicate > div > span .button {
+    font-size: 1.5em;
+    margin: 0;
+}
+.magnalisterForm div.amazon_config_prepare_field_shipping_template div {
+    padding-left: 19px;
+}
+.magnalisterForm div.duplicate > div:not(:last-child) {
+    border-bottom: unset;
+}
+/*div.magnamain table .js-field th,
+div.magnamain table .js-field th label,*/
+div.magnamain table .js-field td label
+{
+    font-weight: normal;
+    margin-right: 15px;
+}
+div.magnamain table .js-field td label p
+{
+    font-weight: 700;
+}
+
+#amazon_config_prepare_fieldset_b2b tr:nth-child(4) td.input div.duplicate > div,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(3) td.input div.duplicate > div,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(4) td.input div.duplicate > div,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate > div,
+#hood_config_prepare_fieldset_shipping tr:nth-child(2) td.input div.duplicate > div,
+#hood_config_prepare_fieldset_shipping tr:nth-child(3) td.input div.duplicate > div {
+    border: unset;
+    border-bottom: 1px solid #dadada;
+}
+
+#hood_config_prepare_fieldset_shipping tr:nth-child(2) td.input div.duplicate > div:first-child {
+    border-top: 1px solid #dadada;
+}
+
+#amazon_config_prepare_fieldset_b2b tr:nth-child(4) td.input div.duplicate > div:last-child,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(3) td.input div.duplicate > div:last-child,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(4) td.input div.duplicate > div:last-child,
+#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) td.input div.duplicate > div:last-child,
+#hood_config_prepare_fieldset_shipping tr:nth-child(2) td.input div.duplicate > div:last-child,
+#hood_config_prepare_fieldset_shipping tr:nth-child(3) td.input div.duplicate > div:last-child {
+    border-bottom: none;
+}
+
+#amazon_config_prepare_fieldset_b2b tr:nth-child(4) td.input div.duplicate > div > div {
+    width: 50%;
+}
+
+#amazon_config_orderimport_fieldset_orderstatus tr td.input div.duplicate > div > div {
+    width: 48.5%;
+}
+
+
+@media screen and (max-width: 1550px) {
+    div.magnamain table .js-field td label
+    {
+        white-space: initial;
+    }
+}
+
+.magnalisterForm div.duplicate > div > span button[type="button"].mlbtn {
+    margin-top: 0;
+}
+
+.magnalisterForm div.duplicate > div > span {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    align-self: flex-end;
+    margin-left: auto;
+}

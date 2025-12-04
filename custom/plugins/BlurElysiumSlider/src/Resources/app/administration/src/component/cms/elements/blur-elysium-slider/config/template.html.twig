@@ -1,0 +1,75 @@
+<mt-card
+    position-identifier="blurElysium.cmsSlider.config"
+    title="Elysium Slider"
+    :class="['content-no-padding']">
+
+    <template #headerRight>
+
+        <blur-device-switch 
+            layout="row"
+            show-label="false"
+            :device="device"
+            @change-device="changeDevice"
+            :style="{
+                padding: '0',
+                width: '100%',
+                justifyContent: 'center',
+                '--container-gap': '12px',
+                '--icon-padding': '6px',
+                '--icon-bg-color': '#ffffff',
+                '--icon-hover-bg-color': 'var(--color-gray-100)',
+            }" />
+    </template>
+
+    <template #tabs>
+        <mt-tabs
+            :defaultItem="activeTab"
+            :items="tabs"
+            @new-item-active="activeTab = $event"
+        />
+    </template>
+
+    <template v-if="activeTab === 'content'">
+        <blur-section
+            gap
+            padding
+            :title="$tc('blurElysiumSlider.config.settings.general')">
+
+            <blur-column>
+                <blur-text-input 
+                    :label="$tc('blurElysiumSlider.config.content.sliderTitle')" 
+                    :model-value="element.config.content.value.title"
+                    @update-value="value => element.config.content.value.title = value"/>  
+            </blur-column> 
+
+        </blur-section>
+
+        <blur-section
+            gap
+            padding
+            :title="$tc('blurElysiumSlides.slideSelection.listLabel')">
+
+            <blur-column>
+                <blur-elysium-slide-selection 
+                    :selected-slides-ids="this.element.config.elysiumSlideCollection.value" />
+            </blur-column>
+
+        </blur-section>
+    </template>
+
+    <blur-elysium-slider-config-settings
+        v-if="activeTab === 'settings'" 
+        :config="element.config" />
+
+    <blur-elysium-slider-config-sizing
+        v-if="activeTab === 'sizing'" 
+        :config="element.config" />
+
+    <blur-elysium-slider-config-navigation
+        v-if="activeTab === 'navigation'" 
+        :config="element.config" />
+
+    <blur-elysium-slider-config-arrows
+        v-if="activeTab === 'arrows'" 
+        :config="element.config" />
+</mt-card>

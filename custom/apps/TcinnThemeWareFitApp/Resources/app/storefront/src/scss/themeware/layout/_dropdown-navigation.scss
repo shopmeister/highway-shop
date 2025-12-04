@@ -1,0 +1,181 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® 'Dropdown navigation' #dropdownNav #beta
+    ==================================================
+
+*/
+
+// @TODO...
+
+//$twt-border...
+//$twt-border-radius...
+//$twt-box-shadow...
+$twt-dropdown-width: 210px; // Standardbreite der Dropdown-Listen, kann auch "auto" sein
+$twt-dropdown-max-width: 300px; // Standardbreite der Dropdown-Listen, kann auch "auto" sein
+$twt-font-weight: normal; // Strichstärke für Dropdown-Elemente
+$twt-min-height: 40px; // Standard-Zeilenhöhe für Dropdown-Elemente
+$twt-line-height: $twt-min-height; // Standard-Zeilenhöhe für Dropdown-Elemente
+
+@if $twt-nav-main-dropdown == 2 {
+    .twt-main-navigation-dropdown {
+        .nav-link.main-navigation-link {
+            a {
+                display: block;
+                text-decoration: none;
+                color: inherit;
+            }
+        }
+
+        .twt-main-navigation-dropdown-list { // main-navigation-dropdown
+            display: none;
+            position: absolute;
+            top: auto;
+            left: 0;
+            z-index: 10;
+            width: $twt-dropdown-width;
+            //width: 100%;
+            //min-width: $twt-dropdown-width;
+            //max-width: $twt-dropdown-max-width;
+
+            // @TODO: Add dropshadow (e.g. .shadow)
+            //box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            //transform: translateY(-10px);
+            //transition: transform 0.3s ease-in-out 0s
+
+            .main-navigation-dropdown-item {
+                border-bottom: 1px solid darken($twt-nav-main-background-color-hover, 7%); // @TODO: Add seperate color
+
+                a {
+                    display: block;
+                    transition: background-color 0.2s, color 0.2s;
+                    background-color: $twt-nav-main-background-color-hover; // @TODO: Add seperate color
+                    color: $twt-nav-main-color; // @TODO: Add seperate color
+                    font-size: 16px;
+                    font-weight: $twt-font-weight;
+
+                    // Fix height
+                    //padding: 0 15px;
+                    //line-height: $twt-line-height; // 40px
+
+                    // Flex height
+                    padding: 10px 15px;
+                    line-height: 1.25;
+                    min-height: $twt-min-height;
+
+                    &:hover {
+                        color: $twt-nav-main-color-hover; // @TODO: Add seperate color
+                        background-color: darken($twt-nav-main-background-color-hover, 5%); // @TODO: Add seperate color
+                    }
+                }
+
+                &.has-sub {
+                    position: relative;
+
+                    &:hover {
+                        & > a {
+                            background-color: darken($twt-nav-main-background-color-hover, 5%); // @TODO: Add seperate color
+                        }
+                    }
+
+                    & > a {
+                        padding-right: 30px;
+
+                        &::after {
+                            content: "›";
+                            display: block;
+                            position: absolute;
+                            right: 10px;
+
+                            // Fix height
+                            //bottom: 0;
+
+                            // Flex height
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+
+                &:last-of-type {
+                    border: none;
+                }
+            }
+
+            .main-navigation-dropdown-sub-menu {
+                position: absolute;
+                z-index: 20;
+                top: $twt-min-height;
+                //top: 100%;
+                left: 100%;
+                display: none;
+                width: $twt-dropdown-width;
+                //width: 100%;
+                //min-width: $twt-dropdown-width;
+                //max-width: $twt-dropdown-max-width;
+                margin: -$twt-min-height 0 0 0;
+                list-style: none;
+
+                // @TODO: Add dropshadow (e.g. .shadow)
+                //box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+
+                .main-navigation-dropdown-sub-menu-item {
+                    border-bottom: 1px solid darken($twt-nav-main-background-color-hover, 12%); // @TODO: Add seperate color
+
+                    a {
+                        background-color: darken($twt-nav-main-background-color-hover, 5%); // @TODO: Add seperate color
+                        font-size: 16px;
+
+                        &:hover {
+                            background-color: darken($twt-nav-main-background-color-hover, 10%); // @TODO: Add seperate color
+                        }
+
+                        &.d-flex {
+                            display: flex !important;
+                        }
+
+                        .icon-box-arrow-up-right svg {
+                            top: -5px;
+                        }
+                    }
+
+                    &:last-of-type { border: none; }
+                }
+            }
+
+            &.open-left {
+                .main-navigation-dropdown-sub-menu {
+                    right: 100%;
+                    left: auto;
+                }
+            }
+        }
+
+        @include media-breakpoint-up(lg) { // min 992px
+            .nav-link.main-navigation-link {
+                position: relative;
+
+                &:hover {
+                    .main-navigation-link-text + .twt-main-navigation-dropdown-list {
+                        display: block;
+                    }
+                }
+
+                .twt-main-navigation-dropdown-list {
+                    .main-navigation-dropdown-item.has-sub {
+                        &:hover {
+                            .main-navigation-dropdown-sub-menu {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

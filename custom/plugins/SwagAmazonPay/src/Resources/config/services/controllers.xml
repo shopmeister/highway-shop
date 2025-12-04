@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!--Administration-->
+        <service id="Swag\AmazonPay\Administration\Controller\AmazonPayConfigurationController" public="true">
+            <argument type="service" id="Swag\AmazonPay\Util\Connection\ConnectionInspector"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\PluginConfigurationExporter"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\PluginConfigurationImporter"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Logging\LogFileProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Helper\AmazonPayPaymentMethodHelper"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Swag\AmazonPay\Administration\Controller\AmazonPayOrderController" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Service\PaymentActionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Swag\AmazonPay\Administration\Controller\AmazonPayInstanPaymentNotificationController" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\PaymentNotification\PaymentNotificationHandlerRegistry"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Components\PaymentNotification\Validation\PaymentNotificationValidator"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <!-- Storefront -->
+        <service id="Swag\AmazonPay\Storefront\Controller\AmazonPayController" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Cart\CartService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Account\AmazonPayAccountService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\Controller\AmazonPurePaymentMethodController" public="true">
+            <argument type="service" id="Swag\AmazonPay\Storefront\Page\Extension\ExtensionService"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\PaymentHandler\AmazonPaymentHandler"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Shopware\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\Controller\AmazonLoginController" public="true">
+            <argument type="service" id="Shopware\Storefront\Page\Checkout\Register\CheckoutRegisterPageLoader"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Account\Hydrator\RegistrationDataHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Account\AmazonPayAccountService"/>
+            <argument type="service" id="Swag\AmazonPay\Core\Checkout\Customer\SalesChannel\AccountRegistrationService"/>
+            <argument type="service" id="Swag\AmazonPay\DataAbstractionLayer\Entity\SignUpToken\SignUpTokenService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <call method="setTwig">
+                <argument type="service" id="twig"/>
+            </call>
+            <tag name="controller.service_arguments"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Core\AmazonPay\SalesChannel\AmazonPayRoute" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\Button\ButtonProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Storefront\Page\Extension\ExtensionService"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Account\AmazonPayAccountService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\PaymentHandler\AmazonPaymentHandler"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <tag name="controller.service_arguments"/>
+        </service>
+    </services>
+</container>

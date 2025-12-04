@@ -1,0 +1,448 @@
+{
+  "dde": {
+    "component": {
+      "applifaction-dde-template-code-editor": {
+        "loadFromFile": "Aus Datei laden",
+        "modalTitle": "Template-Datei bearbeiten",
+        "saveToFile": "Als Datei speichern"
+      },
+      "dde-delete-custom-preset-modal": {
+        "message": "Sind Sie sicher, das Sie das Element \"%name%\" löschen wollen?",
+        "title": "Element löschen"
+      },
+      "dde-save-custom-preset-modal": {
+        "title": "Element speichern"
+      },
+      "dde-image-field": {
+        "dynamicDataNotificationText": "Das ausgewählte Bild wird nur als Vorschaubild verwendet.\nDas tatsächliche Bild wird dynamisch aus der Variable \"%var%\" aufgelöst.",
+        "variable-input-placeholder": "URL aus Variable laden"
+      },
+      "dde-variable-field": {
+        "variable-input-placeholder": "Bitte Variable auswählen",
+        "variable-scope-divider-text": "Hier verfügbar"
+      },
+      "dde-media-upload-field": {
+        "browse-button-label": "Bild auswählen"
+      },
+      "dde-select-theme-modal": {
+        "title": "Bitte wählen Sie eine Vorlage für Ihr Dokument"
+      },
+      "document-template": {
+        "choose-template": "Vorlage auswählen"
+      },
+      "savingProgressTitle": {
+        "modalTitle": "Übersetzungen werden generiert und gespeichert. Bitte warten. "
+      }
+    },
+    "documentConfig": {
+      "activate": "Aktivieren",
+      "additionalFormFields": {
+        "treatDeliveryAsItemHelpText": "Stellen Sie die Versandkosten in der Tabelle wie eine Bestellposition dar, sollten Sie diese Einstellung aktivieren. Dann wird die zusätzliche Versandkosten-Zeile in der Tabelle beim Setzen von Seitenumbrüchen (siehe Option 'Positionen pro Seite') berücksichtigt.",
+        "treatDeliveryAsItemLabel": "Versandkosten als Bestellposition behandlen"
+      },
+      "isEditorEnabledSwitchLabel": "Aktiv",
+      "settingReplacedMessage": {
+        "displayDivergentDeliveryAddress": "Bitte verwenden Sie den PDF Template Editor, um abweichende Leiferadressen anzuzeigen zu lassen",
+        "displayFooter": "Bitte verwenden Sie den PDF Template Editor, um die Fußzeile zu entfernen oder hinzuzufügen",
+        "displayHeader": "Bitte verwenden Sie den PDF Template Editor, um die Kopfzeile zu entfernen oder hinzuzufügen",
+        "displayLineItemPosition": "Bitte verwenden Sie den PDF Template Editor, um die Numerierung der Bestellpositionen zu entfernen oder hinzuzufügen",
+        "displayLineItems": "Bitte verwenden Sie den PDF Template Editor, um die Bestellpositionen zu entfernen oder hinzuzufügen",
+        "displayPageCount": "Bitte verwenden Sie den PDF Template Editor, um die Seitennummerierung zu entfernen oder hinzuzufügen",
+        "displayPrices": "Bitte verwenden Sie den PDF Template Editor, um die Preise zu entfernen oder hinzuzufügen",
+        "itemsPerPage": "Bitte verwenden Sie den PDF Template Editor, um die Positionen pro Seite einzustellen. Die Einstellung finden Sie in der linken Spalte des Editors, wenn Sie die Vorschau öffnen.",
+        "logo": "Bitte ändern Sie das Logo direkt im PDF Template Editor"
+      }
+    },
+    "activationPanel": {
+      "errorRefreshMessage": "Bitte laden sie diese Seite erneut, sobald sie die Fehlerursache behoben haben.",
+      "refreshButton": "Seite erneut laden"
+    },
+    "documentTemplateView": {
+      "openEditorButtonText": "Editor öffnen"
+    },
+    "editor": {
+      "component": {
+        "address-row": {
+          "name": "Adresszeile"
+        },
+        "bank-details-only-for-cash-in-advance-or-purchase-on-account": {
+          "name": "Bankdaten <br>(Vorkasse, Rechnungskauf)"
+        },
+        "body": {
+          "name": "Dokumentenkörper"
+        },
+        "column": {
+          "name": "Spalte"
+        },
+        "delivery-line-item": {
+          "name": "Lieferungs Position"
+        },
+        "deviating-delivery-address": {
+          "name": "Lieferadresse <br>(falls abweichend)"
+        },
+        "footer": {
+          "name": "Fußzeile"
+        },
+        "image": {
+          "name": "Bild"
+        },
+        "intra-community-delivery-austria-fix-sw65": {
+          "name": "Innergemeinschaftliche Lieferung aus Österreich"
+        },
+        "intra-community-delivery-germany-fix-sw65": {
+          "name": "Innergemeinschaftliche Lieferung aus Deutschland"
+        },
+        "invoice-already-paid-online": {
+          "name": "Bereits online bezahlt <br>(PayPal, Kreditkarte, etc.)"
+        },
+        "latest-delivery-note-number": {
+          "name": "Neueste Lieferscheinnummer"
+        },
+        "line-item-cover": {
+          "name": "Produktbild"
+        },
+        "line-items": {
+          "name": "Bestellpositionen"
+        },
+        "magnalister-amazon-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Amazon Bestell ID"
+        },
+        "magnalister-cdiscount-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Cdiscount Bestell ID"
+        },
+        "magnalister-check24-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "check24 Bestell ID"
+        },
+        "magnalister-ebay-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "ebay Bestell ID"
+        },
+        "magnalister-etsy-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "etsy Bestell ID"
+        },
+        "magnalister-kaufland-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Kaufland Bestell ID"
+        },
+        "magnalister-metro-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Metro Bestell ID"
+        },
+        "magnalister-otto-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Otto Bestell ID"
+        },
+        "magnalister-rakutenfr-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Rakuten Bestell ID"
+        },
+        "magnalister-ricardo-order-id": {
+          "linkText": "magnalister",
+          "linkUrl": "https://store.shopware.com/red4363948025224f/magnalister-ebay-amazon-otto-co-schnittstelle.-upload-import-lagersync.html",
+          "name": "Ricardo Bestell ID"
+        },
+        "coolbax-marketplace-order-id": {
+          "linkText": "Coolbax Plugins",
+          "linkUrl": "https://store.shopware.com/search?sSearch=coolbax%20marktplatz",
+          "name": "Marktplatz Bestellnummer"
+        },
+        "payment-target-date": {
+          "name": "Zahlungsziel 14 Tage (Vorkasse, Rechnungskauf)"
+        },
+        "product-pack-unit": {
+          "name": "Produkt Verpackungseinheit"
+        },
+        "delivery-time": {
+          "name": "Produkt Lieferzeit"
+        },
+        "product-ean": {
+          "name": "Produkt EAN"
+        },
+        "product-purchase-unit": {
+          "name": "Produkt Verkaufseinheit"
+        },
+        "qr-code-product-link": {
+          "name": "QR-Code Produktlink"
+        },
+        "product-weight": {
+          "name": "Produktgewicht"
+        },
+        "row": {
+          "name": "Zeile"
+        },
+        "spacer": {
+          "name": "Abstandshalter"
+        },
+        "text": {
+          "name": "Text"
+        },
+        "totals-row": {
+          "name": "Gesamtsummen"
+        },
+        "two-columns": {
+          "name": "Zeile"
+        }
+      },
+      "leftSidebarItem": {
+        "components": {
+          "advancedElementsGroupTitle": "Smarte Elemente",
+          "basicElementsGroupTitle": "Basis Elemente",
+          "customPresetSuccessfullyImported": "Ihr Element wurde erfolgreich importiert",
+          "customPresetsGroupTitle": "Gespeicherte Elemente",
+          "delete-custom-preset": "Element löschen",
+          "document-fanning-auto": "Auto",
+          "document-fanning-auto-tooltip": "Dokument wird aufgefächert, wenn Sie mit der Maus darüber fahren oder ein Element platzieren möchten. Das Auffächern erleichtert das auswählen des richtigen Elements. ",
+          "document-fanning-label": "Dokument auffächern",
+          "document-fanning-on": "Immer aufgefächert",
+          "element": "Element",
+          "export-custom-preset": "Element exportieren",
+          "import-custom-preset": "Element importieren",
+          "import-custom-preset-button-label": "Importieren",
+          "label": "Neues Element",
+          "no-custom-presets-available": "Kein gespeichertes Element vorhanden",
+          "presetsGroupTitle": "Elemente",
+          "title": "Neues Element"
+        },
+        "defaultStyles": {
+          "embeddedGoogleFontsDescription": "<p>Besuchen Sie <a href='https://fonts.google.com/' target='_blank' rel='noopener'>Google Fonts</a>, um Ihre gewünschte Schriftarten auszusuchen und geben Sie diese im Anschluss hier an.</p><p><strong>Wichtig: </strong>Bitte geben Sie den Namen ihres gewünschten Google Fonts in der Schriftartenlisten des Feldes 'Schriftart' <b>kommaseparierten</b> an.</p><p><i class=\"dde-material-icon dde-color-primary\">verified_user</i> Das Einbetten der Fonts ist DSGVO konform!</p>",
+          "embeddedGoogleFontsLabel": "Eingebettete Google Fonts",
+          "globalCssDescription": "<p>Sie können entweder die <strong>Ihre eigenen CSS Klassen</strong> verwenden, die Sie jedem Element unter 'Element konfigurieren' > 'CSS' > 'Eigene CSS Klasse hinzufügen' > 'CSS Klasse' hinzufügen können, oder folgende Standardklassen verwenden:</p><ul><li><strong>Dokumentenkörper</strong>: mj-body</li><li><strong>Zeile</strong>: mj-section</li><li><strong>Spalte</strong>: mj-column</li><li><strong>Bild</strong>: mj-image</li><li><strong>Text</strong>: mj-text</li><li><strong>Abstandshalter</strong>: mj-spacer</li></ul><p>Wenn Sie den Modus der Vorschau auf HTML umstellen, können Sie mit den Developer Tools Ihres Browsers die einzelnen Elemente inspizieren und dadurch die idealen CSS Selektoren für Ihr Stylesheet ermitteln.</p>",
+          "globalCssLabel": "Globales CSS",
+          "label": "Dokumenten Styles",
+          "title": "Dokumenten Styles"
+        },
+        "devMode": {
+          "componentAttributes": "Attribute"
+        },
+        "importExport": {
+          "document": "Dokument",
+          "info": "<p>Möchten Sie Ihre Dokumentenvorlage speichern und in einen anderen Dokumententypen wiederverwenden?</p><p>Speichern Sie einfach Ihre Vorlage in einer Datei und importieren Sie diese in einem anderen Dokument.</p><p><strong>Pro Tip:</strong> Mit dieser Funktion können Sie auch Vorlagen zwischen verschiedenne Shop-Instanzen wie z.B. Produktions-, Dev- oder Staging-Systemen transferieren.</strong></p>",
+          "label": "Import Export",
+          "loadFromFile": "Aus Datei laden",
+          "saveToFile": "Als Datei speichern",
+          "title": "Vorlage Importieren oder Exportieren"
+        },
+        "loadTemplate": {
+          "label": "Themes",
+          "title": "Themes"
+        },
+        "preview": {
+          "disablePreviewModeButtonText": "Zurück zum Bearbeitungs-Modus",
+          "fakeOrderDescription": "Sobald Sie eine Bestellung in Ihrem Shop erfasst haben, können Sie diese nutzen, um Vorschau-PDFs zu erzeugen. Bis dahin werden Beispieldaten verwendet.",
+          "itemsPerPage": {
+            "description": "<p><strong>Bitte testen Sie Ihr Design</strong> mit einer Bestellung, die so wenige Positionen hat, dass nur eine Seite benötigt wird. Testen Sie im Anschluss bitte ein zweites Mal mit einer Bestellung, die so viele Positionen hat, dass mindestens 3 Seiten benötigt werden. Für diesen Test können Sie auch die Beispiel-Bestelldaten der Vorschauoptionen aktivieren.</p>\n<p>Tragen Sie dann bitte jeweils die <strong>Anzahl der Positionen</strong> in die Felder unterhalb ein, die auf die jeweiligen Seiten passen.</p>\n<p>Dies ist wichtig, damit Shopware die <strong>Seitenumbrüche</strong> richtig setzt und <strong>keine Überlappungen mit der Fußzeile</strong> vorkommen. </p>",
+            "multiPageDocument": "Mehrseitiges Dokument",
+            "singlePageDocument": "Einseitiges Dokument",
+            "title": "Positionen pro Seite"
+          },
+          "label": "Vorschau",
+          "leaveRatingButtonText": "Bewertung schreiben",
+          "pleaseLeaveRatingText": "Bitte hinterlassen Sie uns eine <i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i> Bewertung. <br>Wir schätzen Ihre Unterstützung sehr!",
+          "pleaseLeaveRatingTitle": "Gefällt Ihnen der PDF Template Editor?",
+          "previewOptionsTitle": "Vorschauoptionen",
+          "reloadPreviewButtonText": "Vorschau erneut laden",
+          "title": "Vorschau Einstellungen"
+        },
+        "settings": {
+          "code": {
+            "description": "<p>Ihr Twig Code wird ausgeführt, bevor das aktuelle Element ausgegeben wird. Bedingungen und Schleifen zur Wiederholung des Elements werden nach diesem Code ausgeführt. Bitte verwende <strong>geschwungene Klammern</strong>, um korrekte Twig Syntax zu schreiben.</p>\n\n<p>Sie können diesen Code verwenden, um neue Variablen zu initialisieren, die im Anschluss in Text-Elementen innerhalb dieses Elements verfügbar sein werden.</p>\n\n<p>Um die <strong>Twig Variablennamen</strong> herauszufinden, öffnen Sie den Variablen-Reiter, während Sie ein Textfeld editieren. Rechts neben jeder Variable finden Sie ein <i class=\"dde-material-icon\">data_object</i> Symbol, mit dem Sie den jeweiligen Twig Variablennamen anzeigen können.</p>\n\n<p><strong>Beispiel:</strong><br> <code>&#123;% set currencyIsoCode = order.currency.isoCode %&#125;</code></p><p><strong>Pro Tip:</strong> Um herauszufinden, welche Werte in einem Objekt oder Array, wie z.B. den Zusatzfeldern eines Produktes, verfügbar sind, können Sie die Variable mit dem Twig Filter \"json_encode\" als String in einer Variable abspeichern. Im Anschluss können Sie diese über den Variablen-Reiter in ein Textfeld einfügen. Daraufhin können Sie mit der Vorschau-Funktion gezielt für bestimmte Bestellungen testen, welche Werte in Ihrer Variable stehen.</p><p><strong>Beispiel:</strong> <code>&#123;% set productCustomFieldsJson = lineItem.product.customFields &#124; json_encode %&#125;</code></p>",
+            "title": "Code"
+          },
+          "condition": {
+            "description": "<p>Geben Sie hier bitte Twig Code ein, der true oder false zurückgibt.</p>\n<p><strong>Verwenden Sie bitte keine geschwungenen Klammern</strong></p>\n<p><strong>Beispiel #1</strong>: Prüfen ob die Variable einen Wert hat<br> <code>billingAddress.company is not empty</code></p>\n<p><strong>Beispiel #2:</strong> Auf Vorkasse abprüfen<br> <code>order.transactions.count > 0 &amp;&amp; order.transactions.last.paymentMethod.name == 'Vorkasse'</code></p>\n",
+            "title": "Bedingung"
+          },
+          "css": {
+            "globalCssDescription": "Sie können dem Element eine zusätzliche CSS-Klasse zuweisen, die Sie im Anschluss unter 'Dokumenten Styles' > 'Globales CSS' verwenden, um das Element zu stylen.",
+            "info-box": {
+              "description": "Wenn ein CSS Style bereits über eine Einstellung im \"Dokumenten Styles\" Tab gesetzt wurde, müssen Sie Ihren CSS Style mit \"<i>!important</i>\" kennzeichnen, um die Einstellung zu überschreiben. <br><br>Beispiel:<br><code>/* Overwrite setting of the document styles tab */<br>font-weight: 300 !important;<br><br>/* Add other styles */<br>position: relative;<br>top: 5px;<br>left: 5px;</code>"
+            },
+            "title": "CSS"
+          },
+          "fields": {
+            "align": "Horizontale Ausrichtung",
+            "background-color": "Hintergrundfarbe",
+            "background-repeat": "Hintergrund-Wiederholung",
+            "background-size": "Hintergrundgröße",
+            "background-url": "Hintergrundbild",
+            "body-background-color": "Seiten-Hintergrundfarbe",
+            "body-background-url": "Seiten-Hintergrundbild",
+            "border": "Rahmen",
+            "border-bottom": "Rahmen unten",
+            "border-color": "Rahmenfarbe",
+            "border-left": "Rahmen links",
+            "border-radius": "Abrundung der Ecken",
+            "border-right": "Rahmen rechts",
+            "border-settings": "Einstellungen",
+            "border-style": "Rahmenart",
+            "border-thickness": "Rahmendicke",
+            "border-top": "Rahmen oben",
+            "border-width": "Rahmendicke",
+            "color": "Textfarbe",
+            "container-background-color": "Kontainer Hintergrundfarbe",
+            "font-family": "Schriftart",
+            "font-size": "Schriftgröße",
+            "font-style": "Schriftstil",
+            "font-weight": "Schriftstärke",
+            "height": "Höhe",
+            "isPageFooter": "Ist Fußzeile?",
+            "letter-spacing": "Zeichenabstand",
+            "line-height": "Zeilenhöhe",
+            "padding-bottom": "Abstand unten",
+            "padding-left": "Abstand links",
+            "padding-right": "Abstand rechts",
+            "padding-top": "Abstand oben",
+            "src": "Bild",
+            "alt": "Alternativtext",
+            "text-decoration": "Textdekoration",
+            "text-transform": "Texttransformation",
+            "vertical-align": "Vertikale Ausrichtung",
+            "width": "Breite",
+            "imageType": "Bildtyp (Bild, QR-Code oder Barcode)",
+            "barcodeType": "Barcode Typ",
+            "qrcodeVariable": "Variable, die in den QR-Code umgewandelt wird",
+            "barcodeVariable": "Variable, die in den Barcode umgewandelt wird"
+          },
+          "label": "Element konfigurieren",
+          "repeat": {
+            "description": "Ihre konfigurierte \"Iterierte Variable\" and \"Variablenname innerhalb der Schleife\" werden in eine for-Schleife umgewandelt, welche das aktuelle Element umschließt.<br> <br> Ihr \"Variablenname innerhalb der Schleife\" wird als Variable in Text-Elementen verfügbar sein.<br><br> <strong>Beispielwert für \"Iterierte Variable\"</strong><br> <code> order.lineItems </code> <br> <strong>Beispielwert für \"Variablenname innerhalb der Schleife\"</strong><br> <code> lineItem </code> <br> <strong>Beispiel Ergebnis</strong><br> <code> &#123;% for lineItem in order.lineItems %&#125;<br> &nbsp;&nbsp;&nbsp;&nbsp;...<br> &#123;% endfor %&#125; </code>",
+            "title": "Wiederholen je Item in Variable"
+          },
+          "styles": {
+            "backgroundImageHint": "Bitte verwenden Sie folgende Maße für Ihr Hintergrundbild und komprimieren es vor dem Hochladen auf <a href='https://tinypng.com/' target='_blank' rel='noopener'>tinypng.com</a>': <br><b>A4 Hochformat:</b> 793px × 1122px<br><b>A4 Querformat:</b> 1122px × 793px",
+            "title": "Styles"
+          },
+          "title": "Element konfigurieren",
+          "visibility": {
+            "description": "<p>Abhängig von der Dokumenteneinstellung <i>\"Positionen pro Seite\"</i> und der <i>\"Anzahl der Positionen\"</i> der Bestellung, kann Ihr PDF mehrere Seiten umfassen. Die <i>\"Anzahl der Positionen pro Seite\"</i> können Sie einstellen, während Sie die Vorschau anzeigen und so Ihre Seitenumbrüche einfach testen.</p>\n\n<p>Alle Elemente sind standardmäßig auf jeder Seite sichtbar. Elemente, wie z.B. das Logo, die Bestellpositionen und die Fußzeile <strong>sollen auf jeder Seite angezeigt werden</strong>. Elemente, wie z.B. die Rechnungs- und Lieferadresse <strong>soll nur auf der ersten Seite angezeigt werden</strong>.</p>\n\n<p>Daher haben Sie hier die Möglichkeit einzustellen, welche Zeilen nur auf der Ersten, Letzten oder auf jeder Seite sichtbar sein sollen.</p>\n",
+            "options": {
+              "allPages": "Auf allen Seiten sichbar",
+              "onlyFirst": "Nur auf erster Seite sichtbar",
+              "onlyLast": "Nur auf letzter Seite sichtbar"
+            },
+            "title": "Sichtbarkeit"
+          }
+        },
+        "translation": {
+          "baseLanguageNotListedText": "Legen Sie sie bitte und füge sie mindestens zu einem Verkaufskanal hinzu. Kehren Sie dann zum PDF Template Editor zurück.",
+          "baseLanguageNotListedTitle": "Ist Ihre Hauptsprache hier nicht aufgelistet?",
+          "currentLanguageLabel": "Aktuelle Sprache",
+          "label": "Übersetzen",
+          "languageNotListedText": "Legen Sie sie bitte und füge sie mindestens zu einem Verkaufskanal hinzu. Kehren Sie dann zum PDF Template Editor zurück.",
+          "languageNotListedTitle": "Gewünschte Sprache nicht aufgelistet?",
+          "languagesLabel": "Übersetzen",
+          "manageLanguagesButtonLabel": "Sprachen verwalten",
+          "missingTranslationsLabel": "Fehlende Übersetzungen",
+          "setBaseLanguageNotification": "Bitte wählen Sie einmalig die Hauptsprache Ihres Dokuments und speichern dann erneut.",
+          "setBaseLanguageTitle": "Welche Hauptsprache wird in Ihrem Dokument verwendet?",
+          "switchLanguageButtonLanguage": "Sprache wechseln",
+          "templateDataFetchFailedSuggestion": "Falls Sie den Fehler nicht beheben können, kontaktieren Sie uns (Applifaction) bitte über das Shopware Plugin-Support-Formular oder per E-Mail an support{'@'}applifaction.com.",
+          "title": "Übersetzen",
+          "translateButtonLabel": "Übersetzen"
+        },
+        "treeView": {
+          "title": "Navigator"
+        },
+        "variables": {
+          "availableVariablesHeader": "Globale Variablen",
+          "inScopeDivider": "Nur hier verfügbare Variablen",
+          "label": "Variablen",
+          "oftenUsedVariablesHeader": "Häufig verwendete Variablen",
+          "searchQueryHeader": "Suche",
+          "searchQueryPlaceholder": "z.B. Invoice Number, Order Number",
+          "searchResultsHeader": "Suchergebnisse",
+          "title": "Variable einfügen",
+          "variableNameLabel": "Twig Variablenname:"
+        },
+        "videoTutorials": {
+          "label": "Video Tutorials"
+        },
+        "devtools": {
+          "label": "Devtools"
+        }
+      },
+      "mainButtons": {
+        "applyButtonText": "Anwenden",
+        "backButtonText": "Zurück",
+        "cancelButtonText": "Schließen",
+        "cancelDiscardButtonText": "Abbrechen",
+        "cancelLoadTemplateButtonText": "Abbrechen",
+        "confirmDiscardButtonText": "Änderungen verwerfen",
+        "confirmLoadTemplateButtonText": "Template laden",
+        "deleteButtonText": "Löschen",
+        "saveButtonText": "Speichern & schließen",
+        "saveContinueButtonText": "Speichern",
+        "saveContinueButtonTooltip": "Nach dem Speichern bleibt der Editor weiterhin geöffnet",
+        "undoButtonText": "Macht die letzte Änderung rückgängig",
+        "redoButtonText": "Stellt eine rückgängig gemachte Änderung wieder her"
+      },
+      "messages": {
+        "confirmDiscardMessage": "Sind Sie sicher, dass Sie den PDF Template Editor verlassen und Ihre Änderungen verwerfen möchten?",
+        "confirmLoadTemplateMessage": "Sind Sie sicher, dass Sie dieses Template laden wollen? Ihre aktuellen Änderungen werden überschrieben."
+      },
+      "selectionBox": {
+        "addColumn": "Spalte hinzufügen",
+        "changeLanguageButtonLabel": "Zu {language} wechseln",
+        "changeLanguageLabel": "Sprache wechseln:",
+        "confirmInlineEditorButton": "Bestätigen",
+        "confirmInlineEditorChangesButtonLabel": "Übersetzung bestätigen",
+        "delete": "Löschen",
+        "duplicate": "Duplizieren",
+        "edit": "Text bearbeiten",
+        "nextTranslationLabel": "Nächsten Text übersetzen",
+        "nextTranslationTooltip": "Zum nächsten nicht übersetzen Text springen",
+        "saveAsCustomPreset": "Element speichern",
+        "tag": {
+          "code": "Code",
+          "condition": "Bedingung",
+          "css": "CSS",
+          "footer": "Fußzeile",
+          "repeated": "Wiederholt",
+          "visibleOnEveryPage": "Sichtbar auf jeder Seite",
+          "visibleOnlyOnFirstPage": "Sichtbar nur auf erster Seite",
+          "visibleOnlyOnLastPage": "Sichtbar nur auf letzter Seite"
+        },
+        "translate": "Übersetzen",
+        "translateSelectedUntranslatedTextTooltip": "Bitte geben Sie Ihre Übersetzung in das Textfeld ein. ",
+        "translateUnselectedUntranslatedTextTooltip": "Klicken Sie auf den Button, um den Text zu übersetzen. ",
+        "translationAvailableTooltip": "Der Text hat bereits eine Übersetzung für {language}. ",
+        "translationUnavailableTooltip": "<strong>Keine</strong> Übersetzung in {language} vorhanden. "
+      },
+      "viewAction": {
+        "desktopViewport": "Zur Desktop-Ansicht wechseln",
+        "mobileViewport": "Zur mobilen Ansicht wechseln",
+        "preview": {
+          "disable": "Bearbeiten",
+          "enable": "Vorschau"
+        },
+        "tabletViewport": "Zur Tablet-Ansicht wechseln"
+      }
+    },
+    "extension": {
+      "settingsItemTitle": "PDF Template Editor"
+    },
+    "loadingProgress": {
+      "generatingHtml": "Generiere HTML",
+      "generatingPdf": "Generiere PDF",
+      "generatingTemplate": "Generiere Template"
+    },
+    "selectThemeModal": {
+      "selectBlankTheme": "Mit leerem Dokument fortfahren",
+      "selectTemplate": "Vorlage laden",
+      "title": "Dokumenten Themes"
+    }
+  }
+}

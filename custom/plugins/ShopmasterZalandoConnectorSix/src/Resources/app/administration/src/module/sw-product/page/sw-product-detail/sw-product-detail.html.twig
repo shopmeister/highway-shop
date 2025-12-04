@@ -1,0 +1,16 @@
+{% block sw_product_detail_content_tabs_specifications %}
+    <sw-tabs-item
+            class="sw-product-detail__tab-specifications"
+            :route="{ name: 'sw.product.detail.specifications', params: { id: $route.params.id } }"
+            :title="$tc('sw-product.detail.tabSpecifications')"
+    >
+        {{ $tc('sw-product.detail.tabSpecifications') }}
+    </sw-tabs-item>
+    <sw-tabs-item
+            class="sw-product-detail__tab-specifications"
+            :route="{ name: 'sw.product.detail.zalando', params: { id: $route.params.id } }"
+            :title="$tc('sm-product.detail.tabZalando')"
+    >
+        {{ $tc('sm-product.detail.tabZalando') }}
+    </sw-tabs-item>
+{% endblock %}

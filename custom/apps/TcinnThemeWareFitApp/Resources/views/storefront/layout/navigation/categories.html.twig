@@ -1,0 +1,55 @@
+{# @deprecated tag:v6.7.0 - This template will be removed, use src/Storefront/Resources/views/storefront/layout/navbar/categories.html.twig #}
+{% sw_extends '@Storefront/storefront/layout/navigation/categories.html.twig' %}
+
+{# @TODO: Add icon to main navigation #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{% set twtNavMainExternalLinksIconShow = theme_config('twt-nav-main-external-links-icon-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjust top navigation flyout links #}
+{# @TODO: HC-Architecture... #}
+{% block layout_navigation_categories_item_link %}
+    {% if treeItem.category.type == 'folder' %}
+        <div class="nav-item nav-link navigation-flyout-link is-level-{{ level }}"
+             title="{{ name }}"
+        >
+            <span itemprop="name">{{ name }}</span>
+        </div>
+
+    {% else %}
+        <a href="{{ link }}"
+           class="nav-item nav-link navigation-flyout-link is-level-{{ level }}{% if id == activeId or id in activePath %} active{% endif %}{% if twtNavMainExternalLinksIconShow == 2 and treeItem.category.type == 'link' and treeItem.category.translated.linkType == 'external' %} d-flex{% endif %}"
+           itemprop="url"
+           title="{{ name }}"
+           {% if category_linknewtab(treeItem.category) %}
+               target="_blank"
+               {% if treeItem.category.translated.linkType == 'external' %}rel="noopener noreferrer"{% endif %}
+           {% endif %}
+        >
+            <span itemprop="name">{{ name }}</span>
+
+            {# ThemeWare: Add icon to external links #}
+            {% if twtNavMainExternalLinksIconShow == 2 and treeItem.category.type == 'link' and treeItem.category.translated.linkType == 'external' %}
+                <span class="icon icon-box-arrow-up-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/>
+                        <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/>
+                    </svg>
+                </span>
+            {% endif %}
+        </a>
+
+    {% endif %}
+{% endblock %}
+
+{# @TODO
+{% block layout_navigation_categories_item %}
+    <div class="{% if level == 0 %}{% if navigationMedia %}col-4 {% else %}col-3 {% endif %}{% endif %}navigation-flyout-col">
+        {% block layout_navigation_categories_item_link %}
+        ...
+
+        {{ block('layout_navigation_categories_recoursion') }}
+#}

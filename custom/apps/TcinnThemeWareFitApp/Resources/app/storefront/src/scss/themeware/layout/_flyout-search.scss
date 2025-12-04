@@ -1,0 +1,207 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® 'Flyout search'
+    ==================================================
+
+    Specific styling for the 'Flyout search'.
+    General styling of the 'Search' can be found in the '_header.scss'.
+
+    Info: Header 2.1 (twt-header-type 4) only allows the "Flyout search" (twt-header-search-type 2)
+*/
+
+// ThemeWare: 'Flyout' search
+
+// @TODO: Review styling...
+// @TODO: Must be used in Header 2/4 !
+
+@if $twt-header-search-type == 2 and $twt-header-search-show == 2 {
+    .search-container {
+        width: 100%;
+
+        // Set 'search-container' max-width
+        // @TODO: The var 'twt-header-search-flyout-container-width' is currently beeing used for the 'header-search' and not for the 'search-container'.
+
+        #searchCollapse {
+            width: 100%;
+            background-color: $twt-header-search-flyout-background-color;
+
+            // ThemeWare: Adjust border-radius
+            .header-search-form:has(.search-suggest) {
+                .header-search-btn {
+                    border-top-right-radius: 0 !important;
+                    border-bottom-right-radius: 0 !important;
+                }
+
+                .header-close-btn {
+                    @if ($twt-header-search-input-corner-type == 1) {
+                        border-top-right-radius: null-pixel-unit($twt-border-radius);
+                        border-bottom-right-radius: null-pixel-unit($twt-border-radius);
+                    } @else if ($twt-header-search-input-corner-type == 3) {
+                        border-top-right-radius: 50px;
+                        border-bottom-right-radius: 50px;
+                    } @else if ($twt-header-search-input-corner-type == 4) {
+                        border-top-right-radius: null-pixel-unit($twt-header-search-input-border-radius);
+                        border-bottom-right-radius: null-pixel-unit($twt-header-search-input-border-radius);
+                    }
+                }
+            }
+
+            .header-search-form {
+                .header-search-btn {
+                    @if ($twt-header-search-input-corner-type == 1) {
+                        border-top-right-radius: null-pixel-unit($twt-border-radius) !important;
+                        border-bottom-right-radius: null-pixel-unit($twt-border-radius) !important;
+                    } @else if ($twt-header-search-input-corner-type == 3) {
+                        border-top-right-radius: 50px !important;
+                        border-bottom-right-radius: 50px !important;
+                    } @else if ($twt-header-search-input-corner-type == 4) {
+                        border-top-right-radius: null-pixel-unit($twt-header-search-input-border-radius) !important;
+                        border-bottom-right-radius: null-pixel-unit($twt-header-search-input-border-radius) !important;
+                    }
+                }
+            }
+
+            .header-search {
+                margin: 0 auto;
+                width: 100%;
+                padding: null-pixel-unit($twt-header-search-flyout-padding);
+
+                // Set 'header-search' max-width
+                // @TODO: The var 'twt-header-search-flyout-container-width' should be used for the 'search-container' not for the 'header-search' inside the container.
+                @if $twt-header-search-flyout-container-width == 1 {
+                    max-width: null-pixel-unit($twt-container-max-width);
+                    margin: 0 auto;
+                } @else {
+                    max-width: 100%; // Reset current max-width
+                }
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+                .header-search-form {
+                    width: 100%;
+                    margin: 0 auto;
+
+                    @include media-breakpoint-up(sm) { // min 576px
+                        max-width: auto-pixel-unit($twt-header-search-flyout-max-width);
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        max-width: auto-pixel-unit($twt-header-search-flyout-max-width-desktop);
+                    }
+                }
+
+                .header-search-btn {
+                    // @TODO
+                    //--#{$prefix}...
+
+                    // @TODO: @include button-variant(..., ...);
+                    background-color: $twt-header-search-btn-background-color;
+                    border: 1px solid $twt-header-search-btn-border-color;
+
+                    &:hover {
+                        opacity: .8;
+                    }
+
+                    .header-search-icon {
+                        display: flex; // Firefox-Fix
+                        justify-content: center; // Firefox-Fix
+                        height: 100%;
+
+                        .icon {
+                            color: $twt-header-search-btn-icon-color;
+
+                            > svg {
+                                top: 0; // Firefox-Fix
+                            }
+                        }
+                    }
+
+                    .loader {
+                        color: $twt-header-search-btn-icon-color !important; // Overwrite color
+
+                        // Reduce size of the icon
+                        width: 22px;
+                        height: 22px;
+
+                        // Overwrite our display:flex Firefox fix
+                        ~ .header-search-icon,
+                        ~ .header-close-btn {
+                            display: none;
+                        }
+                    }
+                }
+
+                // @TODO:
+                .header-close-btn {
+                    .header-close-icon {
+                        display: flex; // Firefox-Fix
+                        justify-content: center; // Firefox-Fix
+                        height: 100%;
+
+                        .icon {
+                            > svg {
+                                top: 0; // Firefox-Fix
+                            }
+                        }
+                    }
+                }
+
+                input.header-search-input {
+                    //@include twt-font-size($twt-header-actions-btn-font-size); // px + rem
+
+                    border: 1px solid $twt-header-search-input-border-color;
+                    color: $twt-header-search-input-color;
+                    background-color: $twt-header-search-input-background-color;
+
+                    //text-align: $twt-header-search-text-align;
+
+                    // ThemeWare: Adjust border-radius
+                    @if ($twt-header-search-input-corner-type == 1) {
+                        border-top-left-radius: null-pixel-unit($twt-border-radius);
+                        border-bottom-left-radius: null-pixel-unit($twt-border-radius);
+                    } @else if ($twt-header-search-input-corner-type == 3) {
+                        border-top-left-radius: 50px;
+                        border-bottom-left-radius: 50px;
+                    } @else if ($twt-header-search-input-corner-type == 4) {
+                        border-top-left-radius: null-pixel-unit($twt-header-search-input-border-radius);
+                        border-bottom-left-radius: null-pixel-unit($twt-header-search-input-border-radius);
+                    }
+
+                    &:focus {
+                        border-color: $twt-header-search-input-border-color;
+
+                        // @deprecated tag:v6.7.0 - Removed for better accessabillty
+                        //box-shadow: inset 2px 2px 4px rgba(0, 0, 0, .1);
+                    }
+
+                    // @SW65: Apply Bootstrap 5 structure
+                    //&:focus ~ .input-group-append {
+                    //    .header-search-btn {
+                    &:focus {
+                        &,
+                        ~ .header-search-btn {
+                            border-color: $twt-header-search-btn-border-color;
+                        }
+                    }
+                }
+            }
+
+            &.collapsing {
+                background-color: $twt-header-search-flyout-background-color;
+            }
+
+            &.show {
+                background-color: $twt-header-search-flyout-background-color;
+            }
+        }
+    }
+}

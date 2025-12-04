@@ -1,0 +1,25 @@
+{
+  "base": "/bundles/applifactionvisualdocumenteditor/administration/",
+  "entryPoints": {
+    "applifaction-visual-document-editor": {
+      "css": [
+        "/bundles/applifactionvisualdocumenteditor/administration/assets/applifaction-visual-document-editor-dj4z8-qL.css"
+      ],
+      "dynamic": [],
+      "js": [
+        "/bundles/applifactionvisualdocumenteditor/administration/assets/applifaction-visual-document-editor-qBuzSIgn.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}

@@ -1,0 +1,41 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+
+{% set isAmazonPayOneClickCheckout = (page.extensions.SwagAmazonPayConfirm and page.extensions.SwagAmazonPayConfirm.checkoutSessionId) %}
+
+{# @var amazonPayConfirmExtension \Swag\AmazonPay\Storefront\Page\Extension\AmazonPayConfirmExtension #}
+{% set amazonPayConfirmExtension = page.extensions.SwagAmazonPayConfirm %}
+
+{# @var amazonPayConfirmExtension \Swag\AmazonPay\Storefront\Page\Extension\AmazonPayConfirmExtension #}
+{% set amazonPayButtonExtension = page.extensions.SwagAmazonPayButton %}
+
+{% block page_checkout_confirm_tos %}
+    {% if not amazonPayButtonExtension or isAmazonPayOneClickCheckout %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block page_checkout_confirm %}
+    {% if isAmazonPayOneClickCheckout %}
+        {% block page_checkout_confirm_swag_amazon_pay_confirm_plugin %}
+            <div id="swag-amazon-pay-confirm-plugin-wrapper"
+                 class="is--hidden"
+                 data-amazon-pay-confirm-page="true"
+                 data-amazon-pay-confirm-page-options='{
+                    "checkoutSessionId": "{{ amazonPayConfirmExtension.checkoutSessionId }}"
+                 }'>
+            </div>
+        {% endblock %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block page_checkout_confirm_form_submit %}
+    {% if isAmazonPayOneClickCheckout %}
+        <input type="hidden"
+               name="amazonPayCheckoutId"
+               value="{{ amazonPayConfirmExtension.checkoutSessionId }}"/>
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

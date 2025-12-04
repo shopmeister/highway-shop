@@ -1,0 +1,165 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Mobile footer
+	==================================================
+
+	Origin: ..
+*/
+
+/* @TODO:
+	- Shopware Vererbung prüfen...
+	- media-breakpoint-down(md) entfernen...
+	- Buttons style headlines
+	    background: #ededed;
+        padding: 6px 12px;
+        border-radius: 5px;
+        margin-bottom: 5px;
+        margin-top: 3px;
+*/
+
+/* --- Mobile footer styling ------------------------------------------------------------------- */
+
+@include media-breakpoint-down(md) { // max 767.98px
+    .footer-main {
+        .container {
+            .footer-columns {
+                // @TODO: Add clean configuration
+                &.first {
+                    border-top: 1px solid $border-color;
+                }
+
+                .footer-column {
+                    .footer-column-headline {
+                        align-items: center; // Fix alignment
+                        cursor: pointer;
+
+                        .icon {
+                            color: $twt-footer-column-headline-color;
+                        }
+                    }
+
+                    &.permanent {
+                        .footer-column-headline {
+                            cursor: auto;
+                        }
+                    }
+
+                    // @TODO: Add configuration for border-bottom
+                    //&.last { border-bottom: none; }
+                }
+
+                /* ThemeWare: mittlerer Bereich (= default) */
+
+                &#footerColumns {
+
+                    // ThemeWare: Footer headlines text alignment (only when "show expanded" is selected)
+                    // @TODO: allow centered when collapsed and justify toggle
+                    .footer-column:not(.js-footer-column) {
+                        @if $twt-footer-column-text-align == "center" {
+                            .footer-column-headline {
+                                justify-content: $twt-footer-column-text-align;
+                                // @TODO: oder display block + text-align
+                            }
+                        } @else if $twt-footer-column-text-align == "right" {
+                            .footer-column-headline {
+                                justify-content: flex-end;
+                                // @TODO: oder display block + text-align
+                            }
+                        }
+                    }
+                }
+
+                /* ThemeWare: oberer Bereich */
+
+                &#footerColumnsTop {
+                    .footer-column {
+                        .footer-column-headline {
+                            cursor: pointer;
+                            color: $twt-footer-column-top-headline-color;
+
+                            a {
+                                color: $twt-footer-column-top-headline-color;
+
+                                &:hover {
+                                    //color: $twt-footer-column-top-headline-color;
+                                    color: if(color-contrast($twt-footer-column-top-headline-color) == $color-contrast-light, shade-color($twt-footer-column-top-headline-color, $link-shade-percentage), tint-color($twt-footer-column-top-headline-color, $link-shade-percentage));
+                                }
+                            }
+
+                            .icon {
+                                color: $twt-footer-column-top-headline-color;
+                            }
+                        }
+                    }
+
+                    // ThemeWare: Footer headlines text alignment (only when "show expanded" is selected)
+                    // @TODO: allow centered when collapsed and justify toggle
+                    // @TODO: footer-column-headline zusammenfassen sh. oben
+                    .footer-column:not(.js-footer-column) {
+                        @if $twt-footer-column-top-text-align == "center" {
+                            .footer-column-headline {
+                                justify-content: $twt-footer-column-top-text-align;
+                                // @TODO: oder display block + text-align
+                            }
+                        } @else if $twt-footer-column-top-text-align == "right" {
+                            .footer-column-headline {
+                                justify-content: flex-end;
+                                // @TODO: oder display block + text-align
+                            }
+                        }
+                    }
+
+                }
+
+                /* ThemeWare: unterer Bereich */
+
+                &#footerColumnsBottom {
+                    .footer-column {
+                        .footer-column-headline {
+                            cursor: pointer;
+                            color: $twt-footer-column-bottom-headline-color;
+
+                            a {
+                                color: $twt-footer-column-bottom-headline-color;
+
+                                &:hover {
+                                    //color: $twt-footer-column-bottom-headline-color;
+                                    color: if(color-contrast($twt-footer-column-bottom-headline-color) == $color-contrast-light, shade-color($twt-footer-column-bottom-headline-color, $link-shade-percentage), tint-color($twt-footer-column-bottom-headline-color, $link-shade-percentage));
+                                }
+                            }
+
+                            .icon {
+                                color: $twt-footer-column-bottom-headline-color;
+                            }
+                        }
+                    }
+
+                    // ThemeWare: Footer headlines text alignment (only when "show expanded" is selected)
+                    // @TODO: allow centered when collapsed and justify toggle
+                    // @TODO: footer-column-headline zusammenfassen sh. oben
+                    .footer-column:not(.js-footer-column) {
+                        @if $twt-footer-column-bottom-text-align == "center" {
+                            .footer-column-headline {
+                                justify-content: $twt-footer-column-bottom-text-align;
+                                // @TODO: oder display block + text-align
+                            }
+                        } @else if $twt-footer-column-bottom-text-align == "right" {
+                            .footer-column-headline {
+                                justify-content: flex-end;
+                                // @TODO: oder display block + text-align
+                            }
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+{# ThemeWare: CMS element "Listing subcategories (Modern)" #}
+
+{#
+    Create cms element and include the listing subcategories include (@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig)
+    Note: This is included via "@Storefront/storefront/block/cms-block-twt-listing-subcategories-modern.html.twig"
+
+    @Storefront/storefront/element/cms-element-twt-listing-subcategories-modern.html.twig
+#}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtListingSubcategoriesModern = element.fieldConfig.elements %}
+
+{# Tab "Layout" #}
+{# element.translated.config.customConfig.value #}
+{# element.translated.config.layoutType.value #}
+{# > others are used in the include #}
+
+{# Tab "Grid" #}
+{# > is used in the include #}
+
+{# Tab "Advanced" #}
+{% set twtLstngSbctgrsMdrnCssClass = twtListingSubcategoriesModern.cssClass.value %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{# Layout type #}
+{% set elementClasses = 'is-modern' %}
+
+{# Justify content #}
+{% set twtLstngSbctgrsMdrnJustifyContent = twtListingSubcategoriesModern.justifyContent.value %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ThemeWare: Listing subcategories (CMS container) #}
+{% block element_twt_listing_subcategories_modern %}
+    {% set twtNavigationResult = page.header.navigation.tree %}
+    {% set twtActiveResult = page.header.navigation.active %}
+
+    <div class="cms-element-{{ element.type }} twt-listing-subcategories twt-listing-subcategories is-cms {{ elementClasses }}{% if twtLstngSbctgrsMdrnCssClass is not empty %} {{ twtLstngSbctgrsMdrnCssClass }}{% endif %}" id="twt-listing-subcategories">
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_listing_subcategories_modern_styles %}
+            {% apply spaceless %}
+<style>
+    @media (min-width: 576px) {
+        div[data-cms-element-id="{{element.id}}"] .text {
+            color: {{ twtListingSubcategoriesModern.textColor.value }};
+            background-color: {{ twtListingSubcategoriesModern.bgColor.value }};
+        }
+    {% block element_twt_listing_subcategories_modern_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        <div class="twt-listing-subcategories-section">
+
+            <div class="twt-listing-subcategories-container">
+                <ul class="row" style="justify-content: {{ twtLstngSbctgrsMdrnJustifyContent }};">
+                    {% sw_include '@Storefront/storefront/themeware/includes/twt-listing-subcategories-modern-include.html.twig' ignore missing with {
+                        navigationTree: twtNavigationResult,
+                        activeResult: twtActiveResult,
+                        page: page,
+                        element: element,
+                        type: 'modern'
+                    } only %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Pickware\PickwareDhl\:
+    resource: '../../'
+    exclude:
+      - '../../Api/Requests/'
+      - '../../Api/Services/'
+      - '../../**/*Event.php'
+      - '../../**/*Exception.php'
+      - '../../**/*Message.php'
+      - '../../**/*Error.php'
+      - '../../Administration/'
+      - '../../AdministrationStatic/'

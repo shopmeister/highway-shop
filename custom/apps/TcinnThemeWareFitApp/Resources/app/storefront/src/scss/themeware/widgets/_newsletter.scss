@@ -1,0 +1,57 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Widget 'Newsletter'
+	==================================================
+
+*/
+
+// @TODO: sh. layout/_footer.scss
+
+// ThemeWare: General widget styling ------------------------------
+
+.twt-widget-newsletter {
+    .cms-block {
+        overflow: visible;
+    }
+
+    // @TODO tag:v6.7.0 - Check for better accessabillty
+    // -> see footer-elements\_newsletter.scss L130
+    /*
+    .form-control:focus {
+        //box-shadow: 0 0 0 0.2rem rgba(..., 0.25);
+        //outline: auto 1px;
+        //outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    //.btn:focus-visible {}
+
+    .form-check-input:focus {
+        //box-shadow: 0 0 0 0.2rem rgba(..., 0.25);
+        //outline: auto 1px;
+        //outline: -webkit-focus-ring-color auto 1px;
+    }
+    */
+
+    .confirm-alert {
+        // Text without surrounding block-level element
+        @include twt-font-size-rem($font-size-md); // 0.875rem
+        padding-bottom: 0;
+
+        .alert {
+            margin-top: 10px;
+        }
+    }
+}
+
+// ThemeWare: Sidebar specific styling ------------------------------
+
+//.cms-section-sidebar-sidebar-content {
+//  .twt-widget-newsletter {
+//  }
+//}

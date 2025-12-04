@@ -1,0 +1,368 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+{# ThemeWare® HC-Architecture® via configuration #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductBoxImageHoverType = theme_config('twt-product-box-image-hover-type') %}
+{% set twtProductBoxManufacturerShow = theme_config('twt-product-box-manufacturer-show') %}
+{% set twtProductBoxManufacturerShowBoxStandard = theme_config('twt-product-box-manufacturer-show-box-standard') %}
+{% set twtProductBoxOrdernumberShow = theme_config('twt-product-box-ordernumber-show') %}
+{% set twtProductBoxOrdernumberShowBoxStandard = theme_config('twt-product-box-ordernumber-show-box-standard') %}
+{% set twtProductBoxProductReviewRatingShow = theme_config('twt-product-box-product-review-rating-show') %}
+{% set twtProductBoxShortDescriptionShow = theme_config('twt-product-box-short-description-show') %}
+
+{% set twtProductBoxImageCompatibility = theme_config('twt-product-box-image-compatibility') %}
+{% set twtProductBoxQuantitySelectionShow = theme_config('twt-product-box-quantity-selection-show') %}
+{% set twtQuickViewShow = theme_config('twt-quickview-show') %}
+
+{% set twtProductBoxImageSrcsetAndSizes = theme_config('twt-product-box-image-srcset-and-sizes') %} {# Beta #}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on the product box #}
+{% block component_product_box_content %}
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on the product box name #}
+{% block component_product_box_name %}
+    {# @deprecated tag:v6.7.0 - Product name will have class `stretched-link` and will be streched over the product image. #}
+
+    {# Default block #}
+    {{ parent() }}
+
+    {# ThemeWare: Add manufacturer #}
+    {# @TODO... see below #}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on the product-rating #}
+{# HC-Architecture @Doku #}
+{% block component_product_box_rating %}
+    {% if twtProductBoxProductReviewRatingShow == 2 %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% elseif twtProductBoxProductReviewRatingShow == 3 %}
+        {# ThemeWare: Always show rating if configured #}
+        {% if config('core.listing.showReview') %}
+            <div class="product-rating">
+                {#% if product.ratingAverage %#}
+                {% sw_include '@Storefront/storefront/component/review/rating.html.twig' with {
+                    points: product.ratingAverage,
+                    style: 'text-primary'
+                } %}
+                {#% endif %#}
+                {#
+                    style: 'text-primary',
+                    altText: 'listing.filterRatingMinAltText'|trans({ '%points%': points, '%maxPoints%': maxPoints })|sw_sanitize
+                #}
+                {# @TODO: "Dieses Produkt wurde noch nicht bewertet" #}
+            </div>
+        {% endif %}
+
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on the product box description #}
+{% block component_product_box_description %}
+    {# ThemeWare: Custom field "Short description" #}
+    {% if twtProductBoxShortDescriptionShow == 2 and product.translated.customFields.twt_fit_cloud_custom_field__product__short_description is not empty %}
+        <div class="product-description">
+            {{ product.translated.customFields.twt_fit_cloud_custom_field__product__short_description|raw }}
+        </div>
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+
+    {# ThemeWare: Add product number #}
+    {% if product.productNumber %}
+        {% if twtProductBoxOrdernumberShow == 2 or twtProductBoxOrdernumberShow == 0 and twtProductBoxOrdernumberShowBoxStandard == 2 %}
+            {% block twt_product_box_ordernumber %}
+                <div class="product-ordernumber twt-product-ordernumber">
+                    <span class="product-ordernumber-label">
+                        {{ 'twt.listing.ordernumberLabel'|trans|sw_sanitize }}
+                    </span>
+                    <span class="product-ordernumber product-ordernumber-text">
+                        {{ product.productNumber }}
+                    </span>
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add manufacturer #}
+    {# @TODO: Not available in dynamic product groups #}
+    {% if twtProductBoxManufacturerShow == 2 or twtProductBoxManufacturerShow == 0 and twtProductBoxManufacturerShowBoxStandard == 2 %}
+        {% block twt_product_box_manufacturer %}
+            <div class="product-manufacturer twt-product-manufacturer">
+                {% if product.manufacturer %}
+                    <span class="product-manufacturer-label">
+                        {{ 'twt.listing.manufacturerLabel'|trans|sw_sanitize }}
+                    </span>
+                    <span class="product-manufacturer product-manufacturer-text">
+                        {{ product.manufacturer.translated.name }}
+                    </span>
+                {% endif %}
+            </div>
+        {% endblock %}
+    {% endif %}
+
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on the product image #}
+{% block component_product_box_image %}
+    {# HC-Architecture... #}
+    {% if twtProductBoxImageCompatibility == 1 %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% else %}
+        {# ThemeWare: Add hover image for crossfading the cover image #}
+        {# INFO: Check if cross-fade hover-type is configured - otherwise use default block #}
+        {# @TODO: Add configuration "custom field", "2nd image" and "custom field + 2nd image" #}
+        {% if twtProductBoxImageHoverType == 10 %}
+            {# Check whether the custom field #}
+            {% set customMedia = false %}
+            {% set crossfade = false %}
+
+            {# Custom field product media #}
+            {% if product.translated.customFields.twt_fit_cloud_custom_field__product__hover_image is not empty and mediaCollection is not empty %}
+                {% set customMedia = true %}
+                {% set crossfade = true %}
+            {% endif %}
+
+            {# Get hoverMedia via custom field >>> #}
+            {# Simplify ID access #}
+            {% set hoverMediaId = product.translated.customFields.twt_fit_cloud_custom_field__product__hover_image %}
+
+            {# Get access to media of product #}
+            {% set hoverMedia = mediaCollection.get(hoverMediaId) %}
+            {# <<< Get hoverMedia via custom field #}
+
+            <div class="product-image-wrapper{% if crossfade == true %} twt-is-crossfade{% endif %}"> {# <<< ThemeWare: Add css class if possible @TODO: remove if possible #}
+                {# fallback if display mode is not set #}
+                {% set displayMode = displayMode ?: 'standard' %}
+
+                {# set display mode 'cover' for box-image with standard display mode #}
+                {% if layout == 'image' and displayMode == 'standard' %}
+                    {% set displayMode = 'cover' %}
+                {% endif %}
+
+                {# @deprecated tag:v6.7.0 - Product image will no longer be a link. Use inner block `component_product_box_image_link_inner` instead. #}
+                {% block component_product_box_image_link %}
+                    {# @deprecated tag:v6.7.0 - Product image will no longer be a link. The product name will be used as primary link and its click surface will be streched over the image. #}
+                    <a href="{{ seoUrl('frontend.detail.page', { productId: id }) }}"
+                       class="product-image-link is-{{ displayMode }}"
+                       title="{{ name }}"
+                    >
+                        {% block component_product_box_image_link_inner %}
+                            {% if cover.url and cover.isSpatialObject() == false %}
+                                {% set attributes = {
+                                    class: 'product-image is-'~displayMode,
+                                    title: (cover.translated.title ?: name)
+                                } %}
+
+                                {% if cover.getMediaType().getName() === 'VIDEO' %}
+                                    {% if config('core.listing.autoplayVideoInListing') %}
+                                        {% set attributes = attributes|merge({
+                                            autoplay: true,
+                                            loop: true
+                                        }) %}
+                                    {% endif %}
+
+                                    {{ block('component_product_box_video') }}
+
+                                {% else %}
+                                    {% set attributes = attributes|merge({
+                                        alt: (cover.translated.alt ?: name),
+                                        loading: 'lazy'
+                                    }) %}
+
+                                    {% if displayMode == 'cover' or displayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': displayMode }) %}
+                                    {% endif %}
+
+                                    {# @TODO: Consider amount of columns per viewport // Handle undefined variables... #}
+                                    {# ThemeWare: Set image size for every viewport #}
+                                    {% if twtProductBoxImageSrcsetAndSizes == 2 %}
+                                        {% if section.type == 'sidebar' %}
+                                            {# Fallback: Shopware default values #}
+                                            {% set columnsXs = twtListingColumnCountSidebarXs ?: 12 %}
+                                            {% set columnsSm = twtListingColumnCountSidebarSm ?: 6 %}
+                                            {% set columnsMd = twtListingColumnCountSidebarMd ?: 6 %}
+                                            {% set columnsLg = twtListingColumnCountSidebarLg ?: 6 %}
+                                            {% set columnsXl = twtListingColumnCountSidebarXl ?: 4 %}
+
+                                        {% else %}
+                                            {# Fallback: Shopware default values #}
+                                            {% set columnsXs = twtListingColumnCountXs ?: 12 %}
+                                            {% set columnsSm = twtListingColumnCountSm ?: 6 %}
+                                            {% set columnsMd = twtListingColumnCountMd ?: 6 %}
+                                            {% set columnsLg = twtListingColumnCountLg ?: 4 %}
+                                            {% set columnsXl = twtListingColumnCountXl ?: 3 %}
+
+                                        {% endif %}
+
+                                        {# ThemeWare: Handle our 5 column layouts #}
+                                        {% if columnsLg == '2-4' %}
+                                            {% set columnsLg = 2.4 %}
+                                        {% endif %}
+
+                                        {% if columnsXl == '2-4' %}
+                                            {% set columnsXl = 2.4 %}
+                                        {% endif %}
+
+                                        {# ThemeWare: Set image size for every viewport #}
+                                        {% set sizes = {
+                                            xs: ((theme_config('breakpoint.sm') - 1) / (12 / columnsXs))|round(0, 'ceil') ~'px',
+                                            sm: ((theme_config('breakpoint.md') - 1) / (12 / columnsSm))|round(0, 'ceil') ~'px',
+                                            md: ((theme_config('breakpoint.lg') - 1) / (12 / columnsMd))|round(0, 'ceil') ~'px',
+                                            lg: ((theme_config('breakpoint.xl') - 1) / (12 / columnsLg))|round(0, 'ceil') ~'px',
+                                            xl: ((theme_config('breakpoint.xxl') - 1) / (12 / columnsXl))|round(0, 'ceil') ~'px'
+                                        } %}
+                                    {% endif %}
+
+                                    {# ThemeWare: Add hoverMedia for crossfading the cover image >>> #}
+                                    {% if crossfade == true %}
+                                        {# INFO: Check if custom field is set and apply it if available... #}
+                                        {% if customMedia == true %}
+                                            {# Check hover type... #}
+                                            {% sw_thumbnails 'product-image-thumbnails' with {
+                                                media: hoverMedia,
+                                                sizes: sizes,
+                                                attributes: {
+                                                    class: 'product-image is-'~displayMode~' twt-crossfade-image is-custom'
+                                                }
+                                            } %}
+                                        {% endif %}
+                                    {% endif %}
+                                    {# <<< Add hoverMedia for crossfading the cover image #}
+
+                                    {{ block('component_product_box_image_thumbnail') }}
+                                {% endif %}
+
+                            {% else %}
+                                {{ block('component_product_box_image_placeholder') }}
+
+                            {% endif %}
+                        {% endblock %}
+                    </a>
+                {% endblock %}
+
+                {% if config('core.cart.wishlistEnabled') %}
+                    {{ block('component_product_box_wishlist_action') }}
+                {% endif %}
+
+                {# ThemeWare®: Add 'Quickview' button if configured. #quickview #beta #}
+                {# @TODO... #}
+                {% if twtQuickViewShow == 2 %}
+                    <div class="product-quickview twt-product-quickview">
+                        <button
+                            class="product-quickview-action-circle btn btn-light"
+                            title="{{ 'twt.extension.quickview.title'|trans|sw_sanitize }}"
+                            data-ajax-modal="true"
+                            data-modal-class="twt-quickview-modal"
+                            data-url="{{ path('widgets.quickview.minimal', { 'productId': product.id }) }}"
+                        >
+                            {% sw_icon 'eye-open' style { class: 'quickview icon-quickview-open', size: 'md' } %}
+                        </button>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        {% else %}
+            <div class="product-image-wrapper">
+                {# fallback if display mode is not set #}
+                {% set displayMode = displayMode ?: 'standard' %}
+
+                {# set display mode 'cover' for box-image with standard display mode #}
+                {% if layout == 'image' and displayMode == 'standard' %}
+                    {% set displayMode = 'cover' %}
+                {% endif %}
+
+                {{ block('component_product_box_image_link') }}
+
+                {% if config('core.cart.wishlistEnabled') %}
+                    {{ block('component_product_box_wishlist_action') }}
+                {% endif %}
+
+                {# ThemeWare®: Add 'Quickview' button if configured. #quickview #beta #}
+                {# @TODO... #}
+                {% if twtQuickViewShow == 2 %}
+                    <div class="product-quickview twt-product-quickview">
+                        <button
+                            class="product-quickview-action-circle btn btn-light"
+                            title="{{ 'twt.extension.quickview.title'|trans|sw_sanitize }}"
+                            data-ajax-modal="true"
+                            data-modal-class="twt-quickview-modal"
+                            data-url="{{ path('widgets.quickview.minimal', { 'productId': product.id }) }}"
+                        >
+                            {% sw_icon 'eye-open' style { class: 'quickview icon-quickview-open', size: 'md' } %}
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+
+        {% endif %}
+
+    {% endif %}
+{% endblock %}
+
+
+{# ThemeWare®: Add 'Quantity selection' if configured. #quantitySelection #beta #}
+{# @TODO... #}
+{% block component_product_box_action %}
+    {% if twtProductBoxQuantitySelectionShow == 2 %}
+        {# Add 'Quantity selection' #}
+        {# Check 'Variantenprodukt' and 'Advanced prices' #}
+        {# @TODO: see 'displayBuyButton' in '@Storefront/Resources/views/storefront/component/product/card/action.html.twig' #}
+        {% set id = product.id %}
+
+{#        {% set isAvailable = not product.isCloseout or (product.availableStock >= product.minPurchase) %} tag:v6.6.8 #}
+        {% set isAvailable = not product.isCloseout or (product.stock >= product.minPurchase) %}
+        {% set displayFrom = product.calculatedPrices.count > 1 %}
+        {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+        {% if displayBuyButton and config('core.listing.allowBuyInListing') %}
+        {# {% if product.parentId === null and product.calculatedPrices.count <= 1 %}#}
+            <div class="product-action">
+                {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' with {
+                    type: 'product-box'
+                } %}
+            </div>
+
+        {% else %}
+            {# Add 'Detail button' see '@Storefront/storefront/component/product/card/action.html.twig' #}
+            <div class="product-action">
+                <div class="d-grid">
+                    <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+                       class="btn btn-light btn-detail"
+                       title="{{ 'listing.boxProductDetails'|trans|striptags }}"
+                       {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                       rel="noopener"
+                    >
+                        {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                    </a>
+                </div>
+            </div>
+
+        {% endif %}
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+        {# sw_include '@Storefront/storefront/component/product/card/action.html.twig' #}
+
+    {% endif %}
+{% endblock %}

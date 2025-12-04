@@ -1,0 +1,10 @@
+{
+    "blurElysiumSlides": {
+        "sliderControls": {
+            "prev": "Previous Slide",
+            "next": "Next Slide"
+        },
+        "buttonLabel": "Learn more",
+        "buttonLabelProduct": "See Product"
+    }
+}

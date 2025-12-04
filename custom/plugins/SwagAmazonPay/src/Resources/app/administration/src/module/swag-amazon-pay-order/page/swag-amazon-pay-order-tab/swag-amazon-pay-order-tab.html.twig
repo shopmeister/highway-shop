@@ -1,0 +1,87 @@
+{% block swag_amazon_pay_order_payment_page %}
+    <div class="swag-amazon-pay-order-page">
+
+        {% block swag_amazon_pay_order_payment_page_warning %}
+            <sw-container columns="1fr" class="swag-amazon-pay-order-notification-container">
+                <sw-alert v-if="isPartiallyCharged" variant="warning" appearance="default" :showIcon="true" :closable="false">
+                    {{ $tc('swag-amazon-pay-order.notification.isPartialCharged') }} {{ $tc('swag-amazon-pay-order.notification.partialCharge') }}
+                </sw-alert>
+                <sw-alert v-if="isInvalidChargePermission" variant="warning" appearance="default" :showIcon="true" :closable="false">
+                    {{ $tc('swag-amazon-pay-order.notification.invalidChargePermission') }}
+                </sw-alert>
+            </sw-container>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_payment_page_content %}
+            <template v-if="!isLoading">
+
+                {% block swag_amazon_pay_order_payment_page_content_general_card %}
+                    <sw-card rows="2"
+                             :title="$tc('swag-amazon-pay-order.general.generalCardTitle')"
+                             :isLoading="isLoading">
+
+                        {% block swag_amazon_pay_order_payment_page_content_general_card_top %}
+                            <sw-container columns="1fr 1fr" class="swag-amazon-pay-order-page__general-content">
+
+                                {% block swag_amazon_pay_order_payment_page_content_general_card_top_buyer_info %}
+                                    <swag-amazon-pay-buyer-info :paymentDetails="paymentDetails"
+                                                                :order="order">
+                                    </swag-amazon-pay-buyer-info>
+                                {% endblock %}
+
+                                {% block swag_amazon_pay_order_payment_page_content_general_card_top_amount_info %}
+                                    <swag-amazon-pay-amount-info :paymentDetails="paymentDetails"
+                                                                 :transaction="transaction"
+                                                                 :refundStatus="refundStatus"
+                                                                 :order="order"
+                                                                 :isInvalidChargePermission="isInvalidChargePermission">
+                                    </swag-amazon-pay-amount-info>
+                                {% endblock %}
+
+                                {% block swag_amazon_pay_order_payment_page_content_general_card_top_toolbar %}
+
+                                    <swag-amazon-pay-action-toolbar :paymentDetails="paymentDetails" @reload-payment="reloadOrderDetails" @update-payment-details="reloadOrderDetails(true)">
+                                    </swag-amazon-pay-action-toolbar>
+                                {% endblock %}
+
+                            </sw-container>
+                        {% endblock %}
+
+                        {% block swag_amazon_pay_order_payment_page_content_general_card_bottom %}
+                            <sw-container columns="1fr" class="sw-card-section sw-card-section--secondary">
+
+                                {% block swag_amazon_pay_order_payment_page_content_general_card_bottom_checkout_info %}
+                                    <swag-amazon-pay-checkout-info :paymentDetails="paymentDetails"
+                                                                   :transaction="transaction"
+                                                                   :order="order">
+                                    </swag-amazon-pay-checkout-info>
+                                {% endblock %}
+
+                            </sw-container>
+                        {% endblock %}
+
+                    </sw-card>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_payment_page_content_payment_history_card %}
+                    <sw-card rows="2"
+                             :title="$tc('swag-amazon-pay-order.payment-history.cardTitle')">
+
+                        {% block swag_amazon_pay_order_payment_page_content_payment_history_card_content %}
+                            <template #grid>
+                                <swag-amazon-pay-payment-history :paymentDetails="paymentDetails" @reload-payment="reloadOrderDetails">
+                                </swag-amazon-pay-payment-history>
+                            </template>
+                        {% endblock %}
+
+                    </sw-card>
+                {% endblock %}
+
+            </template>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_payment_page_content_loader %}
+            <sw-loader v-if="isLoading"></sw-loader>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% sw_extends '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' %}
+
+{% block storefront_component_swag_amazon_pay_amazon_pay_button_container %}
+    <div id="swag-amazon-pay-button-container{% if identifier is not null %}-{{ identifier }}{% endif %}"
+        class="swag-amazon-pay-button-container{% if identifier is not null %} {{ identifier }}{% endif %}"
+        data-amazon-login-button="true"
+        data-amazon-login-button-options='{
+            "libraryUrl": "{{ page.extensions.SwagAmazonPayButton.libraryUrl }}",
+            "loadingElementId": "swag-amazon-pay-loading-indicator{% if identifier is not null %}-{{ identifier }}{% endif %}",
+            "errorElementId": "swag-amazon-pay-button-error{% if identifier is not null %}-{{ identifier }}{% endif %}",
+            "buttonConfig": {
+                    "merchantId": "{{ page.extensions.SwagAmazonPayButton.merchantId }}",
+                    "sandbox": {% if page.extensions.SwagAmazonPayButton.sandbox == 1 %}true{% else %}false{% endif %},
+                    "ledgerCurrency": "{{ page.extensions.SwagAmazonPayButton.ledgerCurrency }}",
+                    "checkoutLanguage": "{{ page.extensions.SwagAmazonPayButton.checkoutLanguage }}",
+                    "placement": "{{ page.extensions.SwagAmazonPayButton.placement }}",
+                    "productType": "{{ page.extensions.SwagAmazonPayButton.productType }}",
+                    "buttonColor": "{{ page.extensions.SwagAmazonPayButton.buttonColor }}",
+                    "signInConfig": {
+                        "payloadJSON": "{{ page.extensions.SwagAmazonPayButton.payload | escape('js') }}",
+                        "signature": "{{ page.extensions.SwagAmazonPayButton.signature }}",
+                        "publicKeyId": "{{ page.extensions.SwagAmazonPayButton.publicKeyId }}"
+                    }
+            }}'>
+    </div>
+{% endblock %}
+
+
+
+

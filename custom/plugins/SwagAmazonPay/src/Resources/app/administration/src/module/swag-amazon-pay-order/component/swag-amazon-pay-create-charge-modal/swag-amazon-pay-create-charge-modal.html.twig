@@ -1,0 +1,45 @@
+{% block swag_amazon_pay_order_charge_modal %}
+<sw-modal :title="$tc('swag-amazon-pay-order.create-charge-modal.title')"
+          @modal-close="closeModal">
+
+    {% block swag_amazon_pay_order_charge_modal_content %}
+    <template #default>
+        {% block swag_amazon_pay_order_charge_modal_content_fields %}
+            <div class="swag-amazon-pay-create-charge-modal__field-container">
+
+                {% block swag_amazon_pay_order_charge_modal_content_fields_amount %}
+                    <sw-number-field v-model:value="chargeAmount"
+                              :label="$tc('swag-amazon-pay-order.create-charge-modal.amountFieldLabel')"
+                              :min="0">
+                        <template #suffix>
+                            <span class="swag-amazon-pay-create-charge-modal__currency-code">{{ paymentDetails.chargePermission.currency }}</span>
+                        </template>
+                    </sw-number-field>
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    {% block swag_amazon_pay_order_charge_modal_actions %}
+        <template #modal-footer>
+
+            {% block swag_amazon_pay_order_charge_modal_cancel %}
+                <sw-button size="small" @click="closeModal">
+                    {{ $tc('global.default.cancel') }}
+                </sw-button>
+            {% endblock %}
+
+            {% block swag_amazon_pay_order_charge_modal_confirm %}
+            <sw-button variant="primary"
+                       size="small"
+                       :isLoading="isLoading"
+                       @click="onConfirm">
+                {{ $tc('swag-amazon-pay-order.create-charge-modal.buttonConfirm') }}
+            </sw-button>
+            {% endblock %}
+        </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}

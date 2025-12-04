@@ -1,0 +1,284 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Image & text layered"
+	==================================================
+
+*/
+
+/* @TODO:
+ * [ ] ...
+ */
+
+@if $twt-cms-image-text-layered-css == 2 { // #performance
+    .cms-element-twt-image-text-layered {
+        position: relative;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+
+        &.is-standard {
+            margin: 0px 20px;
+        }
+
+        // Container (__container)
+        .twt-image-text-layered-container {
+            position: relative;
+            height: 100%;
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+
+            &.is-cover {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            &.is-stretch {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        // Image container (__image-container)
+        .twt-image-text-layered-image-container {
+            position: relative;
+            width: 100%;
+            margin: 20px;
+        }
+
+        // Content container (__content-container)
+        .twt-image-text-layered-content-container {
+            position: relative;
+            width: 100%;
+            padding: 20px;
+        }
+
+        // Content (__content)
+        .twt-image-text-layered-content {
+            padding: 20px;
+
+            // Headline
+            // @TODO: Add 'default' option ?!
+            //.headline.default {
+            //    // h2 fallback
+            //    font-size: calc(1.3rem + 0.6vw);
+            //    font-weight: 700; // $twt-font-weight-bold;
+            //    line-height: 34px;
+            //    margin-bottom: 10px;
+            //
+            //    @media (min-width: 1200px) {
+            //        font-size: 1.75rem;
+            //    }
+            //}
+
+            // Text
+            .text {
+                // Links
+                a {
+                    color: var(--twt-link-color); // Wird Inline in der entsprechenden Template-Datei gesetzt
+                    text-decoration: underline;
+
+                    &:hover {
+                        filter: brightness(0.8);
+                        //text-decoration: none;
+                    }
+                }
+
+                > *:last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+        }
+
+        // X-Small devices (portrait phones, less than 576px) ----------------------------------------------------------
+        @include media-breakpoint-down(sm) {
+            // Layout 1 --------------------------------
+            &.is-standard {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    width: calc(100% + 80px);
+                    margin: 0 -40px;
+                }
+            }
+
+            // Layout 2 --------------------------------
+            &.is-inside {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    width: calc(100% + 40px);
+                    margin: 0px -20px;
+                }
+            }
+
+            // Container (__container)
+            .twt-image-text-layered-container {
+                display: flex;
+                align-items: center;
+                flex-direction: row-reverse;
+                flex-wrap: wrap;
+            }
+
+            // Content (__content)
+            .twt-image-text-layered-content {
+                margin-top: -90px;
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+        }
+
+        // Small devices (landscape phones, 576px and up) --------------------------------------------------------------
+        @include media-breakpoint-up(sm) {
+            // Layout 1 --------------------------------
+            &.is-standard {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    width: calc(100% + 40px);
+                }
+
+                &.is-reverse {
+                    // Container (__container)
+                    .twt-image-text-layered-container {
+                        margin: 25px 0 25px -40px;
+                    }
+                }
+
+                &:not(.is-reverse) {
+                    // Container (__container)
+                    .twt-image-text-layered-container {
+                        margin: 25px -40px 25px 0;
+                    }
+                }
+            }
+
+            // Layout 2 --------------------------------
+            //&.is-inside {}
+
+            &.is-reverse {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    flex-direction: row;
+                }
+
+                // Content (__content)
+                .twt-image-text-layered-content {
+                    margin-left: -80px;
+                }
+            }
+
+            &:not(.is-reverse) {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    flex-direction: row-reverse;
+                }
+
+                // Content (__content)
+                .twt-image-text-layered-content {
+                    margin-right: -80px;
+                }
+            }
+
+            // Container (__container)
+            .twt-image-text-layered-container {
+                display: flex;
+                align-items: center;
+                flex-wrap: nowrap;
+
+            }
+        }
+
+        // -------------------------------------------------------------------------------------------------------------
+        @include media-breakpoint-between(sm, xl) {
+            // Layout 1 --------------------------------
+            &.is-standard {
+                // Image container (__image-container)
+                .twt-image-text-layered-image-container {
+                    flex-basis: calc(50% + 20px);
+                    max-width: calc(50% + 20px);
+                }
+
+                // Content container (__content-container)
+                .twt-image-text-layered-content-container {
+                    flex-basis: calc(50% - 20px);
+                    max-width: calc(50% - 20px);
+                }
+            }
+
+            // Layout 2 --------------------------------
+            &.is-inside {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    //width: calc(100% - 10px);
+                    //margin: 25px 5px;
+
+                    width: 100%;
+                    margin: 25px 0;
+                }
+
+                // Image container (__image-container)
+                .twt-image-text-layered-image-container {
+                    flex-basis: 50%;
+                    max-width: 50%;
+                }
+
+                // Content container (__content-container)
+                .twt-image-text-layered-content-container {
+                    flex-basis: 50%;
+                    max-width: 50%;
+                }
+            }
+        }
+
+        // X-Large devices (large desktops, 1200px and up) -------------------------------------------------------------
+        @include media-breakpoint-up(xl) {
+            // Layout 1 --------------------------------
+            //&.is-standard {}
+
+            // Layout 2 --------------------------------
+            &.is-inside {
+                // Container (__container)
+                .twt-image-text-layered-container {
+                    //width: calc(100% - 20px);
+                    //margin: 40px 10px;
+
+                    width: 100%;
+                    margin: 40px 0;
+                }
+            }
+
+            // Image container (__image-container)
+            .twt-image-text-layered-image-container {
+                flex-basis: 60%;
+                max-width: 60%;
+            }
+
+            // Content container (__content-container)
+            .twt-image-text-layered-content-container {
+                flex-basis: 40%;
+                max-width: 40%;
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-image.html.twig' %}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductBoxManufacturerShow = theme_config('twt-product-box-manufacturer-show') %}
+{% set twtProductBoxManufacturerShowBoxImage = theme_config('twt-product-box-manufacturer-show-box-image') %}
+{% set twtProductBoxOrdernumberShow = theme_config('twt-product-box-ordernumber-show') %}
+{% set twtProductBoxOrdernumberShowBoxImage = theme_config('twt-product-box-ordernumber-show-box-image') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block component_product_box_variant_characteristics %}
+    {# Default block #}
+    {{ parent() }}
+
+    {# ThemeWare: Add product number #}
+    {% if product.productNumber %}
+        {% if twtProductBoxOrdernumberShow == 2 or twtProductBoxOrdernumberShow == 0 and twtProductBoxOrdernumberShowBoxImage == 2 %}
+            {% block twt_product_box_ordernumber %}
+                <div class="product-ordernumber twt-product-ordernumber">
+                    <span class="product-ordernumber-label">
+                        {{ 'twt.listing.ordernumberLabel'|trans|sw_sanitize }}
+                    </span>
+                    <span class="product-ordernumber product-ordernumber-text">
+                        {{ product.productNumber }}
+                    </span>
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add manufacturer #}
+    {# @TODO: Not available in dynamic product groups #}
+    {% if twtProductBoxManufacturerShow == 2 or twtProductBoxManufacturerShow == 0 and twtProductBoxManufacturerShowBoxImage == 2 %}
+        {% block twt_product_box_manufacturer %}
+            <div class="product-manufacturer twt-product-manufacturer">
+                {% if product.manufacturer %}
+                    <span class="product-manufacturer-label">
+                        {{ 'twt.listing.manufacturerLabel'|trans|sw_sanitize }}
+                    </span>
+                    <span class="product-manufacturer product-manufacturer-text">
+                        {{ product.manufacturer.translated.name }}
+                    </span>
+                {% endif %}
+            </div>
+        {% endblock %}
+    {% endif %}
+
+{% endblock %}

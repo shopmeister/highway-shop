@@ -1,0 +1,173 @@
+{# ThemeWare: CMS element "Image slide" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtHeroImageSlide = element.fieldConfig.elements %}
+
+{# General #}
+{% set twtHrImgSldUrl = element.translated.config.url.value %}
+{% set twtHrImgSldNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtHrImgSldBorderRadius = twtHeroImageSlide.borderRadius.value %}
+
+{% set twtHrImgSldColorOverlay = twtHeroImageSlide.colorOverlay.value %}
+{% set twtHrImgSldColorOverlayBgColor = twtHeroImageSlide.colorOverlayBgColor.value %}
+{% set twtHrImgSldColorOverlayBgGradient = twtHeroImageSlide.colorOverlayBgGradient.value %}
+{% set twtHrImgSldColorOverlayBgColor2 = twtHeroImageSlide.colorOverlayBgColor2.value %}
+{% set twtHrImgSldColorOverlayBgGradientAngle = twtHeroImageSlide.colorOverlayBgGradientAngle.value %}
+
+{# Tab "Responsive" #}
+{% set twtHrImgSldDisplayMode = twtHeroImageSlide.displayMode.value %}
+{% set twtHrImgSldBreakpointImage = twtHeroImageSlide.breakpointImage.value %}
+{% set twtHrImgSldMinHeight = twtHeroImageSlide.minHeight.value %}
+
+{# Tab: Slide #}
+{# duration (not used in element) #}
+{# from (not used in element) #}
+{# until (not used in element) #}
+
+{# Tab "SEO" #}
+{% set twtHrImgSldLzyLdng = twtHeroImageSlide.lazyLoading.value %}
+
+{# Tab: Advanced #}
+{% set twtHrImgSldCssClass = twtHeroImageSlide.cssClass.value %}
+
+{# Set title attribute #}
+{# INFO: No text #}
+{# => 'Media title' OR empty #}
+{# @TODO: Add title to seo config ? #}
+{% set title = element.data.media.translated.title ?: '' %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-hero-slide']|merge(elementClasses) %}
+{% set elementClasses = ['twt-hero-slider-slide']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{# Image cover/contain via breakpoint configuration #}
+{% if twtHrImgSldDisplayMode == 'cover' %}
+    {% set imageClasses = 'twt-cover' %}
+{% elseif twtHrImgSldDisplayMode == 'cover-contain' %}
+    {% if twtHrImgSldBreakpointImage == 'xs' %}
+        {% set imageClasses = 'twt-cover twt-contain-xs' %}
+    {% elseif twtHrImgSldBreakpointImage == 'sm' %}
+        {% set imageClasses = 'twt-cover twt-contain-sm' %}
+    {% elseif twtHrImgSldBreakpointImage == 'md' %}
+        {% set imageClasses = 'twt-cover twt-contain-md' %}
+    {% elseif twtHrImgSldBreakpointImage == 'lg' %}
+        {% set imageClasses = 'twt-cover twt-contain-lg' %}
+    {% elseif twtHrImgSldBreakpointImage == 'xl' %}
+        {% set imageClasses = 'twt-cover twt-contain-xl' %}
+    {% elseif twtHrImgSldBreakpointImage == 'xxl' %}
+        {% set imageClasses = 'twt-cover twt-contain-xxl' %}
+    {% endif %}
+{% elseif twtHrImgSldDisplayMode == 'contain-cover' %}
+    {% if twtHrImgSldBreakpointImage == 'xs' %}
+        {% set imageClasses = 'twt-contain twt-cover-xs' %}
+    {% elseif twtHrImgSldBreakpointImage == 'sm' %}
+        {% set imageClasses = 'twt-contain twt-cover-sm' %}
+    {% elseif twtHrImgSldBreakpointImage == 'md' %}
+        {% set imageClasses = 'twt-contain twt-cover-md' %}
+    {% elseif twtHrImgSldBreakpointImage == 'lg' %}
+        {% set imageClasses = 'twt-contain twt-cover-lg' %}
+    {% elseif twtHrImgSldBreakpointImage == 'xl' %}
+        {% set imageClasses = 'twt-contain twt-cover-xl' %}
+    {% elseif twtHrImgSldBreakpointImage == 'xxl' %}
+        {% set imageClasses = 'twt-contain twt-cover-xxl' %}
+    {% endif %}
+{% elseif twtHrImgSldDisplayMode == 'contain' %}
+    {% set imageClasses = 'twt-contain' %}
+{% endif %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtHrImgSldLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{# @TODO: Clean up if statements and classes... #}
+
+{% block element_twt_image_slide %}
+    {# ThemeWare: Set image element #}
+    {% set imageElement %}
+        <div class="twt-hero-slider-item-image-container twt-image-slide-image-container {# w-100 #} cms-image-container image-container {{ imageClasses }}" {% if twtHrImgSldMinHeight and twtHrImgSldDisplayMode == 'cover' %} style="min-height: {{ twtHrImgSldMinHeight }};"{% endif %}>
+
+            {# ThemeWare: Add colored overlay if configured #}
+            {% if twtHrImgSldColorOverlay %}
+                <div class="twt-call-to-action-slide-overlay color-overlay" style="background: {{ twtHrImgSldColorOverlayBgColor }};{% if twtHrImgSldColorOverlayBgGradient %} background: linear-gradient({{ twtHrImgSldColorOverlayBgGradientAngle }}deg, {{ twtHrImgSldColorOverlayBgColor }} 0%, {{ twtHrImgSldColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+            {% endif %}
+
+            {% block element_twt_image_slide_image_media %}
+                {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                {% set attributes = {
+                    class: 'twt-hero-slider-image w-100',
+                    alt: (element.data.media.translated.alt ?: ''),
+                    title: (element.data.media.translated.title ?: title),
+                    loading: lazyloading
+                } %}
+
+                {% if twtHrImgSldDisplayMode == 'cover' or twtHrImgSldDisplayMode == 'contain' %}
+                    {% set attributes = attributes|merge({ 'data-object-fit': twtHrImgSldDisplayMode }) %}
+                {% endif %}
+
+                {% sw_thumbnails 'cms-image-slider-thumbnails' with {
+                    media: element.data.media
+                } %}
+            {% endblock %}
+
+        </div>
+    {% endset %}
+
+    {# ThemeWare: Set element #}
+    <div class="cms-element-{{ element.type }} twt-image-slide {{ elementClasses|sort|join(' ') }}{% if twtHrImgSldCssClass is not empty %} {{ twtHrImgSldCssClass }}{% endif %}"
+         {% if twtHrImgSldBorderRadius != '0' %}style="border-radius: {{ twtHrImgSldBorderRadius }}; overflow: hidden;"{% endif %}
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_image_slide_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-min-height: {{ twtHrImgSldMinHeight }};
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# ThemeWare: Set content #}
+        {% block element_twt_image_slide_content %}
+            {% if twtHrImgSldUrl %}
+                {# Info: Title tag = Title text (not mandatory) OR shortened text (mandatory) #}
+                <a href="{{ twtHrImgSldUrl }}"
+                   class="cms-image-link is-fulllink"
+                   title="{{ title }}"
+                   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                   {% if twtHrImgSldNewTab %}target="_blank" rel="noopener"{% endif %}
+                >
+                    {# ThemeWare: Load image element #}
+                    {{ imageElement }}
+                </a>
+
+            {% else %}
+                {# ThemeWare: Load image element #}
+                {{ imageElement }}
+
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

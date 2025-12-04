@@ -1,0 +1,79 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS box shadow classes
+	==================================================
+	see https://wiki.themeware.design/wissensdatenbank/anleitungen/erlebniswelten/bilder-in-cms-bloecken-mit-dekorationsklassen-verschoenern#schatten
+
+	Info: ThemeWare CSS-Klassen mit welchen Überschriften in Standard-CMS-Elementen modifiziert werden können.
+*/
+
+// UNDER CONSTRUCTION
+
+/* @TODO:
+     - Finalize box shadows...
+     - Add classes to cms elements
+     - Add variables
+        - make variables configuriable
+     - Add classes to docs
+ */
+
+// ThemeWare®: Box-shadow
+.shadow-twt {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+
+// ThemeWare: Adds CSS 'box-shadow' classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify the cms block.
+
+@if $twt-custom-cms-box-shadow-classes == 2 {
+
+    // ThemeWare: Box-shadow
+    // Add class to a CMS element to apply a box-shadow.
+    //.twt-cms-box-shadow-sm { // = box-shadow-sm
+    //        box-shadow: $box-shadow-sm;
+    //}
+    //.twt-cms-box-shadow { // = box-shadow
+    //        box-shadow: $box-shadow;
+    //}
+    //.twt-cms-box-shadow-lg { // = box-shadow-lg
+    //        box-shadow: $box-shadow-lg;
+    //}
+
+    .twt-shadow-1, // shorthand #unofficial
+    .twt-cms-shadow-1, // undocumented #unofficial
+    .twt-cms-box-shadow-level-1 {
+        @include twt-box-shadow(1);
+    }
+
+    .twt-shadow-2, // shorthand #unofficial
+    .twt-cms-shadow-2, // undocumented #unofficial
+    .twt-cms-box-shadow-level-2 {
+        @include twt-box-shadow(2);
+    }
+
+    .twt-shadow-3, // shorthand #unofficial
+    .twt-cms-shadow-3, // undocumented #unofficial
+    .twt-cms-box-shadow-level-3 {
+        @include twt-box-shadow(3);
+    }
+
+    .twt-shadow-4, // shorthand #unofficial
+    .twt-cms-shadow-4, // undocumented #unofficial
+    .twt-cms-box-shadow-level-4 {
+        @include twt-box-shadow(4);
+    }
+
+    .twt-shadow-5, // shorthand #unofficial
+    .twt-cms-shadow-1, // undocumented #unofficial
+    .twt-cms-box-shadow-level-5 {
+        @include twt-box-shadow(5);
+    }
+
+}

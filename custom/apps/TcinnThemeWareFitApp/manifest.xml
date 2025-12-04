@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/Framework/App/Manifest/Schema/manifest-1.0.xsd">
+    <meta>
+        <name>TcinnThemeWareFitApp</name>
+        <label>ThemeWare® Fit Cloud | sales increasing and customizable</label>
+        <label lang="de-DE">ThemeWare® Fit Cloud | umsatzsteigernd und anpassbar</label>
+        <description>ThemeWare® is a revenue-generating, extremely customizable, SEO- and page-speed-optimized theme that also offers you a wide range of additional functions. You also get detailed instructions and video tutorials, a professional shopping world with all the graphics and online courses with specialized knowledge. Open the official product description of ThemeWare® at https://themeware.design to find out more details.</description>
+        <description lang="de-DE">ThemeWare® ist ein umsatzsteigerndes, extrem anpassbares sowie SEO- und Pagespeed-Optimiertes Theme, welches dir zusätzlich eine große Palette an Funktionen bietet. Darüber hinaus erhältst du detaillierte Anleitungen und Video-Tutorials, eine Profi-Einkaufswelt mit allen Grafiken sowie Online-Kurse mit Spezialwissen. Öffne die offizielle Produktbeschreibung von ThemeWare® unter https://themeware.design, um mehr Details zu erfahren.</description>
+        <author>TC-Innovations GmbH</author>
+        <copyright>(c) TC-Innovations GmbH</copyright>
+        <version>3.5.2</version>
+		<icon>fit-plugin-icon.png</icon>
+		<license>proprietary</license>
+    </meta>
+
+    <cookies>
+        <group>
+            <snippet-name>cookie.groupComfortFeatures</snippet-name>
+            <entries>
+                <cookie>
+                    <cookie>twt-local-storage</cookie>
+                    <snippet-name>twt.cookie.localStorage.name</snippet-name>
+                    <snippet-description>twt.cookie.localStorage.description</snippet-description>
+                    <value>1</value>
+                    <expiration>30</expiration>
+                </cookie>
+            </entries>
+        </group>
+    </cookies>
+
+    <custom-fields>
+        <custom-field-set>
+            <name>twt_fit_cloud_custom_field_set__category</name>
+            <label>Categories (ThemeWare® Fit Cloud)</label>
+            <label lang="de-DE">Kategorien (ThemeWare® Fit Cloud)</label>
+            <related-entities>
+                <category/>
+            </related-entities>
+            <fields>
+                <text name="twt_fit_cloud_custom_field__category__body_class">
+                    <position>10</position>
+                    <label>Body class</label>
+                    <label lang="de-DE">Body-Klasse</label>
+                    <help-text>Adds one or more CSS classes to the HTML body of this category (e.g. "category"). Separate multiple classes with spaces.</help-text>
+                    <help-text lang="de-DE">Fügt dem HTML-Body dieser Kategorie eine oder mehrere CSS-Klassen hinzu (z.B. "kategorie"). Trenne mehrere Klassen durch Leerzeichen.</help-text>
+                    <placeholder>Enter CSS class...</placeholder>
+                    <placeholder lang="de-DE">Gib eine CSS-Klasse ein ...</placeholder>
+                </text>
+
+                <single-select name="twt_fit_cloud_custom_field__category__shopping_experiences_header">
+                    <position>20</position>
+                    <label>Shopping Experiences Header</label>
+                    <label lang="de-DE">Erlebniswelt-Header</label>
+                    <help-text>The header can overlay the Shopping Experience in listings. The "Shopping Experiences Header" is especially suitable for overlaying images, videos or sliders. You can enable/disable the "Shopping Experiences Header" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Der Header kann auf Kategorieseiten über der Erlebniswelt dargestellt werden. Der "Erlebniswelt-Header" eignet sich besonders zum Überlagern von Bildern, Videos oder Slidern. Du kannst den "Erlebniswelt-Header" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>No</name>
+                            <name lang="de-DE">Nein</name>
+                        </option>
+                        <option value="1">
+                            <name>Yes</name>
+                            <name lang="de-DE">Ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <single-select name="twt_fit_cloud_custom_field__category__highlighted">
+                    <position>30</position>
+                    <label>Highlight category</label>
+                    <label lang="de-DE">Kategorie hervorheben</label>
+                    <help-text>Highlights this category in the top navigation. You can find the colour configuration in the theme configuration. (Does not apply to the "Entry point main navigation".)</help-text>
+                    <help-text lang="de-DE">Hebt diese Kategorie in der Top-Navigation farbig hervor. Die Farbkonfiguration findest du in der Theme-Konfiguration. (Gilt nicht für den "Einstiegspunkt für die Haupt-Navigation".)</help-text>
+                    <placeholder>No</placeholder>
+                    <placeholder lang="de-DE">Nein</placeholder>
+                    <options>
+                        <option value="0">
+                            <name>No</name>
+                            <name lang="de-DE">Nein</name>
+                        </option>
+                        <option value="1">
+                            <name>Yes</name>
+                            <name lang="de-DE">Ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <single-select name="twt_fit_cloud_custom_field__category__listing_subcategories">
+                    <position>40</position>
+                    <label>Listing subcategories</label>
+                    <label lang="de-DE">Unterkategorien im Listing</label>
+                    <help-text>You can enable/disable the "Listing subcategories" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Du kannst den "Unterkategorien im Listing" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>No</name>
+                            <name lang="de-DE">Nein</name>
+                        </option>
+                        <option value="1">
+                            <name>Yes</name>
+                            <name lang="de-DE">Ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <single-select name="twt_fit_cloud_custom_field__category__hero_section">
+                    <position>50</position>
+                    <label>Hero section</label>
+                    <label lang="de-DE">Hero-Sektion</label>
+                    <help-text>You can enable/disable the "Hero section" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Du kannst die "Hero-Sektion" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>No</name>
+                            <name lang="de-DE">Nein</name>
+                        </option>
+                        <option value="1">
+                            <name>Yes</name>
+                            <name lang="de-DE">Ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <single-select name="twt_fit_cloud_custom_field__category__hero_section_pull_up">
+                    <position>50</position>
+                    <label>Hero section – Pull up next element</label>
+                    <label lang="de-DE">Hero-Sektion – Nächstes Element hochziehen</label>
+                    <help-text>Beta: This configuration is in a testing phase, feel free to give it a try.</help-text>
+                    <help-text lang="de-DE">Beta: Diese Konfiguration befindet sich in der Testphase, probiere Sie gerne einmal aus.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>No</name>
+                            <name lang="de-DE">Nein</name>
+                        </option>
+                        <option value="1">
+                            <name>Yes</name>
+                            <name lang="de-DE">Ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <media-selection name="twt_fit_cloud_custom_field__category__hero_section_background_image">
+                    <position>51</position>
+                    <label>Hero section – Background image</label>
+                    <label lang="de-DE">Hero-Sektion – Hintergrundbild</label>
+                    <help-text>Select an image for the "Hero section". The image will be displayed in the background of the "Hero section". Recommended image size: 1920 x 1080 pixels</help-text>
+                    <help-text lang="de-DE">Wähle ein Bild für die "Hero-Sektion" aus. Das Bild wird im Hintergrund der "Hero-Sektion" angezeigt. Empfohlene Bildgröße: 1920 x 1080 Pixel</help-text>
+                </media-selection>
+
+                <color-picker name="twt_fit_cloud_custom_field__category__hero_section_background_color">
+                    <position>52</position>
+                    <label>Hero section – Background color</label>
+                    <label lang="de-DE">Hero-Sektion – Hintergrundfarbe</label>
+                    <help-text>Overwrites the background colour for the coloured overlay of the "Hero section" from the theme configuration.</help-text>
+                    <help-text lang="de-DE">Überschreibt die Hintergrundfarbe für das Farboverlay der "Hero-Sektion" aus der Theme-Konfiguration.</help-text>
+                </color-picker>
+
+                <single-select name="twt_fit_cloud_custom_field__category__hero_section_text_coloration">
+                    <position>53</position>
+                    <label>Hero section – Text colour</label>
+                    <label lang="de-DE">Hero-Sektion – Textfarbe</label>
+                    <help-text>Overwrites the text colour of the "Hero section" from the theme configuration.</help-text>
+                    <help-text lang="de-DE">Überschreibt die Textfarbe der "Hero-Sektion" aus der Theme-Konfiguration.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="white">
+                            <name>white text</name>
+                            <name lang="de-DE">weißer Text</name>
+                        </option>
+                        <option value="light">
+                            <name>light text</name>
+                            <name lang="de-DE">heller Text</name>
+                        </option>
+                        <option value="dark">
+                            <name>dark text</name>
+                            <name lang="de-DE">dunkler Text</name>
+                        </option>
+                        <option value="black">
+                            <name>black text</name>
+                            <name lang="de-DE">schwarzer Text</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <single-select name="twt_fit_cloud_custom_field__category__product_listing_columns_xs">
+                    <position>60</position>
+                    <label>Columns per row – Phone (portrait) (&lt;576px)</label>
+                    <label lang="de-DE">Spalten pro Zeile – Phone (Hochformat) (&lt;576px)</label>
+                    <help-text>Number of columns in the smartphone viewport (&lt;576px). default: 1</help-text>
+                    <help-text lang="de-DE">Spaltenanzahl im Smartphone-Viewport (&lt;576px). Standard: 1</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="12">
+                            <name>1</name>
+                            <name lang="de-DE">1</name>
+                        </option>
+                        <option value="6">
+                            <name>2</name>
+                            <name lang="de-DE">2</name>
+                        </option>
+                    </options>
+                </single-select>
+                <single-select name="twt_fit_cloud_custom_field__category__product_listing_columns_sm">
+                    <position>61</position>
+                    <label>Columns per row – Phone (landscape) (≥576px)</label>
+                    <label lang="de-DE">Spalten pro Zeile – Phone (Querformat) (≥576px)</label>
+                    <help-text>Number of columns in the smartphone viewport (≥576px). default: 2</help-text>
+                    <help-text lang="de-DE">Spaltenanzahl im Smartphone-Viewport (≥576px). Standard: 2</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="12">
+                            <name>1</name>
+                            <name lang="de-DE">1</name>
+                        </option>
+                        <option value="6">
+                            <name>2</name>
+                            <name lang="de-DE">2</name>
+                        </option>
+                        <option value="4">
+                            <name>3</name>
+                            <name lang="de-DE">3</name>
+                        </option>
+                    </options>
+                </single-select>
+                <single-select name="twt_fit_cloud_custom_field__category__product_listing_columns_md">
+                    <position>62</position>
+                    <label>Columns per row – Tablet (portrait) (≥768px)</label>
+                    <label lang="de-DE">Spalten pro Zeile – Tablet (Hochformat) (≥768px)</label>
+                    <help-text>Number of columns in the tablet viewport (≥768px). default: 2</help-text>
+                    <help-text lang="de-DE">Spaltenanzahl im Tablet-Viewport (≥768px). Standard: 2</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="12">
+                            <name>1</name>
+                            <name lang="de-DE">1</name>
+                        </option>
+                        <option value="6">
+                            <name>2</name>
+                            <name lang="de-DE">2</name>
+                        </option>
+                        <option value="4">
+                            <name>3</name>
+                            <name lang="de-DE">3</name>
+                        </option>
+                        <option value="3">
+                            <name>4</name>
+                            <name lang="de-DE">4</name>
+                        </option>
+                    </options>
+                </single-select>
+                <single-select name="twt_fit_cloud_custom_field__category__product_listing_columns_lg">
+                    <position>63</position>
+                    <label>Columns per row – Tablet (landscape) (≥992px)</label>
+                    <label lang="de-DE">Spalten pro Zeile – Tablet (Querformat) (≥992px)</label>
+                    <help-text>Number of columns in the tablet viewport (≥992px). default: 3 (2 with sidebar)</help-text>
+                    <help-text lang="de-DE">Spaltenanzahl im Tablet-Viewport (≥992px). Standard: 3 (2 mit Sidebar)</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="12">
+                            <name>1</name>
+                            <name lang="de-DE">1</name>
+                        </option>
+                        <option value="6">
+                            <name>2</name>
+                            <name lang="de-DE">2</name>
+                        </option>
+                        <option value="4">
+                            <name>3</name>
+                            <name lang="de-DE">3</name>
+                        </option>
+                        <option value="3">
+                            <name>4</name>
+                            <name lang="de-DE">4</name>
+                        </option>
+                        <option value="24">
+                            <name>5</name>
+                            <name lang="de-DE">5</name>
+                        </option>
+                        <option value="2">
+                            <name>6</name>
+                            <name lang="de-DE">6</name>
+                        </option>
+                    </options>
+                </single-select>
+                <single-select name="twt_fit_cloud_custom_field__category__product_listing_columns_xl">
+                    <position>64</position>
+                    <label>Columns per row – Desktop (≥1200px)</label>
+                    <label lang="de-DE">Spalten pro Zeile – Desktop (≥1200px)</label>
+                    <help-text>Number of columns in the desktop viewport (≥1200px). default: 4 (3 with sidebar)</help-text>
+                    <help-text lang="de-DE">Spaltenanzahl im Desktop-Viewport (≥1200px). Standard: 4 (3 mit Sidebar)</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="12">
+                            <name>1</name>
+                            <name lang="de-DE">1</name>
+                        </option>
+                        <option value="6">
+                            <name>2</name>
+                            <name lang="de-DE">2</name>
+                        </option>
+                        <option value="4">
+                            <name>3</name>
+                            <name lang="de-DE">3</name>
+                        </option>
+                        <option value="3">
+                            <name>4</name>
+                            <name lang="de-DE">4</name>
+                        </option>
+                        <option value="24">
+                            <name>5</name>
+                            <name lang="de-DE">5</name>
+                        </option>
+                        <option value="2">
+                            <name>6</name>
+                            <name lang="de-DE">6</name>
+                        </option>
+                    </options>
+                </single-select>
+
+            </fields>
+        </custom-field-set>
+
+        <custom-field-set>
+            <name>twt_fit_cloud_custom_field_set__product</name>
+            <label>Products (ThemeWare® Fit Cloud)</label>
+            <label lang="de-DE">Produkte (ThemeWare® Fit Cloud)</label>
+            <related-entities>
+                <product/>
+            </related-entities>
+            <fields>
+                <media-selection name="twt_fit_cloud_custom_field__product__hover_image">
+                    <position>10</position>
+                    <label>Hover image</label>
+                    <label lang="de-DE">Hover-Bild</label>
+                    <help-text>This custom field adds a hover image in the product listing. This image appears when the mouse is hovered over the cover image. You can enable/disable the hover effect in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein zusätzliches Hover-Bild im Produktlisting ergänzen. Dieses Hover-Bild wird eingeblendet, wenn mit der Maus über das Cover-Bild gefahren wird. Du kannst den Hover-Effekt in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                </media-selection>
+
+                <text-area name="twt_fit_cloud_custom_field__product__short_description">
+                    <position>20</position>
+                    <label>Short description</label>
+                    <label lang="de-DE">Kurzbeschreibung</label>
+                    <help-text>This custom field is displayed in product boxes on category pages and/or above the price in the buybox on the product page. You can enable/disable the display in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird in der Produkt-Box auf Kategorieseiten und/oder in der Buybox auf der Produktseite über dem Preis ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text-area>
+
+                <text name="twt_fit_cloud_custom_field__product__custom_field_1">
+                    <position>30</position>
+                    <label>Custom field 1</label>
+                    <label lang="de-DE">Zusatzfeld 1</label>
+                    <help-text>This custom field is displayed on the product page in the product specifications. You can enable/disable the display in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird auf der Produktseite in den Produkt-Spezifikationen ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__custom_field_2">
+                    <position>35</position>
+                    <label>Custom field 2</label>
+                    <label lang="de-DE">Zusatzfeld 2</label>
+                    <help-text>This custom field is displayed on the product page in the product specifications. You can enable/disable the display in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird auf der Produktseite in den Produkt-Spezifikationen ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__custom_field_3">
+                    <position>40</position>
+                    <label>Custom field 3</label>
+                    <label lang="de-DE">Zusatzfeld 3</label>
+                    <help-text>This custom field is displayed on the product page in the product specifications. You can enable/disable the display in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird auf der Produktseite in den Produkt-Spezifikationen ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text>
+
+                <text name="twt_fit_cloud_custom_field__product__comment">
+                    <position>50</position>
+                    <label>Comment</label>
+                    <label lang="de-DE">Kommentar</label>
+                    <help-text>This custom field is displayed on the product page in the description. You can enable/disable the display in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird auf der Produktseite in der Beschreibung ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a comment...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Kommentar ein ...</placeholder>
+                </text>
+
+                <text name="twt_fit_cloud_custom_field__product__benefits">
+                    <position>60</position>
+                    <label>Benefits</label>
+                    <label lang="de-DE">Vorteile</label>
+                    <help-text>This custom field is displayed on the product page after the product specifications. You can enable/disable the display in the theme configuration. Please separate multiple benefits with a semicolon.</help-text>
+                    <help-text lang="de-DE">Dieses Zusatzfeld wird auf der Produktseite unter den Produkt-Spezifikationen ausgegeben. Du kannst die Anzeige in der Theme-Konfiguration aktivieren/deaktivieren. Bitte trenne die einzelnen Vorteile mit einem Semikolon.</help-text>
+                    <placeholder>Enter a text... (e.g. Benefit 1; Benefit 2; Benefit 3)</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ... (z.B. Vorteil 1; Vorteil 2; Vorteil 3)</placeholder>
+                </text>
+
+                <text name="twt_fit_cloud_custom_field__product__custom_tab_title">
+                    <position>70</position>
+                    <label>Custom tab – Title</label>
+                    <label lang="de-DE">Benutzerdefinierter-Tab – Titel</label>
+                    <help-text>Enter a title for the "Custom tab" on the product page or leave the input empty so that the snippet "twt.detail.tabCustom.title" is used. You can enable/disable the "Custom tab" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Gebe hier einen individuellen Titel für den "Benutzerdefinierten Tab" auf der Produktseite ein oder lasse das Feld leer damit der Textbaustein "twt.detail.tabCustom.title" genutzt wird. Du kannst den "Benutzerdefinierten Tab" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text>
+                <text-area name="twt_fit_cloud_custom_field__product__custom_tab_text">
+                    <position>75</position>
+                    <label>Custom tab – Text</label>
+                    <label lang="de-DE">Benutzerdefinierter-Tab – Text</label>
+                    <help-text>Enter a text for the "Custom tab" on the product page. If you leave the input empty, the tab won't be displayed. You can enable/disable the "Custom tab" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Gebe hier einen individuellen Text für den "Benutzerdefinierten Tab" auf der Produktseite ein. Lasse das Feld leer damit bei diesem Produkt kein Tab angzeigt wird. Du kannst den "Benutzerdefinierten Tab" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text-area>
+            </fields>
+        </custom-field-set>
+
+        <custom-field-set>
+            <name>twt_fit_pro_custom_field_set__product_01_links</name>
+            <label>Further links (Fit Cloud)</label>
+            <label lang="de-DE">Weiterführende Links (Fit Cloud)</label>
+            <related-entities>
+                <product/>
+            </related-entities>
+            <fields>
+                <text name="twt_fit_cloud_custom_field__product__further_link_1">
+                    <position>10</position>
+                    <label>Further link 1</label>
+                    <label lang="de-DE">Link 1</label>
+                    <help-text>With this custom field you can display a link on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Link auf der Produktseite anzeigen lassen.</help-text>
+                    <placeholder>https://themeware.design</placeholder>
+                    <placeholder lang="de-DE">https://themeware.design</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__further_link_1_title">
+                    <position>11</position>
+                    <label>Further link 1 – Title</label>
+                    <label lang="de-DE">Link 1 – Titel</label>
+                    <help-text>Enter the desired title for the link.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Link ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <single-select name="twt_fit_cloud_custom_field__product__further_link_1_new_tab">
+                    <position>15</position>
+                    <label>Further link 1 – Open link in a new tab</label>
+                    <label lang="de-DE">Link 1 – Link in einem neuen Tab öffnen</label>
+                    <help-text>Select whether the link should be opened in a new tab.</help-text>
+                    <help-text lang="de-DE">Wähle, ob der Link in neuem Tab geöffnet werden soll.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>no</name>
+                            <name lang="de-DE">nein</name>
+                        </option>
+                        <option value="1">
+                            <name>yes</name>
+                            <name lang="de-DE">ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <text name="twt_fit_cloud_custom_field__product__further_link_2">
+                    <position>20</position>
+                    <label>Further link 2</label>
+                    <label lang="de-DE">Link 2</label>
+                    <help-text>With this custom field you can display a link on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Link auf der Produktseite anzeigen lassen.</help-text>
+                    <placeholder>https://themeware.design</placeholder>
+                    <placeholder lang="de-DE">https://themeware.design</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__further_link_2_title">
+                    <position>21</position>
+                    <label>Further link 2 – Title</label>
+                    <label lang="de-DE">Link 2 – Titel</label>
+                    <help-text>Enter the desired title for the link.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Link ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <single-select name="twt_fit_cloud_custom_field__product__further_link_2_new_tab">
+                    <position>25</position>
+                    <label>Further link 2 – Open link in a new tab</label>
+                    <label lang="de-DE">Link 2 – Link in einem neuen Tab öffnen</label>
+                    <help-text>Select whether the link should be opened in a new tab.</help-text>
+                    <help-text lang="de-DE">Wähle, ob der Link in neuem Tab geöffnet werden soll.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>no</name>
+                            <name lang="de-DE">nein</name>
+                        </option>
+                        <option value="1">
+                            <name>yes</name>
+                            <name lang="de-DE">ja</name>
+                        </option>
+                    </options>
+                </single-select>
+
+                <text name="twt_fit_cloud_custom_field__product__further_link_3">
+                    <position>30</position>
+                    <label>Further link 3</label>
+                    <label lang="de-DE">Link 3</label>
+                    <help-text>With this custom field you can display a link on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Link auf der Produktseite anzeigen lassen.</help-text>
+                    <placeholder>https://themeware.design</placeholder>
+                    <placeholder lang="de-DE">https://themeware.design</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__further_link_3_title">
+                    <position>31</position>
+                    <label>Further link 3 – Title</label>
+                    <label lang="de-DE">Link 3 – Titel</label>
+                    <help-text>Enter the desired title for the link.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Link ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <single-select name="twt_fit_cloud_custom_field__product__further_link_3_new_tab">
+                    <position>35</position>
+                    <label>Further link 3 – Open link in a new tab</label>
+                    <label lang="de-DE">Link 3 – Link in einem neuen Tab öffnen</label>
+                    <help-text>Select whether the link should be opened in a new tab.</help-text>
+                    <help-text lang="de-DE">Wähle, ob der Link in neuem Tab geöffnet werden soll.</help-text>
+                    <placeholder>inherit from theme configuration</placeholder>
+                    <placeholder lang="de-DE">vererbt aus Theme-Konfiguration</placeholder>
+                    <options>
+                        <option value="inherit">
+                            <name>inherit from theme configuration</name>
+                            <name lang="de-DE">vererbt aus Theme-Konfiguration</name>
+                        </option>
+                        <option value="0">
+                            <name>no</name>
+                            <name lang="de-DE">nein</name>
+                        </option>
+                        <option value="1">
+                            <name>yes</name>
+                            <name lang="de-DE">ja</name>
+                        </option>
+                    </options>
+                </single-select>
+            </fields>
+        </custom-field-set>
+
+        <custom-field-set>
+            <name>twt_fit_pro_custom_field_set__product_02_downloads</name>
+            <label>Downloads (Fit Cloud)</label>
+            <label lang="de-DE">Downloads (Fit Cloud)</label>
+            <related-entities>
+                <product/>
+            </related-entities>
+            <fields>
+                <media-selection name="twt_fit_cloud_custom_field__product__download_1">
+                    <position>10</position>
+                    <label>Download 1</label>
+                    <label lang="de-DE">Download 1</label>
+                    <help-text>With this custom field you can display a download on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Download auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__download_1_title">
+                    <position>11</position>
+                    <label>Download 1 – Title</label>
+                    <label lang="de-DE">Download 1 – Titel</label>
+                    <help-text>Enter the desired title for the download.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Download ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__download_1_description">
+                    <position>15</position>
+                    <label>Download 1 – Description</label>
+                    <label lang="de-DE">Download 1 – Beschreibung</label>
+                    <help-text>Enter the desired description for the download.</help-text>
+                    <help-text lang="de-DE">Trage die gewünschte Beschreibung für den Download ein.</help-text>
+                    <placeholder>Enter a description...</placeholder>
+                    <placeholder lang="de-DE">Gib eine Beschreibung ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__download_2">
+                    <position>20</position>
+                    <label>Download 2</label>
+                    <label lang="de-DE">Download 2</label>
+                    <help-text>With this custom field you can display a download on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Download auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__download_2_title">
+                    <position>21</position>
+                    <label>Download 2 – Title</label>
+                    <label lang="de-DE">Download 2 – Titel</label>
+                    <help-text>Enter the desired title for the download.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Download ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__download_2_description">
+                    <position>25</position>
+                    <label>Download 2 – Description</label>
+                    <label lang="de-DE">Download 2 – Beschreibung</label>
+                    <help-text>Enter the desired description for the download.</help-text>
+                    <help-text lang="de-DE">Trage die gewünschte Beschreibung für den Download ein.</help-text>
+                    <placeholder>Enter a description...</placeholder>
+                    <placeholder lang="de-DE">Gib eine Beschreibung ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__download_3">
+                    <position>30</position>
+                    <label>Download 3</label>
+                    <label lang="de-DE">Download 3</label>
+                    <help-text>With this custom field you can display a download on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du einen Download auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__download_3_title">
+                    <position>31</position>
+                    <label>Title (Download 3)</label>
+                    <label lang="de-DE">Titel (Download 3)</label>
+                    <help-text>Enter the desired title for the download.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für den Download ein.</help-text>
+                    <placeholder>Enter a link title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Linktitel ein ...</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__download_3_description">
+                    <position>35</position>
+                    <label>Download 3 – Description</label>
+                    <label lang="de-DE">Download 3 – Beschreibung</label>
+                    <help-text>Enter the desired description for the download.</help-text>
+                    <help-text lang="de-DE">Trage die gewünschte Beschreibung für den Download ein.</help-text>
+                    <placeholder>Enter a description...</placeholder>
+                    <placeholder lang="de-DE">Gib eine Beschreibung ein ...</placeholder>
+                </text>
+            </fields>
+        </custom-field-set>
+
+        <custom-field-set>
+            <name>twt_fit_pro_custom_field_set__product_03_datasheets</name>
+            <label>Datasheets (Fit Cloud)</label>
+            <label lang="de-DE">Datenblätter (Fit Cloud)</label>
+            <related-entities>
+                <product/>
+            </related-entities>
+            <fields>
+                <text-area name="twt_fit_cloud_custom_field__product__datasheets_text">
+                    <position>5</position>
+                    <label>Datasheets (Text)</label>
+                    <label lang="de-DE">Datenblätter (Text)</label>
+                    <help-text>Enter a description for the "Datasheets" on the product page. You can enable/disable the "Datasheets" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Gebe hier einen Beschreibungstext für die "Datenblätter" auf der Produktseite. Du kannst den "Datenblätter" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text-area>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__datasheet_1">
+                    <position>10</position>
+                    <label>Datasheet 1</label>
+                    <label lang="de-DE">Datenblatt 1</label>
+                    <help-text>With this custom field you can display a datasheet on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein Datenblatt auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__datasheet_1_title">
+                    <position>11</position>
+                    <label>Datasheet 1 – Title</label>
+                    <label lang="de-DE">Datenblatt 1 – Titel</label>
+                    <help-text>Enter the desired title for the datasheet.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Datenblatt ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__datasheet_2">
+                    <position>20</position>
+                    <label>Datasheet 2</label>
+                    <label lang="de-DE">Datenblatt 2</label>
+                    <help-text>With this custom field you can display a datasheet on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein Datenblatt auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__datasheet_2_title">
+                    <position>21</position>
+                    <label>Datasheet 2 – Title</label>
+                    <label lang="de-DE">Datenblatt 2 – Titel</label>
+                    <help-text>Enter the desired title for the datasheet.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Datenblatt ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__datasheet_3">
+                    <position>30</position>
+                    <label>Datasheet 3</label>
+                    <label lang="de-DE">Datenblatt 3</label>
+                    <help-text>With this custom field you can display a datasheet on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein Datenblatt auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__datasheet_3_title">
+                    <position>31</position>
+                    <label>Datasheet 3 – Title</label>
+                    <label lang="de-DE">Datenblatt 3 – Titel</label>
+                    <help-text>Enter the desired title for the datasheet.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Datenblatt ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+            </fields>
+        </custom-field-set>
+
+        <custom-field-set>
+            <name>twt_fit_pro_custom_field_set__product_04_videos</name>
+            <label>Videos (Fit Cloud)</label>
+            <label lang="de-DE">Videos (Fit Cloud)</label>
+            <related-entities>
+                <product/>
+            </related-entities>
+            <fields>
+                <text-area name="twt_fit_cloud_custom_field__product__videos_text">
+                    <position>5</position>
+                    <label>Product videos (Text)</label>
+                    <label lang="de-DE">Produkt-Videos (Text)</label>
+                    <help-text>Enter a description for the "Product videos" on the product page. You can enable/disable the "Product videos" in the theme configuration.</help-text>
+                    <help-text lang="de-DE">Gebe hier einen Beschreibungstext für die "Produkt-Videos" auf der Produktseite. Du kannst den "Produkt-Videos" in der Theme-Konfiguration aktivieren/deaktivieren.</help-text>
+                    <placeholder>Enter a text...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Text ein ...</placeholder>
+                </text-area>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__video_1">
+                    <position>10</position>
+                    <label>Video 1</label>
+                    <label lang="de-DE">Video 1</label>
+                    <help-text>With this custom field you can display a HTML5 video on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein HTML5-Video auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__video_1_title">
+                    <position>11</position>
+                    <label>Video 1 – Title</label>
+                    <label lang="de-DE">Video 1 – Titel</label>
+                    <help-text>Enter the desired title for the video.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Video ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__video_2">
+                    <position>20</position>
+                    <label>Video 2</label>
+                    <label lang="de-DE">Video 2</label>
+                    <help-text>With this custom field you can display a HTML5 video on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein HTML5-Video auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__video_2_title">
+                    <position>21</position>
+                    <label>Video 2 – Title</label>
+                    <label lang="de-DE">Video 2 – Titel</label>
+                    <help-text>Enter the desired title for the video.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Video ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+
+                <media-selection name="twt_fit_cloud_custom_field__product__video_3">
+                    <position>30</position>
+                    <label>Video 3</label>
+                    <label lang="de-DE">Video 3</label>
+                    <help-text>With this custom field you can display a HTML5 video on the product page.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du ein HTML5-Video auf der Produktseite anzeigen lassen.</help-text>
+                </media-selection>
+                <text name="twt_fit_cloud_custom_field__product__video_3_title">
+                    <position>31</position>
+                    <label>Video 3 – Title</label>
+                    <label lang="de-DE">Video 3 – Titel</label>
+                    <help-text>Enter the desired title for the video.</help-text>
+                    <help-text lang="de-DE">Trage den gewünschten Titel für das Video ein.</help-text>
+                    <placeholder>Enter a title...</placeholder>
+                    <placeholder lang="de-DE">Gib einen Titel ein ...</placeholder>
+                </text>
+
+                <text name="twt_fit_cloud_custom_field__product__youtube_video">
+                    <position>40</position>
+                    <label>YouTube video(s)</label>
+                    <label lang="de-DE">YouTube-Video(s)</label>
+                    <help-text>With this custom field you can display YouTube videos on the product page. To do so, enter one or more video IDs. You can find the video ID as a code after the parameter "?v=" at the end of the YouTube link in the address bar. Multiple video IDs can be entered comma-separated.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du YouTube-Videos auf der Produktseite anzeigen lassen. Gebe dazu eine oder mehrere Video-IDs ein. Du findest die Video-ID als Code nach dem Parameter "?v=" am Ende des YouTube-Links in der Adresszeile. Mehrere Video-IDs können kommasepariert eingegeben werden.</help-text>
+                    <placeholder>Enter video ID... (e.g. eVrQ0Lvn5ZI)</placeholder>
+                    <placeholder lang="de-DE">Gib eine Video-ID ein ... (z.B. aVw60mnS21o)</placeholder>
+                </text>
+                <text name="twt_fit_cloud_custom_field__product__vimeo_video">
+                    <position>45</position>
+                    <label>Vimeo video(s)</label>
+                    <label lang="de-DE">Vimeo-Video(s)</label>
+                    <help-text>With this custom field you can display Vimeo videos on the product page. To do so, enter one or more video IDs. You can find the video ID as a code after the slash (/) at the end of the Vimeo link in the address bar. Multiple video IDs can be entered comma-separated.</help-text>
+                    <help-text lang="de-DE">Mit diesem Zusatzfeld kannst du Vimeo-Videos auf der Produktseite anzeigen lassen. Gebe dazu eine oder mehrere Video-IDs ein. Du findest die Video-ID als Code nach dem Schrägstrich (/) am Ende des Vimeo-Links in der Adresszeile. Mehrere Video-IDs können kommasepariert eingegeben werden.</help-text>
+                    <placeholder>Enter video ID...</placeholder>
+                    <placeholder lang="de-DE">Gib eine Video-ID ein ...</placeholder>
+                </text>
+
+            </fields>
+        </custom-field-set>
+        
+    </custom-fields>
+</manifest>

@@ -1,0 +1,264 @@
+{# ThemeWare® CMS element "Text teaser" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtTextTeaser = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtTxtTsrTitle = element.translated.config.title.value %}
+{% set twtTxtTsrSubtitle = element.translated.config.subtitle.value %}
+
+{% set twtTxtTsrDisplayMode = element.translated.config.displayMode.value %}
+{% set twtTxtTsrMinHeight = element.translated.config.minHeight.value %}
+{% set twtTxtTsrVerticalAlign = twtTextTeaser.verticalAlign.value %}
+
+{% set twtTxtTsrUrl = element.translated.config.url.value %}
+{% set twtTxtTsrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtTxtTsrPadding = twtTextTeaser.padding.value %}
+{% set twtTxtTsrBorderRadius = twtTextTeaser.borderRadius.value %}
+{% set twtTxtTsrBackgroundColor = twtTextTeaser.backgroundColor.value %}
+
+{% set twtTxtTsrTextAlignment = twtTextTeaser.textAlignment.value %}
+{% set twtTxtTsrTextShadow = twtTextTeaser.textShadow.value %}
+
+{% set twtTxtTsrFontFamily = twtTextTeaser.fontFamily.value %}
+{% set twtTxtTsrTextColorTitle = twtTextTeaser.textColorTitle.value %}
+{% set twtTxtTsrFontWeightTitle = twtTextTeaser.fontWeightTitle.value %}
+{% set twtTxtTsrTextTransformTitle = twtTextTeaser.textTransformTitle.value %}
+
+{% set twtTxtTsrFontFamilySubtitle = twtTextTeaser.fontFamilySubtitle.value %}
+{% set twtTxtTsrTextColorSubtitle = twtTextTeaser.textColorSubtitle.value %}
+
+{% set twtTxtTsrVerticalAlignment = twtTextTeaser.verticalAlignment.value %}
+{% set twtTxtTsrHorizontalAlignment = twtTextTeaser.horizontalAlignment.value %}
+{% set twtTxtTsrWidth = twtTextTeaser.width.value %}
+{% set twtTxtTsrMaxWidth = twtTextTeaser.maxWidth.value %}
+
+{% set twtTxtTsrObjectPosition = twtTextTeaser.objectPosition.value %}
+
+{% set twtTxtTsrHoverEffect = twtTextTeaser.hoverEffect.value %}
+
+{% set twtTxtTsrColorOverlay = twtTextTeaser.colorOverlay.value %}
+{% set twtTxtTsrColorOverlayBgColor = twtTextTeaser.colorOverlayBgColor.value %}
+{% set twtTxtTsrColorOverlayBgGradient = twtTextTeaser.colorOverlayBgGradient.value %}
+{% set twtTxtTsrColorOverlayBgColor2 = twtTextTeaser.colorOverlayBgColor2.value %}
+{% set twtTxtTsrColorOverlayBgGradientAngle = twtTextTeaser.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtTxtTsrHtmlTag = twtTextTeaser.htmlTag.value %}
+{% if twtTxtTsrHtmlTag is empty %}
+    {% set twtTxtTsrHtmlTag = 'p' %}
+{% endif %}
+{% set twtTxtTsrHtmlTagClass = twtTextTeaser.htmlTagClass.value %}
+
+{% set twtTxtTsrHtmlTagSubtitle = twtTextTeaser.htmlTagSubtitle.value %}
+{% if twtTxtTsrHtmlTagSubtitle is empty %}
+    {% set twtTxtTsrHtmlTagSubtitle = 'p' %}
+{% endif %}
+{% set twtTxtTsrHtmlTagClassSubtitle = twtTextTeaser.htmlTagClassSubtitle.value %}
+
+{% set twtTxtTsrLzyLdng = twtTextTeaser.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtTxtTsrCssClass = twtTextTeaser.cssClass.value %}
+{% set twtTxtTsrCssClassTitle = twtTextTeaser.cssClassTitle.value %}
+{% set twtTxtTsrCssClassSubtitle = twtTextTeaser.cssClassSubtitle.value %}
+
+{# Set title attribute #}
+{# INFO: 'Title' (mandatory) #}
+{# @TODO: Add title to seo config ? #}
+{% set title = twtTxtTsrTitle %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-teaser']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% if twtTxtTsrDisplayMode == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{% set contentClasses = ['content'] %}
+
+{% if twtTxtTsrHoverEffect != 'none' %}
+    {% if twtTxtTsrHoverEffect == 'slideIn' %}
+        {% set contentClasses = ['fade-in']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'slideInUp' %}
+        {% set contentClasses = ['fade-in-up']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'slideInRight' %}
+        {% set contentClasses = ['fade-in-right']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'slideInDown' %}
+        {% set contentClasses = ['fade-in-down']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'slideInLeft' %}
+        {% set contentClasses = ['fade-in-left']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'zoomIn' %}
+        {% set contentClasses = ['zoom-in']|merge(contentClasses) %}
+    {% elseif twtTxtTsrHoverEffect == 'fadeOut' %}
+        {% set contentClasses = ['fade-out']|merge(contentClasses) %}
+    {#% elseif twtTxtTsrHoverEffect == null %}
+        {% set contentClasses = ['fade-in-right']|merge(contentClasses) %#}
+    {% endif %}
+{% endif %}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% if twtTxtTsrTextShadow == 'small' %}
+    {% set textClasses = 'twt-text-shadow-sm' %}
+{% elseif twtTxtTsrTextShadow == 'regular' %}
+    {% set textClasses = 'twt-text-shadow' %}
+{% elseif twtTxtTsrTextShadow == 'large' %}
+    {% set textClasses = 'twt-text-shadow-lg' %}
+{% endif %}
+
+{% set lazyloading = twtTxtTsrLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_text_teaser %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtTxtTsrVerticalAlign %} {# d-flex #} has-vertical-alignment{% endif %}{% if twtTxtTsrHoverEffect != 'none' %} is-hover{% endif %}{% if twtTxtTsrCssClass is not empty %} {{ twtTxtTsrCssClass }}{% endif %}"
+         style="background-color: {{ twtTxtTsrBackgroundColor }};{% if twtTxtTsrBorderRadius != '0' %} border-radius: {{ twtTxtTsrBorderRadius }};{% endif %}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_text_teaser_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtTxtTsrBorderRadius }};
+        {% block element_twt_text_teaser_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# block element_twt_text_teaser_content @deprecated #}
+        {% block element_twt_text_teaser_alignment %}
+            {# @TODO: {% if twtTxtTsrVerticalAlign and not isCover %} #}
+            {% if twtTxtTsrVerticalAlign %}
+                <div class="cms-element-alignment{% if twtTxtTsrVerticalAlign == 'center' %} align-self-center{% elseif twtTxtTsrVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                {% if twtTxtTsrDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {# block element_twt_text_teaser_image_inner @deprecated #}
+            {% block element_twt_text_teaser_inner %}
+                {# ThemeWare: Set text element #}
+                {% set textTeaser %}
+                    {% block element_twt_text_teaser_content_container %}
+                        <div class="twt-text-teaser-container cms-content-container content-container justify-content-{{ twtTxtTsrHorizontalAlignment }} align-items-{{ twtTxtTsrVerticalAlignment }}"
+                             style="padding: {{ twtTxtTsrPadding }};"
+                        >
+                            {# Colored overlay (if configured) #}
+                            {% if twtTxtTsrColorOverlay %}
+                                <div class="twt-text-teaser-overlay color-overlay"
+                                     style="background: {{ twtTxtTsrColorOverlayBgColor }};{% if twtTxtTsrColorOverlayBgGradient %} background: linear-gradient({{ twtTxtTsrColorOverlayBgGradientAngle }}deg, {{ twtTxtTsrColorOverlayBgColor }} 0%, {{ twtTxtTsrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# Text #}
+                            <div class="twt-text-teaser-content {{ contentClasses|sort|join(' ') }}"
+                                 style="text-align: {{ twtTxtTsrTextAlignment }}; width: {{ twtTxtTsrWidth }}; max-width: {{ twtTxtTsrMaxWidth }};">
+                                {# Title (mandatory) #}
+                                <{{ twtTxtTsrHtmlTag }} class="twt-text-teaser-title title text {{ twtTxtTsrHtmlTagClass }}{% if twtTxtTsrFontWeightTitle and twtTxtTsrFontWeightTitle != 'unset' %} fw-{{ twtTxtTsrFontWeightTitle }}{% endif %}{% if twtTxtTsrTextTransformTitle != 'none' %} text-{{ twtTxtTsrTextTransformTitle }}{% endif %} twt-font-family-{{ twtTxtTsrFontFamily }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtTxtTsrCssClassTitle is not empty %} {{ twtTxtTsrCssClassTitle }}{% endif %}"
+                                   style="color: {{ twtTxtTsrTextColorTitle  }};">
+                                    <span>{{ twtTxtTsrTitle }}</span>
+                                </{{ twtTxtTsrHtmlTag }}>
+
+                                {# Subtitle #}
+                                {% if twtTxtTsrSubtitle %}
+                                    <{{ twtTxtTsrHtmlTagSubtitle }} class="twt-text-teaser-subtitle subtitle text {{ twtTxtTsrHtmlTagClassSubtitle }} twt-font-family-{{ twtTxtTsrFontFamilySubtitle }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtTxtTsrCssClassSubtitle is not empty %} {{ twtTxtTsrCssClassSubtitle }}{% endif %}"
+                                       style="color: {{ twtTxtTsrTextColorSubtitle  }};">
+                                        {{ twtTxtTsrSubtitle }}
+                                    </{{ twtTxtTsrHtmlTagSubtitle }}>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_text_teaser_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-text-teaser-image-container {# w-100 #} cms-image-container image-container is-{{ twtTxtTsrDisplayMode }}"
+                                 {% if twtTxtTsrMinHeight and twtTxtTsrDisplayMode == 'cover' %} style="min-height: {{ twtTxtTsrMinHeight }};"{% endif %}>
+
+                                {# Add 'object-position' class to align the image horizontally if configured #}
+                                {% if twtTxtTsrDisplayMode == 'cover' and twtTxtTsrObjectPosition != 'center' %}
+                                    {% set imageClasses = 'cms-image object-position-'~twtTxtTsrObjectPosition %}
+                                {% else %}
+                                    {% set imageClasses = 'cms-image' %}
+                                {% endif %}
+
+                                {% block element_twt_text_teaser_image_media %}
+                                    {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                    {% set attributes = {
+                                        class: imageClasses,
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: title),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtTxtTsrDisplayMode == 'cover' or twtTxtTsrDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtTxtTsrDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load text element #}
+                                {{ textTeaser }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Text teaser" #}
+                {% block element_twt_text_teaser_content %}
+                    {% if twtTxtTsrUrl %}
+                        <a href="{{ twtTxtTsrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtTxtTsrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtTxtTsrVerticalAlign and not isCover %} #}
+            {% if twtTxtTsrVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

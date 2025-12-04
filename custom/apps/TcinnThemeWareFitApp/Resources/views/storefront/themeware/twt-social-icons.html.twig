@@ -1,0 +1,14 @@
+{# ThemeWare "Social icons" @App #}
+{#
+    @Storefront/storefront/themeware/twt-social-icons.html.twig
+#}
+
+{# @TODO: prüfen... #}
+
+{% block twt_social_icons %}
+    {% apply spaceless %}
+        <span class="icon icon-themeware icon-{{ icon }} icon-{{ style }}">
+            {% sw_include '@Storefront/storefront/themeware/social-icons/'~ style ~'/twt-icon-'~ icon ~'-'~ style ~'.html.twig' ignore missing %}
+        </span>
+    {% endapply %}
+{% endblock %}

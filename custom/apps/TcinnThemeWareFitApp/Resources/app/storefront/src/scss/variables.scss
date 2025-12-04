@@ -1,0 +1,20 @@
+﻿/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Skin variables
+    ==================================================
+    Imports all variables used by ThemeWare®.
+*/
+
+@import 'abstract/variables/bootstrap';
+@import 'abstract/variables/theme';
+//@import 'skin/shopware/abstract/variables';
+//@import '~vendor/bootstrap/scss/functions';
+//@import '~vendor/bootstrap/scss/variables';
+//@import '~vendor/bootstrap/scss/mixins';
+@import 'abstract/variables/custom';

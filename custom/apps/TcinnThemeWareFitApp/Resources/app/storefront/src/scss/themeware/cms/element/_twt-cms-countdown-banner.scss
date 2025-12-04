@@ -1,0 +1,316 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Countdown banner"
+	==================================================
+
+*/
+
+@if $twt-cms-countdown-banner-css == 2 { // #performance
+
+    .cms-element-twt-countdown-banner {
+        .twt-countdown-banner-container {
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding: 20px; // @TODO: konfigurierbar machen
+        }
+
+        .twt-countdown-banner-image-container {
+            //min-height: 240px;
+            background-repeat: no-repeat;
+            background-position: center;
+
+            &.is-cover {
+                background-size: cover;
+            }
+
+            @include media-breakpoint-up(md) { // min 768px"
+                &.is-fixed {
+                    background-attachment: fixed;
+                }
+            }
+
+            &.is-scroll {
+                background-attachment: scroll;
+            }
+
+            // iOS fix
+            @supports (-webkit-overflow-scrolling: touch) {
+                &.is-fixed {
+                    background-attachment: scroll !important;
+                }
+            }
+        }
+
+        // Layout 1 --------------------------------------------------------------------------------------------------------
+
+        .twt-countdown-banner-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column; // Elemente untereinander
+            width: 100%;
+            text-align: center;
+            //gap: .5rem;
+            z-index: 2;
+            //height: fit-content; // Needed if horizontal alignment needs to be configurable
+
+            &.justify-content-center {
+                gap: .5rem;
+            }
+
+            // @TODO: Add padding (avoid double padding due to padding of the container)
+            //&:not(.justify-content-center) {
+            //    > div {
+            //        padding: 0 .75rem;
+            //    }
+            //}
+        }
+
+        .twt-countdown-banner-headline {
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+
+        .twt-countdown-banner-subheadline {
+            font-weight: normal;
+            line-height: 1;
+            margin-bottom: 0;
+
+            &.h1 {
+                font-size: calc(#{$h1-font-size} - 3px);
+            }
+
+            &.h2 {
+                font-size: calc(#{$h2-font-size} - 3px);
+            }
+
+            &.h3 {
+                font-size: calc(#{$h3-font-size} - 3px);
+            }
+
+            &.h4 {
+                font-size: calc(#{$h4-font-size} - 3px);
+            }
+
+            &.h5 {
+                font-size: calc(#{$h5-font-size} - 3px);
+            }
+
+            &.h6 {
+                font-size: calc(#{$h6-font-size} - 3px);
+            }
+        }
+
+        .twt-countdown-banner-counter {
+            display: flex;
+            margin: 10px 0;
+
+            // Counter style 1 (min. 450px)
+            &.is-big-numbers {
+                //flex-direction: column; // Zahlen untereinander
+                gap: 1rem;
+
+                flex-direction: row; // Zahlen nebeneinander
+                flex-wrap: wrap;
+                justify-content: center;
+
+                @include media-breakpoint-up(xs) { // min 480px
+                    flex-direction: row; // Zahlen nebeneinander
+                    gap: 1rem;
+                }
+
+                @include media-breakpoint-up(md) { // min 768px
+                    gap: 1.5rem;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    gap: 2rem;
+                }
+
+                /*
+                .twt-countdown-banner-counter-item {
+                    position: relative;
+
+                    &:not(:last-child):before,
+                    &:not(:last-child):after {
+                        content: "";
+                        background-color: rgba(255, 255, 255, .3);
+                        height: 5px;
+                        width: 5px;
+                        border-radius: 50%;
+                        display: block;
+                        position: absolute;
+                        right: -1rem;
+                    }
+
+                    &:not(:last-child):before {
+                        top: 35%;
+                    }
+                }
+                */
+
+                .twt-countdown-banner-counter-item-number {
+                    font-size: 3.25rem;
+                    font-weight: $twt-font-weight-light; // @TODO: Handle via configuration
+                    line-height: 1;
+
+                    @include media-breakpoint-up(xs) { // min 480px
+                        font-size: 4.25rem;
+                    }
+                }
+
+                .twt-countdown-banner-counter-item-label {
+                    font-size: .875rem;
+                    font-weight: $twt-font-weight-normal; // @TODO: Handle via configuration
+                    text-transform: uppercase; // @TODO: Handle via configuration
+
+                    @include media-breakpoint-up(xs) { // min 480px
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+
+            // Counter style 2 (min. 320px)
+            &.is-colored-numbers {
+                flex-direction: row; // Zahlen nebeneinander
+                flex-wrap: wrap;
+                justify-content: center;
+                //margin-bottom: 0px;
+
+                .twt-countdown-banner-counter-item {
+                    min-width: 90px;
+                    //margin-bottom: 10px;
+                    padding: 5px;
+                }
+
+                .twt-countdown-banner-counter-item-number {
+                    font-size: 2.25rem;
+                    font-weight: $twt-font-weight-bold; // @TODO: Handle via configuration
+                    line-height: 50px;
+                    width: 100%;
+                    min-width: 70px;
+                    min-height: 70px;
+                    padding: 10px;
+                    border-radius: 4px;
+                }
+
+                .twt-countdown-banner-counter-item-label {
+                    font-size: 0.875rem;
+                    font-weight: $twt-font-weight-bold; // @TODO: Handle via configuration
+                    line-height: 1;
+                    margin-top: 5px;
+                    text-transform: uppercase; // @TODO: Handle via configuration
+
+                    //overflow: hidden;
+                    //text-overflow: ellipsis;
+                    //width: 100%;
+                }
+            }
+
+            // Counter style 3 (min. 610px)
+            &.is-colourful-counters {
+                flex-direction: row; // Zahlen nebeneinander
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: .75rem;
+
+                .twt-countdown-banner-counter-item {
+                    min-width: 105px;
+                    min-height: 90px;
+                    padding: 10px;
+                    border-radius: 5px;
+
+                    @include media-breakpoint-up(xs) { // min 480px
+                        min-width: 115px;
+                    }
+
+                    @include media-breakpoint-up(md) { // min 768px
+                        min-width: 120px;
+                        padding: 15px;
+                    }
+
+                    @include media-breakpoint-up(lg) { // min 992px
+                        min-width: 125px;
+                    }
+                }
+
+                .twt-countdown-banner-counter-item-number {
+                    font-size: 4rem;
+                    font-weight: $twt-font-weight-bold; // @TODO: Handle via configuration
+                    line-height: 1;
+                }
+
+                .twt-countdown-banner-counter-item-label {
+                    font-size: .7rem;
+                    font-weight: $twt-font-weight-light; // @TODO: Handle via configuration
+                    line-height: 1;
+                    margin-top: 5px;
+                    padding-left: 5px;
+                    letter-spacing: 4px;
+                    text-transform: uppercase; // @TODO: Handle via configuration
+                }
+            }
+        }
+
+        .twt-countdown-banner-counter-item {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            gap: .25rem;
+
+            @include media-breakpoint-up(xs) { // min 480px
+                gap: .5rem;
+            }
+        }
+
+        //.twt-countdown-banner-counter-item-number {
+        //}
+
+        //.twt-countdown-banner-counter-item-label {
+        //}
+    }
+
+}
+
+/*
+.triangles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    z-index: 1;
+
+    .left {
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 33.333%;
+    }
+
+    .right {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 33.333%;
+    }
+
+    .triangle {
+        position: absolute;
+    }
+
+    span {
+        position: absolute;
+    }
+}
+*/

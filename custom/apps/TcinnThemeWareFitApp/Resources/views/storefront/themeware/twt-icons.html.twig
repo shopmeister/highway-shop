@@ -1,0 +1,303 @@
+{# ThemeWare® icons #}
+{#
+	Convert snippet into sw_icon
+	Example: {% sw_include '@Storefront/storefront/themeware/twt-icons.html.twig' ignore missing with { icon: 'twt.extension.uspBar.icon1'|trans } %}
+	see https://github.com/shopware/shopware/tree/trunk/src/Storefront/Resources/app/storefront/dist/assets/icon
+
+	updated: 01-2025
+
+	@Storefront/storefront/themeware/twt-icons.html.twig
+#}
+
+{% block twt_icon_utility %}
+	{# @TODO: Array eigentlich unnötig. Diesbezüglich kann weiter optimiert werden. #}
+	{% set icons = [ '3d-placeholder', 'address', 'alert', 'align-center', 'align-justify', 'align-left', 'align-right',
+		'arrow-360-left', 'arrow-360-right', 'arrow-circle-down', 'arrow-circle-left', 'arrow-circle-right',
+		'arrow-circle-up', 'arrow-down', 'arrow-head-down', 'arrow-head-left', 'arrow-head-right', 'arrow-head-up',
+		'arrow-left', 'arrow-move-horizontal-axis', 'arrow-move-vertical-axis', 'arrow-right', 'arrow-scroll',
+		'arrow-simple-long-right', 'arrow-switch', 'arrow-turn-left', 'arrow-turn-right', 'arrow-up-down', 'arrow-up',
+		'augmented', 'avatar-multiple', 'avatar', 'bag-product', 'bag', 'basket', 'beer', 'bell-bell', 'bell-crossed',
+		'blocked', 'bold', 'bookmark', 'books', 'briefcase', 'browser', 'bug', 'bulk-edit', 'calendar-empty', 'calendar',
+		'cart', 'chart-bar-filled', 'chart-bar', 'chart-pie', 'chart-sales', 'chart', 'checkmark-block', 'checkmark-circle',
+		'checkmark-wide-block', 'checkmark-wide', 'checkmark', 'circle-download', 'circle-upload', 'circle', 'clock',
+		'cloud-download', 'cloud-upload', 'cockpit', 'code', 'colorpicker', 'content', 'cube-3d-shade', 'dashboard',
+		'database', 'debug', 'desktop', 'document-view', 'drag-horizontal', 'drag-vertical', 'duplicate', 'editor-align-left',
+		'editor-align-right', 'editor-bold', 'editor-code', 'editor-expand', 'editor-italic', 'editor-link', 'editor-list-numberd',
+		'editor-list-unordered', 'editor-list', 'editor-media', 'editor-re-undo', 'editor-redo', 'editor-shrink', 'editor-strikethrough',
+		'editor-style', 'editor-subscript', 'editor-superscript', 'editor-table', 'editor-underline', 'editor-undo 2', 'editor-undo',
+		'emoji', 'envelope', 'error', 'euro', 'external', 'eye-crossed', 'eye-open', 'file', 'filter', 'flag', 'floor-ar-splash',
+		'folder-thumbnail', 'forward', 'gamecontroler', 'globe', 'gps', 'grab', 'graduate-cap', 'handtouch', 'harddisk', 'headset',
+		'heart-fill', 'heart', 'help', 'history', 'home', 'hourglass', 'image', 'inbox', 'infinity', 'info', 'italic', 'keyboard',
+		'lab-flask', 'laptop', 'layers', 'layout', 'lightbulb', 'link', 'list', 'loading-circle', 'loading-star', 'lock-closed',
+		'lock-fingerprint', 'lock-key', 'lock-open', 'log-in', 'log-out', 'map-closed', 'map-open', 'map', 'marker', 'marketing',
+		'medal', 'micophone', 'minus-block', 'minus-circle', 'minus-wide', 'minus', 'mobile', 'money-card', 'money-cash', 'money-wallet',
+		'moon', 'more-horizontal', 'more-vertical', 'move-file', 'package-closed', 'package-gift', 'package-open', 'paint',
+		'paper-pencil-signed', 'paper-pencil', 'paperclip', 'paperplane', 'pawn', 'pencil-brush', 'phone', 'photocamera', 'placeholder',
+		'plastic-bag', 'plug', 'plus-block', 'plus-circle', 'plus-wide', 'plus', 'preview', 'printer', 'products', 'pulse', 'pushpin',
+		'puzzle-piece', 'quickjump', 'quote', 'replace', 'reply', 'rocket', 'rule', 'ruler-pencil', 'save', 'screen-full', 'screen-minimize',
+		'search', 'server', 'settings', 'share', 'shield', 'shop', 'shopware', 'sidebar-close', 'sidebar-open', 'sliders-horizontal',
+		'sliders', 'sofa', 'sort-down', 'sort-up', 'sparkles', 'speech-bubble', 'speech-bubbles', 'square', 'stack-block', 'stack-circle',
+		'stack', 'star-half', 'star', 'sun', 'surface', 'tablet', 'tags', 'target-big', 'target-with-block', 'terminal', 'text-table',
+		'thumb-down', 'thumb-up', 'tools', 'traffic-pawn', 'trash', 'tray-down', 'tray-up', 'triangle', 'trophy', 'truck', 'underline',
+		'variants', 'video-camera', 'view-compact', 'view-grid', 'view-normal', 'view-split', 'warning', 'x-block', 'x-circle', 'x-wide', 'x'
+	] %}
+
+	{% if icon in icons %}
+		{% sw_include "@Storefront/storefront/utilities/icon.html.twig" with { 'name': icon, 'ariaHidden': 'true' } %}
+
+	{% else %}
+		{# Optional: Default Icon #}
+
+	{% endif %}
+{% endblock %}
+
+{# @deprecated
+{% block twt_icon_calculation %}
+	{% if icon == 'address' %}{% sw_icon 'address' style { ariaHidden: true } %}
+	{% elseif icon == 'alert' %}{% sw_icon 'alert' style { ariaHidden: true } %}
+	{% elseif icon == 'align-center' %}{% sw_icon 'align-center' style { ariaHidden: true } %}
+	{% elseif icon == 'align-justify' %}{% sw_icon 'align-justify' style { ariaHidden: true } %}
+	{% elseif icon == 'align-left' %}{% sw_icon 'align-left' style { ariaHidden: true } %}
+	{% elseif icon == 'align-right' %}{% sw_icon 'align-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-360-left' %}{% sw_icon 'arrow-360-left' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-360-right' %}{% sw_icon 'arrow-360-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-circle-down' %}{% sw_icon 'arrow-circle-down' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-circle-left' %}{% sw_icon 'arrow-circle-left' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-circle-right' %}{% sw_icon 'arrow-circle-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-circle-up' %}{% sw_icon 'arrow-circle-up' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-down' %}{% sw_icon 'arrow-down' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-head-down' %}{% sw_icon 'arrow-head-down' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-head-left' %}{% sw_icon 'arrow-head-left' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-head-right' %}{% sw_icon 'arrow-head-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-head-up' %}{% sw_icon 'arrow-head-up' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-left' %}{% sw_icon 'arrow-left' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-move-horizontal-axis' %}{% sw_icon 'arrow-move-horizontal-axis' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-move-vertical-axis' %}{% sw_icon 'arrow-move-vertical-axis' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-right' %}{% sw_icon 'arrow-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-scroll' %}{% sw_icon 'arrow-scroll' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-simple-long-right' %}{% sw_icon 'arrow-simple-long-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-switch' %}{% sw_icon 'arrow-switch' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-turn-left' %}{% sw_icon 'arrow-turn-left' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-turn-right' %}{% sw_icon 'arrow-turn-right' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-up-down' %}{% sw_icon 'arrow-up-down' style { ariaHidden: true } %}
+	{% elseif icon == 'arrow-up' %}{% sw_icon 'arrow-up' style { ariaHidden: true } %}
+	{% elseif icon == 'avatar-multiple' %}{% sw_icon 'avatar-multiple' style { ariaHidden: true } %}
+	{% elseif icon == 'avatar' %}{% sw_icon 'avatar' style { ariaHidden: true } %}
+	{% elseif icon == 'bag-product' %}{% sw_icon 'bag-product' style { ariaHidden: true } %}
+	{% elseif icon == 'bag' %}{% sw_icon 'bag' style { ariaHidden: true } %}
+	{% elseif icon == 'basket' %}{% sw_icon 'basket' style { ariaHidden: true } %}
+	{% elseif icon == 'beer' %}{% sw_icon 'beer' style { ariaHidden: true } %}
+	{% elseif icon == 'bell-bell' %}{% sw_icon 'bell-bell' style { ariaHidden: true } %}
+	{% elseif icon == 'bell-crossed' %}{% sw_icon 'bell-crossed' style { ariaHidden: true } %}
+	{% elseif icon == 'blocked' %}{% sw_icon 'blocked' style { ariaHidden: true } %}
+	{% elseif icon == 'bold' %}{% sw_icon 'bold' style { ariaHidden: true } %}
+	{% elseif icon == 'bookmark' %}{% sw_icon 'bookmark' style { ariaHidden: true } %}
+	{% elseif icon == 'books' %}{% sw_icon 'books' style { ariaHidden: true } %}
+	{% elseif icon == 'briefcase' %}{% sw_icon 'briefcase' style { ariaHidden: true } %}
+	{% elseif icon == 'browser' %}{% sw_icon 'browser' style { ariaHidden: true } %}
+	{% elseif icon == 'bug' %}{% sw_icon 'bug' style { ariaHidden: true } %}
+	{% elseif icon == 'bulk-edit' %}{% sw_icon 'bulk-edit' style { ariaHidden: true } %}
+	{% elseif icon == 'calendar-empty' %}{% sw_icon 'calendar-empty' style { ariaHidden: true } %}
+	{% elseif icon == 'calendar' %}{% sw_icon 'calendar' style { ariaHidden: true } %}
+	{% elseif icon == 'cart' %}{% sw_icon 'cart' style { ariaHidden: true } %}
+	{% elseif icon == 'chart-bar-filled' %}{% sw_icon 'chart-bar-filled' style { ariaHidden: true } %}
+	{% elseif icon == 'chart-bar' %}{% sw_icon 'chart-bar' style { ariaHidden: true } %}
+	{% elseif icon == 'chart-pie' %}{% sw_icon 'chart-pie' style { ariaHidden: true } %}
+	{% elseif icon == 'chart-sales' %}{% sw_icon 'chart-sales' style { ariaHidden: true } %}
+	{% elseif icon == 'chart' %}{% sw_icon 'chart' style { ariaHidden: true } %}
+	{% elseif icon == 'checkmark-block' %}{% sw_icon 'checkmark-block' style { ariaHidden: true } %}
+	{% elseif icon == 'checkmark-circle' %}{% sw_icon 'checkmark-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'checkmark-wide-block' %}{% sw_icon 'checkmark-wide-block' style { ariaHidden: true } %}
+	{% elseif icon == 'checkmark-wide' %}{% sw_icon 'checkmark-wide' style { ariaHidden: true } %}
+	{% elseif icon == 'checkmark' %}{% sw_icon 'checkmark' style { ariaHidden: true } %}
+	{% elseif icon == 'circle-download' %}{% sw_icon 'circle-download' style { ariaHidden: true } %}
+	{% elseif icon == 'circle-upload' %}{% sw_icon 'circle-upload' style { ariaHidden: true } %}
+	{% elseif icon == 'circle' %}{% sw_icon 'circle' style { ariaHidden: true } %}
+	{% elseif icon == 'clock' %}{% sw_icon 'clock' style { ariaHidden: true } %}
+	{% elseif icon == 'cloud-download' %}{% sw_icon 'cloud-download' style { ariaHidden: true } %}
+	{% elseif icon == 'cloud-upload' %}{% sw_icon 'cloud-upload' style { ariaHidden: true } %}
+	{% elseif icon == 'cockpit' %}{% sw_icon 'cockpit' style { ariaHidden: true } %}
+	{% elseif icon == 'code' %}{% sw_icon 'code' style { ariaHidden: true } %}
+	{% elseif icon == 'colorpicker' %}{% sw_icon 'colorpicker' style { ariaHidden: true } %}
+	{% elseif icon == 'content' %}{% sw_icon 'content' style { ariaHidden: true } %}
+	{% elseif icon == 'dashboard' %}{% sw_icon 'dashboard' style { ariaHidden: true } %}
+	{% elseif icon == 'database' %}{% sw_icon 'database' style { ariaHidden: true } %}
+	{% elseif icon == 'debug' %}{% sw_icon 'debug' style { ariaHidden: true } %}
+	{% elseif icon == 'desktop' %}{% sw_icon 'desktop' style { ariaHidden: true } %}
+	{% elseif icon == 'document-view' %}{% sw_icon 'document-view' style { ariaHidden: true } %}
+	{% elseif icon == 'drag-horizontal' %}{% sw_icon 'drag-horizontal' style { ariaHidden: true } %}
+	{% elseif icon == 'drag-vertical' %}{% sw_icon 'drag-vertical' style { ariaHidden: true } %}
+	{% elseif icon == 'duplicate' %}{% sw_icon 'duplicate' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-align-left' %}{% sw_icon 'editor-align-left' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-align-right' %}{% sw_icon 'editor-align-right' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-bold' %}{% sw_icon 'editor-bold' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-code' %}{% sw_icon 'editor-code' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-expand' %}{% sw_icon 'editor-expand' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-italic' %}{% sw_icon 'editor-italic' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-link' %}{% sw_icon 'editor-link' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-list-numberd' %}{% sw_icon 'editor-list-numberd' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-list-unordered' %}{% sw_icon 'editor-list-unordered' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-list' %}{% sw_icon 'editor-list' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-media' %}{% sw_icon 'editor-media' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-re-undo' %}{% sw_icon 'editor-re-undo' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-redo' %}{% sw_icon 'editor-redo' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-shrink' %}{% sw_icon 'editor-shrink' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-strikethrough' %}{% sw_icon 'editor-strikethrough' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-style' %}{% sw_icon 'editor-style' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-subscript' %}{% sw_icon 'editor-subscript' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-superscript' %}{% sw_icon 'editor-superscript' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-table' %}{% sw_icon 'editor-table' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-underline' %}{% sw_icon 'editor-underline' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-undo 2' %}{% sw_icon 'editor-undo 2' style { ariaHidden: true } %}
+	{% elseif icon == 'editor-undo' %}{% sw_icon 'editor-undo' style { ariaHidden: true } %}
+	{% elseif icon == 'emoji' %}{% sw_icon 'emoji' style { ariaHidden: true } %}
+	{% elseif icon == 'envelope' %}{% sw_icon 'envelope' style { ariaHidden: true } %}
+	{% elseif icon == 'error' %}{% sw_icon 'error' style { ariaHidden: true } %}
+	{% elseif icon == 'euro' %}{% sw_icon 'euro' style { ariaHidden: true } %}
+	{% elseif icon == 'external' %}{% sw_icon 'external' style { ariaHidden: true } %}
+	{% elseif icon == 'eye-crossed' %}{% sw_icon 'eye-crossed' style { ariaHidden: true } %}
+	{% elseif icon == 'eye-open' %}{% sw_icon 'eye-open' style { ariaHidden: true } %}
+	{% elseif icon == 'file' %}{% sw_icon 'file' style { ariaHidden: true } %}
+	{% elseif icon == 'filter' %}{% sw_icon 'filter' style { ariaHidden: true } %}
+	{% elseif icon == 'flag' %}{% sw_icon 'flag' style { ariaHidden: true } %}
+	{% elseif icon == 'folder-thumbnail' %}{% sw_icon 'folder-thumbnail' style { ariaHidden: true } %}
+	{% elseif icon == 'forward' %}{% sw_icon 'forward' style { ariaHidden: true } %}
+	{% elseif icon == 'gamecontroler' %}{% sw_icon 'gamecontroler' style { ariaHidden: true } %}
+	{% elseif icon == 'globe' %}{% sw_icon 'globe' style { ariaHidden: true } %}
+	{% elseif icon == 'gps' %}{% sw_icon 'gps' style { ariaHidden: true } %}
+	{% elseif icon == 'grab' %}{% sw_icon 'grab' style { ariaHidden: true } %}
+	{% elseif icon == 'graduate-cap' %}{% sw_icon 'graduate-cap' style { ariaHidden: true } %}
+	{% elseif icon == 'harddisk' %}{% sw_icon 'harddisk' style { ariaHidden: true } %}
+	{% elseif icon == 'headset' %}{% sw_icon 'headset' style { ariaHidden: true } %}
+	{% elseif icon == 'heart' %}{% sw_icon 'heart' style { ariaHidden: true } %}
+	{% elseif icon == 'help' %}{% sw_icon 'help' style { ariaHidden: true } %}
+	{% elseif icon == 'history' %}{% sw_icon 'history' style { ariaHidden: true } %}
+	{% elseif icon == 'home' %}{% sw_icon 'home' style { ariaHidden: true } %}
+	{% elseif icon == 'hourglass' %}{% sw_icon 'hourglass' style { ariaHidden: true } %}
+	{% elseif icon == 'image' %}{% sw_icon 'image' style { ariaHidden: true } %}
+	{% elseif icon == 'inbox' %}{% sw_icon 'inbox' style { ariaHidden: true } %}
+	{% elseif icon == 'infinity' %}{% sw_icon 'infinity' style { ariaHidden: true } %}
+	{% elseif icon == 'info' %}{% sw_icon 'info' style { ariaHidden: true } %}
+	{% elseif icon == 'italic' %}{% sw_icon 'italic' style { ariaHidden: true } %}
+	{% elseif icon == 'keyboard' %}{% sw_icon 'keyboard' style { ariaHidden: true } %}
+	{% elseif icon == 'lab-flask' %}{% sw_icon 'lab-flask' style { ariaHidden: true } %}
+	{% elseif icon == 'laptop' %}{% sw_icon 'laptop' style { ariaHidden: true } %}
+	{% elseif icon == 'layers' %}{% sw_icon 'layers' style { ariaHidden: true } %}
+	{% elseif icon == 'layout' %}{% sw_icon 'layout' style { ariaHidden: true } %}
+	{% elseif icon == 'lightbulb' %}{% sw_icon 'lightbulb' style { ariaHidden: true } %}
+	{% elseif icon == 'link' %}{% sw_icon 'link' style { ariaHidden: true } %}
+	{% elseif icon == 'list' %}{% sw_icon 'list' style { ariaHidden: true } %}
+	{% elseif icon == 'loading-circle' %}{% sw_icon 'loading-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'loading-star' %}{% sw_icon 'loading-star' style { ariaHidden: true } %}
+	{% elseif icon == 'lock-closed' %}{% sw_icon 'lock-closed' style { ariaHidden: true } %}
+	{% elseif icon == 'lock-fingerprint' %}{% sw_icon 'lock-fingerprint' style { ariaHidden: true } %}
+	{% elseif icon == 'lock-key' %}{% sw_icon 'lock-key' style { ariaHidden: true } %}
+	{% elseif icon == 'lock-open' %}{% sw_icon 'lock-open' style { ariaHidden: true } %}
+	{% elseif icon == 'log-in' %}{% sw_icon 'log-in' style { ariaHidden: true } %}
+	{% elseif icon == 'log-out' %}{% sw_icon 'log-out' style { ariaHidden: true } %}
+	{% elseif icon == 'map-closed' %}{% sw_icon 'map-closed' style { ariaHidden: true } %}
+	{% elseif icon == 'map-open' %}{% sw_icon 'map-open' style { ariaHidden: true } %}
+	{% elseif icon == 'map' %}{% sw_icon 'map' style { ariaHidden: true } %}
+	{% elseif icon == 'marker' %}{% sw_icon 'marker' style { ariaHidden: true } %}
+	{% elseif icon == 'marketing' %}{% sw_icon 'marketing' style { ariaHidden: true } %}
+	{% elseif icon == 'medal' %}{% sw_icon 'medal' style { ariaHidden: true } %}
+	{% elseif icon == 'micophone' %}{% sw_icon 'micophone' style { ariaHidden: true } %}
+	{% elseif icon == 'minus-block' %}{% sw_icon 'minus-block' style { ariaHidden: true } %}
+	{% elseif icon == 'minus-circle' %}{% sw_icon 'minus-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'minus-wide' %}{% sw_icon 'minus-wide' style { ariaHidden: true } %}
+	{% elseif icon == 'minus' %}{% sw_icon 'minus' style { ariaHidden: true } %}
+	{% elseif icon == 'mobile' %}{% sw_icon 'mobile' style { ariaHidden: true } %}
+	{% elseif icon == 'money-card' %}{% sw_icon 'money-card' style { ariaHidden: true } %}
+	{% elseif icon == 'money-cash' %}{% sw_icon 'money-cash' style { ariaHidden: true } %}
+	{% elseif icon == 'money-wallet' %}{% sw_icon 'money-wallet' style { ariaHidden: true } %}
+	{% elseif icon == 'moon' %}{% sw_icon 'moon' style { ariaHidden: true } %}
+	{% elseif icon == 'more-horizontal' %}{% sw_icon 'more-horizontal' style { ariaHidden: true } %}
+	{% elseif icon == 'more-vertical' %}{% sw_icon 'more-vertical' style { ariaHidden: true } %}
+	{% elseif icon == 'move-file' %}{% sw_icon 'move-file' style { ariaHidden: true } %}
+	{% elseif icon == 'package-closed' %}{% sw_icon 'package-closed' style { ariaHidden: true } %}
+	{% elseif icon == 'package-gift' %}{% sw_icon 'package-gift' style { ariaHidden: true } %}
+	{% elseif icon == 'package-open' %}{% sw_icon 'package-open' style { ariaHidden: true } %}
+	{% elseif icon == 'paint' %}{% sw_icon 'paint' style { ariaHidden: true } %}
+	{% elseif icon == 'paper-pencil-signed' %}{% sw_icon 'paper-pencil-signed' style { ariaHidden: true } %}
+	{% elseif icon == 'paper-pencil' %}{% sw_icon 'paper-pencil' style { ariaHidden: true } %}
+	{% elseif icon == 'paperclip' %}{% sw_icon 'paperclip' style { ariaHidden: true } %}
+	{% elseif icon == 'paperplane' %}{% sw_icon 'paperplane' style { ariaHidden: true } %}
+	{% elseif icon == 'pawn' %}{% sw_icon 'pawn' style { ariaHidden: true } %}
+	{% elseif icon == 'pencil-brush' %}{% sw_icon 'pencil-brush' style { ariaHidden: true } %}
+	{% elseif icon == 'photocamera' %}{% sw_icon 'photocamera' style { ariaHidden: true } %}
+	{% elseif icon == 'placeholder' %}{% sw_icon 'placeholder' style { ariaHidden: true } %}
+	{% elseif icon == 'plastic-bag' %}{% sw_icon 'plastic-bag' style { ariaHidden: true } %}
+	{% elseif icon == 'plug' %}{% sw_icon 'plug' style { ariaHidden: true } %}
+	{% elseif icon == 'plus-block' %}{% sw_icon 'plus-block' style { ariaHidden: true } %}
+	{% elseif icon == 'plus-circle' %}{% sw_icon 'plus-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'plus-wide' %}{% sw_icon 'plus-wide' style { ariaHidden: true } %}
+	{% elseif icon == 'plus' %}{% sw_icon 'plus' style { ariaHidden: true } %}
+	{% elseif icon == 'preview' %}{% sw_icon 'preview' style { ariaHidden: true } %}
+	{% elseif icon == 'printer' %}{% sw_icon 'printer' style { ariaHidden: true } %}
+	{% elseif icon == 'products' %}{% sw_icon 'products' style { ariaHidden: true } %}
+	{% elseif icon == 'pulse' %}{% sw_icon 'pulse' style { ariaHidden: true } %}
+	{% elseif icon == 'pushpin' %}{% sw_icon 'pushpin' style { ariaHidden: true } %}
+	{% elseif icon == 'puzzle-piece' %}{% sw_icon 'puzzle-piece' style { ariaHidden: true } %}
+	{% elseif icon == 'quickjump' %}{% sw_icon 'quickjump' style { ariaHidden: true } %}
+	{% elseif icon == 'quote' %}{% sw_icon 'quote' style { ariaHidden: true } %}
+	{% elseif icon == 'replace' %}{% sw_icon 'replace' style { ariaHidden: true } %}
+	{% elseif icon == 'reply' %}{% sw_icon 'reply' style { ariaHidden: true } %}
+	{% elseif icon == 'rocket' %}{% sw_icon 'rocket' style { ariaHidden: true } %}
+	{% elseif icon == 'rule' %}{% sw_icon 'rule' style { ariaHidden: true } %}
+	{% elseif icon == 'ruler-pencil' %}{% sw_icon 'ruler-pencil' style { ariaHidden: true } %}
+	{% elseif icon == 'save' %}{% sw_icon 'save' style { ariaHidden: true } %}
+	{% elseif icon == 'screen-full' %}{% sw_icon 'screen-full' style { ariaHidden: true } %}
+	{% elseif icon == 'screen-minimize' %}{% sw_icon 'screen-minimize' style { ariaHidden: true } %}
+	{% elseif icon == 'search' %}{% sw_icon 'search' style { ariaHidden: true } %}
+	{% elseif icon == 'server' %}{% sw_icon 'server' style { ariaHidden: true } %}
+	{% elseif icon == 'settings' %}{% sw_icon 'settings' style { ariaHidden: true } %}
+	{% elseif icon == 'share' %}{% sw_icon 'share' style { ariaHidden: true } %}
+	{% elseif icon == 'shield' %}{% sw_icon 'shield' style { ariaHidden: true } %}
+	{% elseif icon == 'shop' %}{% sw_icon 'shop' style { ariaHidden: true } %}
+	{% elseif icon == 'shopware' %}{% sw_icon 'shopware' style { ariaHidden: true } %}
+	{% elseif icon == 'sidebar-close' %}{% sw_icon 'sidebar-close' style { ariaHidden: true } %}
+	{% elseif icon == 'sidebar-open' %}{% sw_icon 'sidebar-open' style { ariaHidden: true } %}
+	{% elseif icon == 'sliders-horizontal' %}{% sw_icon 'sliders-horizontal' style { ariaHidden: true } %}
+	{% elseif icon == 'sliders' %}{% sw_icon 'sliders' style { ariaHidden: true } %}
+	{% elseif icon == 'sofa' %}{% sw_icon 'sofa' style { ariaHidden: true } %}
+	{% elseif icon == 'sort-down' %}{% sw_icon 'sort-down' style { ariaHidden: true } %}
+	{% elseif icon == 'sort-up' %}{% sw_icon 'sort-up' style { ariaHidden: true } %}
+	{% elseif icon == 'speech-bubble' %}{% sw_icon 'speech-bubble' style { ariaHidden: true } %}
+	{% elseif icon == 'speech-bubbles' %}{% sw_icon 'speech-bubbles' style { ariaHidden: true } %}
+	{% elseif icon == 'square' %}{% sw_icon 'square' style { ariaHidden: true } %}
+	{% elseif icon == 'stack-block' %}{% sw_icon 'stack-block' style { ariaHidden: true } %}
+	{% elseif icon == 'stack-circle' %}{% sw_icon 'stack-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'stack' %}{% sw_icon 'stack' style { ariaHidden: true } %}
+	{% elseif icon == 'star-half' %}{% sw_icon 'star-half' style { ariaHidden: true } %}
+	{% elseif icon == 'star' %}{% sw_icon 'star' style { ariaHidden: true } %}
+	{% elseif icon == 'sun' %}{% sw_icon 'sun' style { ariaHidden: true } %}
+	{% elseif icon == 'tablet' %}{% sw_icon 'tablet' style { ariaHidden: true } %}
+	{% elseif icon == 'tags' %}{% sw_icon 'tags' style { ariaHidden: true } %}
+	{% elseif icon == 'target-big' %}{% sw_icon 'target-big' style { ariaHidden: true } %}
+	{% elseif icon == 'target-with-block' %}{% sw_icon 'target-with-block' style { ariaHidden: true } %}
+	{% elseif icon == 'terminal' %}{% sw_icon 'terminal' style { ariaHidden: true } %}
+	{% elseif icon == 'text-table' %}{% sw_icon 'text-table' style { ariaHidden: true } %}
+	{% elseif icon == 'thumb-down' %}{% sw_icon 'thumb-down' style { ariaHidden: true } %}
+	{% elseif icon == 'thumb-up' %}{% sw_icon 'thumb-up' style { ariaHidden: true } %}
+	{% elseif icon == 'tools' %}{% sw_icon 'tools' style { ariaHidden: true } %}
+	{% elseif icon == 'traffic-pawn' %}{% sw_icon 'traffic-pawn' style { ariaHidden: true } %}
+	{% elseif icon == 'trash' %}{% sw_icon 'trash' style { ariaHidden: true } %}
+	{% elseif icon == 'tray-down' %}{% sw_icon 'tray-down' style { ariaHidden: true } %}
+	{% elseif icon == 'tray-up' %}{% sw_icon 'tray-up' style { ariaHidden: true } %}
+	{% elseif icon == 'triangle' %}{% sw_icon 'triangle' style { ariaHidden: true } %}
+	{% elseif icon == 'trophy' %}{% sw_icon 'trophy' style { ariaHidden: true } %}
+	{% elseif icon == 'underline' %}{% sw_icon 'underline' style { ariaHidden: true } %}
+	{% elseif icon == 'variants' %}{% sw_icon 'variants' style { ariaHidden: true } %}
+	{% elseif icon == 'video-camera' %}{% sw_icon 'video-camera' style { ariaHidden: true } %}
+	{% elseif icon == 'view-compact' %}{% sw_icon 'view-compact' style { ariaHidden: true } %}
+	{% elseif icon == 'view-grid' %}{% sw_icon 'view-grid' style { ariaHidden: true } %}
+	{% elseif icon == 'view-normal' %}{% sw_icon 'view-normal' style { ariaHidden: true } %}
+	{% elseif icon == 'view-split' %}{% sw_icon 'view-split' style { ariaHidden: true } %}
+	{% elseif icon == 'warning' %}{% sw_icon 'warning' style { ariaHidden: true } %}
+	{% elseif icon == 'x-block' %}{% sw_icon 'x-block' style { ariaHidden: true } %}
+	{% elseif icon == 'x-circle' %}{% sw_icon 'x-circle' style { ariaHidden: true } %}
+	{% elseif icon == 'x-wide' %}{% sw_icon 'x-wide' style { ariaHidden: true } %}
+	{% elseif icon == 'x' %}{% sw_icon 'x' style { ariaHidden: true } %}
+	{% endif %}
+{% endblock %}
+#}

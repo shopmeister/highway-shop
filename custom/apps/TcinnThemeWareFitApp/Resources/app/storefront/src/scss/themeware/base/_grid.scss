@@ -1,0 +1,62 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® grid extension
+    ==================================================
+    Adds 5 column styles by ThemeWare®
+
+    Info: A grid of five columns cannot be added into the inheritance order of the base grid without recreating the grid.
+    Therefore we use single breakpoints 'media-breakpoint-only' here.
+*/
+
+// Currently unused
+//@include media-breakpoint-only(xs) { // min 0px, max 575.98px
+//    .col-2-4 {
+//        flex: 0 0 auto;
+//        width: 20%;
+//    }
+//}
+
+// Currently unused
+//@include media-breakpoint-only(sm) { // min 576px, max 767.98px
+//    .col-sm-2-4 {
+//        flex: 0 0 auto;
+//        width: 20%;
+//    }
+//}
+
+// Currently unused
+//@include media-breakpoint-only(md) { // min 768px, max 991.98px
+//    .col-md-2-4 {
+//        flex: 0 0 auto;
+//        width: 20%;
+//    }
+//}
+
+@include media-breakpoint-only(lg) { // min 992px, max 1199.98px
+    .col-lg-2-4 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+//@include media-breakpoint-only(xl) { // min 1200px, max 1399.98px
+@include media-breakpoint-up(xl) { // min 1200px
+    .col-xl-2-4 {
+        flex: 0 0 auto;
+        width: 20%;
+    }
+}
+
+// Currently unused
+//@include media-breakpoint-up(xxl) { // min 1440px (1400px)
+//    .col-xxl-2-4 {
+//        flex: 0 0 auto;
+//        width: 20%;
+//    }
+//}

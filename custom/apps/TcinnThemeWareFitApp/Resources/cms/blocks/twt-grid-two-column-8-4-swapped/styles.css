@@ -1,0 +1,116 @@
+/*
+ * Styling of your block preview in the CMS sidebar
+ */
+.sw-cms-preview-twt-grid-two-column-8-4-swapped {
+    position: relative;
+    display: grid;
+    padding: 15px;
+    grid-template-columns: 8fr 4fr;
+    grid-column-gap: 15px;
+}
+
+.sw-cms-preview-twt-grid-two-column-8-4-swapped hr {
+    max-width: inherit;
+    height: .4em;
+    margin: 0 0 5px 0;
+    border: none;
+    border-radius: 25px;
+    background: #d1d9e0;
+}
+
+.sw-cms-preview-twt-grid-two-column-8-4-swapped hr.image {
+    padding-bottom: 40%;
+}
+
+.sw-cms-preview-twt-grid-two-column-8-4-swapped hr:not(.image):last-child {
+    margin-right: 60%;
+}
+
+.sw-cms-preview-twt-grid-two-column-8-4-swapped .sw-cms-preview-twt-badge-component {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    width: 16px;
+    height: auto;
+    box-shadow: 0 3px 8px 0 rgb(90 141 238 / 40%);
+}
+
+/*
+ * Styling of your block in the CMS editor
+ * Pattern: sw-cms-block-${block.name}-component
+ */
+.sw-cms-block-twt-grid-two-column-8-4-swapped-component {
+    position: relative;
+    display: grid;
+    padding: 15px;
+    grid-template-columns: 8fr 4fr;
+    grid-gap: 40px;
+}
+
+.sw-cms-block-twt-grid-two-column-8-4-swapped-component hr {
+    max-width: inherit;
+    height: .4em;
+    margin: 0 0 5px 0;
+    border: none;
+    border-radius: 25px;
+    background: #d1d9e0;
+}
+
+.sw-cms-block-twt-grid-two-column-8-4-swapped-component hr.image {
+    padding-bottom: 40%;
+}
+
+.sw-cms-block-twt-grid-two-column-8-4-swapped-component hr:not(.image):last-child {
+    margin-right: 60%;
+}
+
+.sw-cms-block-twt-grid-two-column-8-4-swapped-component .sw-cms-preview-twt-badge-component {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    display: none;
+    width: 16px;
+    height: auto;
+    box-shadow: 0 3px 8px 0 rgb(90 141 238 / 40%);
+    display: none;
+}
+
+
+/* ThemeWare® CSS column spacings (padding) */
+
+.twt-cms-col-padding-0 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 0px; }
+.twt-cms-col-padding-5 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 10px; }
+.twt-cms-col-padding-10 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 20px; }
+.twt-cms-col-padding-15 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 30px; }
+/*.twt-cms-col-padding-20 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 40px; } < default */
+.twt-cms-col-padding-25 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 50px; }
+.twt-cms-col-padding-30 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 60px; }
+.twt-cms-col-padding-35 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 70px; }
+.twt-cms-col-padding-40 .sw-cms-block-twt-grid-two-column-8-4-swapped-component { grid-gap: 80px; }
+
+/* ThemeWare® Column blocks > mobile representation */
+
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component {
+    grid-template-columns: 1fr;
+    grid-gap: 0;
+}
+
+/* ThemeWare® CSS column spacings (margin-bottom) > mobile representation */
+
+/* div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-0 { grid-gap: 0 !important; } < default */
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-5 { grid-gap: 5px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-10 { grid-gap: 10px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-15 { grid-gap: 15px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-20 { grid-gap: 20px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-25 { grid-gap: 25px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-30 { grid-gap: 30px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-35 { grid-gap: 35px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-40 { grid-gap: 40px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-45 { grid-gap: 45px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-50 { grid-gap: 50px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-55 { grid-gap: 55px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-60 { grid-gap: 60px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-65 { grid-gap: 65px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-70 { grid-gap: 70px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-75 { grid-gap: 75px !important; }
+div.sw-cms-stage.is--mobile .sw-cms-block-twt-grid-two-column-8-4-swapped-component .twt-cms-col-margin-80 { grid-gap: 80px !important; }

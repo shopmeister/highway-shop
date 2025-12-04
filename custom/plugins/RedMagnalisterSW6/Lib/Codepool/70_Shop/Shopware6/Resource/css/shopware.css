@@ -1,0 +1,382 @@
+/* Shopware 6 css */
+
+body.shopware6 div.magna table#tableWrap {
+    padding: 0 25px !important;
+}
+
+body.shopware6 div.magna form{
+    display: inline;
+}
+
+html{
+    overflow:auto;
+}
+
+#magnafooter .latest-version-text {
+    color: red;
+}
+body.shopware6 .ml-js-mlMessages.ml-mlMessages {
+    margin-left: 26px;
+    margin-right: 26px;
+}
+#ebay_prepare_variations_field_variationgroups_92921_4265727566_code_ajax_ajax > select:nth-child(1),
+#hitmeister_prepare_apply_form_field_variationgroups_58631_weight_code_ajax_ajax > input:nth-child(1),
+[id^="hitmeister_prepare_variations_field_variationgroups"] > input:nth-child(1),
+[id^="etsy_prepare_variations_field_variationgroups"] > input:nth-child(1),
+[id^="metro_prepare_apply_form_field_variationgroups"] > select:nth-child(1),
+[id^="metro_prepare_variations_field_variationgroups"] > select:nth-child(1),
+[id^="metro_prepare_variations_field_variationgroups"] > input:nth-child(1),
+[id^="otto_prepare_apply_form_field_variationgroups"] > input:nth-child(1),
+[id^="otto_prepare_apply_form_field_variationgroups"] > select:nth-child(1),
+[id^="otto_prepare_variations_field_variationgroups"] > input:nth-child(1) {
+    margin-top: 5px;
+}
+
+@media screen and (max-width: 1859px) {
+    #ricardo_prepare_form_fieldset_price > tr:nth-child(3) > td:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+    }
+    #ricardo_prepare_form_fieldset_price > tr:nth-child(3) > td:nth-child(3) span input {
+        margin-bottom: 5px;
+    }
+    #ricardo_prepare_form_field_priceajax_ajax {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+@media screen and (max-width: 1743px) {
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div,
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div > div,
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div > span,
+    table tbody#metro_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1707px) {
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippinglabel tr:nth-child(4) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1682px) {
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(5) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(5) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(5) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1654px) {
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1630px) {
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#ebay_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1602px) {
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > div.ebay-shipping {
+        width: 100%;
+    }
+
+    table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1525px) {
+    .shopware6 table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(4) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(4) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(4) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1469px) {
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippingaddresses tr:nth-child(2) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippingaddresses tr:nth-child(2) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#amazon_config_shippinglabel_fieldset_shippingaddresses tr:nth-child(2) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1408px) {
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1520px) {
+    .shopware6 table tbody#amazon_config_prepare_fieldset_shippingtemplate tr:nth-child(2) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#amazon_config_prepare_fieldset_shippingtemplate tr:nth-child(2) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#amazon_config_prepare_fieldset_shippingtemplate tr:nth-child(2) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1346px) {
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#hood_config_prepare_fieldset_shipping tr:nth-child(2) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1174px) {
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1082px) {
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#ebay_prepare_apply_form_fieldset_shipping tr:nth-child(5) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1048px) {
+    .shopware6 table tbody#amazon_config_prepare_fieldset_b2b tr:nth-child(4) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#amazon_config_prepare_fieldset_b2b tr:nth-child(4) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#amazon_config_prepare_fieldset_b2b tr:nth-child(4) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1030px) {
+    .shopware6 table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div {
+        justify-content: end;
+    }
+
+    .shopware6 table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > div {
+        width: 100%;
+    }
+
+    .shopware6 table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(3) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 968px) {
+    table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(2) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(2) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#hood_prepare_apply_form_fieldset_shipping tr:nth-child(2) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1200px) {
+    body.shopware6 table.attributesTable td,
+    body.shopware6 table.attributesTable th,
+    body.shopware6 div.magnamain table .js-field th,
+    body.shopware6 div.magnamain table .js-field td.input {
+        padding: 5px;
+    }
+
+    body.shopware6 table.attributesTable tbody#ebay_config_prepare_fieldset_prepare td:nth-child(4),
+    body.shopware6 div.magnamain table tbody#ebay_config_prepare_fieldset_returnpolicy .js-field th label {
+        word-wrap: anywhere;
+    }
+
+}
+@media screen and (max-width: 1860px) {
+    table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#amazon_config_orderimport_fieldset_orderstatus tr:nth-child(5) div.duplicate div > span {
+        position: inherit;
+    }
+}
+
+@media screen and (max-width: 1817px) {
+    table tbody#cdiscount_config_prepare_fieldset_prepare tr:nth-child(8) div.duplicate div,
+    table tbody#cdiscount_prepare_apply_form_fieldset_unit tr:nth-child(4) div.duplicate div{
+        justify-content: end;
+    }
+
+    table tbody#cdiscount_config_prepare_fieldset_prepare tr:nth-child(8) div.duplicate div > div,
+    table tbody#cdiscount_prepare_apply_form_fieldset_unit tr:nth-child(4) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#cdiscount_config_prepare_fieldset_prepare tr:nth-child(8) div.duplicate div > span,
+    table tbody#cdiscount_prepare_apply_form_fieldset_unit tr:nth-child(4) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media screen and (max-width: 1450px) {
+    #ricardo_config_prepare_fieldset_prepare tr:nth-child(14) td.input {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+        border-bottom: unset;
+    }
+}
+@media screen and (max-width: 1720px) {
+    table tbody#otto_config_order_fieldset_orderstatus tr:nth-child(5) div.duplicate div,
+    table tbody#obi_config_order_fieldset_orderstatus tr:nth-child(4) div.duplicate div {
+        justify-content: end;
+    }
+
+    table tbody#otto_config_order_fieldset_orderstatus tr:nth-child(5) div.duplicate div > div,
+    table tbody#obi_config_order_fieldset_orderstatus tr:nth-child(4) div.duplicate div > div {
+        width: 100%;
+    }
+
+    table tbody#otto_config_order_fieldset_orderstatus tr:nth-child(5) div.duplicate div > span,
+    table tbody#obi_config_order_fieldset_orderstatus tr:nth-child(4) div.duplicate div > span {
+        position: inherit;
+    }
+}
+@media scree and (max-width: 1100px) {
+    body.shopware6 table.datagrid thead tr td,
+    table.datagrid.ml-plist-old-fix tbody > tr > td {
+        padding: 8px 5px !important;
+    }
+}
+@media screen and (max-width: 1050px) {
+    body.shopware6 #amazon_prepare_apply_form_fieldset_b2b tr:nth-child(n+5) td:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        border-top: unset;
+    }
+
+    body.shopware6 #amazon_prepare_apply_form_fieldset_b2b tr:nth-child(n+5) td:nth-child(3) span:nth-child(3) {
+        margin-bottom: 5px;
+    }
+}
+@media screen and (max-width: 890px) {
+    body.shopware6 table.datagrid thead tr td, .ml-plist table > * > tr > * {
+        font-size: 9px !important;
+    }
+}
+@media screen and (max-width: 900px) {
+    body.shopware6 div.magnamain table {
+        font-size: 12px;
+    }
+    body.shopware6 .select2-container--default .select2-selection--single .select2-selection__rendered {
+        font-size: 12px;
+    }
+
+}
+@media screen and (max-width: 850px) {
+    body.shopware6 div.magnamain table {
+        font-size: 10px;
+    }
+    body.shopware6 .select2-container--default .select2-selection--single .select2-selection__rendered {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 823px) {
+    .shopware6 [id$="_config_price_fieldset_fixedprice"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_price_fieldset_chineseprice"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_price_fieldset_chineseprice"] tr:nth-child(3).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_order_fieldset_orderimport"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_priceandstock_fieldset_price"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_price_fieldset_price"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_orderimport_fieldset_importactive"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_orderimport_fieldset_orderimport"] tr:nth-child(2).js-field td.input span:nth-child(5),
+    .shopware6 [id$="_config_price_fieldset_price"] tr:nth-child(3).js-field td.input span:nth-child(5),
+    .shopware6 [id$="priceminister_config_price_fieldset_price"] tr:nth-child(3).js-field td.input span:nth-child(5) {
+        display: none !important;
+    }
+}

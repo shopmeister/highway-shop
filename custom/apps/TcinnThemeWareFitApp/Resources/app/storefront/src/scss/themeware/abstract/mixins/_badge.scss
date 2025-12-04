@@ -1,0 +1,28 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Bootstrap style '.badge' mixins added (currently overwritten by Shopware)
+	==================================================
+
+*/
+
+// ThemeWare: Badge color variants ------------------------------
+
+// Farb-Varianten der Badges
+@mixin twt-badge-variant($background, $border, $color) {
+    color: color-contrast($background); // Shopware überschreibt die 'color' mit '#fff'
+    @include gradient-bg($background);
+    border-color: $border;
+}
+
+// Helle Farb-Varianten der Badges
+@mixin twt-badge-variant-lighten($background, $border, $color) {
+    color: $color !important; // Override fixed
+    @include gradient-bg($background);
+    border-color: $border;
+}

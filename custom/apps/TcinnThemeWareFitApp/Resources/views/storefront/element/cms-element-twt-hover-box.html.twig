@@ -1,0 +1,274 @@
+{# ThemeWare® CMS element "Hover box" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtHoverBox = element.fieldConfig.elements %}
+
+{% set twtHvrBxHeadline = element.translated.config.headline.value %}
+{% set twtHvrBxText = element.translated.config.text.value %}
+
+{% set twtHvrBxDisplayMode = element.translated.config.displayMode.value %}
+{% set twtHvrBxMinHeight = element.translated.config.minHeight.value %}
+{% set twtHvrBxVerticalAlign = twtHoverBox.verticalAlign.value %}
+
+{% set twtHvrBxUrl = element.translated.config.url.value %}
+{% set twtHvrBxNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtHvrBxBackgroundColor = twtHoverBox.backgroundColor.value %}
+
+{% set twtHvrBxFontFamily = twtHoverBox.fontFamily.value %}
+{% set twtHvrBxFontFamilyHeadline = twtHoverBox.fontFamilyHeadline.value %}
+{% set twtHvrBxTextColor = twtHoverBox.textColor.value %}
+{% set twtHvrBxTextColorHeadline = twtHoverBox.textColorHeadline.value %}
+{% set twtHvrBxTextAlignment = twtHoverBox.textAlignment.value %}
+
+{% set twtHvrBxVerticalAlignment = twtHoverBox.verticalAlignment.value %}
+{% set twtHvrBxHorizontalAlignment = twtHoverBox.horizontalAlignment.value %}
+{% set twtHvrBxBgColorOverlay = twtHoverBox.bgOverlay.value %}
+
+{% set twtHvrBxHoverEffect = twtHoverBox.hoverEffect.value %}
+{% set twtHvrBxInvertHoverEffect = twtHoverBox.invertHover.value %}
+
+{# Tab "SEO" #}
+{% set twtHvrBxHtmlTag = twtHoverBox.htmlTag.value %}
+{% if twtHvrBxHtmlTag is empty %}
+    {% set twtHvrBxHtmlTag = 'p' %}
+{% endif %}
+{% set twtHvrBxHtmlTagClass = twtHoverBox.htmlTagClass.value %}
+
+{% set twtHvrBxLzyLdng = twtHoverBox.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtHvrBxCssClass = twtHoverBox.cssClass.value %}
+{% set twtHvrBxCssClassHeadline = twtHoverBox.cssClassHeadline.value %}
+{% set twtHvrBxCssClassText = twtHoverBox.cssClassText.value %}
+
+{# Set title attribute #}
+{# INFO: 'Text' (mandatory) #}
+{# => 'Headline' > shortened 'Text'* #}
+{# @TODO: Add title to seo config ? #}
+{% if twtHvrBxHeadline %}
+    {% set title = twtHvrBxHeadline %}
+{% else %}
+    {% set title = twtHvrBxText|striptags|raw|length > 25 ? twtHvrBxText|striptags|raw|slice(0, 25) ~ '...' : twtHvrBxText|striptags|raw %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-teaser']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% if twtHvrBxDisplayMode == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{% if twtHvrBxHoverEffect != 'none' and not twtHvrBxInvertHoverEffect %}
+    {% if twtHvrBxHoverEffect is empty %}
+        {% set elementClasses = ['twt-fade-in']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'fadeIn' %}
+        {% set elementClasses = ['twt-fade-in']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'slideUp' %}
+        {% set elementClasses = ['twt-slide-up']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideRight' %}
+        {% set elementClasses = ['twt-slide-right']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideDown' %}
+        {% set elementClasses = ['twt-slide-down']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideLeft' %}
+        {% set elementClasses = ['twt-slide-left']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'pushUp' %}
+        {% set elementClasses = ['twt-push-up']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushRight' %}
+        {% set elementClasses = ['twt-push-right']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushDown' %}
+        {% set elementClasses = ['twt-push-down']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushLeft' %}
+        {% set elementClasses = ['twt-push-left']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'hingeUp' %}
+        {% set elementClasses = ['twt-hinge-up']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeRight' %}
+        {% set elementClasses = ['twt-hinge-right']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeDown' %}
+        {% set elementClasses = ['twt-hinge-down']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeLeft' %}
+        {% set elementClasses = ['twt-hinge-left']|merge(elementClasses) %}
+
+    {% endif %}
+{% endif %}
+
+{% if twtHvrBxHoverEffect != 'none' and twtHvrBxInvertHoverEffect %}
+    {% if twtHvrBxHoverEffect is empty %}
+        {% set elementClasses = ['twt-fade-out']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'fadeIn' %}
+        {% set elementClasses = ['twt-fade-out']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'slideUp' %}
+        {% set elementClasses = ['twt-slide-up-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideRight' %}
+        {% set elementClasses = ['twt-slide-right-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideDown' %}
+        {% set elementClasses = ['twt-slide-down-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'slideLeft' %}
+        {% set elementClasses = ['twt-slide-left-out']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'pushUp' %}
+        {% set elementClasses = ['twt-push-up-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushRight' %}
+        {% set elementClasses = ['twt-push-right-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushDown' %}
+        {% set elementClasses = ['twt-push-down-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'pushLeft' %}
+        {% set elementClasses = ['twt-push-left-out']|merge(elementClasses) %}
+
+    {% elseif twtHvrBxHoverEffect == 'hingeUp' %}
+        {% set elementClasses = ['twt-hinge-up-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeRight' %}
+        {% set elementClasses = ['twt-hinge-right-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeDown' %}
+        {% set elementClasses = ['twt-hinge-down-out']|merge(elementClasses) %}
+    {% elseif twtHvrBxHoverEffect == 'hingeLeft' %}
+        {% set elementClasses = ['twt-hinge-left-out']|merge(elementClasses) %}
+
+    {% endif %}
+{% endif %}
+
+{% set contentClasses = ['content'] %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtHvrBxLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_hover_box %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtHvrBxVerticalAlign %} {# d-flex #} has-vertical-alignment{% endif %} is-hover {% if twtHvrBxCssClass is not empty %} {{ twtHvrBxCssClass }}{% endif %}"
+         {% if twtHvrBxBackgroundColor %}style="background-color: {{ twtHvrBxBackgroundColor }}"{% endif %}>
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_hover_box_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: 0;
+        --twt-link-color: {{ twtHvrBxTextColor }};
+        {% block element_twt_hover_box_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# block element_twt_hover_box_content @deprecated #}
+        {% block element_twt_hover_box_alignment %}
+            {# @TODO: {% if twtHvrBxVerticalAlign and not isCover %} #}
+            {% if twtHvrBxVerticalAlign %}
+                <div class="cms-element-alignment{% if twtHvrBxVerticalAlign == 'center' %} align-self-center{% elseif twtHvrBxVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                     {% if twtHvrBxDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {# block element_twt_hover_box_image_inner @deprecated #}
+            {% block element_twt_hover_box_inner %}
+                {# ThemeWare: Set text element #}
+                {% set hoverBox %}
+                    {% block element_twt_hover_box_content_container %}
+                        <div class="twt-hover-box-container cms-content-container content-container justify-content-{{ twtHvrBxHorizontalAlignment }} align-items-{{ twtHvrBxVerticalAlignment }}"
+                             style="background-color: {{ twtHvrBxBgColorOverlay }};">
+                            <div class="twt-hover-box-content {{ contentClasses|sort|join(' ') }}"
+                                 style="text-align: {{ twtHvrBxTextAlignment }};">
+                                {# Headline #}
+                                {% if twtHvrBxHeadline %}
+                                    <{{ twtHvrBxHtmlTag }} class="twt-hover-box-headline headline {{ twtHvrBxHtmlTagClass }} twt-font-family-{{ twtHvrBxFontFamilyHeadline }}{% if twtHvrBxCssClassHeadline is not empty %} {{ twtHvrBxCssClassHeadline }}{% endif %}"
+                                       style="color: {{ twtHvrBxTextColorHeadline }};">
+                                        <span>{{ twtHvrBxHeadline }}</span>
+                                    </{{ twtHvrBxHtmlTag }}>
+                                {% endif %}
+
+                                {# Text (mandatory) #}
+                                <div class="twt-hover-box-text text{% if twtHvrBxFontFamily != 'base' %} twt-font-family-{{ twtHvrBxFontFamily }}{% endif %}{% if twtHvrBxCssClassText is not empty %} {{ twtHvrBxCssClassText }}{% endif %}"
+                                     style="color: {{ twtHvrBxTextColor }};">
+                                    {{ element.translated.config.text.value|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_hover_box_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-hover-box-image-container {# w-100 #} cms-image-container image-container is-{{ twtHvrBxDisplayMode }}"
+                                 {% if twtHvrBxMinHeight and twtHvrBxDisplayMode == 'cover' %} style="min-height: {{ twtHvrBxMinHeight }};"{% endif %}>
+
+                                {% block element_twt_hover_box_image_media %}
+                                    {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                    {% set attributes = {
+                                        class: 'cms-image',
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: title),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtHvrBxDisplayMode == 'cover' or twtHvrBxDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtHvrBxDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load text element #}
+                                {{ hoverBox }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Hover box" #}
+                {% block element_twt_hover_box_content %}
+                    {% if twtHvrBxUrl %}
+                        <a href="{{ twtHvrBxUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtHvrBxNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtHvrBxVerticalAlign and not isCover %} #}
+            {% if twtHvrBxVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

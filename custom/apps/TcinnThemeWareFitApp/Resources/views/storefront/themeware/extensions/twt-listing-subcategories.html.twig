@@ -1,0 +1,54 @@
+{# ThemeWare® 'Listing subcategories' (Extension container) #}
+
+{#
+    Create container and include the listing subcategories include (@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig)
+    Note: This is included via "@Storefront/storefront/section/cms-section-default.html.twig"
+
+    @Storefront/storefront/themeware/extensions/twt-listing-subcategories.html.twig
+#}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{% set twtListingSubcategoriesLayout = theme_config('twt-listing-subcategories-layout') %}
+{% set twtListingSubcategoriesJustifyContent = theme_config('twt-listing-subcategories-justify-content') %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% if twtListingSubcategoriesLayout == 'textBelow' %}
+    {% set elementClasses = 'is-text-below' %}
+{% elseif twtListingSubcategoriesLayout == 'imageOnly' %}
+    {% set elementClasses = 'is-image-only' %}
+{% elseif twtListingSubcategoriesLayout == 'textOnly' %}
+    {% set elementClasses = 'is-text-only' %}
+{% endif %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block twt_listing_subcategories %}
+    {# ThemeWare: 'Listing subcategories' (listings) #}
+
+    {% set navigationTree = page.header.navigation.tree %}
+    {% set activeResult = page.header.navigation.active %}
+
+    {% set sizingMode = sizingMode|replace({'_': '-'}) %}
+
+    <div class="twt-listing-subcategories is-extension{% if sizingMode == 'boxed' %} container{% endif %} {{ sizingMode }} {{ elementClasses }}" id="twt-listing-subcategories">
+        <div class="twt-listing-subcategories-section">
+            {# @TODO: Headline ?! #}
+
+            <div class="twt-listing-subcategories-container">
+                <ul class="row" style="justify-content: {{ twtListingSubcategoriesJustifyContent }};">
+                    {% sw_include '@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig' ignore missing with {
+                        navigationTree: page.header.navigation.tree,
+                        activeResult: page.header.navigation.active,
+                        type: 'extension'
+                    } only %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

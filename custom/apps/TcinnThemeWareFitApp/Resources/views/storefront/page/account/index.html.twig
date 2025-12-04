@@ -1,0 +1,23 @@
+{% sw_extends '@Storefront/storefront/page/account/index.html.twig' %}
+
+{# ThemeWare: Adjustments to the account page #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtAccountNewsletterSubscriptionShow = theme_config('twt-account-newsletter-subscription-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the newsletter subscription #}
+{% block page_account_overview_newsletter %}
+    {# INFO: Hide newsletter subscription if configured #}
+    {% if twtAccountNewsletterSubscriptionShow == 1 %}
+        {# ThemeWare: Clear block #}
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+{% endblock %}

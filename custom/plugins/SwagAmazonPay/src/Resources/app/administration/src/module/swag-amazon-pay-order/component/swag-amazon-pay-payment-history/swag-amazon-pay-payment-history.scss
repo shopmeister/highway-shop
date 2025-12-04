@@ -1,0 +1,21 @@
+.amazon-pay-transaction-status-success{
+    color: #5cb85c;
+}
+.amazon-pay-transaction-status-info{
+    color: #5bc0de;
+}
+.amazon-pay-transaction-status-warning{
+    color: #ffb112;
+}
+.amazon-pay-transaction-status-danger{
+    color: #d9534f;
+}
+
+.amazon-pay-transaction-amount{
+    flex-basis: 100%;
+    text-align: right;
+}
+
+.amazon-pay-transaction-amount-negative{
+    color: #d9534f;
+}

@@ -1,0 +1,22 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-category-navigation.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCategoryNavigationHeadlineShow = theme_config('twt-category-navigation-headline-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on the sidebar filter element #}
+{% block element_category_navigation  %}
+    {# ThemeWare: Add headline for sidebar filters #}
+    {% if block.sectionPosition == 'sidebar' and twtCategoryNavigationHeadlineShow == 2 %}
+        <div class="twt-cms-element-sidebar-headline d-none d-lg-block is--navigation">
+            {{ 'twt.listing.navigation.title'|trans }}
+        </div>
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}

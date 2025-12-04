@@ -1,0 +1,15 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_javascript_jquery %}
+    {% if activeRoute in [
+        'frontend.checkout.confirm.page',
+        'frontend.checkout.register.page',
+        'frontend.account.login.page',
+        'frontend.account.address.create.page',
+        'frontend.account.address.edit.page',
+    ] %}
+        <script src="{{ asset('bundles/pickwaredhl/assets/jquery-3.5.1.slim.min.js', 'asset') }}"></script>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

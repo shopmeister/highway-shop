@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Psr\PsrHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="product.repository"/>
+        </service>
+
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Stock\ExportStockByPsrHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Export\Product\Stock\ExportStockService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Price\ExportPriceByPsrHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Export\Product\Price\ExportPriceService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Order\ImportOrderByApiDataHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Import\Order\ImportOrderService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Price\ImportPriceReportByPsrHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Import\Product\PriceReport\ImportPriceReportService"/>
+        </service>
+
+    </services>
+</container>

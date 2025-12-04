@@ -1,0 +1,17 @@
+{# ThemeWare® 'Custom text' widget #}
+{#
+    Create 'Custom text' widget and content
+
+    @Storefront/storefront/themeware/widgets/twt-text-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ThemeWare: Custom text #}
+{% block twt_widget_text %}
+    <div class="twt-widget-text twt-text is-{{ type }}">
+        {% block twt_widget_text_content %}
+            {{ 'twt.widget.text.content'|trans|raw }}
+        {% endblock %}
+    </div>
+{% endblock %}

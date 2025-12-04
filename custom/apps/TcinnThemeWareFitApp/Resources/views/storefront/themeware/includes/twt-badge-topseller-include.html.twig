@@ -1,0 +1,31 @@
+{# ThemeWare® 'Topseller badge' content #}
+{#
+    @Storefront/storefront/themeware/includes/twt-badge-topseller-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductBadgesTopsellerBadgeColoration = theme_config('twt-product-badges-topseller-badge-coloration') %}
+{% set twtProductBadgesTopsellerBadgeIconShow = theme_config('twt-product-badges-topseller-badge-icon-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_product_badges_topseller_badge %}
+    {% if product.markAsTopseller %}
+        <div>
+            <span class="badge badge-warning{% if twtProductBadgesTopsellerBadgeColoration == 3 %}-light{% endif %} badge-topseller">
+                {% if twtProductBadgesTopsellerBadgeIconShow == 2 %}
+                    {# Add icon #}
+                    {# @TODO #icon #}
+                    {% sw_include '@Storefront/storefront/themeware/twt-icons.html.twig' ignore missing with {
+                        icon: 'twt.extension.topsellerBadge.icon'|trans
+                    } %}
+                {% endif %}
+                {{ 'listing.boxLabelTopseller'|trans|sw_sanitize }}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}

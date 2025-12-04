@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!--Components/Button-->
+        <service id="Swag\AmazonPay\Components\Button\ButtonProvider">
+            <argument id="Swag\AmazonPay\Components\Config\ConfigService" type="service"/>
+            <argument id="Swag\AmazonPay\Util\Language\LanguageProvider" type="service"/>
+            <argument id="router" type="service"/>
+            <argument id="Swag\AmazonPay\Util\Helper\AmazonPayPaymentMethodHelper" type="service"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Button\Pay\Hydrator\AmazonPayButtonPayloadHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Button\Login\Hydrator\AmazonLoginButtonPayloadHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Button\Validation\ExcludedProductValidator"/>
+            <argument type="service" id="Swag\AmazonPay\Storefront\Page\Extension\ExtensionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Cart\CartService"/>
+            <argument>%kernel.shopware_version%</argument>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheDecorator"/>
+        </service>
+
+        <!-- Amazon Pay button placement subscriber -->
+        <service id="Swag\AmazonPay\Storefront\EventListeners\AmazonPayButtonEventListener">
+            <argument type="service" id="Swag\AmazonPay\Components\Button\ButtonProvider"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\EventListeners\AmazonLoginButtonEventListener">
+            <argument type="service" id="Swag\AmazonPay\Components\Button\ButtonProvider"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\EventListeners\AmazonPayConfirmEventListener">
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\EventListeners\AmazonPayAvailabilityListener">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Framework\EventListeners\AmazonPayAddressValidationListener">
+            <argument type="service" id="request_stack"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swag\AmazonPay\DataAbstractionLayer\EventListeners\AmazonPayTransitionListener">
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Service\PaymentActionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <tag name="kernel.event_listener" event="state_machine.order.state_changed" method="onOrderStateChange"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Storefront\Pagelet\Footer\FooterPageletLoadedEventSubscriber">
+            <argument type="service" id="Swag\AmazonPay\Util\Helper\AmazonPayPaymentMethodHelper"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>
+

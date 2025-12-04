@@ -1,0 +1,380 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® Extension 'Checkout steps'
+    ==================================================
+
+*/
+
+/* @TODO:
+     - zur Dokumentation hinzufügen...
+     - Layout "Nebeneinander" hinzufügen...
+ */
+
+/* ---------------- START: SET SCSS VARS ---------------- */
+
+$twt-checkout-steps-item-font-family: 1;
+
+// Größe der Steps abhängig vom Icon-Stil definieren
+@if ($twt-checkout-steps-icon-style == 3) {
+    $twt-checkout-steps-item-size: 24;
+} @else {
+    $twt-checkout-steps-item-size: 40; // default
+}
+
+/* ---------------- END: SET SCSS VARS ---------------- */
+
+@if ($twt-checkout-steps-show == 2) {
+    #twt-checkout-steps {
+        // Reset container styling
+        padding: 0;
+        border: 0;
+        background: transparent;
+
+        .twt-checkout-steps-container {
+            position: relative;
+
+            // &.layout-1 {}
+            // &.layout-2 {}
+        }
+
+        .twt-checkout-steps-content {
+            width: 100%;
+        }
+
+        .twt-checkout-steps-list {
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        // >>>>>
+        .twt-checkout-steps-item {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            text-align: center;
+
+            &-path {
+                display: flex;
+                flex-direction: column;
+                height: $twt-checkout-steps-item-size + px;
+            }
+
+            strong { // Layout type 2
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            &-text {
+                display: none;
+                @include twt-font-size($twt-checkout-steps-item-font-size); // px + rem
+                font-weight: $twt-checkout-steps-item-font-weight;
+                line-height: 1.25;
+                padding-top: 8px;
+                padding-right: 5px;
+                padding-left: 5px;
+                text-transform: $twt-checkout-steps-item-text-transform;
+                color: $twt-checkout-steps-item-color;
+
+                // ThemeWare: Set font-family
+                @if ($twt-checkout-steps-item-font-family == 1) {
+                    font-family: $sw-font-family-base;
+                } @else {
+                    font-family: $sw-font-family-headline;
+                }
+            }
+
+            @if $twt-checkout-steps-item-text-show == 3 {
+                .twt-checkout-steps-item-text {
+                    display: inline-block;
+                }
+            } @else if $twt-checkout-steps-item-text-show == 4 {
+                @include media-breakpoint-up(sm) { // min 576px
+                    .twt-checkout-steps-item-text {
+                        display: inline-block;
+                    }
+                }
+            } @else if $twt-checkout-steps-item-text-show == 5 {
+                @include media-breakpoint-up(md) { // min 768px
+                    .twt-checkout-steps-item-text {
+                        display: inline-block;
+                    }
+                }
+            } @else if $twt-checkout-steps-item-text-show == 6 {
+                @include media-breakpoint-up(lg) { // min 992px
+                    .twt-checkout-steps-item-text {
+                        display: inline-block;
+                    }
+                }
+            } @else if $twt-checkout-steps-item-text-show == 7 {
+                @include media-breakpoint-up(xl) { // min 1200px
+                    .twt-checkout-steps-item-text {
+                        display: inline-block;
+                    }
+                }
+            } @else if $twt-checkout-steps-item-text-show == 8 {
+                @include media-breakpoint(min, $twt-container-max-width) {
+                    .twt-checkout-steps-item-text {
+                        display: inline-block;
+                    }
+                }
+            }
+
+            &-icon {
+                z-index: 1;
+                display: flex;
+                align-items: center;
+                align-self: center;
+                justify-content: center;
+                width: $twt-checkout-steps-item-size + px;
+                height: $twt-checkout-steps-item-size + px;
+                color: $twt-checkout-steps-item-icon-color; // Text numbers (optional)
+                border: 2px solid $twt-checkout-steps-item-border-color;
+                background-color: $twt-checkout-steps-item-background-color;
+
+                @if $twt-checkout-steps-item-corner-type == 1 { // 1 = not rounded
+                    @include border-radius(0);
+                }
+                @if $twt-checkout-steps-item-corner-type == 2 { // 2 = rounded corners
+                    border-radius: null-pixel-unit($twt-border-radius);
+                }
+                @if $twt-checkout-steps-item-corner-type == 3 { // 3 = round corners
+                    @include border-radius(50%);
+                }
+                @if $twt-checkout-steps-item-corner-type == 4 { // 4 = individual radius
+                    border-radius: null-pixel-unit($twt-checkout-steps-item-border-radius);
+                }
+
+                .icon {
+                    color: $twt-checkout-steps-item-icon-color;
+                }
+
+                svg {
+                    top: 0; // Overwrite default top: 0.25em
+                }
+
+                // Icon-Stil "Steps als Checkbox"
+                .dot {
+                    //background-color: rgb(67, 56, 202);
+                    width: 0.75rem;
+                    height: 0.75rem;
+
+                    // Border-radius vom Dot an Step angleichen...
+                    @if $twt-checkout-steps-item-corner-type == 1 { // 1 = not rounded
+                        @include border-radius(0);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 2 { // 2 = rounded corners
+                        border-radius: null-pixel-unit($twt-border-radius);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 3 { // 3 = round corners
+                        //@include border-radius(50%);
+                        @include border-radius(10px);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 4 { // 4 = individual radius
+                        border-radius: null-pixel-unit($twt-checkout-steps-item-border-radius);
+                    }
+                }
+            }
+
+            &-seperator {
+                z-index: 0;
+                margin-top: -($twt-checkout-steps-item-size / 2) + px;
+
+                // Durchgängige Linien
+                @if ($twt-checkout-steps-style == 1) {
+                    border-bottom: 2px solid $twt-checkout-steps-item-seperator-color;
+                }
+
+                // Linien dazwischen
+                @if ($twt-checkout-steps-style == 2) {
+                    border-bottom: 2px solid $twt-checkout-steps-item-seperator-color;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+
+                    // Balken im Icon-Stil "Steps wie e-ine Checkbox" etwas länger, weil die Steps kleiner sind
+                    @if ($twt-checkout-steps-icon-style == 3) {
+                        width: calc(100% - 3.5rem);
+                    } @else {
+                        width: calc(100% - 4.5rem);
+                    }
+                }
+
+                // Durchgängige Balken
+                @if ($twt-checkout-steps-style == 3) {
+                    background-color: $twt-checkout-steps-item-seperator-color;
+                    border-radius: 0.25rem;
+                    width: 100%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+
+                    // Balken im Icon-Stil "Steps wie eine Checkbox" etwas dünner, weil die Steps kleiner sind
+                    @if ($twt-checkout-steps-icon-style == 3) {
+                        height: 0.25rem;
+                    } @else {
+                        height: 0.5rem;
+                    }
+                }
+
+                // Balken dazwischen
+                @if ($twt-checkout-steps-style == 4) {
+                    background-color: $twt-checkout-steps-item-seperator-color;
+                    border-radius: 0.25rem;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+
+                    // Balken im Icon-Stil "Steps wie eine Checkbox" etwas dünner und länger, weil die Steps kleiner sind
+                    @if ($twt-checkout-steps-icon-style == 3) {
+                        height: 0.25rem;
+                        width: calc(100% - 3.5rem);
+                    } @else {
+                        height: 0.5rem;
+                        width: calc(100% - 4.5rem);
+                    }
+                }
+
+                .fill {
+                    width: 50%;
+                    height: 100%;
+                    display: block;
+
+                    @if $twt-checkout-steps-item-corner-type == 1 { // 1 = not rounded
+                        @include border-radius(0);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 2 { // 2 = rounded corners
+                        border-radius: null-pixel-unit($twt-border-radius);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 3 { // 3 = round corners
+                        //@include border-radius(50%);
+                        @include border-radius(10px);
+                    }
+                    @if $twt-checkout-steps-item-corner-type == 4 { // 4 = individual radius
+                        border-radius: null-pixel-unit($twt-checkout-steps-item-border-radius);
+                    }
+                }
+            }
+
+            /* @TODO: Finetuning und Konfiguration nötig...
+            &.step-1 {
+                .twt-checkout-steps-item-seperator {
+                    margin-left: 50%;
+                }
+            }
+            &.step-3 {
+                .twt-checkout-steps-item-seperator {
+                    margin-right: 50%;
+                }
+            }
+            */
+
+            &.is-active {
+                .twt-checkout-steps-item-icon {
+                    color: $twt-checkout-steps-item-icon-color-active; // Text numbers (optional)
+                    border-color: $twt-checkout-steps-item-border-color-active;
+                    background-color: $twt-checkout-steps-item-background-color-active;
+
+                    .icon {
+                        color: $twt-checkout-steps-item-icon-color-active;
+                    }
+
+                    // Icon-Stil "Steps als Checkbox"
+                    .dot {
+                        background: $twt-checkout-steps-item-icon-color-active;
+                    }
+                }
+
+                .twt-checkout-steps-item-seperator {
+                    // Durchgängige Linien
+                    @if ($twt-checkout-steps-style == 1) {
+                        border-color: $twt-checkout-steps-item-seperator-color-active;
+                    }
+
+                    // Linien dazwischen
+                    @if ($twt-checkout-steps-style == 2) {
+                        // border-color: $twt-checkout-steps-item-seperator-color-active; // "Linien dazwischen" sind completed und haben daher keine @active Farbe
+                        border-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+
+                    // Durchgängige Balken
+                    @if ($twt-checkout-steps-style == 3) {
+                        // background-color: $twt-checkout-steps-item-seperator-color-active; // "Durchgängige Balken" sind completed und haben daher keine @active Farbe
+                        background-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+
+                    // Balken dazwischen
+                    @if ($twt-checkout-steps-style == 4) {
+                        // background-color: $twt-checkout-steps-item-seperator-color-active; // "Balken dazwischen" sind zu 50% gefüllt und haben daher keine @active Farbe
+                        background-color: $twt-checkout-steps-item-seperator-color;
+                    }
+                    
+                    .fill {
+                        // background-color: $twt-checkout-steps-item-seperator-color-active;
+                        background-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+                }
+            }
+
+            &.is-completed {
+                .twt-checkout-steps-item-icon {
+                    color: $twt-checkout-steps-item-icon-color-completed; // Text numbers (optional)
+                    border-color: $twt-checkout-steps-item-border-color-completed;
+                    background-color: $twt-checkout-steps-item-background-color-completed;
+
+                    .icon {
+                        color: $twt-checkout-steps-item-icon-color-completed;
+                    }
+
+                    // Icon-Stil "Steps als Checkbox"
+                    .dot {
+                        background: transparent;
+                    }
+                }
+
+                .twt-checkout-steps-item-seperator {
+                    // Durchgängige Linien
+                    @if ($twt-checkout-steps-style == 1) {
+                        border-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+
+                    // Linien dazwischen
+                    @if ($twt-checkout-steps-style == 2) {
+                        border-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+
+                    // Durchgängige Balken
+                    @if ($twt-checkout-steps-style == 3) {
+                        background-color: $twt-checkout-steps-item-seperator-color-completed;
+                    }
+
+                    // Balken dazwischen
+                    @if ($twt-checkout-steps-style == 4) {
+                        background-color: $twt-checkout-steps-item-seperator-color-completed;
+
+                    }
+                }
+            }
+        }
+
+        /*&.layout-1 {
+            .twt-checkout-steps-item {
+            }
+        }*/
+
+        /*&.layout-2 {
+            .twt-checkout-steps-item {
+            }
+        }*/
+
+        //@media screen and (min-width:768px) {
+        //    .twt-checkout-steps-item {
+        //        &-text {
+        //            display: inline-block;
+        //        }
+        //    }
+        //}
+    }
+}

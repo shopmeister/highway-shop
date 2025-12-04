@@ -1,0 +1,40 @@
+{
+    "magnalister-order": {
+        "order-details": {            
+        },
+        "order-tab": {
+            "title": "magnalister"
+        },
+        "order-list": {
+            "column": "magnalister logo"
+        },
+        "amazon-form": {
+            "title": "Transportunternehmen und Lieferservice (Versandart)",
+            "carrier-code-label": "Transportunternehmen",   
+            "ship-method-label": "Lieferservice (Versandart)",
+            "action-button-label": "Hinzufügen"
+        },
+        "otto-form": {
+            "title": "Retouren-Versanddienstleister und Retouren-Sendungsnummer",
+            "return-carrier-label": "Retouren-Versanddienstleister",   
+            "return-tracking-code-label": "Retouren-Sendungsnummer",
+            "action-button-label": "Hinzufügen"
+        },
+        "error": {
+            "title": "Fehler",
+            "content": "Bitte kontaktieren Sie das magnalister Support-Team: support@magnalister.de"            
+        },    
+        "success": {
+            "title": "Erfolgreich gespeichert",
+            "content": "..."               
+        },
+        "modal": {
+            "columns": {
+                "reference": "Produktnummer",
+                "product": "Artikel",
+                "amount": "Menge",
+                "price": "Preis"
+            }
+        }
+    }
+}

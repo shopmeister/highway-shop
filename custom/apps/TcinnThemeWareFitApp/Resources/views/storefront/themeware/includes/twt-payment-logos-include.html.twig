@@ -1,0 +1,173 @@
+{# ThemeWare® 'Payment logos' content #}
+{#
+	@Storefront/storefront/themeware/includes/twt-payment-logos-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtWidgetPaymentLogoLink = theme_config('twt-widget-payment-logo-link') %}
+{% set twtCustomPaymentImage1 = theme_config('twt-widget-payment-logo-custom-image-1') %}
+{% set twtCustomPaymentImage2 = theme_config('twt-widget-payment-logo-custom-image-2') %}
+{% set twtCustomPaymentImage3 = theme_config('twt-widget-payment-logo-custom-image-3') %}
+{% set twtWidgetPaymentLogoFallbackBadge = theme_config('twt-widget-payment-logo-fallback-badge') %}
+
+{% set twtWidgetPaymentLogoMaxHeight = theme_config('twt-widget-payment-logo-max-height') %}
+
+{% set twtCustomPaymentImagesOnly = theme_config('twt-widget-payment-logo-custom-images-only') %} {# 1 = no | 2 = yes #}
+{% if twtCustomPaymentImagesOnly is empty %}
+	{% set twtCustomPaymentImagesOnly = 1 %}
+{% endif %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Add payment logos #}
+{% block twt_payment_logos_content %}
+	{% if twtCustomPaymentImagesOnly == 1 %}
+		{% for paymentMethod in page.salesChannelPaymentMethods %}
+			{% if paymentMethod.media %}
+				{# Add logo #}
+				<div class="{{ type }}-logo is-payment-logo twt-order-{{ paymentMethod.position }}">
+					{% if twtWidgetPaymentLogoLink == 2 %}
+						<a href="{{ 'twt.widget.payment.link'|trans }}"
+						   title="{{ paymentMethod.name }}"
+						   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+						>
+					{% endif %}
+
+						{% if "twt" in paymentMethod.media.fileName %}
+							{% sw_thumbnails 'footer-payment-image-thumbnails' with {
+								media: paymentMethod.media,
+								sizes: {
+									default: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px'
+								},
+								attributes: {
+									class: 'footer-logo-image',
+									alt: (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+									title: (paymentMethod.media.translated.title ?: paymentMethod.translated.name),
+									height: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px',
+									width: (twtWidgetPaymentLogoMaxHeight|number_format * 1.96)|round(0, 'floor') ~ 'px',
+									loading: 'lazy'
+								}
+							} %}
+
+						{% else %}
+							{% sw_thumbnails 'footer-payment-image-thumbnails' with {
+								media: paymentMethod.media,
+								sizes: {
+									default: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px'
+								},
+								attributes: {
+									class: 'footer-logo-image',
+									alt: (paymentMethod.media.translated.alt ?: paymentMethod.translated.name),
+									title: (paymentMethod.media.translated.title ?: paymentMethod.translated.name),
+									height: twtWidgetPaymentLogoMaxHeight|number_format ~ 'px',
+									loading: 'lazy'
+								}
+							} %}
+
+						{% endif %}
+
+					{% if twtWidgetPaymentLogoLink == 2 %}
+						</a>
+					{% endif %}
+				</div>
+
+			{% else %}
+				{# Add fallback badge #}
+				{% if twtWidgetPaymentLogoFallbackBadge == 2 %}
+					<div  class="{{ type }}-logo is-payment-logo is-fallback-badge twt-order-{{ paymentMethod.position }}">
+						{% if twtWidgetPaymentLogoLink == 2 %}
+							<a href="{{ 'twt.widget.payment.link'|trans }}"
+							   title="{{ paymentMethod.name }}"
+							>
+								<span>{{ paymentMethod.name }}</span>
+							</a>
+
+						{% else %}
+							<div title="{{ paymentMethod.name }}">
+								<span>{{ paymentMethod.name }}</span>
+							</div>
+
+						{% endif %}
+					</div>
+				{% endif %}
+
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endblock %}
+
+{# ThemeWare: Add custom payment logos #}
+{% block twt_payment_logos_custom %}
+	{# ThemeWare: Custom image 1 #}
+	{% if twtCustomPaymentImage1 %}
+		<div class="{{ type }}-logo is-payment-logo is-custom-logo">
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				<a href="{{ 'twt.widget.payment.link'|trans }}"
+				   title="{{ 'twt.widget.payment.customImages.title1'|trans }}"
+				   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+				>
+			{% endif %}
+				{# @TODO tag:v6.7.0 - Check if title is needed #}
+				<img src="{{ twtCustomPaymentImage1|sw_encode_url }}"
+					 class="footer-logo-image"
+					 alt="{{ 'twt.widget.payment.customImages.title1'|trans }}"
+					 title="{{ 'twt.widget.payment.customImages.title1'|trans }}"
+					 height="{{ twtWidgetPaymentLogoMaxHeight|number_format }}px"
+					 loading="lazy"
+				>
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{# ThemeWare: Custom image 2 #}
+	{% if twtCustomPaymentImage2 %}
+		<div class="{{ type }}-logo is-payment-logo is-custom-logo">
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				<a href="{{ 'twt.widget.payment.link'|trans }}"
+				   title="{{ 'twt.widget.payment.customImages.title2'|trans }}"
+				   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+				>
+			{% endif %}
+                {# @TODO tag:v6.7.0 - Check if title is needed #}
+				<img src="{{ twtCustomPaymentImage2|sw_encode_url }}"
+					 class="footer-logo-image"
+					 alt="{{ 'twt.widget.payment.customImages.title2'|trans }}"
+					 title="{{ 'twt.widget.payment.customImages.title2'|trans }}"
+					 height="{{ twtWidgetPaymentLogoMaxHeight|number_format }}px"
+					 loading="lazy"
+				>
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+
+	{# ThemeWare: Custom image 3 #}
+	{% if twtCustomPaymentImage3 %}
+		<div class="{{ type }}-logo is-payment-logo is-custom-logo">
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				<a href="{{ 'twt.widget.payment.link'|trans }}"
+				   title="{{ 'twt.widget.payment.customImages.title3'|trans }}"
+                   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+				>
+			{% endif %}
+                {# @TODO tag:v6.7.0 - Check if title is needed #}
+				<img src="{{ twtCustomPaymentImage3|sw_encode_url }}"
+					 class="footer-logo-image"
+					 alt="{{ 'twt.widget.payment.customImages.title3'|trans }}"
+					 title="{{ 'twt.widget.payment.customImages.title3'|trans }}"
+					 height="{{ twtWidgetPaymentLogoMaxHeight|number_format }}px"
+					 loading="lazy"
+				>
+			{% if twtWidgetPaymentLogoLink == 2 %}
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endblock %}

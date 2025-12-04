@@ -1,0 +1,80 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Buy widget adjustments
+	==================================================
+
+	Info: This file contains adjustments for the buy widget.
+
+	Origin: Shopware has no own file for this.
+
+    @TODO: Check fullwidth and sidebar layouts
+*/
+
+@if $twt-product-detail-buy-widget-compatibility != 1 {
+    // 'Mengenauswahl' im buy-widget
+    .buy-widget-container {
+        .col-4 {
+            //flex-grow: 1;
+            min-width: 140px;
+            width: auto;
+
+            @include media-breakpoint-down(sm) { // max 575.98px
+                flex-grow: 1;
+            }
+        }
+
+        .col-8 {
+            flex-grow: 1;
+            width: auto;
+
+            button {
+                max-width: 420px;
+            }
+        }
+
+        // Verpackungseinheit
+        .product-detail-quantity-group .input-group-text {
+            // Old layout with border-bottom
+            //flex-grow: 1;
+
+            // Alternatives layout ohne border-bottom
+            border: none;
+        }
+
+        // 'Mengenauswahl' mit Verpackungseinheit
+        &.has-pack-unit {
+            .col-8 button {
+                width: 100%;
+            }
+
+            .quantity-selector-group-input {
+                min-width: 50px;
+            }
+        }
+
+        // 'Mengenauswahl' ohne Verpackungseinheit
+        &:not(.has-pack-unit) {
+            .quantity-selector-group-input {
+                min-width: 50px;
+            }
+        }
+
+        // 'Mengenauswahl' mit Verpackungseinheit
+        @if $twt-forms-layout-type == 2 { // underlined
+            &.has-pack-unit .product-detail-quantity-group .input-group-text {
+                border-top-width: 0;
+                border-right-width: 0;
+                border-bottom-width: 2px;
+                border-left-width: 0;
+                background: transparent;
+            }
+        }
+
+    }
+}

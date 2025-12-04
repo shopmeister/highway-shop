@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentGenerator\PremsIndividualOfferPdfServiceDecorator"
+                 decorates="Prems\Plugin\PremsIndividualOffer6\Core\Offer\PdfService"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Prems\Plugin\PremsIndividualOffer6\Core\Offer\OfferDocumentService"/>
+            <argument type="service" id="Prems\Plugin\PremsIndividualOffer6\Core\Offer\Storefront\OfferService"/>
+            <argument type="service" id="Prems\Plugin\PremsIndividualOffer6\Core\Checkout\Document\OfferDocumentGenerator"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PremsIndividualOffer\OfferResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PremsIndividualOffer\OfferResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TranslatorService"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="Prems\Plugin\PremsIndividualOffer6\Core\Offer\Storefront\OfferService" on-invalid="null"/>
+            <argument type="service" id="prems_individual_offer.repository" on-invalid="null"/>
+            <argument type="service" id="prems_individual_offer_messages.repository" on-invalid="null"/>
+        </service>
+
+    </services>
+</container>

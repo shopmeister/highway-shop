@@ -1,0 +1,77 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Account
+	==================================================
+
+	Origin: Shopware base
+*/
+
+// ThemeWare: Adjustments for Shopware 6.6
+.account-aside {
+    .account-aside-list-group {
+        margin-top: $spacer-xs; // $spacer-md, 1rem
+        margin-bottom: $spacer-xs;
+
+        --bs-list-group-bg: transparent;
+    }
+}
+
+// ThemeWare: Account adjustments
+.account-content {
+    .account-content-aside {
+        border-right: 1px solid $sw-border-color;
+    }
+
+    .account-content-main {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.account-welcome {
+    padding-top: 0;
+}
+
+// ThemeWare: CMS styling
+.twt-cms-styling {
+    .account-content {
+        @include media-breakpoint-down(lg) { // max 991.98px
+            .account-content-main {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+
+        .account-content-aside {
+            padding-left: 0;
+        }
+    }
+}
+
+// @TODO: mobile padding
+// ThemeWare: Mobile container padding
+// .is-ctl-accountprofile .is-act-profileoverview
+
+//@include media-breakpoint-down(sm) { // max 575.98px
+//    // ThemeWare: Account - Mobile container padding
+//    .is-ctl-accountprofile,
+//    .is-act-profileoverview {}
+//}
+
+// @TODO: mobile padding
+// ThemeWare: Mobile container padding
+// Info: No specific file is currently used by Showpare
+// .is-ctl-accountpayment .is-act-paymentoverview
+
+//@include media-breakpoint-down(sm) { // max 575.98px
+//    // ThemeWare: Account - Mobile container padding
+//    .is-ctl-accountpayment,
+//    .is-act-paymentoverview {}
+//}
+

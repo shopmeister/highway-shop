@@ -1,0 +1,110 @@
+﻿{% sw_extends '@Storefront/storefront/layout/header/top-bar.html.twig' %}
+{# ThemeWare® HC-Architecture® via configuration #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeaderTopBarCurrenciesMenuShow = theme_config('twt-header-top-bar-currencies-menu-show') %}
+{% set twtHeaderTopBarHotlineShow = theme_config('twt-header-top-bar-hotline-show') %}
+{% set twtHeaderTopBarLanguagesMenuShow = theme_config('twt-header-top-bar-languages-menu-show') %}
+{% set twtHeaderTopBarServiceMenuShow = theme_config('twt-header-top-bar-service-menu-show') %}
+{% set twtTopBarCompatibility = theme_config('twt-top-bar-compatibility') %}
+{% set twtUspBarHeaderLayout = theme_config('twt-usp-bar-header-layout') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the 'Top bar' #}
+{# HC-Architecture @Doku #}
+{% block layout_header_top_bar_inner %}
+	{% if twtTopBarCompatibility == 2 %}
+		{% if twtHeaderTopBarServiceMenuShow == 2 or page.header.languages.count > 1 or page.header.currencies.count > 1 or not feature('ACCESSIBILITY_TWEAKS') %}
+
+			{# ThemeWare: Show hotline in the 'Top bar' #}
+			{% if twtHeaderTopBarHotlineShow == 2 and twtUspBarHeaderLayout != 2 %}
+				{# @deprecated tag:v6.7.0 - The "top-bar" layout will use Bootstrap helper classes instead of custom CSS. #}
+				<nav class="top-bar-nav{% if feature('ACCESSIBILITY_TWEAKS') %} d-flex justify-content-end gap-3{% endif %}" aria-label="{{ 'header.topBarAriaLabel'|trans|striptags }}">
+					<div class="row align-items-center twt-top-bar">
+						<div class="col-auto">
+							<div class="row twt-top-bar-hotline">
+								<div class="col-auto top-bar-hotline">
+									{% block layout_header_top_bar_hotline %}
+										<span class="twt-top-bar-hotline-label">{{ 'twt.header.serviceHotline'|trans|sw_sanitize }}</span>
+										{{ 'twt.header.serviceHotlineText'|trans|sw_sanitize }}
+									{% endblock %}
+								</div>
+							</div>
+						</div>
+
+						<div class="col-auto">
+							<div class="row twt-top-bar-dropdowns">
+								{% apply spaceless %}
+									<div class="col-auto top-bar-language">
+										{{ block('layout_header_top_bar_language') }}
+									</div>
+
+									<div class="col-auto top-bar-currency">
+										{{ block('layout_header_top_bar_currency') }}
+									</div>
+
+									<div class="col-auto top-bar-service">
+										{# ThemeWare: Show 'Service menu' as dropdown or list #}
+										{% sw_include '@Storefront/storefront/themeware/twt-service-menu.html.twig' ignore missing %}
+									</div>
+								{% endapply %}
+							</div>
+						</div>
+					</div>
+				</nav>
+
+			{% else %}
+				{# @deprecated tag:v6.7.0 - The "top-bar" layout will use Bootstrap helper classes instead of custom CSS. #}
+				<nav class="top-bar-nav{% if feature('ACCESSIBILITY_TWEAKS') %} d-flex justify-content-end gap-3{% endif %}" aria-label="{{ 'header.topBarAriaLabel'|trans|striptags }}">
+					{{ block('layout_header_top_bar_language') }}
+
+					{{ block('layout_header_top_bar_currency') }}
+
+					{# ThemeWare: Show 'Service menu' as dropdown or list #}
+					{% sw_include '@Storefront/storefront/themeware/twt-service-menu.html.twig' ignore missing %}
+				</nav>
+
+			{% endif %}
+
+		{% endif %}
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments to the 'Language menu' #}
+{# @TODO: HC-Architecture... #}
+{% block layout_header_top_bar_language %}
+	{# INFO: Remove 'Language menu' if it is deactivated (twt-header-top-bar-languages-menu-show 1) #}
+	{% if twtHeaderTopBarLanguagesMenuShow == 1 %}
+		{# ThemeWare: Clear block -> Remove 'Language menu' #}
+
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments to the 'Currency menu' #}
+{# @TODO: HC-Architecture... #}
+{% block layout_header_top_bar_currency %}
+	{# INFO: Remove 'Currency menu' if it is deactivated (twt-header-top-bar-currencies-menu-show 1) #}
+	{% if twtHeaderTopBarCurrenciesMenuShow == 1 %}
+		{# ThemeWare: Clear block -> Remove 'Currency menu' #}
+
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,91 @@
+{
+    "swag-amazon-pay-order": {
+        "general": {
+            "title": "Amazon Pay",
+            "description": "Verwalte die Zahlung via Amazon Pay",
+            "generalCardTitle": "Allgemeines",
+            "errors": {
+                "incompletePaymentProcess": "Die angeforderten Zahlungsdetails konnten nicht gefunden werden. Dieses Problem kann durch einen unvollständigen Bestell- oder Zahlungsvorgang verursacht werden."
+            }
+        },
+        "checkout-info": {
+            "billingAddressHeadline": "Rechnungsadresse",
+            "shippingAddressHeadline": "Lieferadresse",
+            "referenceIdHeadline": "Amazon-Referenznummer",
+            "statusHeadline": "Status"
+        },
+        "action-toolbar": {
+            "refund": "Erstattung",
+            "createCharge": "Neue Zahlung anlegen",
+            "charge": "Einzug",
+            "cancel": "Abbrechen",
+            "refresh": "Daten mit Amazon abgleichen"
+        },
+        "amount-info": {
+            "chargeTooltip": "{amount} wurden bereits vom Gesamtbetrag eingezogen.",
+            "refundTooltip": "{amount} wurden vom Gesamtbetrag zurückerstattet.",
+            "refundPending": "Rückerstattung wird durchgeführt ..."
+        },
+        "charge-modal": {
+            "title": "Zahlung einziehen",
+            "infoText": "Wenn der Betrag noch nicht eingezogen wurde, kannst Du ihn ganz oder teilweise einziehen.",
+            "maximumAmount": "Gib den Betrag ein, der eingezogen werden soll. Der maximal mögliche Betrag entspricht {amount}.",
+            "amountFieldLabel": "Betrag",
+            "buttonConfirm": "Bestätigen",
+            "notification": {
+                "success": "Der Betrag von {amount} wurde erfolgreich eingezogen.",
+                "error": "Ein Fehler ist aufgetreten"
+            }
+        },
+        "create-charge-modal": {
+            "title": "Neue Zahlung anlegen",
+            "amountFieldLabel": "Betrag",
+            "buttonConfirm": "Bestätigen",
+            "notification": {
+                "success": "Die Zahlung von {amount} wurde erfolgreich angelegt."
+            }
+        },
+        "refund-modal": {
+            "title": "Zahlung erstatten",
+            "infoText": "",
+            "maximumAmount": "(maximal {refundAmountLimit})",
+            "amountFieldLabel": "Betrag",
+            "reasonFieldLabel": "Grund dieser Rückerstattung",
+            "reasonPlaceholder": "Keinen Grund angeben",
+            "buttonConfirm": "Bestätigen",
+            "notification": {
+                "success": "Der Betrag {amount} wurde erfolgreich rückerstattet.",
+                "required": "fehlende Angabe",
+                "missingReason": "Du musst einen Grund für die Rückerstattung angeben!"
+            }
+        },
+        "cancel-modal": {
+            "title": "Zahlungsvorgang abbrechen",
+            "infoText": "Für den Fall, dass mit der Bestellung etwas schieflief, kannst Du den Zahlungsvorgang abbrechen. Die Bestellung bleibt als solche bestehen.",
+            "infoTextReason": "Gib eine kurze Begründung für den Abbruch an, um den Kunden diesbezüglich zu informieren.",
+            "reasonFieldLabel": "Grund für Zahlungsabbruch",
+            "reasonPlaceholder": "Gib einen Grund an",
+            "buttonConfirm": "Bestätigen",
+            "notification": {
+                "success": "Die Zahlung wurde erfolgreich abgebrochen.",
+                "error": "Es ist ein unbekannter Fehler aufgetreten!"
+            }
+        },
+        "payment-history": {
+            "cardTitle": "Zahlungsverlauf",
+            "columns": {
+                "objectId": "Referenznummer",
+                "subject": "Typ",
+                "status": "Status",
+                "amount": "Betrag",
+                "date": "Datum",
+                "actions": "Aktionen"
+            }
+        },
+        "notification": {
+            "invalidTransaction": "Der Zahlungsvorgang mit Amazon Pay wurde unerwartet abgebrochen. Es wurde kein Zahlungseingang mitgeteilt. Bitte überprüfe vor dem Versand dieser Bestellung mögliche andere Zahlungseingänge von anderen Zahlungsdienstleistern.",
+            "invalidChargePermission": "Beim Abrufen der Transaktionsdaten zu dieser Amazon Pay Transaktion ist ein Fehler aufgetreten.",
+            "isPartialCharged": "Warnung: für diese Bestellung wurde ein Teilbetrag eingezogen."
+        }
+    }
+}

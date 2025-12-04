@@ -1,0 +1,17 @@
+parameters:
+    level: 9
+    ignoreErrors:
+        # TODO: Remove this when dropping Shopware 6.5 support
+        -
+            message: '#but class Shopware\\Core\\Framework\\DataAbstractionLayer\\EntityRepository is not generic.$#'
+            reportUnmatched: false
+        -
+            message: "#^Cannot access offset 'id' on mixed\\.$#"
+            count: 1
+            path: src/Elasticsearch/Product/HideSoldoutProductDefinition.php
+            reportUnmatched: false
+        -
+            message: "#^Cannot access offset 'swkwebHideSoldoutPr…' on mixed\\.$#"
+            count: 2
+            path: src/Elasticsearch/Product/HideSoldoutProductDefinition.php
+            reportUnmatched: false

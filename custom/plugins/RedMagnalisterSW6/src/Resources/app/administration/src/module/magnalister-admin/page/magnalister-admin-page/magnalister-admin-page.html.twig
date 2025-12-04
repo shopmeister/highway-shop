@@ -1,0 +1,38 @@
+{% block magnalister_admin_page %}
+    <sw-page class="magnalister-admin-page" :showSmartBar="false">
+        <template #content>
+            {% block magnalister_admin_page_content %}
+                {% block magnalister_admin_page_inner %}
+
+                    <div id="app">
+                        <sw-entity-single-select
+                                v-if="selectboxsaleschannel"
+                                v-model:value="selectedField"
+                                entity="sales_channel_domain"
+                                label-property="url"
+                                :label="$tc('magnalister-admin.salesChannelDomainSelectBox.label')"
+                                :placeholder="$tc('magnalister-admin.salesChannelDomainSelectBox.placeholder')"
+                                :help-text="$tc('magnalister-admin.salesChannelDomainSelectBox.help')"
+                                show-clearable-button
+                                @update:value="selectSalesChannel"
+                        />
+                        <div id="editor" ref="editor"></div>
+                        <div
+                                id="iframe-wrapper"
+                                :style="iframe.wrapperStyle"
+                        >
+                            <iframe
+                                    v-if="loaded"
+                                    :src="iframe.src"
+                                    :style="iframe.style"
+                                    :height="iframe.style.height"
+                                    :width="iframe.style.width"
+                                    frameborder="0"
+                            ></iframe>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

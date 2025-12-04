@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/page/account/register/index.html.twig' %}
+
+{% block page_account_register_login_container %}
+{% endblock %}
+
+{% block page_account_register_container %}
+    <div class="swag-amazon-pay--registration-form col-lg-12" data-amazon-registration-url="{{ registrationUrl }}">
+        {% sw_include '@Storefront/storefront/component/swag-amazon-pay/account/register.html.twig' with {
+            'cardTitle': "account.registerPersonalHeader"|trans|sw_sanitize
+        } %}
+    </div>
+{% endblock %}

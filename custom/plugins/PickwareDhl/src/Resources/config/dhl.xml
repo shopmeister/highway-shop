@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/master/src/Core/System/SystemConfig/Schema/config.xsd"
+>
+    <card>
+        <title>Login DHL Business Customer Portal</title>
+        <title lang="de-DE">Login DHL Geschäftkundenportal</title>
+        <input-field type="text">
+            <name>username</name>
+            <required>true</required>
+            <label>Username</label>
+            <label lang="de-DE">Benutzername</label>
+            <helpText lang="de-DE">
+                Dein Benutzername für das DHL Geschäftskundenportal. Bitte teste deine Zugangsdaten, indem du dich damit
+                unter www.dhl-geschaeftskundenportal.de anmeldest. Weitere Information findest du in der Dokumentation.
+                Wenn du den Testing-Webservice von DHL verwendest, musst du hier die Entwickler-ID deines
+                DHL-Entwickler-Portal-Accounts angeben. Die Entwickler-ID findest du im DHL-Entwickler-Portal unter
+                "Konto".
+            </helpText>
+            <helpText>
+                The username for the DHL Business Customer Portal. Please test your account by logging into
+                www.dhl-geschaeftskundenportal.de! For further information please refer to the documentation. In case
+                you are using the testing webservice you need to enter the Developer-ID of your DHL developer portal
+                account. The Developer-ID can be found in the DHL developer portal under "Account".
+            </helpText>
+        </input-field>
+        <input-field type="password">
+            <name>password</name>
+            <required>true</required>
+            <label>Password</label>
+            <label lang="de-DE">Passwort</label>
+            <helpText lang="de-DE">
+                Dein Passwort für das DHL Geschäftskundenportal. Bitte teste deine Zugangsdaten, indem du dich damit
+                unter www.dhl-geschaeftskundenportal.de anmeldest. Weitere Information findest du in der Dokumentation.
+                Wenn du den Testing-Webservice von DHL verwendest, musst du hier das Passwort deines
+                DHL-Entwickler-Portal-Accounts angeben.
+            </helpText>
+            <helpText>
+                The password for the DHL Business Customer Portal. Please test your account by logging into
+                www.dhl-geschaeftskundenportal.de! For further information please refer to the documentation. In case
+                you are using the testing webservice you need to enter the password of you DHL developer portal account.
+            </helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>useTestingEndpoint</name>
+            <label>Use testing webservice</label>
+            <label lang="de-DE">Nutze Testing-Webservice</label>
+            <helpText lang="de-DE">
+                Nutze den Testing-Webservice von DHL anstatt den Productive-Webservice. In diesem Fall musst du oben
+                die Zugangsdaten zu deinem DHL-Entwickler-Portal-Account angeben.
+            </helpText>
+            <helpText>
+                Use the DHL testing web service instead of the productive web service. This requires you to enter the
+                login data of your DHL developer portal account above.
+            </helpText>
+        </input-field>
+        <component name="pw-dhl-user-registration-link">
+            <name>dhlLink</name>
+        </component>
+    </card>
+    <card>
+        <title lang="de-DE">Vertragsinformationen</title>
+        <title>Contract information</title>
+        <input-field type="text">
+            <name>billingNumberV01PAK</name>
+            <label>Billing number DHL Paket</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Paket</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+        <input-field type="text">
+            <name>billingNumberV53WPAK</name>
+            <label>Billing number DHL Paket International</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Paket International</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+        <input-field type="text">
+            <name>billingNumberV54EPAK</name>
+            <label>Billing number DHL Europaket</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Europaket</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+        <input-field type="text">
+            <name>billingNumberV62KP</name>
+            <label>Billing number DHL Kleinpaket</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Kleinpaket</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+        <input-field type="text">
+            <name>billingNumberV66WPI</name>
+            <label>Billing number DHL Warenpost International</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Warenpost International</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+        <input-field type="text">
+            <name>billingNumberdhlRetoure</name>
+            <label>Billing number DHL Retoure (Enclosed return)</label>
+            <label lang="de-DE">Abrechnungsnummer DHL Retoure (Beilegeretoure)</label>
+            <placeholder>Billing number (14-digits)</placeholder>
+            <placeholder lang="de-DE">Abrechnungsnummer (14-stellig)</placeholder>
+            <maxLength>14</maxLength>
+        </input-field>
+    </card>
+    <card>
+        <title>Preferred delivery</title>
+        <title lang="de-DE">Wunschservices</title>
+        <input-field type="text">
+            <name>customerNumber</name>
+            <label>Customer number (EKP)</label>
+            <label lang="de-DE">Kundennummer (EKP)</label>
+            <placeholder>Customer number (10-digits)</placeholder>
+            <placeholder lang="de-DE">Kundennummer (10-stellig)</placeholder>
+            <maxLength>10</maxLength>
+        </input-field>
+        <input-field type="password">
+            <name>googleMapsApiKey</name>
+            <label>Google Maps API Key</label>
+            <helpText lang="de-DE">
+                Hilfestellungen zum Einrichten ihres API-Keys finden sie im Pickware Helpcenter.
+            </helpText>
+            <helpText>You can find help with configuring your API key in the Pickware Helpcenter.</helpText>
+        </input-field>
+        <input-field type="time">
+            <name>lastOrderTime</name>
+            <label lang="de-DE">Letzter Bestellzeitpunkt</label>
+            <label>Last order time</label>
+            <helpText lang="de-DE">
+                Der Zeitpunkt ab dem die Wunschservices eingehende Bestellungen behandeln, als würden diese am nächsten
+                Tag eingehen.
+            </helpText>
+            <helpText>
+                The time after which the preferred delivery treats incoming orders as if they would be incoming on the
+                next day.
+            </helpText>
+        </input-field>
+        <input-field type="multi-select">
+            <name>excludedDeliveryDays</name>
+            <label lang="de-DE">Ausgeschlossene Liefertage</label>
+            <label>Excluded delivery days</label>
+            <helpText lang="de-DE">
+                Tage an denen die Lieferung ausgeschlossen ist und damit nicht für den Wunschtag zur Auswahl stehen.
+            </helpText>
+            <helpText>
+                The days on which the delivery is not possible and thus are not eligible for selection for the
+                preferred day.
+            </helpText>
+            <options>
+                <option>
+                    <id>1</id>
+                    <name lang="de-DE">Montag</name>
+                    <name>Monday</name>
+                </option>
+                <option>
+                    <id>2</id>
+                    <name lang="de-DE">Dienstag</name>
+                    <name>Tuesday</name>
+                </option>
+                <option>
+                    <id>3</id>
+                    <name lang="de-DE">Mittwoch</name>
+                    <name>Wednesday</name>
+                </option>
+                <option>
+                    <id>4</id>
+                    <name lang="de-DE">Donnerstag</name>
+                    <name>Thursday</name>
+                </option>
+                <option>
+                    <id>5</id>
+                    <name lang="de-DE">Freitag</name>
+                    <name>Friday</name>
+                </option>
+                <option>
+                    <id>6</id>
+                    <name lang="de-DE">Samstag</name>
+                    <name>Saturday</name>
+                </option>
+            </options>
+        </input-field>
+    </card>
+    <card>
+        <title lang="de-DE">Kontodaten</title>
+        <title>Bank account data</title>
+        <input-field type="text">
+            <name>bankTransferDataAccountOwnerName</name>
+            <label>Owner</label>
+            <label lang="de-DE">Inhaber</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataIban</name>
+            <label>IBAN</label>
+            <label lang="de-DE">IBAN</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataBankName</name>
+            <label>Name of bank</label>
+            <label lang="de-DE">Name der Bank</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataBic</name>
+            <label>BIC</label>
+            <label lang="de-DE">BIC</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten.
+            </helpText>
+            <helpText>This data is needed to direct cash on delivery payments to the correct bank account.</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataNote1</name>
+            <label>Purpose of use</label>
+            <label lang="de-DE">Verwendungszweck</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten. Nutze den
+                Platzhalter {{ '\{\{ customerReference \}\}' }}, um die Kundenreferenznummer des Paketes einzufügen.
+            </helpText>
+            <helpText>
+                This data is needed to direct cash on delivery payments to the correct bank account. You can use the
+                placeholder {{ '\{\{ customerReference \}\}' }} to insert the customer reference number of the package.
+            </helpText>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataNote2</name>
+        </input-field>
+        <input-field type="text">
+            <name>bankTransferDataAccountReference</name>
+            <label>Customer reference</label>
+            <label lang="de-DE">Kundenreferenz</label>
+            <helpText lang="de-DE">
+                Diese Daten werden benötigt, um Zahlungen per Nachnahme auf das richtige Konto zu leiten. Nutze den
+                Platzhalter {{ '\{\{ customerReference \}\}' }}, um die Kundenreferenznummer des Paketes einzufügen.
+            </helpText>
+            <helpText>
+                This data is needed to direct cash on delivery payments to the correct bank account. You can use the
+                placeholder {{ '\{\{ customerReference \}\}' }} to insert the customer reference number of the package.
+            </helpText>
+        </input-field>
+    </card>
+    <card>
+        <title lang="de-DE">Retourenempfänger</title>
+        <title>Return recipients</title>
+        <input-field type="text">
+            <name>returnReceiverDe</name>
+            <label>Germany</label>
+            <label lang="de-DE">Deutschland</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Deutschland, z.B. "deu".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Germany, e.g. "deu".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverAt</name>
+            <label>Austria</label>
+            <label lang="de-DE">Österreich</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Österreich, z.B. "aut".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Austria, e.g. "aut".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverCh</name>
+            <label>Switzerland</label>
+            <label lang="de-DE">Schweiz</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für die Schweiz, z.B. "che".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Switzerland, e.g. "che".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverBe</name>
+            <label>Belgium</label>
+            <label lang="de-DE">Belgien</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Belgien, z.B. "bel".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Belgium, e.g. "bel".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverBg</name>
+            <label>Bulgaria</label>
+            <label lang="de-DE">Bulgarien</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Bulgarien, z.B. "bgr".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Bulgaria, e.g. "bgr".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverCy</name>
+            <label>Cyprus</label>
+            <label lang="de-DE">Zypern</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Zypern, z.B. "cyp".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Cyprus, e.g. "cyp".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverCz</name>
+            <label>Czech republic</label>
+            <label lang="de-DE">Tschechien</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Tschechien, z.B. "cze".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for the Czech republic, e.g. "cze".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverDk</name>
+            <label>Denmark</label>
+            <label lang="de-DE">Dänemark</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Dänemark, z.B. "dnk".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Denmark, e.g. "dnk".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverEe</name>
+            <label>Estonia</label>
+            <label lang="de-DE">Estland</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Estland, z.B. "est".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Estonia, e.g. "est".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverEs</name>
+            <label>Spain</label>
+            <label lang="de-DE">Spanien</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Spanien, z.B. "esp".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Spain, e.g. "esp".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverFi</name>
+            <label>Finland</label>
+            <label lang="de-DE">Finnland</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Finnland, z.B. "fin".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Finland, e.g. "fin".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverFr</name>
+            <label>France</label>
+            <label lang="de-DE">Frankreich</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Frankreich, z.B. "fra".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for France, e.g. "fra".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverGb</name>
+            <label>Great Britain</label>
+            <label lang="de-DE">Großbritannien</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Großbritannien, z.B. "gbr".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Great Britain, e.g. "gbr".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverGr</name>
+            <label>Greece</label>
+            <label lang="de-DE">Griechenland</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Griechenland, z.B. "grc".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Greece, e.g. "grc".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverHu</name>
+            <label>Hungary</label>
+            <label lang="de-DE">Ungarn</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Ungarn, z.B. "hun".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Hungary, e.g. "hun".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverHr</name>
+            <label>Croatia</label>
+            <label lang="de-DE">Kroatien</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Kroatien, z.B. "hrv".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Croatia, e.g. "hrv".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverIe</name>
+            <label>Ireland</label>
+            <label lang="de-DE">Irland</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Irland, z.B. "irl".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Ireland, e.g. "irl".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverIt</name>
+            <label>Italy</label>
+            <label lang="de-DE">Italien</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Italien, z.B. "ita".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Italy, e.g. "ita".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverLt</name>
+            <label>Lithuania</label>
+            <label lang="de-DE">Litauen</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Litauen, z.B. "ltu".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Lithuania, e.g. "ltu".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverLu</name>
+            <label>Luxembourg</label>
+            <label lang="de-DE">Luxemburg</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Luxembourg, z.B. "lux".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Luxembourg, e.g. "lux".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverLv</name>
+            <label>Latvia</label>
+            <label lang="de-DE">Lettland</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Lettland, z.B. "lva".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Latvia, e.g. "lva".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverMt</name>
+            <label>Malta</label>
+            <label lang="de-DE">Malta</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Malta, z.B. "mlt".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Malta, e.g. "mlt".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverNl</name>
+            <label>Netherlands</label>
+            <label lang="de-DE">Niederlande</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für die Niederlande, z.B. "nld".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for the Netherlands, e.g. "nld".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverPl</name>
+            <label>Poland</label>
+            <label lang="de-DE">Polen</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Polen, z.B. "pol".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Poland, e.g. "pol".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverPt</name>
+            <label>Portugal</label>
+            <label lang="de-DE">Portugal</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Portugal, z.B. "prt".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Portugal, e.g. "prt".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverRo</name>
+            <label>Romania</label>
+            <label lang="de-DE">Rumänien</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Rumänien, z.B. "rou".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Romania, e.g. "rou".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverSe</name>
+            <label>Sweden</label>
+            <label lang="de-DE">Schweden</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Sweden, z.B. "swe".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Sweden, e.g. "swe".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverSi</name>
+            <label>Slovenia</label>
+            <label lang="de-DE">Slowenien</label>
+            <helpText lang="de-DE">
+                Die ID ("Receiver Id") deines Retourenempfängers für Slowenien, z.B. "svn".
+            </helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Slovenia, e.g. "svn".</helpText>
+        </input-field>
+        <input-field type="text">
+            <name>returnReceiverSk</name>
+            <label>Slovakia</label>
+            <label lang="de-DE">Slowakei</label>
+            <helpText lang="de-DE">Die ID ("Receiver Id") deines Retourenempfängers für Slowakei, z.B. "svk".</helpText>
+            <helpText>The ID ("Receiver Id") of your return recipient for Slovakia, e.g. "svk".</helpText>
+        </input-field>
+    </card>
+</config>

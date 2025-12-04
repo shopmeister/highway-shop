@@ -1,0 +1,115 @@
+{% block magnalister_tab %}
+    <div class="magnalister-tab">
+
+        <div class="sw-card magnalister-details" >
+            <div class="sw-card__title"><span v-html="magnalistrLogo"></span></div>
+            <div class="sw-card__content">
+                <span v-html="magnalisterOrderData"></span>
+            </div>            
+        </div>
+        <div v-if="isOtto" class="sw-card magnalister-returncarrier" >
+            <div class="sw-card__title">Return Carrier and Return Tracking Key</div>
+            <div class="sw-card__content">
+                <div class="sw-order-inline-field sw-order-inline-field__truncateable">
+                    <div class="sw-confirm-field">
+                        <div class="sw-field sw-block-field sw-contextual-field sw-field--text sw-field--default">
+                            <div class="sw-field__label">
+                                <label for="text">Return Carrier</label>
+                            </div>
+                            <div class="sw-block-field__block">
+
+                                <input    
+                                    type="text"
+                                    :value="returnCarrierValue"
+                                    @input="onCarierInput"
+                                    ref="returnCarrier"
+                                    size="medium"
+                                    label="Return Carrier"
+                                    placeholder="Add return carrier"
+                                    style="width: 100%;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-order-inline-field sw-order-inline-field__truncateable">
+                    <div class="sw-confirm-field">
+                        <div class="sw-field sw-block-field sw-contextual-field sw-field--text sw-field--default">
+                            <div class="sw-field__label">
+                                <label for="text">Return Tracking Key</label>
+                            </div>
+                            <div class="sw-block-field__block">
+                                <input              
+                                    type="text"
+                                    :value="returnTrackingNumberValue"
+                                    @input="onReturnTrackingCodInput"
+                                    ref="returnTrackingNumber"
+                                    size="medium"
+                                    label="Return Tracking Key"
+                                    placeholder="Add return tracking key"
+                                    style="width: 100%;">                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div align="right">
+                    <span class="sw-button-group">
+                        <button class="sw-button sw-button--primary " @click="submitValue" ><span class="sw-button__content">Add / Update</span></button>                    
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div v-if="isAmazon" class="sw-card magnalister-Carrier-order" >
+            <div class="sw-card__title">{{ $tc('magnalister-order.amazon-form.title') }}</div>
+            <div class="sw-card__content">
+                <div class="sw-order-inline-field sw-order-inline-field__truncateable">
+                    <div class="sw-confirm-field">
+                        <div class="sw-field sw-block-field sw-contextual-field sw-field--text sw-field--default">
+                            <div class="sw-field__label">
+                                <label for="text">{{ $tc('magnalister-order.amazon-form.carrier-code-label') }}</label>
+                            </div>
+                            <div class="sw-block-field__block">
+
+                                <input    
+                                    type="text"
+                                    :value="carrierCodeValue"
+                                    @input="onCarrierCodeInput"
+                                    ref="carrierCode"
+                                    size="medium"
+                                    :label= "$tc('magnalister-order.amazon-form.carrier-code-label')"
+                                    placeholder="Add carrierCode"
+                                    style="width: 100%;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sw-order-inline-field sw-order-inline-field__truncateable">
+                    <div class="sw-confirm-field">
+                        <div class="sw-field sw-block-field sw-contextual-field sw-field--text sw-field--default">
+                            <div class="sw-field__label">
+                                <label for="text">{{ $tc('magnalister-order.amazon-form.ship-method-label') }}</label>
+                            </div>
+                            <div class="sw-block-field__block">
+                                <input              
+                                    type="text"
+                                    :value="shipMethodValue"
+                                    @input="onShipMethodInput"
+                                    ref="shipMethod"
+                                    size="medium"
+                                    :label= "$tc('magnalister-order.amazon-form.ship-method-label')"
+                                    placeholder="Add Shipping Method"
+                                    style="width: 100%;">                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div align="right">
+                    <span class="sw-button-group">
+                        <button class="sw-button sw-button--primary " @click="submitAmazonValue" ><span class="sw-button__content">{{ $tc('magnalister-order.amazon-form.action-button-label') }}</span></button>                    
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,189 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS image decoration classes
+	==================================================
+	see https://wiki.themeware.design/wissensdatenbank/anleitungen/erlebniswelten/bilder-in-cms-bloecken-mit-dekorationsklassen-verschoenern
+*/
+
+// Info:
+// - ThemeWare CSS-Klassen mit welchen Standard-CMS-Elemente verziert werden können.
+// - Hinweis: Blöcke können die Klassen "shadow" und "rounded" von Bootstrap nutzen.
+
+// UNDER CONSTRUCTION
+// @TODO: Add configuration (e.g. border-radius: xy)
+
+// ThemeWare: Adds CSS image decoration classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify its images.
+
+@if $twt-custom-cms-image-decoration-classes == 2 {
+
+    // ThemeWare: Border, solid
+    // - Use class on a CMS element to add a solid 12px border to its images.
+    .twt-cms-image-border,
+    .twt-image-border-1, // shorthand #unofficial
+    .twt-cms-image-border-1, // undocumented #unofficial
+    .twt-cms-image-border-solid {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            border: 12px solid #ffffff;
+        }
+
+        &.cms-block-image-text-bubble { // Fix: Three columns, captioned & rounded
+            div.cms-image-container {
+                border-radius: 50%;
+            }
+        }
+
+        &.cms-block-image-bubble-row { // Fix: Three columns, rounded
+            div.cms-image-container {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    // ThemeWare: Border, semi-transparent (not for product images)
+    // - Use class on a CMS element to add a semi-transparent 12px border to its images.
+    .twt-image-border-2, // shorthand #unofficial
+    .twt-cms-image-border-2, // undocumented #unofficial
+    .twt-cms-image-border-semi {
+        div.cms-image-container::before {
+            position: absolute;
+            display: block;
+            content: '';
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 0 0 12px rgb(255 255 255 / 60%);
+            transition: all 0.35s ease-in-out;
+            z-index: 1;
+        }
+
+        &.cms-block-image-text-bubble { // Fix: Three columns, captioned & rounded
+            div.cms-image-container::before {
+                border-radius: 50%;
+            }
+        }
+
+        &.cms-block-image-bubble-row { // Fix: Three columns, rounded
+            div.cms-image-container::before {
+                border-radius: 50%;
+            }
+        }
+    }
+
+    // ThemeWare: Box-shadow
+    // - Add class to a CMS element to apply a box-shadow to its images.
+    .twt-image-shadow-sm, // shorthand #unofficial
+    .twt-cms-image-shadow-sm, // undocumented #unofficial
+    .twt-cms-image-box-shadow-sm {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            box-shadow: $box-shadow-sm;
+        }
+    }
+
+    .twt-image-shadow, // shorthand #unofficial
+    .twt-cms-image-shadow, // undocumented #unofficial
+    .twt-cms-image-box-shadow {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            box-shadow: $box-shadow;
+        }
+    }
+
+    .twt-image-shadow-lg, // shorthand #unofficial
+    .twt-cms-image-shadow-lg, // undocumented #unofficial
+    .twt-cms-image-box-shadow-lg {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            box-shadow: $box-shadow-lg;
+        }
+    }
+
+    .twt-image-shadow-1, // shorthand #unofficial
+    .twt-cms-image-shadow-1, // undocumented #unofficial
+    .twt-cms-image-box-shadow-level-1 {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            @include twt-box-shadow(1);
+        }
+    }
+
+    .twt-image-shadow-2, // shorthand #unofficial
+    .twt-cms-image-shadow-2, // undocumented #unofficial
+    .twt-cms-image-box-shadow-level-2 {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            @include twt-box-shadow(2);
+        }
+    }
+
+    .twt-image-shadow-3, // shorthand #unofficial
+    .twt-cms-image-shadow-3, // undocumented #unofficial
+    .twt-cms-image-box-shadow-level-3 {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            @include twt-box-shadow(3);
+        }
+    }
+
+    .twt-image-shadow-4, // shorthand #unofficial
+    .twt-cms-image-shadow-4, // undocumented #unofficial
+    .twt-cms-image-box-shadow-level-4 {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            @include twt-box-shadow(4);
+        }
+    }
+
+    .twt-image-shadow-5, // shorthand #unofficial
+    .twt-cms-image-shadow-5, // undocumented #unofficial
+    .twt-cms-image-box-shadow-level-5 {
+        div.cms-image-container,
+        div.product-image-wrapper {
+            @include twt-box-shadow(5);
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Border-radius
+    // - Add class to a CMS element to round its image corners.
+    .twt-image-rounded, // shorthand #unofficial
+    .twt-cms-image-rounded {
+        // Uses theme configuration
+        div.cms-image-container,
+        div.product-image-wrapper {
+            border-radius: null-pixel-unit($twt-border-radius);
+
+            img {
+                border-radius: null-pixel-unit($twt-border-radius);
+            }
+        }
+    }
+
+    // undocumented #unofficial
+    .twt-image-border-radius, // shorthand #unofficial
+    .twt-cms-image-border-radius {
+        // @TODO: Use individual configuration
+        div.cms-image-container,
+        div.product-image-wrapper {
+            border-radius: null-pixel-unit($twt-border-radius); // @TODO: Add individual configuration
+
+            img {
+                border-radius: null-pixel-unit($twt-border-radius); // @TODO: Add individual configuration
+            }
+        }
+    }
+}

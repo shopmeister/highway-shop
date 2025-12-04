@@ -1,0 +1,87 @@
+{% block storefront_component_swag_amazon_pay_amazon_pay_button %}
+    {% if amazonPayButtonExtension is null %}
+        {% set amazonPayButtonExtension = page.extensions.SwagAmazonPayButton %}
+    {% endif %}
+
+    {% if amazonPayButtonExtension is not null %}
+        {% block storefront_component_swag_amazon_pay_amazon_pay_button_wrapper %}
+            <div
+                    class="swag-amazon-pay-wrapper{% if identifier is not null %} {{ identifier }}{% endif %}"
+                    {% if amazonPayButtonExtension.hideButton %} hidden="hidden"{% endif %}
+            >
+
+                {% block storefront_component_swag_amazon_pay_amazon_pay_button_insecure_request_notification %}
+                    {% if amazonPayButtonExtension.secureRequest != 1 %}
+                        <div
+                                class="swag-amazon-pay-button-tooltip-overlay connection-is-insecure"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                title="{{ "SwagAmazonPay.errors.insecure"|trans|striptags }}"
+                        >
+                            <div
+                                    class="swag-amazon-pay-button-error connection-is-insecure"
+                                    hidden="hidden"
+                            >
+                                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                                    type: "danger",
+                                    content: 'SwagAmazonPay.errors.insecure' |trans|striptags
+                                } %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block storefront_component_swag_amazon_pay_amazon_pay_button_loading_indicator %}
+                    <div
+                            id="swag-amazon-pay-loading-indicator{% if identifier is not null %}-{{ identifier }}{% endif %}"
+                            class="swag-amazon-pay-loading-indicator{% if identifier is not null %} {{ identifier }}{% endif %}"
+                            hidden="hidden">
+                    </div>
+                {% endblock %}
+
+                {% block storefront_component_swag_amazon_pay_amazon_pay_button_container %}
+                    <div
+                            id="swag-amazon-pay-button-container{% if identifier is not null %}-{{ identifier }}{% endif %}"
+                            class="swag-amazon-pay-button-container{% if identifier is not null %} {{ identifier }}{% endif %}"
+                            data-amazon-pay-button="true"
+                            {% if addLineItemUrl %}data-add-line-item-url="{{ addLineItemUrl }}"{% endif %}
+                            data-amazon-pay-button-options='{
+                            "libraryUrl": "{{ amazonPayButtonExtension.libraryUrl }}",
+                            "type": "{% if type is not null %}{{ type }}{% else %}default{% endif %}",
+                            "loadingElementId": "swag-amazon-pay-loading-indicator{% if identifier is not null %}-{{ identifier }}{% endif %}",
+                            "errorElementId": "swag-amazon-pay-button-error{% if identifier is not null %}-{{ identifier }}{% endif %}",
+                            "createCheckoutSessionConfig": {
+                                "payloadJSON": "{{ amazonPayButtonExtension.payload | escape('js') }}",
+                                "signature": "{{ amazonPayButtonExtension.signature }}",
+                                "publicKeyId": "{{ amazonPayButtonExtension.publicKeyId }}"
+                            },
+                            "buttonConfig": {
+                                    "merchantId": "{{ amazonPayButtonExtension.merchantId }}",
+                                    "sandbox": {% if amazonPayButtonExtension.sandbox == 1 %}true{% else %}false{% endif %},
+                                    "ledgerCurrency": "{{ amazonPayButtonExtension.ledgerCurrency }}",
+                                    "checkoutLanguage": "{{ amazonPayButtonExtension.checkoutLanguage }}",
+                                    "placement": "{{ amazonPayButtonExtension.placement }}",
+                                    "productType": "{{ amazonPayButtonExtension.productType }}",
+                                    "buttonColor": "{{ amazonPayButtonExtension.buttonColor }}",
+                                    "estimatedOrderAmount": {% if amazonPayButtonExtension.estimatedOrderAmount %}{{ amazonPayButtonExtension.estimatedOrderAmount|json_encode }}{% else %}null{% endif %}
+                            }}'>
+                    </div>
+                {% endblock %}
+
+                {% block storefront_component_swag_amazon_pay_amazon_pay_button_error %}
+                    <div id="swag-amazon-pay-button-error{% if identifier is not null %}-{{ identifier }}{% endif %}"
+                         class="swag-amazon-pay-button-error {% if identifier is not null %}{{ identifier }}{% endif %}"
+                         hidden="hidden">
+                        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                            type: "danger",
+                            content: 'SwagAmazonPay.errors.generic' | trans
+                        } %}
+                    </div>
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+

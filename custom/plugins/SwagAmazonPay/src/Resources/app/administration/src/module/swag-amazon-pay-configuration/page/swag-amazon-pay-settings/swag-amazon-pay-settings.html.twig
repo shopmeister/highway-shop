@@ -1,0 +1,71 @@
+{% block swag_amazon_pay_settings %}
+<sw-page class="swag-amazon-pay-settings">
+    {% block swag_amazon_pay_settings_header %}
+    <template #smart-bar-header>
+        <h2>
+            {{ $tc('sw-settings.index.title') }}
+            <sw-icon name="regular-chevron-right-xs" small></sw-icon>
+            {{ $tc('swag-amazon-pay-configuration.module.title') }}
+        </h2>
+    </template>
+    {% endblock %}
+
+    {% block swag_amazon_pay_settings_actions %}
+    <template #smart-bar-actions>
+        {% block swag_amazon_pay_settings_export_config %}
+            <sw-button
+                class="sw-settings-login-registration__export-action"
+                :isLoading="isExporting"
+                :disabled="isLoading || isExporting"
+                @click="onExportConfig">
+                {{ $tc('swag-amazon-pay-configuration.actions.exportConfig') }}
+            </sw-button>
+        {% endblock %}
+
+        {% block swag_amazon_pay_settings_import_config %}
+            <sw-button
+                class="sw-settings-login-registration__import-action"
+                :isLoading="isImporting"
+                :disabled="isLoading || isImporting || !acl.can('swag_amazonpay.editor')"
+                @click="onImportConfig">
+                {{ $tc('swag-amazon-pay-configuration.actions.importConfig') }}
+            </sw-button>
+        {% endblock %}
+
+        {% block swag_amazon_pay_settings_save %}
+            <sw-button
+                class="sw-settings-login-registration__save-action"
+                variant="primary"
+                :isLoading="isLoading"
+                :disabled="isLoading"
+                @click="onSave">
+                {{ $tc('global.default.save') }}
+            </sw-button>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    {% block swag_amazon_pay_settings_content %}
+        <template #content>
+            {% block swag_amazon_pay_settings_content_config_import_modal %}
+                <swag-amazon-pay-configuration-upload-modal
+                    v-if="showConfigImportModal"
+                    @modal-close="onCloseModal()">
+                </swag-amazon-pay-configuration-upload-modal>
+            {% endblock %}
+            <sw-card-view>
+                {% block swag_amazon_pay_settings_content_card_view %}
+                    <swag-amazon-pay-configuration
+                        salesChannelSwitchable
+                        inherit
+                        configDomain="SwagAmazonPay.settings"
+                        :parentLoading="isLoading"
+                        @change-sales-channel="onSalesChannelChange"
+                        @change-config="onConfigChange">
+                    </swag-amazon-pay-configuration>
+                {% endblock %}
+            </sw-card-view>
+        </template>
+    {% endblock %}
+</sw-page>
+{% endblock %}

@@ -1,0 +1,33 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Bootstrap style '.badge' added (currently overwritten by Shopware)
+	==================================================
+
+    Info: This file is for adding additional badge colors to the theme.
+*/
+
+// ThemeWare: Badge colors ------------------------------
+
+// Farb-Varianten der Badges generieren
+@each $color, $value in $theme-colors {
+    // Theme Farb-Varianten
+    .badge-#{$color} {
+        @include twt-badge-variant($value, $value, $value);
+    }
+
+    // Helle Farb-Varianten
+    $twt-background: shift-color($value, $twt-bg-scale);
+    $twt-border: shift-color($value, $twt-border-scale);
+    $twt-color: shift-color($value, $twt-color-scale);
+    //$twt-color: color-contrast($value); // @TODO: Contrast
+
+    .badge-#{$color}-light {
+        @include twt-badge-variant-lighten($twt-background, $twt-border, $twt-color);
+    }
+}

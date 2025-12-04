@@ -1,0 +1,38 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Checkout/Cart
+	==================================================
+
+	Origin: Shopware base & skin
+*/
+
+// ThemeWare: Checkout/Cart adjustments
+body.is-act-cartpage {
+	.checkout {
+		.checkout-aside-container {
+			top: 30px; // 0px
+		}
+	}
+}
+
+.cart-add-product-container {
+	input#addProductInput {
+		border-top-left-radius: null-pixel-unit($twt-border-radius);
+		border-bottom-left-radius: null-pixel-unit($twt-border-radius);
+	}
+}
+
+// @TODO: mobile padding
+// ThemeWare: Mobile container padding
+// .is-ctl-checkout .is-act-cartpage
+
+//@include media-breakpoint-down(sm) { // max 575.98px
+//	// ThemeWare: Checkout > Cart - Mobile container padding ("Shopping cart")
+//	.is-act-cartpage {}
+//}

@@ -1,0 +1,32 @@
+{
+  "SwagAmazonPay": {
+    "errors": {
+      "generic": "Amazon Pay no está disponible en este momento. Por favor, póngase en contacto con el operador de la tienda para obtener más información.",
+      "insecure": "Amazon Pay no está disponible para HTTP. Por favor, póngase en contacto con el operador de la tienda para obtener más información.",
+      "invalidShippingMethod": "Amazon Pay no está disponible. Por favor, verifique el método de envío e intente nuevamente.",
+      "finalize": "Hubo un problema al procesar el pago. Por favor, póngase en contacto con el operador de la tienda o intente nuevamente.",
+      "loginWithAmazon": "Hubo un error al iniciar sesión con Amazon. Por favor, cree una nueva cuenta de cliente para esta tienda o intente nuevamente más tarde.",
+      "signupTokenInvalid": "No se pudo validar su registro con Amazon Pay.",
+      "signupEmailNotUnique": "Ya hay un cliente registrado con esa dirección de correo electrónico. ¿Olvidó su contraseña?",
+      "accountAlreadyLinked": "Una cuenta de cliente ya está vinculada a su cuenta de Amazon."
+    },
+    "cookie": {
+      "value": {
+        "name": "Amazon Pay"
+      }
+    },
+    "confirm": {
+      "payment": {
+        "changeAmazonPaymentMethod": "Cambiar el método de pago de Amazon",
+        "changePaymentMethod": "Cancelar el proceso de pago de Amazon"
+      }
+    },
+    "register": {
+      "headline": "¿Es cliente de Amazon?",
+      "text": "Omita la entrada manual de sus datos de cliente y dirección simplemente iniciando sesión con su cuenta de Amazon."
+    },
+    "purePaymentRedirect": {
+      "text": "Será redirigido automáticamente a Amazon Pay. Por favor, no abandone esta página."
+    }
+  }
+}

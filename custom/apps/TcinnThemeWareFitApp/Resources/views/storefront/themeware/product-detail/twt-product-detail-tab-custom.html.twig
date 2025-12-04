@@ -1,0 +1,62 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{# ThemeWare® "Custom tab" on prodcut pages #}
+{#
+    Create container and add custom content
+
+    @Storefront/storefront/themeware/product-detail/twt-product-detail-tab-custom.html.twig
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailTabCustomContentHeadlineShow = theme_config('twt-product-detail-tab-custom-content-headline-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on offcanvas tab-content #}
+{% block utilities_offcanvas_content %}
+
+    {# ThemeWare: Show 'Custom tab' container #}
+    {% block twt_product_detail_tab_custom %}
+        {% block twt_product_detail_tab_custom_container %}
+            <div class="twt-product-detail-custom-content tab-pane-container">
+                {# <div class="row"> #}
+
+                    {# ThemeWare: 'Custom tab' content container #}
+                    {% block twt_product_detail_tab_custom_content %}
+                        {# <div class="col twt-product-detail-custom-content-container"> #}
+                        <div class="twt-product-detail-custom-content-container">
+
+                            {# ThemeWare: 'Custom tab' headline #}
+                            {% block twt_product_detail_tab_custom_title %}
+                                {% if twtProductDetailTabCustomContentHeadlineShow == 2 %}
+                                    <div class="h3 twt-product-detail-custom-tab-title product-detail-tab-headline">
+                                        {# Use custom field or snippet as fallback #}
+                                        {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title is not empty %}
+                                            {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title }}
+
+                                        {% else %}
+                                            {{ 'twt.detail.tabCustom.headline'|trans|sw_sanitize }}
+
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+
+                            {# ThemeWare: Include 'Custom tab' content #}
+                            {% block twt_product_detail_tab_custom_include %}
+                                {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-custom-content.html.twig' ignore missing with {
+                                    position: 'tab'
+                                } %}
+                            {% endblock %}
+
+                        </div>
+                    {% endblock %}
+
+                {# </div> #}
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+{% endblock %}

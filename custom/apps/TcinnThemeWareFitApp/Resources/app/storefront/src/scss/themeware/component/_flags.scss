@@ -1,0 +1,549 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Flags added
+	==================================================
+
+    see https://github.com/shopware/platform/blob/6.4.14.0/src/Storefront/Resources/app/storefront/src/scss/component/_flags.scss
+*/
+
+// Countries -----------------------------------------------------------------------------------------------------------
+
+@if $twt-languages-menu-additional-flags == 2 {
+    .language-flag {
+        // Default languages ----------------------------------
+
+        // Deutsch
+        // > SW default
+
+        // Englisch
+        // > SW default
+
+        // Additional languages ----------------------------------
+
+        // Austria **
+        &.country-at { @extend .at; }
+
+        // Belgium **
+        &.country-be { @extend .be; }
+
+        // Bulgaria
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-bg { @extend .bg; }
+        }
+
+        // Bosnia and Herzegovina
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-ba { @extend .ba; }
+        }
+
+        // Switzerland *
+        &.country-ch { @extend .ch; }
+
+        // Czech Republic
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-cz { @extend .cz; }
+        }
+
+        // Denmark
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-dk { @extend .dk; }
+        }
+
+        // Estonia **
+        &.country-ee { @extend .ee; }
+
+        // Spain
+        &.country-es { @extend .es; }
+
+        // Finland
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-fi { @extend .fi; }
+        }
+
+        // France
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-fr { @extend .fr; }
+        }
+
+        // Greece
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-gr { @extend .gr; }
+        }
+
+        // Hungary
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-hu { @extend .hu; }
+        }
+
+        // Indonesia
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-id { @extend .id; }
+        }
+
+        // Ireland **
+        &.country-ie { @extend .ie; }
+
+        // Italy
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-it { @extend .it; }
+        }
+
+        // Japan **
+        &.country-jp { @extend .jp; }
+
+        // Luxembourg **
+        &.country-lu { @extend .lu; }
+
+        // Lithuania **
+        &.country-lt { @extend .lt; }
+
+        // Latvia
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-lv { @extend .lv; }
+        }
+
+        // Moldova
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-md { @extend .md; }
+        }
+
+        // The Netherlands
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-nl { @extend .nl; }
+        }
+
+        // Norway
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-no { @extend .no; }
+        }
+
+        // Poland
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-pl { @extend .pl; }
+        }
+
+        // Romania
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-ro { @extend .ro; }
+        }
+
+        // Russia
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-ru { @extend .ru; }
+        }
+
+        // Sweden
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-se { @extend .se; }
+        }
+
+        // Turkey
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-tr { @extend .tr; }
+        }
+
+        // Ukraine **
+        @if $twt-languages-menu-shopware-language-pack == 1 {
+            &.country-ua { @extend .ua; }
+        }
+
+        // China *
+        &.country-cn { @extend .cn; }
+    }
+}
+
+
+// Languages -----------------------------------------------------------------------------------------------------------
+
+@if $twt-languages-menu-additional-flags == 3 {
+    .language-flag {
+        // Default languages ----------------------------------
+
+        // Deutsch
+        &.language-de { @extend .de; }
+
+        // Englisch
+        &.language-en { @extend .en; }
+
+
+        // Additional languages ----------------------------------
+
+        // Bulgarian **
+        &.language-bg { @extend .bg; }
+
+        // Bosnian
+        &.language-bs { @extend .ba; }
+
+        // Czech
+        &.language-cs { @extend .cz; }
+
+        // Danish
+        &.language-da { @extend .dk; }
+
+        // Greek
+        &.language-el { @extend .gr; }
+
+        // Spanish
+        &.language-es { @extend .es; }
+
+        // Estnisch **
+        &.language-et { @extend .ee; }
+
+        // Finnish **
+        &.language-fi { @extend .fi; }
+
+        // French **
+        &.language-fr { @extend .fr; }
+
+        // Irisch **
+        &.language-ga { @extend .ie; }
+
+        // Hungarian **
+        &.language-hu { @extend .hu; }
+
+        // Indonesian
+        &.language-id { @extend .id; }
+
+        // Italian **
+        &.language-it { @extend .it; }
+
+        // Japanisch **
+        &.language-ja { @extend .jp; }
+
+        // Luxemburgisch **
+        &.language-lb { @extend .lu; }
+
+        // Litauisch **
+        &.language-lt { @extend .lt; }
+
+        // Latvian **
+        &.language-lv { @extend .lv; }
+
+        // Dutch **
+        &.language-nl { @extend .nl; }
+
+        // Norwegian Nynorsk *
+        &.language-nn { @extend .no; }
+
+        // Polish
+        &.language-pl { @extend .pl; }
+
+        // Romanian, Moldauisch **
+        &.language-ro { @extend .ro; }
+
+        // Russian
+        &.language-ru { @extend .ru; }
+
+        // Swedish **
+        &.language-sv { @extend .se; }
+
+        // Turkish *
+        &.language-tr { @extend .tr; }
+
+        // Ukrainian **
+        &.language-uk { @extend .ua; }
+
+        // 	Mandarin-Chinesisch *
+        &.language-zh { @extend .cn; }
+    }
+}
+
+
+// Flags -----------------------------------------------------------------------------------------------------------
+
+@if $twt-languages-menu-additional-flags == 2 or $twt-languages-menu-additional-flags == 3 {
+    .language-flag {
+        // Default languages ----------------------------------
+
+        // Deutsch
+        &.de {
+            background-image: linear-gradient(to bottom, #000 33.3%, #f00 33.3%, #f00 66.6%, #fc0 66.6%);
+        }
+
+        // Englisch
+        &.en {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWdiIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iIzAxMjE2OSIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI0ZGRiIgZD0iTTc1IDBsMjQ0IDE4MUw1NjIgMGg3OHY2Mkw0MDAgMjQxbDI0MCAxNzh2NjFoLTgwTDMyMCAzMDEgODEgNDgwSDB2LTYwbDIzOS0xNzhMMCA2NFYwaDc1eiIvPgogIDxwYXRoIGZpbGw9IiNDODEwMkUiIGQ9Ik00MjQgMjgxbDIxNiAxNTl2NDBMMzY5IDI4MWg1NXptLTE4NCAyMGw2IDM1TDU0IDQ4MEgwbDI0MC0xNzl6TTY0MCAwdjNMMzkxIDE5MWwyLTQ0TDU5MCAwaDUwek0wIDBsMjM5IDE3NmgtNjBMMCA0MlYweiIvPgogIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik0yNDEgMHY0ODBoMTYwVjBIMjQxek0wIDE2MHYxNjBoNjQwVjE2MEgweiIvPgogIDxwYXRoIGZpbGw9IiNDODEwMkUiIGQ9Ik0wIDE5M3Y5Nmg2NDB2LTk2SDB6TTI3MyAwdjQ4MGg5NlYwaC05NnoiLz4KPC9zdmc+Cg==');
+        }
+
+        // Additional languages ----------------------------------
+
+        // Austria **
+        &.at {
+            background: linear-gradient(180deg, #ED2939, #ED2939 33.3%, white 33.3%, white 66.6%, #ED2939 66.6%, #ED2939 100%);
+        }
+
+        // Belgium **
+        &.be {
+            background: linear-gradient(to right, black, black 33.3%, #FAE042 33.3%, #FAE042 66.6%, #ED2939 66.6%, #ED2939 100%);
+        }
+
+        // Bulgaria
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.bg {
+                background-image: linear-gradient(to bottom, #fff 33.3%, #00966E 33.3%, #00966E 66.6%, #D62612 66.6%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #ee2c2c 33%, #3cb371 33%, #3cb371 66%, #fff 66%);
+            }
+        }
+
+        // Bosnia and Herzegovina
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.ba {
+                // SW 6.4.14
+                background-size: 150%;
+                //background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSI4MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgMTYgOCI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjgiIGZpbGw9IiMwMDIzOTUiLz48cGF0aCBkPSJtNC4yNCwwaDh2OHoiIGZpbGw9IiNmZWNiMDAiLz48ZyBpZD0iZyI+PHBhdGggZD0iTTIuMzUzMjgzLDAuNTI0ODUyOSAyLjgsLTAuODUgMy4yNDY3MTcsMC41MjQ4NTMgMi4wNzcxOTcsLTAuMzI0ODUzSDMuNTIyODAzeiIgZmlsbD0iI2ZmZiIgaWQ9InMiLz48dXNlIHhsaW5rOmhyZWY9IiNzIiB4PSIxIiB5PSIxIi8+PHVzZSB4bGluazpocmVmPSIjcyIgeD0iMiIgeT0iMiIvPjwvZz48dXNlIHhsaW5rOmhyZWY9IiNnIiB4PSIzIiB5PSIzIi8+PHVzZSB4bGluazpocmVmPSIjZyIgeD0iNiIgeT0iNiIvPjwvc3ZnPgo=');
+
+                // SwagLanguagePack-3.0.0
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWJhIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9ImJhLWEiPgogICAgICA8cGF0aCBmaWxsLW9wYWNpdHk9Ii43IiBkPSJNLTg1LjMgMGg2ODIuNnY1MTJILTg1LjN6Ii8+CiAgICA8L2NsaXBQYXRoPgogIDwvZGVmcz4KICA8ZyBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcGF0aD0idXJsKCNiYS1hKSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODApIHNjYWxlKC45Mzc1KSI+CiAgICA8cGF0aCBmaWxsPSIjMDA5IiBkPSJNLTg1LjMgMGg2ODIuNnY1MTJILTg1LjNWMHoiLz4KICAgIDxwYXRoIGZpbGw9IiNGQzAiIGQ9Ik01Ni41IDBsNTExIDUxMi4zVi4zTDU2LjUgMHoiLz4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGQ9Ik00MzkuOSA0ODEuNUw0MTIgNDYxLjJsLTI4LjYgMjAuMiAxMC44LTMzLjItMjguMi0yMC41aDM1bDEwLjgtMzMuMiAxMC43IDMzLjNoMzVsLTI4IDIwLjcgMTAuNCAzM3ptODEuMyAxMC40bC0zNS0uMS0xMC43LTMzLjMtMTAuOCAzMy4yaC0zNWwyOC4yIDIwLjUtMTAuOCAzMy4yIDI4LjYtMjAuMiAyOCAyMC4zLTEwLjUtMzMgMjgtMjAuNnpNMzY1LjYgMzg0LjdsMjgtMjAuNy0zNS0uMS0xMC43LTMzLjItMTAuOCAzMy4yLTM1LS4xIDI4LjIgMjAuNS0xMC44IDMzLjMgMjguNi0yMC4zIDI4IDIwLjQtMTAuNS0zM3ptLTY0LjMtNjQuNWwyOC0yMC42LTM1LS4xLTEwLjctMzMuMy0xMC45IDMzLjJoLTM0LjlsMjguMiAyMC41LTEwLjggMzMuMiAyOC42LTIwLjIgMjcuOSAyMC4zLTEwLjQtMzN6bS02My43LTYzLjZsMjgtMjAuN2gtMzVMMjIwIDIwMi41bC0xMC44IDMzLjJoLTM1bDI4LjIgMjAuNC0xMC44IDMzLjMgMjguNi0yMC4zIDI4IDIwLjQtMTAuNS0zM3ptLTY0LjQtNjQuM2wyOC0yMC42LTM1LS4xLTEwLjctMzMuMy0xMC45IDMzLjJoLTM0LjlMMTM4IDE5MmwtMTAuOCAzMy4yIDI4LjYtMjAuMiAyNy45IDIwLjMtMTAuNC0zM3ptLTYzLjYtNjMuOWwyNy45LTIwLjdoLTM1TDkxLjkgNzQuMyA4MSAxMDcuNkg0Nkw3NC40IDEyOGwtMTAuOSAzMy4yTDkyLjEgMTQxbDI3LjggMjAuNC0xMC4zLTMzem0tNjQtNjRsMjcuOS0yMC43aC0zNUwyNy45IDEwLjMgMTcgNDMuNmgtMzVMMTAuNCA2NGwtMTEgMzMuM0wyOC4xIDc3bDI3LjggMjAuNC0xMC4zLTMzem0tNjQtNjRMOS40LTIwLjNoLTM1bC0xMC43LTMzLjNMLTQ3LTIwLjRoLTM1TC01My43IDBsLTEwLjggMzMuMkwtMzUuOSAxM2wyNy44IDIwLjQtMTAuMy0zM3oiLz4KICA8L2c+Cjwvc3ZnPgo=');
+            }
+        }
+
+        // Switzerland *
+        &.ch {
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDgwIj4KICAgIDxnIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSIxcHQiPgogICAgICAgIDxwYXRoIGZpbGw9InJlZCIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgICAgICAgPGcgZmlsbD0iI2ZmZiI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNzAgMTk1aDMwMHY5MEgxNzB6Ii8+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0yNzUgOTBoOTB2MzAwaC05MHoiLz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPgo=");
+        }
+
+        // Czech Republic
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.cz {
+                // SW 6.4.14
+                //background-size: 110%;
+                //background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MDAiIGhlaWdodD0iNjAwIj4NCgk8cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2Q3MTQxYSIvPg0KCTxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZmZmIi8+DQoJPHBhdGggZD0iTSA0NTAsMzAwIDAsMCBWIDYwMCB6IiBmaWxsPSIjMTE0NTdlIi8+DQo8L3N2Zz4=');
+
+                // SwagLanguagePack-3.0.0
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWN6IiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTAgMGg2NDB2MjQwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI2Q3MTQxYSIgZD0iTTAgMjQwaDY0MHYyNDBIMHoiLz4KICA8cGF0aCBmaWxsPSIjMTE0NTdlIiBkPSJNMzYwIDI0MCAwIDBWNDgweiIvPgo8L3N2Zz4K');
+            }
+        }
+
+        // Denmark
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.dk {
+                // SW 6.4.14
+                background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM3IDI4Ij48cGF0aCBmaWxsPSIjYzYwYzMwIiBkPSJNMCwwSDM3VjI4SDBaIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAsMTJIMTJWMEgxNlYxMkgzN1YxNkgxNlYyOEgxMlYxNkgwWiIvPjwvc3ZnPg==');
+
+                // SwagLanguagePack-3.0.0
+                //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWRrIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2M4MTAyZSIgZD0iTTAgMGg2NDAuMXY0ODBIMHoiLz4KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMjA1LjcgMGg2OC42djQ4MGgtNjguNnoiLz4KICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNMCAyMDUuN2g2NDAuMXY2OC42SDB6Ii8+Cjwvc3ZnPgo=');
+            }
+        }
+
+        // Estonia **
+        &.ee {
+            background-image: linear-gradient(to bottom, #4891D9 33.3%, #000 33.3%, #000 66.6%, #fff 66.6%);
+        }
+
+        // Spain
+        &.es {
+            // SW 6.4.14
+            background-image: linear-gradient(to bottom, #d00 25%, #ffce00 25%, #ffce00 75%, #d00 75%);
+        }
+
+        // Finland
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.fi {
+                background: linear-gradient(to bottom, transparent 35%, #003580 35%, #003580 60%, transparent 60%), linear-gradient(to right, transparent 30%, #003580 30%, #003480 45%, transparent 45%), #fff;
+
+                // SwagLanguagePack-3.0.0
+                // background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWZpIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMzU4MCIgZD0iTTAgMTc0LjVoNjQwdjEzMUgweiIvPgogIDxwYXRoIGZpbGw9IiMwMDM1ODAiIGQ9Ik0xNzUuNSAwaDEzMC45djQ4MGgtMTMxeiIvPgo8L3N2Zz4K');
+            }
+        }
+
+        // France
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.fr {
+                background-image: linear-gradient(to right, #21468b 33.3%, #fff 33.3%, #fff 66.6%, #d00 66.6%);
+
+                // SW 6.4.14
+                //background-image: linear-gradient(to right, #21468b 33%, #fff 33%, #fff 66%, #d00 66%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to right, #000091 33%, #fff 33%, #fff 66%, #e1000f 66%);
+            }
+        }
+
+        // Greece
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.gr {
+                //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWdyIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iIzAwNWJhZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMGg2NDB2NTMuM0gweiIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDUzLjNoNjQwdjUzLjRIMHoiLz4KICA8cGF0aCBmaWxsPSIjMDA1YmFlIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iNi43IiBkPSJNMCAxMDYuN2g2NDBWMTYwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMTYwaDY0MHY1My4zSDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwNWJhZSIgc3Ryb2tlLXdpZHRoPSIuOSIgZD0iTTAgMGgyNjYuN3YyNjYuN0gweiIvPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDIxMy4zaDY0MHY1My40SDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMjY2LjdoNjQwVjMyMEgweiIvPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDMyMGg2NDB2NTMuM0gweiIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDM3My4zaDY0MHY1My40SDB6Ii8+CiAgPGcgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjEuMyI+CiAgICA8cGF0aCBkPSJNMjAgMGgxMHY1MEgyMHoiIHRyYW5zZm9ybT0ic2NhbGUoNS4zMzMzMykiLz4KICAgIDxwYXRoIGQ9Ik0wIDIwaDUwdjEwSDB6IiB0cmFuc2Zvcm09InNjYWxlKDUuMzMzMzMpIi8+CiAgPC9nPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIHN0cm9rZS13aWR0aD0iLjYiIGQ9Ik0wIDQyNi43aDY0MFY0ODBIMHoiLz4KPC9zdmc+Cg==');        }
+
+                // SwagLanguagePack-3.0.0
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLWdyIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iIzAwNWJhZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMGg2NDB2NTMuM0gweiIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDUzLjNoNjQwdjUzLjRIMHoiLz4KICA8cGF0aCBmaWxsPSIjMDA1YmFlIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHN0cm9rZS13aWR0aD0iNi43IiBkPSJNMCAxMDYuN2g2NDBWMTYwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMTYwaDY0MHY1My4zSDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwNWJhZSIgc3Ryb2tlLXdpZHRoPSIuOSIgZD0iTTAgMGgyNjYuN3YyNjYuN0gweiIvPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDIxMy4zaDY0MHY1My40SDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjYuNyIgZD0iTTAgMjY2LjdoNjQwVjMyMEgweiIvPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDMyMGg2NDB2NTMuM0gweiIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLXdpZHRoPSI2LjciIGQ9Ik0wIDM3My4zaDY0MHY1My40SDB6Ii8+CiAgPGcgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2Utd2lkdGg9IjEuMyI+CiAgICA8cGF0aCBkPSJNMjAgMGgxMHY1MEgyMHoiIHRyYW5zZm9ybT0ic2NhbGUoNS4zMzMzMykiLz4KICAgIDxwYXRoIGQ9Ik0wIDIwaDUwdjEwSDB6IiB0cmFuc2Zvcm09InNjYWxlKDUuMzMzMzMpIi8+CiAgPC9nPgogIDxwYXRoIGZpbGw9IiMwMDViYWUiIHN0cm9rZS13aWR0aD0iLjYiIGQ9Ik0wIDQyNi43aDY0MFY0ODBIMHoiLz4KPC9zdmc+Cg==');
+            }
+        }
+
+        // Hungary
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.hu {
+                background-image: linear-gradient(to bottom, #CD2A3E 33.3%, #fff 33.3%, #fff 66.6%, #436F4D 66.6%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #ce2939 33%, #fff 33%, #fff 66%, #477050 66%);
+            }
+        }
+
+        // Indonesia
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.id {
+                // SW 6.4.14 | SwagLanguagePack-3.0.0
+                background-image: linear-gradient(to bottom, #d00 50%, #fff 50%);
+            }
+        }
+
+        // Ireland **
+        &.ie {
+            background-image: linear-gradient(to right, #169B62 33.3%, #fff 33.3%, #fff 66.6%, #FF883E 66.6%);
+        }
+
+        // Italy
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.it {
+                background-image: linear-gradient(to right, #009246 33.3%, #fff 33.3%, #fff 66.6%, #d00 66.6%);
+
+                // SW 6.4.14
+                //background-image: linear-gradient(to right, #009246 33%, #fff 33%, #fff 66%, #d00 66%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to right, #008c45 33%, #f4f5f0 33%, #f4f5f0 66%, #cd212a 66%);
+            }
+        }
+
+        // Japan **
+        &.jp {
+            background: radial-gradient(10px at 50% 50%, #BC002D 0, #BC002D 35%, transparent 35%, transparent 100%), #fff;
+        }
+
+        // Luxembourg **
+        &.lu {
+            background-image: linear-gradient(to bottom, #ED2939 33.3%, #fff 33.3%, #fff 66.6%, #00A1DE 66.6%);
+        }
+
+        // Lithuania **
+        &.lt {
+            background-image: linear-gradient(to bottom, #FDB913 33.3%, #006A44 33.3%, #006A44 66.6%, #C1272D 66.6%);
+        }
+
+        // Latvia
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.lv {
+                // SW 6.4.14
+                background-image: linear-gradient(to bottom, #900 40%, #fff 40%, #fff 60%, #900 60%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #77353d 40%, #fff 40%, #fff 60%, #77353d 60%);
+            }
+        }
+
+        // Moldova
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.md {
+                // SwagLanguagePack-3.0.0
+                background-image: linear-gradient(to bottom, #002b7f 33.3%, #fcd116 33.3%, #fcd116 66.6%, #ce1126 66.6%);
+            }
+        }
+
+        // The Netherlands
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.nl {
+                background-image: linear-gradient(to bottom, #d00 33.3%, #fff 33.3%, #fff 66.6%, #21468b 66.6%);
+
+                // SW 6.4.14
+                //background-image: linear-gradient(to bottom, #d00 33%, #fff 33%, #fff 66%, #21468b 66%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #a91f32 33%, #fff 33%, #fff 66%, #1e4785 66%);
+            }
+        }
+
+        // Norway
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.no {
+                background-size: 99%;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDgwIj4KICAgIDxwYXRoIGZpbGw9IiNlZDI5MzkiIGQ9Ik0wIDBoNjQwdjQ4MEgweiIvPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE4MCAwaDEyMHY0ODBIMTgweiIvPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMTgwaDY0MHYxMjBIMHoiLz4KICAgIDxwYXRoIGZpbGw9IiMwMDI2NjQiIGQ9Ik0yMTAgMGg2MHY0ODBoLTYweiIvPgogICAgPHBhdGggZmlsbD0iIzAwMjY2NCIgZD0iTTAgMjEwaDY0MHY2MEgweiIvPgo8L3N2Zz4K");
+
+                //background: linear-gradient(to bottom, transparent 43%, #002868 43%, #002868 54%, transparent 54%), linear-gradient(to right, transparent 28%, #002868 28%, #002868 37%, transparent 37%), linear-gradient(to right, transparent 25%, white 25%, white 40%, transparent 40%), linear-gradient(to bottom, transparent 38%, white 38%, white 59%, transparent 59%), #EF2B2D;
+
+                // SwagLanguagePack-3.0.0
+                //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLW5vIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iI2VkMjkzOSIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTE4MCAwaDEyMHY0ODBIMTgweiIvPgogIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wIDE4MGg2NDB2MTIwSDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMjY2NCIgZD0iTTIxMCAwaDYwdjQ4MGgtNjB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMjY2NCIgZD0iTTAgMjEwaDY0MHY2MEgweiIvPgo8L3N2Zz4K');
+            }
+        }
+
+        // Poland
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.pl {
+                // SW 6.4.14
+                background-image: linear-gradient(to bottom, #fff 50%, #d00 50%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #fff 50%, #dc143c 50%);
+            }
+        }
+
+        // Romania
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.ro {
+                background: linear-gradient(to right, #002B7F 33.3%, #FCD116 33.3%, #FCD116 66.6%, #CE1126 66.6%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #002b7f 33%, #fcd116 33%, #fcd116 66%, #ce1126 66%);
+            }
+        }
+
+        // Russia
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.ru {
+                // SW 6.4.14
+                background: linear-gradient(to bottom, #fff 33.3%, #21468b 33.3%, #21468b 66.6%, #d00 66.6%);
+
+                // SwagLanguagePack-3.0.0
+                //background: linear-gradient(to bottom, #fff 33.3%, #0032a0 33.3%, #0032a0 66.6%, #da291c 66.6%);
+            }
+        }
+
+        // Sweden
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.se {
+                background: linear-gradient(to right, transparent 30%, #FECC00 30%, #FECC00 45%, transparent 0), linear-gradient(to bottom, transparent 38%, #FECC00 38%, #FECC00 59%, transparent 0), #006AA7;
+
+                // SW 6.4.14
+                //background-size: 115%;
+                //background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDE2IDEwIj48cGF0aCBmaWxsPSIjMDA2YWE3IiBkPSJNMCwwSDE2VjEwSDBaIi8+PHBhdGggZmlsbD0iI2ZlY2MwMCIgZD0iTTAsNEg1VjBIN1Y0SDE2VjZIN1YxMEg1VjZIMFoiLz48L3N2Zz4=');
+
+                // SwagLanguagePack-3.0.0
+                //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLXNlIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPHBhdGggZmlsbD0iIzA2NmFhNyIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgPHBhdGggZmlsbD0iI2ZlY2MwMCIgZD0iTTAgMTkyaDY0MHY5NkgweiIvPgogIDxwYXRoIGZpbGw9IiNmZWNjMDAiIGQ9Ik0xNzYgMGg5NnY0ODBoLTk2eiIvPgo8L3N2Zz4K');
+            }
+        }
+
+        // Turkey
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.tr {
+                background-size: 98%;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgNDgwIj4KICAgIDxnIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPHBhdGggZmlsbD0iI2UzMGExNyIgZD0iTTAgMGg2NDB2NDgwSDB6Ii8+CiAgICAgICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQwNyAyNDcuNWMwIDY2LjItNTQuNiAxMTkuOS0xMjIgMTE5LjlzLTEyMi01My43LTEyMi0xMjAgNTQuNi0xMTkuOCAxMjItMTE5LjggMTIyIDUzLjcgMTIyIDExOS45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNlMzBhMTciIGQ9Ik00MTMgMjQ3LjVjMCA1My00My42IDk1LjktOTcuNSA5NS45cy05Ny42LTQzLTk3LjYtOTYgNDMuNy05NS44IDk3LjYtOTUuOCA5Ny42IDQyLjkgOTcuNiA5NS45eiIvPgogICAgICAgIDxwYXRoIGZpbGw9IiNmZmYiIGQ9Im00MzAuNyAxOTEuNS0xIDQ0LjMtNDEuMyAxMS4yIDQwLjggMTQuNS0xIDQwLjcgMjYuNS0zMS44IDQwLjIgMTQtMjMuMi0zNC4xIDI4LjMtMzMuOS00My41IDEyLTI1LjgtMzd6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=");
+
+                // SwagLanguagePack-3.0.0
+                //background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJmbGFnLWljb24tY3NzLXRyIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgPGcgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxwYXRoIGZpbGw9IiNlMzBhMTciIGQ9Ik0wIDBoNjQwdjQ4MEgweiIvPgogICAgPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTQwNyAyNDcuNWMwIDY2LjItNTQuNiAxMTkuOS0xMjIgMTE5LjlzLTEyMi01My43LTEyMi0xMjAgNTQuNi0xMTkuOCAxMjItMTE5LjggMTIyIDUzLjcgMTIyIDExOS45eiIvPgogICAgPHBhdGggZmlsbD0iI2UzMGExNyIgZD0iTTQxMyAyNDcuNWMwIDUzLTQzLjYgOTUuOS05Ny41IDk1LjlzLTk3LjYtNDMtOTcuNi05NiA0My43LTk1LjggOTcuNi05NS44IDk3LjYgNDIuOSA5Ny42IDk1Ljl6Ii8+CiAgICA8cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDMwLjcgMTkxLjVsLTEgNDQuMy00MS4zIDExLjIgNDAuOCAxNC41LTEgNDAuNyAyNi41LTMxLjggNDAuMiAxNC0yMy4yLTM0LjEgMjguMy0zMy45LTQzLjUgMTItMjUuOC0zN3oiLz4KICA8L2c+Cjwvc3ZnPgo=');
+            }
+        }
+
+        // Ukraine **
+        @if ($twt-languages-menu-additional-flags == 2 and $twt-languages-menu-shopware-language-pack == 1) or $twt-languages-menu-additional-flags == 3 {
+            &.ua {
+                background-image: linear-gradient(to bottom, #005BBB 50%, #FFD500 50%);
+
+                // SwagLanguagePack-3.0.0
+                //background-image: linear-gradient(to bottom, #06c 50%, #fc0 50%);
+            }
+        }
+
+        // China *
+        &.cn {
+            background-size: 99%;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNjQwIDQ4MCI+CiAgICA8ZGVmcz4KICAgICAgICA8cGF0aCBpZD0iYSIgZmlsbD0iI2ZmMCIgZD0iTS0uNi44IDAtMSAuNi44LTEtLjNoMnoiLz4KICAgIDwvZGVmcz4KICAgIDxwYXRoIGZpbGw9IiNlZTFjMjUiIGQ9Ik0wIDBoNjQwdjQ4MEgweiIvPgogICAgPHVzZSB4bGluazpocmVmPSIjYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCg3MS45OTkxIDAgMCA3MiAxMjAgMTIwKSIvPgogICAgPHVzZSB4bGluazpocmVmPSIjYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCgtMTIuMzM1NjIgLTIwLjU4NzEgMjAuNTg2ODQgLTEyLjMzNTc3IDI0MC4zIDQ4KSIvPgogICAgPHVzZSB4bGluazpocmVmPSIjYSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjIwIiB0cmFuc2Zvcm09Im1hdHJpeCgtMy4zODU3MyAtMjMuNzU5OTggMjMuNzU5NjggLTMuMzg1NzggMjg4IDk1LjgpIi8+CiAgICA8dXNlIHhsaW5rOmhyZWY9IiNhIiB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHRyYW5zZm9ybT0ibWF0cml4KDYuNTk5MSAtMjMuMDc0OSAyMy4wNzQ2IDYuNTk5MTkgMjg4IDE2OCkiLz4KICAgIDx1c2UgeGxpbms6aHJlZj0iI2EiIHdpZHRoPSIzMCIgaGVpZ2h0PSIyMCIgdHJhbnNmb3JtPSJtYXRyaXgoMTQuOTk5MSAtMTguNzM1NTcgMTguNzM1MzMgMTQuOTk5MjkgMjQwIDIxNikiLz4KPC9zdmc+Cg==");
+        }
+    }
+}

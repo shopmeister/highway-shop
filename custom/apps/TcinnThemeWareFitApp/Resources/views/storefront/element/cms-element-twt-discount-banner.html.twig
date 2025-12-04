@@ -1,0 +1,128 @@
+{# ThemeWare: CMS element "Discount banner" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtDiscountBanner = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtDscntBnnrTitle = element.translated.config.title.value %}
+{% set twtDscntBnnrSubtitle = element.translated.config.subtitle.value %}
+{% set twtDscntBnnrDiscount = element.translated.config.discount.value %}
+
+{% set twtDscntBnnrUrl = element.translated.config.url.value %}
+{% set twtDscntBnnrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtDscntBnnrBackgroundColor = twtDiscountBanner.backgroundColor.value %}
+
+{% set twtDscntBnnrFontFamily = twtDiscountBanner.fontFamily.value %}
+{% set twtDscntBnnrTextColor = twtDiscountBanner.textColor.value %}
+
+{% set twtDscntBnnrFontFamilyDiscount = twtDiscountBanner.fontFamilyDiscount.value %}
+{% set twtDscntBnnrTextColorDiscount = twtDiscountBanner.textColorDiscount.value %}
+{% set twtDscntBnnrBackgroundColorDiscount = twtDiscountBanner.backgroundColorDiscount.value %}
+
+{# Tab "Advanced" #}
+{% set twtDscntBnnrCssClass = twtDiscountBanner.cssClass.value %}
+{% set twtDscntBnnrCssClassTitle = twtDiscountBanner.cssClassTitle.value %}
+{% set twtDscntBnnrCssClassSubtitle = twtDiscountBanner.cssClassSubtitle.value %}
+{% set twtDscntBnnrCssClassDiscount = twtDiscountBanner.cssClassDiscount.value %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{% set overlayClasses = ['overlay'] %}
+
+{% set contentClasses = ['content'] %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block element_twt_discount_banner %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: url, newTab #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtDscntBnnrCssClass is not empty %} {{ twtDscntBnnrCssClass }}{% endif %}"
+         style="background-color: {{ twtDscntBnnrBackgroundColor }};"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_discount_banner_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-bg-color: {{ twtDscntBnnrBackgroundColorDiscount }};
+        --twt-border-radius: 0;
+        {% block element_twt_discount_banner_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {% block element_twt_discount_banner_content %}
+
+            {# block element_twt_discount_banner_image_inner @deprecated #}
+            {% block element_twt_discount_banner_inner %}
+                {# ThemeWare: Set discount element #}
+                {% set discountBanner %}
+                    <div class="twt-discount-banner-container cms-content-container content-container">
+                        <div class="twt-discount-banner-content container {{ contentClasses|sort|join(' ') }}">
+                            <div class="row">
+                                <div class="col-sm-5 left">
+                                    {# Discount #}
+                                    {% if twtDscntBnnrDiscount %}
+                                        <p class="twt-discount-banner-discount discount twt-font-family-{{ twtDscntBnnrFontFamilyDiscount }}{% if twtDscntBnnrCssClassDiscount is not empty %} {{ twtDscntBnnrCssClassDiscount }}{% endif %}" style="color: {{ twtDscntBnnrTextColorDiscount }};">
+                                            <span>{{ twtDscntBnnrDiscount }}</span>
+                                        </p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-sm-7 right">
+                                    {# Title #}
+                                    {% if twtDscntBnnrTitle %}
+                                        <p class="twt-discount-banner-title title twt-font-family-{{ twtDscntBnnrFontFamily }}{% if twtDscntBnnrCssClassTitle is not empty %} {{ twtDscntBnnrCssClassTitle }}{% endif %}" style="color: {{ twtDscntBnnrTextColor }};">
+                                            <span>{{ twtDscntBnnrTitle }}</span>
+                                        </p>
+                                    {% endif %}
+
+                                    {# Subtitle #}
+                                    {% if twtDscntBnnrSubtitle %}
+                                        <p class="twt-discount-banner-subtitle subtitle twt-font-family-{{ twtDscntBnnrFontFamily }}{% if twtDscntBnnrCssClassSubtitle is not empty %} {{ twtDscntBnnrCssClassSubtitle }}{% endif %}" style="color: {{ twtDscntBnnrTextColor }};">
+                                            <span>{{ twtDscntBnnrSubtitle }}</span>
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endset %}
+
+                {# ThemeWare: Set "Discount banner" #}
+                {% if twtDscntBnnrUrl %}
+                    {# INFO: Title tag = Media title OR empty #}
+                    <a href="{{ twtDscntBnnrUrl }}"
+                       class="cms-image-link is-fulllink"
+                       title="{{ element.data.media.translated.title ?: '' }}"
+                       {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                       {% if twtDscntBnnrNewTab %}target="_blank" rel="noopener"{% endif %}
+                    >
+                    </a>
+                {% endif %}
+
+                {# ThemeWare: Load discount element #}
+                {{ discountBanner }}
+            {% endblock %}
+
+        {% endblock %}
+    
+    </div>
+{% endblock %}

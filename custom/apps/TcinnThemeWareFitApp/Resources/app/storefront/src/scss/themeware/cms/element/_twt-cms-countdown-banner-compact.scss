@@ -1,0 +1,191 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Countdown banner (Compact)"
+	==================================================
+
+*/
+
+@if $twt-cms-countdown-banner-css == 2 { // #performance
+
+    .cms-element-twt-countdown-banner-compact {
+        @extend .cms-element-twt-countdown-banner; // Based on the default "Countdown banner"
+
+        // Breakpoints -----------------------------------------------------------------------------------------------------
+
+        // Allways in a row
+        &.twt-break-all {
+            .twt-countdown-banner-content {
+                flex-direction: row !important; // Elemente nebeneinander
+
+                &.justify-content-center {
+                    @include media-breakpoint-up(xs) { // min 480px
+                        gap: 1rem;
+                    }
+
+                    @include media-breakpoint-up(md) { // min 768px
+                        gap: 2rem;
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+
+            .twt-countdown-banner-text {
+                text-align: left;
+            }
+        }
+
+        // Extra small <480px
+        &.twt-break-xs {
+            @include media-breakpoint-up(xs) { // min 480px
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(xs) { // min 480px
+                        gap: 1rem;
+                    }
+
+                    @include media-breakpoint-up(md) { // min 768px
+                        gap: 2rem;
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+
+        // Small ≥576px
+        &.twt-break-sm {
+            @include media-breakpoint-up(sm) { // min 576px
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(xs) { // min 480px
+                        gap: 1rem;
+                    }
+
+                    @include media-breakpoint-up(md) { // min 768px
+                        gap: 2rem;
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+
+        // Medium ≥768px
+        &.twt-break-md {
+            @include media-breakpoint-up(md) { // min 768px
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(md) { // min 768px
+                        gap: 2rem;
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+
+        // Large ≥992px
+        &.twt-break-lg {
+            @include media-breakpoint-up(lg) { // min 992px
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(lg) { // min 992px
+                        gap: 2rem;
+                    }
+
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+
+        // Extra large ≥1200px
+        &.twt-break-xl {
+            @include media-breakpoint-up(xl) { // min 1200px
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+
+        // Extra extra large ≥1440px
+        &.twt-break-xxl {
+            @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                .twt-countdown-banner-content {
+                    flex-direction: row !important; // Elemente nebeneinander
+                }
+                .twt-countdown-banner-text {
+                    text-align: left;
+                }
+            }
+
+            .twt-countdown-banner-content {
+                &.justify-content-center {
+                    @include media-breakpoint-up(xl) { // min 1200px
+                        gap: 3rem;
+                    }
+                }
+            }
+        }
+    }
+
+}

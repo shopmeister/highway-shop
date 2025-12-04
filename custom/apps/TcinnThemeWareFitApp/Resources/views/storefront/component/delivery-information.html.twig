@@ -1,0 +1,116 @@
+{% sw_extends '@Storefront/storefront/component/delivery-information.html.twig' %}
+{# ThemeWare® HC-Architecture® via configuration #}
+
+{# @TODO: prüfen... #}
+
+{# @TODO: Labels in separate Datei auslagern... #}
+{# @TODO: Konfiguration um Shopware "delivery informations" ausblenden zu können ergänzen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCustomAnnouncementShow = theme_config('twt-custom-announcement-show') %}
+
+{% set twtProductDetailDeliverytimeAvailableLabelShow = theme_config('twt-product-detail-deliverytime-available-label-show') %}
+{% set twtProductDetailDeliverytimeRestockLabelShow = theme_config('twt-product-detail-deliverytime-restock-label-show') %}
+{% set twtProductDetailNotavailableLabelShow = theme_config('twt-product-detail-notavailable-label-show') %}
+{% set twtProductDetailPreorderLabelShow = theme_config('twt-product-detail-preorder-label-show') %}
+{% set twtProductDetailShippingFreeLabelShow = theme_config('twt-product-detail-shipping-free-label-show') %}
+{% set twtProductDetailSoldLabelShow = theme_config('twt-product-detail-sold-label-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Add our stock/sold-labels above the delivery information #}
+{% block component_delivery_information %}
+    {% if page is defined and page.product is defined %}
+        {% set product = page.product %}
+    {% endif %}
+
+    {# Default delivery information #}
+    {# @TODO: clear if empty ? #}
+    {{ parent() }}
+
+    {# ThemeWare: "Individuelle Ankündigung" hinzufügen #}
+    {% if twtCustomAnnouncementShow == 2 or twtCustomAnnouncementShow == 3 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-custom-announcement.html.twig' ignore missing with {
+            type: 'detail'
+        } %}
+    {% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on "Delivery information: Shipping free" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_shipping_free %}
+    {# ThemeWare: Remove the "Shipping free info" if the "Shipping free label" is configured #}
+    {% if twtProductDetailShippingFreeLabelShow == 2 %}
+        {# Clear block #}
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on "Delivery information: Not available" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_not_available %}
+    {# ThemeWare: Remove the ... is configured #}
+    {% if twtProductDetailNotavailableLabelShow == 1 %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on "Delivery information: Pre-order" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_pre_order %}
+    {# ThemeWare: Remove the "Pre-order info" if the "Pre-order label" is configured #}
+    {% if twtProductDetailPreorderLabelShow == 1 %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on "Delivery information: Delivery time #Available" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_available %}
+    {# ThemeWare: Remove the "Delivery time info" if the "Delivery time label" is configured #}
+    {% if twtProductDetailDeliverytimeAvailableLabelShow == 1 %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on "Delivery information: Sold out" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_soldout %}
+    {# ThemeWare: Remove the "Sold out info" if the "Sold out label" is configured #}
+    {% if twtProductDetailSoldLabelShow == 2 %}
+        {# Clear block #}
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjustments on "Delivery information: Delivery time #Restock" info #}
+{# @TODO: konfigurierbar machen... #}
+{# HC-Architecture @Doku #}
+{% block component_delivery_information_restock %}
+    {# ThemeWare: Remove the "Delivery time info" if the "Delivery time label" is configured #}
+    {% if twtProductDetailDeliverytimeRestockLabelShow == 1 %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{# component_delivery_information_default #}

@@ -1,0 +1,112 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Extension 'Social proofing'
+	==================================================
+
+*/
+
+// Infotext
+@if $twt-social-proofing-infotext-show == 2 {
+    .twt-social-proofing-infotext {
+        display: flex;
+        align-items: center;
+
+        .icon {
+            width: 12px;
+            height: 12px;
+            margin-right: 3px;
+            color: $twt-social-proofing-infotext-icon-color;
+
+            svg {
+                top: 0;
+            }
+        }
+
+        .text {
+            color: $twt-social-proofing-infotext-color;
+            line-height: 1;
+            font-weight: fontWeight($twt-social-proofing-infotext-font-weight);
+
+            @if($twt-social-proofing-infotext-transform != "none") {
+                text-transform: $twt-social-proofing-infotext-transform;
+            }
+        }
+
+        &.is-top, &.top, // @deprecated
+        &.position-top {
+            margin-bottom: 1rem;
+            padding-top: 0.5rem;
+        }
+
+        &.is-bottom, &.bottom, // @deprecated
+        &.position-bottom {
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.25rem;
+        }
+    }
+}
+
+// Label
+// @TODO
+//.twt-product-sales-label {}
+
+// Badge
+// @TODO
+
+// Produkt-Spzifikation
+// @TODO
+
+/*
+.twt-social-proofing {
+    .label-bought {
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 0px 0px 2px #000000;
+
+        background: linear-gradient(290deg, #d63384, #0dcaf0, #6610f2);
+        background-size: 600% 600%;
+
+        box-shadow: 0 0 2px #fff, 0 0 6px #0dcaf0, 0 0 10px #0dcaf0;
+
+        -webkit-animation: gradient 10s ease infinite, blink .7s infinite alternate;
+        animation: gradient 10s ease infinite, blink .7s infinite alternate;
+    }
+}
+
+@-webkit-keyframes gradient {
+    0%{background-position:0% 50%}
+    20%{background-position:100% 50%}
+
+    50%{background-position:100% 50%}
+    70%{background-position:0% 50%}
+
+    90%{background-position:0% 50%}
+}
+
+@keyframes gradient {
+    0%{background-position:0% 50%}
+    20%{background-position:100% 50%}
+
+    50%{background-position:100% 50%}
+    70%{background-position:0% 50%}
+
+    90%{background-position:0% 50%}
+}
+
+@-webkit-keyframes blink {
+    100% {
+        box-shadow: 0 0 3px #fff, 0 0 10px #0dcaf0, 0 0 20px #0dcaf0;
+    }
+}
+@keyframes blink {
+    100% {
+        box-shadow: 0 0 3px #fff, 0 0 10px #0dcaf0, 0 0 20px #0dcaf0;
+    }
+}
+*/

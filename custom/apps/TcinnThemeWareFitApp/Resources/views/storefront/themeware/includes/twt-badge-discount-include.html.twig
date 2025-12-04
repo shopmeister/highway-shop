@@ -1,0 +1,140 @@
+{# ThemeWare@ 'Discount badge' content #}
+{#
+    @Storefront/storefront/themeware/includes/twt-badge-discount-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+{# @TODO: Add tooltip when values were rounded? [data-bs-toggle="tooltip" data-placement="right" title="..."] #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductBadgesDiscountBadgeColoration = theme_config('twt-product-badges-discount-badge-coloration') %}
+{% set twtProductBadgesDiscountBadgeRound = theme_config('twt-product-badges-discount-badge-round') %}
+{% set twtProductBadgesDiscountBadgeType = theme_config('twt-product-badges-discount-badge-type') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# Get ISO code for the number format #}
+{% set isoCode = page.header.activeLanguage.translationCode.code|split('-') %}
+{% set language = isoCode[0] %}
+{% set country = isoCode[1] %}
+
+{# Countries that (according to Wikipedia) use a comma (,) as a decimal separator (Komma-Länder) #}
+{% set decimalComma = ['AL', 'AD', 'AM', 'AO', 'AR', 'AT', 'AZ', 'BA', 'BE', 'BG', 'BO', 'BR', 'BY', 'CL', 'CM', 'CO',
+    'CR', 'CU', 'CY', 'CZ', 'DE', 'DK', 'DZ', 'EC', 'EE', 'ES', 'FI', 'FO', 'FR', 'GE', 'GL', 'GR', 'HR', 'HT', 'HU',
+    'ID', 'IS', 'IT', 'KZ', 'LT', 'LU', 'LV', 'MA', 'MD', 'MK', 'MN', 'NA', 'NI', 'NL', 'NO', 'PE', 'PL', 'PT', 'PY',
+    'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM,TR', 'UA', 'UY', 'VE', 'VN', 'XK', 'ZA', 'ZW'] %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{% set price = product.calculatedPrice %}
+{% if product.calculatedPrices.count > 0 %}
+    {% set price = product.calculatedPrices.last %}
+{% endif %}
+
+{% set listPrice = price.listPrice.percentage > 0 %}
+{% set hasRange = product.calculatedPrices.count > 1 %}
+
+{% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+{% if displayParent %}
+    {% set displayFromVariants = displayParent and price.unitPrice !== product.calculatedCheapestPrice.unitPrice %}
+{% endif %}
+
+{% if listPrice and not hasRange and not displayFromVariants %}
+    {% block twt_product_badges_discount_badge %}
+        {% if twtProductBadgesDiscountBadgeType == 1 %}
+            {# % #}
+            <div>
+                <span class="badge badge-danger{% if twtProductBadgesDiscountBadgeColoration == 3 %}-light{% endif %} badge-discount twt-badge-discount">
+                    &#37;
+                </span>
+            </div>
+
+        {% elseif twtProductBadgesDiscountBadgeType == 2 %}
+            {# Typ: "-20%" | number format (input): e.g. '16.59' #}
+            <div>
+                <span class="badge badge-danger{% if twtProductBadgesDiscountBadgeColoration == 3 %}-light{% endif %} badge-discount twt-badge-discount">
+                    {% set discount = price.listPrice.percentage %}
+
+                    {% if twtProductBadgesDiscountBadgeRound == 2 %}
+                        {% set discount = discount|round(1, 'floor') %}
+                    {% elseif twtProductBadgesDiscountBadgeRound == 3 %}
+                        {% set discount = discount|round %}
+                    {% endif %}
+
+                    {% if country in decimalComma %}
+                        {% set discount = discount|replace({'.': ','}) %}
+                    {% endif %}
+
+                    -{{ 'twt.extension.discountBadge.percentageShort'|trans({'%discount%': discount })|sw_sanitize }}
+                </span>
+            </div>
+
+        {% elseif twtProductBadgesDiscountBadgeType == 3 %}
+            {# Typ: "20% saved" | number format (input): e.g. '16.59' #}
+            <div>
+                <span class="badge badge-danger{% if twtProductBadgesDiscountBadgeColoration == 3 %}-light{% endif %} badge-discount twt-badge-discount">
+                    {% set discount = price.listPrice.percentage %}
+
+                    {% if twtProductBadgesDiscountBadgeRound == 2 %}
+                        {% set discount = discount|round(1, 'floor') %}
+                    {% elseif twtProductBadgesDiscountBadgeRound == 3 %}
+                        {% set discount = discount|round %}
+                    {% endif %}
+
+                    {% if country in decimalComma %}
+                        {% set discount = discount|replace({'.': ','}) %}
+                    {% endif %}
+
+                    {{ 'twt.extension.discountBadge.percentage'|trans({'%discount%': discount })|sw_sanitize }}
+                </span>
+            </div>
+
+        {% elseif twtProductBadgesDiscountBadgeType == 4 %}
+            {# Typ: "-35 €" | number format (input): e.g. '-99.36' #}
+            {# @TODO: Use '|currency' ?! #}
+            <div>
+                <span class="badge badge-danger{% if twtProductBadgesDiscountBadgeColoration == 3 %}-light{% endif %} badge-discount twt-badge-discount">
+                    {% set discount = price.listPrice.discount %}
+
+                    {% if twtProductBadgesDiscountBadgeRound == 2 %}
+                        {% set discount = discount|round(1, 'floor') %}
+                    {% elseif twtProductBadgesDiscountBadgeRound == 3 %}
+                        {% set discount = discount|round %}
+                    {% endif %}
+
+                    {% if country in decimalComma %}
+                        {% set discount = discount|replace({'.': ','}) %}
+                    {% endif %}
+
+                    {{ 'twt.extension.discountBadge.discountShort'|trans({'%discount%': discount, '%currency%': page.header.activeCurrency.symbol })|sw_sanitize }}
+                </span>
+            </div>
+
+        {% elseif twtProductBadgesDiscountBadgeType == 5 %}
+            {# Typ: "35 € saved" | number format (input): e.g. '-99.36' #}
+            {# @TODO: Use '|currency' ?! #}
+            <div>
+                <span class="badge badge-danger{% if twtProductBadgesDiscountBadgeColoration == 3 %}-light{% endif %} badge-discount twt-badge-discount">
+                    {% set discount = price.listPrice.discount|replace({'-': ''}) %}
+
+                    {% if twtProductBadgesDiscountBadgeRound == 2 %}
+                        {% set discount = discount|round(1, 'floor') %}
+                    {% elseif twtProductBadgesDiscountBadgeRound == 3 %}
+                        {% set discount = discount|round %}
+                    {% endif %}
+
+                    {% if country in decimalComma %}
+                        {% set discount = discount|replace({'.': ','}) %}
+                    {% endif %}
+
+                    {{ 'twt.extension.discountBadge.discount'|trans({'%discount%': discount, '%currency%': page.header.activeCurrency.symbol })|sw_sanitize }}
+                </span>
+            </div>
+
+        {% endif %}
+    {% endblock %}
+{% endif %}

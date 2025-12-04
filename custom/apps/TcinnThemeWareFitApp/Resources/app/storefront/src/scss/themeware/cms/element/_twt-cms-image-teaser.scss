@@ -1,0 +1,28 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Image teaser"
+	==================================================
+
+*/
+
+@if $twt-cms-image-teaser-css == 2 { // #performance
+    .cms-element-twt-image-teaser {
+        //.twt-image-teaser-container {}
+
+        //.twt-image-teaser-image-container {}
+
+        .twt-image-teaser-content {
+            &.is-styled {
+                padding: $twt-basegrid-spacing;
+            }
+
+            //&:not(.is-styled) {}
+        }
+    }
+}

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Export-Task Settings</title>
+
+        <input-field type="bool">
+            <name>isActive</name>
+            <label>Disable/Activate export task</label>
+            <label lang="de-DE">Ein/Abschalten des Tasks</label>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>trackingCodeCustomField</name>
+            <entity>custom_field</entity>
+            <label>Target field</label>
+            <label lang="de-DE">Zielfeld</label>
+            <required>true</required>
+        </component>
+
+        <component name="sw-entity-single-select">
+            <name>sevenSendersCustomField</name>
+            <entity>custom_field</entity>
+            <label>Choose the seven senders custom field</label>
+            <label lang="de-DE">Zusatzfeld in welches Seven-Senders Return-Tracking nummern gespeichert werden</label>
+        </component>
+
+    </card>
+
+    <card>
+        <title>SEO Optimization Settings</title>
+        <title lang="de-DE">SEO-Optimierung Einstellungen</title>
+
+        <input-field type="password">
+            <name>openaiApiKey</name>
+            <label>OpenAI API Key</label>
+            <label lang="de-DE">OpenAI API Schlüssel</label>
+            <helpText>Enter your OpenAI API key for ChatGPT integration. Get it from: https://platform.openai.com/api-keys</helpText>
+            <helpText lang="de-DE">Geben Sie Ihren OpenAI API Schlüssel für die ChatGPT-Integration ein. Erhältlich unter: https://platform.openai.com/api-keys</helpText>
+            <placeholder>sk-proj-your-api-key-here</placeholder>
+            <placeholder lang="de-DE">sk-proj-ihr-api-schluessel-hier</placeholder>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>chatgptModel</name>
+            <label>ChatGPT Model</label>
+            <label lang="de-DE">ChatGPT Modell</label>
+            <helpText>Select the ChatGPT model to use for optimization</helpText>
+            <helpText lang="de-DE">Wählen Sie das ChatGPT-Modell für die Optimierung</helpText>
+            <defaultValue>gpt-3.5-turbo</defaultValue>
+            <options>
+                <option>
+                    <id>gpt-3.5-turbo</id>
+                    <name>GPT-3.5 Turbo (Recommended)</name>
+                    <name lang="de-DE">GPT-3.5 Turbo (Empfohlen)</name>
+                </option>
+                <option>
+                    <id>gpt-4o-mini</id>
+                    <name>GPT-4o Mini (Faster)</name>
+                    <name lang="de-DE">GPT-4o Mini (Schneller)</name>
+                </option>
+                <option>
+                    <id>gpt-4</id>
+                    <name>GPT-4 (Premium)</name>
+                    <name lang="de-DE">GPT-4 (Premium)</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="bool">
+            <name>enableRealChatgpt</name>
+            <label>Enable Real ChatGPT</label>
+            <label lang="de-DE">Echtes ChatGPT aktivieren</label>
+            <helpText>Enable real ChatGPT API calls. Requires valid API key and credits.</helpText>
+            <helpText lang="de-DE">Echte ChatGPT API-Aufrufe aktivieren. Benötigt gültigen API-Schlüssel und Guthaben.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>maxTokens</name>
+            <label>Max Tokens per Request</label>
+            <label lang="de-DE">Max. Tokens pro Anfrage</label>
+            <helpText>Maximum tokens for ChatGPT responses (150-500 recommended)</helpText>
+            <helpText lang="de-DE">Maximale Tokens für ChatGPT-Antworten (150-500 empfohlen)</helpText>
+            <defaultValue>300</defaultValue>
+            <min>50</min>
+            <max>1000</max>
+        </input-field>
+
+        <input-field type="float">
+            <name>temperature</name>
+            <label>Creativity Level (Temperature)</label>
+            <label lang="de-DE">Kreativitätslevel (Temperature)</label>
+            <helpText>Controls creativity: 0.1 = conservative, 0.7 = balanced, 1.0 = creative</helpText>
+            <helpText lang="de-DE">Steuert Kreativität: 0.1 = konservativ, 0.7 = ausgewogen, 1.0 = kreativ</helpText>
+            <defaultValue>0.7</defaultValue>
+            <min>0.1</min>
+            <max>1.0</max>
+            <step>0.1</step>
+        </input-field>
+    </card>
+
+    <card>
+        <title>Default SEO Settings</title>
+        <title lang="de-DE">Standard SEO-Einstellungen</title>
+
+        <input-field type="bool">
+            <name>autoGenerateParentDescription</name>
+            <label>Auto-generate Parent Descriptions</label>
+            <label lang="de-DE">Parent-Beschreibungen automatisch generieren</label>
+            <helpText>Automatically generate descriptions for parent products if missing</helpText>
+            <helpText lang="de-DE">Automatisch Beschreibungen für Hauptprodukte generieren, falls fehlend</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>defaultOptimizationType</name>
+            <label>Default Optimization Type</label>
+            <label lang="de-DE">Standard-Optimierungstyp</label>
+            <helpText>Default optimization scope for SEO commands</helpText>
+            <helpText lang="de-DE">Standard-Optimierungsumfang für SEO-Befehle</helpText>
+            <defaultValue>all</defaultValue>
+            <options>
+                <option>
+                    <id>all</id>
+                    <name>Complete (Title + Meta + Keywords)</name>
+                    <name lang="de-DE">Vollständig (Titel + Meta + Keywords)</name>
+                </option>
+                <option>
+                    <id>title-only</id>
+                    <name>Title Only</name>
+                    <name lang="de-DE">Nur Titel</name>
+                </option>
+                <option>
+                    <id>meta-only</id>
+                    <name>Meta Data Only</name>
+                    <name lang="de-DE">Nur Meta-Daten</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="int">
+            <name>defaultBatchSize</name>
+            <label>Default Batch Size</label>
+            <label lang="de-DE">Standard Batch-Größe</label>
+            <helpText>Default number of products to process per batch</helpText>
+            <helpText lang="de-DE">Standard-Anzahl der Produkte pro Batch</helpText>
+            <defaultValue>5</defaultValue>
+            <min>1</min>
+            <max>50</max>
+        </input-field>
+
+        <input-field type="bool">
+            <name>enableWebResearchByDefault</name>
+            <label>Enable Web Research by Default</label>
+            <label lang="de-DE">Web-Recherche standardmäßig aktivieren</label>
+            <helpText>Perform semantic keyword research by default</helpText>
+            <helpText lang="de-DE">Semantische Keyword-Recherche standardmäßig durchführen</helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+</config>

@@ -1,0 +1,105 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+{# ThemeWare® HC-Architecture® via configuration #}
+
+{# ThemeWare: 'Buy widget form' component on cms product pages #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailBtnBuyLayout = theme_config('twt-product-detail-btn-buy-layout') %}
+{% set twtProductDetailBtnBuyIconPosition = theme_config('twt-product-detail-btn-buy-icon-position') %}
+{% set twtProductDetailBuyWidgetCompatibility = theme_config('twt-product-detail-buy-widget-compatibility') %}
+{% set twtIconCart = theme_config('twt-icon-cart') %}
+{% set twtIconSet = theme_config('twt-iconset') %}
+
+{% set twtProductBoxQuantitySelectionShow = theme_config('twt-product-box-quantity-selection-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# @TODO:
+	- Configure breakpoints
+	- Configure icon (arrow-right, cart*, header-actions-button)
+		- Add new cart icon (*)
+	- Add HC-Architecture information to documentation
+#}
+
+{# ThemeWare: Adjust buy button #}
+{% block buy_widget_buy_button %}
+
+	{# ThemeWare®: Add icon to buy button in produt boxes or 'Quantity selection' if configured. #}
+	{% if twtProductDetailBtnBuyLayout != '1' or type == 'product-box' and twtProductBoxQuantitySelectionShow == 2 %}
+		<div class="d-grid">
+			<button class="btn btn-primary btn-buy"
+					type="submit"
+					title="{{ 'detail.addProduct'|trans|striptags }}"
+					aria-label="{{ 'detail.addProduct'|trans|striptags }}" 
+					data-bs-dismiss="modal" {# @TODO: #quickview #}
+			>
+				{# ThemeWare: Set icon #}
+				{% set icon %}
+					{# @TODO: Check if ariaLabel is needed #}
+					{% if twtIconSet is not same as ('default') %}
+						{% if twtIconCart == 'bag' %}
+							{% sw_icon 'bag' style { pack: 'themeware', size: 'sm' } %}
+						{% elseif twtIconCart == 'basket' %}
+							{% sw_icon 'basket' style { pack: 'themeware', size: 'sm' } %}
+						{% else %}
+							{% sw_icon 'cart' style { pack: 'themeware', size: 'sm' } %}
+						{% endif %}
+
+					{% else %}
+						{% sw_icon 'bag' style { size: 'sm' } %}
+
+					{% endif %}
+				{% endset %}
+
+				{# ThemeWare: Add icon #}
+				{% if type == 'product-box' and twtProductBoxQuantitySelectionShow == 2 %}
+					{# ThemeWare®: Add icon to 'Quantity selection' if configured. #quantitySelection #beta #}
+					{{ icon }}
+
+				{% else %}
+					{% if twtProductDetailBtnBuyIconPosition == '1' %}
+						{{ icon }} <span class="text">{{ 'detail.addProduct'|trans|sw_sanitize }}</span>
+
+					{% else %}
+						<span class="text">{{ 'detail.addProduct'|trans|sw_sanitize }}</span> {{ icon }}
+
+					{% endif %}
+
+				{% endif %}
+
+				{#
+				<span>{{ 'detail.addProduct'|trans|sw_sanitize }}</span> {% sw_icon 'cart' style { pack: 'themeware' } %}
+				<span>Add to</span> {% sw_icon 'cart' style { pack: 'themeware' } %}
+				{% sw_icon 'cart' style { pack: 'themeware' } %}
+				#}
+			</button>
+		</div>
+
+	{% else %}
+		{# Default block #}
+        {{ parent() }}
+
+	{% endif %}
+{% endblock %}
+
+{# ThemeWare: Adjust buy widget with packaging unit #}
+{% block buy_widget_buy_container %}
+	{% if twtProductDetailBuyWidgetCompatibility == 2 %}
+		{% if buyable %}
+			<div class="row g-2 buy-widget-container {% if product.translated.packUnit %}has-pack-unit{% endif %}">
+				{{ block('buy_widget_buy_quantity_container') }}
+				{{ block('buy_widget_buy_redirect_input') }}
+				{{ block('buy_widget_buy_product_buy_info') }}
+				{{ block('buy_widget_product_buy_meta') }}
+				{{ block('buy_widget_buy_button_container') }}
+			</div>
+		{% endif %}
+
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}

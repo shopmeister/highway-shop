@@ -1,0 +1,385 @@
+{# ThemeWare® CMS element "Countdown banner (Compact)" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtCountdownBanner = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtCntdwnBnnrDateFrom = twtCountdownBanner.dateFrom.value %}
+{% set twtCntdwnBnnrDateUntil = twtCountdownBanner.dateUntil.value %}
+
+{% set twtCntdwnBnnrTitle = element.translated.config.title.value %}
+{% set twtCntdwnBnnrSubtitle = element.translated.config.subtitle.value %}
+{% set twtCntdwnBnnrButtonText = element.translated.config.buttonText.value %}
+
+{% set twtCntdwnBnnrTitleSale = element.translated.config.titleSale.value %}
+{% set twtCntdwnBnnrSubtitleSale = element.translated.config.subtitleSale.value %}
+{% set twtCntdwnBnnrButtonTextSale = element.translated.config.buttonTextSale.value %}
+
+{% set twtCntdwnBnnrCmpctMinHeight = element.translated.config.minHeight.value %}
+{% set twtCntdwnBnnrAttachment = twtCountdownBanner.attachment.value %}
+
+{# element.translated.config.url.value #}
+{# element.translated.config.newTab.value #}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# element.translated.config.urlSale.value #}
+{# fullLinkSale ?? #}
+
+{# Tab "Layout" #}
+{% set twtCntdwnBnnrBackgroundColor = twtCountdownBanner.backgroundColor.value %}
+
+{% set twtCntdwnBnnrFontFamily = twtCountdownBanner.fontFamily.value %}
+{% set twtCntdwnBnnrTextColor = twtCountdownBanner.textColor.value %}
+{% set twtCntdwnBnnrFontFamilyTitle = twtCountdownBanner.fontFamilyTitle.value %}
+{% set twtCntdwnBnnrTextColorTitle = twtCountdownBanner.textColorTitle.value %}
+{% set twtCntdwnBnnrFontFamilySubtitle = twtCountdownBanner.fontFamilySubtitle.value %}
+{% set twtCntdwnBnnrTextColorSubtitle = twtCountdownBanner.textColorSubtitle.value %}
+
+{% set twtCntdwnBnnrButtonStyle = twtCountdownBanner.buttonStyle.value %}
+{% set twtCntdwnBnnrButtonOutline = twtCountdownBanner.buttonOutline.value %}
+
+{% set twtCntdwnBnnrVerticalAlignment = twtCountdownBanner.verticalAlignment.value %}
+{% set twtCntdwnBnnrHorizontalAlignment = twtCountdownBanner.horizontalAlignment.value %}
+
+{% set twtCntdwnBnnrColorOverlay = twtCountdownBanner.colorOverlay.value %}
+{% set twtCntdwnBnnrColorOverlayBgColor = twtCountdownBanner.colorOverlayBgColor.value %}
+{% set twtCntdwnBnnrColorOverlayBgGradient = twtCountdownBanner.colorOverlayBgGradient.value %}
+{% set twtCntdwnBnnrColorOverlayBgColor2 = twtCountdownBanner.colorOverlayBgColor2.value %}
+{% set twtCntdwnBnnrColorOverlayBgGradientAngle = twtCountdownBanner.colorOverlayBgGradientAngle.value %}
+
+{% set twtCntdwnBnnrVerticalAlign = twtCountdownBanner.verticalAlign.value %} {# ?? #}
+
+{# Tab "Counter" #}
+{% set twtCntdwnBnnrCounterStyle = twtCountdownBanner.counterStyle.value %}
+
+{% set twtCntdwnBnnrFontFamilyLabels = twtCountdownBanner.fontFamilyLabels.value %}
+{% set twtCntdwnBnnrTextColorLabels = twtCountdownBanner.textColorLabels.value %}
+{% set twtCntdwnBnnrFontFamilyNumbers = twtCountdownBanner.fontFamilyNumbers.value %}
+{% set twtCntdwnBnnrTextColorNumbers = twtCountdownBanner.textColorNumbers.value %}
+{% set twtCntdwnBnnrBackgroundColorNumbers = twtCountdownBanner.backgroundColorNumbers.value %}
+{% set twtCntdwnBnnrBackgroundColorDays = twtCountdownBanner.backgroundColorDays.value %}
+{% set twtCntdwnBnnrBackgroundColorHours = twtCountdownBanner.backgroundColorHours.value %}
+{% set twtCntdwnBnnrBackgroundColorMinutes = twtCountdownBanner.backgroundColorMinutes.value %}
+{% set twtCntdwnBnnrBackgroundColorSeconds = twtCountdownBanner.backgroundColorSeconds.value %}
+
+{# Tab "SEO" #}
+{% set twtCntdwnBnnrHtmlTag = twtCountdownBanner.htmlTag.value %}
+{% if twtCntdwnBnnrHtmlTag is empty %}
+    {% set twtCntdwnBnnrHtmlTag = 'p' %}
+{% endif %}
+{% set twtCntdwnBnnrHtmlTagClass = twtCountdownBanner.htmlTagClass.value %}
+
+{# Tab "Advanced" #}
+{% set twtCntdwnBnnrCssClass = twtCountdownBanner.cssClass.value %}
+{% set twtCntdwnBnnrCssClassTitle = twtCountdownBanner.cssClassTitle.value %}
+{% set twtCntdwnBnnrCssClassSubtitle = twtCountdownBanner.cssClassSubtitle.value %}
+
+
+{# Set title attribute (button-text is mandatory) #}
+{% set title = twtCntdwnBnnrButtonText %}
+
+{# ThemeWare: Set dates ------------------------------------------------------ #}
+
+{% set dateNow = 'now'|date('Y-m-d H:i:s', false) %}
+
+{% if twtCntdwnBnnrDateFrom is not empty %}
+    {% set twtCntdwnBnnrDateFrom = twtCntdwnBnnrDateFrom|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% if twtCntdwnBnnrDateUntil is not empty %}
+    {% set twtCntdwnBnnrDateUntil = twtCntdwnBnnrDateUntil|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{# Preload conuter #}
+{% if dateNow < twtCntdwnBnnrDateFrom %}
+    {# Preview - phase 1 #}
+    {% set dateDiff = date().diff(date(twtCntdwnBnnrDateFrom)) %}
+    {% set phase = 1 %}
+{% elseif dateNow >= twtCntdwnBnnrDateFrom and dateNow < twtCntdwnBnnrDateUntil %}
+    {# Sale - phase 2 #}
+    {% set dateDiff = date().diff(date(twtCntdwnBnnrDateUntil)) %}
+    {% set phase = 2 %}
+{% endif %}
+
+{% if dateNow >= twtCntdwnBnnrDateFrom and dateNow >= twtCntdwnBnnrDateUntil %}
+    {% set expired = true %}
+{% else %}
+    {% set expired = false %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{% set contentClasses = ['content'] %}
+
+{% set contentClasses = ['justify-content-center']|merge(contentClasses) %}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block element_twt_countdown_banner %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="twt-countdown-banner cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtCntdwnBnnrCssClass is not empty %} {{ twtCntdwnBnnrCssClass }}{% endif %}"
+         {% if twtCntdwnBnnrBackgroundColor %}style="background-color: {{ twtCntdwnBnnrBackgroundColor }}"{% endif %}
+         data-twt-countdown-banner=""
+         data-twt-date-from="{{ date(twtCntdwnBnnrDateFrom).format('U') * 1000 }}"
+         data-twt-date-until="{{ date(twtCntdwnBnnrDateUntil).format('U') * 1000 }}"
+         {# data-twt-countdown-banner-id="{{element.id}}" #}
+         data-twt-countdown-banner-style="{{ twtCntdwnBnnrCounterStyle }}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_countdown_banner_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-color: {{ twtCntdwnBnnrTextColor }};
+        {% block element_twt_countdown_banner_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {% block element_twt_countdown_banner_content %}
+
+            {# block element_twt_countdown_banner_countdown_image_inner @deprecated #}
+            {% block element_twt_countdown_banner_inner %}
+                {# ThemeWare: Set text element #}
+                {% set countdownBanner %}
+                    <div class="twt-countdown-banner-container cms-content-container content-container justify-content-{{ twtCntdwnBnnrHorizontalAlignment }} align-items-{{ twtCntdwnBnnrVerticalAlignment }}">
+                        {# Colored overlay (if configured) #}
+                        {% if twtCntdwnBnnrColorOverlay %}
+                            <div class="twt-countdown-banner-overlay color-overlay"
+                                 style="background: {{ twtCntdwnBnnrColorOverlayBgColor }};{% if twtCntdwnBnnrColorOverlayBgGradient %} background: linear-gradient({{ twtCntdwnBnnrColorOverlayBgGradientAngle }}deg, {{ twtCntdwnBnnrColorOverlayBgColor }} 0%, {{ twtCntdwnBnnrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                        {% endif %}
+
+                        <div class="twt-countdown-banner-content {{ contentClasses|sort|join(' ') }}">
+
+                            {# Text #}
+                            <div class="twt-countdown-banner-text text is-preview"
+                                 style="display: {% if phase == 1 %}block{% else %}none{% endif %}">
+                                {# Title (mandatory) #}
+                                {# @TODO: Change headline to title #}
+                                {% if twtCntdwnBnnrTitle %}
+                                    <{{ twtCntdwnBnnrHtmlTag }} class="twt-countdown-banner-headline headline {{ twtCntdwnBnnrHtmlTagClass }} twt-font-family-{{ twtCntdwnBnnrFontFamilyTitle }}{% if twtCntdwnBnnrCssClassTitle is not empty %} {{ twtCntdwnBnnrCssClassTitle }}{% endif %}"
+                                       style="color: {{ twtCntdwnBnnrTextColorTitle }};">
+                                        <span>{{ twtCntdwnBnnrTitle }}</span>
+                                    </{{ twtCntdwnBnnrHtmlTag }}>
+                                {% endif %}
+
+                                {# Subtitle #}
+                                {# @TODO: Change subheadline to subtitle #}
+                                {% if twtCntdwnBnnrSubtitle %}
+                                    <p class="twt-countdown-banner-subheadline subheadline {{ twtCntdwnBnnrHtmlTagClass }} twt-font-family-{{ twtCntdwnBnnrFontFamilySubtitle }}{% if twtCntdwnBnnrCssClassSubtitle is not empty %} {{ twtCntdwnBnnrCssClassSubtitle }}{% endif %}"
+                                       style="color: {{ twtCntdwnBnnrTextColorSubtitle }};">
+                                        {{ twtCntdwnBnnrSubtitle }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            {# Text @Sale #}
+                            <div class="twt-countdown-banner-text text is-sale"
+                                 style="display: {% if phase == 1 %}none{% else %}block{% endif %}">
+                                {# Title @Sale (mandatory) #}
+                                {# @TODO: Change headline to title #}
+                                {% if twtCntdwnBnnrTitleSale %}
+                                    <{{ twtCntdwnBnnrHtmlTag }} class="twt-countdown-banner-headline headline {{ twtCntdwnBnnrHtmlTagClass }} twt-font-family-{{ twtCntdwnBnnrFontFamilyTitle }}{% if twtCntdwnBnnrCssClassTitle is not empty %} {{ twtCntdwnBnnrCssClassTitle }}{% endif %}"
+                                       style="color: {{ twtCntdwnBnnrTextColorTitle }};">
+                                        <span>{{ twtCntdwnBnnrTitleSale }}</span>
+                                    </{{ twtCntdwnBnnrHtmlTag }}>
+                                {% endif %}
+
+                                {# Subtitle @Sale #}
+                                {# @TODO: Change subheadline to subtitle #}
+                                {% if twtCntdwnBnnrSubtitleSale %}
+                                    <p class="twt-countdown-banner-subheadline subheadline {{ twtCntdwnBnnrHtmlTagClass }} twt-font-family-{{ twtCntdwnBnnrFontFamilySubtitle }}{% if twtCntdwnBnnrCssClassSubtitle is not empty %} {{ twtCntdwnBnnrCssClassSubtitle }}{% endif %}"
+                                       style="color: {{ twtCntdwnBnnrTextColorSubtitle }};">
+                                        {{ twtCntdwnBnnrSubtitleSale }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                            {# Countdown #}
+                            <div class="twt-countdown-banner-counter is-{{ twtCntdwnBnnrCounterStyle }}">
+                                <div class="twt-countdown-banner-counter-item"
+                                     {% if twtCntdwnBnnrCounterStyle == 'colourful-counters' %} style="background-color: {{ twtCntdwnBnnrBackgroundColorDays }};"{% endif %}>
+                                    <div class="twt-countdown-banner-counter-item-number days twt-font-family-{{ twtCntdwnBnnrFontFamilyNumbers }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorNumbers }};{% if twtCntdwnBnnrCounterStyle == 'colored-numbers' %} background-color: {{ twtCntdwnBnnrBackgroundColorNumbers }};{% endif %}">
+                                        {% if twtCntdwnBnnrCounterStyle == 'big-numbers' %}
+                                            {% if dateDiff.days %}
+                                                {{ dateDiff.days }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+
+                                        {% else %}
+                                            {% if dateDiff.days %}
+                                                {% if dateDiff.days < 10 %}0{% endif %}{{ dateDiff.days }}
+                                            {% else %}
+                                                00
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="twt-countdown-banner-counter-item-label twt-font-family-{{ twtCntdwnBnnrFontFamilyLabels }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorLabels }};">
+                                        {{ 'twt.cms.countdownBanner.days'|trans|sw_sanitize }}
+                                    </div>
+                                </div>
+
+                                <div class="twt-countdown-banner-counter-item"
+                                     {% if twtCntdwnBnnrCounterStyle == 'colourful-counters' %} style="background-color: {{ twtCntdwnBnnrBackgroundColorHours }};"{% endif %}>
+                                    <div class="twt-countdown-banner-counter-item-number hours twt-font-family-{{ twtCntdwnBnnrFontFamilyNumbers }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorNumbers }};{% if twtCntdwnBnnrCounterStyle == 'colored-numbers' %} background-color: {{ twtCntdwnBnnrBackgroundColorNumbers }};{% endif %}">
+                                        {% if twtCntdwnBnnrCounterStyle == 'big-numbers' %}
+                                            {% if dateDiff.h %}
+                                                {{ dateDiff.h }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+
+                                        {% else %}
+                                            {% if dateDiff.h %}
+                                                {% if dateDiff.h < 10 %}0{% endif %}{{ dateDiff.h }}
+                                            {% else %}
+                                                00
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="twt-countdown-banner-counter-item-label twt-font-family-{{ twtCntdwnBnnrFontFamilyLabels }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorLabels }};">
+                                        {{ 'twt.cms.countdownBanner.hours'|trans|sw_sanitize }}
+                                    </div>
+                                </div>
+
+                                <div class="twt-countdown-banner-counter-item"
+                                     {% if twtCntdwnBnnrCounterStyle == 'colourful-counters' %} style="background-color: {{ twtCntdwnBnnrBackgroundColorMinutes }};"{% endif %}>
+                                    <div class="twt-countdown-banner-counter-item-number minutes twt-font-family-{{ twtCntdwnBnnrFontFamilyNumbers }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorNumbers }};{% if twtCntdwnBnnrCounterStyle == 'colored-numbers' %} background-color: {{ twtCntdwnBnnrBackgroundColorNumbers }};{% endif %}">
+                                        {% if twtCntdwnBnnrCounterStyle == 'big-numbers' %}
+                                            {% if dateDiff.i %}
+                                                {{ dateDiff.i }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+
+                                        {% else %}
+                                            {% if dateDiff.i %}
+                                                {% if dateDiff.i < 10 %}0{% endif %}{{ dateDiff.i }}
+                                            {% else %}
+                                                00
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="twt-countdown-banner-counter-item-label twt-font-family-{{ twtCntdwnBnnrFontFamilyLabels }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorLabels }};">
+                                        {{ 'twt.cms.countdownBanner.minutes'|trans|sw_sanitize }}
+                                    </div>
+                                </div>
+
+                                <div class="twt-countdown-banner-counter-item"
+                                     {% if twtCntdwnBnnrCounterStyle == 'colourful-counters' %} style="background-color: {{ twtCntdwnBnnrBackgroundColorSeconds }};"{% endif %}>
+                                    <div class="twt-countdown-banner-counter-item-number seconds twt-font-family-{{ twtCntdwnBnnrFontFamilyNumbers }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorNumbers }};{% if twtCntdwnBnnrCounterStyle == 'colored-numbers' %} background-color: {{ twtCntdwnBnnrBackgroundColorNumbers }};{% endif %}">
+                                        {% if twtCntdwnBnnrCounterStyle == 'big-numbers' %}
+                                            {% if dateDiff.s %}
+                                                {{ dateDiff.s }}
+                                            {% else %}
+                                                0
+                                            {% endif %}
+
+                                        {% else %}
+                                            {% if dateDiff.s %}
+                                                {% if dateDiff.s < 10 %}0{% endif %}{{ dateDiff.s }}
+                                            {% else %}
+                                                00
+                                            {% endif %}
+
+                                        {% endif %}
+                                    </div>
+                                    <div class="twt-countdown-banner-counter-item-label twt-font-family-{{ twtCntdwnBnnrFontFamilyLabels }}"
+                                         style="color: {{ twtCntdwnBnnrTextColorLabels }};">
+                                        {{ 'twt.cms.countdownBanner.seconds'|trans|sw_sanitize }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            {# Button #}
+                            {% if element.translated.config.url.value %}
+                                <div class="twt-countdown-banner-action is-preview"
+                                     style="display: {% if phase == 1 %}block{% else %}none{% endif %}">
+                                    {# INFO: Title tag = Button text (as the text is mandatory) #}
+                                    <a href="{{ element.translated.config.url.value }}"
+                                       class="twt-countdown-banner-button btn btn-{% if twtCntdwnBnnrButtonOutline %}outline-{% endif %}{{ twtCntdwnBnnrButtonStyle }}"
+                                       title="{{ title }}"
+                                       {% if element.translated.config.newTab.value %}target="_blank" rel="noopener"{% endif %}
+                                    >
+                                        {{ element.translated.config.buttonText.value }}
+                                    </a>
+                                </div>
+                            {% endif %}
+
+                            {# Button @Sale #}
+                            {% if element.translated.config.urlSale.value %}
+                                <div class="twt-countdown-banner-action is-sale"
+                                     style="display: {% if phase == 1 %}none{% else %}block{% endif %}">
+                                    {# INFO: Title tag = Button text (as the text is mandatory) #}
+                                    <a href="{{ element.translated.config.urlSale.value }}"
+                                       class="twt-countdown-banner-button btn btn-{% if twtCntdwnBnnrButtonOutline %}outline-{% endif %}{{ twtCntdwnBnnrButtonStyle }}"
+                                       title="{{ title }}"
+                                       {% if element.translated.config.newTab.value %}target="_blank" rel="noopener"{% endif %}
+                                    >
+                                        {{ twtCntdwnBnnrButtonTextSale }}
+                                    </a>
+
+                                    {#
+                                    {% sw_include '@Storefront/storefront/themeware/includes/twt-newsletter-include.html.twig' with {
+                                        action: 'frontend.form.newsletter.register.handle',
+                                        submitText: 'newsletter.formSubmit'
+                                    }%}
+                                    #}
+
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_countdown_banner_countdown_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-countdown-banner-image-container {# w-100 #} cms-image-container image-container is-cover is-{{ twtCntdwnBnnrAttachment }}"
+                                 style="background-image: url({{ element.data.media.url }}); min-height: {{ twtCntdwnBnnrCmpctMinHeight }}">
+                                {# ThemeWare: Load text element #}
+                                {{ countdownBanner }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Load image element #}
+                {{ imageElement }}
+            {% endblock %}
+
+        {% endblock %}
+
+    </div>
+{% endblock %}

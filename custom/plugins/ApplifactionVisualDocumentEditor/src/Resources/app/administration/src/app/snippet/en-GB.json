@@ -1,0 +1,448 @@
+{
+    "dde": {
+        "component": {
+            "applifaction-dde-template-code-editor": {
+                "loadFromFile": "Load from File",
+                "modalTitle": "Edit Template File",
+                "saveToFile": "Save to File"
+            },
+            "dde-delete-custom-preset-modal": {
+                "message": "Are you sure you want to delete the \"%name%\" element?",
+                "title": "Delete Element"
+            },
+            "dde-save-custom-preset-modal": {
+                "title": "Save Element"
+            },
+            "dde-image-field": {
+                "dynamicDataNotificationText": "The selected image will only be used as a preview image.\nThe actual image will be dynamically resolved from the \"%var%\" variable.",
+                "variable-input-placeholder": "Load URL from Variable"
+            },
+            "dde-variable-field": {
+                "variable-input-placeholder": "Please select variable",
+                "variable-scope-divider-text": "Available here"
+            },
+            "dde-media-upload-field": {
+                "browse-button-label": "Choose image"
+            },
+            "dde-select-theme-modal": {
+                "title": "Please select a template for your document"
+            },
+            "document-template": {
+                "choose-template": "Choose Template"
+            },
+            "savingProgressTitle": {
+                "modalTitle": "Translations are being generated and saved. Please wait. "
+            }
+        },
+        "documentConfig": {
+            "activate": "Activate",
+            "additionalFormFields": {
+                "treatDeliveryAsItemHelpText": "If you activate this setting, treat the delivery costs in the table as an order item. Then, the additional shipping cost line in the table will be taken into account when setting page breaks (see 'Items per page' option).",
+                "treatDeliveryAsItemLabel": "Treat delivery costs as order item"
+            },
+            "isEditorEnabledSwitchLabel": "Enable",
+            "settingReplacedMessage": {
+                "displayDivergentDeliveryAddress": "Please use the PDF Template Editor to display divergent delivery addresses",
+                "displayFooter": "Please use the PDF Template Editor to remove or add the footer",
+                "displayHeader": "Please use the PDF Template Editor to remove or add the header",
+                "displayLineItemPosition": "Please use the PDF Template Editor to remove or add order item numbering",
+                "displayLineItems": "Please use the PDF Template Editor to remove or add order items",
+                "displayPageCount": "Please use the PDF Template Editor to remove or add page numbering",
+                "displayPrices": "Please use the PDF Template Editor to remove or add prices",
+                "itemsPerPage": "Please use the PDF Template Editor to set the number of items per page. You will find the setting in the left column of the editor when you open the preview.",
+                "logo": "Please change the logo directly in the PDF Template Editor"
+            }
+        },
+        "activationPanel": {
+            "errorRefreshMessage": "Please reload this page as soon as you have corrected the cause of the error.",
+            "refreshButton": "Reload page"
+        },
+        "documentTemplateView": {
+            "openEditorButtonText": "Open PDF Template Editor"
+        },
+        "editor": {
+            "component": {
+                "address-row": {
+                    "name": "Address line"
+                },
+                "bank-details-only-for-cash-in-advance-or-purchase-on-account": {
+                    "name": "Bank details <br>(Prepayment/Invoice)"
+                },
+                "body": {
+                    "name": "Document body"
+                },
+                "column": {
+                    "name": "Column"
+                },
+                "delivery-line-item": {
+                    "name": "Delivery position"
+                },
+                "deviating-delivery-address": {
+                    "name": "Shipping address <br>(if different)"
+                },
+                "footer": {
+                    "name": "Footer"
+                },
+                "image": {
+                    "name": "Image"
+                },
+                "intra-community-delivery-austria-fix-sw65": {
+                    "name": "Intra-Community supply from Austria"
+                },
+                "intra-community-delivery-germany-fix-sw65": {
+                    "name": "Intra-Community supply from Germany"
+                },
+                "invoice-already-paid-online": {
+                    "name": "Already paid online <br>(PayPal, Credit card, etc.)"
+                },
+                "latest-delivery-note-number": {
+                    "name": "Recent delivery note number"
+                },
+                "line-item-cover": {
+                    "name": "Product image"
+                },
+                "line-items": {
+                    "name": "Order items"
+                },
+                "magnalister-amazon-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Amazon Order ID"
+                },
+                "magnalister-cdiscount-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Cdiscount Order ID"
+                },
+                "magnalister-check24-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "check24 Order ID"
+                },
+                "magnalister-ebay-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "ebay Order ID"
+                },
+                "magnalister-etsy-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "etsy Order ID"
+                },
+                "magnalister-kaufland-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Kaufland Order ID"
+                },
+                "magnalister-metro-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Metro Order ID"
+                },
+                "magnalister-otto-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Otto Order ID"
+                },
+                "magnalister-rakutenfr-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Rakuten Order ID"
+                },
+                "magnalister-ricardo-order-id": {
+                    "linkText": "magnalister",
+                    "linkUrl": "https://store.shopware.com/en/red4363948025224f/magnalister-amazon-ebay-otto-more-interface.-upload-import-inventory-sync.html",
+                    "name": "Rakuten Order ID"
+                },
+                "coolbax-marketplace-order-id": {
+                    "linkText": "Coolbax Plugins",
+                    "linkUrl": "https://store.shopware.com/en/search?sSearch=coolbax%20marktplatz",
+                    "name": "Marketplace Order ID"
+                },
+                "payment-target-date": {
+                    "name": "Due in 14 Days<br>(Prepayment/Invoice)"
+                },
+                "product-pack-unit": {
+                    "name": "Product Packing unit"
+                },
+                "delivery-time": {
+                  "name": "Product Delivery Time"
+                },
+                "product-ean": {
+                    "name": "Product EAN"
+                },
+                "product-purchase-unit": {
+                    "name": "Product Sales unit"
+                },
+                "qr-code-product-link": {
+                    "name": "QR-code product link"
+                },
+                "product-weight": {
+                    "name": "Product weight"
+                },
+                "row": {
+                    "name": "Row"
+                },
+                "spacer": {
+                    "name": "Spacer"
+                },
+                "text": {
+                    "name": "Text"
+                },
+                "totals-row": {
+                    "name": "Totals"
+                },
+                "two-columns": {
+                    "name": "Row"
+                }
+            },
+            "leftSidebarItem": {
+                "components": {
+                    "advancedElementsGroupTitle": "Smart Elements",
+                    "basicElementsGroupTitle": "Basic Elements",
+                    "customPresetSuccessfullyImported": "Your element has been successfully saved",
+                    "customPresetsGroupTitle": "Saved Elements",
+                    "delete-custom-preset": "Delete Element",
+                    "document-fanning-auto": "Auto",
+                    "document-fanning-auto-tooltip": "Document will fan out when you hover over it or want to place an element. Fanning out makes it easier to select the right element. ",
+                    "document-fanning-label": "Fan Document",
+                    "document-fanning-on": "Always Fan Out",
+                    "element": "Element",
+                    "export-custom-preset": "Export Element",
+                    "import-custom-preset": "Import Element",
+                    "import-custom-preset-button-label": "Import",
+                    "label": "New Element",
+                    "no-custom-presets-available": "No saved element available",
+                    "presetsGroupTitle": "Elements",
+                    "title": "New Element"
+                },
+                "defaultStyles": {
+                    "embeddedGoogleFontsDescription": "<p>Visit <a href='https://fonts.google.com/' target='_blank' rel='noopener'>Google Fonts</a> to choose your desired fonts and then specify them here.</p><p><strong>Important:</strong> Please list the name of your desired Google Fonts in the font lists of the 'Font' field <b>comma-separated</b>.</p>",
+                    "embeddedGoogleFontsLabel": "Embedded Google Fonts",
+                    "globalCssDescription": "<p>You can either use the <strong>Custom CSS Classes</strong> that you can add to each element under 'Configure Element' > 'CSS' > 'Add Custom CSS Class' > 'CSS Class', or use the following default classes:</p><ul><li><strong>Document Body</strong>: mj-body</li><li><strong>Section</strong>: mj-section</li><li><strong>Column</strong>: mj-column</li><li><strong>Image</strong>: mj-image</li><li><strong>Text</strong>: mj-text</li><li><strong>Spacer</strong>: mj-spacer</li></ul>",
+                    "globalCssLabel": "Global CSS",
+                    "label": "Document Styles",
+                    "title": "Document Styles"
+                },
+                "devMode": {
+                    "componentAttributes": "Attributes"
+                },
+                "importExport": {
+                    "document": "Document",
+                    "info": "<p>Would you like to save your document template and reuse it in another document type?</p><p>Simply save your template to a file and import it into another document.</p><p><strong>Pro Tip:</strong> With this feature, you can also transfer templates between different shop instances, such as production, dev, or staging systems.</strong></p>",
+                    "label": "Import Export",
+                    "loadFromFile": "Load from File",
+                    "saveToFile": "Save to File",
+                    "title": "Import or Export Template"
+                },
+                "loadTemplate": {
+                    "label": "Themes",
+                    "title": "Themes"
+                },
+                "preview": {
+                    "disablePreviewModeButtonText": "Back to Edit Mode",
+                    "fakeOrderDescription": "Once you have captured an order in your shop, you can use it to generate preview PDFs. Until then, sample data will be used.",
+                    "itemsPerPage": {
+                        "description": "Please test your design with an order that has so few items that only one page is needed and test again with an order that has so many items that at least 3 pages are needed. Then, please enter the number of items in the fields below that fit on the respective pages.<br><br>This is important so that Shopware sets the <strong>page breaks</strong> correctly and there are no overlaps with the footer.",
+                        "multiPageDocument": "Multi-Page Document",
+                        "singlePageDocument": "Single-Page Document",
+                        "title": "Number of Items per Page"
+                    },
+                    "label": "Preview",
+                    "leaveRatingButtonText": "Write Review",
+                    "pleaseLeaveRatingText": "Please leave us a <i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i><i class=\"dde-material-icon dde-color-yellow\">star</i> rating. <br>We highly appreciate your support!",
+                    "pleaseLeaveRatingTitle": "Do you like the PDF Template Editor?",
+                    "previewOptionsTitle": "Preview options",
+                    "reloadPreviewButtonText": "Reload Preview",
+                    "title": "Preview Settings"
+                },
+                "settings": {
+                    "code": {
+                        "description": "Your Twig code will be executed before the current element is output. Conditions and loops for repeating the element will be executed after this code. Please use <strong>curly braces</strong> to write correct Twig syntax.<br><br>You can use this code to initialize new variables that will be available in text elements within this element.<br><br>Example:<br><code> &#123;% set currencyIsoCode = order.currency.isoCode %&#125; </code>",
+                        "title": "Code"
+                    },
+                    "condition": {
+                        "description": "Enter Twig code here that returns true or false.<br><strong>Please do not use curly braces</strong><br><br>Example:<br><code>billingAddress.company is not empty</code>",
+                        "title": "Condition"
+                    },
+                    "css": {
+                        "globalCssDescription": "You can assign an additional CSS class to the element, which you will then use under 'Document Styles' > 'Global CSS' to style the element.",
+                        "info-box": {
+                            "description": "If a CSS style has already been set through a setting in the 'Style' tab, you must mark your CSS style with '<i>!important</i>' to override the setting.<br><br>Example:<br><code>/* Overwrite setting of the Style-tab */<br>font-weight: 300 !important;<br><br>/* Add other styles */<br>position: relative;<br>top: 5px;<br>left: 5px;</code>"
+                        },
+                        "title": "CSS"
+                    },
+                    "fields": {
+                        "align": "Horizontal Alignment",
+                        "background-color": "Background Color",
+                        "background-repeat": "Background Repeat",
+                        "background-size": "Background Size",
+                        "background-url": "Background Image",
+                        "body-background-color": "Page Background Color",
+                        "body-background-url": "Page Background Image",
+                        "border": "Border",
+                        "border-bottom": "Border Bottom",
+                        "border-color": "Border Color",
+                        "border-left": "Border Left",
+                        "border-radius": "Border Radius",
+                        "border-right": "Border Right",
+                        "border-settings": "Settings",
+                        "border-style": "Border Style",
+                        "border-thickness": "Border Thickness",
+                        "border-top": "Border Top",
+                        "border-width": "Border Width",
+                        "color": "Text Color",
+                        "container-background-color": "Container Background Color",
+                        "font-family": "Font Family",
+                        "font-size": "Font Size",
+                        "font-style": "Font Style",
+                        "font-weight": "Font Weight",
+                        "height": "Height",
+                        "isPageFooter": "Is Footer?",
+                        "letter-spacing": "Letter Spacing",
+                        "line-height": "Line Height",
+                        "padding-bottom": "Padding Bottom",
+                        "padding-left": "Padding Left",
+                        "padding-right": "Padding Right",
+                        "padding-top": "Padding Top",
+                        "src": "Image",
+                        "alt": "Alternative text",
+                        "text-decoration": "Text Decoration",
+                        "text-transform": "Text Transform",
+                        "vertical-align": "Vertical Alignment",
+                        "width": "Width",
+                        "imageType": "Image type (Image, QR-code or barcode)",
+                        "barcodeType": "Barcode type",
+                        "qrcodeVariable": "QR-Code variable",
+                        "barcodeVariable": "Barcode variable"
+                    },
+                    "label": "Configure Element",
+                    "repeat": {
+                        "description": "Your configured 'Iterated Variable' and 'Variable Name within Loop' will be converted into a for loop that encloses the current element.<br><br>Your 'Variable Name within Loop' will be available as a variable in text elements.<br><br><strong>Example value for 'Iterated Variable'</strong><br><code> order.lineItems </code><br><strong>Example value for 'Variable Name within Loop'</strong><br><code> lineItem </code><br><strong>Example Result</strong><br><code> &#123;% for lineItem in order.lineItems %&#125;<br> &nbsp;&nbsp;&nbsp;&nbsp;...<br> &#123;% endfor %&#125; </code>",
+                        "title": "Repeat per Item in Variable"
+                    },
+                    "styles": {
+                        "backgroundImageHint": "Please use the following dimensions for your background image and compress it before uploading to <a href='https://tinypng.com/' target='_blank' rel='noopener'>tinypng.com</a>': <br><b>A4 Portrait:</b> 793px × 1122px<br><b>A4 Landscape:</b> 1122px × 793px",
+                        "title": "Styles"
+                    },
+                    "title": "Configure Element",
+                    "visibility": {
+                        "description": "Depending on the document setting <i>'Items per page'</i> and the <i>number of items</i> in the order, your PDF may span multiple pages.<br><br>All elements are visible on every page by default. Elements such as the logo, order items, and footer <strong>should be displayed on every page</strong>. Elements such as the billing and shipping address <strong>should only be displayed on the first page</strong>.<br><br>Therefore, you have the option here to specify which rows should be visible only on the First, Last, or on every page.",
+                        "options": {
+                            "allPages": "Visible on all pages",
+                            "onlyFirst": "Visible only on first page",
+                            "onlyLast": "Visible only on last page"
+                        },
+                        "title": "Visibility"
+                    }
+                },
+                "translation": {
+                    "baseLanguageNotListedText": "Please set it up and add it to at least one sales channel. Then return to the PDF Template Editor.",
+                    "baseLanguageNotListedTitle": "Is your main language not listed here?",
+                    "currentLanguageLabel": "Current Language",
+                    "label": "Translate",
+                    "languageNotListedText": "Please set it up and add it to at least one sales channel. Then return to the PDF Template Editor.",
+                    "languageNotListedTitle": "Desired language not listed?",
+                    "languagesLabel": "Translate",
+                    "manageLanguagesButtonLabel": "Manage Languages",
+                    "missingTranslationsLabel": "Missing Translations",
+                    "setBaseLanguageNotification": "Please select the main language of your document once and save again.",
+                    "setBaseLanguageTitle": "What is the main language used in your document?",
+                    "switchLanguageButtonLanguage": "Switch Language",
+                    "templateDataFetchFailedSuggestion": "If you are unable to resolve the error, please contact us (Applifaction) via Shopware's Plugin Support Form or email us at support{'@'}applifaction.com.",
+                    "title": "Translate",
+                    "translateButtonLabel": "Translate"
+                },
+                "treeView": {
+                    "title": "Navigator"
+                },
+                "variables": {
+                    "availableVariablesHeader": "Global Variables",
+                    "inScopeDivider": "Available here",
+                    "label": "Variables",
+                    "oftenUsedVariablesHeader": "Frequently Used Variables",
+                    "searchQueryHeader": "Search",
+                    "searchQueryPlaceholder": "e.g. Invoice Number, Order Number",
+                    "searchResultsHeader": "Search Results",
+                    "title": "Insert Variable",
+                    "variableNameLabel": "Twig Variable Name:"
+                },
+                "videoTutorials": {
+                    "label": "Video Tutorials"
+                },
+                "devtools": {
+                    "label": "Devtools"
+                }
+            },
+            "mainButtons": {
+                "applyButtonText": "Apply",
+                "backButtonText": "Back",
+                "cancelButtonText": "Close",
+                "cancelDiscardButtonText": "Cancel",
+                "cancelLoadTemplateButtonText": "Cancel",
+                "confirmDiscardButtonText": "Discard Changes",
+                "confirmLoadTemplateButtonText": "Load Template",
+                "deleteButtonText": "Delete",
+                "saveButtonText": "Save & Close",
+                "saveContinueButtonText": "Save",
+                "saveContinueButtonTooltip": "After saving, the editor remains open",
+                "undoButtonText": "Reverts the last change",
+                "redoButtonText": "Restores a previously undone change"
+            },
+            "messages": {
+                "confirmDiscardMessage": "Are you sure you want to leave the PDF Template Editor and discard your changes?",
+                "confirmLoadTemplateMessage": "Are you sure you want to load this template? Your current changes will be overwritten."
+            },
+            "selectionBox": {
+                "addColumn": "Add Column",
+                "changeLanguageButtonLabel": "Switch to {language}",
+                "changeLanguageLabel": "Switch language:",
+                "confirmInlineEditorButton": "Confirm",
+                "confirmInlineEditorChangesButtonLabel": "Confirm Translation",
+                "delete": "Delete",
+                "duplicate": "Duplicate",
+                "edit": "Edit Text",
+                "nextTranslationLabel": "Translate next text",
+                "nextTranslationTooltip": "Jump to the next untranslated text",
+                "saveAsCustomPreset": "Save Element",
+                "tag": {
+                    "code": "Code",
+                    "condition": "Condition",
+                    "css": "CSS",
+                    "footer": "Footer",
+                    "repeated": "Repeated",
+                    "visibleOnEveryPage": "Visible on every page",
+                    "visibleOnlyOnFirstPage": "Visible only on first page",
+                    "visibleOnlyOnLastPage": "Visible only on last page"
+                },
+                "translate": "Translate",
+                "translateSelectedUntranslatedTextTooltip": "Please enter your translation in the text field.",
+                "translateUnselectedUntranslatedTextTooltip": "Click the button to translate the text.",
+                "translationAvailableTooltip": "The text already has a translation for {language}.",
+                "translationUnavailableTooltip": "<strong>No</strong> translation available in {language}."
+            },
+            "viewAction": {
+                "desktopViewport": "Switch to desktop view",
+                "mobileViewport": "Switch to mobile view",
+                "preview": {
+                    "disable": "Edit",
+                    "enable": "Preview"
+                },
+                "tabletViewport": "Switch to tablet view"
+            }
+        },
+        "extension": {
+            "settingsItemTitle": "PDF Template Editor"
+        },
+        "loadingProgress": {
+            "generatingHtml": "Generating HTML",
+            "generatingPdf": "Generating PDF",
+            "generatingTemplate": "Generating Template"
+        },
+        "selectThemeModal": {
+            "selectBlankTheme": "Proceed with blank document",
+            "selectTemplate": "Load template",
+            "title": "Dokumenten Themes"
+        }
+    }
+}

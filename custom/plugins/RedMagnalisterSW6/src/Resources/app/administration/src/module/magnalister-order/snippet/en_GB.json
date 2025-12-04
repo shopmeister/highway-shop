@@ -1,0 +1,40 @@
+{
+    "magnalister-order": {
+        "order-details": {  
+        },
+        "order-tab": {
+            "title": "magnalister"
+        },
+        "order-list": {
+            "column": "magnalister logo"
+        },
+        "amazon-form": {
+            "title": "Shipping Carrier and Shipping Method",
+            "carrier-code-label": "Shipping Carrier",   
+            "ship-method-label": "Shipping Method",
+            "action-button-label": "Add"
+        },
+        "otto-form": {
+            "title": "Return Carrier and Return Tracking Key",
+            "return-carrier-label": "Return Carrier",   
+            "return-tracking-code-label": "Return Tracking Key",
+            "action-button-label": "Add"
+        },
+        "error": {
+            "title": "Error",
+            "content": "Please contact the magnalister support team: support@magnalister.com "            
+        },    
+        "success": {
+            "title": "Successfully saved",
+            "content": "..."               
+        },
+        "modal": {
+            "columns": {
+                "reference": "Product number",
+                "product": "Product",
+                "amount": "Amount",
+                "price": "Price"
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.swag-amazon-pay-amount-info__total-amount {
+    font-size: 18px;
+    font-weight: 600;
+    height: 25px;
+    margin-right: 26px;
+}
+
+.swag-amazon-pay-amount-info__help-icon {
+    margin-left: 8px;
+}
+
+.swag-amazon-pay-amount-info__captured-amount {
+    color: #5cb85c;
+    font-size: 14px;
+}
+
+.swag-amazon-pay-amount-info__refunded-amount {
+    color: #d9534f;
+    font-size: 14px;
+}
+
+.swag-amazon-pay-amount-info__charge-date {
+    margin-right: 26px;
+    font-size: 14px;
+}
+
+.swag-amazon-pay-refund-pending {
+    padding-right: 15px;
+}
+
+.swag-amazon-pay__is-loading {
+    animation: spin 2s linear infinite;
+    position: relative;
+    top: 8px;
+}
+
+.swag-amazon-pay-amount-info__card-amounts {
+    margin: 0 0 0 auto;
+    width: 11em;
+}
+
+.swag-amazon-pay-amount-info__card-amounts .sw-card__content {
+    overflow: visible;
+}

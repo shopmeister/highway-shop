@@ -1,0 +1,47 @@
+{# ThemeWare® CMS element "Breadcrumb navigation" #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtBreadcrumb = element.fieldConfig.elements %}
+
+{# Tab "Layout" #}
+{% set twtBrdcrmbHorizontalAlign = twtBreadcrumb.horizontalAlign.value %}
+
+{# Tab "Advanced" #}
+{% set twtBrdcrmbCssClass = twtBreadcrumb.cssClass.value %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{% if twtBrdcrmbHorizontalAlign == 'flex-start' %}
+	{% set elementClasses = ['justify-content-start']|merge(elementClasses) %}
+{% elseif twtBrdcrmbHorizontalAlign == 'center' %}
+	{% set elementClasses = ['justify-content-center']|merge(elementClasses) %}
+{% elseif twtBrdcrmbHorizontalAlign == 'flex-end' %}
+	{% set elementClasses = ['justify-content-end']|merge(elementClasses) %}
+{% endif %}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ThemeWare: Include Shopware breadcrumb #}
+{% block element_twt_breadcrumb %}
+
+	<div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtBrdcrmbCssClass is not empty %} {{ twtBrdcrmbCssClass }}{% endif %}">
+		{% set category = page.product.seoCategory ? page.product.seoCategory : page.header.navigation.active %}
+		
+		{% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+			category: category,
+			context: context
+		} only %}
+	</div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<div 
+    :style="{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '24px',
+    }">
+
+    <blur-elysium-slide-search 
+        :selected-slides-ids="selectedSlidesIds"
+        @slide-selected="selectSlide" />
+
+    <div v-if="selectedSlides.length > 0"
+        class="blur-elysium-slide-selection-results">
+
+        <div class="blur-elysium-slide-selection-results-list"
+            ref="selectionList"
+            @drop="onDrop($event)"
+            @dragend="dragEnd($event)"
+            @dragover.prevent
+            @dragenter.prevent>
+
+            <blur-elysium-slide-selection-item 
+                v-for="slide in selectedSlides" 
+                :key="slide.id"
+                :slide="slide"
+                draggable
+                @slide-loaded="slideLoaded"
+                @start-drag="startDrag"
+                @enter-drag="onDrag"
+                @position-up="slidePositionUp"
+                @position-down="slidePositionDown"
+                @edit-slide="slideEdit"
+                @remove-slide="slideRemove"/>
+
+        </div>
+    </div>
+
+    <div v-if="isLoading && selectedSlidesIds.length > 0"
+        :style="{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '30px',
+        }">
+        
+        <div v-for="placholder in selectedSlidesIds.length"
+            :key="placholder"
+            :style="{
+                minHeight: '114px',
+                position: 'relative',
+                borderRadius: '10px',
+                overflow: 'hidden',
+            }">
+            <mt-loader size="24px"/>
+        </div>
+    </div>
+
+    <mt-banner 
+        v-if="selectedSlidesIds.length === 0"
+        variant="info">
+
+        <span v-html="$tc('blurElysiumSlides.slideSelection.listNoSelection')" />
+    </mt-banner>
+
+</div>

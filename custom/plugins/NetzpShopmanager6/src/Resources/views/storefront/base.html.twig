@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{% block base_body_script %}
+    {{ parent() }}
+
+    {% if(config('NetzpShopmanager6.config.countvisitors')) %}
+        <template data-netzp-shopmanager data-netzp-shop-manager6-options='{
+                    "basePath": "{{ path('frontend.home.page') }}"
+        }'></template>
+    {% endif %}
+{% endblock %}

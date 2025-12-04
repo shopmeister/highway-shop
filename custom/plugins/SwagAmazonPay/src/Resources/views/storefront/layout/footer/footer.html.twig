@@ -1,0 +1,13 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_payment_logos %}
+    {% block swag_amazon_pay_footer_payment_logo %}
+        {% if page.footer.hasExtension(constant('Swag\\AmazonPay\\Storefront\\Pagelet\\Footer\\FooterPageletLoadedEventSubscriber::AMAZON_PAY_FOOTER_EXTENSION')) %}
+            <div class="footer-logo is-payment">
+                <img src="{{ asset('bundles/swagamazonpay/storefront/img/amazon_pay.svg') }}" class="img-fluid footer-logo-image" alt="Amazon Pay" title="Amazon Pay">
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}

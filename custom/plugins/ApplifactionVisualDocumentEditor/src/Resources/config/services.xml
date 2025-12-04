@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:monolog="http://symfony.com/schema/dic/monolog"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd
+                        http://symfony.com/schema/dic/monolog http://symfony.com/schema/dic/monolog/monolog-1.0.xsd">
+
+    <imports>
+        <import resource="services/base.xml" />
+    </imports>
+
+    <parameters>
+        <parameter key="shopware.security.csp_templates" type="collection">
+            <parameter key="administration"> object-src 'self' data:; script-src 'strict-dynamic'
+            'nonce-%%nonce%%' 'unsafe-inline' 'unsafe-eval' https: http:; base-uri 'self'; </parameter>
+        </parameter>
+    </parameters>
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\CompatibilityFactory"
+            class="Applifaction\DragNDropDocumentEditor\Compatibility\CompatibilityFactory">
+            <argument>%kernel.shopware_version%</argument>
+            <argument type="service"
+                id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextService" />
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Command\CheckColumnWidthsCommand">
+            <tag name="console.command" />
+        </service>
+
+    </services>
+</container>

@@ -1,0 +1,158 @@
+{% sw_extends '@Storefront/storefront/component/product/quickview/minimal.html.twig' %}
+
+{# ThemeWare® 'Quickview' #quickview #beta #}
+
+{# @TODO:
+    - Add ThemeWare® buy-box features...
+#}
+
+{% block component_product_quickview_minimal %}
+    {% set name = page.product.translated.name %}
+    {% set manufacturer = page.product.manufacturer %}
+
+    <div class="quickview-minimal-container twt-quickview-container" id="twt-quickview">
+        {% block component_product_quickview_minimal_top %}
+            <div class="row quickview-minimal-top twt-quickview-content">
+                {% block component_product_quickview_minimal_img %}
+                    <div class="col-12 col-md-6 quickview-minimal-image twt-quickview-image-gallery-column">
+                        {% if page.product.media.media %}
+                            {% set mediaItems = page.product.media.media %}
+
+                            {% sw_include '@Storefront/storefront/element/cms-element-image-gallery.html.twig' with {
+                                mediaItems: mediaItems,
+                                zoom: true,
+                                gutter: 5,
+                                zoomModal: false,
+                                minHeight: '430px',
+                                displayMode: 'contain',
+                                navigationArrows: 'inside',
+                                navigationDots: 'inside',
+                                galleryPosition: 'bottom',
+                                isProduct: true,
+                                fallbackImageTitle: product.translated.name,
+                                startIndexThumbnails: product.cover.position + 1,
+                                startIndexSlider: product.cover.position + 1
+                            } %}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+
+                {% block component_product_quickview_minimal_product %}
+                    <div class="col-12 col-md-6 quickview-minimal-product twt-quickview-product-column">
+                        <div class="row product-heading-container twt-quickview-product-heading">
+                            <div class="col product-heading-name-container">
+                                {# ThemeWare®: Add product name #}
+                                {{ block ('component_product_quickview_minimal_product_name') }}
+
+                                {# ThemeWare®: Add product number #}
+                                {{ block ('component_product_quickview_minimal_product_number') }}
+                            </div>
+
+                            <div class="col-auto product-heading-manufacturer-logo-container">
+                                {# ThemeWare®: Add manufacturer #}
+                                {{ block ('component_product_quickview_minimal_product_manufacturer') }}
+                            </div>
+                        </div>
+
+                        {# ThemeWare®: Add description > short #}
+                        {% if page.product.translated.description %}
+                            <div class="quickview-minimal-product-description twt-quickview-product-description">
+                                {% block component_product_quickview_product_minimal_heading %}
+                                {#
+                                    <p class="h5 quickview-minimal-product-description-heading">
+                                        {{ 'detail.tabsDescription'|trans|sw_sanitize }}
+                                    </p>
+                                #}
+                                {% endblock %}
+
+                                {% block component_product_quickview_product_minimal_text %}
+                                    <div class="quickview-minimal-product-description-text">
+                                        <p>{{ page.product.translated.description|sw_sanitize }}</p>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+
+                        {# ThemeWare®: Add price #}
+                        {#
+                        {% sw_include '@Storefront/storefront/component/product/card/price-unit.html.twig' with {
+                            product: page.product
+                        } %}
+                        #}
+                        <div class="quickview-minimal-product-price twt-quickview-product-price">
+                            {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-price.html.twig' %}
+                        </div>
+
+                        {# ThemeWare®: Add configurator @TODO #}
+
+                        {# ThemeWare®: Add buy widget #}
+                        {# Check variant products and advanced prices #}
+                        {% if page.product.parentId === null and page.product.calculatedPrices.count <= 1 %}
+                            {% block buy_widget_buy_form %}
+                                {% if page.product.active %}
+                                    <div class="product-detail-form-container twt-quickview-buy-widget-form">
+                                        {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' with {
+                                            product: page.product
+                                        } %}
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+
+                        {% else %}
+                            <a href="{{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}"
+                               class="btn btn-secondary"
+                               title="{{ page.product.translated.name }}"
+                               rel="noopener"
+                            >
+                                {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                            </a>
+
+                        {% endif %}
+
+                        {# ThemeWare®: Add description #}
+                        {#
+                        {% if page.product.translated.description %}
+                            <div class="quickview-minimal-product-description">
+                                {% block component_product_quickview_product_minimal_heading %}
+                                    <p class="h5 quickview-minimal-product-description-heading">
+                                        {{ 'detail.tabsDescription'|trans|sw_sanitize }}
+                                    </p>
+                                {% endblock %}
+
+                                {% block component_product_quickview_product_minimal_text %}
+                                    <div class="quickview-minimal-product-description-text">
+                                        <p>{{ page.product.translated.description|sw_sanitize }}</p>
+                                    </div>
+                                {% endblock %}
+                            </div>
+                        {% endif %}
+                        #}
+
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block component_product_quickview_minimal_footer  %}
+            {# Default block #}
+            {{ parent() }}
+
+            {# ThemeWare®: Add detail button #}
+            {% if page.product.parentId === null and page.product.calculatedPrices.count <= 1 %}
+                <div class="quickview-minimal-product-detail-button-container twt-quickview-product-detail-button-container">
+                    <a href="{{ seoUrl('frontend.detail.page', { productId: page.product.id }) }}"
+                       class="btn btn-light btn-detail"
+                       title="{{ page.product.translated.name }}"
+                       rel="noopener"
+                    >
+                        {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                    </a>
+                </div>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{# ThemeWare®: Remove description from footer #}
+{% block component_product_quickview_minimal_footer_heading %}{% endblock %}
+{% block component_product_quickview_minimal_footer_text  %}{% endblock %}

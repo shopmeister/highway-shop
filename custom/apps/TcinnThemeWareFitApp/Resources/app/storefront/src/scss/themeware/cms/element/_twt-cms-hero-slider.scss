@@ -1,0 +1,1034 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Hero slider"
+	==================================================
+
+*/
+
+// @TODO: Improve focus state
+// @TODO: Improve controls in mobile viewports
+// @TODO: Add configs to use teaser as badge
+// @TODO: Add font styling and sizing
+// @TODO: Apply slider control styling
+// @TODO: Make Shopware "Text" and "Image" elements available...
+
+// ThemeWare variables
+//$twt-hero-slider-content-max-width: 700px !default;
+
+$twt-hero-slider-teaser-font-size: $twt-font-size-base !default;
+$twt-hero-slider-teaser-font-weight: bold !default;
+
+//$twt-hero-slider-title-font-size: rem($twt-font-size-h3) !default;
+//$twt-hero-slider-title-font-weight: bold !default;
+
+//$twt-hero-slider-content-font-size: rem($twt-font-size-base) !default;
+//$twt-hero-slider-content-font-weight: normal !default;
+
+@if $twt-cms-hero-slider-css == 2 { // #performance
+    div[class*="cms-block-twt-hero-slider-"] {
+        .alert {
+            margin: 0;
+        }
+
+        // Flat controls (Remove drop shadow via class) ------------------------------------------------------------
+
+        &:not(.flat-controls) {
+            .carousel-control-prev,
+            .carousel-control-next {
+                span {
+                    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.65)) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.35));
+                }
+            }
+
+            .carousel-indicators {
+                button {
+                    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.65)) drop-shadow(0px 0px 3px rgba(0, 0, 0, 0.35));
+                }
+            }
+        }
+    }
+
+    .twt-hero-slider {
+        position: relative;
+        overflow: hidden;
+
+        // Controls ------------------------------------------------------------
+
+        .carousel-control-prev {
+            left: 1px; // -3px
+            height: 2rem;
+            width: 2rem;
+
+            // @TODO tag:v6.7.0 - Improve focus state
+            &:focus-visible {
+                //box-shadow: $input-btn-focus-box-shadow;
+                outline: auto 1px;
+                outline: -webkit-focus-ring-color auto 1px;
+            }
+        }
+
+        .carousel-control-next {
+            right: 1px; // -1px
+            height: 2rem;
+            width: 2rem;
+
+            // @TODO tag:v6.7.0 - Improve focus state
+            &:focus-visible {
+                //box-shadow: $input-btn-focus-box-shadow;
+                outline: auto 1px;
+                outline: -webkit-focus-ring-color auto 1px;
+            }
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            display: block;
+            opacity: 0.5;
+            transition: opacity 0.6s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        // @TODO tag:v6.7.0 - Improve focus state
+        .carousel-indicators {
+            button {
+                // @TODO: Remove overwrite and use theme styling
+                //box-sizing: content-box;
+                //flex: 0 1 auto;
+                width: 30px;
+                height: 3px;
+                padding: 0;
+                margin-right: 3px;
+                margin-left: 3px;
+                //text-indent: -999px;
+                //cursor: pointer;
+                background-color: #fff;
+                //background-clip: padding-box;
+                //border: 0;
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                //opacity: 0.5;
+                //transition: opacity 0.6s ease;
+
+                border-radius: 0;
+
+                &:hover {
+                    // @TODO: Remove overwrite and use theme styling
+                    background-color: #fff;
+                    opacity: 1;
+                }
+
+                &.active {
+                    opacity: 1;
+                }
+
+                &:focus-visible {
+                    //box-shadow: $input-btn-focus-box-shadow;
+                    outline: auto 1px;
+                    outline: -webkit-focus-ring-color auto 1px;
+                }
+            }
+        }
+    }
+
+    .twt-hero-slider-item-container {
+        &.is-boxed {
+            max-width: null-pixel-unit($twt-container-max-width);
+            margin: 0 auto;
+        }
+    }
+
+    //.twt-hero-slider-item {}
+
+    .twt-hero-slider-slide {
+        // Paddings for various breakpoints ------------------------------
+
+        .twt-hero-slider-item-content {
+            padding: 15px 30px 50px 30px;
+        }
+
+        // Allways overlay image
+        &.twt-break-all {
+            .twt-hero-slider-item-content.is-styled {
+                padding: 10px;
+
+                @include media-breakpoint-up(xs) { // min 480px
+                    padding: 10px;
+                }
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(md) { // min 768px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 20px;
+                }
+
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                padding: 0;
+            }
+        }
+
+        // Extra small <576px
+        &.twt-break-xs {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(xs) { // min 480px
+                    padding: 10px;
+                }
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(md) { // min 768px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 20px;
+                }
+
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(xs) { // min 480px
+                    padding: 0;
+                }
+            }
+        }
+
+        // Small ≥576px
+        &.twt-break-sm {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(md) { // min 768px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 20px;
+                }
+
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 0;
+                }
+            }
+        }
+
+        // Medium ≥768px
+        &.twt-break-md {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(md) { // min 768px
+                    padding: 15px;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 20px;
+                }
+
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(md) { // min 768px
+                    padding: 0;
+                }
+            }
+        }
+
+        // Large ≥992px
+        &.twt-break-lg {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 20px;
+                }
+
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding: 0;
+                }
+            }
+        }
+
+        // Extra large ≥1200px
+        &.twt-break-xl {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 25px;
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(xl) { // min 1200px
+                    padding: 0;
+                }
+            }
+        }
+
+        // Extra extra large ≥1440px
+        &.twt-break-xxl {
+            .twt-hero-slider-item-content.is-styled {
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 30px;
+                }
+            }
+
+            .twt-hero-slider-item-content:not(.is-styled) {
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding: 0;
+                }
+            }
+        }
+
+    }
+
+    // Image styling ------------------------------------------------------------
+
+    .twt-hero-slider-item-image-container {
+        height: 100%;
+        position: relative;
+
+        // Fallback: Display mode 'cover'
+        //img {
+        //    position: absolute;
+        //    top: 0;
+        //    right: 0;
+        //    bottom: 0;
+        //    left: 0;
+        //    height: 100%;
+        //    object-fit: cover;
+        //}
+
+
+        .color-overlay {
+            z-index: 1;
+        }
+
+        // Display mode 'contain' ------------------------------
+
+        &.twt-contain {
+            min-height: inherit;
+
+            img {
+                object-fit: contain;
+                position: relative;
+                top: inherit;
+                right: inherit;
+                bottom: inherit;
+                left: inherit;
+                height: 100%;
+            }
+        }
+
+        //&.twt-contain-cover {
+        //    min-height: inherit;
+        //
+        //    img {
+        //        object-fit: contain;
+        //        position: relative;
+        //        top: inherit;
+        //        right: inherit;
+        //        bottom: inherit;
+        //        left: inherit;
+        //        height: 100%;
+        //    }
+        //}
+
+        // Display mode 'cover' ------------------------------
+
+        &.twt-cover {
+            min-height: var(--twt-min-height);
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        //&.twt-cover-contain {
+        //    min-height: var(--twt-min-height);
+        //
+        //    img {
+        //        position: absolute;
+        //        top: 0;
+        //        right: 0;
+        //        bottom: 0;
+        //        left: 0;
+        //        height: 100%;
+        //        object-fit: cover;
+        //    }
+        //}
+
+        // Extra small <576px ------------------------------
+
+        &.twt-contain-xs {
+            @include media-breakpoint-up(xs) { // min 480px
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-xs {
+            @include media-breakpoint-up(xs) { // min 480px
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // Small ≥576px ------------------------------
+
+        &.twt-contain-sm {
+            @include media-breakpoint-up(sm) { // min 576px
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-sm {
+            @include media-breakpoint-up(sm) { // min 576px
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // Medium ≥768px ------------------------------
+
+        &.twt-contain-md {
+            @include media-breakpoint-up(md) { // min 768px
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-md {
+            @include media-breakpoint-up(md) { // min 768px
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // Large ≥992px ------------------------------
+
+        &.twt-contain-lg {
+            @include media-breakpoint-up(lg) { // min 992px
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-lg {
+            @include media-breakpoint-up(lg) { // min 992px
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // Extra large ≥1200px ------------------------------
+
+        &.twt-contain-xl {
+            @include media-breakpoint-up(xl) { // min 1200px
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-xl {
+            @include media-breakpoint-up(xl) { // min 1200px
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        // Extra extra large ≥1440px ------------------------------
+
+        &.twt-contain-xxl {
+            @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                min-height: inherit;
+
+                img {
+                    object-fit: contain;
+                    position: relative;
+                    top: inherit;
+                    right: inherit;
+                    bottom: inherit;
+                    left: inherit;
+                    height: 100%;
+                }
+            }
+        }
+
+        &.twt-cover-xxl {
+            @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                min-height: var(--twt-min-height);
+
+                img {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+    }
+
+    // Content styling ------------------------------------------------------------
+
+    .twt-hero-slider-item-container {
+        z-index: 1;
+
+        .twt-hero-slider-item-inside {
+            position: relative;
+
+            // Overlay styling ------------------------------
+
+            .twt-hero-slider-item-content {
+                animation-delay: .4s;
+                background-color: var(--twt-bg-color-2);
+
+                // Remove max-width below 576px
+                @include media-breakpoint-down(sm) { // max 575.98px
+                    max-width: inherit !important;
+                }
+            }
+
+            // Text styling ------------------------------
+
+            // Teaser
+            .teaser {
+                @include twt-font-size($twt-hero-slider-teaser-font-size);
+                font-weight: $twt-hero-slider-teaser-font-weight;
+                margin-bottom: 5px;
+            }
+
+            // Headline
+            .headline {
+                line-height: 1.2;
+            }
+
+            // @TODO: Add 'default' option ?!
+            //.headline.default {
+            //    // h3 fallback
+            //    font-size: calc(1.275rem + 0.3vw);
+            //    font-weight: 700; // $twt-font-weight-bold;
+            //    //line-height: 34px;
+            //    margin-bottom: 10px; // 15px
+            //
+            //    @media (min-width: 1200px) {
+            //        font-size: 1.5rem;
+            //    }
+            //}
+
+            // Text
+            .text {
+                // Links
+                a {
+                    color: var(--twt-link-color); // Wird Inline in der entsprechenden Template-Datei gesetzt
+                    text-decoration: underline;
+
+                    &:hover {
+                        filter: brightness(0.8);
+                        //text-decoration: none;
+                    }
+                }
+
+                > *:last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+
+            .text *:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            // Button
+            button,
+            .btn {
+                margin-top: $paragraph-margin-bottom;
+            }
+        }
+    }
+
+    // Content breakpoints ------------------------------------------------------------
+
+    .twt-hero-slider-slide {
+        // Extra small <576px ------------------------------
+
+        &.twt-break-xs {
+            @include media-breakpoint-down(xs) { // X-Small devices (portrait phones, less than 576px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(xs) { // min 480px
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Small ≥576px ------------------------------
+
+        &.twt-break-sm {
+            @include media-breakpoint-down(sm) { // Small devices (landscape phones, less than 768px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(sm) { // min 576px
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Medium ≥768px ------------------------------
+
+        &.twt-break-md {
+            @include media-breakpoint-down(md) { // Medium devices (tablets, less than 992px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(md) { // min 768px
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Large ≥992px ------------------------------
+
+        &.twt-break-lg {
+            @include media-breakpoint-down(lg) { // Large devices (desktops, less than 1200px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(lg) { // min 992px
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Extra large ≥1200px ------------------------------
+
+        &.twt-break-xl {
+            @include media-breakpoint-down(xl) { // X-Large devices (large desktops, less than 1400px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(xl) { // min 1200px
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Extra extra large ≥1440px ------------------------------
+
+        &.twt-break-xxl {
+            @include media-breakpoint-down(xxl) { // X-Large devices (large desktops, less than 1400px)
+                .twt-hero-slider-item-content {
+                    max-width: inherit !important;
+                    animation: none !important;
+                    box-shadow: none !important;
+                }
+
+                div.rounded {
+                    border-radius: 0 !important;
+                }
+            }
+
+            @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                .twt-hero-slider-item-container {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    margin-top: 0;
+                }
+
+                .twt-hero-slider-item-inside {
+                    display: flex;
+                    //align-items: center; // Set via template
+                    height: 100%;
+                    margin: 0 auto;
+                    padding: var(--twt-padding);
+                }
+
+                .twt-hero-slider-item-content {
+                    background-color: var(--twt-bg-color);
+                }
+            }
+        }
+
+        // Allways overlay image ------------------------------
+
+        &.twt-break-all {
+            .twt-hero-slider-item-container {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                margin-top: 0;
+            }
+
+            .twt-hero-slider-item-inside {
+                display: flex;
+                //align-items: center; // Set via template
+                height: 100%;
+                margin: 0 auto;
+                padding: var(--twt-padding);
+            }
+
+            .twt-hero-slider-item-content {
+                background-color: var(--twt-bg-color);
+            }
+        }
+
+
+        // Don't break ------------------------------
+
+        &.twt-break-none {
+            .twt-hero-slider-item-content {
+                max-width: inherit !important;
+                //animation: none !important; // .twt-animate class not applied
+            }
+
+            //div.rounded { // .rounded class not applied
+            //    border-radius: 0 !important;
+            //}
+         }
+
+    }
+    
+}
+
+// ThemeWare: Animate slide-item
+// @TODO: Animation buggy... + add configuration
+
+//.carousel-animation {
+//    .carousel-item {
+//        transform: none;
+//    }
+//
+//    .carousel-item-left {
+//        //animation-name: zoomInRight;
+//        animation-name: bounceInRight;
+//        animation-duration: .65s;
+//    }
+//    .carousel-item-left.active {
+//        transform: translate(0, 0);
+//        //animation-name: zoomOutLeft;
+//        animation-name: bounceOutLeft;
+//    }
+//
+//    .carousel-item-right {
+//        //animation-name: zoomInLeft;
+//        animation-name: bounceInLeft;
+//        animation-duration: .65s;
+//    }
+//    .carousel-item-right.active {
+//        transform: translate(0, 0);
+//        //animation-name: zoomOutRight;
+//        animation-name: bounceOutRight;
+//    }
+//}

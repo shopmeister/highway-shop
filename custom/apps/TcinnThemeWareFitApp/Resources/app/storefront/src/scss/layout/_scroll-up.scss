@@ -1,0 +1,69 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Scroll up
+    ==============================================
+    Shows a scroll up button at the bottom right of the page.
+
+	Origin: Shopware base
+*/
+
+// ThemeWare: Scroll up button adjustments
+.scroll-up-button {
+    .btn {
+        display: flex; // Firefox-Fix
+        justify-content: center; // Firefox-Fix
+
+        @include button-variant(
+            $twt-scroll-up-background-color,
+            $twt-scroll-up-border-color,
+            $twt-scroll-up-color,
+            $twt-scroll-up-background-color-hover,
+            $twt-scroll-up-border-color-hover,
+            $twt-scroll-up-color-hover
+        );
+
+        width: 45px;
+        height: 45px;
+        text-overflow: unset;
+
+        @if $twt-scroll-up-corner-type == 1 { // 1 = not rounded
+            @include border-radius(0);
+        }
+
+        // 2 = rounded
+        // no adjustments
+
+        @if $twt-scroll-up-corner-type == 3 { // 1 = round
+            @include border-radius(50px);
+        }
+
+        // Info: tag:v6.7.0 - Improved hover for better accessabillty (see .focus-visible)
+        box-shadow: $twt-scroll-up-box-shadow $twt-scroll-up-box-shadow-color;
+
+        &:focus-visible {
+            box-shadow: $input-btn-focus-box-shadow !important;
+
+            //box-shadow: 0 0 0 0.2rem rgba(..., 0.25);
+            //outline: auto 1px;
+            //outline: -webkit-focus-ring-color auto 1px;
+        }
+
+        .icon {
+            color: $twt-scroll-up-color;
+
+            > svg {
+                top: 0; // Firefox-Fix
+            }
+
+            &:hover {
+                color: $twt-scroll-up-color-hover;
+            }
+        }
+    }
+}

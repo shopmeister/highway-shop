@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="true"/>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Auth\ApiZalandoAuthService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\DevCache"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\SalesChannels\ApiZalandoSalesChannelsService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+            <argument type="service" id="cache.object"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Order\ApiZalandoOrderService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+            <argument type="service" id="messenger.bus.shopware"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductPsrService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\SalesChannels\ApiZalandoSalesChannelsService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+            <argument type="service" id="messenger.bus.shopware"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductStockService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductPriceService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductPriceAttemptService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+            <argument type="service" id="zalando_price_report.repository"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Outline\ApiZalandoOutlineService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\LogisticCenter\ApiZalandoLogisticCenterService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\HttpClient\ClientService"/>
+        </service>
+
+        <!--        <service id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Order\ApiZalandoOrderImportService"/>-->
+
+
+    </services>
+</container>

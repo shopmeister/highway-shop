@@ -1,0 +1,43 @@
+{
+    "name": "swkweb/hide-soldout-products",
+    "description": "If products are sold out, they are automatically hidden.",
+    "version": "2.2.1",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "SWK Web",
+            "email": "info@swk-web.com",
+            "homepage": "https://www.swk-web.com"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.5.0 || ~6.6.0",
+        "shopware/storefront": "~6.5.0 || ~6.6.0",
+        "shopware/elasticsearch": "~6.5.0 || ~6.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Swkweb\\HideSoldoutProducts\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Swkweb\\HideSoldoutProducts\\SwkwebHideSoldoutProducts",
+        "label": {
+            "en-GB": "Hide sold out products",
+            "de-DE": "Ausverkaufte Produkte ausblenden"
+        },
+        "description": {
+            "en-GB": "Products that are no longer in stock are automatically hidden SEO-friendly from all areas. Decide for yourself where your sold-out products are visible.",
+            "de-DE": "Produkte die nicht mehr auf Lager sind werden im Produkt Listing / Kategorie und anderen Bereichen automatisch ausgeblendet. Somit werden diese trotzdem von Suchmaschinen gefunden."
+        },
+        "manufacturerLink": {
+            "en-GB": "https://store.shopware.com/en/swkweb.html",
+            "de-DE": "https://store.shopware.com/swkweb.html"
+        },
+        "supportLink": {
+            "en-GB": "https://doku.swk-web.com",
+            "de-DE": "https://doku.swk-web.com"
+        }
+    }
+}

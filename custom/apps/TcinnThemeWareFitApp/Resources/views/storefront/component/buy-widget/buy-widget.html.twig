@@ -1,0 +1,186 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ThemeWare: 'Buy widget' component on cms product pages #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailBadges = theme_config('twt-product-detail-badges') %}
+{% set twtProductDetailBadgesPosition = theme_config('twt-product-detail-badges-position') %}
+{% set twtProductDetailBenefitsPosition = theme_config('twt-product-detail-benefits-position') %}
+{% set twtProductDetailBenefitsShow = theme_config('twt-product-detail-benefits-show') %}
+{% set twtProductDetailPaymentLogosPosition = theme_config('twt-product-detail-payment-logos-position') %}
+{% set twtProductDetailPaymentLogosShow = theme_config('twt-product-detail-payment-logos-show') %}
+{% set twtProductDetailSharingLinksShow = theme_config('twt-product-detail-sharing-links-show') %}
+{% set twtProductDetailShortDescriptionShow = theme_config('twt-product-detail-short-description-show') %}
+
+{% set twtProductDetailDeliverytimeAvailableLabelShow = theme_config('twt-product-detail-deliverytime-available-label-show') %}
+{% set twtProductDetailDeliverytimeRestockLabelShow = theme_config('twt-product-detail-deliverytime-restock-label-show') %}
+{% set twtProductDetailLabelsPosition = theme_config('twt-product-detail-labels-position') %}
+{% set twtProductDetailNotavailableLabelShow = theme_config('twt-product-detail-notavailable-label-show') %}
+{% set twtProductDetailPreorderLabelShow = theme_config('twt-product-detail-preorder-label-show') %}
+{% set twtProductDetailShippingFreeLabelShow = theme_config('twt-product-detail-shipping-free-label-show') %}
+{% set twtProductDetailSoldLabelShow = theme_config('twt-product-detail-sold-label-show') %}
+{% set twtProductDetailStockLabelShow = theme_config('twt-product-detail-stock-label-show') %}
+
+{% set twtLabelsShow = false %}
+{% if twtProductDetailDeliverytimeAvailableLabelShow == 2 or
+    twtProductDetailDeliverytimeRestockLabelShow == 2 or
+    twtProductDetailNotavailableLabelShow == 2 or
+    twtProductDetailPreorderLabelShow == 2 or
+    twtProductDetailShippingFreeLabelShow == 2 or
+    twtProductDetailSoldLabelShow == 2 or
+    twtProductDetailStockLabelShow == 2
+%}
+    {% set twtLabelsShow = true %}
+{% endif %}
+
+{% set twtSocialProofingInfotextShow = theme_config('twt-social-proofing-infotext-show') %}
+{% set twtSocialProofingInfotextPosition = theme_config('twt-social-proofing-infotext-position') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustment of the ordernumber container #}
+{% block buy_widget_ordernumber_container %}
+    {# ThemeWare: Add payment provider logos (above) #}
+    {% if controllerName|lower == 'product' %}
+        {% if twtProductDetailPaymentLogosShow == 2 and twtProductDetailPaymentLogosPosition == 1 %}
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-payment-logos.html.twig' ignore missing with {
+                type: 'buy-box',
+                position: 'top'
+            } %}
+        {% endif %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+
+    {# ThemeWare: Add product specifications #}
+    {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-specifications.html.twig' ignore missing with {
+        type: 'buy-box'
+    } %}
+
+    {# ThemeWare: Add "Benefits" (2) #}
+    {% if controllerName|lower == 'product' %}
+        {% if twtProductDetailBenefitsShow == 2 and twtProductDetailBenefitsPosition == 2 %}
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-benefits.html.twig' ignore missing with {
+                position: 'bottom',
+                type: 'buy-box'
+            } %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add payment provider logos (below) #}
+    {% if controllerName|lower == 'product' %}
+        {% if twtProductDetailPaymentLogosShow == 2 and twtProductDetailPaymentLogosPosition == 2 %}
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-payment-logos.html.twig' ignore missing with {
+                position: 'bottom',
+                type: 'buy-box'
+            } %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add "Sharing links" #}
+    {# @TODO: Benötigte Variablen nur auf Produkt-Seite verfügbar #}
+    {% if controllerName|lower == 'product' %}
+        {% if twtProductDetailSharingLinksShow == 2 %}
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-sharing-links.html.twig' ignore missing with {
+                type: 'buy-box'
+            } %}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block buy_widget_buy_container %}
+    {# ThemeWare: Add "Product badges" (1) #}
+    {% if twtProductDetailBadges == 2 and twtProductDetailBadgesPosition == 1 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-product-detail-badges.html.twig' ignore missing with {
+            product: product,
+            position: 'top',
+            type: 'buy-box'
+        } %}
+    {% endif %}
+
+    {# ThemeWare: Custom field "Short description" #}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__short_description is not empty and twtProductDetailShortDescriptionShow == 2 %}
+        {% sw_include '@Storefront/storefront/themeware/product-detail/twt-produt-detail-short-description.html.twig' ignore missing %}
+    {% endif %}
+
+    {# ThemeWare: Add "Benefits" (1) #}
+    {# @TODO: Add option 'below price' {% block buy_widget_price %} #}
+    {% if controllerName|lower == 'product' %}
+        {% if twtProductDetailBenefitsShow == 2 and twtProductDetailBenefitsPosition == 1 %}
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-benefits.html.twig' ignore missing with {
+                position: 'top',
+                type: 'buy-box'
+            } %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add "Product badges" (2) #}
+    {# @TODO: Add option for old position? (see above) #}
+    {% if twtProductDetailBadges == 2 and twtProductDetailBadgesPosition == 2 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-product-detail-badges.html.twig' ignore missing with {
+            product: product,
+            position: 'price',
+            type: 'buy-box'
+        } %}
+    {% endif %}
+
+    {# ThemeWare: Add labels (1) #}
+    {% if twtLabelsShow and twtProductDetailLabelsPosition == 1 %}
+        {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-labels.html.twig' ignore missing with {
+            position: 'top',
+            product: product
+        } %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}
+
+{% block buy_widget_delivery_informations %}
+    {# ThemeWare: Add labels (2) #}
+    {% if twtLabelsShow and twtProductDetailLabelsPosition == 2 %}
+        {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-labels.html.twig' ignore missing with {
+            position: 'bottom',
+            product: product
+        } %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}
+
+
+{# ThemeWare: Social proofing infotext #}
+{% block buy_widget_buy_form %}
+    {% if twtSocialProofingInfotextShow == 2 and twtSocialProofingInfotextPosition == 1 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-social-proofing-infotext.html.twig' ignore missing with {
+            position: 'top',
+            product: product,
+            type: 'infotext'
+        } %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+
+    {% if twtSocialProofingInfotextShow == 2 and twtSocialProofingInfotextPosition == 2 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-social-proofing-infotext.html.twig' ignore missing with {
+            position: 'bottom',
+            product: product,
+            type: 'infotext'
+        } %}
+    {% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Ordernumber #}
+{# @TODO tag:v6.7.0 - Check if display:none is woking or should be solved via twig #accessabillty #}
+{#
+{% block buy_widget_ordernumber_container %}
+{% endblock %}
+#}

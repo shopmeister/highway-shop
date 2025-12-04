@@ -1,0 +1,181 @@
+{# ThemeWare® 'Hero section' content #}
+{#
+    Create container and add content
+
+    Der Dateiupload im Medienmanager ist für folgende Dateitypen möglich:
+    jpg, jpeg, png, webp, gif, svg, bmp, tiff, tif, eps, webm, mkv, flv, ogv, ogg, mov, mp4, avi, wmv, pdf, aac, mp3, wav, flac, oga, wma, txt, doc, glb
+
+    Unterstützte Formate: jpg, jpeg, png, webp, gif, svg, bmp, tiff, tif, eps
+
+    @Storefront/storefront/themeware/extensions/twt-hero-section.html.twig
+#}
+
+{# @TODO:
+    - Hide twt-cms-breadcrumb if used ?!
+    - Add custom title via custom field
+    - Add custom text via custom field
+    - Add headline configuration (caps etc.)
+    - Add font-size configuration
+    - Add blur configuration ?!
+        - parse color via --var() to SCSS and convert to rgba > @include background-opacity(#..., .5);
+    - Allow linear-gradient(67deg, var(--bs-primary) 50%, rgba(255, 254, 255, 0) 100%) ?!
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeroSectionShow = theme_config('twt-hero-section-show') %}
+
+{#{% set twtHeroSectionBackgroundImageAttachment = theme_config('twt-hero-section-background-image-attachment') %}#}
+{% set twtHeroSectionBackgroundImageParallax = theme_config('twt-hero-section-background-image-parallax') %}
+{% set twtHeroSectionOverlayBackgroundColor = theme_config('twt-hero-section-overlay-background-color') %}
+{#{% set twtHeroSectionOverlayOpacity = theme_config('twt-hero-section-overlay-opacity') %}#}
+{% set twtHeroSectionPullUp = theme_config('twt-hero-section-pull-up') %}
+{% set twtHeroSectionTextColoration = theme_config('twt-hero-section-text-coloration') %}
+{% set twtHeroSectionTextAlign = theme_config('twt-hero-section-text-align') %}
+
+{% set twtHeroSectionBreadcrumbShow = theme_config('twt-hero-section-breadcrumb-show') %}
+{% set twtHeroSectionBreadcrumbPosition = theme_config('twt-hero-section-breadcrumb-position') %}
+{% set twtHeroSectionBreadcrumbJustifyContent = theme_config('twt-hero-section-breadcrumb-justify-content') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{% set backgroundColor = twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_background_color %}
+{% set textColoration = twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_background_color %}
+
+{% set categoryName = page.header.navigation.active.name %}
+{% set categoryDescription = page.header.navigation.active.description %}
+
+{% set formats = ['jpg', 'jpeg', 'png', 'webp', 'gif'] %}
+
+{# Set 'Background color' (custom field or theme condiguration) #}
+{% if backgroundColor is empty %}
+    {% set backgroundColor = twtHeroSectionOverlayBackgroundColor %}
+{% endif %}
+
+{# Set 'Text color' #}
+{% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_text_coloration is not empty and
+    twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_text_coloration != 'inherit'
+%}
+    {# INFO: "Textfarbe" ändern wenn das Zusatzfeld != empty bzw. 'inherit' ist. #}
+    {% set textColor = twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_text_coloration %}
+{% else %}
+    {% set textColor = twtHeroSectionTextColoration %}
+{% endif %}
+
+{# Set 'Background image' #}
+{% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_background_image is not empty %}
+    {% set backgroundImageId = [
+        twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_background_image
+    ] | filter(item => item is not null) %}
+{% else %}
+    {% set backgroundImageId = [
+        page.header.navigation.active.mediaId
+    ] | filter(item => item is not null) %}
+{% endif %}
+
+{% set mediaCollection = searchMedia(backgroundImageId, context.context) %}
+
+{% set backgroundImage = mediaCollection.get(backgroundImageId.0) %}
+
+{# Set 'Pull up' #}
+{% set pullUp = false %}
+
+{% if twtHeroSectionPullUp == 1 %}
+    {% set pullUp = false %}
+
+    {# INFO: "Pull-up" per Zusatzfeld aktivieren wenn das Zusatzfeld '1' ist. #}
+    {# Override theme configuration ?! #}
+    {#
+    {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_pull_up == '1' %}
+        {% set pullUp = true %}
+    {% endif %}
+    #}
+
+{% elseif twtHeroSectionPullUp == 2 %}
+    {% set pullUp = true %}
+
+    {# INFO: "Pull-up" per Zusatzfeld deaktivieren wenn das Zusatzfeld '0' ist. #}
+    {# Override theme configuration ?! #}
+    {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_pull_up == '0' %}
+        {% set pullUp = false %}
+    {% endif %}
+
+{% elseif twtHeroSectionPullUp == 3 %}
+    {% set pullUp = false %}
+
+    {# INFO: "Pull-up" per Zusatzfeld aktivieren wenn das Zusatzfeld '1' ist. #}
+    {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section_pull_up == '1' %}
+        {% set pullUp = true %}
+    {% endif %}
+
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{% block twt_hero_section %}
+    {# ThemeWare: 'Hero section' (listings/pages) #}
+
+    <div class="twt-hero-section is-extension full-width{% if pullUp %} pull-up{% endif%}{% if twtHeroSectionBackgroundImageParallax == 2 %} twt-parallax-banner{% endif%}" {% if backgroundImage is not empty %}style="background-image: url('{{ backgroundImage|sw_encode_media_url }}');"{% endif %}>
+        <div class="twt-hero-section-section">
+
+            {% block twt_hero_section_container %}
+                <div class="twt-hero-section-container boxed">
+
+                    {# Add breadcrumb if configured 'top' #}
+                    {% if twtHeroSectionBreadcrumbShow == 2 and twtHeroSectionBreadcrumbPosition == 'top' %}
+                        {# @deprecated: Classes 'is-top' and 'top' will be removed with a future update. #}
+                        <div class="twt-breadcrumb justify-content-{{ twtHeroSectionBreadcrumbJustifyContent|replace({'flex-': ''}) }} text-{{ textColor }} position-top is-top top">
+                            {% set category = page.product.seoCategory ? page.product.seoCategory : page.header.navigation.active %}
+
+                            {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                                category: category,
+                                context: context
+                            } only %}
+                        </div>
+                    {% endif %}
+
+                    {% block twt_hero_section_content %}
+                        <div class="twt-hero-section-content" class="text-{{ textColor }} text-{{ twtHeroSectionTextAlign }}">
+                            {# Category name (mandatory) #}
+                            {# @TODO: Custom title... #}
+                            {% block twt_hero_section_headline %}
+                                <h1 class="twt-hero-section-content-headline headlinne text-{{ textColor }} text-{{ twtHeroSectionTextAlign }}">
+                                    {{ page.header.navigation.active.translated.name }}
+                                </h1>
+                            {% endblock %}
+
+                            {# Category description (optional) #}
+                            {# @TODO: Custom text ... #}
+                            {% if page.header.navigation.active.description is not empty %}
+                                {% block twt_hero_section_text %}
+                                    <div class="twt-hero-section-content-text text text-{{ textColor }} text-{{ twtHeroSectionTextAlign }}">
+                                        {{ page.header.navigation.active.description|raw }}
+                                    </div>
+                                {% endblock %}
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {# Add breadcrumb if configured 'bottom' #}
+                    {% if twtHeroSectionBreadcrumbShow == 2 and twtHeroSectionBreadcrumbPosition == 'bottom' %}
+                        {# @deprecated: Classes 'is-bottom' and 'bottom' will be removed with a future update. #}
+                        <div class="twt-breadcrumb justify-content-{{ twtHeroSectionBreadcrumbJustifyContent|replace({'flex-': ''}) }} text-{{ textColor }} position-bottom is-bottom bottom">
+                            {% set category = page.product.seoCategory ? page.product.seoCategory : page.header.navigation.active %}
+
+                            {% sw_include '@Storefront/storefront/layout/breadcrumb.html.twig' with {
+                                category: category,
+                                context: context
+                            } only %}
+                        </div>
+                    {% endif %}
+
+                </div>
+            {% endblock %}
+
+            <div class="overlay" style="background-color: {{ backgroundColor }}"></div>
+        </div>
+    </div>
+{% endblock %}

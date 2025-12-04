@@ -1,0 +1,61 @@
+{% block swag_amazon_pay_order_component_amount_info %}
+    <sw-container class="swag-amazon-pay-amount-info__container" rows="4" columns="1fr">
+
+        {% block swag_amazon_pay_order_component_amount_info_total %}
+            <div class="swag-amazon-pay-amount-info__total-amount" align="right">
+                {{ totalAmount }}
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_component_amount_info_card %}
+            <sw-card v-if="!isInvalidChargePermission"
+                     :isLoading="isLoading"
+                     :hero="true"
+                     class="swag-amazon-pay-amount-info__card-amounts">
+
+                {% block swag_amazon_pay_order_component_amount_info_captured %}
+                    <div class="swag-amazon-pay-amount-info__captured-amount" align="right">
+
+                        {% block swag_amazon_pay_order_component_amount_info_captured_amount %}
+                            +{{ chargedAmount }}
+                        {% endblock %}
+
+                        {% block swag_amazon_pay_order_component_amount_info_captured_help %}
+                            <sw-help-text class="swag-amazon-pay-amount-info__help-icon"
+                                          tooltipPosition="top"
+                                          :text="$tc('swag-amazon-pay-order.amount-info.chargeTooltip', 0, {
+                                              amount: chargedAmount
+                                          })">
+                            </sw-help-text>
+                        {% endblock %}
+
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_amount_info_refunded %}
+                    <div class="swag-amazon-pay-amount-info__refunded-amount" align="right">
+                        {% block swag_amazon_pay_order_component_amount_info_refund_amount %}
+                            -{{ refundedAmount }}
+                            <span v-if="hasPendingRefunds">(-{{ refundPendingAmount }})</span>
+                        {% endblock %}
+
+                        {% block swag_amazon_pay_order_component_amount_info_refunded_help %}
+                            <sw-help-text class="swag-amazon-pay-amount-info__help-icon"
+                                          tooltipPosition="top"
+                                          :text="$tc('swag-amazon-pay-order.amount-info.refundTooltip', 0, {
+                                              amount: refundedAmount
+                                          })">
+                            </sw-help-text>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_component_amount_info_date %}
+            <div class="swag-amazon-pay-amount-info__charge-date" align="right">
+                {{ dateFilter(transaction.createdAt) }}
+            </div>
+        {% endblock %}
+    </sw-container>
+{% endblock %}

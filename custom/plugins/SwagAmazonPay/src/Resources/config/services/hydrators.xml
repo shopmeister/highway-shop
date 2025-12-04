@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!--Components/Client/Hydrator -->
+        <service id="Swag\AmazonPay\Components\Client\Hydrator\Request\CreateCheckoutSession\CreateCheckoutSessionHydrator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="router"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\Client\Hydrator\Request\UpdateCheckoutSession\UpdateCheckoutSessionHydrator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\VersionProvider"/>
+        </service>
+
+        <!-- Components/Config/Hydrator -->
+        <service id="Swag\AmazonPay\Components\Config\Hydrator\ConfigHydrator"/>
+
+        <!-- Components/Button/Login/Hydrator -->
+        <service id="Swag\AmazonPay\Components\Button\Login\Hydrator\AmazonLoginButtonPayloadHydrator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\DataAbstractionLayer\Entity\SignUpToken\SignUpTokenService"/>
+        </service>
+
+        <!-- Components/Button/Pay/Hydrator -->
+        <service id="Swag\AmazonPay\Components\Button\Pay\Hydrator\AmazonPayButtonPayloadHydrator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Button\Pay\AddressRestriction\AddressRestrictionService"/>
+            <argument type="service" id="currency.repository"/>
+        </service>
+
+        <!-- Components/PurePaymentMethod/Hydrator -->
+        <service id="Swag\AmazonPay\Components\PurePaymentMethod\Hydrator\AmazonPayPurePaymentMethodPayloadHydrator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\VersionProvider"/>
+            <argument type="service" id="router"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+    </services>
+</container>

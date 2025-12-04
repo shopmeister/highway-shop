@@ -1,0 +1,91 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+
+{# ThemeWare® 'Listview' #listview #beta #}
+
+{# @TODO... #}
+
+{% block component_product_box %}
+    {% if product %}
+        {% set name = product.translated.name %}
+        {% set id = product.id %}
+        {% set cover = product.cover.media %}
+        {% set variation = product.variation %}
+        {% set displayParent = product.variantListingConfig.displayParent and product.parentId === null %}
+
+        <div class="card product-box box-{{ layout }}" data-product-information="{{ {id, name}|json_encode }}">
+            {% block component_product_box_content %}
+                {# {{ sw_icon_cache_disable() }} #}
+
+                {# ThemeWare: Replace classes #}
+                <div class="row d-flex flex-wrap flex-sm-nowrap align-items-center {# gap-3 gap-lg-2 #}">
+                    {# ThemeWare: Add new wrapper #}
+                    <div class="col-12 col-sm-4 col-lg-3">
+                        {{ block('component_product_box_badges') }}
+
+                        {{ block('component_product_box_image') }}
+                    </div>
+
+                    {% block component_product_box_info %}
+                        {# ThemeWare: Replace classes #}
+                        <div class="col-12 col-sm-8 col-lg-9">
+
+                            <div class="product-info">
+                                {{ block('component_product_box_rating') }}
+
+                                {{ block('component_product_box_name') }}
+
+                                {{ block('component_product_box_variant_characteristics') }}
+
+                                {{ block('component_product_box_description') }}
+
+                                {{ block('component_product_box_price') }}
+
+                                {# ThemeWare: ... #}
+                                {% block component_product_box_action %}
+                                    {# TODO konfiguration noch bauen zur anzeige des buy widget forms #}
+                                    {# check Variantenprodukt and Advanced prices #}
+                                    {% set id = product.id %}
+
+{#                                    {% set isAvailable = not product.isCloseout or (product.availableStock >= product.minPurchase) %} tag:v6.6.8 #}
+                                    {% set isAvailable = not product.isCloseout or (product.stock >= product.minPurchase) %}
+                                    {% set displayFrom = product.calculatedPrices.count > 1 %}
+                                    {% set displayBuyButton = isAvailable and not displayFrom and product.childCount <= 0 %}
+
+                                    {% if displayBuyButton and config('core.listing.allowBuyInListing') %}
+                                    {# {% if product.parentId === null and product.calculatedPrices.count <= 1%} #}
+                                        <div class="product-action">
+                                            {% block component_product_box_action_buy %}
+                                                {% sw_include '@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig' %}
+                                            {% endblock %}
+                                        </div>
+
+                                    {% else %}
+                                        <div class="product-action">
+                                            {% block component_product_box_action_detail %}
+                                                <div class="d-grid">
+                                                    <a href="{{ seoUrl('frontend.detail.page', {productId: product.id}) }}"
+                                                       class="btn btn-light btn-detail"
+                                                       title="{{ product.translated.name }}"
+                                                       rel="noopener"
+                                                    >
+                                                        {{ 'listing.boxProductDetails'|trans|sw_sanitize }}
+                                                    </a>
+                                                </div>
+                                            {% endblock %}
+                                        </div>
+
+                                    {% endif %}
+                                {% endblock %}
+
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                </div>
+
+                {# {{ sw_icon_cache_enable() }} #}
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{# ThemeWare® CMS block "One columns" #}
+
+{% block block_twt_grid_one_column %}
+    {% set columns = 1 %}
+
+    {# Set image size for every viewport #}
+    {# @TODO... #}
+
+    {# Set image size for largest viewport depending on the cms block sizing mode (boxed or full-width) #}
+    {# @TODO... #}
+
+    {% block block_twt_grid_one_column_content %}
+        {% set element = block.slots.getSlot('content') %}
+
+        <div class="column-1 col-12 twt-column" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_one_column_content_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

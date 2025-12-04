@@ -1,0 +1,166 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® Extension 'Hero section'
+    ==================================================
+    see also "cms/element/..."
+
+    - Available as extension: .twt-hero-section
+    - Available as cms element: ...
+*/
+
+/* ---------------- START: SET SCSS VARS ---------------- */
+
+@if $twt-hero-section-breadcrumb-position == 'bottom' {
+    $twt-hero-section-breadcrumb-mb: 0px;
+    $twt-hero-section-content-mb: 30px;
+} @else {
+    $twt-hero-section-breadcrumb-mb: 30px;
+    $twt-hero-section-content-mb: 0px;
+}
+
+/* ---------------- END: SET SCSS VARS ---------------- */
+
+// ThemeWare: General styling ------------------------------------------------------------------------------------------
+// - Info: Extension specific styling below
+// - Info: CMS element specific styling: "..."
+
+@if $twt-hero-section-show-cms-category-pages > 1 or $twt-hero-section-show-cms-shop-pages > 1 {
+    .twt-hero-section {
+        position: relative;
+        margin-bottom: 20px; // @TODO: Add configuration
+        padding-top: 40px; // @TODO: Add configuration
+        padding-bottom: 45px; // @TODO: Add configuration
+
+        background-repeat: no-repeat;
+        background-attachment: $twt-hero-section-background-image-attachment;
+        background-position: center; /* @TODO: config ?! */
+        background-size: cover; /* @TODO: config ?! */
+
+        &-container {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 0;
+            position: relative;
+            z-index: 1;
+            padding-right: calc(var(--bs-gutter-x) * .5);
+            padding-left: calc(var(--bs-gutter-x) * .5);
+            display: flex;
+            flex-direction: column;
+            //min-height: 270px; // @TODO: Add configuration
+
+            @if $twt-hero-section-sizing-mode == 1 { // 1 'Container-Max-Width (Full-width-boxed)'
+                max-width: null-pixel-unit($twt-container-max-width);
+                margin: 0 auto;
+            } @else if $twt-hero-section-sizing-mode == 2 { // 2 '100% (Full-width)'
+                max-width: 100%;
+            }
+        }
+
+        &-content {
+            max-width: auto-pixel-unit-v2($twt-hero-section-content-max-width); // Allowed values: 1200px, 100% oder none ...
+            margin-bottom: $twt-hero-section-content-mb; // @TODO: Add configuration
+            flex-grow: 1; // push bradcrumb to the bottom
+
+            @if $twt-hero-section-text-align == 'center' {
+                margin: 0 auto;
+            }
+        }
+
+        // Text
+        &-content-text {
+            margin-top: 15px;
+
+            a:not(.btn) {
+                color: inherit;
+                text-decoration: underline;
+            }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: $twt-hero-section-overlay-opacity * 1%;
+        }
+
+        // Pull up next element @TODO #beta
+        &.pull-up {
+            z-index: 0;
+            padding-bottom: 65px; // @TODO: Calculate with 'padding-bottom' cconfiguration (+20px)
+
+            + .cms-page {
+                position: relative;
+
+                // @TODO: Calculate with 'margin-bottom' and 'padding-bottom' cconfigurations
+                margin-top: -40px !important;
+            }
+
+            + .twt-listing-subcategories {
+                position: relative;
+
+                // @TODO: Calculate with 'margin-bottom' and 'padding-bottom' cconfigurations
+                margin-top: -40px !important;
+            }
+        }
+    }
+
+    // Breadcrumb adjustments
+
+    .twt-breadcrumb {
+        display: flex;
+        margin-bottom: $twt-hero-section-breadcrumb-mb; // @TODO: Add configuration
+
+        /*
+        &.is-top, &.top, // @deprecated
+        &.position-top { ...
+        */
+
+        /*
+        &.is-bottom, &.bottom, // @deprecated
+        &.position-bottom { ...
+        */
+    }
+
+    .breadcrumb {
+        --bs-breadcrumb-margin-bottom: .5rem; // @TODO: Add configuration
+    }
+
+    // 'Shopping experience header' adjustments
+
+    @if $twt-shopping-experiences-header-position == 2 {
+        body.twt-shopping-experiences-header {
+            .twt-hero-section {
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding-top: #{$twt-hero-section-padding-top-sm}px;
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding-top: #{$twt-hero-section-padding-top-lg}px;
+                }
+
+                .breadcrumb {
+                    display: flex !important;
+                }
+            }
+        }
+    }
+}
+
+
+// ThemeWare: Extension specific styling -------------------------------------------------------------------------------
+// @TODO: Add extensions specific styling here
+
+//@if $twt-hero-section-show-cms-category-pages > 1 or $twt-hero-section-show-cms-shop-pages > 1 {
+//    .twt-hero-section {
+//        &.is-extension {
+//
+//        }
+//    }
+//}

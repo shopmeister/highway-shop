@@ -1,0 +1,59 @@
+﻿{% sw_extends '@Storefront/storefront/layout/header/actions/account-widget.html.twig' %}
+{# ThemeWare® HC-Architecture® via configuration #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeaderAccountBtnCompatibility = theme_config('twt-header-account-btn-compatibility') %}
+{% set twtHeaderActionsAccountMenuBtnBadgeShow = theme_config('twt-header-actions-account-menu-btn-badge-show') %}
+{% set twtIconSet = theme_config('twt-iconset') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the account button #}
+{# HC-Architecture @Doku #}
+{% block layout_header_actions_account_widget_dropdown_button %}
+	{% if twtHeaderAccountBtnCompatibility == 2 %}
+		{# ThemeWare: Add title-attribute #}
+		{# @TODO:
+			aria-label="{{ 'account.myAccount'|trans|striptags }}"
+			title="{{ 'account.myAccount'|trans|striptags }}"
+		#}
+		<button class="btn account-menu-btn header-actions-btn"
+				type="button"
+				id="accountWidget"
+				data-account-menu="true"
+				data-bs-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false"
+				aria-label="{{ 'twt.header.accountText'|trans|striptags }}"
+				title="{{ 'twt.header.accountText'|trans|striptags }}"
+		>
+			{# ThemeWare: Replace icon and add icon to wrapper #}
+			<span class="header-account-icon">
+				{# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+				{% if twtIconSet is not same as ('default') %}
+					{% sw_icon 'avatar' style { pack: 'themeware' } %}
+				{% else %}
+					{% sw_icon 'avatar' %}
+				{% endif %}
+			</span>
+
+			{# ThemeWare: Add 'My account' label #}
+			{# @TODO: Add customer name ?! #}
+			<span class="header-account-name">
+				{{ 'twt.header.accountText'|trans|striptags }}
+			</span>
+
+			{# ThemeWare: Add 'logged in' badge #}
+			{% if twtHeaderActionsAccountMenuBtnBadgeShow == 2 and context.customer is not empty %}
+				<span class="badge bg-primary twt-header-logged-in-badge">&#10003;</span>
+			{% endif %}
+		</button>
+
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}

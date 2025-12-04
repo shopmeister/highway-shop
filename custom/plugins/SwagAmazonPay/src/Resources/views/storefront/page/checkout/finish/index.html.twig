@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/page/checkout/finish/index.html.twig' %}
+
+{% block page_checkout_main_content %}
+    {% set amazonPayErrorCode = page.order.transactions.last.customFields.swag_amazon_pay_error_reason_code %}
+
+    {% if amazonPayErrorCode and not page.paymentFailed %}
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type: "danger",
+            content: 'SwagAmazonPay.errors.finalize' | trans ~ " (" ~ amazonPayErrorCode ~ ")"
+        } %}
+    {% endif %}
+
+    {{ parent() }}
+{% endblock %}

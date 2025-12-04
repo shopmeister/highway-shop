@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Variations React - Development</title>
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        visibility: hidden;
+      }
+
+      body.loaded {
+        visibility: visible;
+      }
+
+      /* Loading spinner */
+      .initial-loading {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: #666;
+      }
+
+      .spinner {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #1976d2;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px auto;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="initial-loading">
+        <div class="spinner"></div>
+        <p>Loading Amazon Variations Component...</p>
+      </div>
+    </div>
+
+    <script>
+      // Simple loading handler
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.body.classList.add('loaded');
+        }, 100);
+      });
+
+      // Development console logging
+      const originalLog = console.log;
+      const originalError = console.error;
+      const originalWarn = console.warn;
+
+      function createDevConsole() {
+        const consoleDiv = document.createElement('div');
+        consoleDiv.className = 'dev-console';
+        consoleDiv.style.display = 'none';
+        document.body.appendChild(consoleDiv);
+
+        function addToConsole(message, type = 'log') {
+          const div = document.createElement('div');
+          div.style.color = type === 'error' ? '#ff6b6b' :
+                           type === 'warn' ? '#feca57' : '#fff';
+          div.textContent = `[${type.toUpperCase()}] ${message}`;
+          consoleDiv.appendChild(div);
+          consoleDiv.scrollTop = consoleDiv.scrollHeight;
+
+          // Keep only last 20 messages
+          if (consoleDiv.children.length > 20) {
+            consoleDiv.removeChild(consoleDiv.firstChild);
+          }
+        }
+
+        console.log = function(...args) {
+          originalLog.apply(console, args);
+          addToConsole(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+          originalError.apply(console, args);
+          addToConsole(args.join(' '), 'error');
+        };
+
+        console.warn = function(...args) {
+          originalWarn.apply(console, args);
+          addToConsole(args.join(' '), 'warn');
+        };
+
+        // Toggle console with Ctrl+`
+        document.addEventListener('keydown', function(e) {
+          if (e.ctrlKey && e.key === '`') {
+            consoleDiv.style.display =
+              consoleDiv.style.display === 'none' ? 'block' : 'none';
+          }
+        });
+
+        return consoleDiv;
+      }
+
+      // Initialize development console
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        createDevConsole();
+        console.log('Development mode enabled. Press Ctrl+` to toggle console.');
+      }
+    </script>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

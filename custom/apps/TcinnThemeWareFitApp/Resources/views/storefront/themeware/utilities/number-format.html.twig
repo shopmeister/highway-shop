@@ -1,0 +1,46 @@
+{% apply spaceless %}
+{# ThemeWare: Format number #}
+{#
+    @Storefront/storefront/themeware/utilities/number-format.html.twig
+
+    number format (input): e.g. '90.5'
+
+    Info: Unused at the moment (see twt-product-specifications.html.twig)
+#}
+
+{# @TODO:
+    - Add blocks...
+    - Add decimals via include (otherwise count decimals)
+    - Add unit via include
+#}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# Get ISO code for the number format #}
+{% set isoCode = page.header.activeLanguage.translationCode.code|split('-') %}
+{% set language = isoCode[0] %}
+{% set country = isoCode[1] %}
+
+{# Countries that (according to Wikipedia) use a point (.) as a decimal separator (Punkt-Länder) #}
+{% set decimalPoint = ['AU', 'BW', 'CA', 'CH', 'CN', 'DO', 'GB', 'GH', 'GT', 'GY', 'HK', 'HN', 'IE', 'IL', 'IN', 'JP',
+    'KP', 'KR', 'MT', 'MX', 'MY', 'NG', 'NI', 'NP', 'NZ', 'PA', 'PH', 'SG', 'SV', 'TH', 'TW', 'US'] %}
+
+{# Countries that (according to Wikipedia) use a comma (,) as a decimal separator (Komma-Länder) #}
+{% set decimalComma = ['AL', 'AD', 'AM', 'AO', 'AR', 'AT', 'AZ', 'BA', 'BE', 'BG', 'BO', 'BR', 'BY', 'CL', 'CM', 'CO',
+    'CR', 'CU', 'CY', 'CZ', 'DE', 'DK', 'DZ', 'EC', 'EE', 'ES', 'FI', 'FO', 'FR', 'GE', 'GL', 'GR', 'HR', 'HT', 'HU',
+    'ID', 'IS', 'IT', 'KZ', 'LT', 'LU', 'LV', 'MA', 'MD', 'MK', 'MN', 'NA', 'NI', 'NL', 'NO', 'PE', 'PL', 'PT', 'PY',
+    'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM,TR', 'UA', 'UY', 'VE', 'VN', 'XK', 'ZA', 'ZW'] %}
+
+{# Get decimal places #}
+{% set decimals = number|split('.') %}
+{% set decimals = decimals[1]|length %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# Format number #}
+{% if country in decimalComma %}
+    {{ number|number_format(decimals, ',', '.') }}
+{% else %}
+    {{ number|number_format(decimals, '.', ',') }}
+{% endif %}
+{% endapply %}

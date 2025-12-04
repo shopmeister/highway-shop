@@ -1,0 +1,93 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Bootstrap style '.label' added (currently missing in Shopware)
+	==================================================
+
+    Info: This file is for adding label colors to the theme.
+*/
+
+// Example: default
+// <div class="label label-primary">
+//   Sofort lieferbar!
+// </div>
+
+// Example: lightened label
+// <div class="label label-secondary-lighten">
+//   Sofort lieferbar!
+// </div>
+
+// Example: large label
+// <div class="label label-success label-lg">
+//   Sofort lieferbar!
+// </div>
+
+// Eample: small label
+// <div class="label label-dark label-sm">
+//   Sofort lieferbar!
+// </div>
+
+// @TODO: Add 'twt-' prefix... (see _badge.scss)
+
+.label {
+  font-family: $label-font-family;
+  font-weight: $label-font-weight;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  //white-space: $btn-white-space; // @TODO: add label white-space to configuration
+  color: $body-color;
+  background-color: transparent;
+  //border: $label-border-width solid transparent; // @TODO: add label border-width to configuration
+  @include label-size($label-padding-y, $label-padding-x, $label-font-size, $label-line-height, $label-border-radius);
+}
+
+
+// ThemeWare: Label colors ------------------------------
+
+// Farb-Varianten der Labels generieren
+@each $color, $value in $theme-colors {
+  // Theme Farb-Varianten
+  .label-#{$color} {
+    @include twt-label-variant($value, $value, $value);
+  }
+
+  // Helle Farb-Varianten
+  $twt-background: shift-color($value, $twt-bg-scale);
+  $twt-border: shift-color($value, $twt-border-scale);
+  $twt-color: shift-color($value, $twt-color-scale);
+
+  .label-#{$color}-light {
+    @include twt-label-variant-lighten($twt-background, $twt-border, $twt-color);
+  }
+}
+
+// Weitere Farb-Varianten
+// @deprecated
+//@each $color, $value in $colors {
+//  ...
+//}
+
+
+// ThemeWare: Label sizes ------------------------------
+
+.label-lg {
+  @include label-size($label-padding-y-lg, $label-padding-x-lg, $label-font-size-lg, $label-line-height-lg, $label-border-radius-lg);
+}
+
+.label-sm {
+  @include label-size($label-padding-y-sm, $label-padding-x-sm, $label-font-size-sm, $label-line-height-sm, $label-border-radius-sm);
+}
+
+
+// ThemeWare: Block label ------------------------------
+
+.label-block {
+  display: block;
+  width: 100%;
+}

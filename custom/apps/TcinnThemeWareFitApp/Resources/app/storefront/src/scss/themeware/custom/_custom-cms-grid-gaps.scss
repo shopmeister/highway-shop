@@ -1,0 +1,178 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS grid gap classes
+	==================================================
+
+    Grids: 'cms-block-twt-grid-*'
+    Columns: 'cms-block-twt-grid-*-column'
+
+	Info: ThemeWare CSS-Klassen mit welchen die Gaps in Grid- und Spalten-Blöcken modifiziert werden können.
+    > twt-cms-col-gap-5 > Gap is 5px
+    > twt-cms-grid-gap-5 > Gap is 5px
+*/
+
+// ThemeWare: Adds CSS 'gap' classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify its gaps.
+
+@if $twt-custom-cms-column-padding-classes == 2 {
+
+    // ThemeWare: Custom column padding (0 Pixel left/right)
+    .twt-grid-gap-0, // shorthand #unofficial
+    .twt-cms-gap-0, // undocumented #unofficial
+    .twt-cms-col-gap-0,
+    .twt-cms-grid-gap-0 {
+        div.cms-row {
+            --bs-gutter-x: 0;
+            --bs-gutter-y: 0;
+        }
+    }
+
+    // ThemeWare: Custom column padding (5 Pixel left/right)
+    .twt-grid-gap-5, // shorthand #unofficial
+    .twt-cms-gap-5, // undocumented #unofficial
+    .twt-cms-col-gap-5,
+    .twt-cms-grid-gap-5 {
+        div.cms-row {
+            --bs-gutter-x: 5px;
+            --bs-gutter-y: 5px;
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom column padding (10 Pixel left/right)
+    .twt-grid-gap-10, // shorthand #unofficial
+    .twt-cms-gap-10, // undocumented #unofficial
+    .twt-cms-col-gap-10,
+    .twt-cms-grid-gap-10 {
+        div.cms-row {
+            --bs-gutter-x: 10px;
+            --bs-gutter-y: 10px;
+        }
+    }
+
+    // ThemeWare: Custom column padding (15 Pixel left/right)
+    .twt-grid-gap-15, // shorthand #unofficial
+    .twt-cms-gap-15, // undocumented #unofficial
+    .twt-cms-col-gap-15,
+    .twt-cms-grid-gap-15 {
+        div.cms-row {
+            --bs-gutter-x: 15px;
+            --bs-gutter-y: 15px;
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom column padding (20 Pixel left/right) !default
+    .twt-grid-gap-20, // shorthand #unofficial
+    .twt-cms-gap-20, // undocumented #unofficial
+    .twt-cms-col-gap-20,
+    .twt-cms-grid-gap-20 {
+        div.cms-row {
+            --bs-gutter-x: 20px;
+            --bs-gutter-y: 20px;
+        }
+    }
+
+    // ThemeWare: Custom column padding (25 Pixel left/right)
+    .twt-grid-gap-25, // shorthand #unofficial
+    .twt-cms-gap-25, // undocumented #unofficial
+    .twt-cms-col-gap-25,
+    .twt-cms-grid-gap-25 {
+        div.cms-row {
+            --bs-gutter-x: 25px;
+            --bs-gutter-y: 25px;
+        }
+    }
+
+    // ThemeWare: Custom column padding (30 Pixel left/right)
+    .twt-grid-gap-30, // shorthand #unofficial
+    .twt-cms-gap-30, // undocumented #unofficial
+    .twt-cms-col-gap-30,
+    .twt-cms-grid-gap-30 {
+        div.cms-row {
+            --bs-gutter-x: 30px;
+            --bs-gutter-y: 30px;
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom column padding (35 Pixel left/right)
+    .twt-grid-gap-35, // shorthand #unofficial
+    .twt-cms-gap-35, // undocumented #unofficial
+    .twt-cms-col-gap-35,
+    .twt-cms-grid-gap-35 {
+        div.cms-row {
+            --bs-gutter-x: 35px;
+            --bs-gutter-y: 35px;
+        }
+    }
+
+    // ThemeWare: Custom column padding (40 Pixel left/right)
+    .twt-grid-gap-40, // shorthand #unofficial
+    .twt-cms-gap-40, // undocumented #unofficial
+    .twt-cms-col-gap-40,
+    .twt-cms-grid-gap-40 {
+        div.cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom column padding (40 Pixel left/right)
+    .twt-grid-gap-45, // shorthand #unofficial
+    .twt-cms-gap-45, // undocumented #unofficial
+    .twt-cms-col-gap-45,
+    .twt-cms-grid-gap-45 {
+        div.cms-row {
+            --bs-gutter-x: 45px;
+            --bs-gutter-y: 45px;
+        }
+    }
+
+    // ThemeWare: Custom column padding (40 Pixel left/right)
+    .twt-grid-gap-50, // shorthand #unofficial
+    .twt-cms-gap-50, // undocumented #unofficial
+    .twt-cms-col-gap-50,
+    .twt-cms-grid-gap-50 {
+        div.cms-row {
+            --bs-gutter-x: 50px;
+            --bs-gutter-y: 50px;
+        }
+    }
+
+}

@@ -1,0 +1,4 @@
+/src/Resources/public/administration/*.hot-update.js
+phpstan.neon
+vendor
+/nbproject/private/

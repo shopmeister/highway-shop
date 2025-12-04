@@ -1,0 +1,32 @@
+{
+  "SwagAmazonPay": {
+    "errors": {
+      "generic": "Amazon Pay is momenteel niet beschikbaar. Neem contact op met de winkelier voor meer informatie.",
+      "insecure": "Amazon Pay is niet beschikbaar voor HTTP. Neem contact op met de winkelier voor meer informatie.",
+      "invalidShippingMethod": "Amazon Pay is niet beschikbaar. Controleer de verzendmethode en probeer het opnieuw.",
+      "finalize": "Er is een probleem opgetreden bij het verwerken van de betaling. Neem contact op met de winkelier of probeer het opnieuw.",
+      "loginWithAmazon": "Er is een fout opgetreden bij het inloggen met Amazon. Maak een nieuw klantaccount aan voor deze winkel of probeer het later opnieuw.",
+      "signupTokenInvalid": "Uw registratie met Amazon Pay kon niet worden gevalideerd.",
+      "signupEmailNotUnique": "Een klant met dit e-mailadres is al geregistreerd. Bent u uw wachtwoord vergeten?",
+      "accountAlreadyLinked": "Er is al een klantaccount gekoppeld aan uw Amazon-account."
+    },
+    "cookie": {
+      "value": {
+        "name": "Amazon Pay"
+      }
+    },
+    "confirm": {
+      "payment": {
+        "changeAmazonPaymentMethod": "Amazon betalingsmethode wijzigen",
+        "changePaymentMethod": "Amazon betalingsproces annuleren"
+      }
+    },
+    "register": {
+      "headline": "Bent u Amazon-klant?",
+      "text": "Sla het handmatig invoeren van uw klant- en adresgegevens over door in te loggen met uw Amazon-account."
+    },
+    "purePaymentRedirect": {
+      "text": "U wordt automatisch doorgestuurd naar Amazon Pay. Verlaat deze pagina niet."
+    }
+  }
+}

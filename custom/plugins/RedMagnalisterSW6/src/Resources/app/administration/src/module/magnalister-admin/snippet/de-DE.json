@@ -1,0 +1,20 @@
+{
+    "magnalister-admin": {
+        "general": {
+            "mainMenuItemGeneral": "magnalister",
+            "descriptionTextModule": "Connect your shop to Amazon, eBay and ..."
+        },
+        "salesChannelDomainSelectBox": {
+            "label": "Please Select a domain",
+            "placeholder": "Select a domain ...",
+            "help": "Please select a domain to show the magnalister"
+        }
+    },
+    "sw-privileges": {
+        "permissions": {
+            "magnalister_admin_page": {
+                "label": "magnalister"
+            }
+        }
+    }
+}

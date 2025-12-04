@@ -1,0 +1,263 @@
+{# ThemeWare: CMS element "Image teaser" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtImageTeaser = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtImgTsrDisplayMode = element.translated.config.displayMode.value %}
+{% set twtImgTsrMinHeight = element.translated.config.minHeight.value %}
+{% set twtImgTsrVerticalAlign = twtImageTeaser.verticalAlign.value %}
+    {#
+    {% if twtImgTsrVerticalAlign == null %}
+        {% set twtImgTsrVerticalAlign = 'flex-start' %}
+    {% endif %}
+    #}
+{% set twtImgTsrHorizontalAlign = twtImageTeaser.horizontalAlign.value %}
+    {#
+    {% if twtImgTsrHorizontalAlign == null %}
+        {% set twtImgTsrHorizontalAlign = 'flex-start' %}
+    {% endif %}
+    #}
+
+{% set twtImgTsrUrl = element.translated.config.url.value %}
+{% set twtImgTsrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtImgTsrBorderRadius = twtImageTeaser.borderRadius.value %}
+{% set twtImgTsrMaximumWidth = twtImageTeaser.maximumWidth.value %}
+{% set twtImgTsrBackgroundColor = twtImageTeaser.backgroundColor.value %}
+
+{% set twtImgTsrImageEffect = twtImageTeaser.imageEffect.value %}
+{% set twtImgTsrImageEffectBlur = twtImageTeaser.imageEffectBlur.value %}
+{% set twtImgTsrImageEffectBrightness = twtImageTeaser.imageEffectBrightness.value %}
+{% set twtImgTsrImageEffectContrast = twtImageTeaser.imageEffectContrast.value %}
+{% set twtImgTsrImageEffectGrayscale = twtImageTeaser.imageEffectGrayscale.value %}
+{% set twtImgTsrImageEffectOpacity = twtImageTeaser.imageEffectOpacity.value %}
+{% set twtImgTsrImageEffectSaturate = twtImageTeaser.imageEffectSaturate.value %}
+{% set twtImgTsrImageEffectScale = twtImageTeaser.imageEffectScale.value %}
+
+{% set twtImgTsrObjectPosition = twtImageTeaser.objectPosition.value %}
+
+{% set twtImgTsrImageHoverEffect = twtImageTeaser.imageHoverEffect.value %}
+
+{% set twtImgTsrColorOverlay = twtImageTeaser.colorOverlay.value %}
+{% set twtImgTsrColorOverlayBgGradient = twtImageTeaser.colorOverlayBgGradient.value %}
+{% set twtImgTsrColorOverlayBgColor = twtImageTeaser.colorOverlayBgColor.value %}
+{% set twtImgTsrColorOverlayBgColor2 = twtImageTeaser.colorOverlayBgColor2.value %}
+{% set twtImgTsrColorOverlayBgGradientAngle = twtImageTeaser.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtImgTsrLzyLdng = twtImageTeaser.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtImgTsrCssClass = twtImageTeaser.cssClass.value %}
+
+{# Set title attribute #}
+{# INFO: No text #}
+{# => 'Media title' OR empty #}
+{# @TODO: Add title to seo config ? #}
+{% set title = element.data.media.translated.title ?: '' %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-teaser']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{# Vertical alignment (helper class) #}
+{% if twtImgTsrVerticalAlign %}
+    {% set elementClasses = ['has-vertical-alignment']|merge(elementClasses) %}
+    {#    {% set elementClasses = ['d-flex has-vertical-alignment']|merge(elementClasses) %}#}
+{% endif %}
+
+{# Horizontal alignment #}
+{% if twtImgTsrHorizontalAlign == 'flex-start' %}
+    {% set elementClasses = ['justify-content-start']|merge(elementClasses) %}
+{% elseif twtImgTsrHorizontalAlign == 'center' %}
+    {% set elementClasses = ['justify-content-center']|merge(elementClasses) %}
+{% elseif twtImgTsrHorizontalAlign == 'flex-end' %}
+    {% set elementClasses = ['justify-content-end']|merge(elementClasses) %}
+{% endif %}
+
+{% if twtImgTsrDisplayMode == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{% if twtImgTsrImageEffect != 'none' %}
+    {% if twtImgTsrImageHoverEffect == 'in' %}
+        {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect~'-in']|merge(elementClasses) %}
+    {% elseif twtImgTsrImageHoverEffect == 'out' %}
+        {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect~'-out']|merge(elementClasses) %}
+    {% else %}
+        {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect]|merge(elementClasses) %}
+    {% endif %}
+{% endif %}
+
+{# @Deprecated: Hover effect only if element is linked #}
+{#
+{% if twtImgTsrUrl %}
+    {% if twtImgTsrImageEffect != 'none' %}
+        {% if twtImgTsrImageHoverEffect == 'in' %}
+            {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect~'-in']|merge(elementClasses) %}
+        {% elseif twtImgTsrImageHoverEffect == 'out' %}
+            {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect~'-out']|merge(elementClasses) %}
+        {% else %}
+            {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect]|merge(elementClasses) %}
+        {% endif %}
+    {% endif %}
+{% else %}
+    {% if twtImgTsrImageEffect != 'none' %}
+        {% set elementClasses = ['twt-image-'~twtImgTsrImageEffect]|merge(elementClasses) %}
+    {% endif %}
+{% endif %}
+#}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtImgTsrLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_image_teaser %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtImgTsrCssClass is not empty %} {{ twtImgTsrCssClass }}{% endif %}"
+         style="background-color: {{ twtImgTsrBackgroundColor }};{% if twtImgTsrBorderRadius != '0' %} border-radius: {{ twtImgTsrBorderRadius }};{% endif %}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_image_teaser_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtImgTsrBorderRadius }};
+        {% if twtImgTsrImageEffect != 'none' %}
+            {% if twtImgTsrImageEffect == 'blur' %}--twt-blur: {{ twtImgTsrImageEffectBlur }}px;{% endif %}
+            {% if twtImgTsrImageEffect == 'brightness' %}--twt-brightness: {{ twtImgTsrImageEffectBrightness }};{% endif %}
+            {% if twtImgTsrImageEffect == 'contrast' %}--twt-contrast: {{ twtImgTsrImageEffectContrast }};{% endif %}
+            {% if twtImgTsrImageEffect == 'grayscale' %}--twt-grayscale: {{ twtImgTsrImageEffectGrayscale }};{% endif %}
+            {% if twtImgTsrImageEffect == 'opacity' %}--twt-opacity: {{ twtImgTsrImageEffectOpacity }};{% endif %}
+            {% if twtImgTsrImageEffect == 'saturate' %}--twt-saturate: {{ twtImgTsrImageEffectSaturate }};{% endif %}
+            {% if twtImgTsrImageEffect == 'scale' %}--twt-scale: {{ twtImgTsrImageEffectScale }};{% endif %}
+        {% endif %}
+        {% block element_twt_image_teaser_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# ThemeWare: Set content #}
+        {# block element_twt_image_teaser_content @deprecated #}
+        {% block element_twt_image_teaser_alignment %}
+            {# @TODO: Enable a 'null' option #}
+            {# @TODO: {% if twtImgTsrVerticalAlign and twtImgTsrHorizontalAlign and not isCover %} #}
+            {% if twtImgTsrVerticalAlign and twtImgTsrHorizontalAlign %}
+            <div class="cms-element-alignment {% if twtImgTsrVerticalAlign == 'center' %}align-self-center{% elseif twtImgTsrVerticalAlign == 'flex-end' %}align-self-end{% else %}align-self-start{% endif %}"
+                 style="{% if twtImgTsrDisplayMode != 'standard' %}width: 100%;{% endif %}{% if twtImgTsrMaximumWidth != 'none' %}max-width: {{ twtImgTsrMaximumWidth }};{% endif %}">
+            {% endif %}
+
+            {# block element_twt_image_teaser_image_inner @deprecated #}
+            {% block element_twt_image_teaser_inner %}
+
+                {# ThemeWare: Set text element #}
+                {% set twtImgTsr %}
+                    {% block element_twt_image_teaser_content_container %}
+                        <div class="twt-image-teaser-container cms-content-container content-container">
+                            {# Colored overlay (if configured) #}
+                            {% if twtImgTsrColorOverlay %}
+                                <div class="twt-image-teaser-overlay color-overlay" style="background: {{ twtImgTsrColorOverlayBgColor }};{% if twtImgTsrColorOverlayBgGradient %} background: linear-gradient({{ twtImgTsrColorOverlayBgGradientAngle }}deg, {{ twtImgTsrColorOverlayBgColor }} 0%, {{ twtImgTsrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# no further content #}
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_image_teaser_image_container %}
+                        {% if element.data.media.url %}
+                             <div class="twt-image-teaser-image-container {# w-100 #} cms-image-container image-container is-{{ twtImgTsrDisplayMode }}" {% if twtImgTsrMinHeight and twtImgTsrDisplayMode == 'cover' %} style="min-height: {{ twtImgTsrMinHeight }};"{% endif %}>
+
+                                 {# Add 'object-position' class to align the image horizontally if configured #}
+                                 {% if twtImgTsrDisplayMode == 'cover' and twtImgTsrObjectPosition != 'center' %}
+                                     {% set imageClasses = 'cms-image object-position-'~twtImgTsrObjectPosition %}
+                                 {% else %}
+                                     {% set imageClasses = 'cms-image' %}
+                                 {% endif %}
+
+                                {% block element_twt_twt_image_teaser_image_media %}
+                                    {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                    {% set attributes = {
+                                        class: imageClasses,
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: ''),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtImgTsrDisplayMode == 'cover' or twtImgTsrDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtImgTsrDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load text element #}
+                                {{ twtImgTsr }}
+                             </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Image teaser" #}
+                {% block element_twt_image_teaser_content %}
+                    {% if twtImgTsrUrl %}
+                        <a href="{{ twtImgTsrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtImgTsrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtImgTsrVerticalAlign and twtImgTsrHorizontalAlign and not isCover %} #}
+            {% if twtImgTsrVerticalAlign and twtImgTsrHorizontalAlign %}
+            </div>
+            {% endif %}
+
+        {% endblock %}
+
+    </div>
+{% endblock %}

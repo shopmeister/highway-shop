@@ -1,0 +1,289 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    overrides.scss
+    ======================================
+    Contains all overrides of bootstrap and shopware default variables.
+
+    Please note: Bootstrap uses rem values (e.g. font-size)! Convert px-values if neccessary.
+
+    Info: Loaded via theme.json (2.)
+*/
+
+// SW overwrites ----------------------------------------------------------------
+
+$sw-background-color: #f1f1f1 !default;
+
+
+// Bootstrap overwrites ----------------------------------------------------------------
+
+// Color system
+
+//$white:    #fff !default;
+//$gray-100: #f8f9fa !default;
+//$gray-200: #e9ecef !default;
+//$gray-300: #dee2e6 !default;
+//$gray-400: #ced4da !default;
+//$gray-500: #adb5bd !default;
+//$gray-600: #6c757d !default;
+//$gray-700: #495057 !default;
+//$gray-800: #343a40 !default;
+//$gray-900: #212529 !default;
+//$black:    #000 !default;
+
+//$grays: (
+//        "100": $gray-100,
+//        "200": $gray-200,
+//        "300": $gray-300,
+//        "400": $gray-400,
+//        "500": $gray-500,
+//        "600": $gray-600,
+//        "700": $gray-700,
+//        "800": $gray-800,
+//        "900": $gray-900
+//) !default;
+
+//$blue:    #0d6efd !default;
+//$indigo:  #6610f2 !default;
+//$purple:  #6f42c1 !default;
+//$pink:    #d63384 !default;
+//$red:     #dc3545 !default;
+//$orange:  #fd7e14 !default;
+//$yellow:  #ffc107 !default;
+//$green:   #198754 !default;
+//$teal:    #20c997 !default;
+//$cyan:    #0dcaf0 !default;
+
+//$colors: (
+//        "blue":       $blue,
+//        "indigo":     $indigo,
+//        "purple":     $purple,
+//        "pink":       $pink,
+//        "red":        $red,
+//        "orange":     $orange,
+//        "yellow":     $yellow,
+//        "green":      $green,
+//        "teal":       $teal,
+//        "cyan":       $cyan,
+//        "white":      $white,
+//        "gray":       $gray-600,
+//        "gray-dark":  $gray-800
+//) !default;
+
+//$primary:       $blue !default;       // SW: $sw-color-brand-primary (#008490)
+//$secondary:     $gray-600 !default;   // SW: $sw-color-brand-secondary (#526e7f)
+//$success:       $green !default;      // SW: $sw-color-success (#3cc261)
+//$info:          $cyan !default;       // SW: $sw-color-info (#26b6cf)
+//$warning:       $yellow !default;     // SW: $sw-color-warning (#ffbd5d)
+//$danger:        $red !default;        // SW: $sw-color-danger (#e52427)
+//$light:         $gray-100 !default;
+//$dark:          $gray-800 !default;
+
+//$theme-colors: (
+//        "primary":    $primary,
+//        "secondary":  $secondary,
+//        "success":    $success,
+//        "info":       $info,
+//        "warning":    $warning,
+//        "danger":     $danger,
+//        "light":      $light,
+//        "dark":       $dark
+//) !default;
+
+
+// Links
+//
+// Style anchor elements.
+
+$link-color:                              $twt-link-color !default; // $primary
+//$link-decoration:                         underline !default;
+//$link-shade-percentage:                   20% !default;
+//$link-hover-color:                        shift-color($link-color, $link-shade-percentage) !default;
+//$link-hover-decoration:                   null !default;
+
+//$stretched-link-pseudo-element:           after !default;
+//$stretched-link-z-index:                  1 !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-radius:               null-pixel-unit($twt-border-radius) !default; // .25rem -> SW: 3px
+$border-radius-lg:            null-pixel-unit($twt-border-radius) !default; // .3rem -> SW: 3px
+$border-radius-sm:            null-pixel-unit($twt-border-radius) !default; // .2rem -> SW: 3px
+
+//$component-active-bg:         $primary !default;
+
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+//$font-family-base:            $font-family-sans-serif !default; // SW: $sw-font-family-base ('Inter', sans-serif)
+
+$font-size-base:              rem($twt-font-size-base) !default; // 1rem (16px) -> SW: 0.875rem => SW6.7: 1rem
+//$font-size-lg:              $font-size-base * 1.25 !default; // SW: 1rem => SW6.7: 1.125rem
+//$font-size-sm:              $font-size-base * 0.875 !default; // SW: 0.75rem => SW6.7: 0.875rem
+
+$font-size-xs:                $font-size-base * 0.75 !default;
+$font-size-md:                $font-size-base * 0.875 !default;
+//$font-size-xl:              $font-size-base * 1.5 !default;
+
+$font-weight-light:           $twt-font-weight-light !default; // 300
+$font-weight-normal:          $twt-font-weight-normal !default; // 400
+$font-weight-bold:            $twt-font-weight-bold !default; // 700
+
+$font-weight-base:            $twt-font-weight-normal !default; // $font-weight-normal
+
+$h1-font-size:                rem($twt-font-size-h1) !default;  // $font-size-base * 2.5 -> SW: 36px
+$h2-font-size:                rem($twt-font-size-h2) !default;  // $font-size-base * 2 -> SW: 28px
+$h3-font-size:                rem($twt-font-size-h3) !default;  // $font-size-base * 1.75 -> SW: 24px
+$h4-font-size:                rem($twt-font-size-h4) !default;  // $font-size-base * 1.5 -> SW: 20px
+$h5-font-size:                rem($twt-font-size-h5) !default;  // $font-size-base * 1.25 -> SW: 16px
+$h6-font-size:                rem($twt-font-size-h6) !default;  // $font-size-base -> SW: 14px
+
+// @TODO tag:6.7.0
+// $nav-link-font-size: if(feature('ACCESSIBILITY_TWEAKS'), $font-size-base, $font-size-lg) !default;
+
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+// scss-docs-start table-variables
+//$table-cell-padding-y:        .5rem !default;
+//$table-cell-padding-x:        .5rem !default;
+//$table-cell-padding-y-sm:     .25rem !default;
+//$table-cell-padding-x-sm:     .25rem !default;
+
+//$table-cell-vertical-align:   top !default;
+
+$table-color:                 $twt-table-body-color !default; // $body-color
+$table-bg:                    $twt-table-body-background-color !default; // transparent
+$table-accent-bg:             $twt-table-accent-background-color !default; // transparent
+
+//$table-th-font-weight:        null !default;
+
+//$table-striped-color:         $table-color !default;
+//$table-striped-bg-factor:     .05 !default;
+//$table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
+
+//$table-active-color:          $table-color !default;
+//$table-active-bg-factor:      .1 !default;
+$table-active-bg:             $twt-table-active-background-color !default; // rgba($black, $table-active-bg-factor) !default
+
+$table-hover-color:           $twt-table-hover-color !default; // $table-color
+//$table-hover-bg-factor:       .075 !default;
+$table-hover-bg:              $twt-table-hover-background-color !default; // rgba($black, $table-hover-bg-factor)
+
+//$table-border-factor:         .1 !default;
+//$table-border-width:          $border-width !default;
+$table-border-color:          $twt-table-body-border-color !default; // $border-color
+
+//$table-striped-order:         odd !default;
+
+//$table-group-separator-color: currentColor !default;
+//
+//$table-caption-color:         $text-muted !default;
+//
+//$table-bg-scale:              -80% !default;
+// scss-docs-end table-variables
+
+// scss-docs-start table-loop
+//$table-variants: (
+//        "primary":    shift-color($primary, $table-bg-scale),
+//        "secondary":  shift-color($secondary, $table-bg-scale),
+//        "success":    shift-color($success, $table-bg-scale),
+//        "info":       shift-color($info, $table-bg-scale),
+//        "warning":    shift-color($warning, $table-bg-scale),
+//        "danger":     shift-color($danger, $table-bg-scale),
+//        "light":      $light,
+//        "dark":       $dark,
+//) !default;
+// scss-docs-end table-loop
+
+// @TODO: Check in BS v5... (see bootstrap.scss)
+//$table-head-bg:               $twt-table-head-background-color !default;  // $gray-200 <<<<<<< @deprecated
+//$table-head-color:            $twt-table-head-color !default;             // $gray-700 <<<<<<< @deprecated
+
+// @TODO: Check in BS v5... (see bootstrap.scss)
+//$table-dark-color:            $twt-table-head-color !default;                     // $white <<<<<<< @deprecated
+//$table-dark-bg:               $twt-table-dark-background-color !default;          // $gray-800 <<<<<<< @deprecated
+//$table-dark-accent-bg:        $twt-table-dark-accent-background-color !default;   // rgba($white, .05) <<<<<<< @deprecated
+//$table-dark-hover-color:      $twt-table-dark-hover-color !default;               // $table-dark-color <<<<<<< @deprecated
+//$table-dark-hover-bg:         $twt-table-dark-hover-background-color !default;    // rgba($white, .075) <<<<<<< @deprecated
+//$table-dark-border-color:     $twt-table-dark-border-color !default;              // lighten($table-dark-bg, 7.5%) <<<<<<< @deprecated
+
+
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
+
+$input-btn-focus-width:         .25rem !default; // added to change $input-btn-focus-color
+$input-btn-focus-color-opacity: .25 !default; // added to change $input-btn-focus-color
+$input-btn-focus-color:         rgba($twt-forms-input-btn-focus-color, $input-btn-focus-color-opacity) !default; // rgba($component-active-bg, $input-btn-focus-color-opacity)
+$input-btn-focus-blur:          0 !default; // added to change $input-btn-focus-color
+$input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color !default; // added to change $input-btn-focus-color
+
+
+// Forms (.form-control)
+// https://getbootstrap.com/docs/5.3/forms/form-control/
+
+$input-font-size:                       rem($twt-forms-input-font-size) !default; // $input-btn-font-size (16px)
+
+$input-bg:                              $twt-forms-input-background-color !default; // $white (#fff)
+
+$input-color:                           $twt-forms-input-color !default; // $gray-700 -> SW: $sw-text-color (#4a545b)
+$input-border-color:                    $twt-forms-input-border-color !default; // $gray-400 -> SW: $sw-border-color (#bcc1c7)
+
+$input-focus-bg:                        $twt-forms-input-focus-background-color !default; // $input-bg
+$input-focus-border-color:              $twt-forms-input-focus-border-color !default; // lighten($component-active-bg, 25%) -> SW: $sw-color-brand-primary (#008490)
+$input-focus-color:                     $twt-forms-input-focus-color !default; // $input-color
+$input-focus-box-shadow:                $input-btn-focus-box-shadow !default; // added to change $input-btn-focus-color
+
+$input-placeholder-color:               $twt-forms-input-placeholder-color !default; // $gray-600 -> SW: #c3c3c3
+
+
+// Forms > Checks & radios (.form-check-input)
+// https://getbootstrap.com/docs/5.3/forms/checks-radios/
+
+$form-check-input-bg:                       $twt-forms-check-input-background-color !default; // $input-bg;
+//$form-check-input-border:                 ... !default;
+$form-check-input-focus-box-shadow:       $input-btn-focus-box-shadow !default; // added to change $input-btn-focus-color
+
+$form-check-input-checked-bg-color:         $twt-forms-check-input-checked-background-color !default; // $component-active-bg;
+//$form-check-input-checked-border-color:  ... !default;
+
+
+// Form validation
+
+$form-feedback-valid-color:         $twt-forms-feedback-valid-color !default; // theme-color("success")
+$form-feedback-invalid-color:       $twt-forms-feedback-invalid-color !default; // theme-color("danger")
+
+$form-feedback-icon-valid-color:    $twt-forms-feedback-icon-valid-color !default; // $form-feedback-valid-color
+$form-feedback-icon-invalid-color:  $twt-forms-feedback-icon-invalid-color !default; // $form-feedback-invalid-color
+
+
+// Pagination
+
+$pagination-color:                  $twt-pagination-color !default; // $link-color
+$pagination-bg:                     $twt-pagination-background-color !default; // $white
+$pagination-border-color:           $twt-pagination-border-color !default; // $gray-300 -> SW: $sw-border-color (#bcc1c7)
+
+$pagination-hover-color:            $twt-pagination-hover-color !default; // $link-hover-color
+$pagination-hover-bg:               $twt-pagination-hover-background-color !default; // $gray-200
+$pagination-hover-border-color:     $twt-pagination-hover-border-color !default; // $gray-300 -> SW: $sw-border-color (#bcc1c7)
+
+$pagination-active-color:           $twt-pagination-active-color !default; // $component-active-color
+$pagination-active-bg:              $twt-pagination-active-background-color !default; // $component-active-bg
+$pagination-active-border-color:    $twt-pagination-active-border-color !default; // $pagination-active-bg
+
+$pagination-disabled-color:         $twt-pagination-disabled-color !default; // $gray-600
+$pagination-disabled-bg:            $twt-pagination-disabled-background-color !default; // $white
+$pagination-disabled-border-color:  $twt-pagination-disabled-border-color !default; // $gray-300

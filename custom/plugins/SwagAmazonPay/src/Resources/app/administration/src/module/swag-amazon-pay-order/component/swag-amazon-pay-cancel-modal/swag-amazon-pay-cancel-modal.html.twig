@@ -1,0 +1,61 @@
+{% block swag_amazon_pay_order_cancel_modal %}
+    <sw-modal :title="$tc('swag-amazon-pay-order.cancel-modal.title')"
+              @modal-close="closeModal">
+
+        {% block swag_amazon_pay_order_cancel_modal_content %}
+            <template #default>
+
+                {% block swag_amazon_pay_order_cancel_modal_content_info_text %}
+                    <div class="swag-amazon-pay-cancel-modal__info-text">
+                        <span>
+                            {{ $tc('swag-amazon-pay-order.cancel-modal.infoText') }}
+                        </span>
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_cancel_modal_content_max_amount %}
+                    <div class="swag-amazon-pay-cancel-modal__info-maximum-amount">
+                         <span>
+                            {{ $tc('swag-amazon-pay-order.cancel-modal.infoTextReason') }}
+                         </span>
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_cancel_modal_content_fields %}
+                    <div class="swag-amazon-pay-cancel-modal__field-container">
+
+                    {% block swag_amazon_pay_order_cancel_modal_content_fields_reason %}
+                        <sw-text-field v-model:value="reason"
+                                  :required="true"
+                                  :placeholder="$tc('swag-amazon-pay-order.cancel-modal.reasonPlaceholder')"
+                                  :label="$tc('swag-amazon-pay-order.cancel-modal.reasonFieldLabel')">
+                        </sw-text-field>
+                    {% endblock %}
+
+                    </div>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_cancel_modal_actions %}
+            <template #modal-footer>
+
+                {% block swag_amazon_pay_order_cancel_modal_cancel %}
+                    <sw-button size="small" @click="closeModal">
+                        {{ $tc('global.default.cancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_cancel_modal_confirm %}
+                    <sw-button variant="primary"
+                               size="small"
+                               :isLoading="isLoading"
+                               :disabled="!reason"
+                               @click="onConfirm">
+                        {{ $tc('swag-amazon-pay-order.refund-modal.buttonConfirm') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+    </sw-modal>
+{% endblock %}

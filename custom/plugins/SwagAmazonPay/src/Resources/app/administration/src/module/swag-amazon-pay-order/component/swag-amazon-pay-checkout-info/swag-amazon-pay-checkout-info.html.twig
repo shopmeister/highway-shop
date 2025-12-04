@@ -1,0 +1,71 @@
+{% block swag_amazon_pay_order_component_checkout_info %}
+    <sw-container class="swag-amazon-pay-checkout-info__container" columns="1fr 1fr" rows="2">
+
+        {% block swag_amazon_pay_order_component_checkout_info_checkout_id_container %}
+            <div class="swag-amazon-pay-checkout-info__checkout-id-container">
+
+                {% block swag_amazon_pay_order_component_checkout_info_checkout_id_container_headline %}
+                    <div class="swag-amazon-pay-checkout-info_header">
+                        {{ $tc('swag-amazon-pay-order.checkout-info.referenceIdHeadline') }}
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_checkout_info_checkout_id_container_value %}
+                    <div class="swag-amazon-pay-checkout-info_label">
+                        {{ transaction.customFields.swag_amazon_pay_charge_permission_id }}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_component_checkout_info_status_container %}
+            <div class="swag-amazon-pay-checkout-info__status-container">
+
+                {% block swag_amazon_pay_order_component_checkout_info_status_container_headline %}
+                    <div class="swag-amazon-pay-checkout-info_header">
+                        {{ $tc('swag-amazon-pay-order.checkout-info.statusHeadline') }}
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_checkout_info_status_container_value %}
+                    <div v-if="paymentStatusText" class="swag-amazon-pay-checkout-info_label">
+                        {{ paymentStatusText }}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+        {#
+        {% block swag_amazon_pay_order_component_checkout_info_billing_container %}
+            <div class="swag-amazon-pay-checkout-info__billing-address-container">
+
+                {% block swag_amazon_pay_order_component_checkout_info_billing_container_headline %}
+                    <div class="swag-amazon-pay-checkout-info_header">
+                        {{ $tc('swag-amazon-pay-order.checkout-info.billingAddressHeadline') }}
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_checkout_info_billing_container_value %}
+                    <sw-address :address="billingAddress">
+                    </sw-address>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_component_checkout_info_shipping_container %}
+            <div class="swag-amazon-pay-checkout-info__shipping-address-container">
+
+                {% block swag_amazon_pay_order_component_checkout_info_shipping_container_headline %}
+                    <div class="swag-amazon-pay-checkout-info_header">
+                        {{ $tc('swag-amazon-pay-order.checkout-info.shippingAddressHeadline') }}
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_checkout_info_shipping_container_value %}
+                    <sw-address :address="shippingAddress">
+                    </sw-address>
+                {% endblock %}
+            </div>
+        {% endblock %}
+        #}
+    </sw-container>
+{% endblock %}

@@ -1,0 +1,43 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Box shadows
+	==================================================
+
+*/
+
+// @deprecated - will be removed in next major release
+
+// Level 1
+.twt-shadow-sm,
+.twt-shadow-1 {
+    @include twt-box-shadow(1);
+}
+
+// Level 2 - normal
+.twt-shadow,
+.twt-shadow-2 {
+    @include twt-box-shadow(2);
+}
+
+// Level 3
+.twt-shadow-lg,
+.twt-shadow-3 {
+    @include twt-box-shadow(3);
+}
+
+// Level 4
+.twt-shadow-xl,
+.twt-shadow-4 {
+    @include twt-box-shadow(4);
+}
+
+// Level 5
+.twt-shadow-5 {
+    @include twt-box-shadow(5);
+}

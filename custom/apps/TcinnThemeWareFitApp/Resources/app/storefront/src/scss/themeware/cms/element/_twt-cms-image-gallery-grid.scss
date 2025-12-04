@@ -1,0 +1,252 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Image gallery"
+	==================================================
+
+*/
+
+//@if $twt-cms-image-teaser-css == 2 { // #performance
+    .cms-element-twt-image-gallery-grid {
+
+        @media (min-width: 992px) {
+            .twt-image-gallery-grid-container {
+                align-content: stretch;
+                align-items: stretch;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                margin: 0 -5px; // Fix margin left/rigt of items inside the container
+
+                // Layout 1 ----------------------------------------------------
+
+                &.grid-1 {
+                    .twt-image-gallery-grid-item {
+                        width: 100%;
+                        margin: 0 5px 10px 5px;
+                    }
+                }
+
+                // Layout 2 ----------------------------------------------------
+
+                &.grid-2 {
+                    .twt-image-gallery-grid-item {
+                        width: calc(50% - 10px);
+                        margin: 0 5px 10px 5px;
+
+                        &:first-of-type {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                // Layout 3 ----------------------------------------------------
+
+                &.grid-3 {
+                    .twt-image-gallery-grid-item {
+                        width: calc(50% - 10px);
+                        margin: 0 5px 10px 5px;
+                    }
+                }
+
+                // Layout 4 (unused) ----------------------------------------------------
+
+                /*
+                &.grid-4 {
+                    .twt-image-gallery-grid-item {
+                        margin: 0 5px 10px 5px;
+                        width: calc(33.33% - 10px);
+
+                        &:first-of-type {
+                            width: 100%;
+                        }
+                    }
+                }
+                */
+
+                // Layout 5 (unused) ----------------------------------------------------
+
+                /*
+                &.grid-5 {
+                    .twt-image-gallery-grid-item {
+                        margin: 0 5px 10px 5px;
+                        width: calc(33.33% - 10px);
+
+                        &:first-of-type {
+                            width: calc(50% - 10px);
+                        }
+
+                        &:nth-child(2) {
+                            width: calc(50% - 10px);
+                        }
+                    }
+                }
+                */
+
+                // Layout 6 (unused) ----------------------------------------------------
+
+                /*
+                &.grid-6 {
+                    .twt-image-gallery-grid-item {
+                        margin: 0 5px 10px 5px;
+                        width: calc(33.33% - 10px);
+                    }
+                }
+                */
+
+                // Layout 7 (unused) ----------------------------------------------------
+
+                /*
+                &.grid-7 {
+                    .twt-image-gallery-grid-item {
+                        margin: 0 5px 10px 5px;
+                        width: calc(25% - 10px);
+                    }
+                }
+                */
+
+                // Layout 8 (unused) ----------------------------------------------------
+
+                /*
+                &.grid-8 {
+                    .twt-image-gallery-grid-item {
+                        margin: 0 5px 10px 5px;
+                        width: calc(25% - 10px);
+
+                        &:first-of-type {
+                            width: calc(50% - 10px);
+                        }
+                    }
+                }
+                */
+            }
+
+            .twt-image-gallery-grid-item {
+                display: flex;
+                //background-color: #eef2f5; // @TODO: Add configuration (relevant in display mode 'contain')
+
+                video,
+                img {
+                    width: 100%;
+                }
+
+                &.min-height {
+                    position: relative;
+                    display: block;
+                    max-width: 100%;
+                    height: 100%;
+                    cursor: default;
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+
+                    video,
+                    img {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        margin: 0 auto;
+                        object-fit: cover;
+                    }
+                }
+
+                &.is-standard {
+                    // @TODO...
+
+                    video,
+                    img {
+                    }
+                }
+
+                &.is-cover {
+                    //height: 100%;
+
+                    video,
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                &.is-contain {
+                    //height: 100%;
+
+                    video,
+                    img {
+                        margin: auto;
+                        object-fit: contain;
+                    }
+                }
+
+                .alert {
+                    align-self: center;
+                    height: fit-content;
+                }
+            }
+
+            .gallery-slider-single-image img {
+                width: 100%;
+
+                // @TODO: Cover, contain ?!
+            }
+
+            .gallery-slider-thumbnails-container {
+                position: sticky;
+                transition: top .3s;
+
+                @if $twt-header-type == 10 {
+                    top: 160px; // #customHeader
+                } @else {
+                    top: 30px;
+                }
+            }
+        }
+    }
+
+
+    // Hide dots, arrows (controls), thumbnails (gallery) and
+
+    .twt-image-gallery-grid {
+        /* @TODO: Change curser if fullscreen is configured (also consider the default slider) */
+        /*
+        &[data-twt-image-gallery-grid-fullscreen="true"] .twt-image-gallery-grid-item {
+            cursor: -webkit-zoom-in;
+            cursor: -moz-zoom-in;
+            cursor: zoom-in;
+        }
+        */
+
+        /* Info "Dots": Im modal benötigt, muss aber nicht sichtbar sein */
+        &[data-twt-image-gallery-grid-dots="false"] .base-slider-dots {
+            display: none;
+        }
+    }
+
+    @media (min-width: 992px) {
+        /* Info "Arrows": Mobil und im Modal sichtbar */
+        .twt-image-gallery-grid[data-twt-image-gallery-grid-controls="false"] .gallery-slider .gallery-slider-controls {
+            display: none;
+        }
+
+        /* Info: Thumbnails ... @TODO */
+        .twt-image-gallery-grid[data-twt-image-gallery-grid-thumbnails="false"] .gallery-slider-thumbnails-col {
+            display: none;
+        }
+    }
+
+//}
+
+// Header is sticky > Adjust sticky thumbnails
+.is-ctl-product.is-sticky-nav-main:not(.modal-open) {
+    .cms-element-twt-image-gallery-grid {
+        .gallery-slider-thumbnails-container {
+            top: strip-unit($twt-sticky-nav-main-height) + 30px;
+        }
+    }
+}

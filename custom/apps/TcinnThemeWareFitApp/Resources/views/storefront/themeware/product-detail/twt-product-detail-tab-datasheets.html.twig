@@ -1,0 +1,57 @@
+{% sw_extends '@Storefront/storefront/utilities/offcanvas.html.twig' %}
+
+{# ThemeWare® 'Datasheets' on prodcut pages #}
+{#
+    Create container and add datasheets
+
+    @Storefront/storefront/themeware/product-detail/twt-product-detail-tab-datasheets.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailTabDatasheetsHeadlineShow = theme_config('twt-product-detail-tab-datasheets-headline-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on offcanvas tab-content #}
+{% block utilities_offcanvas_content %}
+
+    {# ThemeWare: Show 'Datasheets tab' container #}
+    {% block twt_product_detail_tab_datasheets %}
+        {% block twt_product_detail_tab_datasheets_container %}
+            <div class="twt-product-detail-datasheets-content tab-pane-container">
+                {# <div class="row"> #}
+
+                    {# ThemeWare: 'Datasheets tab' content container #}
+                    {% block twt_product_detail_tab_datasheets_content %}
+                        {# <div class="col twt-product-detail-custom-content-container"> #}
+                        <div class="twt-product-detail-datasheets-content-container">
+
+                            {# ThemeWare: 'Datasheets tab' headline #}
+                            {% block twt_product_detail_tab_datasheets_title %}
+                                {% if twtProductDetailTabDatasheetsHeadlineShow == 2 %}
+                                    <div class="h3 twt-product-detail-datasheets-tab-title product-detail-tab-headline">
+                                        {{ 'twt.detail.tabDatasheets.headline'|trans|sw_sanitize }}
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+
+                            {# ThemeWare: Include 'Datasheets tab' content #}
+                            {% block twt_product_detail_tab_datasheets_include %}
+                                {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-datasheets.html.twig' ignore missing with {
+                                    position: 'tab'
+                                } %}
+                            {% endblock %}
+
+                        </div>
+                    {% endblock %}
+
+                {# </div> #}
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+{% endblock %}

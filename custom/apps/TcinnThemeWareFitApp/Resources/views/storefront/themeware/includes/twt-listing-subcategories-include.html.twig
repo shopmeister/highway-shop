@@ -1,0 +1,257 @@
+{# ThemeWare® 'Listing subcategories' content (Extension + CMS element) #}
+{#
+    Loop and display navigation tree childs
+
+    Note: This is included via
+        - CMS element: "@Storefront/storefront/block/cms-block-twt-listing-subcategories.html.twig"
+            type: 'cms'
+        - Extension: "@Storefront/storefront/section/cms-section-default.html.twig"
+            type: 'extension'
+
+    Note: The variable 'element' is parsed by the CMS element if applicable.
+
+    @Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Prüfen ob ein CMS-Element genutzt wird und ob dies die individuelle oder Theme-Konfiguration nutzt #}
+{# if type == 'cms' ? check customConfig : customConfig = false #}
+{% set customConfig = false %}
+
+{% if element.translated.config is not empty and element.translated.config.customConfig.value == true %}
+    {% set customConfig = true %}
+{% endif %}
+
+{# ThemeWare: Individuelle oder Theme-Konfiguration laden #}
+{% if customConfig == true %}
+    {# INFO: Individuelle Konfiguration laden... #}
+    {% set twtListingSubcategories = element.translated.config %}
+
+    {% set twtSubcategorieLayoutType = twtListingSubcategories.layoutType.value %}
+    {% set twtSubcategorieDisplayMode = twtListingSubcategories.displayMode.value %}
+    {% set twtSubcategorieImageWidth = twtListingSubcategories.width.value %}
+    {% set twtSubcategorieImageHeight = twtListingSubcategories.height.value %}
+    {% set twtSubcategorieImageMinHeight = twtListingSubcategories.minHeight.value %}
+    {% set twtSubcategorieImageSize = twtListingSubcategories.imageSize.value %}
+    {# set twtSubcategorieImageMaxHeight = twtListingSubcategories.maxHeight.value #}
+
+    {# Set amount of columns #}
+    {% set twtSubcategorieColumnXs = twtListingSubcategories.columnsXs.value %}
+    {% set twtSubcategorieColumnSm = twtListingSubcategories.columnsSm.value %}
+    {% set twtSubcategorieColumnMd = twtListingSubcategories.columnsMd.value %}
+    {% set twtSubcategorieColumnLg = twtListingSubcategories.columnsLg.value|replace({"24": "2-4"}) %}
+    {% set twtSubcategorieColumnXl = twtListingSubcategories.columnsXl.value|replace({"24": "2-4"}) %}
+    {% set twtSubcategorieColumnXxl = twtListingSubcategories.columnsXxl.value|replace({"24": "2-4"}) %}
+
+    {# Tab "SEO" #}
+    {% set twtLstngSbctgrsLzyLdng = twtListingSubcategories.lazyLoading.value %}
+
+{% else %}
+    {# INFO: Theme-Konfiguration laden... #}
+    {% set twtSubcategorieLayoutType = theme_config('twt-listing-subcategories-layout') %}
+    {% set twtSubcategorieDisplayMode = theme_config('twt-listing-subcategories-display-mode') %}
+    {% set twtSubcategorieImageWidth = theme_config('twt-listing-subcategories-image-width') %}
+    {% set twtSubcategorieImageHeight = theme_config('twt-listing-subcategories-image-height') %}
+    {# set twtSubcategorieImageMaxHeight = theme_config('twt-listing-subcategories-image-max-height') #}
+    {% set twtSubcategorieImageMinHeight = theme_config('twt-listing-subcategories-image-min-height') %}
+
+    {# Set amount of columns #}
+    {% set twtSubcategorieColumnXs = theme_config('twt-listing-subcategories-column-count-xs') %}
+    {% set twtSubcategorieColumnSm = theme_config('twt-listing-subcategories-column-count-sm') %}
+    {% set twtSubcategorieColumnMd = theme_config('twt-listing-subcategories-column-count-md') %}
+    {% set twtSubcategorieColumnLg = theme_config('twt-listing-subcategories-column-count-lg') %}
+    {% set twtSubcategorieColumnXl = theme_config('twt-listing-subcategories-column-count-xl') %}
+    {% set twtSubcategorieColumnXxl = theme_config('twt-listing-subcategories-column-count-xxl') %}
+
+    {# Tab "SEO" #}
+    {% set twtLstngSbctgrsLzyLdng = theme_config('twt-listing-subcategories-lazy-loading') %}
+
+{% endif %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtLstngSbctgrsLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{# ThemeWare: Include listing subcategories #}
+{% block twt_listing_subcategories_content %}
+    {#% set navigationMaxDepth = 3 %#}
+    {% set navigationMaxDepth = context.salesChannel.navigationCategoryDepth %}
+
+    {% if not level %}
+        {% set level = 0 %}
+    {% endif %}
+    {#% set activeId = page.header.navigation.active.id %#}
+
+    {# Set column classes #}
+    {% set twtSubcategorieColumns = 'col-'~ twtSubcategorieColumnXs ~' col-sm-'~ twtSubcategorieColumnSm ~' col-md-'~ twtSubcategorieColumnMd ~' col-lg-'~ twtSubcategorieColumnLg ~' col-xl-'~ twtSubcategorieColumnXl ~' col-xxl-'~ twtSubcategorieColumnXxl %}
+
+    {% if twtListingSubcategories.layoutType.value == 'buttons' %}
+        {% set twtSubcategorieColumns = 'col-auto button' %}
+    {% endif %}
+
+    {% for treeItem in navigationTree %}
+
+        {% block twt_listing_subcategories %}
+            {# if (item.category.id in activeResult.id) or (item.category.id in activeResult.path) #}
+            {% if treeItem.category.id in activeResult.id %}
+
+                {% for child in treeItem.children %}
+                    {#% set id = treeItem.category.id %#}
+                    {% set name = child.category.translated.name %}
+                    {#% set link = category_url(treeItem.category) %#}
+
+                    {% block twt_listing_subcategories_item %}
+                        <li class="{{ twtSubcategorieColumns }}{% if not child.category.media.url %} no-image{% endif %}">
+
+                            {% block twt_listing_subcategories_item_link %}
+                                {% if child.category.type == 'folder' %}
+                                    {# Structuring element #}
+
+                                    {% if twtSubcategorieLayoutType != 'button' %}
+                                        {# Caption #}
+                                        {#
+                                        <div class="twt-subcategory-navigation-link">
+                                            <div class="twt-subcategory-navigation-caption">
+                                                    <span class="twt-subcategory-navigation-label">
+                                                        {{ name }}
+                                                    </span>
+
+                                                {% sw_icon 'arrow-medium-right' style {
+                                                    pack: 'solid', size: 'xs'
+                                                } %}
+                                            </div>
+                                        </div>
+                                        #}
+
+                                    {% else %}
+                                        {# Button #}
+                                        {#
+                                        <span class="twt-subcategory-navigation-link btn btn-{% if element.translated.config.buttonOutline.value %}outline-{% endif %}{{ element.translated.config.buttonStyle.value }} disabled" style="width: 100%;" disabled>
+                                            {{ child.category.translated.name }}
+                                        </span>
+                                        #}
+                                    {% endif %}
+
+                                {% else %}
+                                    {# Page / List #}
+
+                                    {% if twtSubcategorieLayoutType != 'button' and twtSubcategorieLayoutType != 'buttons' %}
+                                        <a href="{{ category_url(child.category) }}"
+                                           class="twt-subcategory-navigation-link"
+                                           title="{{ name }}"
+                                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                                           {% if category_linknewtab(child.category) %}target="_blank"{% endif %}
+                                        >
+                                            {# Image wrapper #}
+                                            {% if child.category.media.url and twtSubcategorieLayoutType != 'textOnly' %}
+                                                <div class="twt-subcategory-navigation-image-wrapper">
+                                                    <div class="twt-subcategory-navigation-image-container is-{{ twtSubcategorieDisplayMode }}" style="{% apply spaceless %}
+                                                            {% if twtSubcategorieLayoutType != 'sideBySide' %}
+                                                                {% if twtSubcategorieDisplayMode == 'cover' %}
+                                                                    width: {{ twtSubcategorieImageWidth }}; min-height: {{ twtSubcategorieImageMinHeight }};
+                                                                {% else %}
+                                                                    width: {{ twtSubcategorieImageWidth }}; height: {{ twtSubcategorieImageHeight }};
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            {% if twtSubcategorieLayoutType == 'sideBySide' %}
+                                                                {% if twtSubcategorieDisplayMode == 'cover' %}
+                                                                    width: {{ twtSubcategorieImageSize }}; min-height: {{ twtSubcategorieImageSize }};
+                                                                {% else %}
+                                                                    width: {{ twtSubcategorieImageSize }}; height: {{ twtSubcategorieImageSize }};
+                                                                {% endif %}
+                                                            {% endif %}
+                                                            margin-left: auto; margin-right: auto;"{% endapply %}>
+                                                        {% set attributes = {
+                                                            class: 'twt-subcategory-navigation-image',
+                                                            alt: (child.category.translated.name ?: ''),
+                                                            title: (child.category.translated.name ?: ''),
+                                                            loading: lazyloading
+                                                        } %}
+
+                                                        {# Media and Thumbnails #}
+                                                        {% if twtSubcategorieLayoutType == 'sideBySide' %}
+                                                            {# INFO: With layout type 'Text next to the image' we use the configured 'imageSize' for all thumbnails #}
+                                                            {% sw_thumbnails 'twt-subcategory-navigation-image-thumbnails' with {
+                                                                media: child.category.media,
+                                                                sizes: {
+                                                                    'default': twtSubcategorieImageSize
+                                                                },
+                                                                attributes: attributes
+                                                            } %}
+
+                                                        {% else %}
+                                                            {# INFO: All other layout types needs thumbnails based on the amount of columns used for a viewport #}
+                                                            {# Note: 'sw_thumbnail' can't handle our custom viewports so we need to add our custom thumbnail generation (based on the 'thumbnail.html.twig')... #}
+
+                                                            {% sw_include '@Storefront/storefront/themeware/twt-thumbnail.html.twig' ignore missing with {
+                                                                media: child.category.media,
+                                                                attributes: attributes,
+                                                                columnsXs: twtSubcategorieColumnXs,
+                                                                columnsSm: twtSubcategorieColumnSm,
+                                                                columnsMd: twtSubcategorieColumnMd,
+                                                                columnsLg: twtSubcategorieColumnLg,
+                                                                columnsXl: twtSubcategorieColumnXl
+                                                            } %}
+                                                        {% endif %}
+
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+
+                                            {# Caption #}
+                                            <div class="twt-subcategory-navigation-caption">
+                                                <span class="twt-subcategory-navigation-label">
+                                                    {{ name }}
+                                                </span>
+
+                                                {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                                {% sw_icon 'arrow-medium-right' style { pack: 'solid', size: 'xs', ariaHidden: true } %}
+                                            </div>
+                                        </a>
+
+                                    {% else %}
+
+                                        {# Button #}
+                                        <a href="{{ category_url(child.category) }}"
+                                           class="btn btn-{% if element.translated.config.buttonOutline.value %}outline-{% endif %}{{ element.translated.config.buttonStyle.value }}"
+                                           style="width: 100%;"
+                                           title="{{ name }}"
+                                           {% if category_linknewtab(child.category) %}target="_blank"{% endif %}
+                                        >
+                                            {{ name }}
+                                        </a>
+                                    {% endif %}
+
+                                {% endif %}
+                            {% endblock %}
+
+                        </li>
+                    {% endblock %}
+
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+
+        {# Loop twig include for subcategories #}
+        {% block twt_listing_subcategories_recoursion %}
+            {% if treeItem.children %}
+                {% sw_include '@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig' ignore missing with {
+                    navigationTree: treeItem.children,
+                    activeResult: activeResult,
+                    page: page,
+                    element: element,
+                    level: level + 1,
+                    type: 'cms'
+                } only %}
+            {% endif %}
+        {% endblock %}
+
+    {% endfor %}
+{% endblock %}

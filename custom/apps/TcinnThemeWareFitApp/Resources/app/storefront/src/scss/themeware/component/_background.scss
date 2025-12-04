@@ -1,0 +1,32 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Light background colors
+	==================================================
+
+    Info: This file is for adding additional background colors to the theme.
+*/
+
+// ThemeWare: Bg colors ------------------------------
+
+// Farb-Varianten der Hintergrundfarben generieren
+@each $color, $value in $theme-colors {
+    // Theme Farb-Varianten
+    .bg-#{$color} {
+        @include twt-bg-variant($value, $value, $value);
+    }
+
+    // Helle Farb-Varianten
+    $twt-background: shift-color($value, $twt-bg-scale);
+    $twt-border: shift-color($value, $twt-border-scale);
+    $twt-color: shift-color($value, $twt-color-scale);
+
+    .bg-#{$color}-light {
+        @include twt-bg-variant-lighten($twt-background, $twt-border, $twt-color);
+    }
+}

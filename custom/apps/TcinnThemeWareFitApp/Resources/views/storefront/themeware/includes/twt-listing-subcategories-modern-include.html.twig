@@ -1,0 +1,170 @@
+{# ThemeWare® 'Listing subcategories' content (Extension + CMS element) #}
+{#
+    Loop and display navigation tree childs
+
+    Note: This is included via
+        - CMS element: "@Storefront/storefront/block/cms-block-twt-listing-subcategories-modern.html.twig"
+            type: 'modern'
+
+    Note: The variable 'element' is parsed by the CMS element if applicable.
+
+    @Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{% set twtListingSubcategoriesModern = element.translated.config %}
+
+{% set twtLstngSbctgrsMdrnFontFamily = twtListingSubcategoriesModern.fontFamily.value %}
+{% set twtLstngSbctgrsMdrnFontWeight = twtListingSubcategoriesModern.fontWeight.value %} {# @TODO #}
+{% set twtLstngSbctgrsMdrnTextTransform = twtListingSubcategoriesModern.textTransform.value %} {# @TODO #}
+{% set twtLstngSbctgrsMdrnTextColor = twtListingSubcategoriesModern.textColor.value %}
+{% set twtLstngSbctgrsMdrnBgColor = twtListingSubcategoriesModern.bgColor.value %}
+
+{# shadow #}
+{# rounded #}
+
+{% set twtLstngSbctgrsMdrnVerticalAlignment = twtListingSubcategoriesModern.verticalAlignment.value %}
+{% set twtLstngSbctgrsMdrnHorizontalAlignment = twtListingSubcategoriesModern.horizontalAlignment.value %}
+
+{% set twtLstngSbctgrsMdrnDisplayMode = twtListingSubcategoriesModern.displayMode.value %}
+{% set twtLstngSbctgrsMdrnImageWidth = '100%' %}
+{% set twtLstngSbctgrsMdrnImageMinHeight = twtListingSubcategoriesModern.minHeight.value %}
+{# verticalAlign #}
+
+{# Set amount of columns #}
+{% set twtLstngSbctgrsMdrnColumnXs = twtListingSubcategoriesModern.columnsXs.value %}
+{% set twtLstngSbctgrsMdrnColumnSm = twtListingSubcategoriesModern.columnsSm.value %}
+{% set twtLstngSbctgrsMdrnColumnMd = twtListingSubcategoriesModern.columnsMd.value %}
+{% set twtLstngSbctgrsMdrnColumnLg = twtListingSubcategoriesModern.columnsLg.value|replace({"24": "2-4"}) %}
+{% set twtLstngSbctgrsMdrnColumnXl = twtListingSubcategoriesModern.columnsXl.value|replace({"24": "2-4"}) %}
+{% set twtLstngSbctgrsMdrnColumnXxl = twtListingSubcategoriesModern.columnsXxl.value|replace({"24": "2-4"}) %}
+
+{# Tab "SEO" #}
+{% set twtLstngSbctgrsMdrnLzyLdng = twtListingSubcategoriesModern.lazyLoading.value %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtLstngSbctgrsMdrnLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{# ThemeWare: Include listing subcategories #}
+{% block twt_listing_subcategories_modern_content %}
+    {#% set navigationMaxDepth = 3 %#}
+    {% set navigationMaxDepth = context.salesChannel.navigationCategoryDepth %}
+
+    {% if not level %}
+        {% set level = 0 %}
+    {% endif %}
+    {#% set activeId = page.header.navigation.active.id %#}
+
+    {# Set column classes #}
+    {% set twtLstngSbctgrsMdrnColumns = 'col-'~ twtLstngSbctgrsMdrnColumnXs ~' col-sm-'~ twtLstngSbctgrsMdrnColumnSm ~' col-md-'~ twtLstngSbctgrsMdrnColumnMd ~' col-lg-'~ twtLstngSbctgrsMdrnColumnLg ~' col-xl-'~ twtLstngSbctgrsMdrnColumnXl ~' col-xxl-'~ twtLstngSbctgrsMdrnColumnXxl %}
+
+    {% for treeItem in navigationTree %}
+
+        {% block twt_listing_subcategories_modern %}
+            {# if (item.category.id in activeResult.id) or (item.category.id in activeResult.path) #}
+            {% if treeItem.category.id in activeResult.id %}
+
+                {% for child in treeItem.children %}
+                    {#% set id = treeItem.category.id %#}
+                    {% set name = child.category.translated.name %}
+                    {#% set link = category_url(treeItem.category) %#}
+
+                    {% block twt_listing_subcategories_modern_item %}
+                        <li class="{{ twtLstngSbctgrsMdrnColumns }}{% if not child.category.media.url %} no-image{% endif %}">
+
+                            {% block twt_listing_subcategories_modern_item_link %}
+                                {% if child.category.type == 'folder' %}
+                                    {# Structuring element #}
+
+                                {% else %}
+                                    {# Page / List #}
+
+                                    <a href="{{ category_url(child.category) }}"
+                                       class="twt-subcategory-navigation-link"
+                                       title="{{ name }}"
+                                       {% if category_linknewtab(child.category) %}target="_blank"{% endif %}
+                                    >
+                                        {# Image wrapper #}
+                                        {% if child.category.media.url %}
+                                            <div class="twt-subcategory-navigation-image-wrapper">
+                                                <div class="twt-subcategory-navigation-image-container is-{{ twtLstngSbctgrsMdrnDisplayMode }}" style="{% apply spaceless %}
+                                                        {% if twtLstngSbctgrsMdrnDisplayMode == 'cover' %}
+                                                            width: {{ twtLstngSbctgrsMdrnImageWidth }}; min-height: {{ twtLstngSbctgrsMdrnImageMinHeight }};
+                                                        {% else %}
+                                                            width: {{ twtLstngSbctgrsMdrnImageWidth }}; height: {{ twtLstngSbctgrsMdrnImageHeight }};
+                                                        {% endif %}
+                                                        margin-left: auto; margin-right: auto;"{% endapply %}>
+                                                    {% set attributes = {
+                                                        class: 'twt-subcategory-navigation-image',
+                                                        alt: (child.category.translated.name ?: ''),
+                                                        title: (child.category.translated.name ?: ''),
+                                                        loading: lazyloading
+                                                    } %}
+
+                                                    {# Media and Thumbnails #}
+                                                    {# INFO: All other layout types needs thumbnails based on the amount of columns used for a viewport #}
+                                                    {# Note: 'sw_thumbnail' can't handle our custom viewports so we need to add our custom thumbnail generation (based on the 'thumbnail.html.twig')... #}
+
+                                                    {% sw_include '@Storefront/storefront/themeware/twt-thumbnail.html.twig' ignore missing with {
+                                                        media: child.category.media,
+                                                        attributes: attributes,
+                                                        columnsXs: twtLstngSbctgrsMdrnColumnXs,
+                                                        columnsSm: twtLstngSbctgrsMdrnColumnSm,
+                                                        columnsMd: twtLstngSbctgrsMdrnColumnMd,
+                                                        columnsLg: twtLstngSbctgrsMdrnColumnLg,
+                                                        columnsXl: twtLstngSbctgrsMdrnColumnXl
+                                                    } %}
+
+                                                </div>
+                                            </div>
+                                        {% endif %}
+
+                                        {# Caption #}
+                                        <div class="twt-subcategory-navigation-container cms-content-container content-container justify-content-{{ twtLstngSbctgrsMdrnHorizontalAlignment }} align-items-{{ twtLstngSbctgrsMdrnVerticalAlignment }}">
+                                            <div class="twt-subcategory-navigation-content{% if twtLstngSbctgrsMdrnFontFamily != 'base' %} twt-font-family-{{ twtLstngSbctgrsMdrnFontFamily }}{% endif %}">
+                                                <div class="twt-subcategory-navigation-text text">
+                                                    <span class="twt-subcategory-navigation-label">
+                                                        {{ name }}
+                                                    </span>
+
+                                                    {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                                    {% sw_icon 'arrow-medium-right' style { pack: 'solid', size: 'xs', ariaHidden: true } %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                {% endif %}
+                            {% endblock %}
+
+                        </li>
+                    {% endblock %}
+
+                {% endfor %}
+            {% endif %}
+        {% endblock %}
+
+        {# Loop twig include for subcategories #}
+        {% block twt_listing_subcategories_modern_recoursion %}
+            {% if treeItem.children %}
+                {% sw_include '@Storefront/storefront/themeware/includes/twt-listing-subcategories-modern-include.html.twig' ignore missing with {
+                    navigationTree: treeItem.children,
+                    activeResult: activeResult,
+                    page: page,
+                    element: element,
+                    level: level + 1,
+                    type: 'modern'
+                } only %}
+            {% endif %}
+        {% endblock %}
+
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,76 @@
+/*
+ * Styling of your block preview in the CMS sidebar
+ */
+.sw-cms-preview-twt-grid-one-column {
+    position: relative;
+    display: grid;
+    padding: 15px;
+    grid-template-columns: 1fr;
+    grid-column-gap: 15px;
+}
+
+.sw-cms-preview-twt-grid-one-column hr {
+    max-width: inherit;
+    height: .4em;
+    margin: 0 0 5px 0;
+    border: none;
+    border-radius: 25px;
+    background: #d1d9e0;
+}
+
+.sw-cms-preview-twt-grid-one-column hr.image {
+    padding-bottom: 40%;
+}
+
+.sw-cms-preview-twt-grid-one-column hr:not(.image):last-child {
+    margin-right: 60%;
+}
+
+.sw-cms-preview-twt-grid-one-column .sw-cms-preview-twt-badge-component {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    width: 16px;
+    height: auto;
+    box-shadow: 0 3px 8px 0 rgb(90 141 238 / 40%);
+}
+
+/*
+ * Styling of your block in the CMS editor
+ * Pattern: sw-cms-block-${block.name}-component
+ */
+.sw-cms-block-twt-grid-one-column-component {
+    position: relative;
+    display: grid;
+    padding: 15px;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+}
+
+.sw-cms-block-twt-grid-one-column-component hr {
+    max-width: inherit;
+    height: .4em;
+    margin: 0 0 5px 0;
+    border: none;
+    border-radius: 25px;
+    background: #d1d9e0;
+}
+
+.sw-cms-block-twt-grid-one-column-component hr.image {
+    padding-bottom: 40%;
+}
+
+.sw-cms-block-twt-grid-one-column-component hr:not(.image):last-child {
+    margin-right: 60%;
+}
+
+.sw-cms-block-twt-grid-one-column-component .sw-cms-preview-twt-badge-component {
+    position: absolute;
+    top: 1px;
+    right: 2px;
+    display: none;
+    width: 16px;
+    height: auto;
+    box-shadow: 0 3px 8px 0 rgb(90 141 238 / 40%);
+    display: none;
+}

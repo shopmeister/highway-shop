@@ -1,0 +1,94 @@
+{% block swag_amazon_pay_import_config_modal %}
+<sw-modal :title="$tc('swag-amazon-pay-configuration.importModal.title')"
+          @modal-close="onCancel">
+
+    {% block swag_amazon_pay_import_config_modal_content %}
+        <sw-container gap="0px 10px">
+
+            {% block swag_amazon_pay_import_config_modal_content_warning %}
+                <sw-alert variant="info"
+                          :title="$tc('swag-amazon-pay-configuration.importModal.warning.title')"
+                          :showIcon="true"
+                          :closable="false">
+                   {{ $tc('swag-amazon-pay-configuration.importModal.warning.content') }}
+                </sw-alert>
+            {% endblock %}
+
+            {% block swag_amazon_pay_import_config_modal_content_version_missmatch_notification %}
+                <sw-modal v-if="versions"
+                          :title="$tc('swag-amazon-pay-configuration.importModal.warning.title')"
+                          @modal-close="onCancelNotification">
+
+                    <sw-alert variant="warning"
+                              :showIcon="true"
+                              :closable="false">
+                        <p>{{ $tc('swag-amazon-pay-configuration.importModal.versionMismatch.info') }}</p>
+                    </sw-alert>
+
+                    <p v-html="$tc('swag-amazon-pay-configuration.importModal.versionMismatch.current', 0, {
+                            shopwareVersion: versions.current.shopware,
+                            pluginVersion: versions.current.plugin
+                        })">
+                    </p>
+                    <p v-html="$tc('swag-amazon-pay-configuration.importModal.versionMismatch.export', 0, {
+                            shopwareVersion: versions.state.shopware,
+                            pluginVersion: versions.state.plugin
+                        })">
+                    </p>
+
+                    {% block swag_amazon_pay_import_config_modal_content_version_missmatch_notification_footer %}
+                        <template #modal-footer>
+                            <sw-button :disabled="false"
+                                       variant="ghost"
+                                       :square="false"
+                                       :block="false"
+                                       :isLoading="false"
+                                       @click="onCancelNotification">
+                                {{ $tc('global.default.cancel') }}
+                            </sw-button>
+
+                            <sw-button :disabled="false"
+                                       variant="danger"
+                                       :square="false"
+                                       :block="false"
+                                       :isLoading="false"
+                                       @click="onSubmit(true)">
+                                {{ $tc('swag-amazon-pay-configuration.importModal.versionMismatch.proceed') }}
+                            </sw-button>
+                        </template>
+                    {% endblock %}
+                </sw-modal>
+            {% endblock %}
+
+            {% block swag_amazon_pay_import_config_modal_content_file_upload %}
+                <sw-file-input
+                    v-model:value="selectedFile"
+                    :label="$tc('swag-amazon-pay-configuration.importModal.infoText')"
+                    :allowedMimeTypes="['application/json']">
+                </sw-file-input>
+            {% endblock %}
+        </sw-container>
+    {% endblock %}
+
+    {% block swag_amazon_pay_import_config_modal_actions %}
+        <template #modal-footer>
+
+            {% block swag_amazon_pay_import_config_modal_actions_cancel %}
+                <sw-button size="small" @click="onCancel">
+                    {{ $tc('global.default.cancel') }}
+                </sw-button>
+            {% endblock %}
+
+            {% block swag_amazon_pay_import_config_modal_actions_import %}
+                <sw-button variant="primary"
+                           size="small"
+                           :disabled="!selectedFile"
+                           :isLoading="isLoading"
+                           @click="onSubmit(false)">
+                    {{ $tc('global.default.apply') }}
+                </sw-button>
+            {% endblock %}
+        </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}

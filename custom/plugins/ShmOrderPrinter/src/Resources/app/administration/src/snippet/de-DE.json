@@ -1,0 +1,62 @@
+{
+    "cnk-order-csv-export": {
+        "global": {
+            "export": "Exportieren",
+            "exportCsv": "Exportieren CSV",
+            "createConfig": "Als neue Konfiguration speichern",
+            "saveConfig": "Konfiguration speichern",
+            "total": "Gesamt",
+            "filterWarning": "Filter werden beim Export berücksichtigt",
+            "modal":{
+                "title": "Export - Bestellungen",
+                "subtitle": "Wähle die Dokumente zum Downloaden",
+                "type": "Typ",
+                "extension": "Datei-Typ",
+                "exportType": "Export-Typ",
+                "swOrderProfile": "Shopware Bestell-Profil",
+                "myConfig": "Eigene Konfiguration",
+                "mode": "Modus",
+                "modeOrder": "Bestellungen",
+                "modeLineItems": "Bestellpositionen",
+                "selectProfile": "Profil auswählen",
+                "addLineItems": "Bestellpositionen hinzufügen",
+                "addFields": "Feld-Auswahl",
+                "orders": "Allgemein",
+                "order": "Bestellung",
+                "lineItems": "Bestellposition",
+                "customers": "Kunde",
+                "customer": "Kunde",
+                "invoices": "Rechnungsadresse",
+                "deliveries": "Lieferadresse",
+                "products": "Produkt",
+                "product": "Produkt",
+                "customFields": "Zusatzfelder",
+                "onlyProducts": "Nur Produkte",
+                "onlyProductsHelpText": "Nur Produkte exportieren, (ohne Gutschein, Versandkosten usw.  ...)"
+            },
+            "warningModal": {
+                "modalTitle": "Exportieren",
+                "title": "Warnung",
+                "content": "Du hast den Modus \"<b>Bestellungen</b>\" mit einigen Bestellpositionsfeldern / Produktfeldern ausgewählt, die leider nicht exportiert werden.<br><br> Damit diese Felder exportiert werden können, muss du den Modus \"<b>Bestellpositionen</b>\" auswählen.<br><br>Es ist daher möglich, dass die csv-Datei leer ist.<br><br> Möchtest du trotzdem weiter machen?",
+                "submit": "Ja, weiter",
+                "close": "Abbrechen"
+            },
+            "newConfig": {
+              "title": "Neues Profil erstellen",
+              "name": "Profil-Name",
+              "submit": "Speichern",
+              "close": "Abbrechen"
+            },
+            "labelTitlePageOne": "Wähle einen Feldtyp, den Du hinzufügen möchtest.",
+            "labelTitleCustomFieldSet": "Wähle einen custom field set, den Du hinzufügen möchtest.",
+            "createStateDescription": "Füge Werte hinzu, die exportiert werden.",
+            "emptyStateDescription": "Es wurde noch keine Felder hinzugefügt."
+        },
+        "notification": {
+            "addFields": "Füge bitte die Felde hinzu.",
+            "no_order": "Bitte wähle mindesten eine Bestellung",
+            "no_order_found": "No order found",
+            "success": "Die Bestellungen wurden erfolgreich exportiert"
+        }
+    }
+}

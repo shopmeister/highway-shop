@@ -1,0 +1,54 @@
+{# ThemeWare 'Social proofing' content (text) #}
+{#
+    @Storefront/storefront/themeware/includes/twt-social-proofing-text.html.twig
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{% if sales|length < 4 %}
+    {% set salesRounded = sales|round(-1, 'floor') %}
+{% elseif sales|length == 4 %}
+    {% set salesRounded = sales|round(-2, 'floor') %}
+{% elseif sales|length > 4 %}
+    {% set salesRounded = sales|round(-3, 'floor') %}
+{% endif %}
+
+{# Get ISO code for the number format #}
+{% set isoCode = page.header.activeLanguage.translationCode.code|split('-') %}
+{% set language = isoCode[0] %}
+{% set country = isoCode[1] %}
+
+{# Countries that (according to Wikipedia) use a comma (,) as a decimal separator (Komma-Länder) #}
+{% set decimalComma = ['AL', 'AD', 'AM', 'AO', 'AR', 'AT', 'AZ', 'BA', 'BE', 'BG', 'BO', 'BR', 'BY', 'CL', 'CM', 'CO',
+    'CR', 'CU', 'CY', 'CZ', 'DE', 'DK', 'DZ', 'EC', 'EE', 'ES', 'FI', 'FO', 'FR', 'GE', 'GL', 'GR', 'HR', 'HT', 'HU',
+    'ID', 'IS', 'IT', 'KZ', 'LT', 'LU', 'LV', 'MA', 'MD', 'MK', 'MN', 'NA', 'NI', 'NL', 'NO', 'PE', 'PL', 'PT', 'PY',
+    'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM,TR', 'UA', 'UY', 'VE', 'VN', 'XK', 'ZA', 'ZW'] %}
+
+{# Format number #}
+{% if country in decimalComma %}
+    {% set salesRounded = salesRounded|number_format(0, ',', '.') %}
+{% else %}
+    {% set salesRounded = salesRounded|number_format(0, '.', ',') %}
+{% endif %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_social_proofing_sales %}
+    {% if type == 'infotext' %}
+        {# Infotext #}
+        {{ 'twt.extension.socialProofing.infotext'|trans({'%sales%': salesRounded})|sw_sanitize }}
+
+    {% elseif type == 'badge' %}
+        {# Badge #}
+        {{ salesRounded }}+ verkauft
+
+    {% elseif type == 'label' %}
+        {# Label #}
+        {{ salesRounded }}+ verkauft
+
+    {% else %}
+        {# Produkt-Spezifikation #}
+        {{ salesRounded }}+
+
+    {% endif %}
+{% endblock %}

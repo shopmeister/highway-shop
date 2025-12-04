@@ -1,0 +1,56 @@
+{% block sm_zalando_connector_order_list_main %}
+    <sw-page>
+        {% block sm_zalando_connector_order_list_main_header %}
+            <template #smart-bar-header>
+                <h2>Zalando Order</h2>
+            </template>
+        {% endblock %}
+        {% block sm_zalando_connector_order_list_search_bar %}
+            {#            <template #search-bar> #}
+            {#                <sw-search-bar #}
+            {#                        initial-search-type="order" #}
+            {#                        :initial-search="term" #}
+            {#                        @search="onSearch" #}
+            {#                /> #}
+            {#            </template> #}
+        {% endblock %}
+
+        {% block sm_zalando_connector_order_list_main_content %}
+
+            {% block sm_zalando_connector_order_list_main_tabs_content %}
+                <template #content>
+                <sw-data-grid
+                        {#                        v-if="!listData" #}
+                        :data-source="listData"
+                        :columns="getColumns"
+                        {#                        :full-page="false" #}
+                        :show-settings="false"
+                        :show-selection="false"
+                        :show-actions="false"
+                        :is-loading="isLoading"
+                        :allow-column-edit="false"
+                        :allow-inline-edit="false"
+                        {#                        identifier="sw-order-document-grid" #}
+                >
+                    {% block sm_zalando_connector_order_list_grid_column_zalando_id %}
+                        <template #column-zalando.id="{ item }">
+                            {% block sm_zalando_connector_order_list_grid_column_date_label %}
+                                {#  <router-link :to="{ name: 'sm.zalando.connector.order.detail', params: { zalandoId: item.zalando.id } }"> #}
+                                {{ item.zalando.id }}
+                                {#  </router-link> #}
+                            {% endblock %}
+                        </template>
+                    {% endblock %}
+                    {% block sm_zalando_connector_order_list_grid_column_zalando_createdAt %}
+                        <template #column-zalando.createdAt="{ item }">
+                            {{ formatDate(item.zalando.createdAt) }}
+                        </template>
+                    {% endblock %}
+
+                </sw-data-grid>
+            {% endblock %}
+            </template>
+        {% endblock %}
+
+    </sw-page>
+{% endblock %}

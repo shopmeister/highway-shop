@@ -1,0 +1,38 @@
+{# ThemeWare® "Payment logos" on prodcut pages (Container) #}
+{#
+    Create container and include the payment logos
+    type: buy-box - position: top/bottom
+
+    @Storefront/storefront/themeware/product-detail/twt-product-detail-payment-logos.html.twig
+#}
+
+{# ThemeWare: Add payment logos to buy-box #}
+{% block twt_product_detail_payment_logos %}
+    {# @deprecated: Classes is-{{ position }} and {{ position }} will be removed with a future update. #}
+    <div class="twt-product-detail-payment-logos twt-payment-logos position-{{ position }} is-{{ position }} {{ position }} my-4"
+         id="twt-detail-payment-logos"
+    >
+        {% block twt_product_detail_payment_logos_inner %}
+            {% block twt_product_detail_payment_logos_headline %}
+                <div class="twt-product-detail-payment-logos-headline">
+                    {{ 'twt.detail.paymentLogos.headline'|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+
+            {% block twt_product_detail_payment_logos_content %}
+                <div class="twt-product-detail-payment-logos-content">
+                    {# @deprecated tag:v4.0.0 - we will include the widget and not the content of the widget (see below) #}
+                    <div class="twt-widget-payment is-detail d-flex">
+                        {% sw_include '@Storefront/storefront/themeware/includes/twt-payment-logos-include.html.twig' ignore missing %}
+                    </div>
+                    {# @TODO: Include widget... #}
+                    {#
+                    {% sw_include '@Storefront/storefront/themeware/widgets/twt-payment-include.html.twig' ignore missing with {
+                        type: 'detail'
+                    } %}
+                    #}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  shop:
+    image: dockware/dev:6.6.9.0   # oder passende Version zum Kunden
+    container_name: highway-shop
+    ports:
+      - "8088:88"        # Shop Frontend/Admin
+      - "9999:9999"      # xdebug, falls nötig
+    environment:
+      - XDEBUG_ENABLED=1
+      - PHP_VERSION=8.2
+    volumes:
+      # Code-Bind-Mount (wichtig!)
+      - .:/var/www/html
+
+      # Optional: wenn du Medien nicht im Repo hast, aber lokal spiegeln willst:
+      # - ./_local_media:/var/www/html/public/media
+
+    # Falls du die eingebaute MySQL nutzen willst:
+    # environment:
+    #   - MYSQL_USER=shopware
+    #   - MYSQL_PASSWORD=shopware
+    #   - MYSQL_DATABASE=shopware
+    #   - MYSQL_ROOT_PASSWORD=root
+  db:
+    image: mariadb:10.11
+    container_name: kunde-shop-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: shopware
+      MYSQL_USER: shopware
+      MYSQL_PASSWORD: shopware
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

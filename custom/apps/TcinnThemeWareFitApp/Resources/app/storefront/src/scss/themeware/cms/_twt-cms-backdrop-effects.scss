@@ -1,0 +1,27 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS backdrop effects
+	==================================================
+
+*/
+
+// see _root.scss
+// --twt-bg-blur: 10px;
+
+/* @TODO:
+ * [ ] Add configuration for effects...
+ * [ ] Add performance optimizations
+ */
+
+// ThemeWare: CMS image effect "Blur" ------------------------------
+.twt-bg-blur,
+.twt-bg-blurred {
+    //-webkit-backdrop-filter: #{"blur(var(--twt-bg-blur))"}; // (px)
+    backdrop-filter: #{"blur(var(--twt-bg-blur))"}; // (px)
+}

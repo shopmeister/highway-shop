@@ -1,0 +1,75 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Text shadows
+	==================================================
+
+	Info: ThemeWare CSS-Klassen mit welchen Überschriften in Standard-CMS-Elementen modifiziert werden können.
+*/
+
+// UNDER CONSTRUCTION
+
+/* @TODO:
+     - Finalize text shadows...
+     - Add classes to cms elements
+     - Add variables
+        - make variables configuriable
+     - Add classes to docs
+ */
+
+// ThemeWare: Adds CSS 'text-shadow' classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify the cms block.
+
+.twt-text-shadow-sm, // shorthand #unofficial
+.twt-cms-text-shadow-sm {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 60%);
+}
+
+.twt-text-shadow, // shorthand #unofficial
+.twt-cms-text-shadow {
+    text-shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 2px 4px rgb(0 0 0 / 80%);
+}
+
+.twt-text-shadow-lg, // shorthand #unofficial
+.twt-cms-text-shadow-lg {
+    text-shadow: 0 1px 4px rgb(0 0 0 / 80%), 0 2px 6px rgb(0 0 0 / 80%);
+}
+
+// @TODO: Finalize text shadows >>>
+
+// Dark shadows
+.twt-text-shadow-dark-sm, // shorthand #unofficial
+.twt-cms-text-shadow-dark-sm {
+    text-shadow: .125rem .125rem .125rem rgba(0,0,0,.875), 0 1px 2px rgba(0,0,0,.875);
+}
+
+.twt-text-shadow-dark, // shorthand #unofficial
+.twt-cms-text-shadow-dark {
+    text-shadow: .125rem .125rem .25rem rgba(0,0,0,.875), 0 1px 3px rgba(0,0,0,.875);
+}
+
+.twt-text-shadow-dark-lg, // shorthand #unofficial
+.twt-cms-text-shadow-dark-lg {
+    text-shadow: .125rem .125rem .375rem rgba(0,0,0,.875), 0 1px 4px rgba(0,0,0,.875);
+}
+
+// Light shadows
+.twt-text-shadow-light-sm, // shorthand #unofficial
+.twt-cms-text-shadow-light-sm {
+    text-shadow: .125rem .125rem .125rem rgba(0,0,0,.225), 0 1px 2px rgba(0,0,0,.225);
+}
+
+.twt-text-shadow-light, // shorthand #unofficial
+.twt-cms-text-shadow-light {
+    text-shadow: .125rem .125rem .25rem rgba(0,0,0,.225), 0 1px 3px rgba(0,0,0,.225);
+}
+
+.twt-text-shadow-light-lg, // shorthand #unofficial
+.twt-cms-text-shadow-light-lg {
+    text-shadow: .125rem .125rem .375rem rgba(0,0,0,.225), 0 1px 4px rgba(0,0,0,.225);
+}

@@ -1,0 +1,23 @@
+{# ThemeWare: CMS block "Listing subcategories" #}
+
+{#
+    Create cms block and include cms element (@Storefront/storefront/element/cms-element-twt-listing-subcategories.html.twig)
+    Note: This is included via by Shopware
+
+    @Storefront/storefront/block/cms-block-twt-listing-subcategories.html.twig
+#}
+
+{% block block_twt_listing_subcategories %}
+    {% set element = block.slots.getSlot('content') %}
+
+    {% block block_twt_listing_subcategories_column %}
+        {# ThemeWare: Only apply to cms pages with type 'product-list' @TODO #}
+        {% if page.cmsPage.type == 'product_list' %}
+            <div class="col-md-12" data-cms-element-id="{{ element.id }}">
+                {% block block_twt_listing_subcategories_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

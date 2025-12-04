@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentGenerator\SwagCommercialQuoteDocumentGeneratorDecorator"
+                 decorates="Shopware\Commercial\B2B\QuoteManagement\Domain\Document\QuoteDocumentGenerator"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentGenerator\SwagCommercialQuoteDocumentGeneratorDecorator.inner" />
+            <argument type="service" id="Shopware\Commercial\B2B\QuoteManagement\Domain\Document\QuoteDocumentRenderer" />
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService" />
+            <argument type="service" id="quote_document.repository" />
+            <argument type="service" id="Doctrine\DBAL\Connection" />
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper" />
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer" />
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\PdfRenderer" on-invalid="null" />
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentFileRendererRegistry" on-invalid="null" />
+            <argument type="service" id="Shopware\Commercial\B2B\QuoteManagement\Domain\Document\Service\QuoteDocumentFileRendererRegistry" on-invalid="null" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="quote.repository" on-invalid="null" />
+        </service>
+
+        <!-- SwagCommercial: Quote template resolver -->
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\SwagCommercial\QuoteResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\SwagCommercial\QuoteResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="quote.repository" on-invalid="null" />
+        </service>
+
+    </services>
+</container>

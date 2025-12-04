@@ -1,0 +1,28 @@
+{% block sm_zalando_connector_extension_settings_priceReportSync %}
+    <div>
+        <div>
+{#            priceReportSync {{ form }}#}
+            <sm-zalando-connector-components-settings-sales-channel
+                    v-model=form.salesChannelId
+                    :selected=form.salesChannelId
+            ></sm-zalando-connector-components-settings-sales-channel>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data"
+                    type="checkbox"
+                    v-model:value="form.data.active"
+                    checked="form.data.active ? 'checked' : false"
+                    :label="$tc('active')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-button
+                    @click="saveData"
+                    variant="primary"
+                    size="small">
+                {{ $tc('save') }}
+            </sw-button>
+        </div>
+    </div>
+{% endblock %}

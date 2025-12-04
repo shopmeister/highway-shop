@@ -1,0 +1,136 @@
+{# ThemeWare 'Newsletter' content #}
+{#
+    Create 'Newsletter' container and add content
+    
+    @Storefront/storefront/themeware/includes/twt-newsletter-include.html.twig
+
+    Info: Unused at the moment (see twt-countdown-banner)
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtIconNewsletterSubmit = theme_config('twt-icon-newsletter-submit') %}
+{% set twtIconset = theme_config('twt-iconset') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_newsletter %}
+    <div class="twt-newsletter">
+        {% block twt_newsletter_content %}
+            <div class="cms-block cms-block-form"> {# mandatory #}
+
+                <div class="cms-element-form">
+                    {% block twt_newsletter_form %}
+                        {# @TODO tag:v6.6.8 #}
+{#                        {% set formPrefix = 'cms-form-newsletter' %}#}
+                        <form action="{{ path(action) }}"
+                              method="post"
+                              data-form-validation="true"
+{#                              id="{{ formPrefix }}"#}
+                        >
+
+                            <div class="form-content">
+                                <div class="row g2 d-none">
+                                    {% block cms_form_newsletter_select_action %}
+                                        <select name="option"
+                                                id="newsletterAction"
+                                                required="required"
+                                                class="form-select"
+                                                {#
+                                                data-form-field-toggle="true"
+                                                data-form-field-toggle-target=".js-field-toggle-newsletter-additional"
+                                                data-form-field-toggle-value="subscribe"
+                                                #}
+                                        >
+                                            <option selected="selected"
+                                                    value="{{ constant('Shopware\\Storefront\\Controller\\FormController::SUBSCRIBE') }}">
+                                                {{ 'newsletter.subscribeOption'|trans }}
+                                            </option>
+
+                                            <option value="{{ constant('Shopware\\Storefront\\Controller\\FormController::UNSUBSCRIBE') }}">
+                                                {{ 'newsletter.unsubscribeOption'|trans }}
+                                            </option>
+                                        </select>
+                                    {% endblock %}
+                                </div>
+
+                                <div class="row mb-2 ms-0 me-0">
+                                    {% block cms_form_newsletter_input_email %}
+                                        <div class="twt-footer-column-newsletter-input-email">
+                                            {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                                                with {
+                                                fieldName: 'email',
+                                                autocomplete: 'email',
+                                                type: 'email',
+                                                required: true,
+                                                label: 'newsletter.labelMail',
+                                                placeholder: 'newsletter.placeholderMail'
+                                            }
+                                            %}
+                                        </div>
+                                    {% endblock %}
+
+                                    {# @Storefront/storefront/element/cms-element-form/form-components/cms-element-form-submit.html.twig #}
+                                    {% block cms_form_newsletter_submit %}
+                                        {% block cms_form_submit %}
+                                            {# @TODO tag:v6.7.0 - Add Snippet for aria-label... #}
+                                            <button type="submit" class="btn btn-primary" aria-label="Submit">
+                                                {% if twtIconset != 'default' %}
+                                                    {% if twtIconNewsletterSubmit == 'envelope' %}
+                                                        {% sw_icon 'envelope' style { pack: 'themeware' } %}
+                                                    {% elseif twtIconNewsletterSubmit == 'send' %}
+                                                        {% sw_icon 'send' style { pack: 'themeware' } %}
+                                                    {% else %}
+                                                        {% sw_icon 'arrow-head-right' style { pack: 'themeware' } %}
+                                                    {% endif %}
+                                                {% else %}
+                                                    {% sw_icon 'arrow-head-right' style { ariaHidden: true } %}
+                                                {% endif %}
+                                            </button>
+                                        {% endblock %}
+                                    {% endblock %}
+                                </div>
+
+                                {% block cms_form_newsletter_additional_fields %}{% endblock %}
+
+                                {# block cms_form_newsletter_input_first_name #}
+                                {# block cms_form_newsletter_input_last_name #}
+
+                                {% block cms_form_newsletter_captcha %}
+                                    {% sw_include '@Storefront/storefront/component/captcha/base.html.twig'
+                                        with {
+                                        additionalClass : 'col-md-4'
+                                    } %}
+                                {% endblock %}
+
+                                {% block cms_form_newsletter_privacy %}
+                                    <div class="twt-footer-column-newsletter-privacy">
+                                        {#
+                                        {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-privacy.html.twig' with {
+                                            requiresTermsOfService: false,
+                                            prevUrl: app.request.isXmlHttpRequest() ? path('frontend.cms.page', { id: config('core.basicInformation.contactPage') }) : '',
+                                        } %}
+                                        #}
+                                        {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-privacy.html.twig' %}
+                                    </div>
+                                {% endblock %}
+
+                                {#% block cms_form_newsletter_required_fields_info %}{% endblock %#}
+                            </div>
+
+                            {% block cms_form_newsletter_hidden_fields %}
+                                <div class="form-hidden-fields">
+                                    <input type="submit" class="submit--hidden d-none">
+                                </div>
+                            {% endblock %}
+                        </form>
+                    {% endblock %}
+                </div>
+
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

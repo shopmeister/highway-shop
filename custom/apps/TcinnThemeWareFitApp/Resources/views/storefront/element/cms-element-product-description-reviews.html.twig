@@ -1,0 +1,421 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ThemeWare: Product detail tab component on cms product page #}
+
+{# @TODO:
+    - Add properties tab to CMS element
+    - Add videos tab to CMS element
+    - Add datasheets tab to CMS element
+    - Add manufacturer tab to CMS element
+    - Handle properties tab
+    - Handle empty block
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{% set product = element.data.product %}
+
+{% set propertiesTabId = "properties-tab-" ~ product.id %}
+{% set propertiesTabHref = "#properties-tab-" ~ product.id ~ "-pane" %}
+{% set propertiesTabContent = "properties-tab-" ~ product.id ~ "-pane" %}
+
+{% set productVideosTabId = "product-videos-tab-" ~ product.id %}
+{% set productVideosTabHref = "#product-videos-tab-" ~ product.id ~ "-pane" %}
+{% set productVideosTabContent = "product-videos-tab-" ~ product.id ~ "-pane" %}
+
+{% set datasheetsTabId = "datasheets-tab-" ~ product.id %}
+{% set datasheetsTabHref = "#datasheets-tab-" ~ product.id ~ "-pane" %}
+{% set datasheetsTabContent = "datasheets-tab-" ~ product.id ~ "-pane" %}
+
+{% set customTabId = "custom-tab-" ~ product.id %}
+{% set customTabHref = "#custom-tab-" ~ product.id ~ "-pane" %}
+{% set customTabContent = "custom-tab-" ~ product.id ~ "-pane" %}
+
+{% set manufacturerTabId = "manufacturer-tab-" ~ product.id %}
+{% set manufacturerTabHref = "#manufacturer-tab-" ~ product.id ~ "-pane" %}
+{% set manufacturerTabContent = "manufacturer-tab-" ~ product.id ~ "-pane" %}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailPropertiesPosition = theme_config('twt-product-detail-properties-position') %}
+{% set twtProductDetailTabCustomContentShow = theme_config('twt-product-detail-tab-custom-content-show') %}
+{% set twtProductDetailTabDatasheetsShow = theme_config('twt-product-detail-tab-datasheets-show') %}
+{% set twtProductDetailTabManufacturerShow = theme_config('twt-product-detail-tab-manufacturer-show') %}
+{% set twtProductDetailTabProductVideosShow = theme_config('twt-product-detail-tab-product-videos-show') %}
+
+{# ThemeWare: Check whether product videos are available #}
+{% set videosAvailable = false %}
+{# @TODO: Also consider the file type of additional fields #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__youtube_video is not empty
+    or twtCustomFields.product.twt_fit_cloud_custom_field__product__vimeo_video is not empty
+    or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1 is not empty
+    or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2 is not empty
+    or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3 is not empty
+%}
+    {% set videosAvailable = true %}
+{% endif %}
+
+{# ThemeWare: Set default vars for tabs to be shown #}
+{% set showDescriptionTab = true %}
+{% set showPropertiesTab = false %}
+{% set showVideosTab = false %}
+{% set showDatasheetsTab = false %}
+{% set showCustomTab = false %}
+{% set showManufacturerTab = false %}
+{% set showReviewsTab = false %}
+
+{# ThemeWare: Show 'Properties' tab? > Check theme config and properties #}
+{% if twtProductDetailPropertiesPosition == 2 and page.product.sortedProperties|length > 0 %}
+    {% set showPropertiesTab = true %}
+{% endif %}
+
+{# ThemeWare: Show 'Videos' tab? > Check theme config and custom fields #}
+{% if twtProductDetailTabProductVideosShow == 2 and videosAvailable %}
+    {% set showVideosTab = true %}
+{% endif %}
+
+{# ThemeWare: Show 'Datasheets' tab? > Check theme config and custom fields #}
+{% if twtProductDetailTabDatasheetsShow == 2 %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3 is not empty %}
+        {% set showDatasheetsTab = true %}
+    {% endif %}
+{% endif %}
+
+{# ThemeWare: Show 'Custom' tab? > Check theme config and custom field #}
+{% if twtProductDetailTabCustomContentShow == 2 and twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_text is not empty %}
+    {% set showCustomTab = true %}
+{% endif %}
+
+{# ThemeWare: Show 'Manufacturer' tab? > Check manufacturer and theme config #}
+{# @TODO: Verfügbarkeit prüfen ? #}
+{% if page.product.manufacturer and twtProductDetailTabManufacturerShow == 2 %}
+    {% set showManufacturerTab = true %}
+{% endif %}
+
+{# ThemeWare: Show 'Reviews' tab? > Check shop config #}
+{% if config('core.listing.showReview') %}
+    {% set showReviewsTab = true %}
+{% endif %}
+
+
+{# ThemeWare: Hide tabs already shown in our CMS element #}
+{% for section in page.cmsPage.sections.elements %}
+    {% for block in section.blocks.elements %}
+        {% for slot in block.slots.elements %}
+            {% if slot.type == "twt-product-description-reviews-accordion" %}
+                {# Description #}
+                {% if slot.fieldConfig.elements.descriptionShow.value == 'true' %}
+                    {% set showDescriptionTab = false %}
+                    {% set showPropertiesTab = false %}
+                {% endif %}
+
+                {# Custom #}
+                {% if slot.fieldConfig.elements.customShow.value == 'true' %}
+                    {% set showCustomTab = false %}
+                {% endif %}
+
+                {# Reviews #}
+                {% if slot.fieldConfig.elements.reviewsShow.value == 'true' %}
+                    {% set showReviewsTab = false %}
+                {% endif %}
+
+                {# @TODO ... #}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+
+{# ThemeWare: Find first tab #}
+{% set firstTab = null %}
+
+{% set elements = {
+    'description': showDescriptionTab,
+    'properties': showPropertiesTab,
+    'videos': showVideosTab,
+    'datasheets': showDatasheetsTab,
+    'custom': showCustomTab,
+    'manufacturer': showManufacturerTab,
+    'reviews': showReviewsTab
+} %}
+
+{% for key, value in elements %}
+    {% if value is true %}
+        {% set firstTab = key %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on tab navigation ------------------------------------------------------------------------- #}
+
+{% block element_product_description_reviews_tabs_navigation_description %}
+    {% if showDescriptionTab %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+
+    {# ThemeWare: Show properties in individuell tab if configured #}
+
+    {# ThemeWare: Add 'Properties tab' to navigation #}
+    {% if showPropertiesTab %}
+        <li class="nav-item">
+            <a href="{{ propertiesTabHref }}"
+               class="nav-link product-properties-tab-navigation-link twt-tab-navigation-link{% if firstTab == 'properties' %} active{% endif %}"
+               id="{{ propertiesTabId }}"
+               data-bs-toggle="tab"
+               data-off-canvas-tabs="true"
+               role="tab"
+               aria-controls="{{ propertiesTabContent }}"
+               aria-selected="{% if firstTab == 'properties' %}true{% else %}false{% endif %}"
+            >
+                {{ 'twt.detail.tabProperties.title'|trans|sw_sanitize }}
+                <span class="product-detail-tab-navigation-icon">
+                    {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                    {% sw_icon 'arrow-medium-right' style { pack: 'solid', ariaHidden: true } %}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {# ThemeWare: Add 'Product videos tab' to navigation #}
+    {% if showVideosTab %}
+        <li class="nav-item">
+            <a href="{{ productVideosTabHref }}"
+               class="nav-link product-videos-tab-navigation-link twt-tab-navigation-link{% if firstTab == 'videos' %} active{% endif %}"
+               id="{{ productVideosTabId }}"
+               data-bs-toggle="tab"
+               data-off-canvas-tabs="true"
+               role="tab"
+               aria-controls="{{ productVideosTabContent }}"
+               aria-selected="{% if firstTab == 'videos' %}true{% else %}false{% endif %}"
+            >
+                {{ 'twt.detail.tabVideos.title'|trans|sw_sanitize }}
+                <span class="product-detail-tab-navigation-icon">
+                    {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                    {% sw_icon 'arrow-medium-right' style { pack: 'solid', ariaHidden: true } %}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {# ThemeWare: Add 'Datasheets tab' to navigation #}
+    {% if showDatasheetsTab %}
+        {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3 is not empty %}
+            <li class="nav-item">
+                <a href="{{ datasheetsTabHref }}"
+                   class="nav-link product-datasheets-tab-navigation-link twt-tab-navigation-link{% if firstTab == 'datasheets' %} active{% endif %}"
+                   id="{{ datasheetsTabId }}"
+                   data-bs-toggle="tab"
+                   data-off-canvas-tabs="true"
+                   role="tab"
+                   aria-controls="{{ datasheetsTabContent }}"
+                   aria-selected="{% if firstTab == 'datasheets' %}true{% else %}false{% endif %}"
+                >
+                    {# Use custom field or snippet as fallback #}
+                    {{ 'twt.detail.tabDatasheets.title'|trans|sw_sanitize }}
+                    <span class="product-detail-tab-navigation-icon">
+                        {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                        {% sw_icon 'arrow-medium-right' style { pack: 'solid', ariaHidden: true } %}
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add 'Custom tab' to navigation #}
+    {% if showCustomTab %}
+        <li class="nav-item">
+            <a href="{{ customTabHref }}"
+               class="nav-link product-custom-tab-navigation-link twt-tab-navigation-link{% if firstTab == 'custom' %} active{% endif %}"
+               id="{{ customTabId }}"
+               data-bs-toggle="tab"
+               data-off-canvas-tabs="true"
+               role="tab"
+               aria-controls="{{ customTabContent }}"
+               aria-selected="{% if firstTab == 'custom' %}true{% else %}false{% endif %}"
+            >
+                {# Use custom field or snippet as fallback #}
+                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title is not empty %}
+                    {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title }}
+                {% else %}
+                    {{ 'twt.detail.tabCustom.title'|trans|sw_sanitize }}
+                {% endif %}
+                <span class="product-detail-tab-navigation-icon">
+                    {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                    {% sw_icon 'arrow-medium-right' style { pack: 'solid', ariaHidden: true } %}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+
+    {# ThemeWare: Add 'Manufacturer tab' to navigation #}
+    {% if showManufacturerTab %}
+        <li class="nav-item">
+            <a href="{{ manufacturerTabHref }}"
+               class="nav-link product-manufacturer-tab-navigation-link twt-tab-navigation-link{% if firstTab == 'manufacturer' %} active{% endif %}"
+               id="{{ manufacturerTabId }}"
+               data-bs-toggle="tab"
+               data-off-canvas-tabs="true"
+               role="tab"
+               aria-controls="{{ manufacturerTabContent }}"
+               aria-selected="{% if firstTab == 'manufacturer' %}true{% else %}false{% endif %}"
+            >
+                {{ 'twt.detail.tabManufacturer.title'|trans|sw_sanitize }}
+                <span class="product-detail-tab-navigation-icon">
+                    {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                    {% sw_icon 'arrow-medium-right' style { pack: 'solid', ariaHidden: true } %}
+                </span>
+            </a>
+        </li>
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Show/hide reivew tab button + mark as active if it is the first tab #}
+{% block element_product_description_reviews_tabs_navigation_review %}
+    {% if showReviewsTab %}
+
+        {% if config('core.listing.showReview') %}
+            <li class="nav-item">
+                <a href="{{ reviewTabHref }}"
+                   class="nav-link {% if (firstTab == 'reviews') or (ratingSuccess == 1) or (ratingSuccess == -1) %}active{% endif %} product-detail-tab-navigation-link review-tab"
+                   id="{{ reviewTabId }}"
+                   data-bs-toggle="tab"
+                   data-off-canvas-tabs="true"
+                   role="tab"
+                   aria-controls="{{ reviewTabContent }}"
+                   aria-selected="true"
+                >
+                    {{ "detail.tabsReview"|trans|sw_sanitize }}
+                    <span class="product-detail-tab-navigation-icon">
+                        {# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+                        {% sw_icon 'arrow-medium-right' style { 'pack':'solid', ariaHidden: true } %}
+                    </span>
+                </a>
+            </li>
+        {% endif %}
+
+    {% endif %}
+
+    {# @TODO: Add JS plugin as fallback solution via theme configuration #}
+    {#
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var container = document.querySelector('.cms-element-product-description-reviews');
+            if (container) {
+                var firstNavItem = container.querySelector('.nav-item');
+                if (firstNavItem) {
+                    var navLink = firstNavItem.querySelector('.nav-link');
+                    if (navLink && !navLink.classList.contains('active')) {
+                        navLink.classList.add('active');
+                    }
+                }
+            }
+        });
+    </script>
+    #}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on tab content ---------------------------------------------------------------------------- #}
+
+{% block element_product_description_reviews_tabs_content_description %}
+    {% if showDescriptionTab %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+
+    {# @TODO:
+       - Hide other content if tab is shown in accordion ????!!!!
+       - Add .active to first available .tab-pane
+    #}
+
+    {# ThemeWare: Show properties in individuell tab if configured #}
+
+    {# ThemeWare: Add 'Properties content' to tab #}
+    {% if showPropertiesTab %}
+        <div class="tab-pane fade show {% if firstTab == 'properties' %}active{% endif %}"
+             id="{{ propertiesTabContent }}"
+             role="tabpanel"
+             aria-labelledby="{{ propertiesTabId }}"
+        >
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-tab-properties.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+
+    {# ThemeWare: Add 'Product videos content' to tab #}
+    {% if showVideosTab %}
+        <div class="tab-pane fade show {% if firstTab == 'videos' %}active{% endif %}"
+             id="{{ productVideosTabContent }}"
+             role="tabpanel"
+             aria-labelledby="{{ productVideosTabId }}"
+        >
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-tab-product-videos.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+
+    {# ThemeWare: Add 'Datasheets' content to tab #}
+    {% if showDatasheetsTab %}
+        <div class="tab-pane fade show {% if firstTab == 'datasheets' %}active{% endif %}"
+             id="{{ datasheetsTabContent }}"
+             role="tabpanel"
+             aria-labelledby="{{ datasheetsTabId }}"
+        >
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-tab-datasheets.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+
+    {# ThemeWare: Add 'Custom content' to tab #}
+    {% if showCustomTab %}
+        <div class="tab-pane fade show {% if firstTab == 'custom' %}active{% endif %}"
+             id="{{ customTabContent }}"
+             role="tabpanel"
+             aria-labelledby="{{ customTabId }}"
+        >
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-tab-custom.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+
+    {# ThemeWare: Add 'Manufacturer content' to tab #}
+    {# @TODO: Verfügbarkeit prüfen #}
+    {% if showManufacturerTab %}
+        <div class="tab-pane fade show {% if firstTab == 'manufacturer' %}active{% endif %}"
+             id="{{ manufacturerTabContent }}"
+             role="tabpanel"
+             aria-labelledby="{{ manufacturerTabId }}"
+        >
+            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-detail-tab-manufacturer.html.twig' ignore missing %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# ThemeWare: Show/hide reivew tab content + mark as active if it is the first tab #}
+{% block element_product_description_reviews_tabs_content_review %}
+    {% if showReviewsTab %}
+
+        {% if config('core.listing.showReview') %}
+            <div class="tab-pane fade show {% if (firstTab == 'reviews') or (element.data.ratingSuccess == 1) or (element.data.ratingSuccess == -1) %}active{% endif %}"
+                 id="{{ reviewTabContent }}"
+                 role="tabpanel"
+                 aria-labelledby="{{ reviewTabId }}">
+                {% sw_include '@Storefront/storefront/component/review/review.html.twig' with {
+                    reviews: element.data.reviews,
+                    product: element.data.product
+                } %}
+            </div>
+        {% endif %}
+
+    {% endif %}
+
+    {# @TODO: Add JS plugin as fallback solution via theme configuration #}
+    {#
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var firstTabPane = document.querySelector('.tab-pane');
+            if (firstTabPane && !firstTabPane.classList.contains('active')) {
+                firstTabPane.classList.add('active');
+            }
+        });
+    </script>
+    #}
+{% endblock %}

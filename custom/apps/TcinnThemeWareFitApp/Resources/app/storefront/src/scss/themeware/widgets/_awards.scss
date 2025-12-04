@@ -1,0 +1,54 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Widget 'Awards'
+	==================================================
+    v20240320
+*/
+
+// @TODO: sh. layout/_footer.scss
+
+// ThemeWare: General widget styling ------------------------------
+
+.twt-widget-awards {
+  .twt-awards-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    img {
+      // Prüfen ob max-width und max-height korrekt konfiguriert wurden. Eins von beiden muss eine ganze Zahl sein, das
+      // andere Konfigurationsfeld muss mit "none" konfiguriert sein.
+      @if $twt-widget-awards-image-max-width != 'none' and $twt-widget-awards-image-max-height == 'none' {
+        width: 100%;
+        max-width: auto-pixel-unit($twt-widget-awards-image-max-width);
+        height: auto;
+      } @else if $twt-widget-awards-image-max-width == 'none' and $twt-widget-awards-image-max-height != 'none' {
+        width: 100%;
+        max-width: max-content;
+        height: 100%;
+        max-height: auto-pixel-unit($twt-widget-awards-image-max-height);
+      } @else {
+        // Fallback
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+      }
+    }
+  }
+}
+
+// ThemeWare: Sidebar specific styling ------------------------------
+
+.cms-section-sidebar-sidebar-content {
+  .twt-awards-container {
+    img {
+      margin: 0 20px 20px 0;
+    }
+  }
+}

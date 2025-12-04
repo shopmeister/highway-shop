@@ -1,0 +1,4 @@
+.magnalisterForm div.optional span.optional.hidden{opacity:.2; display: inherit;}
+.magnalisterForm div.optional span.optional.visible{opacity:1; display: block !important;}
+
+.magnalisterForm div.optional span.optional.hidden div.optional span.optional{opacity:1}

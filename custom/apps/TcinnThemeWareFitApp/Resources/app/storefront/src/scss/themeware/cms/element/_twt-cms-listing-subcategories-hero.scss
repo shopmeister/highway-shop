@@ -1,0 +1,44 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Listing subcategories (Hero)"
+	==================================================
+    see also "extensions/_listing-subcategories-hero.scss"
+
+    - Available as cms element: .cms-element-twt-listing-subcategories-hero
+*/
+
+// ThemeWare: CMS element specific styling -----------------------------------------------------------------------------
+// - Info: General styling: "extensions/_listing-subcategories.scss"
+// - Info: Extension specific styling: "extensions/_listing-subcategories.scss"
+
+//@if $twt-cms-listing-subcategories-css == 2 { // #performance
+//    //.cms-element-twt-listing-subcategories {}
+//
+    .twt-listing-subcategories-hero {
+        &.is-button {
+
+        }
+
+        &.is-classic {
+
+        }
+
+        &.is-modern {
+
+        }
+
+        &.is-text {
+
+        }
+
+        &.is-text-decorated {
+
+        }
+     }
+//}

@@ -1,0 +1,75 @@
+{% block swag_amazon_pay_order_component_payment_history %}
+    <div>
+        <sw-data-grid
+                ref="swDataGrid"
+                :dataSource="paymentDetails.transactionsCombined"
+                :showSelection="false"
+                :isLoading="isLoading"
+                :compactMode="false"
+                :showActions="false"
+                :columns="columns">
+
+
+            {% block swag_amazon_pay_order_component_payment_history_data_grid_column_created %}
+                <template #column-time="{ item }">
+                    {{ dateFilter(item.time, { hour: '2-digit', minute: '2-digit',day: '2-digit', month: '2-digit', year: '2-digit' }) }}
+                </template>
+            {% endblock %}
+            {% block swag_amazon_pay_order_component_payment_history_data_grid_column_amount %}
+                <template #column-amount="{ item }">
+                    <div v-if="item.type === 'Charge' && item.status === 'Captured'" class="amazon-pay-transaction-amount">{{ formatCurrency(item.capturedAmount) }}</div>
+                    <div v-if="(item.type !== 'Charge' || item.status !== 'Captured') && item.type !== 'Refund'" class="amazon-pay-transaction-amount">{{ formatCurrency(item.amount) }}</div>
+                    <div v-if="item.type === 'Refund'" class="amazon-pay-transaction-amount amazon-pay-transaction-amount-negative">{{ formatCurrency(-item.amount) }}</div>
+                </template>
+            {% endblock %}
+            {% block swag_amazon_pay_order_component_payment_history_data_grid_column_status %}
+                <template #column-status="{ item }">
+                    <span
+                            :class="{
+                                'amazon-pay-transaction-status-success':(item.status === 'Captured' ||item.status === 'Refunded'),
+                                'amazon-pay-transaction-status-info':(item.status === 'Authorized' || item.status === 'RefundInitiated'),
+                                'amazon-pay-transaction-status-warning':(item.status === 'AuthorizationInitiated'),
+                                'amazon-pay-transaction-status-danger':(item.status === 'Declined' || item.status === 'Canceled')
+                        }">
+                        {{ item.status }}</span>
+                </template>
+            {% endblock %}
+            {% block swag_amazon_pay_order_component_payment_history_data_grid_column_actions %}
+                <template #column-actions="{ item }">
+                    <sw-button
+                            v-if="item.type === 'Charge' && paymentDetails.charges[item.reference].maxRefundableAmount > 0"
+                            size="small"
+                            class="swag-amazon-pay-action-toolbar__button"
+                            :disabled="!acl.can('order.editor')"
+                            variant="ghost"
+                            @click="showRefundModal(item)">
+                        {{ $tc('swag-amazon-pay-order.action-toolbar.refund') }}
+                    </sw-button>
+                    <sw-button size="small"
+                               v-if="item.type === 'Charge' && item.status === 'Authorized'"
+                               class="swag-amazon-pay-action-toolbar__button"
+                               :disabled="!acl.can('order.editor')"
+                               variant="ghost"
+                               @click="showCaptureModal(item)">
+                        {{ $tc('swag-amazon-pay-order.action-toolbar.charge') }}
+                    </sw-button>
+                </template>
+            {% endblock %}
+
+        </sw-data-grid>
+        <swag-amazon-pay-refund-modal
+                v-if="refundModalVisible"
+                :paymentDetails="paymentDetails"
+                :chargeId="refundChargeId"
+                @modal-close="closeModals"
+                @reload-payment="reloadPaymentDetails">
+        </swag-amazon-pay-refund-modal>
+        <swag-amazon-pay-charge-modal
+                v-if="captureModalVisible"
+                :paymentDetails="paymentDetails"
+                :chargeId="captureChargeId"
+                @modal-close="closeModals"
+                @reload-payment="reloadPaymentDetails">
+        </swag-amazon-pay-charge-modal>
+    </div>
+{% endblock %}

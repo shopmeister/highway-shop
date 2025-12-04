@@ -1,0 +1,189 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS image effects (for some cms elements)
+	==================================================
+
+    Hinweis: Effekte setzen voraus, dass das gesamte CMS-Element anklickbar ist
+
+    - img.cms-image
+    - div.twt-bg-image (e.g. Image banner)
+*/
+
+// see _root.scss
+// --twt-blur: 5px;
+// --twt-brightness: 125%;
+// --twt-contrast: 125%;
+// --twt-grayscale: 100%;
+// --twt-opacity: 75%;
+// --twt-saturate: 125%;
+// --twt-sepia: 100%;
+// --twt-scale: 110%;
+
+/* @TODO:
+ * [x] Add configuration for effects
+ * [x] Add performance optimizations
+ * [x] Make general classes available < defaults in _root.scss
+ *      [ ] Add seperate performance if for general classes...
+ * [ ] Check image banner...
+ */
+
+@if $twt-cms-image-teaser-css == 2 or $twt-cms-image-banner-css == 2 { // #performance
+
+    // ThemeWare: CMS image effect "Blur" ------------------------------
+    // 0px - ..px
+    // default: 5px
+
+    .twt-image-blur {
+        //div.twt-bg-image,
+        img {
+            //filter: blur(5px));
+            filter: #{"blur(var(--twt-blur))"}; // (px)
+            scale: 1.05;
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "Brightness" ------------------------------
+    // 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+    // heller mit Werten 100%, dunkler mit Werten < 100%
+    // default: 1.25 | 125%
+
+    .twt-image-brightness,
+    .twt-image-bright {
+        //div.twt-bg-image,
+        img {
+            //filter: brightness(1.25);
+            filter: #{"brightness(var(--twt-brightness))"}; // (%)
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "Contrast" ------------------------------
+    // 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+    // höherer Kontrast mit Werten 100%, weniger Kontrast mit Werten < 100%
+    // default: 1.25 | 125%
+
+    .twt-image-contrast {
+        //div.twt-bg-image,
+        img {
+            //filter: contrast(1.25);
+            filter: #{"contrast(var(--twt-contrast))"}; // (%)
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "Grayscale" ------------------------------
+    // 0 - 1 bzw. 0% - 100%
+    // default: 1 | 100%
+
+    .twt-image-grayscale,
+    .twt-image-grayscaled {
+        //div.twt-bg-image,
+        img {
+            //filter: grayscale(1);
+            filter: #{"grayscale(var(--twt-grayscale))"}; // (%)
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "hue-rotate" ------------------------------
+    // 0deg - 360deg
+    // default: 45deg
+
+    // @TODO
+    /*
+    .twt-image-hue-rotate {
+        //div.twt-bg-image,
+        img {
+            filter: hue-rotate(45deg);
+            // (deg)
+        }
+    }
+    */
+
+
+    // ThemeWare: CMS image effect "Invert" ------------------------------
+    // 0-1 (0% - 100%)
+    // default: 1 | 100%
+
+    // @TODO
+    /*
+    .twt-image-invert,
+    .twt-image-inverted {
+        //div.twt-bg-image,
+        img {
+            filter: invert(1);
+            // (%)
+        }
+    }
+    */
+
+
+    // ThemeWare: CMS image effect "Opacity/Fade" ------------------------------
+    // 0 - 1 bzw. 0% - 100%
+    // default: 0.75 | 75%
+
+    .twt-image-opacity,
+    .twt-image-faded {
+        //div.twt-bg-image,
+        img {
+            //opacity: 0.75;
+            //filter: opacity(0.75);
+            filter: #{"opacity(var(--twt-opacity))"}; // (%)
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "Rotated" ------------------------------
+    // @TODO
+
+
+    // ThemeWare: CMS image effect "Saturate" ------------------------------
+    // 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+    // default: 1.25 | 125%
+
+    .twt-image-saturate,
+    .twt-image-desaturated {
+        //div.twt-bg-image,
+        img {
+            //filter: saturate(1.25);
+            filter: #{"saturate(var(--twt-saturate))"}; // (%)
+        }
+    }
+
+
+    // ThemeWare: CMS image effect "Sepia" ------------------------------
+    // 0-1 (0% - 100%)
+    // default: 1 | 100%
+
+    // @TODO
+    /*
+    .twt-image-sepia {
+        //div.twt-bg-image,
+        img {
+            //filter: sepia(1);
+            filter: #{"sepia(var(--twt-sepia))"}; // (%)
+        }
+    }
+    */
+
+
+    // ThemeWare: CMS image effect "Scale/Zoom" ------------------------------
+    // default: 1.1 | 110%
+
+    .twt-image-scale,
+    .twt-image-scaled,
+    .twt-image-zoom,
+    .twt-image-zoomed {
+        img {
+            //transform: perspective(1px) scale(1.1);
+            transform: perspective(1px) #{"scale(var(--twt-scale))"}; // (%)
+        }
+    }
+}

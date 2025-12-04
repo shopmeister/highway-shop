@@ -1,0 +1,36 @@
+﻿/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: root.scss
+	==================================================
+	Set root information.
+*/
+
+:root {
+	// ThemeWare: Add grid breakpoints (see "abstract/variables/_bootstrap.scss")
+	@each $breakpointname, $value in $grid-breakpoints {
+		--twt-breakpoint-#{$breakpointname}: #{$value};
+	}
+
+	// ThemeWare® CMS defaults
+	// @TODO: Add theme configuration...
+	// @TODO: Add "duration: .4s"...
+	--twt-bg-blur: 10px;
+	--twt-blur: 5px;		// 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+	--twt-brightness: 125%;	// 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+	--twt-contrast: 125%;	// 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+	--twt-grayscale: 100%;	// 0 - 1 bzw. 0% - 100%
+	--twt-opacity: 75%;		// 0 - 1 bzw. 0% - 100%
+	--twt-saturate: 125%;	// 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+	//--twt-sepia: 100%;      // 0% - 100%
+	--twt-scale: 110%;		// 0 - 1 - 2.. bzw. 0% - 100% - 1000%
+
+	// ThemeWare: Add theme information
+	--twt-theme: Fit;
+	--twt-version: c352;
+}

@@ -1,0 +1,91 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Navigation offcanvas
+    ==============================================
+    Custom styling for navigation offcanvas which replaces main navigation on smaller screens.
+    Based on custom offcanvas component.
+
+	Origin: Shopware base & skin
+*/
+
+//.navigation-offcanvas {}
+
+.navigation-offcanvas-actions {
+    padding: 5px 0;
+
+    .top-bar-nav-item {
+        margin-right: 0;
+        padding-right: .25rem;
+    }
+
+    // Hide labels
+    .top-bar-nav-text {
+        display: none;
+    }
+
+
+    // Languages menu --------------------------------------
+
+    @if ($twt-offcanvas-nav-languages-menu-text-show == 2) {
+        .languages-menu {
+            @media (min-width: 320px) {
+                .top-bar-nav-text {
+                    display: inline; // @TODO: Add configuration...
+                }
+            }
+        }
+    }
+
+    // .top-bar-language {}
+
+
+    // Currency menu --------------------------------------
+
+    @if ($twt-offcanvas-nav-currencies-menu-text-show == 2) {
+        .currencies-menu {
+            @media (min-width: 320px) {
+                .top-bar-nav-text {
+                    display: inline; // @TODO: Add configuration...
+                }
+            }
+        }
+    }
+
+    //.top-bar-currency {}
+
+
+    // Service menu --------------------------------------
+
+    @if ($twt-offcanvas-nav-service-menu-show == 2) {
+        @if ($twt-offcanvas-nav-service-menu-text-show == 2) {
+            .service-menu {
+                @media (min-width: 320px) {
+                    .top-bar-nav-text {
+                        display: inline; // @TODO: Add configuration...
+                    }
+                }
+            }
+        }
+
+        .top-bar-menu .icon {
+            width: 18px;
+            height: 18px;
+
+            @if ($twt-offcanvas-nav-service-menu-icon-show == 1) {
+                @media (min-width: 320px) {
+                    display: none;
+                }
+            }
+
+            svg {
+                top: 4px;
+            }
+        }
+    }
+}

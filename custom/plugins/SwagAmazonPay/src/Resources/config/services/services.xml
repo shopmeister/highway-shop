@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <!-- DataAbstractionLayer Services -->
+        <service id="Swag\AmazonPay\DataAbstractionLayer\Entity\SignUpToken\SignUpTokenService">
+            <argument type="service" id="swag_amazon_pay_signup_token.repository"/>
+        </service>
+
+        <!--Utils/Connection-->
+        <service id="Swag\AmazonPay\Util\Connection\ConnectionInspector">
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Hydrator\Request\CreateCheckoutSession\CreateCheckoutSessionHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\Validation\ConfigValidator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\Hydrator\ConfigHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <!--Components/Cart-->
+        <service id="Swag\AmazonPay\Components\Cart\CartService">
+            <argument type="service" id="Shopware\Core\Checkout\Cart\SalesChannel\CartService"/>
+        </service>
+
+        <!--Components/Config-->
+        <service id="Swag\AmazonPay\Components\Config\ConfigService">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\Validation\ConfigValidator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\Hydrator\ConfigHydrator"/>
+            <argument type="service" id="system_config.repository"/>
+        </service>
+
+        <!--Components/Client-->
+        <service id="Swag\AmazonPay\Components\Client\ClientProvider" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\VersionProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\Client\Service\PaymentActionService" public="true">
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <!-- Components/PaymentHandler -->
+        <service id="Swag\AmazonPay\Components\PaymentHandler\AmazonPaymentHandler">
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Hydrator\Request\UpdateCheckoutSession\UpdateCheckoutSessionHydrator"/>
+            <argument type="service" id="request_stack" on-invalid="null" />
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Validation\PaymentProcessResponseValidator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\Validation\PaymentFinalizeResponseValidator"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Components\PaymentHandler\PurePaymentMethodHandler"/>
+            <argument type="service" id="Shopware\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+
+            <tag name="shopware.payment.method.async"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\PaymentHandler\PurePaymentMethodHandler">
+            <argument type="service" id="router"/>
+        </service>
+
+        <!-- Components/Logger -->
+        <service id="Swag\AmazonPay\Components\Logger\SwagAmazonPayLoggerFactory">
+            <argument type="string">%kernel.logs_dir%/%%s_%kernel.environment%.log</argument>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+
+            <call method="setLogLevel">
+                <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            </call>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\Logger" class="Monolog\Logger">
+            <factory service="Swag\AmazonPay\Components\Logger\SwagAmazonPayLoggerFactory" method="createLogger"/>
+
+            <argument type="string">swag_amazon_pay</argument>
+        </service>
+
+        <!-- Util/Config -->
+        <service id="Swag\AmazonPay\Util\Config\PluginConfigurationExporter">
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\VersionProvider"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Util\Config\PluginConfigurationImporter">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Config\VersionProvider"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Util\Config\VersionProvider">
+            <argument>%kernel.shopware_version%</argument>
+            <argument type="service" id="payment_method.repository"/>
+        </service>
+
+        <!-- Util/Language -->
+        <service id="Swag\AmazonPay\Util\Language\LanguageProvider">
+            <argument type="service" id="language.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+        </service>
+
+        <!-- Util/Helper -->
+        <service id="Swag\AmazonPay\Util\Helper\AmazonPayPaymentMethodHelper">
+            <argument type="service" id="sales_channel.repository"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Util\Helper\TransactionRepositoryHelper">
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Cache\CacheDecorator"/>
+        </service>
+
+        <!-- Components/Account-->
+        <service id="Swag\AmazonPay\Components\Account\Hydrator\RegistrationDataHydrator">
+            <argument type="service" id="country.repository"/>
+            <argument type="service" id="salutation.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\Account\AmazonPayAccountService">
+            <argument type="service" id="customer.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Core\Checkout\Customer\SalesChannel\AccountRegistrationService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Account\Hydrator\RegistrationDataHydrator"/>
+            <argument type="service" id="customer_address.repository"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\CartRestorer" on-invalid="null"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextPersister"/>
+            <argument>%env(bool:default:defaults_bool_false:AMAZON_PAY_NO_GUESTS)%</argument>
+        </service>
+
+        <!-- Components/PaymentNotification -->
+        <service id="Swag\AmazonPay\Components\PaymentNotification\Validation\PaymentNotificationValidator">
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\PaymentNotification\PaymentNotificationHandlerRegistry">
+            <call method="setHandlers">
+                <argument type="collection">
+                    <argument type="service" id="Swag\AmazonPay\Components\PaymentNotification\Handler\ChargeNotificationHandler"/>
+                    <argument type="service" id="Swag\AmazonPay\Components\PaymentNotification\Handler\RefundNotificationHandler"/>
+                </argument>
+            </call>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\PaymentNotification\Handler\ChargeNotificationHandler">
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="swag_amazon_pay_payment_notification.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\PaymentNotification\Handler\RefundNotificationHandler">
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="swag_amazon_pay_payment_notification.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Transaction\TransactionService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\StateMachine\OrderTransactionStateHandler">
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+            <argument type="service" id="state_machine_transition.repository"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="Shopware\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+        </service>
+
+        <!-- Components/Cookie -->
+        <service id="Swag\AmazonPay\Components\Cookie\AmazonPayCookieProvider"
+                 decorates="Shopware\Storefront\Framework\Cookie\CookieProviderInterface">
+            <argument type="service"
+                      id="Swag\AmazonPay\Components\Cookie\AmazonPayCookieProvider.inner" />
+        </service>
+
+        <service id="Swag\AmazonPay\Util\Logging\LogFileProvider">
+            <argument type="string">%kernel.logs_dir%</argument>
+            <argument type="string">swag_amazon_pay</argument>
+            <argument type="service" id="shopware.filesystem.private"/>
+        </service>
+
+        <!-- ScheduledTasks -->
+        <service id="Swag\AmazonPay\Framework\ScheduledTasks\CheckPaymentStatus">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Swag\AmazonPay\Framework\ScheduledTasks\CheckPaymentStatusHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Swag\AmazonPay\Util\Helper\TransactionRepositoryHelper"/>
+            <argument type="service" id="Shopware\Core\Checkout\Order\Aggregate\OrderTransaction\OrderTransactionStateHandler"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <service id="Swag\AmazonPay\Framework\ScheduledTasks\SignUpTokenCleanUp">
+            <tag name="shopware.scheduled.task" />
+        </service>
+
+        <service id="Swag\AmazonPay\Framework\ScheduledTasks\SignUpTokenCleanUpHandler">
+            <argument type="service" id="scheduled_task.repository" />
+            <argument type="service" id="Swag\AmazonPay\DataAbstractionLayer\Entity\SignUpToken\SignUpTokenService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+
+            <tag name="messenger.message_handler" />
+        </service>
+
+        <!-- Storefront/Page/Extension -->
+        <service id="Swag\AmazonPay\Storefront\Page\Extension\ExtensionService">
+            <argument type="service" id="Swag\AmazonPay\Components\PurePaymentMethod\Hydrator\AmazonPayPurePaymentMethodPayloadHydrator"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Client\ClientProvider"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Util\Language\LanguageProvider"/>
+        </service>
+
+        <!-- Components/Button/Pay/AddressRestriction -->
+        <service id="Swag\AmazonPay\Components\Button\Pay\AddressRestriction\AddressRestrictionService">
+            <argument type="service" id="country.repository"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Core\Checkout\Customer\SalesChannel\AccountRegistrationService">
+            <argument type="service" id="sales_channel_domain.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Shopware\Core\Checkout\Customer\SalesChannel\RegisterRoute"/>
+        </service>
+
+        <service id="Swag\AmazonPay\Components\Transaction\TransactionService">
+            <argument type="service" id="swag_amazon_pay_transaction.repository"/>
+            <argument type="service" id="order_transaction.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="Swag\AmazonPay\Components\StateMachine\OrderTransactionStateHandler"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Config\ConfigService"/>
+            <argument type="service" id="Swag\AmazonPay\Components\Logger"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+    </services>
+</container>

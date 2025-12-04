@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/page/checkout/address/index.html.twig' %}
+
+{% block page_checkout_address_login_toggle %}
+    {% block page_checkout_address_login_swag_amazon_pay_card %}
+        {% set amazonPayButton = page.extensions.SwagAmazonPayButton %}
+        {% if amazonPayButton and not amazonPayButton.hideButton %}
+            <div class="card swag-amazon-pay-card">
+                <div class="card-body">
+                    {% block page_checkout_address_login_swag_amazon_pay_card_body %}
+                        <div class="card-title">{{ "SwagAmazonPay.register.headline"|trans|striptags }}</div>
+                        <p class="card-text">{{ "SwagAmazonPay.register.text"|trans|striptags }}</p>
+
+                        {% block component_account_login_swag_amazon_pay_button %}
+                            {% sw_include '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' with {
+                                'identifier': 'account-login'
+                            } %}
+                        {% endblock %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {{ parent() }}
+{% endblock %}

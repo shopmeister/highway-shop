@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Redgecko\Magnalister\Core\Content\Bundle\BundleCookieDefinition">
+            <tag name="shopware.entity.definition" entity="magnalister_shopware6"/>
+        </service>
+
+
+        <service id="Redgecko\Magnalister\Resources\snippet\en_GB\SnippetFile_en_GB">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="Redgecko\Magnalister\Resources\snippet\de_DE\SnippetFile_de_DE">
+            <tag name="shopware.snippet.file" priority="100"/>
+        </service>
+
+        <service id="Redgecko\Magnalister\Service\MagnalisterSalesChannelContextFactory"
+                 decorates="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory"
+                 decoration-priority="-5000">
+            <argument type="service" id="Redgecko\Magnalister\Service\MagnalisterSalesChannelContextFactory.inner"/>
+            <argument type="service" id="session.factory"/>
+        </service>
+
+        <service id="Redgecko\Magnalister\Controller\MagnalisterController"
+                 public="true">
+            <argument type="service" id="Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface"/>
+            <argument type="service" id="session.factory"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Symfony\Component\HttpFoundation\RequestStack"/>
+            <argument type="service" id="kernel"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry"/>
+            <argument type="service" id="Shopware\Core\System\NumberRange\ValueGenerator\NumberRangeValueGeneratorInterface"/>
+            <argument type="service" id="Redgecko\Magnalister\Service\MagnalisterSalesChannelContextFactory"/>
+            <argument type="service" id="Shopware\Core\Content\Media\Core\Application\AbstractMediaUrlGenerator"/>
+            <argument type="service" id="Shopware\Core\Content\Media\Core\Application\AbstractMediaPathStrategy"/>
+            <argument type="service" id="Shopware\Core\Content\Media\Core\Application\MediaLocationBuilder"/>
+            <argument type="service" id="shopware.filesystem.public"/>
+            <argument type="service" id="Shopware\Core\Content\Product\Stock\OrderStockSubscriber"/>
+            <argument type="service" id="Shopware\Core\Content\Product\Stock\StockStorage"/>
+            <argument type="service" id="Shopware\Core\Checkout\Order\SalesChannel\OrderService"/>
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="Shopware\Core\Framework\Plugin\PluginService"/>
+            <argument type="service" id="Shopware\Core\Framework\Plugin\PluginLifecycleService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Redgecko\Magnalister\EventListeners\MagnalisterEventListener">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

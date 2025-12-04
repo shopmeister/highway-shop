@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Basic configuration</title>
+        <title lang="de-DE">Grundeinstellungen</title>
+
+        <input-field type="int">
+            <name>minStock</name>
+            <label>Base stock</label>
+            <label lang="de-DE">Eiserner Bestand</label>
+            <helpText>If this option has a value greater than 0, products will be hidden if a purchase would exceed this base stock. Changes to this value won't take effect until the next product index refresh.</helpText>
+            <helpText lang="de-DE">Wenn dieser Wert größer 0 ist, werden Produkte ausgeblendet sofern ein Kauf diesen Bestand überschreiten würde. Beispielsweise wenn der Eiserne Bestand mit 3 konfiguriert ist, ein Produkt die Mindestabnahme von 2 hat, wird dieses ausgeblendet sofern der Lagerbestand von 4 oder weniger ist. Änderungen an diesem Wert werden erst bei der nächsten Aktualisierung des Produkt-Indexes wirksam.</helpText>
+            <defaultValue>0</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>ignoreCloseout</name>
+            <label>Hide products below minimum stock, regardless of the clearance sale setting</label>
+            <label lang="de-DE">Produkte unabhängig der Abverkaufs Einstellung ausblenden</label>
+            <helpText>Changes to this value won't take effect until the next product index refresh.</helpText>
+            <helpText lang="de-DE">Änderungen an diesem Wert werden erst bei der nächsten Aktualisierung des Produkt-Indexes wirksam.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <component name="sw-entity-single-select">
+            <name>exemptionsProductStream</name>
+            <entity>product_stream</entity>
+            <label>Exemptions products</label>
+            <label lang="de-DE">Ausnahmen</label>
+            <helpText>Using a dynamic product group, products can be defined that won't be hidden even when they are sold out. Changes to this value or the selected dynamic product group won't take effect until the next product index refresh.</helpText>
+            <helpText lang="de-DE">Mithilfe einer dynamischen Produktgruppe können hier Produkte festgelegt werden, die selbst wenn sie ausverkauft sind nicht versteckt werden. Änderungen an diesem Wert oder der gewählten dynamischen Produktgruppe werden erst bei der nächsten Aktualisierung des Produkt-Indexes wirksam.</helpText>
+        </component>
+
+        <component name="sw-entity-multi-id-select">
+            <name>categoryExemptions</name>
+            <entity>category</entity>
+            <label>Category Exemptions</label>
+            <label lang="de-DE">Kategorie Ausnahmen</label>
+            <helpText>Categories where products should not be hidden (only has an effect if products are hidden in the listing). Does not consider parent or child categories.</helpText>
+            <helpText lang="de-DE">Kategorien in denen die Produkte nicht ausgeblendet werden sollen (greift nur sofern Produkte im Listing ausgeblendet werden sollen). Eltern- bzw. Kind-Kategorien werden dabei nicht berücksichtigt.</helpText>
+        </component>
+    </card>
+
+    <card>
+        <title>Scope</title>
+        <title lang="de-DE">Bereiche</title>
+
+        <input-field type="bool">
+            <name>hideGlobal</name>
+            <label>Global</label>
+            <label lang="de-DE">Global</label>
+            <helpText>Sold out product will be deactivated for the entire sales channel. This also affects the individual product pages and the API. Disabling any of the options below won't have any effect.</helpText>
+            <helpText lang="de-DE">Ausverkaufte Produkte werden für den gesamten Sales Channel deaktiviert. Dies betrifft auch auch die einzelnen Produktseiten und die API. Falls eine der unten stehenden Optionen deaktiviert wird, hat dies keinen Effekt.</helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>hideListing</name>
+            <label>Listing</label>
+            <label lang="de-DE">Listing</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>hideSearch</name>
+            <label>Search</label>
+            <label lang="de-DE">Suche</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>hideCms</name>
+            <label>Shopping Experiences</label>
+            <label lang="de-DE">Erlebniswelten</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>hideCrossSelling</name>
+            <label>Cross Selling</label>
+            <label lang="de-DE">Cross Selling</label>
+            <defaultValue>true</defaultValue>
+        </input-field>
+    </card>
+</config>

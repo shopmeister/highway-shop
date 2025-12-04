@@ -1,0 +1,79 @@
+{% block twt_component_customer_rating %}
+    {# Round to nearest half according to Google #}
+    {# 1.1 > 1.2 = 1.0 #}
+    {# 1.3 > 1.7 = 1.5 #}
+    {# 1.8 > 2.0 = 2.0 #}
+
+    {% set number = points %}
+    {% set rounded = number|round %}
+
+    {% set decimal_part = number - (number|round) %}
+
+    {% if decimal_part > 0 %}
+        {% if decimal_part <= 0.25 %}
+            {% set result = (number|round) %}
+        {% elseif decimal_part > 0.25 %}
+            {% set result = (number|round) + 0.5 %}
+        {% endif %}
+
+    {% else %}
+        {% if decimal_part <= -0.25 %}
+            {% set result = (number|round) - 0.5 %}
+        {% elseif decimal_part > -0.25 %}
+            {% set result = (number|round) %}
+        {% endif %}
+
+    {% endif %}
+
+    {% set points = result %}
+
+    {# Calculate stars #}
+    {% set full = points|round(0, 'floor') %}
+    {% set left = ((points - full) * 4)|round %}
+    {% set left = left / 4 %}
+
+    {% if left > 0 %}
+        {% set half = 1 %}
+    {% endif %}
+
+    {% set blank = 5 - full - half %}
+
+    {#
+    {% if altText is not defined %}
+        {% set altText = 'detail.reviewAvgRatingAltText'|trans({ '%points%': points|round(1, 'floor'), '%maxPoints%': 5 }) %}
+    {% endif %}
+    #}
+
+    {# @deprecated: block component_customer_rating_output #}
+    {% block twt_component_customer_rating_output %}
+        <div class="customer-review-rating">
+            {% if full > 0 %}
+                {% for star in range(1,full) %}
+                    {% sw_include '@Storefront/storefront/component/review/point.html.twig' with {
+                        type: 'full'
+                    } %}
+                {% endfor %}
+            {% endif %}
+
+            {% if half %}
+                {% sw_include '@Storefront/storefront/component/review/point.html.twig' with {
+                    type: 'half'
+                } %}
+            {% endif %}
+
+            {% if blank > 0 %}
+                {% for star in range(1,blank) %}
+                    {% sw_include '@Storefront/storefront/component/review/point.html.twig' with {
+                        type: 'blank'
+                    } %}
+                {% endfor %}
+            {% endif %}
+
+            {#
+            <p class="product-review-rating-alt-text visually-hidden">
+                {{ altText }}
+            </p>
+            #}
+        </div>
+    {% endblock %}
+{% endblock %}

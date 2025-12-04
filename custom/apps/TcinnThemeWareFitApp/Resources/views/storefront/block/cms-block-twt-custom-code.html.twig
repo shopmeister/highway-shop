@@ -1,0 +1,12 @@
+{# ThemeWare® CMS block "Custom code" #}
+
+{% block block_twt_custom_code %}
+    {% set element = block.slots.getSlot('content') %}
+    {% set columns = 1 %}
+
+    <div class="col-12" data-cms-element-id="{{ element.id }}">
+        {% block block_twt_custom_code_inner %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

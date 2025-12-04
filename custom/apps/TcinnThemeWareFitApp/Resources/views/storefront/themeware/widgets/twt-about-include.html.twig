@@ -1,0 +1,17 @@
+{# ThemeWare® 'About' widget #}
+{#
+    Create 'About' widget and content
+
+    @Storefront/storefront/themeware/widgets/twt-about-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ThemeWare: About content #}
+{% block twt_widget_about %}
+    <div class="twt-widget-about twt-about is-{{ type }}">
+        {% block twt_widget_about_content %}
+            {{ 'twt.widget.about.content'|trans|raw }}
+        {% endblock %}
+    </div>
+{% endblock %}

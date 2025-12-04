@@ -1,0 +1,39 @@
+{% sw_extends '@Storefront/storefront/component/payment/payment-method.html.twig' %}
+
+{% block component_payment_method_field %}
+    {% set checked = payment.id is same as(selectedPaymentMethodId) %}
+    {% set isAmazonPayOneClickCheckout = (page.extensions.SwagAmazonPayConfirm and page.extensions.SwagAmazonPayConfirm.checkoutSessionId) %}
+    {% set paymentMethodIsAmazonPay = 'AmazonPaymentHandler' in payment.handlerIdentifier and not amazonPayButtonExtension.paymentMethodInvalid %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block component_payment_method_image %}
+    {% if paymentMethodIsAmazonPay and payment.media is empty %}
+        {% block page_checkout_confirm_payment_current_amazon_pay_logo %}
+            <img src="{{ asset('bundles/swagamazonpay/storefront/img/amazon_pay.svg') }}" id="swag-amazon-pay-change-amazon-payment-logo" alt="Amazon Pay" title="Amazon Pay">
+        {% endblock %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_payment_method_description %}
+    {{ parent() }}
+
+    {% if paymentMethodIsAmazonPay and isAmazonPayOneClickCheckout %}
+        <div>
+            <a id="swag-amazon-pay-change-amazon-payment"
+               href="#"
+               title="{{ "SwagAmazonPay.confirm.payment.changeAmazonPaymentMethod"|trans|striptags }}">
+                {{ "SwagAmazonPay.confirm.payment.changeAmazonPaymentMethod"|trans|striptags }}
+            </a>
+        </div>
+        <div class="mt-2">
+            <a href="{{ path("frontend.checkout.confirm.page", {"amazonPayAction":"reset"}) }}"
+               title="{{ "SwagAmazonPay.confirm.payment.changePaymentMethod"|trans|striptags }}">
+                {{ "SwagAmazonPay.confirm.payment.changePaymentMethod"|trans|striptags }}
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

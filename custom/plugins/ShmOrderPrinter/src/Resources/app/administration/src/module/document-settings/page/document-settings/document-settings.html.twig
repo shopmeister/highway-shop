@@ -1,0 +1,78 @@
+<sw-page style="height: 550px; border: 1px solid #D8DDE6;">
+	{% block document_settings_search_bar %}
+		<template #search-bar>
+			<sw-search-bar></sw-search-bar>
+		</template>
+	{% endblock %}
+
+	{% block document_settings_smart_bar_header %}
+		<template #smart-bar-header>
+			<h2>
+				{{ $tc('sw-settings.index.title') }}
+				<sw-icon name="regular-chevron-right-xs" small></sw-icon>
+				{{ $tc('document-settings.index.header') }}
+			</h2>
+		</template>
+	{% endblock %}
+
+	{% block document_settings_smart_bar_actions %}
+		<template #smart-bar-actions>
+			<sw-button variant="primary" @click="saveSettings" :isLoading="savingSetting" :disabled="failedToFetched">
+				{{ $tc('global.default.save') }}
+			</sw-button>
+		</template>
+	{% endblock %}
+
+	{% block document_settings_content %}
+		<template #content>
+			<sw-card-view>
+			    <sw-loader size="100px" v-if="isLoading" />
+				<div class="settings-wrapper" v-else>
+					<div v-for="channel in salesChannels" :key="channel.id">
+						<p>
+							<strong>{{ channel.attributes.name }}</strong>
+						</p>
+						<div class="checkbox-container" style="display: flex;
+																																																																																    gap: 8px;
+																																																																																    flex-wrap: wrap;
+																																																																																    align-items: center;
+																																																	padding: 5px 9px ">
+							<div
+								class="checkbox" v-for="document in documentTypes" :key="document.id" style="display: flex;
+																																				    justify-content: center;
+																																				    gap: 6px;
+																																				    padding: 2px 3px;">
+
+								{# <sw-checkbox-field
+																								v-model="aBooleanProperty" :label="document?.attributes?.name" @change="changeSettings($event,channel.id,document.attributes.technicalName)"/> #}
+								<div class="sw-field--checkbox">
+									<div class="sw-field--checkbox__content">
+										<div class="sw-field__checkbox">
+											<input :id="`sw-field--${document.attributes.name}`" type="checkbox" :checked="settings[channel.id]?.includes(document.attributes.technicalName)" @change="changeSettings($event,channel.id,document.attributes.technicalName)">
+
+											<div class="sw-field__checkbox-state">
+												<span class="sw-icon sw-icon--fill icon--regular-checkmark-xxs" data-testid="sw-icon__regular-checkmark-xxs">
+													<svg id="meteor-icon-kit__regular-checkmark-xxs" viewbox="0 0 8 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path fill-rule="evenodd" clip-rule="evenodd" d="M1.70711 2.2929C1.31658 1.9024 0.68342 1.9024 0.29289 2.2929C-0.09763 2.6834 -0.09763 3.3166 0.29289 3.7071L2.2929 5.7071C2.6834 6.0976 3.3166 6.0976 3.7071 5.7071L7.7071 1.7071C8.0976 1.3166 8.0976 0.68342 7.7071 0.29289C7.3166 -0.09763 6.6834 -0.09763 6.2929 0.29289L3 3.5858L1.70711 2.2929z" fill="#758CA3"></path>
+													</svg>
+												</span>
+											</div>
+										</div>
+										<div class="sw-field" :label="document.attributes.name">
+											<div class="sw-field__label">
+												<label for="w-field--${document.attributes.name}" class="">
+													{{ document.attributes.name }}
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</sw-card-view>
+		</template>
+	{% endblock %}
+
+</sw-page>

@@ -1,0 +1,28 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Light background colors
+	==================================================
+
+*/
+
+// ThemeWare: Bg color variants ------------------------------
+
+// Farb-Varianten der Badges
+@mixin twt-bg-variant($background, $border, $color) {
+    color: color-contrast($background);
+    @include gradient-bg($background);
+    border-color: $border;
+}
+
+// Helle Farb-Varianten der Hintergrundfarben
+@mixin twt-bg-variant-lighten($background, $border, $color) {
+    color: $color !important; // Override fixed [color-contrast($background)]
+    @include gradient-bg($background);
+    border-color: $border;
+}

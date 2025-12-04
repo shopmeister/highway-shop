@@ -1,0 +1,7 @@
+<?php
+
+MLI18n::gi()->{'shopware_orderstatus_carrier_defaultField_value_shippingname'} = 'Transmetre le nom du livreur en tant que mode de livraison';
+MLI18n::gi()->{'Shopware_Orderimport_CustomerGroup_Notloggedin'} = 'Ne pas créer de compte client';
+MLI18n::gi()->{'Shopware_Orderimport_CountryCodeDontExistsError'} = 'La commande {#mpOrderId#} requiert le code d\'identification de pays {#ISO#} dans les Paramètres de votre boutique, pour pouvoir importer la commande.';
+MLI18n::gi()->{'Shopware_Orderimport_CountryCodeIsEmptyError'} = 'Le code d\'identification de pays pour la commande {#mpOrderId#} n\'a pas été fournie par la place de marché. Veuillez contacter le service client magnalister.';
+MLI18n::gi()->{'global_config_orderimport_field_customergroup_help'} = 'Choisissez les groupes dans lesquels vos clients peuvent être classés.';

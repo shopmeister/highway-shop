@@ -1,0 +1,170 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS overlay animations
+	==================================================
+
+*/
+
+/* @TODO:
+ * [x] Fix for backdrop-filter: translate3d > top/left/bottom/right
+ * [ ] Add configuration for effects...
+ * [ ] Add performance optimizations
+ */
+
+@-webkit-keyframes cmsOverlaySlideInDown {
+    from {
+        //-webkit-transform: translate3d(0, -100%, 0);
+        //transform: translate3d(0, -100%, 0);
+        bottom: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        bottom: 0;
+    }
+}
+
+@keyframes cmsOverlaySlideInDown {
+    from {
+        //-webkit-transform: translate3d(0, -100%, 0);
+        //transform: translate3d(0, -100%, 0);
+        bottom: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        bottom: 0;
+    }
+}
+
+@-webkit-keyframes cmsOverlaySlideInLeft {
+    from {
+        //-webkit-transform: translate3d(-100%, 0, 0);
+        //transform: translate3d(-100%, 0, 0);
+        left: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        left: 0;
+    }
+}
+
+@keyframes cmsOverlaySlideInLeft {
+    from {
+        //-webkit-transform: translate3d(-100%, 0, 0);
+        //transform: translate3d(-100%, 0, 0);
+        left: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        left: 0;
+    }
+}
+
+@-webkit-keyframes cmsOverlaySlideInRight {
+    from {
+        //-webkit-transform: translate3d(100%, 0, 0);
+        //transform: translate3d(100%, 0, 0);
+        right: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        right: 0;
+    }
+}
+
+@keyframes cmsOverlaySlideInRight {
+    from {
+        //-webkit-transform: translate3d(100%, 0, 0);
+        //transform: translate3d(100%, 0, 0);
+        right: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        right: 0;
+    }
+}
+
+@-webkit-keyframes cmsOverlaySlideInUp {
+    from {
+        //-webkit-transform: translate3d(0, 100%, 0);
+        //transform: translate3d(0, 100%, 0);
+        top: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        top: 0;
+    }
+}
+
+@keyframes cmsOverlaySlideInUp {
+    from {
+        //-webkit-transform: translate3d(0, 100%, 0);
+        //transform: translate3d(0, 100%, 0);
+        top: 100%;
+        visibility: visible;
+    }
+
+    to {
+        //-webkit-transform: translate3d(0, 0, 0);
+        //transform: translate3d(0, 0, 0);
+        top: 0;
+    }
+}
+
+@-webkit-keyframes cmsOverlayZoomIn {
+    from {
+        //opacity: 0;
+        //-webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        //opacity: 1;
+    }
+
+    100% {
+        //opacity: 1;
+    }
+}
+
+@keyframes cmsOverlayZoomIn {
+    from {
+        //opacity: 0;
+        //-webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        //opacity: 1;
+    }
+
+    100% {
+        //opacity: 1;
+    }
+}

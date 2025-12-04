@@ -1,0 +1,81 @@
+###############################################################################
+# Shopware 6 Production .gitignore
+###############################################################################
+
+# Composer dependencies
+/vendor/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+/config/jwt/
+/config/secrets/
+install.lock
+
+# Cache & Logs
+/var/cache/*
+!/var/cache/.gitkeep
+/var/log/*
+!/var/log/.gitkeep
+/var/queue/*
+
+# Public build artifacts
+/public/theme/
+/public/bundles/
+/public/css/
+/public/fonts/
+/public/js/
+/public/sitemap/
+/public/thumbnail/
+/public/recovery/
+
+# Media & User uploads (NEVER commit customer data)
+/public/media/*
+!/public/media/.gitkeep
+/files/*
+!/files/.gitkeep
+
+# Plugin dependencies (bought/commercial plugins)
+# Add your commercial plugins here, e.g.:
+# /custom/plugins/SwagPayPal/
+# /custom/plugins/CommercialPluginName/
+
+# Theme build artifacts (if you build themes)
+/custom/plugins/*/src/Resources/app/storefront/dist/
+/custom/plugins/*/src/Resources/app/administration/dist/
+
+# IDE & Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node.js (if you have frontend tooling)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Testing
+/phpunit.xml
+/.phpunit.result.cache
+
+# Backup & temporary files
+*.bak
+*.tmp
+*.old
+.backup/
+
+###############################################################################
+# KEEP THESE IN REPO:
+# ✅ composer.json, composer.lock
+# ✅ config/packages/*.yaml (technical settings)
+# ✅ custom/plugins/YourCustomPlugin/ (your own plugins)
+# ✅ src/ (custom app code)
+# ✅ docker-compose.yml, docker/ (if using Docker)
+# ✅ deploy scripts (deploy.sh, GitHub Actions, etc.)
+###############################################################################

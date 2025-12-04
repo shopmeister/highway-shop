@@ -1,0 +1,10 @@
+@import "~scss/variables";
+
+.cnk-order-csv-export-mapping-modal {
+    &.sw-modal--default {
+        .sw-modal__dialog {
+            max-width: 1000px;
+        }
+    }
+}
+

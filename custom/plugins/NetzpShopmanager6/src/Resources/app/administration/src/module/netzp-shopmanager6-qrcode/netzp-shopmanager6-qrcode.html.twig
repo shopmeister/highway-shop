@@ -1,0 +1,29 @@
+{% block netzp_shopmanager6_qrcode %}
+    <div class="netzp-shopmanager6-qrcode">
+        <b>{{ $t('netzp-shopmanager6.qrcode') }}</b><br>
+
+        <img :src="getQrCodeUrl" class="qrcode" alt="QR-Code">
+        <sw-password-field type="password" :label="$t('netzp-shopmanager6.apikey')" :value="getAccessKey" :copyable="true" :passwordToggleAble="false" :disabled="true"></sw-password-field>
+
+        <div class="info">
+            {{ $t('netzp-shopmanager6.appinfo') }}
+        </div>
+
+        <div class="badges">
+            <div class="ios">
+                <a href="https://apps.apple.com/de/app/shop-manager-f%C3%BCr-shopware/id889918230?itsct=apps_box_badge&amp;itscg=30200"
+                   style="display: inline-block; overflow: hidden; border-radius: 13px; width: 135px; height: 40px;"
+                   rel="noopener" target="_blank">
+                    <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1406678400"
+                         alt="Download on the App Store" style="border-radius: 13px; width: 135px; height: 40px;">
+                </a>
+            </div>
+            <div class="android">
+                <a href='https://play.google.com/store/apps/details?id=de.mobix.shopmanager&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'
+                   rel="noopener" target="_blank">
+                    <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

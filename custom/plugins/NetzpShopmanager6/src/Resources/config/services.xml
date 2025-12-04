@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="NetzpShopmanager6\Components\ShopmanagerHelper" class="NetzpShopmanager6\Components\ShopmanagerHelper">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="Shopware\Core\System\StateMachine\StateMachineRegistry" />
+            <argument type="service" id="router"/>
+            <argument type="service" id="order.repository" />
+            <argument type="service" id="customer.repository" />
+            <argument type="service" id="product.repository" />
+            <argument type="service" id="sales_channel.repository" />
+            <argument type="service" id="shipping_method.repository" />
+            <argument type="service" id="state_machine.repository" />
+            <argument type="service" id="state_machine_state.repository" />
+            <argument type="service" id="payment_method.repository" />
+            <argument>%kernel.shopware_version%</argument>
+            <argument>%kernel.shopware_version_revision%</argument>
+        </service>
+
+        <service id="NetzpShopmanager6\Components\ShopmanagerStatistics" class="NetzpShopmanager6\Components\ShopmanagerStatistics">
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerHelper" />
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerVisitors" />
+            <argument type="service" id="order.repository" />
+            <argument type="service" id="customer.repository" />
+            <argument type="service" id="s_plugin_netzp_statistics.repository" />
+        </service>
+
+        <service id="NetzpShopmanager6\Components\ShopmanagerVisitors" class="NetzpShopmanager6\Components\ShopmanagerVisitors">
+            <argument type="service" id="s_plugin_netzp_statistics.repository" />
+        </service>
+
+        <service id="NetzpShopmanager6\Components\PushMessageHelper" class="NetzpShopmanager6\Components\PushMessageHelper">
+            <argument type="service" id="integration.repository" />
+            <argument type="service" id="language.repository" />
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerHelper" />
+        </service>
+
+        <service id="NetzpShopmanager6\Controller\ShopmanagerController" public="true">
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerHelper" />
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerStatistics" />
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="NetzpShopmanager6\Controller\StatisticsController" public="true">
+            <argument type="service" id="NetzpShopmanager6\Components\ShopmanagerVisitors" />
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="NetzpShopmanager6\Core\Content\Statistic\StatisticDefinition">
+            <tag name="shopware.entity.definition" entity="s_plugin_netzp_statistics" />
+        </service>
+
+        <service id="NetzpShopmanager6\Subscriber\FrontendSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" />
+            <argument type="service" id="NetzpShopmanager6\Components\PushMessageHelper" />
+            <argument type="service" id="language.repository" />
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="NetzpShopmanager6\Core\Content\Flow\Dispatching\Action\MobilePushAction">
+            <argument type="service" id="NetzpShopmanager6\Components\PushMessageHelper" />
+            <tag name="flow.action" priority="100" key="action.netzp.mobilepush"/>
+        </service>
+
+        <service id="NetzpShopmanager6\Core\Content\Flow\Subscriber\BusinessEventCollectorSubscriber">
+            <tag name="kernel.event_subscriber"/>
+        </service>
+    </services>
+</container>

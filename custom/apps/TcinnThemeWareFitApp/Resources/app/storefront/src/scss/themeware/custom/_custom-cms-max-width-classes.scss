@@ -1,0 +1,155 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS spacing classes
+	==================================================
+    see @TODO
+*/
+
+// Info:
+// - ThemeWare CSS-Klassen mit welchen CMS-Elementen mit einer max-width versehen werden können.
+
+// @TODO: twt-mw-custom
+// @TODO: Add to cms-preview...
+
+@if $twt-custom-css-max-width-classes == 2 {
+  div[class*="twt-mw-"] {
+    margin: 0 auto;
+  }
+
+  div[class*="twt-max-width-"] {
+    margin: 0 auto;
+  }
+
+  div[class*="twt-cms-max-width-"] {
+    margin: 0 auto;
+  }
+
+  // @TODO: .cms-section
+  // @TODO: .cms-block
+
+  .twt-mw, // min #unofficial
+  .twt-max-width, // shorthand #unofficial
+  .twt-cms-max-width {
+    max-width: null-pixel-unit($twt-container-max-width);
+    // @TODO: calc(#{$twt-container-max-width}px - 40px)
+    margin: 0 auto;
+  }
+
+  // @TODO: 480
+  
+  .twt-mw-500, // min #unofficial
+  .twt-max-width-500, // shorthand #unofficial
+  .twt-cms-max-width-500 { 
+    max-width: 500px;
+  }
+
+  .twt-mw-576, // min #unofficial
+  .twt-max-width-576, // shorthand #unofficial
+  .twt-cms-max-width-576 { 
+    max-width: 576px; // sm
+  }
+
+  .twt-mw-600, // min #unofficial
+  .twt-max-width-600, // shorthand #unofficial
+  .twt-cms-max-width-600 { 
+    max-width: 600px;
+  }
+
+  // @TODO: 640
+  
+  .twt-mw-700, // min #unofficial
+  .twt-max-width-700, // shorthand #unofficial
+  .twt-cms-max-width-700 { 
+    max-width: 700px;
+  }
+
+  .twt-mw-768, // min #unofficial
+  .twt-max-width-768, // shorthand #unofficial
+  .twt-cms-max-width-768 { 
+    max-width: 768px; // md
+  }
+
+  .twt-mw-800, // min #unofficial
+  .twt-max-width-800, // shorthand #unofficial
+  .twt-cms-max-width-800 { 
+    max-width: 800px;
+  }
+
+  .twt-mw-900, // min #unofficial
+  .twt-max-width-900, // shorthand #unofficial
+  .twt-cms-max-width-900 { 
+    max-width: 900px;
+  }
+
+  .twt-mw-992, // min #unofficial
+  .twt-max-width-992, // shorthand #unofficial
+  .twt-cms-max-width-992 { 
+    max-width: 992px; // lg
+  }
+
+  .twt-mw-1000, // min #unofficial
+  .twt-max-width-1000, // shorthand #unofficial
+  .twt-cms-max-width-1000 { 
+    max-width: 1000px;
+  }
+
+  .twt-mw-1100, // min #unofficial
+  .twt-max-width-1100, // shorthand #unofficial
+  .twt-cms-max-width-1100 { 
+    max-width: 1100px;
+  }
+
+  .twt-mw-1200, // min #unofficial
+  .twt-max-width-1200, // shorthand #unofficial
+  .twt-cms-max-width-1200 { 
+    max-width: 1200px; // xl
+  }
+
+  .twt-mw-1300, // min #unofficial
+  .twt-max-width-1300, // shorthand #unofficial
+  .twt-cms-max-width-1300 { 
+    max-width: 1300px;
+  }
+
+  .twt-mw-1400, // min #unofficial
+  .twt-max-width-1400, // shorthand #unofficial
+  .twt-cms-max-width-1400 { 
+    max-width: 1400px; // xxl
+  }
+
+  .twt-mw-1500, // min #unofficial
+  .twt-max-width-1500, // shorthand #unofficial
+  .twt-cms-max-width-1500 { 
+    max-width: 1500px;
+  }
+
+  .twt-mw-1600, // min #unofficial
+  .twt-max-width-1600, // shorthand #unofficial
+  .twt-cms-max-width-1600 { 
+    max-width: 1600px;
+  }
+
+  .twt-mw-1700, // min #unofficial
+  .twt-max-width-1700, // shorthand #unofficial
+  .twt-cms-max-width-1700 { 
+    max-width: 1700px;
+  }
+
+  .twt-mw-1800, // min #unofficial
+  .twt-max-width-1800, // shorthand #unofficial
+  .twt-cms-max-width-1800 { 
+    max-width: 1800px;
+  }
+
+  .twt-mw-1920, // min #unofficial
+  .twt-max-width-1920, // shorthand #unofficial
+  .twt-cms-max-width-1920 {
+    max-width: 1920px;
+  }
+}

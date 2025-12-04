@@ -1,0 +1,39 @@
+{# ThemeWare: CMS block 'Listing subcategories (Modern)' #}
+
+{#
+    Create cms block and include cms element (@Storefront/storefront/element/cms-element-twt-listing-subcategories-modern.html.twig)
+    Note: This file is only included if a CMS page has subcategories (see cms-section-block-container.html.twig)
+
+    @Storefront/storefront/block/cms-block-twt-listing-subcategories-modern.html.twig
+#}
+
+{% block block_twt_listing_subcategories_modern %}
+    {% set element = block.slots.getSlot('content') %}
+
+    {% block block_twt_listing_subcategories_modern_column %}
+        {# INFO: Only add to cms pages with type 'product_list' #}
+        {# @TODO: Test on 'landingpage' -> Consider dedicated 'landing pages' (.ist-ctl-landingpage) #}
+        {#  NOTE:
+            Dedicated 'landing pages' use 'page.landingPage.cmsPage.type' instead of 'page.cmsPage.type'.
+            > If we want to support them, we need to check 'controllerName|lower' or 'page.landingPage.cmsPage.type'.
+        #}
+        {% if page.cmsPage.type == 'product_list' or page.cmsPage.type == 'page' %}
+            <div class="col-md-12" data-cms-element-id="{{ element.id }}">
+                {% block block_twt_listing_subcategories_modern_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+
+        {% else %}
+            {# Add alert about supportet page types #}
+            {# @TODO: Move alert to element ?! #}
+            <div class="col-md-12 twt-col-empty" data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: 'info',
+                    content: 'twt.cms.alert.listingSubcategories'|trans|sw_sanitize
+                } %}
+            </div>
+
+        {% endif %}
+    {% endblock %}
+{% endblock %}

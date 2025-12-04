@@ -1,0 +1,92 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: 'Shopware Commercial' / 'B2B-Suite > B2B Components' (Evolve, Beyond)
+    ==================================================
+
+*/
+
+// ThemeWare: Adjustments for 'B2B Components' pages ----------------------------------------------------------------------------
+
+// Other pages: Account > 'Shopware Commercial' / Evolve 'B2B-Suite > B2B Components' #extension
+// B2B-Dashboard | Firma | Statistiken | Bestellungen | Bestelllisten | Schnellbestellung | Angebote | Bestellnummern
+
+// Mitarbeiter:
+// - is-ctl-businesspartneraccount is-act-employeelist ("Mitarbeiter")
+// - is-ctl-businesspartneraccount is-act-employeecreate ("Erstelle ein neues Konto")
+// - is-ctl-businesspartneraccount is-act-employeedetail ("Mitarbeiter-Details")
+
+// Rollen:
+// - is-ctl-role is-act-rolelist ("Rollen")
+// - is-ctl-role is-act-rolecreate ("Erstelle eine neue Rolle")
+// - is-ctl-role is-act-roledetail ("Rollendetails")
+
+// Schnellbestellungen:
+// - is-ctl- is-act- ?? ("Schnellbestellungen") ??
+// NOTE: Leider fehlt hier der controllerName
+
+// Angebote:
+// - is-ctl-quote is-act-quotes
+
+// Freigaberegeln:
+// - is-ctl-approvalrule is-act-index ("Freigaberegeln")
+// - is-ctl-approvalrule is-act-create ("Neue Genehmigungsregel")
+// - is-ctl-approvalrule is-act-createpage ("Neue Genehmigungsregel") ??
+
+// Einkaufslisten:
+// - is-ctl-shoppinglist is-act-lists
+// - is-ctl-shoppinglist is-act-list
+
+// account-quick-order ??
+
+@if $twt-cms-layout-adjustments-b2b-components > 1 {
+    .is-ctl-businesspartneraccount,
+    .is-ctl-role,
+    .is-ctl-quote,
+    .is-ctl-approvalrule,
+    .is-ctl-shoppinglist {
+        &.twt-cms-styling {
+            .content-main {
+                .container-main {
+                    > div { // .account .account-content .row
+                        margin-right: 0;
+                        margin-left: 0;
+
+                        @extend .twt-container-main;
+                    }
+                }
+            }
+        }
+
+        &:not(.twt-cms-styling) {
+            .content-main {
+                .container-main {
+                    > div {
+                        // .account .account-content .row
+                        @extend .twt-container-main-min;
+                    }
+                }
+            }
+        }
+    }
+
+    // Asside "B2B admin badge" adjustments
+    .b2b-admin-badge .badge {
+        margin: 3px 0;
+    }
+
+    // Approval rule submit button styling
+    @if $twt-forms-layout-type == 2 {
+        .approval-rule-form .rule-search-btn {
+            border-top-width: 0;
+            border-right-width: 0;
+            border-bottom-width: 2px;
+            border-left-width: 0;
+        }
+    }
+}

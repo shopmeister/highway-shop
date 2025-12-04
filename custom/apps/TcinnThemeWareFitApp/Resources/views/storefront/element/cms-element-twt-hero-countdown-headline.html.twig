@@ -1,0 +1,153 @@
+{# ThemeWare: CMS element "Hero countdown headline" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtHeroCountdownHeadline = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtHrCntdwnHdlnHeadline = element.translated.config.headline.value %}
+
+{% set twtHrCntdwnHdlnDisplayMode = element.translated.config.displayMode.value %}
+{% set twtHrCntdwnHdlnMinHeight = element.translated.config.minHeight.value %}
+{% set twtHrCntdwnHdlnVerticalAlign = twtHeroCountdownHeadline.verticalAlign.value %}
+
+{# Tab "Layout" #}
+{% set twtHrCntdwnHdlnFontFamily = twtHeroCountdownHeadline.fontFamily.value %}
+{% set twtHrCntdwnHdlnTextColor = twtHeroCountdownHeadline.textColor.value %}
+
+{% set twtHrCntdwnHdlnMaxWidth = twtHeroCountdownHeadline.maxWidth.value %}
+
+{% set twtHrCntdwnHdlnColorOverlay = twtHeroCountdownHeadline.colorOverlay.value %}
+{% set twtHrCntdwnHdlnColorOverlayBgColor = twtHeroCountdownHeadline.colorOverlayBgColor.value %}
+{% set twtHrCntdwnHdlnColorOverlayBgGradient = twtHeroCountdownHeadline.colorOverlayBgGradient.value %}
+{% set twtHrCntdwnHdlnColorOverlayBgColor2 = twtHeroCountdownHeadline.colorOverlayBgColor2.value %}
+{% set twtHrCntdwnHdlnColorOverlayBgGradientAngle = twtHeroCountdownHeadline.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtHrCntdwnHdlnHtmlTag = twtHeroCountdownHeadline.htmlTag.value %}
+{% if twtHrCntdwnHdlnHtmlTag is empty %}
+    {% set twtHrCntdwnHdlnHtmlTag = 'p' %}
+{% endif %}
+{% set twtHrCntdwnHdlnHtmlTagClass = twtHeroCountdownHeadline.htmlTagClass.value %}
+
+{% set twtHrCntdwnHdlnLzyLdng = twtHeroCountdownHeadline.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtHrCntdwnHdlnCssClass = twtHeroCountdownHeadline.cssClass.value %}
+{% set twtHrCntdwnHdlnCssClassHeadline = twtHeroCountdownHeadline.cssClassHeadline.value %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set overlayClasses = ['overlay'] %}
+
+{% set contentClasses = ['content'] %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% set lazyloading = twtHrCntdwnHdlnLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_hero_countdown_headline %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: finalize #}
+
+    <div class="cms-element-{{ element.type }}{% if twtHrCntdwnHdlnVerticalAlign %} {# d-flex #} has-vertical-alignment{% endif %}{% if twtHrCntdwnHdlnHoverEffect != 'none' %} is-hover{% endif %}{% if twtHrCntdwnHdlnCssClass is not empty %} {{ twtHrCntdwnHdlnCssClass }}{% endif %}">
+
+        {% block element_twt_hero_countdown_headline_content %}
+            {# @TODO: {% if twtHrCntdwnHdlnVerticalAlign and not isCover %} #}
+            {% if twtHrCntdwnHdlnVerticalAlign %}
+                <div class="cms-element-alignment{% if twtHrCntdwnHdlnVerticalAlign == 'center' %} align-self-center{% elseif twtHrCntdwnHdlnVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                     {% if twtHrCntdwnHdlnDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {% block element_twt_hero_countdown_headline_image_inner %}
+                {# ThemeWare: Set 'Hero countdown headline' element #}
+                {% set heroCountdownHeadline %}
+                    <div class="twt-hero-countdown-headline-container cms-content-container content-container justify-content-center align-items-center">
+                        {# Colored overlay (if configured) #}
+                        {% if twtHrCntdwnHdlnColorOverlay %}
+                            <div class="twt-hero-countdown-headline-overlay color-overlay" style="background: {{ twtHrCntdwnHdlnColorOverlayBgColor }};{% if twtHrCntdwnHdlnColorOverlayBgGradient %} background: linear-gradient({{ twtHrCntdwnHdlnColorOverlayBgGradientAngle }}deg, {{ twtHrCntdwnHdlnColorOverlayBgColor }} 0%, {{ twtHrCntdwnHdlnColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                        {% endif %}
+
+                        {# Headline (mandatory) #}
+                        <div class="twt-hero-countdown-headline-content {{ contentClasses|sort|join(' ') }}"
+                             style="max-width: {{ twtHrCntdwnHdlnMaxWidth }};">
+                            <{{ twtHrCntdwnHdlnHtmlTag }} class="twt-hero-countdown-headline-headline headline {{ twtHrCntdwnHdlnHtmlTagClass }} twt-font-family-{{ twtHrCntdwnHdlnFontFamily }}{% if twtHrCntdwnHdlnCssClassHeadline is not empty %} {{ twtHrCntdwnHdlnCssClassHeadline }}{% endif %}"
+                               style="color: {{ twtHrCntdwnHdlnTextColor }};">
+                                <span>{{ twtHrCntdwnHdlnHeadline }}</span>
+                            </{{ twtHrCntdwnHdlnHtmlTag }}>
+                        </div>
+                    </div>
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+
+                    {% block element_twt_hero_countdown_headline_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-hero-countdown-headline-image-container {# w-100 #} cms-image-container image-container is-{{ twtHrCntdwnHdlnDisplayMode }}"
+                                 {% if twtHrCntdwnHdlnMinHeight and twtHrCntdwnHdlnDisplayMode == 'cover' %} style="min-height: {{ twtHrCntdwnHdlnMinHeight }};"{% endif %}>
+
+                                {% block element_twt_hero_countdown_headline_image_media %}
+                                    {% set attributes = {
+                                        class: 'cms-image',
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: ''),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtHrCntdwnHdlnDisplayMode == 'cover' or twtHrCntdwnHdlnDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtHrCntdwnHdlnDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load 'Hero countdown headline' element #}
+                                {{ heroCountdownHeadline }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                {% endset %}
+
+                {# ThemeWare: Load elements #}
+                {% if element.translated.config.url.value %}
+                    {# Info: Title tag = Title text (as the text is mandatory) #}
+                    <a href="{{ element.translated.config.url.value }}"
+                       class="cms-image-link"
+                       title="{{ element.translated.config.title.value }}"
+                       {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                       {% if element.translated.config.newTab.value %}target="_blank" rel="noopener"{% endif %}
+                    >
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+                    </a>
+
+                {% else %}
+                    {# ThemeWare: Load image element #}
+                    {{ imageElement }}
+
+                {% endif %}
+            {% endblock %}
+
+            {# @TODO: {% if twtHrCntdwnHdlnVerticalAlign and not isCover %} #}
+            {% if twtHrCntdwnHdlnVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

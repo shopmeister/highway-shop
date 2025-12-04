@@ -1,0 +1,592 @@
+{
+	"twt": {
+		"copyright": "© %date% %shopname% - Alle Rechte vorbehalten.",
+		"tcinn": "<a href=\"%href%\" title=\"%title%\" rel=\"dofollow noopener\" target=\"_blank\">%name%</a>",
+		"general": {
+			"close": "Schließen"
+		},
+		"header": {
+			"accountText": "Mein Konto",
+			"cartText": "Warenkorb",
+			"offcanvasMenuText": "Navigation",
+			"searchText": "Suche",
+			"serviceHotline": "Service-Hotline",
+			"serviceHotlineText": "<a href=\"tel:+49180000000\">0180 - 000000</a> Mo-Fr, 09:00 - 17:00 Uhr",
+			"wishlistText": "Wunschzettel"
+		},
+		"breadcrumb": {
+			"furtherInformation": "Sie sind hier:"
+		},
+		"custom": {
+			"css": ""
+		},
+		"listing": {
+			"filter": {
+				"title": "Filter"
+			},
+			"manufacturerLabel": "Hersteller:",
+			"navigation": {
+				"title": "Navigation"
+			},
+			"ordernumberLabel": "Produktnummer:"
+		},
+		"detail": {
+			"availableStockLabel": "Verfügbarer Bestand:",
+			"backordersNote": {
+				"backordersDenied": "Keine Nachbestellungen möglich",
+				"backordersPossible": "Nachbestellungen möglich"
+			},
+			"benefits": {
+				"headline": "Unsere Vorteile",
+				"content": "Kostenloser Versand; Versand innerhalb von 24h; 30 Tage Geld-Zurück-Garantie; Bequemer Kauf auf Rechnung"
+			},
+			"comment": {
+				"title": "Unser Kommentar zu \"%product%\""
+			},
+			"customFields": {
+				"customField1": {
+					"label": "Zusatzfeld 1:"
+				},
+				"customField2": {
+					"label": "Zusatzfeld 2:"
+				},
+				"customField3": {
+					"label": "Zusatzfeld 3:"
+				}
+			},
+			"datasheets": {
+				"title": "Datenblätter",
+				"link": "Download \"%name%\"",
+				"fallback": "Datenblatt"
+			},
+			"deliveryTimeLabel": "Lieferzeit:",
+			"downloads": {
+				"title": "Verfügbare Downloads",
+				"link": "Download \"%name%\"",
+				"fallback": "Download"
+			},
+			"eanLabel": "EAN:",
+			"furtherLinks": {
+				"title": "Weiterführende Links zu \"%product%\"",
+				"fallback": "Link"
+			},
+			"headlineProperties": "Eigenschaften",
+			"heightLabel": "Höhe:",
+			"imageSimilarNote": "Abbildung ähnlich",
+			"infoProperties": "Angaben gemäß Hersteller. Irrtum und Änderung vorbehalten.",
+			"isCloseoutNote": "Abverkauf",
+			"lengthLabel": "Länge:",
+			"manufacturerLabel": "Hersteller:",
+			"manufacturernumberLabel": "Hersteller-Nr.:",
+			"maxpurchaseLabel": "Maximalabnahme:",
+			"minpurchaseLabel": "Mindestabnahme:",
+			"paymentLogos": {
+				"headline": "Unsere Zahlungsarten:"
+			},
+			"productVideos": {
+				"title": "Videos",
+				"fallback": "Video"
+			},
+			"properties": {
+				"title": "Eigenschaften"
+			},
+			"shippingFreeLabel": "Versandkostenfrei",
+			"socialSharingLinks": {
+				"headline": "Dieses Produkt weiterempfehlen:",
+				"facebook": {
+					"label": "Facebook",
+					"title": "Bei Facebook teilen"
+				},
+				"twitter": {
+					"label": "Twitter",
+					"title": "Bei Twitter teilen"
+				},
+				"pinterest": {
+					"label": "Pinterest",
+					"title": "Bei Pinterest teilen"
+				},
+				"whatsapp": {
+					"label": "WhatsApp",
+					"title": "Bei WhatsApp teilen"
+				},
+				"email": {
+					"body": "schau mal was ich entdeckt habe!",
+					"closing": "Viele Grüße",
+					"label": "E-Mail",
+					"salutation": "Hallo,",
+					"title": "Per E-Mail empfehlen"
+				},
+				"x": {
+					"label": "X / Twitter",
+					"title": "Bei X / Twitter teilen"
+				}
+			},
+			"stockLabel": {
+				"label": "Lagerbestand:",
+				"noStock": "Derzeit nicht auf Lager.",
+				"lowStock": {
+					"label": "Nur noch %stock% lieferbar.",
+					"prefix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"suffix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+				},
+				"inStock": "Auf Lager.",
+				"availableStock": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+				"highStock": {
+					"label": "Über %stock% lieferbar.",
+					"prefix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"suffix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+				}
+			},
+			"tabCustom": {
+				"title": "Benutzerdefinierter-Tab",
+				"headline": "Benutzerdefinierter-Tab"
+			},
+			"tabDatasheets": {
+				"title": "Datenblätter",
+				"headline": "Datenblätter"
+			},
+			"tabManufacturer": {
+				"title": "Hersteller",
+				"headline": "Hersteller",
+				"linkProducts": {
+					"label": "Weitere Produkte von %manufacturer%"
+				},
+				"linkWebsite": {
+					"label": "Hersteller-Webseite"
+				},
+				"moreInformation": "Weiterführende Links des Herstellers"
+			},
+			"tabProperties": {
+				"title": "Eigenschaften",
+				"headline": "Eigenschaften"
+			},
+			"tabVideos": {
+				"alt": "Video",
+				"title": "Videos",
+				"headline": "Videos"
+			},
+			"weightLabel": "Gewicht:",
+			"widthLabel": "Breite:"
+		},
+		"extension": {
+			"announcementBanner": {
+				"content": "<span class=\"label label-info\">Info</span> <span class=\"text\">Bitte beachten Sie, unsere geänderten Lieferzeiten während wir uns im <strong>Betriebsurlaub</strong> befinden.</span>",
+				"link": "/#"
+			},
+			"checkoutSteps": {
+				"step1": "Warenkorb",
+				"step2": "Anmelden / Registrierung",
+				"step3": "Bestellung abschließen"
+			},
+			"customAnnouncement": {
+				"content": "<span>Bitte beachten Sie, dass wir uns in der Zeit vom XX.YY. bis XX.YY. im <strong>Betriebsurlaub</strong> befinden. Die bei unseren Artikeln angegebenen Lieferzeiten verlängern sich daher jeweils um XX Tage. – Wir bedanken uns für Ihr Verständnis.</span>"
+			},
+			"discountBadge": {
+				"discount": "%discount% %currency% gespart",
+				"discountShort": "%discount% %currency%",
+				"percentage": "%discount%% gespart",
+				"percentageShort": "%discount%%",
+				"suffix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+			},
+			"floatingWidget": {
+				"title": "Floating-Widget",
+				"body": "Das ist das Floating-Widget.",
+				"link": "#"
+			},
+			"quickview": {
+				"title": "Vorschau"
+			},
+			"newBadge": {
+				"label": "Neu",
+				"icon": "star"
+			},
+			"shippingFreeBadge": {
+				"label": "Versandkostenfrei",
+				"icon": "package-open"
+			},
+			"socialProofing": {
+				"infotext": "%sales%+ mal verkauft in den letzten Monaten",
+				"icon": "thumb-up"
+			},
+			"soldBadge": {
+				"icon": "blocked"
+			},
+			"stockBadge": {
+				"availableStock": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+				"highStock": {
+					"label": "> %stock% lagernd",
+					"prefix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"suffix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"icon": "layers"
+				},
+				"icon": "checkmark",
+				"inStock": "Auf Lager.",
+				"lowStock": {
+					"label": "Nur %stock% auf Lager!",
+					"prefix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"suffix": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"icon": "warning"
+				},
+				"noStock": "Ausverkauft"
+			},
+			"topsellerBadge": {
+				"label": "Tipp",
+				"icon": "heart"
+			},
+			"uspBar": {
+				"usp1": {
+					"title": "Kostenloser Versand",
+					"icon": "rocket",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp2": {
+					"title": "Versand innerhalb von 24h",
+					"icon": "clock",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp3": {
+					"title": "30 Tage Geld-Zurück-Garantie",
+					"icon": "thumb-up",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp4": {
+					"title": "Bequemer Kauf auf Rechnung",
+					"icon": "briefcase",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp5": {
+					"title": "Direkt vom Hersteller",
+					"icon": "home",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp6": {
+					"title": "Hotline 0800 123 454 321",
+					"icon": "headset",
+					"tooltip": "",
+					"subtitle": ""
+				}
+			}
+		},
+		"widget": {
+			"about": {
+				"headline": "Über uns",
+				"content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>Gadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>"
+			},
+			"awards": {
+				"headline": "Sicher Einkaufen",
+				"content": "Mehrfach ausgezeichnet und zertifiziert!",
+				"customImage1": {
+					"title": "Benutzerdefiniertes Bild 1",
+					"url": "/#"
+				},
+				"customImage2": {
+					"title": "Benutzerdefiniertes Bild 2",
+					"url": "/#"
+				},
+				"customImage3": {
+					"title": "Benutzerdefiniertes Bild 3",
+					"url": "/#"
+				},
+				"customImage4": {
+					"title": "Benutzerdefiniertes Bild 4",
+					"url": "/#"
+				},
+				"customImage5": {
+					"title": "Benutzerdefiniertes Bild 5",
+					"url": "/#"
+				},
+				"customImage6": {
+					"title": "Benutzerdefiniertes Bild 6",
+					"url": "/#"
+				},
+				"customImages": {
+					"title1": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"title2": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"title3": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"title4": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"title5": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+					"title6": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+				},
+				"sslSeal": {
+					"url": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+				}
+			},
+			"benefits": {
+				"headline": "Unsere Vorteile",
+				"content": "Kostenloser Versand; Versand innerhalb von 24h; 30 Tage Geld-Zurück-Garantie; Bequemer Kauf auf Rechnung; Direkt vom Hersteller"
+			},
+			"communities": {
+				"headline": "Unsere Communities",
+				"additionalText": "Über unsere Social Media Plattformen verpassen Sie keine Neuigkeiten mehr.",
+				"facebook": {
+					"name": "Facebook",
+					"link": "/#facebook"
+				},
+				"instagram": {
+					"name": "Instagram",
+					"link": "/#instagram"
+				},
+				"twitter": {
+					"name": "Twitter",
+					"link": "/#twitter"
+				},
+				"youtube": {
+					"name": "YouTube",
+					"link": "/#youtube"
+				},
+				"vimeo": {
+					"name": "Vimeo",
+					"link": "/#vimeo"
+				},
+				"flickr": {
+					"name": "Flickr",
+					"link": "/#flickr"
+				},
+				"pinterest": {
+					"name": "Pinterest",
+					"link": "/#pinterest"
+				},
+				"tiktok": {
+					"name": "TikTok",
+					"link": "/#tiktok"
+				},
+				"blogger": {
+					"name": "Blogger",
+					"link": "/#blogger"
+				},
+				"blog": {
+					"name": "Blog",
+					"link": "/#blog"
+				},
+				"whatsapp": {
+					"name": "WhatsApp",
+					"link": "/#whatsapp"
+				},
+				"linkedin": {
+					"name": "LinkedIn",
+					"link": "/#linkedin"
+				},
+				"website": {
+					"name": "Website",
+					"link": "/#website"
+				},
+				"xing": {
+					"name": "Xing",
+					"link": "/#xing"
+				},
+				"twitch": {
+					"name": "Twitch",
+					"link": "/#twitch"
+				},
+				"x": {
+					"name": "X / Twitter",
+					"link": "/#x"
+				}
+			},
+			"hotline": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+			"location": {
+				"headline": "Ladengeschäft",
+				"content": "<p>Demoshop Store im Gewerbepark<br>Muster Straße 10-12<br>12345 Musterhausen</p><p><strong>Öffnungszeiten:</strong><br>Mo - Fr: 09:00 - 20:00 Uhr<br>Sa: 09:00 - 18:00 Uhr</p>",
+				"route": {
+					"name": "Routenplaner starten",
+					"link": "/#google-maps-link"
+				}
+			},
+			"newsletter": {
+				"headline": "Newsletter",
+				"content": "Abonnieren Sie jetzt einfach unseren regelmäßig erscheinenden Newsletter und Sie werden stets unter den Ersten sein, über neue Produkte und Angebote informiert werden.",
+				"formInput": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+				"formPrivacy": "Dieser Textbaustein ist #deprecated und wird bald entfernt!",
+				"formSubmit": "Dieser Textbaustein ist #deprecated und wird bald entfernt!"
+			},
+			"payment": {
+				"headline": "Zahlungsarten",
+				"customImages": {
+					"title1": "Benutzerdefiniertes Bild 1",
+					"title2": "Benutzerdefiniertes Bild 2",
+					"title3": "Benutzerdefiniertes Bild 3"
+				},
+				"link": "/#payment"
+			},
+			"paymentshipping": {
+				"headline": "Zahlungs- und Versandarten"
+			},
+			"shipping": {
+				"headline": "Versandarten",
+				"customImages": {
+					"title1": "Benutzerdefiniertes Bild 1",
+					"title2": "Benutzerdefiniertes Bild 2",
+					"title3": "Benutzerdefiniertes Bild 3"
+				},
+				"link": "/#shipping"
+			},
+			"text": {
+				"headline": "Individueller Text",
+				"content": "<p>Lorem ipsum dolor sit amet, <b>individueller Text</b> consetetur sadipscing elitr, sed diam nonumy eirmod <u>Footer-Widget</u> tempor invidunt magna erat.</p><p>Gadipscing elitr, <i>Textbaustein</i> sed diam nonumy eirmod tempor dolore aliquyam.</p>"
+			}
+		},
+		"cookie": {
+			"localStorage": {
+				"description": "Speichert einen Zeitstempel um Elemente auf Wunsch für eine gewisse Zeit ausblenden zu können.",
+				"name": "Local Storage"
+			}
+		},
+		"alert": {
+			"spatialObject": "3D-Inhalte werden derzeit noch nicht unterstützt. Bitte entfernen Sie das entsprechende 3D-Element oder verwenden Sie die Standard Galerie."
+		},
+		"cms": {
+			"alert": {
+				"listingSubcategories": "Dieses Element ist auf Kategorieseiten und Shopseiten verfügbar.",
+				"productPageOnly": "Dieses Element ist nur auf Produktseiten verfügbar.",
+				"productListOnly": "Dieses Element ist nur auf Kategorieseiten verfügbar."
+			},
+			"countdownBanner": {
+				"days": "Tage",
+				"hours": "Stunden",
+				"minutes": "Minuten",
+				"seconds": "Sekunden"
+			},
+			"heroSlider": {
+				"empty": "Der Slider ist leer.",
+				"next": "Weiter",
+				"notEnough": "Nicht genügend Slides verfügbar.",
+				"previous": "Zurück",
+				"sliderDotLabel": "Zeige Bild %index% von %total%"
+			}
+		}
+	},
+	"component": {
+		"cms": {
+			"defaultMedia": {
+				"preview_one_large": {
+					"title": "Banane",
+					"alt": "Bananenfrucht auf gelben Hintergrund"
+				},
+				"preview_one_small": {
+					"title": "Banane",
+					"alt": "Bananenfrucht auf gelben Hintergrund"
+				},
+				"preview_two_large": {
+					"title": "Apfel",
+					"alt": "Apfelfrucht auf rotem Hintergrund"
+				},
+				"preview_two_small": {
+					"title": "Apfel",
+					"alt": "Apfelfrucht auf rotem Hintergrund"
+				},
+				"preview_three_large": {
+					"title": "Feige",
+					"alt": "Feigen auf violettem Hintergrund"
+				},
+				"preview_three_small": {
+					"title": "Feige",
+					"alt": "Feigen auf violettem Hintergrund"
+				},
+				"preview_four_large": {
+					"title": "Limette",
+					"alt": "Limetten auf grünem Hintergrund"
+				},
+				"preview_four_small": {
+					"title": "Limette",
+					"alt": "Limetten auf grünem Hintergrund"
+				},
+				"preview_five_large": {
+					"title": "Orange",
+					"alt": "Orange auf orangem Hintergrund"
+				},
+				"preview_five_small": {
+					"title": "Orange",
+					"alt": "Orange auf orangem Hintergrund"
+				},
+				"preview_six_large": {
+					"title": "Blaubeere",
+					"alt": "Blaubeeren auf blauem Hintergrund"
+				},
+				"preview_six_small": {
+					"title": "Blaubeere",
+					"alt": "Blaubeeren auf blauem Hintergrund"
+				},
+
+				"preview_seven_large": {
+					"title": "Avocado",
+					"alt": "Avocados auf grauem Hintergrund"
+				},
+				"preview_seven_small": {
+					"title": "Avocado",
+					"alt": "Avocados auf grauem Hintergrund"
+				},
+				"preview_eight_large": {
+					"title": "Kirsche",
+					"alt": "Sauerkirschen auf violettem Hintergrund"
+				},
+				"preview_eight_small": {
+					"title": "Kirsche",
+					"alt": "Sauerkirschen auf violettem Hintergrund"
+				},
+				"preview_nine_large": {
+					"title": "Drachenfrucht",
+					"alt": "Drachenfrucht auf pinkem Hintergrund"
+				},
+				"preview_nine_small": {
+					"title": "Drachenfrucht",
+					"alt": "Drachenfrucht auf pinkem Hintergrund"
+				},
+				"preview_ten_large": {
+					"title": "Kiwi",
+					"alt": "Kiwifrucht auf grünem Hintergrund"
+				},
+				"preview_ten_small": {
+					"title": "Kiwi",
+					"alt": "Kiwifrucht auf grünem Hintergrund"
+				},
+				"preview_eleven_large": {
+					"title": "Papaya",
+					"alt": "Papaya auf orangem Hintergrund"
+				},
+				"preview_eleven_small": {
+					"title": "Papaya",
+					"alt": "Papaya auf orangem Hintergrund"
+				},
+
+				"preview_twelve_large": {
+					"title": "Datteln",
+					"alt": "Datteln auf grauem Hintergrund"
+				},
+				"preview_twelve_small": {
+					"title": "Datteln",
+					"alt": "Datteln auf grauem Hintergrund"
+				},
+				"preview_fourteen_large": {
+					"title": "Kaki",
+					"alt": "Kaki auf grauem Hintergrund"
+				},
+				"preview_fourteen_small": {
+					"title": "Kaki",
+					"alt": "Kaki auf grauem Hintergrund"
+				},
+				"preview_twenty_large": {
+					"title": "Datteln",
+					"alt": "Datteln auf grauem Hintergrund"
+				},
+				"preview_twenty_small": {
+					"title": "Datteln",
+					"alt": "Datteln auf grauem Hintergrund"
+				},
+
+				"preview_zero_large": {
+					"title": "Getreide",
+					"alt": "Getreideähren auf einem Feld"
+				},
+				"preview_zero_small": {
+					"title": "Getreide",
+					"alt": "Getreideähren auf einem Feld"
+				}
+			}
+		}
+	}
+}

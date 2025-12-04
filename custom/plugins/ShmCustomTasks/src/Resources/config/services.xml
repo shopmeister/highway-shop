@@ -1,0 +1,93 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="https://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+
+        <service id="Shm\ShmCustomTasks\Service\ScheduledTask\PickwareTrackingExportTask">
+            <tag name="shopware.scheduled.task"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Service\ScheduledTask\PickwareTrackingExportTaskHandler">
+            <argument type="service" id="scheduled_task.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="custom_field.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="logger"/>
+            <tag name="messenger.message_handler"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Core\Content\Flow\Dispatching\Action\ChangeShippingAction">
+            <argument type="service" id="order_delivery.repository"/>
+            <argument type="service" id="product.repository"/>
+            <tag name="flow.action" priority="600" key="action.change.shipping"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Core\Content\Flow\Dispatching\Action\CreateReturnLabelAction">
+            <argument type="service" id="Pickware\ShippingBundle\Shipment\ShipmentService" />
+            <argument type="service" id="pickware_shipping_shipment.repository"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="custom_field.repository"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="flow.action" priority="600" key="action.create.return-label"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Command\PropertyConsolidationCommand" public="true">
+            <argument type="service" id="property_group.repository"/>
+            <argument type="service" id="property_group_option.repository"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="logger"/>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Service\ChatGptService">
+            <argument type="service" id="http_client"/>
+            <argument type="service" id="logger"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Service\ProductAnalysisService">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="logger"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Service\WebResearchService">
+            <argument type="service" id="http_client"/>
+            <argument type="service" id="logger"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Command\ProductSeoOptimizationCommand" public="true">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shm\ShmCustomTasks\Service\ChatGptService"/>
+            <argument type="service" id="logger"/>
+            <argument>%kernel.project_dir%</argument>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Command\ProductSeoAdvancedOptimizationCommand" public="true">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="category.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Shm\ShmCustomTasks\Service\ProductAnalysisService"/>
+            <argument type="service" id="Shm\ShmCustomTasks\Service\WebResearchService"/>
+            <argument type="service" id="Shm\ShmCustomTasks\Service\ChatGptService"/>
+            <argument type="service" id="logger"/>
+            <argument>%kernel.project_dir%</argument>
+            <tag name="console.command"/>
+        </service>
+
+        <service id="Shm\ShmCustomTasks\Command\ProductSeoRollbackCommand" public="true">
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="logger"/>
+            <argument>%kernel.project_dir%</argument>
+            <tag name="console.command"/>
+        </service>
+
+    </services>
+</container>

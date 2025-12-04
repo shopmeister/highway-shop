@@ -1,0 +1,329 @@
+{# ThemeWare® CMS element "Advanced banner" #}
+
+{# @TODO: Fertigstellen > Config, Storefront etc. !!!!!!!! #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtAdvancedBanner = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtAdvncdBnnrHeadline = element.translated.config.headline.value %}
+{% set twtAdvncdBnnrSubheadline = element.translated.config.subheadline.value %}
+{% set twtAdvncdBnnrText = element.translated.config.text.value %}
+{% set twtAdvncdBnnrButtonText = element.translated.config.buttonText.value %}
+{% set twtAdvncdBnnrButton2Text = element.translated.config.button2Text.value %}
+
+{% set twtAdvncdBnnrMinHeight = element.translated.config.minHeight.value %}
+
+{% set twtAdvncdBnnrUrl = element.translated.config.url.value %}
+{% set twtAdvncdBnnrNewTab = element.translated.config.newTab.value %}
+{% set twtAdvncdBnnrFullLink = twtAdvancedBanner.fullLink.value %}
+
+{% set twtAdvncdBnnrUrl2 = element.translated.config.url2.value %}
+{% set twtAdvncdBnnrNewTab2 = element.translated.config.newTab2.value %}
+
+{# Tab "Layout" #}
+{% set twtAdvncdBnnrPadding = twtAdvancedBanner.padding.value %}
+{% set twtAdvncdBnnrBorderRadius = twtAdvancedBanner.borderRadius.value %}
+{% set twtAdvncdBnnrBackgroundColor = twtAdvancedBanner.backgroundColor.value %}
+
+{% set twtAdvncdBnnrTextAlignment = twtAdvancedBanner.textAlignment.value %}
+{% set twtAdvncdBnnrTextShadow = twtAdvancedBanner.textShadow.value %}
+
+{% set twtAdvncdBnnrFontFamily = twtAdvancedBanner.fontFamily.value %}
+{% set twtAdvncdBnnrTextColorHeadline = twtAdvancedBanner.textColorHeadline.value %}
+{% set twtAdvncdBnnrFontWeightHeadline = twtAdvancedBanner.fontWeightHeadline.value %}
+{% set twtAdvncdBnnrTextTransformHeadline = twtAdvancedBanner.textTransformHeadline.value %}
+
+{% set twtAdvncdBnnrFontFamilySubheadline = twtAdvancedBanner.fontFamilySubheadline.value %}
+{% set twtAdvncdBnnrTextColorSubheadline = twtAdvancedBanner.textColorSubheadline.value %}
+
+{% set twtAdvncdBnnrFontFamily = twtAdvancedBanner.fontFamily.value %}
+{% set twtAdvncdBnnrTextColor = twtAdvancedBanner.textColor.value %}
+{# linkStyle #}
+{% set twtAdvncdBnnrLinkColor = twtAdvancedBanner.linkColor.value %}
+{# linkStyleHover #}
+{% set twtAdvncdBnnrLinkColorHover = twtAdvancedBanner.linkColorHover.value %}
+
+{% set twtAdvncdBnnrButtonStyle = twtAdvancedBanner.buttonStyle.value %}
+{% set twtAdvncdBnnrButtonOutline = twtAdvancedBanner.buttonOutline.value %}
+
+{% set twtAdvncdBnnrButton2Style = twtAdvancedBanner.button2Style.value %}
+{% set twtAdvncdBnnrButton2Outline = twtAdvancedBanner.button2Outline.value %}
+
+{% set twtAdvncdBnnrAttachment = twtAdvancedBanner.attachment.value %}
+{% set twtAdvncdBnnrParallax = twtAdvancedBanner.parallax.value %}
+
+{% set twtAdvncdBnnrVerticalAlignment = twtAdvancedBanner.verticalAlignment.value %}
+{% set twtAdvncdBnnrHorizontalAlignment = twtAdvancedBanner.horizontalAlignment.value %}
+{% set twtAdvncdBnnrWidth = twtAdvancedBanner.width.value %}
+{% set twtAdvncdBnnrMaxWidth = twtAdvancedBanner.maxWidth.value %}
+
+{% set twtAdvncdBnnrOverlay = twtAdvancedBanner.overlay.value %}
+{% set twtAdvncdBnnrBgOverlay = twtAdvancedBanner.bgOverlay.value %}
+{% set twtAdvncdBnnrBackdropEffect = twtAdvancedBanner.backdropEffect.value %}
+{% set twtAdvncdBnnrShadow = twtAdvancedBanner.shadow.value %}
+{% set twtAdvncdBnnrRounded = twtAdvancedBanner.rounded.value %}
+
+{# hoverEffect #}
+
+{% set twtAdvncdBnnrColorOverlay = twtAdvancedBanner.colorOverlay.value %}
+{% set twtAdvncdBnnrColorOverlayBgColor = twtAdvancedBanner.colorOverlayBgColor.value %}
+{% set twtAdvncdBnnrColorOverlayBgGradient = twtAdvancedBanner.colorOverlayBgGradient.value %}
+{% set twtAdvncdBnnrColorOverlayBgColor2 = twtAdvancedBanner.colorOverlayBgColor2.value %}
+{% set twtAdvncdBnnrColorOverlayBgGradientAngle = twtAdvancedBanner.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtAdvncdBnnrHtmlTagHeadline = twtAdvancedBanner.htmlTagHeadline.value %}
+{% if twtAdvncdBnnrHtmlTagHeadline is empty %}
+    {% set twtAdvncdBnnrHtmlTagHeadline = 'p' %}
+{% endif %}
+{% set twtAdvncdBnnrHtmlTagClassHeadline = twtAdvancedBanner.htmlTagClassHeadline.value %}
+
+{% set twtAdvncdBnnrHtmlTagSubheadline = twtAdvancedBanner.htmlTagSubheadline.value %}
+{% if twtAdvncdBnnrHtmlTagSubheadline is empty %}
+    {% set twtAdvncdBnnrHtmlTagSubheadline = 'p' %}
+{% endif %}
+{% set twtAdvncdBnnrHtmlTagClassSubheadline = twtAdvancedBanner.htmlTagClassSubheadline.value %}
+
+{# Tab "Advanced" #}
+{% set twtAdvncdBnnrCssClass = twtAdvancedBanner.cssClass.value %}
+{% set twtAdvncdBnnrCssClassHeadline = twtAdvancedBanner.cssClassHeadline.value %}
+{% set twtAdvncdBnnrCssClassSubheadline = twtAdvancedBanner.cssClassSubheadline.value %}
+{% set twtAdvncdBnnrCssClassText = twtAdvancedBanner.cssClassText.value %}
+{% set twtAdvncdBnnrCssClassButton = twtAdvancedBanner.cssClassButton.value %}
+{% set twtAdvncdBnnrCssClassButton2 = twtAdvancedBanner.cssClassButton2.value %}
+
+{# Set title attribute #}
+{# INFO: No text is mandatory #}
+{# => Button text > Headline > Subheadline > > shortened 'Text' > Media title #}
+{# @TODO: Add title to seo config ? #}
+{% if twtAdvncdBnnrButtonText %}
+    {% set title = twtAdvncdBnnrButtonText %}
+{% elseif twtAdvncdBnnrHeadline %}
+    {% set title = twtAdvncdBnnrHeadline %}
+{% elseif twtAdvncdBnnrText %}
+    {% set title = twtAdvncdBnnrText|striptags|raw|length > 25 ? twtAdvncdBnnrText|striptags|raw|slice(0, 25) ~ '...' : twtAdvncdBnnrText|striptags|raw %}
+{% else %}
+    {% set title = element.data.media.translated.title ?: '' %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-banner']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% set contentClasses = ['content'] %}
+
+{% if twtAdvncdBnnrOverlay %}
+    {% set contentClasses = ['is-styled']|merge(contentClasses) %}
+
+    {% if twtAdvncdBnnrShadow == 'default' %}
+        {% set contentClasses = ['shadow-twt']|merge(contentClasses) %}
+    {% elseif twtAdvncdBnnrShadow == 'smallBs' %}
+        {% set contentClasses = ['shadow-sm']|merge(contentClasses) %}
+    {% elseif twtAdvncdBnnrShadow == 'regularBs' %}
+        {% set contentClasses = ['shadow']|merge(contentClasses) %}
+    {% elseif twtAdvncdBnnrShadow == 'largeBs' %}
+        {% set contentClasses = ['shadow-lg']|merge(contentClasses) %}
+    {% endif %}
+
+    {% if twtAdvncdBnnrRounded == 'rounded' %}
+        {% set contentClasses = ['rounded']|merge(contentClasses) %}
+    {% endif %}
+
+    {# hoverEffect #}
+
+    {% if twtAdvncdBnnrBackdropEffect is not empty and twtAdvncdBnnrBackdropEffect != 'none' %}
+        {% set contentClasses = ['twt-bg-'~twtAdvncdBnnrBackdropEffect]|merge(contentClasses) %}
+    {% endif %}
+{% endif %}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% if twtAdvncdBnnrTextShadow == 'small' %}
+    {% set textClasses = 'twt-text-shadow-sm' %}
+{% elseif twtAdvncdBnnrTextShadow == 'regular' %}
+    {% set textClasses = 'twt-text-shadow' %}
+{% elseif twtAdvncdBnnrTextShadow == 'large' %}
+    {% set textClasses = 'twt-text-shadow-lg' %}
+{% endif %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_advanced_banner %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtAdvncdBnnrCssClass is not empty %} {{ twtAdvncdBnnrCssClass }}{% endif %}"
+         style="background-color: {{ twtAdvncdBnnrBackgroundColor }};{% if twtAdvncdBnnrBorderRadius != '0' %} border-radius: {{ twtAdvncdBnnrBorderRadius }};{% endif %}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_advanced_banner_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtAdvncdBnnrBorderRadius }};
+        --twt-link-color: {{ twtAdvncdBnnrLinkColor }};
+        --twt-link-color-hover: {{ twtAdvncdBnnrLinkColorHover }};
+        {% block element_twt_advanced_banner_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {% block element_twt_advanced_banner_alignment %}
+            {# @TODO: {% if twtAdvncdBnnrVerticalAlign and not isCover %} #}
+            {% if twtAdvncdBnnrVerticalAlign %}
+                <div class="cms-element-alignment{% if twtAdvncdBnnrVerticalAlign == 'center' %} align-self-center{% elseif twtAdvncdBnnrVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                     {% if twtAdvncdBnnrDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {% block element_twt_advanced_banner_inner %}
+                {# ThemeWare: Set text element #}
+                {% set twtAdvncdBnnr %}
+                    {% block element_twt_advanced_banner_content_container %}
+                        <div class="twt-advanced-banner-container cms-content-container content-container justify-content-{{ twtAdvncdBnnrHorizontalAlignment }} align-items-{{ twtAdvncdBnnrVerticalAlignment }}"
+                             style="padding: {{ twtAdvncdBnnrPadding }};"
+                        >
+                            {# Colored overlay (if configured) #}
+                            {% if twtAdvncdBnnrColorOverlay %}
+                                <div class="twt-advanced-banner-overlay color-overlay"
+                                     style="background: {{ twtAdvncdBnnrColorOverlayBgColor }};{% if twtAdvncdBnnrColorOverlayBgGradient %} background: linear-gradient({{ twtAdvncdBnnrColorOverlayBgGradientAngle }}deg, {{ twtAdvncdBnnrColorOverlayBgColor }} 0%, {{ twtAdvncdBnnrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# Content #}
+                            <div class="twt-advanced-banner-content {{ contentClasses|sort|join(' ') }}"
+                                 style="text-align: {{ twtAdvncdBnnrTextAlignment }}; width: {{ twtAdvncdBnnrWidth }}; max-width: {{ twtAdvncdBnnrMaxWidth }};{% if twtAdvncdBnnrOverlay %} background-color: {{ twtAdvncdBnnrBgOverlay }};{% endif %}">
+                                {# Headline #}
+                                {% if twtAdvncdBnnrHeadline %}
+                                    <{{ twtAdvncdBnnrHtmlTagHeadline }}
+                                    class="twt-advanced-banner-headline headline {{ twtAdvncdBnnrHtmlTagClassHeadline }}{% if twtAdvncdBnnrFontWeightHeadline and twtAdvncdBnnrFontWeightHeadline != 'unset' %} fw-{{ twtAdvncdBnnrFontWeightHeadline }}{% endif %}{% if twtAdvncdBnnrTextTransformHeadline != 'none' %} text-{{ twtAdvncdBnnrTextTransformHeadline }}{% endif %} twt-font-family-{{ twtAdvncdBnnrFontFamilyHeadline }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtAdvncdBnnrCssClassHeadline is not empty %} {{ twtAdvncdBnnrCssClassHeadline }}{% endif %}"
+                                    style="color: {{ twtAdvncdBnnrTextColorHeadline }};">
+                                        {# Note: Experimental feature, may change later (placeholder not final) #}
+                                        {% if twtAdvncdBnnrHeadline == "{{ category.name }}" or twtAdvncdBnnrHeadline == "{{category.name}}" or twtAdvncdBnnrHeadline == "%category.name%" or twtAdvncdBnnrHeadline == "category.name" %}
+                                            <span>{{ page.header.navigation.active.name }}</span>
+                                        {% else %}
+                                            <span>{{ twtAdvncdBnnrHeadline }}
+                                        {% endif %}
+                                    </{{ twtAdvncdBnnrHtmlTagHeadline }}>
+                                {% endif %}
+
+                                {# Subheadline #}
+                                {% if twtAdvncdBnnrSubheadline %}
+                                    <{{ twtAdvncdBnnrHtmlTagSubheadline }}
+                                       class="twt-advanced-banner-subheadline subheadline {{ twtAdvncdBnnrHtmlTagClassSubheadline }} twt-font-family-{{ twtAdvncdBnnrFontFamilySubheadline }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtAdvncdBnnrCssClassSubheadline is not empty %} {{ twtAdvncdBnnrCssClassSubheadline }}{% endif %}"
+                                       style="color: {{ twtAdvncdBnnrTextColorSubheadline }};">
+                                        {{ twtAdvncdBnnrSubheadline }}
+                                    </{{ twtAdvncdBnnrHtmlTagSubheadline }}>
+                                {% endif %}
+
+                                {# Text #}
+                                {# Info: HTML möglich, Links werden im fullLinked nicht unterstützt! #}
+                                {% if twtAdvncdBnnrText %}
+                                    <div class="twt-advanced-banner-text text{% if twtAdvncdBnnrFontFamily != 'base' %} twt-font-family-{{ twtAdvncdBnnrFontFamily }}{% endif %}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtAdvncdBnnrCssClassText is not empty %} {{ twtAdvncdBnnrCssClassText }}{% endif %}"
+                                         style="color: {{ twtAdvncdBnnrTextColor }};">
+                                        {% if element.data.text %}
+                                            {{ element.data.text|raw }}
+                                        {% else %}
+                                            {# Fallback #}
+                                            {{ twtAdvncdBnnrText|raw }}
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+
+                                {# Button #}
+                                {# if twtAdvncdBnnrButtonText and twtAdvncdBnnrUrl #}
+                                {% if twtAdvncdBnnrButtonText %}
+                                    {% if twtAdvncdBnnrFullLink %}
+                                        <div class="twt-advanced-banner-btn btn btn-{% if twtAdvncdBnnrButtonOutline %}outline-{% endif %}{{ twtAdvncdBnnrButtonStyle }}{% if twtAdvncdBnnrCssClassButton is not empty %} {{ twtAdvncdBnnrCssClassButton }}{% endif %}">
+                                            {{ twtAdvncdBnnrButtonText }}
+                                        </div>
+
+                                    {% else %}
+                                        {# INFO: Title tag = Button text (as the text is mandatory) #}
+                                        <a href="{{ twtAdvncdBnnrUrl }}"
+                                           class="twt-advanced-banner-btn btn btn-1 btn-{% if twtAdvncdBnnrButtonOutline %}outline-{% endif %}{{ twtAdvncdBnnrButtonStyle }}{% if twtAdvncdBnnrCssClassButton2 is not empty %} {{ twtAdvncdBnnrCssClassButton2 }}{% endif %}"
+                                           title="{{ twtAdvncdBnnrButtonText }}"
+                                           {% if twtAdvncdBnnrNewTab %}target="_blank" rel="noopener"{% endif %}
+                                        >
+                                            {{ twtAdvncdBnnrButtonText }}
+                                        </a>
+
+                                    {% endif %}
+                                {% endif %}
+
+                                {# Button 2 #}
+                                {% if twtAdvncdBnnrButton2Text and twtAdvncdBnnrUrl2 and not twtAdvncdBnnrFullLink %}
+                                    {# INFO: Title tag = Button text (as the text is mandatory) #}
+                                    <a href="{{ twtAdvncdBnnrUrl2 }}"
+                                       class="twt-advanced-banner-btn btn btn-2 btn-{% if twtAdvncdBnnrButton2Outline %}outline-{% endif %}{{ twtAdvncdBnnrButton2Style }}{% if twtAdvncdBnnrCssClassButton2 is not empty %} {{ twtAdvncdBnnrCssClassButton2 }}{% endif %}"
+                                       title="{{ twtAdvncdBnnrButton2Text }}"
+                                       {% if twtAdvncdBnnrNewTab2 %}target="_blank" rel="noopener"{% endif %}
+                                    >
+                                        {{ twtAdvncdBnnrButton2Text }}
+                                    </a>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_advanced_banner_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-advanced-banner-image-container{% if twtAdvncdBnnrParallax and twtAdvncdBnnrAttachment == 'fixed' %} twt-parallax-banner{% endif%} {# w-100 #} cms-image-container image-container is-cover is-{{ twtAdvncdBnnrAttachment }}"
+                                 style="background-image: url({{ element.data.media.url }}); min-height: {{ twtAdvncdBnnrMinHeight }}">
+                                {# ThemeWare: Load text element #}
+                                {{ twtAdvncdBnnr }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Image banner" #}
+                {% block element_twt_advanced_banner_content %}
+                    {% if twtAdvncdBnnrFullLink and twtAdvncdBnnrUrl %}
+                        <a href="{{ twtAdvncdBnnrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtAdvncdBnnrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtAdvncdBnnrVerticalAlign and not isCover %} #}
+            {% if twtAdvncdBnnrVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,109 @@
+{# ThemeWare: CMS element "Listing subcategories" #}
+
+{#
+    Create cms element and include the listing subcategories include (@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig)
+    Note: This is included via "@Storefront/storefront/block/cms-block-twt-listing-subcategories.html.twig"
+
+    @Storefront/storefront/element/cms-element-twt-listing-subcategories.html.twig
+#}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtListingSubcategories = element.fieldConfig.elements %}
+
+{# Tab "Layout" #}
+{# element.translated.config.customConfig.value #}
+{# element.translated.config.layoutType.value #}
+{# > others are used in the include #}
+
+{# Tab "Grid" #}
+{# > is used in the include #}
+
+{# Tab "Advanced" #}
+{% set twtLstngSbctgrsCssClass = twtListingSubcategories.cssClass.value %}
+
+{# ThemeWare: Prüfen ob ein CMS-Element genutzt wird und ob dies die individuelle oder Theme-Konfiguration nutzt #}
+{% set customConfig = false %}
+
+{% if element.translated.config is not empty and element.translated.config.customConfig.value == true %}
+    {% set customConfig = true %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{# ThemeWare: Individuelle oder Theme-Konfiguration laden #}
+{% if customConfig == true %}
+    {# ThemeWare: Individuelle Konfiguration laden... #}
+
+    {# Layout type #}
+    {% if element.translated.config.layoutType.value == 'textBelow' %}
+        {% set elementClasses = 'is-text-below' %}
+    {% elseif element.translated.config.layoutType.value == 'sideBySide' %}
+        {% set elementClasses = 'is-side-by-side' %}
+    {% elseif element.translated.config.layoutType.value == 'imageOnly' %}
+        {% set elementClasses = 'is-image-only' %}
+    {% elseif element.translated.config.layoutType.value == 'textOnly' %}
+        {% set elementClasses = 'is-text-only' %}
+    {% elseif element.translated.config.layoutType.value == 'button' %}
+        {% set elementClasses = 'is-button' %}
+    {% elseif element.translated.config.layoutType.value == 'buttons' %}
+        {% set elementClasses = 'is-buttons' %}
+    {% endif %}
+
+    {# Justify content #}
+    {% set twtLstngSbctgrsJustifyContent = twtListingSubcategories.justifyContent.value %}
+
+    {# Justify content > Use 'Button alignment' in layout type 'buttons' #}
+    {% if twtListingSubcategories.layoutType.value == 'buttons' %}
+        {% set twtLstngSbctgrsJustifyContent = twtListingSubcategories.buttonAlignment.value %}
+    {% endif %}
+
+{% else %}
+    {# ThemeWare: Theme-Konfiguration laden...
+
+    {# Layout type #}
+    {% set twtLstngSbctgrsLayout = theme_config('twt-listing-subcategories-layout') %}
+
+    {% if twtLstngSbctgrsLayout == 'textBelow' %}
+        {% set elementClasses = 'is-text-below' %}
+    {% elseif twtLstngSbctgrsLayout == 'imageOnly' %}
+        {% set elementClasses = 'is-image-only' %}
+    {% elseif twtLstngSbctgrsLayout == 'textOnly' %}
+        {% set elementClasses = 'is-text-only' %}
+    {% endif %}
+
+    {# Justify content #}
+    {% set twtLstngSbctgrsJustifyContent = theme_config('twt-listing-subcategories-justify-content') %}
+
+{% endif %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ThemeWare: Listing subcategories (CMS container) #}
+{% block element_twt_listing_subcategories %}
+    {% set twtNavigationResult = page.header.navigation.tree %}
+    {% set twtActiveResult = page.header.navigation.active %}
+
+    <div class="cms-element-{{ element.type }} twt-listing-subcategories is-cms is-default {{ elementClasses }}{% if twtLstngSbctgrsCssClass is not empty %} {{ twtLstngSbctgrsCssClass }}{% endif %}" id="twt-listing-subcategories">
+        <div class="twt-listing-subcategories-section">
+
+            <div class="twt-listing-subcategories-container">
+                <ul class="row" style="justify-content: {{ twtLstngSbctgrsJustifyContent }};">
+                    {% sw_include '@Storefront/storefront/themeware/includes/twt-listing-subcategories-include.html.twig' ignore missing with {
+                        navigationTree: twtNavigationResult,
+                        activeResult: twtActiveResult,
+                        page: page,
+                        element: element,
+                        type: 'cms'
+                    } only %}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

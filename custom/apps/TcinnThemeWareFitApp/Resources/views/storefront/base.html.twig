@@ -1,0 +1,678 @@
+{% sw_extends '@Storefront/storefront/base.html.twig' %}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set useDefaultCookieConsent = config('core.basicInformation.useDefaultCookieConsent') %}
+
+{% set twtContainerLayout = theme_config('twt-container-layout') %}
+{% set twtAdditionalJsFile = theme_config('twt-additional-js-file') %}
+{% set twtAdditionalJsFileAsync = theme_config('twt-additional-js-file-async') %}
+{% set twtAdditionalJsFileLoad = theme_config('twt-additional-js-file-load') %}
+{% set twtAnnouncementBannerShow = theme_config('twt-announcement-banner-show') %}
+{% set twtAnnouncementBannerClosable = theme_config('twt-announcement-banner-closable') %}
+{% set twtBodyClass = theme_config('twt-body-class') %}
+{% set twtBodyClassCmsPageId = theme_config('twt-body-class-cms-page-id') %}
+{% set twtContainerLayout = theme_config('twt-container-layout') %}
+{% set twtContainerMaxWidth = theme_config('twt-container-max-width') %}
+{% set twtCustomJsCode = theme_config('twt-custom-js-code') %}
+{% set twtExpertMode = theme_config('twt-expert-mode') %}
+{% set twtFloatingWidgetAnimation = theme_config('twt-floating-widget-animation') %}
+{% set twtFloatingWidgetBackdrop = theme_config('twt-floating-widget-backdrop') %}
+{% set twtFloatingWidgetMobile = theme_config('twt-floating-widget-mobile') %}
+{% set twtFloatingWidgetShow = theme_config('twt-floating-widget-show') %}
+{% set twtFloatingWidgetShowOpened = theme_config('twt-floating-widget-show-opened') %}
+{% set twtHeaderLogoType = theme_config('twt-header-logo-type') %}
+{% set twtHeaderSearchType = theme_config('twt-header-search-type') %}
+{% set twtHeaderType = theme_config('twt-header-type') %}
+{% set twtIconSet = theme_config('twt-iconset') %}
+{% set twtLicensekey = theme_config('twt-footer-lizenzkey') %}
+{% set twtNavMainShow = theme_config('twt-nav-main-show') %}
+{% set twtShoppingExperiencesHeaderPosition = theme_config('twt-shopping-experiences-header-position') %}
+{% set twtSlideoutCommunitiesShow = theme_config('twt-slideout-communities-show') %}
+{% set twtStickyNavMainBreakpoint = theme_config('twt-sticky-nav-main-breakpoint') %}
+{% set twtStickyNavMainCartShow = theme_config('twt-sticky-nav-main-cart-show') %}
+{% set twtStickyNavMainLogoImage = theme_config('twt-sticky-nav-main-logo-image') %}
+{% set twtStickyNavMainLogoShow = theme_config('twt-sticky-nav-main-logo-show') %}
+{% set twtStickyNavMainScrollTop = theme_config('twt-sticky-nav-main-scroll-top') %}
+{% set twtStickyNavMainSearchShow = theme_config('twt-sticky-nav-main-search-show') %}
+{% set twtStickyNavMainShow = theme_config('twt-sticky-nav-main-show') %}
+{% set twtStickyNavMainToggle = theme_config('twt-sticky-nav-main-toggle') %}
+{% set twtStickyNavMainType = theme_config('twt-sticky-nav-main-type') %}
+{% set twtHeaderPhoneFixed = theme_config('twt-header-phone-fixed') %}
+{% set twtUspBarFooter = theme_config('twt-usp-bar-footer') %}
+{% set twtUspBarFooterPosition = theme_config('twt-usp-bar-footer-position') %}
+{% set twtUspBarHeader = theme_config('twt-usp-bar-header') %}
+{% set twtUspBarHeaderPosition = theme_config('twt-usp-bar-header-position') %}
+{% set twtCookiePermissionPosition = theme_config('twt-cookie-permission-position') %}
+
+{# CMS styling #}
+{% set twtCmsStylingLandingPages = theme_config('twt-cms-layout-adjustments-landing-pages') %}
+{% set twtCmsStylingCategoryPages = theme_config('twt-cms-layout-adjustments-category-pages') %}
+{% set twtCmsStylingProductPages = theme_config('twt-cms-layout-adjustments-product-pages') %}
+{% set twtCmsStylingShopPages = theme_config('twt-cms-layout-adjustments-shop-pages') %}
+{% set twtCmsStylingLoginPages = theme_config('twt-cms-layout-adjustments-login-pages') %}
+{% set twtCmsStylingAccountPages = theme_config('twt-cms-layout-adjustments-account-pages') %}
+{% set twtCmsStylingCheckoutPages = theme_config('twt-cms-layout-adjustments-checkout-pages') %}
+{% set twtCmsStylingB2bComponents = theme_config('twt-cms-layout-adjustments-b2b-components') %}
+
+{# Debug mode: Overwrite expert mode #}
+{% if config('TcinnThemeWareFitApp.config.debugMode') is not empty and config('TcinnThemeWareFitApp.config.debugMode') == 'true' %}
+	{% set twtExpertMode = 1 %}
+{% endif %}
+
+{# Debug mode #}
+{% set twtCustomCssCode = theme_config('twt-custom-css-code') %}
+{% set twtCustomHtmlCode = theme_config('twt-custom-html-code') %}
+{% set twtAdditionalCssFileLoad = theme_config('twt-additional-css-file-load') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+
+{# ThemeWare: Set custom fields ------------------------------------------------------------------------------------- #}
+
+{% set twtCustomFields = {
+	category: page.header.navigation.active.translated.customFields,
+	product: page.product.translated.customFields
+} %}
+
+
+{# ThemeWare: Set 'CMS-Styling' variable ---------------------------------------------------------------------------- #}
+
+{# @TODO: Use all over the document #}
+{% set cmsPageType = page.cmsPage.type|replace({ '_': '-' }) %} {# NOTE: Dedicated 'landing pages' use 'page.landingPage.cmsPage.type' #}
+{% set twtCmsStyling = false %}
+
+{# Home page ------------------------------------------------ #}
+{#
+{% if controllerAction|lower is same as('home') %}{% endif %}
+#}
+
+{# Landing pages ------------------------------------------------ #}
+{# NOTE:
+   Dedicated 'landing pages' use 'page.landingPage.cmsPage.type' so 'cmsPageType' (= 'page.cmsPage.type') is 'NULL'.
+   That's why we use 'controllerName|lower' here.
+   > We could also check 'page.landingPage.cmsPage.type' above to set a proper 'cmsPageType'.
+#}
+{% if (cmsPageType is same as('landingpage') or controllerName|lower is same as('landingpage')) and twtCmsStylingLandingPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Category pages ------------------------------------------------ #}
+{% if cmsPageType is same as('product-list') and twtCmsStylingCategoryPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Product pages ------------------------------------------------ #}
+{% if cmsPageType is same as('product-detail') and twtCmsStylingProductPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Shop pages ------------------------------------------------ #}
+{% if cmsPageType is same as('page') and twtCmsStylingShopPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Account pages ------------------------------------------------ #}
+{# @TODO: Separat konfigurierbar machen... #}
+{# .is-ctl-accountprofile #}
+{% if controllerName|lower is same as('accountprofile') and twtCmsStylingAccountPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# .is-ctl-accountpayment #}
+{% if controllerName|lower is same as('accountpayment') and twtCmsStylingAccountPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# .is-ctl-accountorder #}
+{% if controllerName|lower is same as('accountorder') and twtCmsStylingAccountPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# .is-ctl-address #}
+{% if controllerName|lower is same as('address') and twtCmsStylingAccountPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Login pages (.is-ctl-auth) ------------------------------------------------ #}
+{# @TODO: Separat konfigurierbar machen... #}
+{% if controllerName|lower is same as('auth') and twtCmsStylingLoginPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Checkout pages (.is-ctl-checkout) ------------------------------------------------ #}
+{# @TODO: Separat konfigurierbar machen... #}
+{% if controllerName|lower is same as('checkout') and twtCmsStylingCheckoutPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Checkout > Register page (.is-ctl-register) ------------------------------------------------ #}
+{% if controllerName|lower is same as('register') and twtCmsStylingCheckoutPages == 2 %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Search page (.is-ctl-search) ------------------------------------------------ #}
+{# @TODO: Konfigurierbar machen... #}
+{% if controllerName|lower is same as('search') %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Wishlist page (.is-ctl-wishlist) ------------------------------------------------ #}
+{# @TODO: Konfigurierbar machen... #}
+{% if controllerName|lower is same as('wishlist') %}
+	{% set twtCmsStyling = true %}
+{% endif %}
+
+{# Shopware 'B2B Components' ------------------------------------------------ #}
+{# @TODO: Separat konfigurierbar machen... #}
+{% if twtCmsStylingB2bComponents > 1 %}
+	{# "Mitarbeiter" (.is-ctl-businesspartneraccount) #}
+	{% if controllerName|lower is same as('businesspartneraccount') %}
+		{% if twtCmsStylingAccountPages == 2 %}
+			{% set twtCmsStyling = true %}
+		{% endif %}
+	{% endif %}
+
+	{# "Rollen" (.is-ctl-role) #}
+	{% if controllerName|lower is same as('role') %}
+		{% if twtCmsStylingAccountPages == 2 %}
+			{% set twtCmsStyling = true %}
+		{% endif %}
+	{% endif %}
+
+	{# "Schnellbestellungen" #}
+	{# NOTE: Leider fehlt hier der controllerName #}
+
+	{# "Angebote" (.is-ctl-quote) #}
+	{% if controllerName|lower is same as('quote') %}
+		{% if twtCmsStylingAccountPages == 2 %}
+			{% set twtCmsStyling = true %}
+		{% endif %}
+	{% endif %}
+
+	{# "Freigaberegeln" (.is-ctl-approvalrule) #}
+	{% if controllerName|lower is same as('approvalrule') %}
+		{% if twtCmsStylingAccountPages == 2 %}
+			{% set twtCmsStyling = true %}
+		{% endif %}
+	{% endif %}
+
+	{# "Einkaufslisten" (.is-ctl-shoppinglist) #}
+	{% if controllerName|lower is same as('shoppinglist') %}
+		{% if twtCmsStylingAccountPages == 2 %}
+			{% set twtCmsStyling = true %}
+		{% endif %}
+	{% endif %}
+{% endif %}
+
+
+{# ThemeWare: Set 'Shopping Experiences Header' variable ------------------------------------------------------------ #}
+
+{% set twtShoppingExperiencesHeader = false %}
+
+{% if twtShoppingExperiencesHeaderPosition == 2 %}
+	{# ThemeWare: Allow 'Shopping Experiences Header' on the home page or in listings via a custom-field #}
+	{% if controllerAction|lower is same as('home') %}
+		{# ThemeWare: Allow 'Shopping Experiences Header' on the home page #}
+		{#
+			"Erlebniswelt-Header" ausblenden wenn das Zusatzfeld = '0' (nein) ist.
+			> empty/'inherit' & '1' == true
+		#}
+		{% set twtShoppingExperiencesHeader = true %}
+
+		{% if twtCustomFields.category.twt_fit_cloud_custom_field__category__shopping_experiences_header == '0' %}
+			{# 'Shopping Experiences Header' is disabled via the custom field #}
+			{% set twtShoppingExperiencesHeader = false %}
+		{% endif %}
+
+	{% elseif controllerName|lower is same as('navigation') %}
+		{# ThemeWare: Allow 'Shopping Experiences Header' in listing pages via a custom-field #}
+		{#
+			"Erlebniswelt-Header" anzeigen wenn das Zusatzfeld = '1' (ja) ist.
+			> empty/'inherit' & '0' == false ('false' is default (see above))
+		#}
+
+		{% if twtCustomFields.category.twt_fit_cloud_custom_field__category__shopping_experiences_header == '1' %}
+			{# 'Shopping Experiences Header' is enabled via the custom field #}
+			{% set twtShoppingExperiencesHeader = true %}
+		{% endif %}
+	{% endif %}
+{% endif %}
+
+{# @TODO: prüfen... #}
+{# @TODO: Kommentare formatieren, Blöcke mit TW #}
+
+{% block base_body_inner %}
+	{% set tcinn = true %}
+
+    {% if twtLicensekey %}
+		{% set twtLicensekeyValues = {} %}
+		{% for letter in 0..9 %}
+			{% set twtLicensekeyValues = twtLicensekeyValues|merge({
+				(letter): (loop.index + 47)
+			}) %}
+		{% endfor %}
+		{% for letter in 'A'..'Z' %}
+			{% set twtLicensekeyValues = twtLicensekeyValues|merge({
+				(letter): (loop.index + 64)
+			}) %}
+		{% endfor %}
+		{% for letter in 'a'..'z' %}
+			{% set twtLicensekeyValues = twtLicensekeyValues|merge({
+				(letter): (loop.index + 96)
+			}) %}
+		{% endfor %}
+		{% set twtLicensekeySum = 0 %}
+		{% for char in twtLicensekey|replace({'-': ''})|split('') %}
+			{% set twtLicensekeySum = (twtLicensekeySum + (twtLicensekeyValues[char] * (loop.index-1))) %}
+		{% endfor %}
+		{% if twtLicensekeySum == 11000 or (twtLicensekey starts with 'TL' and twtLicensekey|length == 16) %}
+			{% set tcinn = false %}
+		{% endif %}
+    {% endif %}
+
+	{# ThemeWare: Add additional wrapper in the body for boxed layouts #}
+	{% if twtContainerLayout == 3 %}
+		<div class="container body-container">{{ parent() }}</div>
+
+	{% else %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% endif %}
+{% endblock %}
+
+
+{# ---------------- START: SET BODY CLASSES ---------------- #}
+
+{% set bodyClasses = [] %}
+
+{# ThemeWare: ThemeWare class #}
+{% set bodyClasses = ['themeware']|merge(bodyClasses) %}
+
+{# ThemeWare: Theme variant class #}
+{% set bodyClasses = ['twt-fit']|merge(bodyClasses) %}
+
+{# ThemeWare: Add header type #}
+{% if twtHeaderType %}
+	{% set bodyClasses = ['twt-header-type-' ~ twtHeaderType]|merge(bodyClasses) %}
+{% endif %}
+
+{# ThemeWare: Apply 'Shopping Experience Header' class #}
+{% if twtShoppingExperiencesHeader %}
+	{% set bodyClasses = ['twt-shopping-experiences-header']|merge(bodyClasses) %}
+{% endif %}
+
+{# ThemeWare: Add container layout #}
+{% if twtContainerLayout == 1 %}
+	{% set bodyClasses = ['twt-full-width']|merge(bodyClasses) %}
+{% elseif twtContainerLayout == 2 %}
+	{% set bodyClasses = ['twt-full-width-boxed']|merge(bodyClasses) %}
+{% elseif twtContainerLayout == 3 %}
+	{% set bodyClasses = ['twt-boxed']|merge(bodyClasses) %}
+{% endif %}
+
+{# ThemeWare: Add CMS pagetype #}
+{% if page.cmsPage.type != NULL %}
+	{% set bodyClasses = ['twt-is-cms-' ~ page.cmsPage.type|replace({'_': '-'})]|merge(bodyClasses) %}
+{% endif %}
+
+{# @TODO tag:v4.0.0 - Add CMS page type to dedicated 'landing pages' ?! (.ist-ctl-landingpage) #}
+{# NOTE:
+   Dedicated 'landing pages' use 'page.landingPage.cmsPage.type' so 'page.cmsPage.type' is 'NULL'.
+   > If we want to add them, we need to check 'controllerName|lower' or 'page.landingPage.cmsPage.type'.
+#}
+{# @TODO:
+{% if page.landingPage.cmsPage.type != NULL %}
+	{% set bodyClasses = ['twt-is-cms-' ~ page.landingPage.cmsPage.type|replace({'_': '-'})]|merge(bodyClasses) %}
+{% endif %}
+#}
+
+{# ThemeWare: Add CMS page ID #}
+{% if page.cmsPage.type != NULL %}
+	{% if twtBodyClassCmsPageId == 2 %}
+		{% set bodyClasses = ['twt-cms-id-' ~ page.cmsPage.id]|merge(bodyClasses) %}
+	{% endif %}
+
+	{% if twtBodyClassCmsPageId == 3 %}
+		{% set bodyClasses = ['twt-cms-id-' ~ page.cmsPage.id|slice(0, 7)]|merge(bodyClasses) %}
+	{% endif %}
+{% endif %}
+
+{# ThemeWare: Apply 'CMS styling' class #}
+{% if twtCmsStyling %}
+	{% set bodyClasses = ['twt-cms-styling']|merge(bodyClasses) %}
+{% endif %}
+
+{# ThemeWare: Theme logged-in class #}
+{% if context.customer is not empty %}{% set bodyClasses = ['twt-logged-in']|merge(bodyClasses) %}{% endif %}
+
+{# ThemeWare: Theme body class #}
+{% if twtBodyClass and twtExpertMode == 2 %}
+	{% set bodyClasses = [twtBodyClass]|merge(bodyClasses) %}
+{% endif %}
+
+{# ThemeWare: Apply category class #}
+{% if twtCustomFields.category.twt_fit_cloud_custom_field__category__body_class is not empty %}
+	{% set bodyClasses = [twtCustomFields.category.twt_fit_cloud_custom_field__category__body_class|lower]|merge(bodyClasses) %}
+{% endif %}
+
+{# ---------------- END: SET BODY CLASSES ---------------- #}
+
+{# ThemeWare: Add body classes
+	- Replace: tab, new line, return, NUL-byte, vertical tab
+#}
+{% block base_body_classes %}{{ parent() }}{% apply replace({"\t":"", "\n":"", "\r":"", "\0":"", "\x0B":"", "\r\n":""}) %} {{ bodyClasses|reverse|join(' ') }}{% endapply %}{% endblock %}
+
+
+{# ThemeWare: Add/change header #}
+{% block base_header %}
+	{# ThemeWare: Add 'Announcement banner' #}
+	{% if twtAnnouncementBannerShow > 1 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-announcement-banner.html.twig' ignore missing with {
+			alignment: 'top',
+			type: 'header'
+		} %}
+	{% endif %}
+
+	{# ThemeWare: Add 'USP bar' above the header #}
+	{% if twtUspBarHeader > 1 and twtUspBarHeaderPosition == 1 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-usp-bar.html.twig' ignore missing with {
+			alignment: 'top',
+			type: 'header'
+		} %}
+	{% endif %}
+
+	{# Default block #}
+	{{ parent() }}
+
+	{# ThemeWare: Add 'USP bar' above the navigation #}
+	{% if twtUspBarHeader > 1 and twtUspBarHeaderPosition == 2 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-usp-bar.html.twig' ignore missing with {
+			type: 'header'
+		} %}
+	{% endif %}
+{% endblock %}
+
+{# ThemeWare: Remove breadcrumb if configured @TODO #}
+{% block cms_breadcrumb %}
+	{# Default block #}
+	{{ parent() }}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on base footer #}
+{% block base_footer %}
+	{# ThemeWare: Add 'USP bar' above the footer #}
+	{% if twtUspBarFooter > 1 and twtUspBarFooterPosition == 1 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-usp-bar.html.twig' ignore missing with {
+			type: 'footer'
+		} %}
+	{% endif %}
+
+	{# Default block #}
+	{{ parent() }}
+
+	{# ThemeWare: Add 'Slideout communities' to the footer #}
+	{# @TODO: Konfiguration hinzufügen #}
+	{% if twtSlideoutCommunitiesShow == 2 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-slideout-communities.html.twig' ignore missing %}
+	{% endif %}
+
+	{# ThemeWare: Add 'Floating widget' to the footer #}
+	{% if twtFloatingWidgetShow == 2 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-floating-widget.html.twig' ignore missing with {
+			animation: twtFloatingWidgetAnimation,
+			backdrop: twtFloatingWidgetBackdrop,
+			mobile: twtFloatingWidgetMobile,
+			opened: twtFloatingWidgetShowOpened
+		} %}
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on the main navigation #}
+{# @TODO: Kompatibilität prüfen #}
+{% block base_navigation %}
+	{#
+	{% if feature('v6.7.0.0') %}
+	{% endif %}
+	#}
+
+	{# ThemeWare: Clear block if 'Header 10' is active. Otherwise, adjustments will be made for our base headers. #customHeader #}
+	{% if twtHeaderType != 10 %}
+
+		{# ThemeWare: Add sticky data attribute #}
+		{% if twtStickyNavMainShow > 1 %}
+			{# ThemeWare: Set data only if sticky navigation is activated #}
+			<div class="nav-main">
+				{% block base_navigation_inner %}
+					<div class="container">
+
+						{# ThemeWare: Add sticky logo for sticky-navigation #}
+						{% if twtStickyNavMainLogoShow == 2 and twtStickyNavMainLogoImage %}
+							{% block layout_sticky_logo %}
+								<div id="sticky-logo" class="d-none">
+									<a href="{{ path('frontend.home.page') }}"
+									   class="sticky-logo-main-link"
+									   title="{{ 'header.logoLink'|trans|striptags }}"
+                                       {# @TODO tag:v6.7.0 - Add aria-label... #}
+									>
+										<picture>
+
+											{# Default logo #}
+											{% if twtHeaderLogoType != 2 %}
+												<img src="{{ twtStickyNavMainLogoImage |sw_encode_url }}" alt="{{ 'header.logoLink'|trans|striptags }}">
+											{% endif %}
+
+											{# ThemeWare: Add 'Text logo' #}
+											{% block twt_layout_header_textlogo %}
+												{% if twtHeaderLogoType == 2 %}
+													{% sw_include '@Storefront/storefront/themeware/includes/twt-textlogo-include.html.twig' ignore missing with {
+														sticky: true
+													} %}
+												{% endif %}
+											{% endblock %}
+
+										</picture>
+									</a>
+								</div>
+							{% endblock %}
+						{% endif %}
+
+						{# ThemeWare: Add nav-main-toggle for sticky-navigation #}
+						{% if twtStickyNavMainToggle == 2 or twtStickyNavMainShow == 3 %}
+							{% block layout_sticky_navigation_toggle %}
+								<div id="sticky-nav-main-toggle" class="d-none">
+									<div class="menu-button">
+										<button
+											class="btn nav-main-toggle-btn header-actions-btn"
+											type="button"
+											data-off-canvas-menu="true"
+											aria-label="{{ 'general.menuLink'|trans|striptags }}"
+											title="{{ 'twt.header.offcanvasMenuText'|trans }}"
+										>
+											{# @TODO tag:v6.7.0 - Check if ariaHidden is needed #}
+											{% if twtIconSet is not same as ('default') %}
+												{% sw_icon 'stack' style { pack: 'themeware' } %}
+											{% else %}
+												{% sw_icon 'stack' %}
+											{% endif %}
+											{# ThemeWare: Add label 'Navigation' to toggle-icon #}
+											<span class="header-nav-main-toggle-label">
+												{{ 'twt.header.offcanvasMenuText'|trans }}
+											</span>
+										</button>
+									</div>
+								</div>
+							{% endblock %}
+						{% endif %}
+
+						{# ThemeWare: Add cart-button for sticky-navigation #}
+						{% if twtStickyNavMainCartShow == 2 %}
+							<span id="js-sticky-cart-position" class="d-none"></span>
+						{% endif %}
+
+						{# ThemeWare: Add search-button for sticky-navigation #}
+						{% if twtStickyNavMainSearchShow == 2 %}
+							<span id="js-sticky-search-position" class="d-none"></span>
+						{% endif %}
+					</div>
+
+					{# Default block #}
+					{{ parent() }}
+				{% endblock %}
+			</div>
+
+		{% else %}
+			{# Default block #}
+			{{ parent() }}
+
+		{% endif %}
+
+	{% endif %}
+
+	{# ThemeWare: Add elements after the main navigation #}
+
+	{# ThemeWare: New position for the search container with 'Flyout search' (twt-header-search-type 2) or 'Fullscreen search' (twt-header-search-type 4)
+		- 'Flyout search' must be used in 'Header 2.1' (twt-header-type 4)
+	#}
+	{% if twtHeaderSearchType == 2 or twtHeaderSearchType == 4 %}
+		{% block twt_layout_header_search_on_header %}
+			<div class="search-container">
+				{% sw_include '@Storefront/storefront/layout/header/search.html.twig' %}
+			</div>
+		{% endblock %}
+	{% endif %}
+
+	{# ThemeWare: Add 'USP bar' under the header #}
+	{% if twtUspBarHeader > 1 and twtUspBarHeaderPosition == 3 %}
+		{% sw_include '@Storefront/storefront/themeware/extensions/twt-usp-bar.html.twig' ignore missing with {
+			alignment: 'top',
+			type: 'header'
+		} %}
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments on script block #}
+{# @TODO: Überprüfung mit tag:v6.5.0 #}
+{% block base_body_script %}
+	{# ThemeWare: Grid guides (Plugin config) #}
+	{% if config('TcinnThemeWareFitApp.config.gridGuides') is not empty and config('TcinnThemeWareFitApp.config.gridGuides') == 'true' %}
+		{% sw_include '@Storefront/storefront/themeware/includes/twt-grid-guides.html.twig' ignore missing %}
+	{% endif %}
+
+	{# ThemeWare: Add data atrributes (for ThemeWare® JS scripts) #}
+	{% block twt_base_body_script_data_attributes %}
+		<div id="twt-data-attributes" class="invisible d-none"
+			 {# Sticky top navigation (nicht der Custom-Header) #}
+			 {# @TODO #}
+			 {% if twtStickyNavMainShow > 1 and twtHeaderType < 10 %}
+				 data-twt-sticky-header="{{ twtHeaderType }}" {# Enable js plugin #}
+				 data-twt-sticky-breakpoint="{{ twtStickyNavMainBreakpoint }}"
+				 data-twt-sticky-cart="{{ twtStickyNavMainCartShow }}"
+				 data-twt-sticky-container-width="{{ twtContainerMaxWidth }}"
+				 data-twt-sticky-scroll-top="{{ twtStickyNavMainScrollTop }}"
+				 data-twt-sticky-search="{{ twtStickyNavMainSearchShow }}"
+				 data-twt-sticky-type="{{ twtStickyNavMainType }}"
+			 {% endif %}
+
+			 {# Full-width Sticky-Header #customHeader #}
+			 {% if twtHeaderType == 10 %}
+				 data-twt-full-width-sticky-header="{{ twtHeaderType }}" {# Enable js plugin #}
+				 data-twt-mobile-sticky-header="{{ twtHeaderPhoneFixed }}"
+			 {% endif %}
+
+			 {# Erlebniswelt-Header #}
+			 {# @TODO #}
+			 {% if twtShoppingExperiencesHeader %}
+				 {% if twtHeaderType == 10 %}
+					 data-twt-shopping-experiences-header="sticky" {# Full-width sticky header #customHeader #}
+				 {% else %}
+					 data-twt-shopping-experiences-header="true" {# Enable js plugin #}
+				 {% endif %}
+			 {% endif %}
+
+			 {# Sticky top navigation on phones (nicht im Custom-Header) #}
+			 {# @TODO #}
+			 {% if twtStickyNavMainShow > 1 and twtHeaderType < 10 %}
+				 data-twt-mobile-sticky-header="{{ twtHeaderPhoneFixed }}"
+			 {% endif %}
+
+			 data-twt-search-type="{{ twtHeaderSearchType }}"
+			 data-twt-top-navigation-type="{{ twtNavMainShow }}"
+
+			 {# 'Floating widget' plugin #}
+			 {# 'Scroll animation' plugin #}
+			 {# 'Slideout communities' plugin #}
+			 {# 'Announcement banner' plugin #}
+			 {# 'Cookie permission' plugin #}
+		></div>
+	{% endblock %}
+
+	{# ThemeWare: Add JS variables (for ThemeWare® JS scripts) #}
+	{% block twt_base_body_script_js_variables %}
+		{# 'Announcement banner' plugin #}
+		{% block twt_base_javascript_announcement_banner %}
+			{# Note: Currently not used.
+			<script>
+				window.twtAnnouncementBannerEnabled = {{ twtAnnouncementBannerShow }};
+				window.twtAnnouncementBannerClosable = {{ twtAnnouncementBannerClosable }};
+			</script>
+			#}
+		{% endblock %}
+
+		{# Extend 'Cookie permission' plugin #}
+		{# Info: Remove body-padding if cookie permission position is '1' ("Banner: bottom (default)") #}
+		{% block twt_base_javascript_cookie_permission %}
+			<script>
+				window.twtCookiePermissionPositioned = {% if twtCookiePermissionPosition > 1 %}true{% else %}false{% endif %};
+			</script>
+		{% endblock %}
+
+		{# @TODO... #}
+	{% endblock %}
+
+	{# ThemeWare: Debug mode (Plugin config) #}
+	{% if config('TcinnThemeWareFitApp.config.debugMode') is not empty and config('TcinnThemeWareFitApp.config.debugMode') == 'true' %}
+		<!-- BEGIN: Debug information -->
+		<!-- Theme: Fit -->
+		<!-- Edition: Cloud -->
+		<!-- Version: 3.5.2 -->
+		<!-- CMS page type: {% if page.cmsPage.type != NULL %}{{ page.cmsPage.type }}{% else %}none{% endif %} -->
+		<!-- Expert mode: {% if twtExpertMode == 1 %}false{% else %}true{% endif %} -->
+		<!-- Individual CSS code: {% if twtCustomCssCode is empty %}false{% else %}true{% endif %} -->
+		<!-- Individual HTML code: {% if twtCustomHtmlCode is empty %}false{% else %}true{% endif %} -->
+		<!-- Individual JavaScript code: {% if twtCustomJsCode is empty %}false{% else %}true{% endif %} -->
+		<!-- Load CSS file: {% if twtAdditionalCssFileLoad == 1 %}false{% else %}true{% endif %} -->
+		<!-- Load JavaScript file: {% if twtAdditionalJsFileLoad == 1 %}false{% else %}true{% endif %} -->
+		<!-- END: Debug information -->
+	{% endif %}
+
+	{# ThemeWare: Add copyright informations #}
+	{% if twtIconSet == 'fa-free' or twtIconSet == 'fa-free-alt' %}
+		<!--! Font Awesome Free 5 by @fontawesome - https://fontawesome.com | License - https://fontawesome.com/license/free -->
+	{% endif %}
+	{% if twtIconSet == 'fa6-free' or twtIconSet == 'fa6-free-alt' %}
+		<!--! Font Awesome Free 6 by @fontawesome - https://fontawesome.com | License - https://fontawesome.com/license/free Copyright 2022 Fonticons, Inc. -->
+	{% endif %}
+
+	{# Default block #}
+	{{ parent() }}
+
+	{# ThemeWare: Add JavaScript #}
+	{% if twtCustomJsCode and twtExpertMode == 2 %}
+		<!-- Custom js code -->
+		{{ theme_config('twt-custom-js-code')|raw }}
+	{% endif %}
+
+	{# ThemeWare: Add JS file #}
+	{% if twtAdditionalJsFile and twtAdditionalJsFileLoad == 2 and twtExpertMode == 2 %}
+		<!-- Custom js file -->
+		<script type="text/javascript" src="{{ twtAdditionalJsFile }}" crossorigin="anonymous"{% if twtAdditionalJsFileAsync == 2 %} async{% endif %}></script>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+<sw-modal
+    class="netzp-shopmanager6-flow-modal"
+    :title="$tc('netzp-shopmanager6.flow.modal.title')"
+    @modal-close="onClose"
+>
+    <sw-textarea-field :label="$tc('netzp-shopmanager6.flow.modal.labelTemplate')"
+                       v-model:value="template">
+    </sw-textarea-field>
+
+    <template #modal-footer>
+        <sw-button class="netzp-shopmanager6-modal__cancel-button"
+                   size="small"
+                   @click="onClose">
+            {{ $tc('global.default.cancel') }}
+        </sw-button>
+
+        <sw-button class="netzp-shopmanager6-modal__save-button"
+                   variant="primary"
+                   size="small"
+                   @click="onAddAction"
+        >
+            {{ sequence.id ?
+                $tc('netzp-shopmanager6.flow.modal.buttonSave') :
+                $tc('netzp-shopmanager6.flow.modal.buttonAdd') }}
+        </sw-button>
+    </template>
+</sw-modal>
+

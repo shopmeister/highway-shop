@@ -1,0 +1,127 @@
+{# ThemeWare® CMS block "Six columns (Custom)" #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{# Add classes for our flex column blocks #}
+{% set columnClasses = 'col-12 col-md-6 col-lg-4 col-xl-2' %} {# !default #}
+
+{% set flex = false %}
+{% for class in block.cssClass|split(' ') %}
+    {% if class == 'twt-flex-columns' %}
+        {% set flex = true %}
+    {% endif %}
+{% endfor %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block block_twt_grid_six_column %}
+    {% set columns = 6 %}
+
+    {# Set image size for every viewport #}
+    {# @TODO... #}
+
+    {# Set image size for largest viewport depending on the cms block sizing mode (boxed or full-width) #}
+    {# @TODO... #}
+
+    {% block block_twt_grid_six_column_col1 %}
+        {% set element = block.slots.getSlot('col1') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-1 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column first" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col1_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_grid_six_column_col2 %}
+        {% set element = block.slots.getSlot('col2') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-2 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col2_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_grid_six_column_col3 %}
+        {% set element = block.slots.getSlot('col3') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-3 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col3_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_grid_six_column_col4 %}
+        {% set element = block.slots.getSlot('col4') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-4 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col4_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_grid_six_column_col5 %}
+        {% set element = block.slots.getSlot('col5') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-5 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col5_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_grid_six_column_col6 %}
+        {% set element = block.slots.getSlot('col6') %}
+
+        {% set elementClasses = element.fieldConfig.elements.cssClassColumn.value %}
+        {% if elementClasses %}
+            {% set columnClasses = elementClasses %}
+        {% else %}
+            {% set columnClasses = columnClasses|join(' ')|trim %}
+        {% endif %}
+
+        <div class="column-6 {% if flex == false %}{{ columnClasses }}{% else %}twt-col-flex{% endif %} twt-column last" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_grid_six_column_col6_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

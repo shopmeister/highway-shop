@@ -1,0 +1,14 @@
+{
+  "netzp-shopmanager6": {
+      "flow": {
+        "modal": {
+            "title": "Push Nachricht",
+            "description": "Template",
+            "actionTitle": "Push Nachricht senden",
+            "labelTemplate": "Nachrichten-Template",
+            "buttonAdd": "Hinzufügen",
+            "buttonSave": "Speichern"
+        }
+      }
+  }
+}

@@ -1,0 +1,250 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® 'Fullscreen search'
+    ==================================================
+
+*/
+
+// @TODO: Add configuration...
+
+@if $twt-header-search-type == 4 and $twt-header-search-show == 2 {
+    .search-container {
+        z-index: $twt-sticky-nav-main-z-index+1 !important; // Fix z-index
+
+        #searchCollapse {
+            position: fixed;
+            z-index: $search-suggest-zindex;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: none;
+            align-items: center;
+            height: 100% !important;
+            padding: 0 10vw 50vh;
+            transition: inherit;
+            opacity: 0;
+            background-color: $twt-header-search-fullscreen-backdrop-color;
+
+            // Add backdrop blur effect
+            @if $twt-header-search-fullscreen-backdrop-effect-blur > 0 {
+                backdrop-filter: blur($twt-header-search-fullscreen-backdrop-effect-blur + px);
+            }
+
+            &.collapsing,
+            &.show {
+                position: fixed;
+                display: flex;
+                overflow: visible;
+                height: 100% !important;
+                transition: inherit;
+            }
+
+            &.show {
+                transition: opacity .3s ease-in-out;
+                opacity: 1;
+            }
+
+            .header-search {
+                max-width: none;
+                transition: opacity .3s ease-in-out;
+                opacity: 1;
+
+                .header-search-form {
+                    box-shadow: 0 0 40px rgba(0, 0, 0, .15);
+
+                    .header-search-input {
+                        font-size: 2rem;
+                        text-align: center;
+                        color: #ffffff;
+                        border: none;
+                        border-bottom: 3px solid #ffffff;
+                        border-radius: 0;
+                        background: transparent;
+                        box-shadow: none; // Remove box-shadow highlighting
+
+                        &::placeholder {
+                            opacity: 1;
+                            color: #cccccc;
+                        }
+                    }
+
+                    .header-search-btn {
+                        /*
+                        @include media-breakpoint-down(sm) { // max 575.98px
+                            padding: 14px 10px;
+                        }
+
+                        @include media-breakpoint-up(sm) { // min 576px
+                            padding: 14px 24px;
+                        }
+                        */
+
+                        border: none;
+                        border-bottom: 3px solid #ffffff;
+                        border-radius: 0;
+                        background: transparent;
+
+                        /*
+                        .header-search-icon {
+                            width: 28px;
+                            height: 28px;
+
+                            .icon {
+                                width: 28px;
+                                height: 28px;
+
+                                svg {
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+                        */
+
+                        .header-search-icon {
+                            display: flex; // Firefox-Fix
+                            justify-content: center; // Firefox-Fix
+                            height: 100%;
+
+                            width: 28px;
+                            //height: 28px;
+
+                            .icon {
+                                color: #ffffff;
+                                width: 28px;
+                                height: 28px;
+
+                                > svg {
+                                    top: 0; // Firefox-Fix
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+
+                        .loader {
+                            color: $twt-header-search-btn-icon-color !important;
+
+                            // Reduce size of the icon
+                            width: 28px;
+                            height: 28px;
+
+                            // Overwrite our display:flex Firefox fix
+                            ~ .header-search-icon,
+                            ~ .header-close-btn {
+                                display: none;
+                            }
+                        }
+
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+
+                    // @TODO:
+                    .header-close-btn {
+                        /*
+                        @include media-breakpoint-down(sm) { // max 575.98px
+                            padding: 14px 10px;
+                        }
+
+                        @include media-breakpoint-up(sm) { // min 576px
+                            padding: 14px 24px;
+                        }
+                        */
+
+                        border: none;
+                        border-bottom: 3px solid #ffffff;
+                        border-radius: 0;
+                        background: transparent;
+
+                        /*
+                        .header-close-icon {
+                            width: 28px;
+                            height: 28px;
+
+                            .icon {
+                                width: 28px;
+                                height: 28px;
+
+                                svg {
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+                        */
+
+                        .header-close-icon {
+                            display: flex; // Firefox-Fix
+                            justify-content: center; // Firefox-Fix
+                            height: 100%;
+
+                            width: 28px;
+                            //height: 28px;
+
+                            .icon {
+                                color: #ffffff;
+                                width: 28px;
+                                height: 28px;
+
+                                > svg {
+                                    top: 0; // Firefox-Fix
+                                    color: #ffffff;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            opacity: 0.7;
+                        }
+                    }
+
+                    @include media-breakpoint-up(md) { // min 768px
+                        width: 600px;
+                    }
+                }
+
+                @include media-breakpoint-down(md) { // max 767.98px
+                    width: 100%;
+                }
+            }
+
+            &.collapsing {
+                .header-search {
+                    opacity: 0;
+                }
+            }
+
+            // Close Button
+            .search-toggle-btn {
+                position: fixed;
+                z-index: $search-suggest-zindex+1;
+                top: 5%;
+                right: 5%;
+                display: block !important;
+                opacity: 0.7;
+
+                .icon {
+                    width: 42px;
+                    height: 42px;
+
+                    svg {
+                        color: #ffffff;
+                    }
+                }
+
+                &:hover {
+                    transition: opacity .1s ease-in-out;
+                    opacity: 1;
+                }
+
+            }
+
+        }
+    }
+}

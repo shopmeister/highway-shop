@@ -1,0 +1,45 @@
+.swag-amazon-pay-wrapper {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    position: relative;
+
+    &.account-login {
+        margin-top: 0;
+        width: 200px;
+        height: 80px;
+
+        .swag-amazon-pay-button-error.connection-is-insecure {
+            display: inline-block;
+            min-width: 340px;
+        }
+    }
+
+    &.product-detail {
+        margin-top: 0;
+    }
+}
+
+.swag-amazon-pay-button-container {
+    height: 48px;
+
+    //The amazon pay JS sets the styles of its parent element manually but in some cases it doesn't calculate the width correctly for some strange reason.
+    //Therefore it's necessary to disable this by setting the width fixed to 100%.
+    //If you would like to change the width, use the element swag-amazon-pay-wrapper instead to apply your own styles.
+    width: 100% !important;
+}
+
+.swag-amazon-pay-loading-indicator {
+    height: 32px;
+}
+
+.swag-amazon-pay-button-tooltip-overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    cursor: not-allowed;
+}
+
+

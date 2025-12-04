@@ -1,0 +1,1619 @@
+{
+    "twt": {
+        "theme-manager": {
+            "welcome": {
+                "headline": "Congratulations!",
+                "introduction": "By choosing ThemeWare® Fit, you’ve not only decided on a great theme, you’ve also embarked on a journey to a successful and lucrative online shop. Our design and sales experts will accompany you on this journey, sharing their expertise with you in the form of instructions, video tutorials and online courses. With ThemeWare®, all of this is already included in the price. Even during the trial period!"
+            },
+            "firstSteps": {
+                "headline": "First steps",
+                "text": "Follow these first steps now to avoid missing out on anything, and you can then start configuring ThemeWare® and systematically optimising your shop.",
+                "step1": {
+                    "headline": "Download the ThemeWare® Utilities",
+                    "text": "ThemeWare® Utilities includes the complete graphics package, a professional shopping experience with instructions, extremely important online courses (theme SEO/page speed, sales promotion and graphics editing/design) and a surprise gift for you.",
+                    "buttonText": "Request the ThemeWare® Utilities for free",
+                    "link": "https://service.themeware.design/en/themeware-utilities?theme=fit&utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=utilities"
+                },
+                "step2": {
+                    "headline": "Watch the ThemeWare® Video Tutorial",
+                    "text": "Now start watching the first video tutorials. Depending on your level of knowledge, you will find the tutorials and instructions that suit you.",
+                    "buttonText": "Open the Video Tutorial",
+                    "link": "https://service.themeware.design/en/themeware-tutorial?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=video-tutorial"
+                },
+                "step3": {
+                    "headline": "Bookmark the ThemeWare® Service Portal",
+                    "text": "The ThemeWare® Service Portal is always your first place to go for anything you need to know about ThemeWare®. It is more or less your personal dashboard for ThemeWare®. There you will always find all the relevant links and information about ThemeWare®, the ThemeWare® Knowledge Base, the ThemeWare® Manual, forms and many useful tools.",
+                    "buttonText": "Visit the Service Portal",
+                    "link": "https://service.themeware.design/en?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=service-portal"
+                }
+            },
+            "highlights": {
+                "search": {
+                    "title": "Config Finder",
+                    "text": "Find any configuration field quickly with the popular ThemeWare® Config Finder.",
+                    "buttonText": "Open",
+                    "link": "https://config.themeware.design/en?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=footer_fieldsearch"
+                },
+                "videoTutorial": {
+                    "title": "Video Tutorial",
+                    "text": "This is how you get to a professional shop quickly and step by step.",
+                    "buttonText": "Open",
+                    "link": "https://service.themeware.design/en/themeware-tutorial?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=footer_video-tutorial"
+                },
+                "support": {
+                    "title": "Support",
+                    "text": "Our Service Portal is the best place to go when you need support.",
+                    "buttonText": "Open",
+                    "link": "https://service.themeware.design/en?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=footer_support"
+                },
+                "utilities": {
+                    "title": "ThemeWare® Utilities",
+                    "text": "Useful tools, extras, and online courses to help boost the success of your shop.",
+                    "buttonText": "Open",
+                    "link": "https://service.themeware.design/en/themeware-utilities?theme=fit&utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=footer_utilities"
+                }
+            },
+            "tools": {
+                "text": "Do you need any help? Here you’ll find an overview of all",
+                "underlined": "ThemeWare® Support Tools",
+                "link": "https://service.themeware.design/en?utm_source=theme-manager6-app&utm_medium=referral&utm_campaign=fit&utm_content=tool-overview"
+            }
+        },
+        "cms": {
+            "sidebar": {
+                "general": "General",
+                "sliders": "Sliders",
+                "teasers": "Teasers",
+                "banners": "Banners",
+                "columns": "Columns",
+                "grids": "Grids",
+                "textImage": "Text & images",
+                "extensions": "Extensions",
+                "listing": "Listing page",
+                "commerce": "Product page",
+                "sale": "Sale",
+                "sidebar": "Sidebar",
+                "other": "Other"
+            },
+            "blocks": {
+                "heroSliderFourSlides": {
+                    "label": "Hero slider (4x)"
+                },
+                "heroSliderThreeSlides": {
+                    "label": "Hero slider (3x)"
+                },
+                "heroSliderTwoSlides": {
+                    "label": "Hero slider (2x)"
+                },
+
+                "textTeaser": {
+                    "label": "Text teaser"
+                },
+                "textTeaserDecorated": {
+                    "label": "Text teaser (decorated)"
+                },
+                "buttonTeaser": {
+                    "label": "Button teaser"
+                },
+                "callToAction": {
+                    "label": "Call-to-Action"
+                },
+                "hoverBox": {
+                    "label": "Hover box"
+                },
+                "imageTeaser": {
+                    "label": "Image teaser"
+                },
+                "heroTeaser": {
+                    "label": "Hero teaser"
+                },
+                "advancedTeaser": {
+                    "label": "Advanced teaser"
+                },
+                "classicTeaser": {
+                    "label": "Classic teaser"
+                },
+                "modernTeaser": {
+                    "label": "Modern teaser"
+                },
+                "roundTeaser": {
+                    "label": "Round teaser"
+                },
+
+                "advancedBanner": {
+                    "label": "Advanced banner"
+                },
+                "heroBanner": {
+                    "label": "Hero banner"
+                },
+                "imageBanner": {
+                    "label": "Image banner"
+                },
+                "parallaxBanner": {
+                    "label": "Parallax banner"
+                },
+
+                "gridOneColumn": {
+                    "label": "One column"
+                },
+                "gridTwoColumn": {
+                    "label": "Two columns"
+                },
+                "gridTwoColumnSwapped": {
+                    "label": "Two columns (swapped on phones)"
+                },
+                "gridTwoColumn39": {
+                    "label": "Two columns, 3-9"
+                },
+                "gridTwoColumn39Swapped": {
+                    "label": "Two columns, 3-9 (swapped on phones)"
+                },
+                "gridTwoColumn48": {
+                    "label": "Two columns, 4-8"
+                },
+                "gridTwoColumn48Swapped": {
+                    "label": "Two columns, 4-8 (swapped on phones)"
+                },
+                "gridTwoColumn57": {
+                    "label": "Two columns, 5-7"
+                },
+                "gridTwoColumn57Swapped": {
+                    "label": "Two columns, 5-7 (swapped on phones)"
+                },
+                "gridTwoColumn75": {
+                    "label": "Two columns, 7-5"
+                },
+                "gridTwoColumn75Swapped": {
+                    "label": "Two columns, 7-5 (swapped on phones)"
+                },
+                "gridTwoColumn84": {
+                    "label": "Two columns, 8-4"
+                },
+                "gridTwoColumn84Swapped": {
+                    "label": "Two columns, 8-4 (swapped on phones)"
+                },
+                "gridTwoColumn93": {
+                    "label": "Two columns, 9-3"
+                },
+                "gridTwoColumn93Swapped": {
+                    "label": "Two columns, 9-3 (swapped on phones)"
+                },
+                "gridThreeColumn": {
+                    "label": "Three columns"
+                },
+                "gridThreeColumn228": {
+                    "label": "Three columns, 2-2-8"
+                },
+                "gridThreeColumn282": {
+                    "label": "Three columns, 2-8-2"
+                },
+                "gridThreeColumn336": {
+                    "label": "Three columns, 3-3-6"
+                },
+                "gridThreeColumn363": {
+                    "label": "Three columns, 3-6-3"
+                },
+                "gridThreeColumn633": {
+                    "label": "Three columns, 6-3-3"
+                },
+                "gridThreeColumn822": {
+                    "label": "Three columns, 8-2-2"
+                },
+                "gridFourColumn": {
+                    "label": "Four columns"
+                },
+                "gridFiveColumn": {
+                    "label": "Five columns"
+                },
+                "gridSixColumn": {
+                    "label": "Six columns"
+                },
+                "gridSixColumnCustom": {
+                    "label": "Six columns (Custom)"
+                },
+
+                "gridOne": {
+                    "label": "Grid 'One'"
+                },
+                "gridOneSwapped": {
+                    "label": "Grid 'One' (swapped)"
+                },
+                "gridTwo": {
+                    "label": "Grid 'Two'"
+                },
+                "gridTwoSwapped": {
+                    "label": "Grid 'Two' (swapped)"
+                },
+                "gridThree": {
+                    "label": "Grid 'Three'"
+                },
+                "gridThreeSwapped": {
+                    "label": "Grid 'Three' (swapped)"
+                },
+                "gridFour": {
+                    "label": "Grid 'Four'"
+                },
+                "gridFourSwapped": {
+                    "label": "Grid 'Four' (swapped)"
+                },
+                "gridFive": {
+                    "label": "Grid 'Five'"
+                },
+                "gridFiveSwapped": {
+                    "label": "Grid 'Five' (swapped)"
+                },
+                "gridSix": {
+                    "label": "Grid 'Six'"
+                },
+                "gridSixSwapped": {
+                    "label": "Grid 'Six' (swapped)"
+                },
+                "gridModern": {
+                    "label": "Grid 'Modern'"
+                },
+                "gridModernSwapped": {
+                    "label": "Grid 'Modern' (swapped)"
+                },
+
+                "imageTextLayered": {
+                    "label": "Image & text layered"
+                },
+
+                "breadcrumb": {
+                    "label": "Breadcrumb navigation",
+                    "preview": {
+                        "label": "Navigation"
+                    }
+                },
+                "countdownBanner": {
+                    "label": "Countdown banner"
+                },
+                "countdownBannerCompact": {
+                    "label": "Countdown banner (compact)"
+                },
+                "customCode": {
+                    "label": "Custom code (HTML/CSS/JS)"
+                },
+                "discountBanner": {
+                    "label": "Discount banner"
+                },
+                "galleryBuyBoxProductName": {
+                    "label": "Image gallery and buy box (with product name)"
+                },
+                "galleryBuyBoxProductNameOne": {
+                    "label": "Image gallery and buy box (with product name) [1]"
+                },
+                "galleryBuyBoxProductNameTwo": {
+                    "label": "Image gallery and buy box (with product name) [2]"
+                },
+                "galleryBuyBoxProductNameThree": {
+                    "label": "Image gallery and buy box (with product name) [3]"
+                },
+                "galleryBuyBoxProductHeading": {
+                    "label": "Image gallery and buy box (with product name & manufacturer logo)"
+                },
+                "galleryBuyBoxProductHeadingOne": {
+                    "label": "Image gallery and buy box (with product name & manufacturer logo) [1]"
+                },
+                "galleryBuyBoxProductHeadingTwo": {
+                    "label": "Image gallery and buy box (with product name & manufacturer logo) [2]"
+                },
+                "galleryBuyBoxProductHeadingThree": {
+                    "label": "Image gallery and buy box (with product name & manufacturer logo) [3]"
+                },
+                "heroCountdown": {
+                    "label": "Hero countdown"
+                },
+                "listingSubcategories": {
+                    "label": "Listing subcategories",
+                    "preview": {
+                        "label": {
+                            "subcategory": "Category"
+                        }
+                    }
+                },
+                "listingSubcategoriesModern": {
+                    "label": "Listing subcategories (Modern)",
+                    "preview": {
+                        "label": {
+                            "subcategory": "Category"
+                        }
+                    }
+                },
+                "listingSubcategoriesHero": {
+                    "label": "Listing subcategories (Hero)",
+                    "preview": {
+                        "label": {
+                            "subcategory": "Category"
+                        }
+                    }
+                },
+                "productName": {
+                    "label": "Product name (without manufacturer logo)"
+                },
+                "sidebarSubcategoryNavigation": {
+                    "label": "Subcategory navigation (Sidebar)",
+                    "preview": {
+                        "label": {
+                            "navigation": "Navigation"
+                        }
+                    }
+                },
+                "testimonial": {
+                    "label": "Testimonial (Customer review)"
+                },
+                "testimonialsFourColumns": {
+                    "label": "Testimonials (Four columns)"
+                },
+
+                "productDescriptionReviews": {
+                    "label": "Product description & reviews (Accordion)",
+                    "preview": {
+                        "label": {
+                            "description": "Description",
+                            "reviews": "Reviews"
+                        }
+                    }
+                }
+            },
+            "elements": {
+                "general": {
+                    "config": {
+                        "tab": {
+                            "advanced": "Advanced",
+                            "content": "Content",
+                            "gallery": "Gallery",
+                            "general": "General",
+                            "grid": "Grid",
+                            "image": "Images",
+                            "layout": "Layout",
+                            "options": "Options",
+                            "responsive": "Responsive",
+                            "seo": "SEO & Pagespeed",
+                            "settings": "Settings",
+                            "slide": "Slide",
+                            "text": "Text",
+                            "textImage": "Text & images"
+                        },
+                        "title": {
+                            "button": "Button",
+                            "button2": "Button 2",
+                            "caption": "Caption",
+                            "colorOverlay": "Coloured overlay",
+                            "columns": "Columns",
+                            "content": "Content",
+                            "contentOverlay": "Content overlay",
+                            "contentSettings": "Layout",
+                            "cssClasses": "CSS classes",
+                            "experts": "Expert settings",
+                            "extended": "Extended",
+                            "gallery": "Gallery",
+                            "general": "General",
+                            "headline": "Headline",
+                            "hover": "Hover",
+                            "image": "Image",
+                            "layout": "Layout",
+                            "link": "Link",
+                            "options": "Options",
+                            "overlay": "Overlay",
+                            "pagespeed": "Pagespeed",
+                            "responsive": "Responsive",
+                            "seo": "SEO",
+                            "slide": "Slide",
+                            "subheadline": "Subheadline",
+                            "subtitle": "Subtitle",
+                            "teaser": "Teaser",
+                            "text": "Text",
+                            "textOverlay": "Text overlay",
+                            "title": "Title"
+                        },
+                        "label": {
+                            "alignment": "Horizontal alignment",
+                            "arrangement": "Arrangement",
+                            "attachment": "Attachment",
+                            "backdropEffect": "Backdrop effect",
+                            "backgroundColor": "Background colour",
+                            "backgroundColorHover": "Background colour :hover",
+                            "backgroundColor1": "Background colour (1)",
+                            "backgroundColor1Hover": "Background colour (1) :hover",
+                            "backgroundColor2": "Background colour (2)",
+                            "backgroundColor2Hover": "Background colour (2) :hover",
+                            "backgroundGradient": "Use colour gradient",
+                            "backgroundGradientAngle": "Gradient direction (in degrees)",
+                            "borderColor": "Border colour",
+                            "borderRadius": "Border radius",
+                            "breakpoint": "Breakpoint",
+                            "buttonOutline": "Outline button",
+                            "buttonStyle": "Button style",
+                            "buttonText": "Button text",
+                            "button1Text": "Button text (Button 1)",
+                            "button2Text": "Button text (Button 2)",
+                            "caption": "Caption",
+                            "cssClass": "CSS class (Element)",
+                            "cssClassButton": "CSS class (Button)",
+                            "cssClassButton2": "CSS class (Button 2)",
+                            "cssClassCaption": "CSS class (Caption)",
+                            "cssClassColumn": "CSS class (Column)",
+                            "cssClassTeaser": "CSS class (Teaser)",
+                            "cssClassHeadline": "CSS class (Headline)",
+                            "cssClassSubheadline": "CSS class (Subheadline)",
+                            "cssClassSubtitle": "CSS class (Subtitle)",
+                            "cssClassTitle": "CSS class (Title)",
+                            "cssClassText": "CSS class (Text)",
+                            "dateFrom": "Show from",
+                            "dateUntil": "Show until",
+                            "fontFamily": "Font family",
+                                "fontFamilyHeadline": "Font family (Headline)",
+                                "fontFamilySubheadline": "Font family (Subheadline)",
+                                "fontFamilySubtitle": "Font family (Subtitle)",
+                                "fontFamilyTeaser": "Font family (Teaser)",
+                                "fontFamilyTitle": "Font family (Title)",
+                            "fontWeight": "Font weight",
+                            "fullLink": "Entire element clickable",
+                            "headline": "Headline",
+                            "horizontalAlign": "Horizontal align",
+                            "horizontalAlignment": "Horizontal alignment",
+                            "hoverEffect": "Hover effect",
+                            "hoverEffectContent": "Hover effect (Content)",
+                            "hoverEffectColorOverlay": "Hover effect (Coloured overlay)",
+                            "htmlTag": "HTML tag",
+                            "htmlTagHeadline": "HTML tag (Headline)",
+                            "htmlTagSubheadline": "HTML tag (Subheadline)",
+                            "htmlTagSubtitle": "HTML tag (Subtitle)",
+                            "htmlTagTitle": "HTML tag (Title)",
+                            "htmlTagClass": "Use HTML tag as class",
+                            "htmlTagClassHeadline": "Use HTML tag as class (Headline)",
+                            "htmlTagClassSubheadline": "Use HTML tag as class (Subheadline)",
+                            "htmlTagClassSubtitle": "Use HTML tag as class (Subtitle)",
+                            "htmlTagClassTitle": "Use HTML tag as class (Title)",
+                            "imageEffect": "Image effect",
+                            "imageEffectBlur": "Blur (px)",
+                            "imageEffectBrightness": "Brightness",
+                            "imageEffectContrast": "Contrast",
+                            "imageEffectGrayscale": "Grayscale",
+                            "imageEffectOpacity": "Opacity",
+                            "imageEffectSaturate": "Saturate",
+                            "imageEffectScale": "Scale",
+                            "imageHoverEffect": "Hover effect (Image)",
+                            "invertImageHover": "Invert hover effect (Image)",
+                            "justifyContent": "Content alignment",
+                            "layoutListView": "ThemeWare® List view (Beta)",
+                            "layoutType": "Layout type",
+                            "lazyLoading": "Lazy loading",
+                            "linkColor": "Link colour",
+                            "linkColorHover": "Link colour :hover",
+                            "linkStyle": "Link style",
+                            "linkStyleHover": "Link style :hover",
+                            "linkTo": "Link to",
+                            "maxWidth": "Maximum width",
+                            "maximumWidth": "Maximum width",
+                            "objectPosition": "Horizontal positioning",
+                            "overlay": "Apply overlay styling",
+                            "overlayAnimation": "Animation",
+                            "overlaySizing": "Sizing mode",
+                            "colorOverlay": "Show coloured overlay",
+                            "overlayBgGradient": "Use colour gradient",
+                            "overlayBgGradientAngle": "Gradient direction (in degrees)",
+                            "overlayBgColor": "Background colour",
+                            "overlayBgColorHover": "Background colour :hover",
+                            "overlayBgColor1": "Background colour (1)",
+                            "overlayBgColor1Hover": "Background colour (1) :hover",
+                            "overlayBgColor2": "Background colour (2)",
+                            "overlayBgColor2Hover": "Background colour (2) :hover",
+                            "padding": "Padding",
+                            "parallax": "Parallax effect",
+                            "position": "Position",
+                            "rounded": "Rounded corners",
+                            "shadow": "Box shadow",
+                            "style": "Style",
+                            "subheadline": "Subeadline",
+                            "subtitle": "Subtitle",
+                            "text": "Text",
+                            "textAlignment": "Text alignment",
+                            "textColor": "Text colour",
+                            "textColorHover": "Text colour :hover",
+                                "textColorTeaser": "Text colour (Teaser)",
+                                "textColorTitle": "Text colour (Title)",
+                                "textColorHeadline": "Text colour (Headline)",
+                                "textColorSuheadline": "Text colour (Subheadline)",
+                                "textColorSubtitle": "Text colour (Subtitle)",
+                            "textShadow": "Text shadow",
+                            "textTransform": "Text formatting",
+                            "title": "Title",
+                            "verticalAlign": "Vertical align",
+                            "verticalAlignment": "Vertical alignment",
+                            "viewportLg": "Tablet (landscape) (≥992px)",
+                            "viewportMd": "Tablet (portrait) (≥768px)",
+                            "viewportSm": "Smartphone (landscape) (≥576px)",
+                            "viewportXl": "Desktop (≥1200px)",
+                            "viewportXs": "Smartphone (portrait) (<576px)",
+                            "viewportXxl": "Desktop (≥1440px)",
+                            "width": "Width"
+                        },
+                        "placeholder": {
+                            "borderRadius": "Enter a border radius...",
+                            "buttonText": "Enter a button text...",
+                            "cssClass": "Enter a CSS class...",
+                            "headline": "Enter a text...",
+                            "height": "Enter a height...",
+                            "maxHeight": "Enter a maximum height...",
+                            "maxWidth": "Enter a maximum width...",
+                            "minHeight": "Enter a minimum height...",
+                            "maximumWidth": "Enter a maximum width...",
+                            "padding": "Enter a padding...",
+                            "subheadline": "Enter a text...",
+                            "subtitle": "Enter a text...",
+                            "text": "Enter a text...",
+                            "title": "Enter a text...",
+                            "width": "Enter a width..."
+                        },
+                        "option": {
+                            "alignLeft": "Left",
+                            "alignCenter": "Center",
+                            "alignRight": "Right",
+                            "animation": {
+                                "none": "No animation",
+                                "fadeIn": "Fade in",
+                                "fadeInDown": "Fade in down",
+                                "fadeInLeft": "Fade in left",
+                                "fadeInRight": "Fade in right",
+                                "fadeInUp": "Fade in up"
+                            },
+                            "arrangement": {
+                                "standard": "Standard"
+                            },
+                            "attachment": {
+                                "scroll": "Scroll",
+                                "fixed": "Fixed"
+                            },
+                            "backdropEffect": {
+                                "none": "None",
+                                "blur": "Blur"
+                            },
+                            "breakpoint": {
+                                "none": "None",
+                                "all": "All",
+                                "down": {
+                                    "xs": "Extra small <480px",
+                                    "sm": "Small <576px",
+                                    "md": "Medium <768px",
+                                    "lg": "Large <992px",
+                                    "xl": "Extra large <1200px",
+                                    "xxl": "Extra extra large <1440px"
+                                },
+                                "up": {
+                                    "xs": "Extra small ≥480px",
+                                    "sm": "Small ≥576px",
+                                    "md": "Medium ≥768px",
+                                    "lg": "Large ≥992px",
+                                    "xl": "Extra large ≥1200px",
+                                    "xxl": "Extra extra large ≥1440px"
+                                }
+                            },
+                            "button":{
+                                "btnPrimary": "Primary",
+                                "btnSecondary": "Secondary",
+                                "btnSuccess": "Success",
+                                "btnDanger": "Danger",
+                                "btnWarning": "Warning",
+                                "btnInfo": "Info",
+                                "btnLight": "Light",
+                                "btnDark": "Dark",
+                                "btnLink": "Link",
+                                "btnBlue": "Blue",
+                                "btnIndigo": "Indigo",
+                                "btnPurple": "Purple",
+                                "btnPink": "Pink",
+                                "btnRed": "Red",
+                                "btnOrange": "Orange",
+                                "btnYellow": "Yellow",
+                                "btnGreen": "Green",
+                                "btnTeal": "Teal",
+                                "btnCyan": "Cyan",
+                                "btnWhite": "White",
+                                "btnGrayish": "Grayish",
+                                "btnGray": "Gray",
+                                "btnBlack": "Black",
+                                "btnGold": "Gold"
+                            },
+                            "displayMode": {
+                                "standard": "Original (Standard)",
+                                "cover": "Cropped (Cover)",
+                                "stretch": "Scaled (Stretch)",
+                                "contain": "Fixed height (Contain)"
+                            },
+                            "fontFamily": {
+                                "base": "Text",
+                                "headline": "Headlines",
+                                "decoration": "Decoration"
+                            },
+                            "fontWeight": {
+                                "unset": "Standard (unset)",
+                                "light": "Light",
+                                "normal": "Normal",
+                                "bold": "Bold"
+                            },
+                            "horizontalAlign": {
+                                "start": "Left",
+                                "center": "Center",
+                                "end": "Right"
+                            },
+                            "hoverEffect": {
+                                "none": "No effect",
+                                "fadeIn": "Fade in",
+                                "slideInUp": "Slide in up",
+                                "slideInRight": "Slide in right",
+                                "slideInDown": "Slide in down",
+                                "slideInLeft": "Slide in left",
+                                "zoomIn": "Zoom in",
+                                "fadeOut": "Fade out"
+                            },
+                            "htmlTag": {
+                                "p": "Paragraph <p> tag (default)",
+                                "div": "Container <div> tag",
+                                "h1": "Heading 1 <h1> tag",
+                                "h2": "Heading 2 <h2> tag",
+                                "h3": "Heading 3 <h3> tag",
+                                "h4": "Heading 4 <h4> tag",
+                                "h5": "Heading 5 <h5> tag",
+                                "h6": "Heading 6 <h6> tag"
+                            },
+                            "htmlTagClass": {
+                                "default": "Default",
+                                "none": "None",
+                                "h1": "h1",
+                                "h2": "h2",
+                                "h3": "h3",
+                                "h4": "h4",
+                                "h5": "h5",
+                                "h6": "h6"
+                            },
+                            "imageEffect": {
+                                "none": "None",
+                                "blur": "Blur",
+                                "brightness": "Brightness",
+                                "contrast": "Contrast",
+                                "grayscale": "Grayscale",
+                                "hueRotate": "Hue rotate",
+                                "invert": "Invert",
+                                "opacity": "Opacity",
+                                "saturate": "Saturation",
+                                "scale": "Scale",
+                                "sepia": "Sepia",
+                                "zoom": "Zoom"
+                            },
+                            "imageHoverEffect": {
+                                "none": "None",
+                                "in": "Apply effect when entering the element (in)",
+                                "out": "Apply effect when leaving the element (out)",
+                                "other": {
+                                    "blur": "Blur",
+                                    "flash": "Flash",
+                                    "grayscale": "Grayscale",
+                                    "opacity": "Opacity",
+                                    "rotate": "Rotate",
+                                    "shine": "Shine",
+                                    "zoom": "Zoom"
+                                }
+                            },
+                            "justifyContent": {
+                                "start": "Left",
+                                "center": "Center",
+                                "end": "Right",
+                                "between": "Between (space-between)",
+                                "around": "Around (space-around)",
+                                "evenly": "Evenly (space-evenly)"
+                            },
+                            "layoutType": {
+                                "standard": "Standard",
+                                "layout1": "Layout 1",
+                                "layout2": "Layout 2"
+                            },
+                            "lazyLoading": {
+                                "eager": "Eager",
+                                "lazy": "Lazy"
+                            },
+                            "linkStyle": {
+                                "none": "None",
+                                "bold": "Bold",
+                                "underline": "Underlined"
+                            },
+                            "notRounded": "Not rounded",
+                            "rounded": "Rounded corners",
+                            "objectPosition": {
+                                "left": "Left",
+                                "center": "Center (default)",
+                                "right": "Right"
+                            },
+                            "position":  {
+                                "top": "Top",
+                                "bottom": "Bottom"
+                            },
+                            "shadow": {
+                                "none": "No shadow",
+                                "default": "Default shadow",
+                                "small": "Small shadow",
+                                "regular": "Regular shadow",
+                                "large": "Larger shadow",
+                                "smallBs": "Small shadow (Bootstrap)",
+                                "regularBs": "Regular shadow (Bootstrap)",
+                                "largeBs": "Larger shadow (Bootstrap)"
+                            },
+                            "show": {
+                                "true": "show",
+                                "false": "don't show"
+                            },
+                            "sizing": {
+                                "boxed": "Boxed content",
+                                "fullWidth": "Full-width"
+                            },
+                            "textAlignment": {
+                                "unset": "Standard (unset)",
+                                "left": "Left",
+                                "center": "Center",
+                                "right": "Right"
+                            },
+                            "textTransform": {
+                                "none": "Standard",
+                                "lowercase": "Lowercase",
+                                "uppercase": "Uppercase",
+                                "capitalize": "Capitalize"
+                            },
+                            "verticalAlignTop": "Top",
+                            "verticalAlignCenter": "Middle",
+                            "verticalAlignBottom": "Bottom"
+                        },
+                        "helpText": {
+                            "alignment": "Select the desired horizontal alignment.",
+                            "arrangement": "Select the desired arrangement of the content.",
+                            "attachment": "Select whether a background image is fixed or scrolls.",
+                            "backdropEffect": "Select the desired backdrop effect.",
+                            "backgroundColor": "Select the desired background colour.",
+                            "backgroundColor1": "Select the desired background colour (color-step1).",
+                            "backgroundColor2": "Select the desired background colour (color-step2).",
+                            "backgroundColorHover": "Select the desired background colour when hovering.",
+                            "backgroundGradient": "Activate to use a colour gradient.",
+                            "backgroundGradientAngle": "Enter the desired direction of the gradient.",
+                            "borderColor": "Select the desired border colour.",
+                            "borderRadius": "Enter the desired border radius for the element (e.g. '20px' or '0' or '0 20px').",
+                            "breakpoint": "Select the desired breakpoint.",
+                            "buttonOutline": "Activate to outline the button.",
+                            "buttonStyle": "Select the desired button style.",
+                            "buttonText": "Enter your desired button text.",
+                            "caption": "Enter your desired text.",
+                            "cssClass": "Enter one or more CSS classes separated by spaces.",
+                            "cssClassColumn": "Enter one or more CSS classes separated by spaces. <br><br>These classes are added to columns in certain CMS blocks. <br><br>For more information, please have a look at the following article in the ThemeWare® Knowledge Base: <a href=\"https://knowledge.themeware.design/knowledge-base/profi-knowledge/column-css-classes-in-themeware-cms-elements\" target=\"_blank\">Column CSS classes in ThemeWare® CMS elements</a>",
+                            "dateFrom": "Select <u>from when</u> the slide should be displayed. <br><br><b>Note</b>: Please note that the 'Hero slider' must have at least 2 visible slides at any time.",
+                            "dateUntil": "Select <u>until when</u> the slide should be displayed. <br><br><b>Note</b>: Please note that the 'Hero slider' must have at least 2 visible slides at any time.",
+                            "displayMode": "Select the desired display mode. <br><br><b>Note</b>: Please be sure that the 'Minimum height' (e.g. '340px') is entered in display mode 'Cover'.",
+                            "displayModeMinHeight": "Select the desired display mode. <br><br><b>Note</b>: Please be sure that the 'Minimum height' (e.g. '340px') is entered in display mode 'Cover'.",
+                            "fontFamily": "Select the desired font family.",
+                            "fontWeight": "Select the desired font weight.",
+                            "fullLink": "Activate to make the entire element clickable.",
+                            "fullLinkNote": "Activate to make the entire element clickable. <br><br><b>Note</b>: Please do not use links in the 'Text' if the entire element is clickable.",
+                            "headline": "Enter your desired text.",
+                            "horizontalAlign": "Select the desired horizontal alignment.",
+                            "horizontalAlignment": "Select the desired horizontal alignment.",
+                            "hoverEffect": "Select the desired hover effect. <br><br><b>Note</b>: We recommend using hover effects only in clickable CMS elements.",
+                            "hoverEffectContent": "Select the desired hover effect for the content. <br><br><b>Note</b>: We recommend using hover effects only in clickable CMS elements.",
+                            "hoverEffectColorOverlay": "Select the desired hover effect for the coloured overlay. <br><br><b>Note</b>: We recommend using hover effects only in clickable CMS elements.",
+                            "htmlTag": "Select the desired HTML tag or use the P tag so that the headline is not evaluated as a headline by search engines.",
+                            "htmlTagClass": "Select a headline CSS class for a basic styling of P tags.",
+                            "imageEffect": "Select the desired image effect.",
+                            "imageEffectBlur": "Enter the value by which the image will be blurred. <br><br>The higher the value (in px), the more the image will be blurred. <br><br><b>Example value</b>: '5'",
+                            "imageEffectBrightness": "Enter the value by which the image will be lightened or darkened. <br><br>A value below 100% or 1 (e.g. '50%' or '0.5') darkens the image, a value above 100% or 1 (e.g. '150%' or '1.5') lightens the image. <br><br><b>Example value</b>: '125%'",
+                            "imageEffectContrast": "Enter the value by which the contrast of the image is increased or decreased. <br><br>A value below 100% or 1 (e.g. '50%' or '0.5') reduces the contrast, a value above 100% or 1 (e.g. '150%' or '1.5') increases the contrast. <br><br><b>Example value</b>: '125%'",
+                            "imageEffectGrayscale": "Enter the value by which the image should be grayed out. <br><br>A value of 100% or 1 makes the image completely gray. <br><br><b>Example value</b>: '100%'",
+                            "imageEffectOpacity": "Enter the value for the opacity of the image. <br><br>A value of 0% or 0 makes the image disappear. <br><br><b>Example value</b>: '75%'",
+                            "imageEffectSaturate": "Enter the value by which the saturation of the image is increased or decreased. <br><br>A value above 100% or 1 (e.g. '150%' or '1.5') increases the saturation, a value between 0% and 100% or 0 and 1 (e.g. '50%' or '0.5') decreases the saturation. <br><br><b>Example value</b>: '125%'",
+                            "imageEffectScale": "Enter the value by which the image will be zoomed or shrunk. <br><br>A value below 100% or 1 (e.g. '50%' or '0.5') shrinks the image, a value above 100% or 1 (e.g. '150%' or '1.5') zooms the image in. <br><br><b>Example value</b>: '110%'",
+                            "imageHoverEffect": "Select whether the image effect should be applied when hovering (in) or when leaving (out) the element or not at all. <br><br><b>Note</b>: We recommend using hover effects only in clickable CMS elements.",
+                            "justifyContent": "Select the desired horizontal alignment. <br><br><b>left</b> <br>Items are positioned at the beginning of the container. <br><br><b>right</b> <br>Items are positioned at the end of the container. <br><br><b>center</b> <br>Items are positioned at the center of the container. <br><br> <b>space-between</b> <br>The first element is left-aligned, the last is right-aligned. The gaps between each element have the same size. <br><br><b>space-around</b> <br>The gaps at the beginning and end are half the size of the gaps between each element. <br><br><b>space-evenly</b> <br>All gaps have equal sizes.",
+                            "layoutType": "Select the desired layout type.",
+                            "lazyLoading": "Select the desired loading attribute. <br><br><b>eager</b> <br>Instructs the browser to prioritise the loading of the image. This should be used for images 'above the fold'. <br><br><b>lazy</b> <br>Instructs the browser not to load the image until the user scrolls to it. This should be used for images 'below the fold'.",
+                            "linkColor": "Select the desired link colour.",
+                            "linkColorHover": "Select the desired link hover colour.",
+                            "linkStyle": "...",
+                            "linkStyleHover": "...",
+                            "linkTo": "Enter the desired link.",
+                            "linkNewTab": "Activate to open the link in a new tab.",
+                            "maxWidth": "Enter the desired maximum width (e.g. '740px' or '90%' or 'none').",
+                            "maximumWidth": "Enter the desired maximum width (e.g. '740px' or '90%' or 'none').",
+                            "media": "Select the desired image.",
+                            "minHeight": "Select the desired minimum height (e.g. '340px').  <br><br>Required in display mode 'Cover'.",
+                            "objectPosition": "Select the desired horizontal positioning of the image in display mode 'Cover'.",
+                            "overlay": "Activate to apply overlay styling.",
+                            "overlayAnimation": "Select the desired animation.",
+                            "overlaySizing": "Select the desired sizing mode.",
+                            "colorOverlay": "Activate to use a coloured overlay.",
+                            "overlayBgGradient": "Activate to use a colour gradient.",
+                            "overlayBgGradientAngle": "Enter the desired direction of the gradient.",
+                            "overlayBgColor": "Select the desired background colour.",
+                            "overlayBgColor1": "Select the desired background colour (color-step1).",
+                            "overlayBgColor2": "Select the desired background colour (color-step2).",
+                            "padding": "Enter the desired padding (e.g. '20px' or '0' or '0 20px') for the element.",
+                            "parallax": "Applies a parallax effect to the background image when it is 'fixed'. Please note that this effect is managed by an additional JavaScript.",
+                            "position": "Select the desired position.",
+                            "rounded": "Select whether corners should be rounded.",
+                            "shadow": "Select the desired drop shadow.",
+                            "style": "Select the desired style.",
+                            "subheadline": "Enter your desired text.",
+                            "subtitle": "Enter your desired text.",
+                            "text": "Enter your desired text.",
+                            "textAlignment": "Select the desired text alignment.",
+                            "textColor": "Select the desired text colour.",
+                            "textShadow": "Select the desired text shadow.",
+                            "textTransform": "Select the desired text formatting.",
+                            "teaser": "Enter your desired text.",
+                            "title": "Enter your desired text.",
+                            "verticalAlign": "Select the desired vertical alignment.",
+                            "verticalAlignment": "Select the desired vertical alignment.",
+                            "viewportLg": "... in the tablet viewport (≥992px).",
+                            "viewportMd": "... in the tablet viewport (≥768px).",
+                            "viewportSm": "... in the smartphone viewport (≥576px).",
+                            "viewportXl": "... in the desktop viewport (≥1200px).",
+                            "viewportXs": "... in the smartphone viewport (<576px).",
+                            "viewportXxl": "... in the desktop viewport (≥1440px).",
+                            "width": "Enter your desired width (e.g. '740px' or '90%' or 'auto').",
+                            "dev": "This configuration is still in development and will follow with an upcoming update.",
+                            "disabled": "This configuration is currently not available.",
+                            "notAvailable": "This configuration is currently not available."
+                        },
+                        "infotext": {
+                            "advanced": {
+                                "cssClass": "With the following configuration you can add one or more CSS classes to different elements. Separate multiple classes with spaces.",
+                                "experts": "Below you can find configurations for \"experts\". You should only use these configurations if you are absolutely sure what you are doing."
+                            },
+                            "beta": "Beta",
+                            "betaElement": "Please note that this element is in a testing phase, feel free to test it.",
+                            "betaConfig": "This configuration is in development and might be changed with an upcoming update.",
+                            "caution": "Caution",
+                            "documentation": {
+                                "label": "Documentation",
+                                "manual": {
+                                    "label": "ThemeWare® Manual",
+                                    "link": "https://doku.themeware.design/",
+                                    "cmsExtensions": {
+                                        "label": "ThemeWare® CMS extensions",
+                                        "link": "https://docs.themeware.design/additional-features/cms-extensions"
+                                    }
+                                },
+                                "text": "For more information on this CMS element and other ThemeWare® CMS extensions, please take a look at the ThemeWare® Documentation:",
+                                "title": "Documentation & Help",
+                                "test": "For more information, please have a look at the following article in the ThemeWare® Manual: <br><a href=\"https://knowledge.themeware.design/knowledge-base/profi-knowledge/column-css-classes-in-themeware-cms-elements\" target=\"_blank\">Column CSS classes in ThemeWare® CMS elements</a>.",
+                                "wiki": {
+                                    "label": "ThemeWare® Knowledge Base",
+                                    "link": "https://wiki.themeware.design/",
+                                    "cmsTutorials": {
+                                        "label": "Shopping Experience Tutorials",
+                                        "link": "https://knowledge.themeware.design/knowledge-base/tutorials/shopping-experiences"
+                                    }
+                                }
+                            },
+                            "intro": {
+                                "themeWare": "ThemeWare®",
+                                "cmsElement": "CMS element"
+                            },
+                            "listingElement": "This element's data is automatically loaded by the category associated with this layout. The content just shows a sample preview.",
+                            "mandatory": "required",
+                            "navigationElement": "This element's navigation data is automatically loaded by the category associated with this layout. The content just shows a sample preview.",
+                            "note": "Note",
+                            "sanitizeInfo": "Potentially harmful code will (currently) not be sanitised and removed from the editor automatically!",
+                            "seo": {
+                                "general": "Below you will find configurations for SEO optimisation of this element.",
+                                "htmlTag": "With the following configuration, you can adjust the HTML tag of different elements and/or adjust the elements visually with corresponding CSS classes to optimise the HTML structure of your CMS layout."
+                            },
+                            "themeConfig": "You can find a general configuration in the theme configuration.",
+                            "tip": "Tip"
+                        },
+                        "alert": {
+                            "prefix": {
+                                "beta": "Beta",
+                                "caution": "Caution",
+                                "note": "Note",
+                                "tip": "Tip"
+                            },
+                            "betaElement": "Please note that this element is in a testing phase, feel free to test it.",
+                            "betaConfig": "This configuration is in development and might be changed with an upcoming update.",
+                            "listingElement": "This element's data is automatically loaded by the category associated with this layout. The content just shows a sample preview.",
+                            "productPageOnly": "This element is only available on product pages.",
+                            "themeConfig": "You can find a general configuration in the theme configuration."
+                        }
+                    },
+                    "component": {
+                        "label": {
+                            "text": "Please enter a text...",
+                            "buttonText": "Please enter a button text...",
+                            "caption": "Please enter a caption...",
+                            "title": "Please enter a title..."
+                        }
+                    }
+                },
+
+                "heroSlides": {
+                    "config": {
+                        "label": {
+                            "bgOverlay2": "Background colour",
+                            "slideInterval": "Duration (s)",
+                            "teaser": "Teaser"
+                        },
+                        "option": {
+                            "breakpoint": {
+                                "all": "all (text overlays the image in all viewports)",
+                                "none": "none (text doesn't overlay the image in any viewport)"
+                            },
+                            "breakpointImage": {
+                                "all": "all (display mode 'Contain' in all viewport)",
+                                "none": "none (display mode 'Cover' in all viewports)"
+                            },
+                            "displayMode": {
+                                "coverContain": "Cover > Contain",
+                                "containCover": "Contain > Cover"
+                            }
+                        },
+                        "placeholder": {
+                            "teaser": "Enter a text..."
+                        },
+                        "helpText": {
+                            "bgOverlay2": "Select the desired background colour for the text <b>below the image</b>.",
+                            "breakpoint": "Select from which viewport the text <b>overlays</b> the image. <br><br>Before this breakpoint the text is placed <b>below the image</b>.",
+                            "breakpointImage": "Select from which viewport the display mode should be changed.",
+                            "displayMode": "Select the display mode of the image. <br><br><b>Cover</b><br>The image keeps its aspect ratio and fills the available space. The image is cropped to fit. <br><br><b>Contain</b><br>The image keeps its aspect ratio, but is resized to fit the available area. <br><br><b>Cover > Contain</b><br>The image is displayed in 'Cover' display mode, and above the breakpoint it is displayed in 'Contain' display mode. <br><br><b>Contain >Cover</b><br> The image is displayed in the 'Contain' display mode and above the breakpoint in the 'Cover' display mode.",
+                            "slideInterval": "Change the amount of time (s) to delay between automatically cycling to the next item. <br><br>min: 1 (= 1 sec.) <br>max: 180 (= 180 sec.)"
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": ""
+                            },
+                            "note": "Please note that this element is intended for use in the \"Hero slider (...)\". It is currently not designed for use in other CMS blocks."
+                        }
+                    }
+                },
+                "callToActionSlide": {
+                    "label": "Call-to-Action slide (Hero slider)",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/hero-slider/call-to-action-hero-slider"
+                            }
+                        }
+                    }
+                },
+                "imageSlide": {
+                    "label": "Image slide (Hero slider)",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/hero-slider/image-slide-hero-slider"
+                            }
+                        }
+                    }
+                },
+                "textImageSlide": {
+                    "label": "Text slide (Hero slider)",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/hero-slider/text-hero-slider"
+                            }
+                        }
+                    }
+                },
+
+                "textTeaser": {
+                    "label": "Text teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/text-teaser"
+                            }
+                        }
+                    }
+                },
+                "textTeaserDecorated": {
+                    "label": "Text teaser (Decorated)",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/text-teaser-decorated"
+                            }
+                        }
+                    }
+                },
+                "buttonTeaser": {
+                    "label": "Button teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/button-teaser"
+                            }
+                        }
+                    }
+                },
+                "callToAction": {
+                    "label": "Call-to-Action",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/call-to-action"
+                            }
+                        }
+                    }
+                },
+                "hoverBox": {
+                    "label": "Hover box",
+                    "config": {
+                        "label": {
+                            "invertHover": "Invert hover effect"
+                        },
+                        "option": {
+                            "slideUp": "Slide up",
+                            "slideRight": "Slide right",
+                            "slideDown": "Slide down",
+                            "slideLeft": "Slide left",
+                            "pushUp": "Push up",
+                            "pushRight": "Push right",
+                            "pushDown": "Push down",
+                            "pushLeft": "Push left",
+                            "hingeUp": "Hinge up",
+                            "hingeRight": "Hinge right",
+                            "hingeDown": "Hinge down",
+                            "hingeLeft": "Hinge left"
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/hover-box"
+                            }
+                        }
+                    }
+                },
+                "imageTeaser": {
+                    "label": "Image teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/image-teaser"
+                            }
+                        }
+                    }
+                },
+                "heroTeaser": {
+                    "label": "Hero teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/hero-teaser"
+                            }
+                        }
+                    }
+                },
+                "advancedTeaser": {
+                    "label": "Advanced teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/advanced-teaser"
+                            }
+                        },
+                        "alert": {
+                            "button2": "The second button is available if the \"Entire element clickable\" configuration is not activated and a \"Button text (Button 2)\" has been entered."
+                        }
+                    }
+                },
+                "classicTeaser": {
+                    "label": "Classic teaser",
+                    "config": {
+                        "label": {
+                            "custom": "Use custom styling"
+                        },
+                        "option": {
+                            "default": "Default",
+                            "effect1": "Effect 1",
+                            "effect2": "Effect 2",
+                            "effect3": "Effect 3 (e.g. ThemeWare® Clean)",
+                            "effect4": "Effect 4 (e.g. ThemeWare® Bike)",
+                            "effect5": "Effect 5 (e.g. ThemeWare® Strong)",
+                            "effect6": "Effect 6 (e.g. ThemeWare® Ladieswear)",
+                            "effect7": "Effect 7 (e.g. ThemeWare® Global)"
+                        },
+                        "helpText": {
+                            "custom": "Activate to use a custom styling."
+                        },
+                        "infotext": {
+                            "color": "Please note that theme variables are not available in the administration. The blue colour displayed in the preview will be replaced by your configured primary colour in the storefront.",
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/classic-teaser"
+                            }
+                        }
+                    }
+                },
+                "modernTeaser": {
+                    "label": "Modern teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/modern-teaser"
+                            }
+                        }
+                    }
+                },
+                "roundTeaser": {
+                    "label": "Round teaser",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/teaser/round-teaser"
+                            }
+                        }
+                    }
+                },
+
+                "advancedBanner": {
+                    "label": "Advanced banner",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/banner/advanced-banner"
+                            }
+                        },
+                        "alert": {
+                            "button2": "The second button is available if the \"Entire element clickable\" configuration is not activated and a \"Button text (Button 2)\" has been entered."
+                        }
+                    }
+                },
+                "heroBanner": {
+                    "label": "Hero banner",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/banner/hero-banner"
+                            }
+                        }
+                    }
+                },
+                "imageBanner": {
+                    "label": "Image banner",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/banner/image-banner"
+                            }
+                        }
+                    }
+                },
+                "parallaxBanner": {
+                    "label": "Parallax banner",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/banner/parallax-banner"
+                            }
+                        }
+                    }
+                },
+
+                "imageTextLayered": {
+                    "label": "Image & text layered",
+                    "config": {
+                        "option": {
+                            "arrangement": {
+                                "standard": "Standard",
+                                "reverse": "Reverse"
+                            },
+                            "layoutType": {
+                                "standard": "Layout \"Standard\"",
+                                "inside": "Layout \"Inside\""
+                            }
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/text-and-images/image-and-text-layered"
+                            }
+                        }
+                    }
+                },
+
+                "breadcrumb": {
+                    "label": "Breadcrumb navigation",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": ""
+                            },
+                            "moreConfig": "You can find more configuration options in the 'Content' tab of the theme configuration."
+                        }
+                    },
+                    "preview": {
+                        "label": "Breadcrumb navigation"
+                    }
+                },
+                "countdownBanner": {
+                    "label": "Countdown banner",
+                    "config": {
+                        "tab": {
+                            "counter": "Counter"
+                        },
+                        "title": {
+                            "counter": "Counter",
+                            "labels": "Labels",
+                            "numbers": "Numbers",
+                            "sale": "Sale"
+                        },
+                        "label": {
+                            "backgroundColorDays": "Background colour (Days)",
+                            "backgroundColorHours": "Background colour (Hours)",
+                            "backgroundColorMinutes": "Background colour (Minutes)",
+                            "backgroundColorSeconds": "Background colour (Seconds)",
+                            "dateFrom": "Sale from",
+                            "dateUntil": "Sale until"
+                        },
+                        "option": {
+                            "layout1": "Clean countdown",
+                            "layout2": "Numbers with coloured background",
+                            "layout3": "Counters with coloured background"
+                        },
+                        "helpText": {
+                            "dateFrom": "Select when the sale starts.",
+                            "dateUntil": "Select when the sale ends."
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/sale/countdown-banner"
+                            }
+                        }
+                    }
+                },
+                "countdownBannerCompact": {
+                    "label": "Countdown banner (compact)",
+                    "config": {
+                        "helpText": {
+                            "breakpoint": "Select the desired breakpoint. <br><br>The content is displayed in a single row from this viewport onwards."
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/sale/countdown-banner-compact"
+                            }
+                        }
+                    }
+                },
+                "customCode": {
+                    "label": "Custom code (HTML/CSS/JS)",
+                    "config": {
+                        "tab": {
+                            "css": "CSS",
+                            "html": "HTML",
+                            "js": "JavaScript"
+                        },
+                        "title": {
+                            "custom": "Custom code",
+                            "css": "Custom CSS code",
+                            "html": "Custom HTML code",
+                            "js": "Custom JavaScript code"
+                        },
+                        "label": {
+                            "addCss": "Add CSS code",
+                            "addHtml": "Add HTML code",
+                            "addJs": "Add JavaScript code",
+                            "css": "CSS code",
+                            "enableTwig": "Allow Twig syntax",
+                            "html": "HTML code",
+                            "js": "JavaScript code"
+                        },
+                        "helpText": {
+                            "addCss": "Activate to ad  CSS code. <br><br>Note: In \"Debug mode\", this CSS code is not added to the storefront.",
+                            "addHtml": "Activate to add HTML code.",
+                            "addJs": "Activate to add JavaScript code. <br><br>Note: In \"Debug mode\", this JavaScript code is not added to the storefront.",
+                            "css": "This input is intended for experts who are experienced in working with custom code. <br><br>Please note that custom code can create potentially harmful vulnerabilities!",
+                            "enableTwig": "This configuration is currently not available.",
+                            "html": "This input is intended for experts who are experienced in working with custom code. <br><br>Please note that custom code can create potentially harmful vulnerabilities! <br><br><b>Tip</b>: If you are not sure, use the WYSIWYG HTML editor in the various text elements of Shopware.",
+                            "js": "This input is intended for experts who are experienced in working with custom code. <br><br>Please note that custom code can create potentially harmful vulnerabilities!"
+                        },
+                        "infotext": {
+                            "customCode": "This CMS element is intended for experts who are experienced in working with custom code. Please note that custom code can create potentially harmful vulnerabilities!",
+                            "css": "With the following configuration you can add your custom CSS code. You can also enter your CSS code in the HTML code editor.",
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/other/custom-code-html-css-js"
+                            },
+                            "js": "With the following configuration you can add your custom JavaScript code. You can also enter your JS code in the HTML code editor.",
+                            "sanitizeInfo": "Potentially harmful code will not be sanitised and removed from the editor automatically!",
+                            "tip": "If you are not absolutely confident in working with HTML/CSS/JS, just use the WYSIWYG HTML editor in the various text elements of Shopware.",
+                            "warning": "This CMS element is intended for experts who are experienced in working with custom code. Unfiltered code can lead to security risks. Please only insert code from trusted sources and test your changes before publishing them."
+                        },
+                        "placeholder": {
+                            "css": ".title { color: #189eff; }",
+                            "html": "<p class=\"title\">Title</p>"
+                        }
+                    },
+                    "component": {
+                        "label": {
+                            "example": "Example:"
+                        }
+                    }
+                },
+                "discountBanner": {
+                    "label": "Discount banner",
+                    "config": {
+                        "title": {
+                            "discount": "Discount"
+                        },
+                        "label": {
+                            "cssClassDiscount": "CSS class (Discount)",
+                            "discount": "Discount"
+                        },
+                        "placeholder": {
+                            "discount": "Enter a discount..."
+                        },
+                        "helpText": {
+                            "discount": "Enter the desired discount (e.g. '-25%')."
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/sale/discount-banner"
+                            }
+                        }
+                    }
+                },
+                "heroCountdownHeadline": {
+                    "label": "Hero countdown (Heading)",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/sale/hero-countdown"
+                            }
+                        }
+                    }
+                },
+                "listingSubcategories": {
+                    "label": "Listing subcategories",
+                    "config": {
+                        "label": {
+                            "buttonAlignment": "Button alignment",
+                            "customConfig": "Use individual configuration",
+                            "height": "Height (e.g. '140px')",
+                            "imageSize": "Image size (e.g. '100px')",
+                            "justifyContent": "Column (tiles) alignment",
+                            "maxHeight": "Maximum height (e.g. '140px' or 'none')",
+                            "minHeight": "Minimum height (e.g. '140px')",
+                            "width": "Width (e.g. '100%')"
+                        },
+                        "option": {
+                            "button": "Buttons",
+                            "buttons": "Buttons (without grid)",
+                            "imageOnly": "Image only",
+                            "sideBySide": "Text next to the image",
+                            "textBelow": "Text below the image",
+                            "textOnly": "Text only"
+                        },
+                        "helpText": {
+                            "buttonAlignment": "Button alignment.",
+                            "columnsLg": "Number of columns in the tablet viewport (≥992px). <br><br>default: 3",
+                            "columnsMd": "Number of columns in the tablet viewport (≥768px). <br><br>default: 2",
+                            "columnsSm": "Number of columns in the smartphone viewport (≥576px). <br><br>default: 2",
+                            "columnsXl": "Number of columns in the desktop viewport (≥1200px). <br><br>default: 4",
+                            "columnsXs": "Number of columns in the smartphone viewport (<576px). <br><br>default: 1",
+                            "columnsXxl": "Number of columns in the desktop viewport (≥1440px). <br><br>default: 4",
+                            "customConfig": "Determines whether the individual configuration of the CMS element will be used. Otherwise, the theme configuration in the 'Extensions' tab is applied to this element.",
+                            "height": "Enter your desired height (e.g. '140px').",
+                            "imageSize": "Enter the desired image width (e.g. '100px') in pixels.",
+                            "justifyContent": "Choose how you want the columns (tiles) to be aligned.",
+                            "layoutType": "Select the desired layout type. <br><br><b>Tip</b>: Use the same aspect ratio for all cateogry images to get the best result.",
+                            "maxHeight": "Enter the desired maximum height (e.g. '140px' or 'none').",
+                            "minHeight": "Enter the desired minimum height (e.g. '140px').",
+                            "width": "Enter your desired width (e.g. '100%')."
+                        },
+                        "infotext": {
+                            "betaElement": "Please note that this element is in a testing phase, feel free to test it.",
+                            "documentation": {
+                                "link": ""
+                            },
+                            "moreConfig": "You can find more configuration options in the 'Extensions' tab of the theme configuration.",
+                            "themeConfig": "You can find general configuration options in the 'Extensions' tab of the theme configuration."
+                        },
+                        "alert": {
+                            "supportedPageTypes": "This element is available on listing or shop pages."
+                        },
+                        "placeholder": {
+                            "imageSize": "Enter a image size..."
+                        }
+                    },
+                    "component": {
+                        "label": {
+                            "subcategory": "Category"
+                        }
+                    },
+                    "preview": {
+                        "label": {
+                            "subcategory": "Category"
+                        }
+                    }
+                },
+                "listingSubcategoriesModern": {
+                    "label": "Listing subcategories (Modern)",
+                    "config": {
+                        "infotext": {
+                            "betaElement": "Please note that this element is in a testing phase, feel free to test it.",
+                            "documentation": {
+                                "link": ""
+                            }
+                        }
+                    }
+                },
+                "listingSubcategoriesHero": {
+                    "label": "Listing subcategories (Hero)",
+                    "config": {
+                        "infotext": {
+                            "betaElement": "Please note that this element is in a testing phase, feel free to test it.",
+                            "documentation": {
+                                "link": ""
+                            }
+                        }
+                    }
+                },
+                "placeholder": {
+                    "label": "Placeholder",
+                    "component": {
+                        "label": "Click to select an element"
+                    },
+                    "preview": {
+                        "label": "Select element"
+                    }
+                },
+                "sidebarSubcategoryNavigation": {
+                    "label": "Subcategory navigation",
+                    "config": {
+                        "infotext": {
+                            "documentation": {
+                                "link": ""
+                            }
+                        }
+                    },
+                    "infotext": {
+                        "navigationElement": "This element's navigation data is automatically loaded by the category associated with this layout. The content just shows a sample preview."
+                    },
+                    "component": {
+                        "label": {
+                            "navigation": "Navigation"
+                        }
+                    },
+                    "preview": {
+                        "label": {
+                            "navigation": "Navigation"
+                        }
+                    }
+                },
+                "testimonial": {
+                    "label": "Testimonial (Customer review)",
+                    "config": {
+                        "title": {
+                            "avatar": "Avatar",
+                            "name": "Name",
+                            "rating": "Rating",
+                            "review": "Review"
+                        },
+                        "label": {
+                            "avatar": "Avatar",
+                            "colorRating": "Colour (Rating)",
+                            "htmlTagClassName": "Use HTML tag as class (Name)",
+                            "htmlTagName": "HTML tag (Name)",
+                            "name": "Name",
+                            "rating": "Rating",
+                            "ratingBgColor": "Background colour (Rating)",
+                            "review": "Review"
+                        },
+                        "option": {
+                            "avatar": {
+                                "none": "Do not show",
+                                "image": "Show image",
+                                "initials": "Show initials"
+                            },
+                            "style": {
+                                "number": "Number",
+                                "stars": "Stars"
+                            }
+                        },
+                        "placeholder": {
+                            "name": "Enter the name..."
+                        },
+                        "helpText": {
+                            "avatar": "Select whether and if so which avatar should be shown.",
+                            "colorRating": "Select the desired colour for the rating.",
+                            "name": "Enter the name of the customer.",
+                            "rating": "Enter the rating (e.g. '4.5' or '5') of the customer.",
+                            "ratingBgColor": "Select the desired background for the rating.",
+                            "review": "Enter the review of the customer."
+                        },
+                        "infotext": {
+                            "documentation": {
+                                "link": "https://docs.themeware.design/additional-features/cms-extensions/cms-elements/other/testimonial-customer-review"
+                            }
+                        }
+                    }
+                },
+
+                "imageGallery": {
+                    "label": "Image gallery (Grid)",
+                    "config": {
+                        "title": {
+                            "gallery": "Gallery slider",
+                            "galleryGrid": "Gallery grid (≥992px)"
+                        },
+                        "label": {
+                            "fullscreen": "Fullscreen gallery",
+                            "keepAspectRatioOnZoom": "Keep aspect ratio on zoom",
+                            "magnifierOverGallery": "Show magnifier over Gallery",
+                            "magnifierOverGalleryHelpText": "Show the magnifier box on top of the gallery instead of showing it next to the gallery",
+                            "minHeightGrid": "Minimum height (≥992px)",
+                            "navigationPreview": "Preview navigation",
+                            "navigationPreviewGrid": "Show preview navigation",
+                            "navigationPreviewPositionLeft": "Left",
+                            "navigationPreviewPositionUnderneath": "Underneath",
+                            "zoom": "Zoom"
+                        },
+                        "option": {
+                            "layoutType": {
+                                "one": "Images among each other",
+                                "two": "Images among each other (1x 100%, rest 50%)",
+                                "three": "Images among each other (all 50%)"
+                            },
+                            "navigationPreviewGrid": {
+                                "show": "show",
+                                "hide": "don't show"
+                            }
+                        },
+                        "helpText": {
+                            "displayMode": "Select the desired display mode.",
+                            "minHeight": "Enter the minimum height. <br><br>For example: '430px'",
+                            "minHeightGrid": "Enter the minimum height (e.g. '430px'). <br><br>Leave this configuration empty for a flexible size mode."
+                        }
+                    }
+                },
+                "productDescriptionReviews": {
+                    "label": "Product description & reviews (Accordion)",
+                    "config": {
+                        "label": {
+                            "customShow": "Show 'Custom content'",
+                            "datasheetsShow": "Show 'Datasheets'",
+                            "descriptionShow": "Show 'Description'",
+                            "manufacturerShow": "Show 'Manufacturer'",
+                            "reviewsShow": "Show 'Reviews'",
+                            "videosShow": "Show 'Videos'"
+                        },
+                        "option": {
+                            "layoutType": {
+                                "accordion": "Accordion",
+                                "list": "List"
+                            }
+                        },
+                        "helpText": {
+                            "customShow": "Select whether the 'Custom tab' should be displayed in this element.",
+                            "datasheetsShow": "Select whether the tab 'Datasheets tab' should be displayed in this element.",
+                            "descriptionShow": "Select whether the tab 'Description' should be displayed in this element.",
+                            "manufacturerShow": "Select whether the 'Manufacturer tab' should be displayed in this element.",
+                            "reviewsShow": "Select whether the tab 'Reviews' should be displayed in this element.",
+                            "videosShow": "Select whether the 'Videos tab' should be displayed in this element."
+                        }
+                    },
+                    "infoText": {
+                        "descriptionAndReviewsElement": "This element's product data is automatically loaded by the product associated with this layout. The content just shows a sample preview."
+                    },
+                    "component": {
+                        "label": {
+                            "descriptionAndReviews": "Product description & reviews"
+                        }
+                    },
+                    "preview": {
+                        "label": {
+                            "descriptionAndReviews": "Product description & reviews",
+                            "description": "Description",
+                            "reviews": "Reviews"
+                        }
+                    }
+                }
+            },
+            "tabs": {
+                "settings": "Settings",
+                "image": "Image"
+            }
+        }
+    }
+}

@@ -1,0 +1,68 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: HTML tables
+	==================================================
+
+    Info: This file contains all styles for responsive HTML tables.
+*/
+
+.twt-table-responsive {
+    @media (max-width: 767.98px) {
+        thead {
+            display: none;
+        }
+
+        tr {
+            float: left;
+            width: 100%;
+            margin-bottom: 2em;
+        }
+
+        td {
+            float: left;
+            width: 100%;
+            padding: $table-cell-padding-y $table-cell-padding-x;
+        }
+
+        td::before {
+            font-weight: bold;
+            float: left;
+            width: 20%;
+            //margin: -($table-cell-padding-y) $table-cell-padding-x -($table-cell-padding-y) -($table-cell-padding-x);
+            margin: (-$table-cell-padding-y) $table-cell-padding-x (-$table-cell-padding-y) (-$table-cell-padding-x);
+            padding: $table-cell-padding-y $table-cell-padding-x;
+            content: attr(data-label);
+            word-wrap: break-word;
+            //border-right: ($table-border-width * 2) solid $table-border-color;
+            border-right: calc(#{$table-border-width} * 2) solid $table-border-color;
+        }
+    }
+
+    //
+    // Condensed table w/ half padding
+    //
+
+    .table-sm {
+        td {
+            padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+        }
+
+        td::before {
+            //margin: -($table-cell-padding-y-sm) $table-cell-padding-x-sm -($table-cell-padding-y-sm) -($table-cell-padding-x-sm);
+            margin: (-($table-cell-padding-y-sm)) $table-cell-padding-x-sm (-($table-cell-padding-y-sm)) (-($table-cell-padding-x-sm));
+            padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+        }
+    }
+
+    //
+    // Dark styles
+    // @TODO ...
+    //
+
+}

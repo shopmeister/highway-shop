@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+           https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Swag\AmazonPay\DataAbstractionLayer\Entity\PaymentNotification\PaymentNotificationDefinition">
+            <tag name="shopware.entity.definition" entity="swag_amazon_pay_payment_notification"/>
+        </service>
+
+        <service id="Swag\AmazonPay\DataAbstractionLayer\Entity\Extension\OrderTransactionExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="Swag\AmazonPay\DataAbstractionLayer\Entity\SignUpToken\SignUpTokenDefinition">
+            <tag name="shopware.entity.definition" entity="swag_amazon_pay_signup_token"/>
+        </service>
+
+        <service id="Swag\AmazonPay\DataAbstractionLayer\Entity\AmazonPayTransaction\AmazonPayTransactionDefinition">
+            <tag name="shopware.entity.definition" entity="swag_amazon_pay_transaction"/>
+        </service>
+
+    </services>
+</container>

@@ -1,0 +1,498 @@
+{# ThemeWare® 'Product videos' on product pages via custom fileds #}
+{#
+    Add 'Product videos'
+
+    Der Dateiupload im Medienmanager ist für folgende Dateitypen möglich:
+    jpg, jpeg, png, webp, gif, svg, bmp, tiff, tif, eps, webm, mkv, flv, ogv, ogg, mov, mp4, avi, wmv, pdf, aac, mp3, wav, flac, oga, wma, txt, doc, glb
+
+    Unterstützte Video-Formate: webm, mkv, flv, ogv, ogg, mov, mp4, avi, wmv
+
+    @Storefront/storefront/themeware/product-detail/includes/twt-product-videos.html.twig
+#}
+
+{# @TODO
+    Konfiguration:
+    - Button (Color, Outline)
+    - Backdrop (Color, ..)
+    - Placeholder (Color, ..)
+    - Apply styling to Shopware video CMS elements
+    - ..
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailProductVideosAdvancedPrivacy = theme_config('twt-product-detail-product-videos-advanced-privacy') %}
+{% set twtProductDetailProductVideosNeedConfirmation = theme_config('twt-product-detail-product-videos-need-confirmation') %}
+{% set twtProductDetailProductVideosPlaceholderLayoutType = theme_config('twt-product-detail-product-videos-placeholder-layout-type') %}
+{% set twtProductDetailProductVideosPlaceholderPreviewImage = theme_config('twt-product-detail-product-videos-placeholder-preview-image') %}
+{% set twtProductDetailProductVideosShowControls = theme_config('twt-product-detail-product-videos-show-controls') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{% set formats = ['webm', 'mkv', 'flv', 'ogv', 'ogg', 'mov', 'mp4', 'avi', 'wmv'] %}
+
+{# Set 'Videos' #}
+{% set videoMediaIds = [
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3
+] | filter(item => item is not null) %}
+
+{% set mediaCollection = searchMedia(videoMediaIds, context.context) %}
+
+{% set twtVideo1 = mediaCollection.get(videoMediaIds.0) %}
+{% set twtVideo2 = mediaCollection.get(videoMediaIds.1) %}
+{% set twtVideo3 = mediaCollection.get(videoMediaIds.2) %}
+
+{# Set 'Headlines' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1_title is not empty %}
+    {% set twtHeadline1 = twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1_title|sw_sanitize %}
+{% else %}
+    {% if twtVideo1.title is not empty %}
+        {% set twtHeadline1 = twtVideo1.title|sw_sanitize %}
+    {% else %}
+        {% set twtHeadline1 = 'twt.detail.productVideos.fallback'|trans|sw_sanitize ~ ' 1' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2_title is not empty %}
+    {% set twtHeadline2 = twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2_title|sw_sanitize %}
+{% else %}
+    {% if twtVideo2.title is not empty %}
+        {% set twtHeadline2 = twtVideo2.title|sw_sanitize %}
+    {% else %}
+        {% set twtHeadline2 = 'twt.detail.productVideos.fallback'|trans|sw_sanitize ~ ' 2' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3_title is not empty %}
+    {% set twtHeadline3 = twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3_title|sw_sanitize %}
+{% else %}
+    {% if twtVideo3.title is not empty %}
+        {% set twtHeadline3 = twtVideo3.title|sw_sanitize %}
+    {% else %}
+        {% set twtHeadline3 = 'twt.detail.productVideos.fallback'|trans|sw_sanitize ~ ' 3' %}
+    {% endif %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ThemeWare: Add product videos #}
+{% block twt_product_detail_videos %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__youtube_video is not empty
+        or twtCustomFields.product.twt_fit_cloud_custom_field__product__vimeo_video is not empty
+        or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1 is not empty
+        or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2 is not empty
+        or twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3 is not empty
+    %}
+        <div class="twt-product-detail-videos twt-product-videos">
+            {% block twt_product_detail_videos_inner %}
+
+                {# Add subheadline (only in tab "Description") #}
+                {% block twt_product_detail_videos_subheadline %}
+                    {% if position == 'description' %}
+                        <div class="h4 twt-product-detail-product-videos-title twt-product-detail-description-subheadline">
+                            {{ 'twt.detail.productVideos.title'|trans({'%product%': product.translated.name })|sw_sanitize }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {# Add "Videos" #}
+                {% block twt_product_detail_videos_content %}
+                    <div class="twt-product-detail-videos-content">
+
+                        {# Add description text #}
+                        {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__videos_text is not empty %}
+                            <p>
+                                {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__videos_text|raw }}
+                            </p>
+                        {% endif %}
+
+                        {# Embed videos #}
+                        <div class="twt-product-detail-videos-content-container video-embeds">
+                            {# Set 'Video attributes' #}
+
+                            {#
+                            {% if attributes.autoplay is defined and attributes.autoplay is same as(true) %}
+                                {% set attributes = attributes|merge({
+                                    muted: true,
+                                    playsinline: true,
+                                }) %}
+                            {% endif %}
+                            #}
+
+                            {#
+                            {% if attributes.preload is not defined %}
+                                {% set attributes = attributes|merge({ preload: 'metadata' }) %}
+                            {% endif %}
+                            #}
+
+                            {# Attributes: autoplay, controls, loop, muted #}
+                            {% set videoAttributes = [] %}
+
+                            {# Play video automatically #}
+                            {# ... #}
+
+                            {# Play video in a loop #}
+                            {# ... #}
+
+                            {# Show video controls #}
+                            {% if twtProductDetailProductVideosShowControls == 2 %}
+                                {% set videoAttributes = ['controls']|merge(videoAttributes) %}
+                            {% endif %}
+
+                            {# ThemeWare: Video 1 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_1 is not empty %}
+                                {% if twtVideo1.mediaType.name is same as ('VIDEO') and twtVideo1.fileExtension in formats %}
+                                    <div class="twt-product-detail-videos-content-video">
+                                        {# Title #}
+                                        <div class="twt-product-detail-videos-content-video-title">
+                                            <h5>{{ twtHeadline1 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <div class="twt-product-detail-videos-content-video-embed">
+                                            <video
+                                                style="width:100%; height: auto; aspect-ratio: 16/9"
+                                                {{ videoAttributes|join(' ')|raw }}
+                                            >
+                                                <source
+                                                    src="{{ twtVideo1.url }}#t=0.001"
+                                                    type="{{ twtVideo1.mimeType }}"
+                                                >
+                                            </video>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    {# @TODO: Add hint "Wrong file type" #}
+                                {% endif %}
+                            {% endif %}
+
+                            {# ThemeWare: Video 2 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_2 is not empty %}
+                                {% if twtVideo2.mediaType.name is same as ('VIDEO') and twtVideo2.fileExtension in formats %}
+                                    <div class="twt-product-detail-videos-content-video">
+                                        {# Title #}
+                                        <div class="twt-product-detail-videos-content-video-title">
+                                            <h5>{{ twtHeadline2 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <div class="twt-product-detail-videos-content-video-embed">
+                                            <video
+                                                style="width:100%; height: auto; aspect-ratio: 16/9"
+                                                {{ videoAttributes|join(' ')|raw }}
+                                            >
+                                                <source
+                                                    src="{{ twtVideo2.url }}#t=0.001"
+                                                    type="{{ twtVideo2.mimeType }}"
+                                                >
+                                            </video>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    {# @TODO: Add hint "Wrong file type" #}
+                                {% endif %}
+                            {% endif %}
+
+                            {# ThemeWare: Video 3 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__video_3 is not empty %}
+                                {% if twtVideo3.mediaType.name is same as ('VIDEO') and twtVideo3.fileExtension in formats %}
+                                    <div class="twt-product-detail-videos-content-video">
+                                        {# Title #}
+                                        <div class="twt-product-detail-videos-content-video-title">
+                                            <h5>{{ twtHeadline3 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <div class="twt-product-detail-videos-content-video-embed">
+                                            <video
+                                                style="width:100%; height: auto; aspect-ratio: 16/9"
+                                                {{ videoAttributes|join(' ')|raw }}
+                                            >
+                                                <source
+                                                    src="{{ twtVideo3.url }}#t=0.001"
+                                                    type="{{ twtVideo3.mimeType }}"
+                                                >
+                                            </video>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    {# @TODO: Add hint "Wrong file type" #}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                    </div>
+                {% endblock %}
+
+
+                {# ThemeWare: Add YouTube-Video(s) #}
+                {# @TODO: Add configuration (Steuerelemente, Erweiterter Datenschutz, ...) #}
+                {# <iframe width="560" height="315" src="https://www.youtube.com/embed/aVw60mnS21o?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> #}
+                {# https://github.com/shopware/platform/blob/d6c853ca3b6b167d61d70e6329f4fcface5c5245/src/Storefront/Resources/views/storefront/element/cms-element-youtube-video.html.twig #}
+
+                {% block twt_product_detail_videos_youtube %}
+                    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__youtube_video is not empty %}
+                        <div class="twt-product-detail-videos-content-youtube">
+
+                            {# Title #}
+                            <div class="twt-product-detail-videos-content-title">
+                                <h5>YouTube</h5>
+                            </div>
+
+                            {# Embed videos #}
+                            <div class="twt-product-detail-videos-content-container video-embeds">
+                                {% set youtubeIDs = twtCustomFields.product.twt_fit_cloud_custom_field__product__youtube_video|split(',') %}
+
+                                {% for youtubeID in youtubeIDs %}
+                                    <div class="twt-product-detail-videos-content-video">
+                                        {% set videoId = youtubeID|trim %}
+
+                                        {# Advanced privacy mode #}
+                                        {% if twtProductDetailProductVideosAdvancedPrivacy == 2 %}
+                                            {% set videoUrl = 'https://www.youtube-nocookie.com/embed/' %}
+                                        {% else %}
+                                            {% set videoUrl = 'https://www.youtube.com/embed/' %}
+                                        {% endif %}
+
+                                        {% set videoUrl = videoUrl ~ videoId ~ '?' ~ 'rel=0' ~ '&' %}
+
+                                        {# Play video automatically #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'autoplay=1' ~ '&' %}
+                                        #}
+
+                                        {# Play video in a loop #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'loop=1' ~ '&' ~ 'playlist=' ~ config.videoID.value ~ '&' %}
+                                        #}
+
+                                        {# Show video controls #}
+                                        {% if twtProductDetailProductVideosShowControls == 1 %}
+                                            {% set videoUrl = videoUrl ~ 'controls=0' ~ '&' %}
+                                        {% endif %}
+
+                                        {# Start video at #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'start=' ~ config.start.value ~ '&' %}
+                                        #}
+
+                                        {# End video at #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'end=' ~ config.end.value ~ '&' %}
+                                        #}
+
+                                        {% set videoUrl = videoUrl ~ 'disablekb=1' %}
+
+                                        {% set iframeClass = 'embed-responsive-item' %}
+
+                                        {% block twt_product_detail_videos_youtube_embed %}
+                                            <div class="twt-product-detail-videos-content-video-embed twt-product-video is-youtube embed-responsive embed-responsive-16by9" itemprop="video"> {# 16:9 aspect ratio #}
+                                                <div class="responsive-video ratio ratio-16x9">
+                                                    {% block twt_product_detail_videos_youtube_embed_inner %}
+                                                        {% if twtProductDetailProductVideosNeedConfirmation == 1 %}
+                                                            <iframe class="{{ iframeClass }}"
+                                                                    src="{{ videoUrl }}"
+                                                                    frameborder="0"
+                                                                    allowfullscreen="allowfullscreen"
+                                                            >
+                                                            </iframe>
+
+                                                        {% else %}
+                                                            {% set pluginConfiguration = {
+                                                                videoUrl: videoUrl,
+                                                                iframeClasses: [ iframeClass ],
+                                                                btnClasses: [ 'btn', 'btn-outline-secondary' ],
+                                                                backdropClasses: [ 'twt-product-video__backdrop' ],
+                                                                confirmButtonText: 'component.cms.vimeo.acceptButtonLabel'|trans,
+                                                                overlayText: 'component.cms.vimeo.privacyNoticeText'|trans({
+                                                                    '%url%': path('frontend.cms.page', { id: config('core.basicInformation.privacyPage') }),
+                                                                    '%platform%': 'YouTube'
+                                                                })|raw
+                                                            } %}
+
+                                                            {% block twt_product_detail_videos_youtube_embed_placeholder %}
+                                                                <div class="twt-product-video__placeholder"
+                                                                     data-cms-gdpr-video-element="true"
+                                                                     data-cms-gdpr-video-element-options="{{ pluginConfiguration|json_encode }}">
+                                                                    {# Preview layouts #}
+                                                                    {% if twtProductDetailProductVideosPlaceholderLayoutType == 3 %}
+                                                                        {# Custom image #}
+                                                                        <img
+                                                                            class="product-detail-youtube-video-placeholder-img"
+                                                                            src="{{ twtProductDetailProductVideosPlaceholderPreviewImage|sw_encode_url }}"
+                                                                            alt="{{ 'twt.detail.tabVideos.alt'|trans|sw_sanitize }}"
+                                                                        >
+                                                                    {% elseif twtProductDetailProductVideosPlaceholderLayoutType == 2 %}
+                                                                        {# Icon #}
+                                                                        {% sw_include '@Storefront/storefront/themeware/twt-social-icons.html.twig' ignore missing with {
+                                                                            icon: 'youtube',
+                                                                            style: 'isolated'
+                                                                        } %} {# Uses ThemeWare's social icons #}
+                                                                    {% endif %}
+
+                                                                    {# YouTube thumbnail #}
+                                                                    {#
+                                                                    <img class="product-detail-youtube-video-placeholder-img" src="http://img.youtube.com/vi/{{ videoId }}/maxresdefault.jpg" alt="{{ 'twt.detail.tabVideos.alt'|trans|sw_sanitize }}">
+                                                                    #}
+                                                                </div>
+                                                            {% endblock %}
+
+                                                        {% endif %}
+                                                    {% endblock %}
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+
+                {# ThemeWare: Vimeo-Video(s) #}
+                {# <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/213807531?color=ffffff&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> #}
+                {# https://github.com/shopware/platform/blob/d6c853ca3b6b167d61d70e6329f4fcface5c5245/src/Storefront/Resources/views/storefront/element/cms-element-vimeo-video.html.twig #}
+
+                {% block twt_product_detail_videos_vimeo %}
+                    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__vimeo_video is not empty %}
+                        <div class="twt-product-detail-videos-content-vimeo">
+
+                            {# Title #}
+                            <div class="twt-product-detail-videos-content-title">
+                                <h5>Vimeo</h5>
+                            </div>
+
+                            {# Embed videos #}
+                            <div class="twt-product-detail-videos-content-container video-embeds">
+                                {% set vimeoIDs = twtCustomFields.product.twt_fit_cloud_custom_field__product__vimeo_video|split(',') %}
+
+                                {% for vimeoID in vimeoIDs %}
+                                    <div class="twt-product-detail-videos-content-video">
+                                        {% set videoId = vimeoID|trim %}
+
+                                        {% set videoUrl = 'https://player.vimeo.com/video/' %}
+                                        {% set videoUrl = videoUrl ~ videoId ~ '?' %}
+
+                                        {# Play video automatically #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'autoplay=true' ~ '&' %}
+                                        #}
+
+                                        {# Show video creator #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'byline=false' ~ '&' %}
+                                        #}
+
+                                        {# Chgange video player controls' color #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'color=' ~ config.color.value|replace({'#': ''}) ~ '&' %}
+                                        #}
+
+                                        {# Advanced privacy mode #}
+                                        {% if twtProductDetailProductVideosAdvancedPrivacy == 2 %}
+                                            {% set videoUrl = videoUrl ~ 'dnt=true' ~ '&' %}
+                                        {% else %}
+                                            {% set videoUrl = videoUrl ~ 'dnt=false' ~ '&' %}
+                                        {% endif %}
+
+                                        {# Play video in a loop #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'loop=' ~ config.loop.value ~ '&' %}
+                                        #}
+
+                                        {# Show video controls #}
+                                        {% if twtProductDetailProductVideosShowControls == 1 %}
+                                            {% set videoUrl = videoUrl ~ 'controls=false' ~ '&' %}
+                                        {% endif %}
+
+                                        {# Show picture of the creator #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'portrait=false' ~ '&' %}
+                                        #}
+
+                                        {# Show video title #}
+                                        {#
+                                        {% set videoUrl = videoUrl ~ 'title=false' ~ '&' %}
+                                        #}
+
+                                        {% set iframeClass = 'embed-responsive-item' %}
+
+                                        {% block twt_product_detail_videos_vimeo_embed %}
+                                            <div class="twt-product-detail-videos-content-video-embed twt-product-video is-vimeo embed-responsive embed-responsive-16by9" itemprop="video"> {# 16:9 aspect ratio #}
+                                                <div class="responsive-video ratio ratio-16x9">
+                                                    {% block twt_product_detail_videos_vimeo_embed_inner %}
+                                                        {% if twtProductDetailProductVideosNeedConfirmation == 1 %}
+                                                            <iframe class="{{ iframeClass }}"
+                                                                    src="{{ videoUrl }}"
+                                                                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                                                                    frameborder="0"
+                                                                    allow="fullscreen; picture-in-picture"
+                                                                    allowfullscreen>
+                                                            </iframe>
+                                                            {#<script src="https://player.vimeo.com/api/player.js"></script>#}
+
+                                                        {% else %}
+                                                            {% set pluginConfiguration = {
+                                                                videoUrl: videoUrl,
+                                                                iframeClasses: [ iframeClass ],
+                                                                btnClasses: [ 'btn', 'btn-outline-secondary' ],
+                                                                backdropClasses: [ 'twt-product-video__backdrop' ],
+                                                                confirmButtonText: 'component.cms.vimeo.acceptButtonLabel'|trans,
+                                                                overlayText: 'component.cms.vimeo.privacyNoticeText'|trans({
+                                                                    '%url%': path('frontend.cms.page', { id: config('core.basicInformation.privacyPage') }),
+                                                                    '%platform%': 'Vimeo'
+                                                                })|raw
+                                                            } %}
+
+                                                            {% block twt_product_detail_videos_vimeo_embed_placeholder %}
+                                                                <div class="twt-product-video__placeholder"
+                                                                     data-cms-gdpr-video-element="true"
+                                                                     data-cms-gdpr-video-element-options="{{ pluginConfiguration|json_encode }}">
+                                                                    {# Preview layouts #}
+                                                                    {% if twtProductDetailProductVideosPlaceholderLayoutType == 3 %}
+                                                                        {# Custom image #}
+                                                                        <img
+                                                                            class="product-detail-youtube-video-placeholder-img"
+                                                                            src="{{ twtProductDetailProductVideosPlaceholderPreviewImage|sw_encode_url }}"
+                                                                            alt="{{ 'twt.detail.tabVideos.alt'|trans|sw_sanitize }}"
+                                                                        >
+                                                                    {% elseif twtProductDetailProductVideosPlaceholderLayoutType == 2 %}
+                                                                        {# Icon #}
+                                                                        {% sw_include '@Storefront/storefront/themeware/twt-social-icons.html.twig' ignore missing with {
+                                                                            icon: 'vimeo',
+                                                                            style: 'isolated'
+                                                                        } %} {# Uses ThemeWare's social icons #}
+                                                                    {% endif %}
+
+                                                                    {# Vimeo thumbnail #}
+                                                                    {# Under construction... #}
+                                                                </div>
+                                                            {% endblock %}
+
+                                                        {% endif %}
+                                                    {% endblock %}
+                                                </div>
+                                            </div>
+                                        {% endblock %}
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{# Adds the Amazon Pay button below the "Go to cart"-link #}
+{% block component_offcanvas_cart_actions_cart %}
+    {{ parent() }}
+
+    {% if isCartNotEmpty %}
+        {% block component_offcanvas_cart_actions_cart_amazon_pay_button %}
+            {% sw_include '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' with {
+                'identifier': 'offcanvas-cart'
+            } %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

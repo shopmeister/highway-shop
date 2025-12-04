@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/layout/header/header.html.twig' %}
+
+{% block layout_top_bar %}
+    {% if config('NetzpShopmanager6.config.message') %}
+        {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+            type:"warning",
+            content: config('NetzpShopmanager6.config.message')
+        } %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

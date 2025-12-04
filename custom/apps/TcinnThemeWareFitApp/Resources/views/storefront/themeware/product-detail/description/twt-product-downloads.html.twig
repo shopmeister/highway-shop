@@ -1,0 +1,246 @@
+{# ThemeWare® 'Downloads' on product pages via custom fileds #}
+{#
+    Create container and add product downloads
+
+    Der Dateiupload im Medienmanager ist für folgende Dateitypen möglich:
+    jpg, jpeg, png, webp, gif, svg, bmp, tiff, tif, eps, webm, mkv, flv, ogv, ogg, mov, mp4, avi, wmv, pdf, aac, mp3, wav, flac, oga, wma, txt, doc, glb
+
+    Unterstützte Dokumente: pdf, txt, doc
+
+    @Storefront/storefront/themeware/product-detail/twt-downloads.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO
+    - ...
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{# ... #}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{% set formats = ['pdf', 'txt', 'doc'] %}
+
+{# Set 'Downloads' #}
+{% set downloadMediaIds = [
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3
+] | filter(item => item is not null) %}
+
+{% set mediaCollection = searchMedia(downloadMediaIds, context.context) %}
+
+{% set twtDownload1 = mediaCollection.get(downloadMediaIds.0) %}
+{% set twtDownload2 = mediaCollection.get(downloadMediaIds.1) %}
+{% set twtDownload3 = mediaCollection.get(downloadMediaIds.2) %}
+
+{# Set 'Titles' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_title is not empty %}
+    {% set twtTitle1 = 'twt.detail.downloads.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_title })|sw_sanitize %}
+{% else %}
+    {% if twtDownload1.title is not empty %}
+        {% set twtTitle1 = 'twt.detail.downloads.link'|trans({'%name%': twtDownload1.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle1 = 'twt.detail.downloads.fallback'|trans|sw_sanitize ~ ' 1' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_title is not empty %}
+    {% set twtTitle2 = 'twt.detail.downloads.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_title })|sw_sanitize %}
+{% else %}
+    {% if twtDownload2.title is not empty %}
+        {% set twtTitle2 = 'twt.detail.downloads.link'|trans({'%name%': twtDownload2.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle2 = 'twt.detail.downloads.fallback'|trans|sw_sanitize ~ ' 2' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_title is not empty %}
+    {% set twtTitle3 = 'twt.detail.downloads.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_title })|sw_sanitize %}
+{% else %}
+    {% if twtDownload3.title is not empty %}
+        {% set twtTitle3 = 'twt.detail.downloads.link'|trans({'%name%': twtDownload3.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle3 = 'twt.detail.downloads.fallback'|trans|sw_sanitize ~ ' 3' %}
+    {% endif %}
+{% endif %}
+
+{# Set 'Link titles' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_title is not empty %}
+    {% set twtLinkTitle1 = twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_title %}
+{% else %}
+    {% if twtDownload1.title is not empty %}
+        {% set twtLinkTitle1 = twtDownload1.title %}
+    {% else %}
+        {% set twtLinkTitle1 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 1' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_title is not empty %}
+    {% set twtLinkTitle2 = twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_title %}
+{% else %}
+    {% if twtDownload2.title is not empty %}
+        {% set twtLinkTitle2 = twtDownload2.title %}
+    {% else %}
+        {% set twtLinkTitle2 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 2' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_title is not empty %}
+    {% set twtLinkTitle3 = twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_title %}
+{% else %}
+    {% if twtDownload3.title is not empty %}
+        {% set twtLinkTitle3 = twtDownload3.title %}
+    {% else %}
+        {% set twtLinkTitle3 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 3' %}
+    {% endif %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ThemeWare: Add product "downloads" #}
+{% block twt_product_detail_downloads_container %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3 is not empty %}
+
+        <div class="twt-product-detail-downloads twt-product-downloads">
+            {% block twt_product_detail_downloads_inner %}
+
+                {# Add 'Downloads' subheadline (only in tab "Description") #}
+                {% block twt_product_detail_downloads_subheadline %}
+                    {#{% if position == 'description' %}#}
+                    <div class="h4 twt-product-detail-downloads-title twt-product-detail-description-subheadline">
+                        {{ 'twt.detail.downloads.title'|trans({'%product%': product.translated.name })|sw_sanitize }}
+                    </div>
+                    {#{% endif %}#}
+                {% endblock %}
+
+                {# Add 'Downloads' #}
+                {% block twt_product_detail_downloads_content %}
+                    <div class="twt-product-detail-downloads-content">
+
+                        <div class="twt-product-detail-downloads downloads-list">
+                            <ul>
+                                {# ThemeWare: 'Download' 1 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1 is not empty %}
+                                    {% if twtDownload1.mediaType.name is same as ('DOCUMENT') and twtDownload1.fileExtension in formats %}
+                                        <li class="twt-product-detail-downloads-download mt-1">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+    
+                                            {# Link #}
+                                            <a href="{{ twtDownload1.url }}"
+                                               class="twt-product-detail-downloads-download-link content-link link-download"
+                                               title="{{ twtLinkTitle1 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle1 }}</a>
+
+                                            {% set fileSizeKB = twtDownload1.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                            <small class="twt-product-detail-downloads-download-filesize download-filesize">({{ fileSize }})</small>
+
+                                            {# Description #}
+                                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_description is not empty %}
+                                                <p>
+                                                    {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__download_1_description }}
+                                                </p>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+
+                                {# ThemeWare: 'Download' 2 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2 is not empty %}
+                                    {% if twtDownload2.mediaType.name is same as ('DOCUMENT') and twtDownload2.fileExtension in formats %}
+                                        <li class="twt-product-detail-downloads-download mt-1">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+    
+                                            {# Link #}
+                                            <a href="{{ twtDownload2.url }}"
+                                               class="twt-product-detail-downloads-download-link content-link link-download"
+                                               title="{{ twtLinkTitle2 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle2 }}</a>
+
+                                            {% set fileSizeKB = twtDownload2.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                            <small class="twt-product-detail-downloads-download-filesize download-filesize">({{ fileSize }})</small>
+
+                                            {# Description #}
+                                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_description is not empty %}
+                                                <p>
+                                                    {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__download_2_description }}
+                                                </p>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+
+                                {# ThemeWare: 'Download' 3 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3 is not empty %}
+                                    {% if twtDownload3.mediaType.name is same as ('DOCUMENT') and twtDownload3.fileExtension in formats %}
+                                        <li class="twt-product-detail-downloads-download mt-1">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+    
+                                            {# Link #}
+                                            <a href="{{ twtDownload3.url }}"
+                                               class="twt-product-detail-downloads-download-link content-link link-download"
+                                               title="{{ twtLinkTitle3 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle3 }}</a>
+
+                                            {% set fileSizeKB = twtDownload3.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                            <small class="twt-product-detail-downloads-download-filesize download-filesize">({{ fileSize }})</small>
+
+                                            {# Description #}
+                                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_description is not empty %}
+                                                <p>
+                                                    {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__download_3_description }}
+                                                </p>
+                                            {% endif %}
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </div>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% sw_extends '@SwagAmazonPay/storefront/page/checkout/pure-payment-redirect/_page.html.twig' %}
+
+{% block page_amazon_pay_pure_payment_redirect_content %}
+    <div class="swag-amazon-pay-pure-payment-redirect-content-wrapper"
+         data-amazon-pay-pure-payment-method="true"
+         data-amazon-pay-pure-payment-method-plugin-options='{
+                 "createCheckoutSessionConfig": {
+                     "payloadJSON": "{{ SwagAmazonPayPurePaymentMethod.payload | escape('js') }}",
+                     "signature": "{{ SwagAmazonPayPurePaymentMethod.signature }}",
+                     "publicKeyId": "{{ SwagAmazonPayPurePaymentMethod.publicKeyId }}"
+                 },
+                 "merchantId": "{{ SwagAmazonPayPurePaymentMethod.merchantId }}",
+                 "ledgerCurrency": "{{ SwagAmazonPayPurePaymentMethod.ledgerCurrency }}",
+                 "sandbox": "{{ SwagAmazonPayPurePaymentMethod.sandbox }}",
+                 "productType": "{{ SwagAmazonPayPurePaymentMethod.productType }}"
+             }'>
+
+        {% block page_amazon_pay_pure_payment_redirect_content_image %}
+            <img src="{{ asset('bundles/swagamazonpay/static/img/plugin.svg') }}"
+                 alt="Amazon Pay logo">
+        {% endblock %}
+
+        {% block page_amazon_pay_pure_payment_redirect_content_text %}
+            <p>{{ "SwagAmazonPay.purePaymentRedirect.text"|trans }}</p>
+        {% endblock %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{
+  "name": "netzp/netzpshopmanager6",
+  "description": "Mobile Shopmanager",
+  "version": "3.0.5",
+  "type": "shopware-platform-plugin",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "netzperfekt",
+      "homepage": "https://plugins.netzperfekt.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NetzpShopmanager6\\": "src/"
+    }
+  },
+  "require": {
+    "shopware/core": "~6.6.0",
+    "shopware/storefront": "~6.6.0",
+    "shopware/administration": "~6.6.0"
+  },
+  "extra": {
+    "shopware-plugin-class": "NetzpShopmanager6\\NetzpShopmanager6",
+    "plugin-icon": "src/Resources/config/plugin.png",
+    "copyright": "netzperfekt",
+    "label": {
+      "de-DE": "Shopmanager App SW 6",
+      "en-GB": "Shopmanager App SW 6"
+    },
+    "description": {
+      "de-DE": "*** Das ORIGINAL! *** Shopware App für iOS und Android - alle Kennzahlen als Dashboard unterwegs immer dabei. Umsatz, Besucher u.v.m. Für Smartphone und Tablets.",
+      "en-GB": "*** The ORIGINAL! *** Shopware App for iOS and Android - all key figures as a dashboard on the go. Sales, visitors, orders and much more. For smartphones and tablets."
+    },
+    "manufacturerLink": {
+      "de-DE": "https://plugins.netzperfekt.de",
+      "en-GB": "https://plugins.netzperfekt.de"
+    },
+    "supportLink": {
+      "de-DE": "https://plugins.netzperfekt.de/support",
+      "en-GB": "https://plugins.netzperfekt.de/support"
+    }
+  }
+}
+

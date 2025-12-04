@@ -1,0 +1,205 @@
+{# ThemeWare 'Checkout steps' content #}
+{#
+    @Storefront/storefront/themeware/includes/twt-checkout-steps-include.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCheckoutStepsStyle = theme_config('twt-checkout-steps-style') %}
+{% set twtCheckoutStepsIconStyle = theme_config('twt-checkout-steps-icon-style') %}
+{% set twtCheckoutStepsItemBoxShadowType = theme_config('twt-checkout-steps-item-box-shadow-type') %}
+{% set twtIconCart = theme_config('twt-icon-cart') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{# ThemeWare: Add styling classes #}
+{% if twtCheckoutStepsItemBoxShadowType == 5 %}
+    {% set stepClasses = 'shadow-sm' %}
+{% elseif twtCheckoutStepsItemBoxShadowType == 6 %}
+    {% set stepClasses = 'shadow' %}
+{% elseif twtCheckoutStepsItemBoxShadowType == 7 %}
+    {% set stepClasses = 'shadow-lg' %}
+{% else %}
+    {% set stepClasses = 'shadow-none' %}
+{% endif %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block twt_checkout_steps_content %}
+    <div class="twt-checkout-steps-content">
+        <nav aria-label="breadcrumb">
+
+            {% block twt_checkout_steps_row %}
+                <ol class="twt-checkout-steps-list row g-0 justify-content-center"
+                    itemscope
+                    itemtype="https://schema.org/BreadcrumbList"
+                >
+
+                    {# ThemeWare: Step 1 #}
+                    {% block twt_checkout_steps_step_1 %}
+                        <li class="twt-checkout-steps-item col-4 step-1 step-register{% if step == 1 %} is-active{% elseif step > 1 %} is-completed{% endif %}"
+                            {% if step == 1 %}aria-current="page"{% endif %}
+                            itemprop="itemListElement"
+                            itemscope
+                            itemtype="https://schema.org/ListItem"
+                        >
+                            <div class="twt-checkout-steps-item-path">
+                                <div class="twt-checkout-steps-item-icon {{ stepClasses }}" title="{{ 'twt.extension.checkoutSteps.step1'|trans|sw_sanitize }}">
+                                    {% if step <= 1 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            <strong class="number">1</strong>
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {# @TODO: Check if ariaLabel is needed #}
+                                            {% if twtIconSet is not same as ('default') %}
+                                                {% if twtIconCart == 'bag' %}
+                                                    {% sw_icon 'bag' style { size: 'sm' } %}
+                                                {% elseif twtIconCart == 'basket' %}
+                                                    {% sw_icon 'bag' style { size: 'sm' } %} {# Fallback icon #}
+                                                {% else %}
+                                                    {% sw_icon 'cart' style { size: 'sm' } %} {# Fallback icon #}
+                                                {% endif %}
+                                            {% else %}
+                                                {% sw_icon 'bag' style { size: 'sm' } %}
+                                            {% endif %}
+                                        {% else %}
+                                            <span class="dot"></span>
+                                        {% endif %}
+
+                                    {% elseif step > 1 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm', pack: 'solid' } %}
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm' } %}
+                                        {% else %}
+                                            {% sw_icon 'checkmark' style { size: 'xs', pack: 'solid' } %}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </div>
+
+                                {% if twtCheckoutStepsStyle == 1 %}
+                                    <div class="twt-checkout-steps-item-seperator">
+                                        <span class="fill"></span>
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="twt-checkout-steps-item-text"
+                                 itemprop="name"
+                                >
+                                <div itemprop="item">
+                                    <span>{% if twtCheckoutStepsIconStyle != 1 %}1. {% endif %}{{ 'twt.extension.checkoutSteps.step1'|trans|sw_sanitize }}</span>
+                                </div>
+                            </div>
+
+                            <meta itemprop="position" content="1"/>
+                        </li>
+                    {% endblock %}
+
+                    {# ThemeWare: Step 2 #}
+                    {% block twt_checkout_steps_step_2 %}
+                        <li class="twt-checkout-steps-item col-4 step-2 step-register{% if step == 2 %} is-active{% elseif step > 2 %} is-completed{% endif %}"
+                            {% if step == 2 %}aria-current="page"{% endif %}
+                            itemprop="itemListElement"
+                            itemscope
+                            itemtype="https://schema.org/ListItem"
+                        >
+                            <div class="twt-checkout-steps-item-path">
+                                <div class="twt-checkout-steps-item-icon {{ stepClasses }}" title="{{ 'twt.extension.checkoutSteps.step2'|trans|sw_sanitize }}">
+                                    {% if step <= 2 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            <strong class="number">2</strong>
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {% sw_icon 'avatar' style { size: 'sm' } %}
+                                        {% else %}
+                                            <span class="dot"></span>
+                                        {% endif %}
+
+                                    {% elseif step > 2 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm', pack: 'solid' } %}
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm' } %}
+                                        {% else %}
+                                            {% sw_icon 'checkmark' style { size: 'xs', pack: 'solid' } %}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </div>
+
+                                <div class="twt-checkout-steps-item-seperator">
+                                    <span class="fill"></span>
+                                </div>
+
+                                <meta itemprop="position" content="2"/>
+                            </div>
+
+                            <div class="twt-checkout-steps-item-text"
+                                 itemprop="item"
+                            >
+                                <div itemprop="item">
+                                    <span>{% if twtCheckoutStepsIconStyle != 1 %}2. {% endif %}{{ 'twt.extension.checkoutSteps.step2'|trans|sw_sanitize }}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endblock %}
+
+                    {# ThemeWare: Step 3 #}
+                    {% block twt_checkout_steps_step_3 %}
+                        <li class="twt-checkout-steps-item col-4 step-3 step-confirm{% if step == 3 %} is-active{% elseif step > 3 %} is-completed{% endif %}"
+                            {% if step == 3 %}aria-current="page"{% endif %}
+                            itemprop="itemListElement"
+                            itemscope
+                            itemtype="https://schema.org/ListItem"
+                        >
+                            <div class="twt-checkout-steps-item-path">
+                                <div class="twt-checkout-steps-item-icon {{ stepClasses }}" title="{{ 'twt.extension.checkoutSteps.step3'|trans|sw_sanitize }}">
+                                    {% if step <= 3 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            <strong class="number">3</strong>
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {% sw_icon 'money-card' style { size: 'sm' } %}
+                                        {% else %}
+                                            <span class="dot"></span>
+                                        {% endif %}
+
+                                    {% elseif step > 3 %}
+                                        {% if twtCheckoutStepsIconStyle == 1 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm', pack: 'solid' } %}
+                                        {% elseif twtCheckoutStepsIconStyle == 2 %}
+                                            {% sw_icon 'checkmark' style { size: 'sm' } %}
+                                        {% else %}
+                                            {% sw_icon 'checkmark' style { size: 'sm', pack: 'solid' } %}
+                                        {% endif %}
+
+                                    {% endif %}
+                                </div>
+
+                                <div class="twt-checkout-steps-item-seperator">
+                                    <span class="fill"></span>
+                                </div>
+
+                                <meta itemprop="position" content="3"/>
+                            </div>
+
+                            <div class="twt-checkout-steps-item-text"
+                                 itemprop="item"
+                            >
+                                <div itemprop="item">
+                                    <span>{% if twtCheckoutStepsIconStyle != 1 %}3. {% endif %}{{ 'twt.extension.checkoutSteps.step3'|trans|sw_sanitize }}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endblock %}
+
+                </ol>
+            {% endblock %}
+
+        </nav>
+    </div>
+{% endblock %}

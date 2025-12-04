@@ -1,0 +1,62 @@
+{
+    "cnk-order-csv-export": {
+        "global": {
+            "export": "Export",
+            "exportCsv": "Export CSV",
+            "createConfig": "Save as new configuration",
+            "saveConfig": "Save configuration",
+            "total": "Total",
+            "filterWarning": "Filters are taken into account when exporting",
+            "modal":{
+                "title": "Export - Orders",
+                "subtitle": "Select the documents to download",
+                "type": "type",
+                "extension": "File type",
+                "exportType": "Export Type",
+                "swOrderProfile": "Shopware Order Profile",
+                "myConfig": "My Configuration",
+                "mode": "mode",
+                "modeOrder": "Orders",
+                "modeLineItems": "Order Items",
+                "selectProfile": "Select Profile",
+                "addLineItems": "Add Order Lines",
+                "addFields": "Field Selection",
+                "orders": "General",
+                "order": "Order",
+                "lineItems": "Order Line",
+                "customers": "customer",
+                "customer": "customer",
+                "invoices": "Billing address",
+                "deliveries": "Delivery address",
+                "products": "product",
+                "product": "product",
+                "customFields": "Custom Fields",
+                "onlyProducts": "Only products",
+                "onlyProductsHelpText": "Export only products (without voucher, shipping cost, etc...)"
+            },
+            "warningModal": {
+                "modalTitle": "Export",
+                "title": "Warning",
+                "content": "You have selected the \"Orders\" mode with some order line items- / products fields, which unfortunately will not be exported.<br><br> In order for these fields to be exported, you must select the Order Lines mode.<br><br>It is therefore possible that the csv file is empty.<br><br>Would you like to continue anyway?",
+                "submit": "Yes, continue",
+                "close": "Cancel"
+            },
+            "newConfig": {
+              "title": "Create new profile",
+              "name": "Name",
+              "submit": "Save",
+              "close": "Cancel"
+            },
+            "labelTitlePageOne": "Choose a field type to add.",
+            "labelTitleCustomFieldSet": "Choose a custom field set to add.",
+            "createStateDescription": "Add values to be exported.",
+            "emptyStateDescription": "No fields have been added yet."
+        },
+        "notification": {
+            "addFields": "Please add the fields.",
+            "no_order": "Please select at least one order",
+            "no_order_found": "No order found",
+            "success": "The orders were successfully exported"
+        }
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "name": "pickware/bundle-installer",
+    "description": "A composer package for Shopware 6 that contains the logic to install and uninstall bundles",
+    "license": "proprietary",
+    "type": "library",
+    "version": "3.7.0",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">= 8.2",
+        "doctrine/dbal": "^3.6 || ^4.0",
+        "shopware/core": "~6.6.2 || ~6.7.0",
+        "symfony/dependency-injection": "^7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\BundleInstaller\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "symfony/runtime": true,
+            "viison/composer-git-hooks-installer-plugin": true
+        },
+        "lock": false
+    },
+    "extra": {
+        "ci-min-supported-shopware-version": "6.6.2.0"
+    },
+    "scripts": {
+        "test:integration": "APP_ENV=test ${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

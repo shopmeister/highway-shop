@@ -1,0 +1,134 @@
+{# ThemeWare® CMS element "Image banner" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtImageBanner = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtImgBnnrMinHeight = element.translated.config.minHeight.value %}
+
+{% set twtImgBnnrUrl = element.translated.config.url.value %}
+{% set twtImgBnnrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtImgBnnrBorderRadius = twtImageBanner.borderRadius.value %}
+{% set twtImgBnnrBackgroundColor = twtImageBanner.backgroundColor.value %}
+
+{% set twtImgBnnrAttachment = twtImageBanner.attachment.value %}
+{% set twtImgBnnrParallax = twtImageBanner.parallax.value %}
+
+{% set twtImgBnnrColorOverlay = twtImageBanner.colorOverlay.value %}
+{% set twtImgBnnrColorOverlayBgColor = twtImageBanner.colorOverlayBgColor.value %}
+{% set twtImgBnnrColorOverlayBgGradient = twtImageBanner.colorOverlayBgGradient.value %}
+{% set twtImgBnnrColorOverlayBgColor2 = twtImageBanner.colorOverlayBgColor2.value %}
+{% set twtImgBnnrColorOverlayBgGradientAngle = twtImageBanner.colorOverlayBgGradientAngle.value %}
+
+{# Tab "Advanced" #}
+{% set twtImgBnnrCssClass = twtImageBanner.cssClass.value %}
+
+{# Set title attribute #}
+{# INFO: No text #}
+{# => 'Media title' OR empty #}
+{# @TODO: Add title to seo config ? #}
+{% set title = element.data.media.translated.title ?: '' %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-banner']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block element_twt_image_banner %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtImgBnnrCssClass is not empty %} {{ twtImgBnnrCssClass }}{% endif %}"
+         style="background-color: {{ twtImgBnnrBackgroundColor }};{% if twtImgBnnrBorderRadius != '0' %} border-radius: {{ twtImgBnnrBorderRadius }};{% endif %}"
+    >
+
+            {# block element_twt_image_banner_content @deprecated #}
+            {# block element_twt_image_banner_alignment #}
+
+            {# ThemeWare: Parse vars to css #}
+            {% block element_twt_image_banner_styles %}
+                {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtImgBnnrBorderRadius }};
+        {% block element_twt_image_banner_styles_inside %}{% endblock %}
+    }
+</style>
+                {% endapply %}
+            {% endblock %}
+
+            {# block element_twt_image_banner_image_inner @deprecated #}
+            {% block element_twt_image_banner_inner %}
+                {# ThemeWare: Set text element #}
+                {% set twtImgBnnr %}
+                    {% block element_twt_image_banner_content_container %}
+                        <div class="twt-image-banner-container cms-content-container content-container">
+                            {# Colored overlay (if configured) #}
+                            {% if twtImgBnnrColorOverlay %}
+                                <div class="twt-image-banner-overlay color-overlay" style="background: {{ twtImgBnnrColorOverlayBgColor }};{% if twtImgBnnrColorOverlayBgGradient %} background: linear-gradient({{ twtImgBnnrColorOverlayBgGradientAngle }}deg, {{ twtImgBnnrColorOverlayBgColor }} 0%, {{ twtImgBnnrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# no further content #}
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_image_banner_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-image-banner-image-container{% if twtImgBnnrParallax and twtImgBnnrAttachment == 'fixed' %} twt-parallax-banner{% endif%} {# w-100 #} cms-image-container image-container is-cover is-{{ twtImgBnnrAttachment }}" style="background-image: url({{ element.data.media.url }}); min-height: {{ twtImgBnnrMinHeight }}">
+                                {# ThemeWare: Load text element #}
+                                {{ twtImgBnnr }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Image banner" #}
+                {% block element_twt_image_banner_content %}
+                    {% if twtImgBnnrUrl %}
+                        <a href="{{ twtImgBnnrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtImgBnnrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+        {# endblock #}
+
+    </div>
+{% endblock %}

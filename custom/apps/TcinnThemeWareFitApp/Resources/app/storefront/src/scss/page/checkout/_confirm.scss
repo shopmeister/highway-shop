@@ -1,0 +1,66 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Checkout/Confirm
+    ==================================================
+
+	Origin: Shopware base & skin
+*/
+
+// ThemeWare: Checkout/Confirm adjustments
+// ...
+
+// Container layout "side by side"
+@if ($twt-confirmpage-container-layout == 2) {
+	body.is-act-confirmpage {
+		.checkout {
+			.checkout-container {
+				@extend .row;
+			}
+
+			.checkout-main {
+				@extend .col-lg-8;
+				@extend .offset-lg-0;
+				margin-bottom: $spacer-lg;
+			}
+
+			.checkout-additional {
+				@extend .col-lg-8;
+				@extend .offset-lg-0;
+				margin-bottom: $spacer-lg;
+
+				order: 2;
+			}
+
+			.checkout-aside {
+				@extend .col-xl-4;
+				@extend .col-lg-4;
+				@extend .col-md-5;
+				@extend .offset-lg-0;
+				@extend .offset-md-7;
+
+				order: 1;
+			}
+
+			.checkout-aside-container {
+				position: sticky;
+				top: 30px; // 0px
+				z-index: 1;
+			}
+		}
+	}
+}
+
+// @TODO: mobile padding
+// ThemeWare: Mobile container padding
+// .is-ctl-checkout .is-act-confirmpage
+
+//@include media-breakpoint-down(sm) { // max 575.98px
+//	// ThemeWare: Checkout > Confirm - Mobile container padding ("Complete order")
+//	.is-act-confirmpage {}
+//}

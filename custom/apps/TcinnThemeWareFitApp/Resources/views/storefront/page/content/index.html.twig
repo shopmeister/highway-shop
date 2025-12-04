@@ -1,0 +1,256 @@
+{% sw_extends '@Storefront/storefront/page/content/index.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtBreadcrumbShowCmsCategoryPages = theme_config('twt-breadcrumb-show-cms-category-pages') %}
+{% set twtBreadcrumbShowCmsLandingPages = theme_config('twt-breadcrumb-show-cms-landing-pages') %}
+{# set twtBreadcrumbShowCmsProductPages = theme_config('twt-breadcrumb-show-cms-product-pages') #}
+{% set twtBreadcrumbShowCmsShopPages = theme_config('twt-breadcrumb-show-cms-shop-pages') %}
+{% set twtBreadcrumbShowHome = theme_config('twt-breadcrumb-show-home') %}
+{# set twtBreadcrumbShowProductDetail = theme_config('twt-breadcrumb-show-product-detail') #}
+{% set twHeroSectionBreadcrumbShow = theme_config('twt-hero-section-breadcrumb-show') %}
+{% set twtHeroSectionShowCmsCategoryPages = theme_config('twt-hero-section-show-cms-category-pages') %}
+{% set twtHeroSectionShowCmsShopPages = theme_config('twt-hero-section-show-cms-shop-pages') %}
+{% set twtListingSubcategoriesShow = theme_config('twt-listing-subcategories-show') %}
+{% set twtListingSubcategoriesShowCmsShopPages = theme_config('twt-listing-subcategories-show-cms-shop-pages') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Remove breadcrumb if configured + take 'Hero section' into account #}
+{% block cms_breadcrumb %}
+    {% set showBreadcrumb = true %}
+
+    {# Remove breadcrumb from CMS page types 'Landing page' if configured #}
+    {% if page.cmsPage.type == 'landingpage' %}
+        {% if (twtBreadcrumbShowCmsLandingPages == 1) %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {# Remove breadcrumb from CMS page types 'Listing page' if configured #}
+    {% if page.cmsPage.type == 'product_list' %}
+        {% if (twtBreadcrumbShowCmsCategoryPages == 1) %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {# Remove breadcrumb from CMS page types 'Shop page' if configured #}
+    {% if page.cmsPage.type == 'page' %}
+        {% if (twtBreadcrumbShowCmsShopPages == 1) %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {# Remove breadcrumb from dedicated landing pages #}
+    {# NOTE:
+       Dedicated 'landing pages' use 'page.landingPage.cmsPage.type' instead of 'page.cmsPage.type'.
+       As we don't need a breadcrumb on dedicated 'landing pages' we simply check 'controllerName|lower'.
+    #}
+    {% if controllerName|lower == 'landingpage' %}
+        {% set showBreadcrumb = false %}
+    {% endif %}
+
+    {# ThemeWare: Hide breadcrumb if 'Hero section' extension is shown ---------------------------- #}
+
+    {# Remove breadcrumb if 'Hero section' is configured #}
+    {% if (page.cmsPage.type == 'product_list' and twtHeroSectionShowCmsCategoryPages == 2)
+        or (page.cmsPage.type == 'page' and twtHeroSectionShowCmsShopPages == 2)
+    %}
+        {% set showBreadcrumb = false %}
+
+        {# INFO: "Breadcrumb" anzeigen wenn das "Hero-Sektion"-Zusatzfeld = '0' (nein) ist. #}
+        {# Override via custom field #}
+        {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '0' %}
+            {% set showBreadcrumb = true %}
+        {% endif %}
+    {% endif %}
+
+    {# Remove breadcrumb if 'Hero section (via custom field)' is configured #}
+    {% if (page.cmsPage.type == 'product_list' and twtHeroSectionShowCmsCategoryPages == 3)
+        or (page.cmsPage.type == 'page' and twtHeroSectionShowCmsShopPages == 3)
+    %}
+        {# INFO: "Breadcrumb" ausblenden wenn das "Hero-Sektion"-Zusatzfeld = '1' ist. #}
+        {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '1' %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {# Remove breadcrumb from home page ---------------------------- #}
+    {# NOTE: Home pages could have any layout so we need to check 'controllerAction|lower'. #}
+    {% if controllerAction|lower == 'home' %}
+        {% if (twtBreadcrumbShowHome == 1) %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Show breadcrumb ---------------------------- #}
+    {% if showBreadcrumb %}
+        {# @TODO tag:v4.0.0 - Check CMS breadcrumb element... #}
+        {# INFO: Check whether the ThemeWare® CMS 'Breadcrumb navigation' is available. #}
+        {#
+        {% set sections = page.cmsPage.sections.elements %}
+        {% set twtCmsElementExists = false %}
+
+        {% for section in sections %}
+            {% set blocks = section.blocks.elements %}
+
+            {% for block in blocks %}
+                {% if block.type == 'twt-breadcrumb' %}
+                    {% set twtCmsElementExists = true %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+
+        {% if not twtCmsElementExists %}
+        {% endif %}
+        #}
+
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Add 'Listing subcategories' and 'Hero section' extensions #}
+{% block cms_content %}
+
+    {# ThemeWare® 'Hero section' extension -------------------------------------------------------------------------- #}
+    {% set showHeroSection = false %}
+
+    {# ThemeWare® "Hero-Sektion" nicht anzeigen ---------------------------- #}
+    {% if (page.cmsPage.type == 'product_list' and twtHeroSectionShowCmsCategoryPages == 1)
+        or (page.cmsPage.type == 'page' and twtHeroSectionShowCmsShopPages == 1)
+    %}
+        {% set showHeroSection = false %}
+
+        {# INFO: "Hero-Sektion" anzeigen wenn das Zusatzfeld = '1' (ja) ist. #}
+        {# Override via custom field #}
+        {#
+        {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '1' %}
+            {% set showHeroSection = true %}
+        {% endif %}
+        #}
+    {% endif %}
+
+    {# ThemeWare® "Hero-Sektion" immer anzeigen ---------------------------- #}
+    {% if (page.cmsPage.type == 'product_list' and twtHeroSectionShowCmsCategoryPages == 2)
+        or (page.cmsPage.type == 'page' and twtHeroSectionShowCmsShopPages == 2)
+    %}
+        {% set showHeroSection = true %}
+
+        {# INFO: "Hero-Sektion" anzeigen wenn das Zusatzfeld = '0' (nein) ist. #}
+        {# Override via custom field #}
+        {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '0' %}
+            {% set showHeroSection = false %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare® "Hero-Sektion" per Zusatzfeld anzeigen ---------------------------- #}
+    {% if (page.cmsPage.type == 'product_list' and twtHeroSectionShowCmsCategoryPages == 3)
+        or (page.cmsPage.type == 'page' and twtHeroSectionShowCmsShopPages == 3)
+    %}
+        {% set showHeroSection = false %}
+
+        {# INFO: "Hero-Sektion" anzeigen wenn das Zusatzfeld = '1' ist. #}
+        {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '1' %}
+            {% set showHeroSection = true %}
+        {% endif %}
+    {% endif %}
+
+    {# Avoid 'Hero sections' on home page ---------------------------- #}
+    {% if controllerAction|lower is same as ('home') %}
+        {% set showHeroSection = false %}
+    {% endif %}
+
+    {# Show ThemeWare® 'Hero section' ---------------------------- #}
+    {% if showHeroSection == true %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-hero-section.html.twig' ignore missing %}
+    {% endif %}
+
+
+    {# ThemeWare® 'Listing subcategories' extension ----------------------------------------------------------------- #}
+    {% set showListingSubcategories = false %}
+
+    {# @TODO: Allow 'page' (maybe 'landingpage') [see 'Hero section' above] #}
+    {# NOTE: Consider dedicated 'landing pages' (.ist-ctl-landingpage) in case landing pages are allowed. #}
+    {# @deprecated {% if page.header.navigation.active.visibleChildCount is empty or page.header.navigation.active.visibleChildCount == 0 %} #}
+    {% if page.header.navigation.active.childCount is not empty and page.header.navigation.active.childCount > 0 %}
+        {# INFO: Check if the extension is configured and this is the first block on the page #}
+
+        {# ThemeWare® "Unterkategorien im Listing" nicht anzeigen ---------------------------- #}
+        {# don't show #}
+        {% if (page.cmsPage.type == 'product_list' and twtListingSubcategoriesShow == 1)
+            or (page.cmsPage.type == 'page' and twtListingSubcategoriesShowCmsShopPages == 1)
+        %}
+            {% set showListingSubcategories = false %}
+
+            {# INFO: "Unterkategorien im Listing" anzeigen wenn das Zusatzfeld = '1' (ja) ist. #}
+            {# Override via custom field #}
+            {#
+            {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__hero_section == '1' %}
+                {% set showHeroSection = true %}
+            {% endif %}
+            #}
+        {% endif %}
+
+        {# ThemeWare® "Unterkategorien im Listing" immer anzeigen ---------------------------- #}
+        {# show #}
+        {% if (page.cmsPage.type == 'product_list' and twtListingSubcategoriesShow == 2)
+            or (page.cmsPage.type == 'page' and twtListingSubcategoriesShowCmsShopPages == 2)
+        %}
+            {% set showListingSubcategories = true %}
+
+            {# INFO: "Unterkategorien im Listing" anzeigen wenn das Zusatzfeld = '0' (nein) ist. #}
+            {# Override via custom field #}
+            {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__listing_subcategories == '0' %}
+                {% set showListingSubcategories = false %}
+            {% endif %}
+        {% endif %}
+
+        {# ThemeWare® "Unterkategorien im Listing" per Zusatzfeld anzeigen ---------------------------- #}
+        {# show (via custom field) #}
+        {% if (page.cmsPage.type == 'product_list' and twtListingSubcategoriesShow == 3)
+            or (page.cmsPage.type == 'page' and twtListingSubcategoriesShowCmsShopPages == 3)
+        %}
+            {% set showListingSubcategories = false %}
+
+            {# INFO: "Unterkategorien im Listing" anzeigen wenn das Zusatzfeld = '1' ist. #}
+            {% if twtCustomFields.category.twt_fit_cloud_custom_field__category__listing_subcategories == '1' %}
+                {% set showListingSubcategories = true %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {# Show ThemeWare® 'Listing subcategories' ---------------------------- #}
+    {# INFO: Show theme extension 'Listing subcategories' if the CMS extension is not already shown. #}
+    {% if showListingSubcategories == true %}
+        {# INFO: Check whether the CMS element 'Listing subcategories' is available. #}
+        {% set sections = page.cmsPage.sections.elements %}
+        {% set sizingMode = '' %}
+        {% set twtCmsElementExists = false %}
+
+        {% for section in sections %}
+            {% set blocks = section.blocks.elements %}
+
+            {% for block in blocks %}
+                {% if block.type == 'twt-listing-subcategories' or block.type == 'twt-listing-subcategories-modern' %}
+                    {% set twtCmsElementExists = true %}
+                {% endif %}
+            {% endfor %}
+
+            {% set sizingMode = section.sizingMode %}
+        {% endfor %}
+
+        {# @TODO: Check 'Listing subcategories' on home page? (Home pages currently have no subcategories) #}
+        {% if not twtCmsElementExists %}
+            {% sw_include '@Storefront/storefront/themeware/extensions/twt-listing-subcategories.html.twig' ignore missing with {
+                sizingMode: sizingMode
+            } %}
+        {% endif %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}

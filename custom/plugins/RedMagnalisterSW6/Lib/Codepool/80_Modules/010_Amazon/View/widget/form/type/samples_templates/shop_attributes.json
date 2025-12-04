@@ -1,0 +1,200 @@
+{
+    "": "Bitte w&auml;hlen...",
+    "Varianten": {
+        "optGroupClass": "variation",
+        "c_7": {
+            "name": "Ausstattung",
+            "type": "select"
+        },
+        "c_5": {
+            "name": "Color",
+            "type": "select"
+        },
+        "c_8": {
+            "name": "Design",
+            "type": "select"
+        },
+        "c_6": {
+            "name": "Size",
+            "type": "select"
+        }
+    },
+    "Produkt-Standardfelder": {
+        "optGroupClass": "default",
+        "p_articleName": {
+            "name": "Artikel-Bezeichnung",
+            "type": "text"
+        },
+        "pd_Number": {
+            "name": "Artikelnummer",
+            "type": "text"
+        },
+        "p_description_long": {
+            "name": "Beschreibung",
+            "type": "text"
+        },
+        "pd_Width": {
+            "name": "Breite: Wert (in Zahlen, z. B. 100)",
+            "type": "text"
+        },
+        "pd_Ean": {
+            "name": "EAN",
+            "type": "text"
+        },
+        "pd_Releasedate": {
+            "name": "Erscheinungsdatum",
+            "type": "text"
+        },
+        "pd_WeightMultiplied1000": {
+            "name": "Gewicht (Multipliziert mit 1000)",
+            "type": "text"
+        },
+        "pd_WeightUnit": {
+            "name": "Gewicht: Einheit (z. B. Kg)",
+            "type": "text"
+        },
+        "pd_Weight": {
+            "name": "Gewicht: Wert (in Zahlen, z. B. 100)",
+            "type": "text"
+        },
+        "pd_WeightWithUnit": {
+            "name": "Gewicht: Wert inkl. Einheit (z. B. 100 Kg)",
+            "type": "text"
+        },
+        "pd_BasePriceBasicUnit": {
+            "name": "Grundpreis: Grundeinheit (z. B. 100)",
+            "type": "text"
+        },
+        "pd_BasePriceUnit": {
+            "name": "Grundpreis: Grundeinheit inkl. Name der Einheit (z. B. 100 Gramm)",
+            "type": "text"
+        },
+        "pd_BasePriceValue": {
+            "name": "Grundpreis: Inhalt (z. B. 200)",
+            "type": "text"
+        },
+        "pd_BasePriceUnitShort": {
+            "name": "Grundpreis: Ma\u00dfeinheit (K\u00fcrzel) (z. B. g)",
+            "type": "text"
+        },
+        "pd_BasePriceUnitName": {
+            "name": "Grundpreis: Name der Einheit (z. B. Gramm)",
+            "type": "text"
+        },
+        "sp_Supplier": {
+            "name": "Hersteller",
+            "type": "select"
+        },
+        "pd_Suppliernumber": {
+            "name": "Herstellernummer",
+            "type": "text"
+        },
+        "pd_Height": {
+            "name": "H\u00f6he: Wert (in Zahlen, z. B. 100)",
+            "type": "text"
+        },
+        "p_keywords": {
+            "name": "Keywords",
+            "type": "text"
+        },
+        "p_description": {
+            "name": "Kurzbeschreibung",
+            "type": "text"
+        },
+        "pd_shippingTime": {
+            "name": "Lieferzeit",
+            "type": "text"
+        },
+        "pd_Len": {
+            "name": "L\u00e4nge: Wert (in Zahlen, z. B. 100)",
+            "type": "text"
+        },
+        "pd_Maxpurchase": {
+            "name": "Maximalabnahme",
+            "type": "text"
+        },
+        "pd_Minpurchase": {
+            "name": "Mindestabnahme",
+            "type": "text"
+        },
+        "p_pseudosales": {
+            "name": "Pseudo-Verk\u00e4ufe",
+            "type": "text"
+        },
+        "pd_Purchasesteps": {
+            "name": "Staffelung",
+            "type": "text"
+        }
+    },
+    "Eigenschaften": {
+        "optGroupClass": "property",
+        "pp_7": {
+            "name": "Artikelzustand",
+            "type": "multiSelect"
+        },
+        "pp_3": {
+            "name": "Ingredients",
+            "type": "multiSelect"
+        },
+        "pp_2": {
+            "name": "Material",
+            "type": "multiSelect"
+        },
+        "pp_5": {
+            "name": "Product types",
+            "type": "multiSelect"
+        },
+        "pp_1": {
+            "name": "Size",
+            "type": "multiSelect"
+        },
+        "pp_4": {
+            "name": "Target group",
+            "type": "multiSelect"
+        },
+        "pp_6": {
+            "name": "Test2",
+            "type": "multiSelect"
+        }
+    },
+    "Zusatzfelder": {
+        "optGroupClass": "freetext",
+        "a_attr1": {
+            "name": "Freitext-1",
+            "type": "text"
+        },
+        "a_attr2": {
+            "name": "Freitext-2",
+            "type": "text"
+        },
+        "a_attr3": {
+            "name": "Kommentar",
+            "type": "text"
+        },
+        "a_lagerbestand_ottobrunn": {
+            "name": "Lagerbestand Ottobrunn",
+            "type": "text"
+        },
+        "a_attr19": {
+            "name": "Spedition",
+            "type": "text"
+        },
+        "a_productstatus": {
+            "name": "Status",
+            "type": "select"
+        },
+        "am_test_manufature_address": {
+            "name": "Test Manufature Address",
+            "type": "text"
+        }
+    },
+    "Weitere Optionen": {
+        "freetext": {
+            "name": "Eigene Angaben machen"
+        },
+        "attribute_value": {
+            "name": "Verwende Amazon Attributswert"
+        },
+        "optGroupClass": "additionalOptions"
+    }
+}

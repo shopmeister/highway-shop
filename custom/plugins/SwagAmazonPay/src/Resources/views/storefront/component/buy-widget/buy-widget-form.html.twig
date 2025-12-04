@@ -1,0 +1,27 @@
+{% sw_extends "@Storefront/storefront/component/buy-widget/buy-widget-form.html.twig" %}
+
+{% block buy_widget_buy_container %}
+    {{ parent() }}
+
+    {% block buy_widget_buy_button_container_amazonpay %}
+        {% set isProductDetail = cmsPage.type is same as 'product_detail' %}
+
+        {% if isProductDetail and buyable and page.extensions.SwagAmazonPayButton is not null %}
+            {% block page_product_detail_buy_container_swag_amazon_pay_button %}
+                <div id="swag-amazon-pay-product-detail-wrapper"
+                     class="row g-2 mt-3 justify-content-end"
+                     data-amazon-pay-button-product-detail="true"
+                     data-amazon-pay-button-product-detail-options='{
+                    "addLineItemUrl": "{{ page.extensions.SwagAmazonPayButton.addLineItemUrl }}"
+                 }'>
+
+                    <div class="col-8">
+                        {% sw_include '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' with {
+                            'identifier': 'product-detail'
+                        } %}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

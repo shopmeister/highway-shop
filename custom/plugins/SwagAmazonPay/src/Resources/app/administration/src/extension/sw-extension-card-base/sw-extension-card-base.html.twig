@@ -1,0 +1,9 @@
+{% block sw_extension_card_base_context_menu_actions %}
+    {% parent %}
+
+    <sw-context-menu-item
+        v-if="extension.name === 'SwagAmazonPay' && extension.active === true"
+        @click="onSwagAmazonPaySettings()">
+        {{ $tc('sw-extension-store.component.sw-extension-card-base.contextMenu.config') }}
+    </sw-context-menu-item>
+{% endblock %}

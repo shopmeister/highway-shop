@@ -1,0 +1,190 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS column margin-bottom classes
+	==================================================
+
+    Columns: 'cms-block-twt-grid-*-column'
+    (Grids: 'cms-block-twt-grid-*') >> Grids will no longer be supported in future!
+
+	Info: ThemeWare CSS-Klassen mit welchen die Spaltenabstände (margin-bottom) in CMS-Spalten-Blöcken modifiziert werden können. (default: 0px)
+    > twt-cms-col-margin-5 > margin-bottom is 5px
+
+	Hinweis: In Grid-Blöcken sollten die 'gap' Klassen verwendet werden.
+*/
+
+// ThemeWare: Adds CSS column margin-bottom classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify its columns in mobile viewports.
+// Note: Grids should use the 'gap' classes.
+
+@if $twt-custom-cms-column-padding-classes == 2 {
+
+    // ThemeWare: Custom col margin (0 Pixel margin-bottom) !default
+    /*
+    .twt-col-mb-0, // shorthand #unofficial
+    .twt-cms-col-mb-0, // undocumented #unofficial
+    .twt-cms-col-margin-0 {
+        div.cms-row {
+            --bs-gutter-y: 0;
+        }
+    }
+    */
+
+    // ThemeWare: Custom col margin (5 Pixel margin-bottom)
+    .twt-col-mb-5, // shorthand #unofficial
+    .twt-cms-col-mb-5, // undocumented #unofficial
+    .twt-cms-col-margin-5 {
+        div.cms-row {
+            --bs-gutter-y: 5px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (10 Pixel margin-bottom)
+    .twt-col-mb-10, // shorthand #unofficial
+    .twt-cms-col-mb-10, // undocumented #unofficial
+    .twt-cms-col-margin-10 {
+        div.cms-row {
+            --bs-gutter-y: 10px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (15 Pixel margin-bottom)
+    .twt-col-mb-15, // shorthand #unofficial
+    .twt-cms-col-mb-15, // undocumented #unofficial
+    .twt-cms-col-margin-15 {
+        div.cms-row {
+            --bs-gutter-y: 15px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (20 Pixel margin-bottom)
+    .twt-col-mb-20, // shorthand #unofficial
+    .twt-cms-col-mb-20, // undocumented #unofficial
+    .twt-cms-col-margin-20 {
+        div.cms-row {
+            --bs-gutter-y: 20px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (25 Pixel margin-bottom)
+    .twt-col-mb-25, // shorthand #unofficial
+    .twt-cms-col-mb-25, // undocumented #unofficial
+    .twt-cms-col-margin-25 {
+        div.cms-row {
+            --bs-gutter-y: 25px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (30 Pixel margin-bottom)
+    .twt-col-mb-30, // shorthand #unofficial
+    .twt-cms-col-mb-30, // undocumented #unofficial
+    .twt-cms-col-margin-30 {
+        div.cms-row {
+            --bs-gutter-y: 30px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (35 Pixel margin-bottom)
+    .twt-col-mb-35, // shorthand #unofficial
+    .twt-cms-col-mb-35, // undocumented #unofficial
+    .twt-cms-col-margin-35 {
+        div.cms-row {
+            --bs-gutter-y: 35px;
+        }
+    }
+
+    /*
+      _           _____ ___   ___                        _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom col margin (40 Pixel margin-bottom)
+    .twt-col-mb-40, // shorthand #unofficial
+    .twt-cms-col-mb-40, // undocumented #unofficial
+    .twt-cms-col-margin-40 {
+        div.cms-row {
+            --bs-gutter-y: 40px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (45 Pixel margin-bottom)
+    .twt-col-mb-45, // shorthand #unofficial
+    .twt-cms-col-mb-45, // undocumented #unofficial
+    .twt-cms-col-margin-45 {
+        div.cms-row {
+            --bs-gutter-y: 45px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (50 Pixel margin-bottom)
+    .twt-col-mb-50, // shorthand #unofficial
+    .twt-cms-col-mb-50, // undocumented #unofficial
+    .twt-cms-col-margin-50 {
+        div.cms-row {
+            --bs-gutter-y: 50px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (55 Pixel margin-bottom)
+    .twt-col-mb-55, // shorthand #unofficial
+    .twt-cms-col-mb-55, // undocumented #unofficial
+    .twt-cms-col-margin-55 {
+        div.cms-row {
+            --bs-gutter-y: 55px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (60 Pixel margin-bottom)
+    .twt-col-mb-60, // shorthand #unofficial
+    .twt-cms-col-mb-60, // undocumented #unofficial
+    .twt-cms-col-margin-60 {
+        div.cms-row {
+            --bs-gutter-y: 60px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (65 Pixel margin-bottom)
+    .twt-col-mb-65, // shorthand #unofficial
+    .twt-cms-col-mb-65, // undocumented #unofficial
+    .twt-cms-col-margin-65 {
+        div.cms-row {
+            --bs-gutter-y: 65px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (70 Pixel margin-bottom)
+    .twt-col-mb-70, // shorthand #unofficial
+    .twt-cms-col-mb-70, // undocumented #unofficial
+    .twt-cms-col-margin-70 {
+        div.cms-row {
+            --bs-gutter-y: 70px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (75 Pixel margin-bottom)
+    .twt-col-mb-75, // shorthand #unofficial
+    .twt-cms-col-mb-75, // undocumented #unofficial
+    .twt-cms-col-margin-75 {
+        div.cms-row {
+            --bs-gutter-y: 75px;
+        }
+    }
+
+    // ThemeWare: Custom col margin (80 Pixel margin-bottom)
+    .twt-col-mb-80, // shorthand #unofficial
+    .twt-cms-col-mb-80, // undocumented #unofficial
+    .twt-cms-col-margin-80 {
+        div.cms-row {
+            --bs-gutter-y: 80px;
+        }
+    }
+
+}

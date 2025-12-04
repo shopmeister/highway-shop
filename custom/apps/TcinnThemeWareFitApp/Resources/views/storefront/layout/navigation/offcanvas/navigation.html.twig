@@ -1,0 +1,31 @@
+{% sw_extends '@Storefront/storefront/layout/navigation/offcanvas/navigation.html.twig' %}
+
+{# @TODO: Fix dropdown arrows ... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtOffcanvasNavServiceMenuShow = theme_config('twt-offcanvas-nav-service-menu-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block layout_navigation_offcanvas_navigation_actions %}
+    {# ThemeWare: Show 'Service menu' #}
+    {% if twtOffcanvasNavServiceMenuShow == 2 %}
+        <nav class="nav navigation-offcanvas-actions">
+            {{ block('layout_navigation_offcanvas_navigation_action_language') }}
+
+            {{ block('layout_navigation_offcanvas_navigation_action_currency') }}
+
+            {# ThemeWare®: Show 'Service menu' as dropdown #}
+            {% block twt_layout_navigation_offcanvas_navigation_action_service %}
+                {% sw_include '@Storefront/storefront/themeware/twt-service-menu-widget.html.twig' with { position: 'offcanvas' } %}
+            {% endblock %}
+        </nav>
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+{% endblock %}

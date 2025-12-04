@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ShopmasterZalandoConnectorSix\Services\Export\Product\Stock\ExportStockService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductStockService"/>
+            <argument type="service" id="product.repository"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Export\Product\Price\ExportPriceService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\SalesChannels\ApiZalandoSalesChannelsService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Product\ApiZalandoProductPriceService"/>
+            <argument type="service" id="product.repository"/>
+        </service>
+
+    </services>
+</container>
+

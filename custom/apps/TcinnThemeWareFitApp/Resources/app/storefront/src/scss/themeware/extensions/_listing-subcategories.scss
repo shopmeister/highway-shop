@@ -1,0 +1,479 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare® Extension 'Listing subcategories'
+    ==================================================
+    see also "cms/element/_twt-cms-listing-subcategories.scss"
+
+    - Available as extension: .twt-listing-subcategories
+    - Available as cms element: .cms-element-twt-listing-subcategories
+*/
+
+// ThemeWare: General styling ------------------------------------------------------------------------------------------
+// - Info: Extension specific styling below
+// - Info: CMS element specific styling: "cms/element/_twt-cms-listing-subcategories.scss"
+
+@if $twt-listing-subcategories-show == 2 or $twt-cms-listing-subcategories-css == 2 { // #performance
+    .twt-listing-subcategories {
+        //.twt-listing-subcategories-container {}
+
+        //&.boxed {
+        //    // @extend .container
+        //    --bs-gutter-x: 40px;
+        //    --bs-gutter-y: 0;
+        //    width: 100%;
+        //    padding-right: calc(var(--bs-gutter-x)* .5);
+        //    padding-left: calc(var(--bs-gutter-x)* .5);
+        //    margin-right: auto;
+        //    margin-left: auto;
+        //
+        //    max-width: null-pixel-unit($twt-container-max-width);
+        //}
+
+        &.full-width {
+            .twt-listing-subcategories-container {
+                --bs-gutter-x: 40px;
+                --bs-gutter-y: 0;
+                width: 100%;
+                padding-right: calc(var(--bs-gutter-x)* .5);
+                padding-left: calc(var(--bs-gutter-x)* .5);
+            }
+        }
+
+        .btn {
+            overflow: hidden !important; // Fix text-overflow ellipsis
+        }
+
+        ul.row {
+            margin: 0 -5px;
+            margin-bottom: -10px;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-right: 5px;
+            padding-left: 5px;
+
+            //&.button {
+            //    width: auto !important;
+            //}
+        }
+
+        //div.twt-subcategory-navigation-link,
+        a.twt-subcategory-navigation-link {
+            @if ($twt-listing-subcategories-font-family == 1) {
+                font-family: $sw-font-family-base;
+            } @else {
+                font-family: $sw-font-family-headline;
+            }
+            @include twt-font-size($twt-listing-subcategories-font-size);
+            //font-size: rem($twt-listing-subcategories-font-size);
+            font-weight: $twt-listing-subcategories-font-weight;
+
+            display: flex;
+
+            height: 100%;
+            padding: .5rem; // @TODO: 8px > Add configuration / variants without padding-top, -lef and -right (0 0 0.5rem 0)
+
+            text-decoration: none;
+            text-transform: $twt-listing-subcategories-text-transform;
+
+            color: $twt-listing-subcategories-color;
+            border: 1px solid $twt-listing-subcategories-border-color; // @TODO: Add configuration / 'clean' variant without border
+            border-radius: null-pixel-unit($twt-border-radius); // @TODO: Add configuration
+            background-color: $twt-listing-subcategories-background-color;
+
+            overflow: hidden; // @TODO
+
+            &:hover {
+                color: $twt-listing-subcategories-color-hover;
+                border-color: $twt-listing-subcategories-border-color-hover;
+                background-color: $twt-listing-subcategories-background-color-hover;
+            }
+        }
+
+        // ThemeWare: Category image
+        .twt-subcategory-navigation-image-wrapper {
+            display: none;
+            overflow: hidden;
+            background-color: $twt-listing-subcategories-image-background-color;
+
+            @include media-breakpoint-up(sm) { // min 576px
+                display: block;
+            }
+
+            .twt-subcategory-navigation-image-container {
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+
+                width: 100%;
+                height: 100%;
+
+                position: relative;
+
+                img.twt-subcategory-navigation-image {
+                    display: block;
+                }
+
+                &.is-standard,
+                &.is-cover,
+                &.is-contain {
+                    img.twt-subcategory-navigation-image {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &.is-standard {
+                    img.twt-subcategory-navigation-image {
+                        object-fit: scale-down;
+                    }
+                }
+
+                &.is-cover {
+                    img.twt-subcategory-navigation-image {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                &.is-contain {
+                    img.twt-subcategory-navigation-image {
+                        object-fit: contain;
+                    }
+                }
+            }
+
+        }
+
+        // ThemeWare: Category name
+        .twt-subcategory-navigation-caption {
+            overflow: hidden;
+
+            @include media-breakpoint-up(sm) { // min 576px
+                align-self: center;
+            }
+
+            .twt-subcategory-navigation-label {
+                // ThemeWare: Hyphenation
+                -ms-hyphens: auto;
+                -webkit-hyphens: auto;
+                hyphens: auto;
+            }
+
+            .icon {
+                display: block;
+                min-width: 16.6px;
+                margin-left: auto;
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    display: none;
+                }
+            }
+
+            .icon > svg {
+                top: -3px;
+            }
+
+        }
+
+
+        // ThemeWare: Listing subcategories layouts
+
+        // ThemeWare: 'Bild/Text untereinander' (1)
+        &.is-text-below {
+            li {
+                &.no-image {
+                    a {
+                        justify-content: center;
+
+                        @include media-breakpoint-up(sm) { // min 576px
+                            align-items: center;
+                        }
+                    }
+                }
+
+                // Text unten aurichten (wenn ein Bild vorhanden ist)
+                &:not(.no-image) {
+                    a {
+                        flex-direction: column;
+                    }
+                }
+            }
+
+            //div.twt-subcategory-navigation-link,
+            a.twt-subcategory-navigation-link {
+                flex-flow: column;
+            }
+
+            // ThemeWare: Category image
+            .twt-subcategory-navigation-image-wrapper {
+                margin-bottom: .5rem;
+            }
+
+            .twt-subcategory-navigation-image-container {
+                img.twt-subcategory-navigation-image {
+                    vertical-align: middle;
+                }
+            }
+
+            // ThemeWare: Category name
+            .twt-subcategory-navigation-caption {
+                display: flex;
+
+                .twt-subcategory-navigation-label {
+                    @include media-breakpoint-up(sm) { // min 576px
+                        text-align: center; // Center multiline text
+                    }
+                }
+            }
+        }
+
+        // ThemeWare: 'Bild/Text nebeneinander' (2)
+        &.is-side-by-side {
+            li {
+                &.no-image {
+                    .twt-subcategory-navigation-caption {
+                        margin-left: 5px;
+                    }
+                }
+            }
+
+            //div.twt-subcategory-navigation-link,
+            a.twt-subcategory-navigation-link {
+                @include media-breakpoint-down(sm) { // max 575.98px
+                    flex-flow: column;
+                }
+            }
+
+            // ThemeWare: Category image
+            .twt-subcategory-navigation-image-wrapper {
+                margin-right: .5rem;
+            }
+
+            // ThemeWare: Category name
+            .twt-subcategory-navigation-caption {
+                display: flex;
+            }
+        }
+
+        // ThemeWare: 'nur Bild' (3)
+        &.is-image-only {
+            li {
+                &.no-image {
+                    a {
+                        justify-content: center;
+
+                        @include media-breakpoint-up(sm) { // min 576px
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+
+            li {
+                &.no-image {
+                    .twt-subcategory-navigation-caption {
+                        display: flex !important; // ThemeWare: Show label in layout "image only" when no image is available
+                    }
+                }
+            }
+
+            //div.twt-subcategory-navigation-link,
+            a.twt-subcategory-navigation-link {
+                @include media-breakpoint-up(sm) { // min 576px
+                    text-align: center; // Center multiline text
+                }
+
+                @include media-breakpoint-down(sm) { // max 575.98px
+                    flex-flow: column;
+                }
+            }
+
+            // ThemeWare: Category image
+            .twt-subcategory-navigation-image-wrapper {
+                display: block;
+                width: 100%;
+            }
+
+            // ThemeWare: Category name
+            .twt-subcategory-navigation-caption {
+                display: none;
+            }
+        }
+
+        // ThemeWare: 'nur Text' (4)
+        &.is-text-only {
+            //div.twt-subcategory-navigation-link,
+            a.twt-subcategory-navigation-link {
+                flex-flow: column;
+                //justify-content: center; // @TODO: ggf. zentriert ausrichten
+            }
+
+            // ThemeWare: Category name
+            .twt-subcategory-navigation-caption {
+                display: flex;
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    align-self: flex-start;
+                }
+            }
+        }
+
+        // ThemeWare: 'Modern' (only in CMS extension) @TODO: Maybe move to CMS element file
+        &.is-modern {
+            li {
+                // Link
+                a.twt-subcategory-navigation-link {
+                    flex-flow: column;
+                }
+
+                // Text
+                .twt-subcategory-navigation-text {
+                    display: flex;
+                    position: relative;
+                }
+
+                // Label
+                span:not(.icon) {
+                    transition: all 0.25s;
+                }
+
+                // Icon
+                .icon {
+                    margin-left: auto;
+
+                    > svg {
+                        top: 0;
+                    }
+                }
+
+                // > Ohne Bild...
+                &.no-image {
+                    a {
+                        justify-content: center;
+
+                        @include media-breakpoint-up(sm) { // min 576px
+                            align-items: center;
+                        }
+                    }
+                }
+
+                // > Mit Bild...
+                &:not(.no-image) {
+                    @include media-breakpoint-up(sm) { // min 576px
+                        // Link
+                        a.twt-subcategory-navigation-link {
+                            position: relative;
+                            flex-direction: unset;
+                            flex-flow: unset;
+                        }
+
+                        // Category image
+                        .twt-subcategory-navigation-image-wrapper {
+                            height: 100%;
+                            width: 100%;
+                        }
+
+                        .twt-subcategory-navigation-container {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            top: 0;
+                            left: 0;
+                            padding: 20px;
+                            display: flex;
+                        }
+                    }
+                }
+            }
+
+            @include media-breakpoint-up(sm) { // min 576px
+                // Text
+                .twt-subcategory-navigation-text {
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: 1.25rem;
+                    max-width: 100%;
+                    padding: 10px 12px;
+                    text-align: left;
+                    vertical-align: middle;
+                    border-radius: 2px;
+                }
+
+                // Icon
+                .icon {
+                    position: absolute;
+                    top: 50%;
+                    right: -20px;
+                    transition: all 0.25s ease;
+                    transform: translateY(-50%);
+                    opacity: 0;
+                    color: inherit;
+                }
+
+                // @hover
+                a:hover {
+                    // Text
+                    .twt-subcategory-navigation-text {
+                        margin-right: 0;
+
+                        // Label
+                        span:not(.icon) {
+                            padding-right: 12px;
+                        }
+
+                        // Icon
+                        .icon {
+                            right: 5px; // 3px (sm)
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// ThemeWare: Extension specific styling -------------------------------------------------------------------------------
+
+@if $twt-listing-subcategories-show == 2 { // #performance
+    //.twt-listing-subcategories:not(.cms-element-twt-listing-subcategories) {}
+
+    .twt-listing-subcategories {
+        &.is-extension {
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+            //.twt-listing-subcategories-section {
+            //  width: 100%;
+            //  max-width: 1400px;
+            //  margin-right: auto;
+            //  margin-left: auto;
+            //}
+
+            // @TODO: Container
+            //.twt-listing-subcategories-container {
+            //  background-color: $twt-cms-section-boxed-background-color;
+            //  border: 1px solid $twt-cms-section-boxed-border-color;
+            //  padding: 20px;
+            //}
+        }
+    }
+}

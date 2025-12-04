@@ -1,0 +1,14 @@
+{# ThemeWare® 'Custom content' on product pages via custom fileds #}
+{#
+    Add 'Custom content'
+
+    @Storefront/storefront/themeware/product-detail/includes/twt-product-custom-content.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{% block twt_product_detail_custom_content %}
+    <div class="twt-product-detail-custom-content-text">
+        {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_text|raw }}
+    </div>
+{% endblock %}

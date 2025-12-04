@@ -1,0 +1,39 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Text teaser"
+	==================================================
+
+*/
+
+// @TODO: Add font styling and sizing
+
+@if $twt-cms-text-teaser-css == 2 { // #performance
+    .cms-element-twt-text-teaser {
+        .twt-text-teaser-content {
+            //width: 100%; // @TODO
+
+            // Title (default)
+            p.title.default {
+                // fallback
+                @include twt-font-size(20);
+                margin-bottom: 0;
+            }
+
+            // Title (none)
+            p.title.none {
+                margin-bottom: 0;
+            }
+
+            // Subtitle (none)
+            p.subtitle.none {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

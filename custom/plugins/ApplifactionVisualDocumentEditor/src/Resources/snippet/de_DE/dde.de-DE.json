@@ -1,0 +1,9 @@
+{
+  "dde": {
+    "exception": {
+      "pickware-invoice-correction-requirements-not-met": "<p>Damit Pickware bei der Erzeugung des Variablenbaums für den Dokumenten Editor keinen Fehler wirft, wird eine Bestellung für die auch eine Rechnungskorrektur erzeugt werden könnte, benötigt.</p><p>Bitte stellen Sie sicher, dass in Ihrem Shop eine Bestellung existiert, die folgenden Bedingungen erfüllt:</p><ul><li>Rechnung erstellt</li><li>Keine Stornorechnung</li><li>Keine Rechnungskorrektur</li><li>Retour mit Status „Received“ vorhanden</li></ul>",
+      "document-render-error": "Beim Erzeugen des PDFs für die Bestellung mit der ID :orderId ist ein Fehler aufgetreten",
+      "premsoft-individual-offer-missing": "Bitte erstellen Sie mindestens ein Testangebot mit dem PremSoft Individual Offer Plugin, bevor Sie die Angebotsvorlage bearbeiten. Dieser Schritt ist entscheidend, um die verfügbaren Variablen für Angebote korrekt zu identifizieren.\n\n\n\n\n\n\n\n\n"
+    }
+  }
+}

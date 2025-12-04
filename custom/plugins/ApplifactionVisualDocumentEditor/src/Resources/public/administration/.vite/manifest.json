@@ -1,0 +1,11 @@
+{
+  "main.js": {
+    "file": "assets/applifaction-visual-document-editor-qBuzSIgn.js",
+    "name": "applifaction-visual-document-editor",
+    "src": "main.js",
+    "isEntry": true,
+    "css": [
+      "assets/applifaction-visual-document-editor-dj4z8-qL.css"
+    ]
+  }
+}

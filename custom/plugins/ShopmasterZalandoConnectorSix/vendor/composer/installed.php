@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'name' => 'shopmaster/zalando-connector',
+        'pretty_version' => '2.0.0',
+        'version' => '2.0.0.0',
+        'reference' => NULL,
+        'type' => 'shopware-platform-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'dev' => true,
+    ),
+    'versions' => array(
+        'blackbonjour/stdlib' => array(
+            'pretty_version' => '3.3.1',
+            'version' => '3.3.1.0',
+            'reference' => '2c2538996b19a0cb32f5d9a6a626880e1542b93a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../blackbonjour/stdlib',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'dpauli/graphql-request-builder' => array(
+            'pretty_version' => '1.8.0',
+            'version' => '1.8.0.0',
+            'reference' => '21a7ba9588e7063c36ce615632b38a3e48c0baff',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dpauli/graphql-request-builder',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'shopmaster/zalando-connector' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => NULL,
+            'type' => 'shopware-platform-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+    ),
+);

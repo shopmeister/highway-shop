@@ -1,0 +1,125 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-block-container.html.twig' %}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailCrossSellingShow = theme_config('twt-product-detail-cross-selling-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# @TODO: HC-Architecture... #}
+
+{# ThemeWare: Delete blocks if they are empty #}
+{% block section_content_block %}
+    {% set showBlock = true %}
+
+    {# ThemeWare: Check if 'Cross Selling' block is used #}
+    {# INFO: Show 'Cross Selling' block if cross selling products are available #}
+    {% if block.type == 'cross-selling' and twtProductDetailCrossSellingShow == 1 %}
+        {% for element in block.slots %}
+            {# ThemeWare: Check if 'Cross Selling' element is available #}
+            {% if element.type == 'cross-selling' %}
+                {% if element.data.crossSellings is not empty %} {# element.data.crossSellings.elements #}
+                    {# INFO: 'Cross Selling' element available and NOT empty = show block #}
+                    {% set showBlock = true %}
+                {% else %}
+                    {# INFO: 'Cross Selling' element available but empty = hide block #}
+                    {% set showBlock = false %}
+                {% endif %}
+
+            {% else %}
+                {# INFO: Block is not a 'Cross Selling' element #}
+                {% set showBlock = true %}
+
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# ThemeWare: Check if 'Listing subcategories' block is used #}
+    {# INFO: Show 'Listing subcategories' if subcategories are available (wihtout this, the block would show an alert) #}
+    {% if block.type == 'twt-listing-subcategories' or block.type == 'twt-listing-subcategories-modern' %}
+        {# ThemeWare: Check if subcategories existing #}
+        {# @deprecated {% if page.header.navigation.active.visibleChildCount is empty or page.header.navigation.active.visibleChildCount == 0 %} #}
+        {% if page.header.navigation.active.childCount is empty or page.header.navigation.active.childCount == 0 %}
+            {# No subcategories available = hide block #}
+            {% set showBlock = false %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Check if CMS 'Countdown banner' blocks are used #}
+    {# INFO: Hide 'Countdown banner' if expired #}
+    {% if block.type == 'twt-countdown-banner' or block.type == 'twt-countdown-banner-compact' or block.type == 'twt-hero-countdown' %}
+        {% set element = block.slots.getSlot('counter') %}
+
+        {% set dateNow = 'now'|date('Y-m-d H:i:s', false) %}
+
+        {% set elementDateFrom = element.config.dateFrom.value %}
+        {% if elementDateFrom is not empty %}
+            {% set elementDateFrom = elementDateFrom|date('Y-m-d H:i:s', false) %}
+        {% endif %}
+
+        {% set elementDateUntil = element.config.dateUntil.value %}
+        {% if elementDateUntil is not empty %}
+            {% set elementDateUntil = elementDateUntil|date('Y-m-d H:i:s', false) %}
+        {% endif %}
+
+        {# INFO: Only show if within date range #}
+        {% if dateNow < elementDateFrom or (dateNow >= elementDateFrom and dateNow < elementDateUntil) %}
+            {% set showBlock = true %}
+        {% else %}
+            {% set showBlock = false %}
+        {% endif %}
+    {% endif %}
+
+    {# ThemeWare: Add classes for our column and grid blocks #}
+    {#
+    {% if 'twt-grid' in block.type %}
+        Grid
+    {% endif %}
+
+    {% if 'twt-grid' in block.type and 'column' in block.type %}
+        Column
+    {% endif %}
+    #}
+
+    {% if showBlock %}
+        {# Default block => show block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block section_content_block_container %}
+    {# ThemeWare: Add classes for our flex column blocks #}
+    {% if block.type == 'twt-grid-three-column-custom' or block.type == 'twt-grid-four-column-custom' or block.type == 'twt-grid-five-column-custom' or block.type == 'twt-grid-six-column-custom' %}
+        {% for class in block.cssClass|split(' ') %}
+            {% if class starts with 'twt-justify-content-' %}
+                {% if sidebarClasses == '' %}
+                    {% set sidebarClasses = sidebarClasses ~ class|replace({'twt-': ''}) %}
+                {% else %}
+                    {% set sidebarClasses = sidebarClasses ~ ' ' ~ class|replace({'twt-': ''}) %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}
+
+
+{# ThemeWare: Fix 'defaultMediaUrl' (= slot.config.media.value) beeing used as 'backgroundImageUrl' in SW 6.9.0 #}
+{% block section_content_block_background_image %}
+    {% if block.type starts with 'twt-' %}
+        {% if block.backgroundMedia %}
+            {# Default block #}
+            {{ parent() }}
+        {% endif %}
+
+    {% else %}
+        {# Default block #}
+        {{ parent() }}
+
+    {% endif %}
+{% endblock %}

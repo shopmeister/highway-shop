@@ -1,0 +1,77 @@
+{
+    "name": "pickware/validation-bundle",
+    "description": "A bundle for Shopware 6 that contains the Pickware validation functionality.",
+    "license": "proprietary",
+    "type": "library",
+    "version": "3.34.0",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">= 8.2",
+        "ext-json": "*",
+        "doctrine/annotations": "^1.13.1 || ^2.0.1",
+        "justinrainbow/json-schema": "^5.2.10",
+        "pickware/api-error-handling-bundle": "^3.34.0",
+        "pickware/http-utils": "^4.14.0",
+        "shopware/core": "~6.6.2 || ~6.7.0",
+        "symfony/config": "^7.0.0",
+        "symfony/dependency-injection": "^7.0.0",
+        "symfony/event-dispatcher": "^7.0.0",
+        "symfony/http-foundation": "^7.0.0",
+        "symfony/http-kernel": "^7.0.0",
+        "symfony/serializer": "^7.0.0",
+        "symfony/validator": "^7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.0",
+        "pickware/shopware-integration-test-plugin": "@dev",
+        "pickware/unit-testing-tools": "*@dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../bundles/*"
+        },
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../libraries-dev/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../plugins-dev/*"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pickware\\ValidationBundle\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "pickware/dependency-loader": true,
+            "symfony/runtime": true,
+            "viison/composer-git-hooks-installer-plugin": true
+        },
+        "lock": false
+    },
+    "extra": {
+        "ci-min-supported-shopware-version": "6.6.2.0"
+    },
+    "scripts": {
+        "test:integration": "${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

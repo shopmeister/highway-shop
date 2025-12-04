@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Subscriber\AccessibleHtmlSubscriber">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper" />
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Subscriber\TwigTemplateOptimizationSubscriber">
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Subscriber\FormatHtmlSubscriber">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Subscriber\HtmlCleanupSubscriber">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger" />
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\TwigEnvironmentFactory"/>
+            <argument>%env(string:APP_URL)%</argument>
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Subscriber\QuoteProductDataSubscriber">
+            <argument type="service" id="product.repository" />
+            <argument type="service" id="quote.repository" on-invalid="null" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+
+    </services>
+</container>

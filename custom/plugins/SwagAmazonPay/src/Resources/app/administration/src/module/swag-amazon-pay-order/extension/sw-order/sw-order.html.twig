@@ -1,0 +1,25 @@
+{% block sw_order_detail_content_tabs_general %}
+    {% parent %}
+
+    {% block swag_amazon_pay_order_payment_tab %}
+        <template v-if="!isLoadingAmazonTransactions && amazonPayTransactions">
+            <sw-tabs-item v-for="amazonTransaction in amazonPayTransactions"
+                          v-bind:key="amazonTransaction.id"
+                          :route="getAmazonPayDetailsRoute(amazonTransaction.id)"
+                          :title="$tc('swag-amazon-pay-order.general.description')">
+                {{ $tc('swag-amazon-pay-order.general.title') }}
+            </sw-tabs-item>
+        </template>
+    {% endblock %}
+{% endblock %}
+
+{% block sw_order_detail_content_view %}
+    <!--
+    <sw-container v-if="hasIncompleteTransaction" columns="1fr" class="swag-amazon-pay-order-notification-container">
+        <sw-alert variant="warning" appearance="default" :showIcon="true" :closable="false">
+            {{ $tc('swag-amazon-pay-order.notification.invalidTransaction') }}
+        </sw-alert>
+    </sw-container>
+    -->
+    {% parent %}
+{% endblock %}

@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <defaults public="true"/>
+
+        <!--        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Settings\OrderSettingsController">-->
+        <!--            <call method="setContainer">-->
+        <!--                <argument type="service" id="service_container"/>-->
+        <!--            </call>-->
+        <!--        </service>-->
+
+        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Settings\GeneralSettingsController">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\SalesChannels\ApiZalandoSalesChannelsService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\LogisticCenter\ApiZalandoLogisticCenterService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Settings\FormSettingsController">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Zalando\OutlineZalandoController">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Outline\ApiZalandoOutlineService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Zalando\AuthZalandoController">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Auth\ApiZalandoAuthService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Controllers\Api\Zalando\OrderZalandoController">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Order\ApiZalandoOrderService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Order\Backend\OrderDataBackendService"/>
+        </service>
+
+
+    </services>
+</container>

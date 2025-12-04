@@ -1,0 +1,29 @@
+{% block swag_amazon_pay_order_component_buyer_info %}
+    <div class="swag-amazon-pay-buyer-info__container">
+        {# Logo #}
+        {% block swag_amazon_pay_order_component_buyer_info_logo %}
+            <div class="swag-amazon-pay-buyer-info__icon-container" align="center">
+                <img class="swag-amazon-pay-buyer-info__amazon-pay-icon"
+                     :src="assetFilter('swagamazonpay/static/img/plugin.svg')">
+            </div>
+        {% endblock %}
+
+        {# Full name and E-Mail address #}
+        {% block swag_amazon_pay_order_component_buyer_info_name_container %}
+            <div class="swag-amazon-pay-buyer-info__name-container">
+
+                {% block swag_amazon_pay_order_component_buyer_info_name_container_name %}
+                    <div class="swag-amazon-pay-buyer-info__full-name">
+                        {{ customerSalutation }} {{ order.orderCustomer.firstName }} {{ order.orderCustomer.lastName }}
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_order_component_buyer_info_name_container_email %}
+                    <div class="swag-amazon-pay-buyer-info__email">
+                        {{ order.orderCustomer.email }}
+                    </div>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

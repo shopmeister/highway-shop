@@ -1,0 +1,11 @@
+{
+    "document-settings": {
+        "index": {
+            "header": "Document Creator"
+        },
+        "tabs": {
+            "printSettings" : "Print Settings",
+            "documentSetup" : "Document Setup"
+        }
+    }
+}

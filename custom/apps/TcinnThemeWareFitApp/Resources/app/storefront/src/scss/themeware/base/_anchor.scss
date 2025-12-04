@@ -1,0 +1,20 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Anchor
+	==================================================
+    Element to jump to a specific part of a page.
+    With a small offset to allow for sticky navigation.
+
+    <div id="#twt-anchor"></div>
+*/
+
+.twt-anchor {
+    position: absolute;
+    margin-top: -80px;
+}

@@ -1,0 +1,252 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Button
+    ==============================================
+    Custom skin styling for bootstrap button component.
+    https://getbootstrap.com/docs/5.2/components/buttons
+
+    Origin: Shopware skin
+*/
+
+// ThemeWare: Set button overflow
+.btn {
+    overflow: visible;
+}
+
+// ThemeWare: Customize primary button
+// - $primary: $sw-color-brand-primary !default;
+@if $twt-color-primary-button != $sw-color-brand-primary {
+    .btn-primary {
+        @include button-variant($twt-color-primary-button, $twt-color-primary-button);
+
+        // see storefront/src/scss/component/_icon.scss
+        .icon {
+            color: color-contrast($twt-color-primary-button);
+        }
+    }
+}
+
+// ThemeWare: Customize secondary button
+// - $secondary: $sw-color-brand-secondary !default;
+@if $twt-color-secondary-button != $sw-color-brand-secondary {
+    .btn-secondary {
+        @include button-variant($twt-color-secondary-button, $twt-color-secondary-button);
+
+        // see storefront/src/scss/component/_icon.scss
+        .icon {
+            color: color-contrast($twt-color-secondary-button);
+        }
+    }
+}
+
+// ThemeWare: Customize 'Buy button'
+.btn-buy {
+    @include button-variant($sw-color-buy-button, $sw-color-buy-button, $sw-color-buy-button-text);
+    color: $sw-color-buy-button-text; // @TODO: Fix text color...
+
+    min-height: $twt-btn-min-height; // Fix icon only buttons
+
+    // see storefront/src/scss/component/_icon.scss
+    .icon {
+        color: $sw-color-buy-button-text;
+    }
+
+    &:hover {
+        color: $sw-color-buy-button-text; // @TODO: Fix text color...
+
+        // see storefront/src/scss/component/_icon.scss
+        .icon {
+            color: $sw-color-buy-button-text;
+        }
+    }
+
+    // ThemeWare: Fix 'Buy button' with class ".btn-primary" (Product detail pages)
+    &.btn-primary {
+        @include button-variant($sw-color-buy-button, $sw-color-buy-button, $sw-color-buy-button-text);
+        color: $sw-color-buy-button-text; // @TODO: Fix text color...
+
+        // see storefront/src/scss/component/_icon.scss
+        .icon {
+            color: $sw-color-buy-button-text;
+        }
+
+        &:hover {
+            color: $sw-color-buy-button-text; // @TODO: Fix text color...
+
+            // see storefront/src/scss/component/_icon.scss
+            .icon {
+                color: $sw-color-buy-button-text;
+            }
+        }
+    }
+}
+
+// ThemeWare: Customize light button
+// class="btn btn-light"
+// - Bootstrap: --light: #f8f9fa;
+// - Shopware: --light: #f9f9f9;
+// - $gray-100: #f9f9f9 !default;
+// - $light: $gray-100 !default;
+@if $twt-color-light-button != "#f9f9f9" {
+    .btn-light {
+        @include button-variant($twt-color-light-button, $twt-color-light-button);
+
+        // see storefront/src/scss/component/_icon.scss
+        .icon {
+            color: color-contrast($twt-color-light-button);
+        }
+    }
+}
+
+// ThemeWare: Customize detail button (Product boxes)
+// class="btn btn-light btn-detail" (since SW 6.6.1.0)
+// - Bootstrap: --light: #f8f9fa;
+// - Shopware: --light: #f9f9f9;
+// - $gray-100: #f9f9f9 !default;
+// - $light: $gray-100 !default;
+.btn-detail {
+    @extend .btn-lg; // Align size with buy-btn
+
+    min-height: $twt-btn-min-height; // Fix icon only buttons
+
+    @if $twt-color-details-button != "#f9f9f9" {
+        @include button-variant($twt-color-details-button, $twt-color-details-button);
+    }
+}
+
+// ThemeWare: Cart button with icon (Product boxes)
+@if $twt-product-box-btn-buy-layout != 1 {
+    .product-box {
+        .btn-buy {
+            display: flex; // Firefox-Fix
+            justify-content: center; // Firefox-Fix
+            align-items: center;
+
+            // Position: right
+            @if $twt-product-box-btn-buy-icon-position == 2 {
+                overflow: inherit;
+            }
+
+            .icon {
+                color: inherit; // Fix icon color on 'Buy buttons'
+
+                &.icon-bag,
+                &.icon-basket,
+                &.icon-cart {
+                    // Adjust spacing
+                    //@if ($twt-iconset == "default") or ($twt-iconset == "sw6") {
+                    @if $twt-product-box-btn-buy-icon-position == 1 {
+                        // Position: left
+                        margin-right: 4px;
+                    } @else {
+                        // Position: right
+                        margin-left: 4px;
+                    }
+                }
+
+                //&.icon-bag {}
+                //&.icon-basket {}
+                //&.icon-cart {}
+
+                > svg {
+                    top: 0; // Firefox-Fix
+                }
+            }
+
+            // Position: right
+            @if $twt-product-box-btn-buy-icon-position == 2 {
+                .text {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    max-width: calc(100% - 25px);
+                    display: inline-block;
+                    vertical-align: bottom;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
+
+// ThemeWare: 'Quantity selection' in product boxes  #quantitySelection #beta
+// Info: Fallback -> Fix icon if cart button layout is configured without icon
+@if $twt-product-box-btn-buy-layout == 1 and $twt-product-box-quantity-selection-show != 1 {
+    .product-box {
+        .btn-buy {
+            display: flex; // Firefox-Fix
+            justify-content: center; // Firefox-Fix
+            align-items: center;
+
+            .icon > svg {
+                top: 0; // Firefox-Fix
+            }
+        }
+    }
+}
+
+// ThemeWare: Cart button (Product detail pages)
+.product-detail-buy {
+    .btn-buy {
+        line-height: 38px;
+    }
+}
+
+// ThemeWare: Cart button with icon (Product detail pages)
+@if $twt-product-detail-btn-buy-layout != 1 {
+    .product-detail-buy {
+        .btn-buy {
+            display: flex; // Firefox-Fix
+            justify-content: center; // Firefox-Fix
+            align-items: center;
+
+            // Position: right
+            @if $twt-product-detail-btn-buy-icon-position == 2 {
+                overflow: inherit;
+            }
+
+            .icon {
+                color: inherit; // Fix icon color on 'Buy buttons'
+
+                &.icon-bag,
+                &.icon-basket,
+                &.icon-cart {
+                    // Adjust spacing
+                    //@if ($twt-iconset == "default") or ($twt-iconset == "sw6") {
+                    @if $twt-product-detail-btn-buy-icon-position == 1 {
+                        // Position: left
+                        margin-right: 4px;
+                    } @else {
+                        // Position: right
+                        margin-left: 4px;
+                    }
+                }
+
+                //&.icon-bag {}
+                //&.icon-basket {}
+                //&.icon-cart {}
+
+                > svg {
+                    top: 0; // Firefox-Fix
+                }
+            }
+
+            // Position: right
+            @if $twt-product-detail-btn-buy-icon-position == 2 {
+                .text {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    max-width: calc(100% - 25px);
+                    display: inline-block;
+                    vertical-align: bottom;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

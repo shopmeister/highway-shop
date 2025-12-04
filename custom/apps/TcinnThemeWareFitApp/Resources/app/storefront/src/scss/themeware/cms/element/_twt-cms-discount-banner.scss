@@ -1,0 +1,155 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Discount banner"
+	==================================================
+
+*/
+
+@if $twt-cms-discount-banner-css == 2 { // #performance
+
+    .cms-element-twt-discount-banner {
+        position: relative;
+
+        .twt-discount-banner-content {
+            max-width: inherit; // overwrite .container max-width
+            text-align: center;
+
+            .left {
+                position: relative;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                padding: 6% 6% 3% 6%;
+                text-align: center;
+                background: var(--twt-bg-color); // #ef2f3c
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 3%;
+                }
+
+                &:after {
+                    position: absolute;
+                    z-index: 0;
+                    bottom: -20px;
+                    left: 0;
+                    width: 100%;
+                    height: 30px;
+                    content: '';
+                    background: var(--twt-bg-color); // #ef2f3c
+                    clip-path: polygon(-1% 0%, 100% 0, 101% 50%, 50% 100%, 0 50%);
+                }
+
+                @include media-breakpoint-up(xs) { // min 480px
+                    &:after {
+                        bottom: -40px;
+                        height: 60px;
+                    }
+                }
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    &:after {
+                        top: 0;
+                        right: -40px;
+                        bottom: inherit !important;
+                        left: inherit !important;
+                        width: 50px !important;
+                        height: 100% !important;
+                        clip-path: polygon(0 0, 25% -1%, 100% 50%, 25% 101%, 0% 100%) !important;
+                    }
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    &:after {
+                        right: -60px;
+                        width: 70px !important;
+                    }
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    &:after {
+                        right: -80px;
+                        width: 90px !important;
+                    }
+                }
+            }
+
+            .right {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                padding: calc(6% + 20px) 6% 6%;
+                text-align: center;
+                gap: .25rem;
+
+                @include media-breakpoint-up(xs) { // min 480px
+                    padding-top: calc(6% + 40px);
+                }
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    padding: 3% 3% 3% calc(3% + 40px); // w50 - 10px Vesatz
+                }
+
+                @include media-breakpoint-up(lg) { // min 992px
+                    padding-left: calc(3% + 60px); // w70 - 10px Vesatz
+                }
+
+                @include media-breakpoint-up(xxl) { // min 1440px (1400px)
+                    padding-left: calc(3% + 80px); // w90 - 10px Vesatz
+                }
+            }
+
+            .twt-discount-banner-discount {
+                font-size: 11vw;
+                font-weight: $font-weight-bold;
+                line-height: 1;
+                z-index: 1;
+                margin-bottom: 0; // overwrite p
+                letter-spacing: -1px;
+                text-transform: uppercase;
+                color: #ffffff;
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    margin-left: 15px; // center visually
+                }
+            }
+
+            .twt-discount-banner-title {
+                font-size: 5vw;
+                font-weight: $font-weight-bold;
+                line-height: 1;
+                margin-bottom: 0; // overwrite p
+                text-transform: uppercase;
+                color: #ffffff;
+            }
+            .twt-discount-banner-subtitle {
+                font-size: 5vw;
+                font-weight: $font-weight-light;
+                line-height: 1;
+                margin-bottom: 0; // overwrite p
+                text-transform: uppercase;
+                color: #ffffff;
+            }
+        }
+
+        a.cms-image-link {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+
+            // Fix focus visibility
+            outline: 0;
+        }
+    }
+
+}

@@ -1,0 +1,25 @@
+{% sw_extends "@Storefront/storefront/component/product/card/action.html.twig" %}
+
+{% block page_product_detail_product_buy_button %}
+    {{ parent() }}
+    {% block component_product_box_action_inner_swag_amazon_pay_button %}
+        {% set amazonPayButtonExtension = null %}
+        {% if page.extensions.SwagAmazonPayButton is not null %}
+            {% set amazonPayButtonExtension = page.extensions.SwagAmazonPayButton %}
+        {% elseif cmsPage.extensions.SwagAmazonPayButton is not null %}
+            {% set amazonPayButtonExtension = cmsPage.extensions.SwagAmazonPayButton %}
+        {% endif %}
+        {% if amazonPayButtonExtension is not null and amazonPayButtonExtension.isListingButtonEnabled() %}
+            <div class="swag-amazon-pay-product-box-button-container">
+                <div class="swag-amazon-pay-product-box-button-container-inner">
+                    {% sw_include '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' with {
+                        'identifier': 'product-box-' ~ product.id,
+                        'type': 'product-box',
+                        'addLineItemUrl': path('frontend.checkout.line-item.add'),
+                        'amazonPayButtonExtension': amazonPayButtonExtension
+                    } %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

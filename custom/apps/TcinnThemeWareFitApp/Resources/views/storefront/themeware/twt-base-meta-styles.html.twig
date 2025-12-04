@@ -1,0 +1,49 @@
+{# ThemeWare® styles and stylesheets #}
+{#
+    @Storefront/storefront/themeware/twt-base-meta-styles.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtAdditionalCssFile = theme_config('twt-additional-css-file') %}
+{% set twtAdditionalCssFileLoad = theme_config('twt-additional-css-file-load') %}
+{% set twtCustomCss = theme_config('twt-custom-css') %}
+{% set twtCustomCssCode = theme_config('twt-custom-css-code') %}
+{% set twtExpertMode = theme_config('twt-expert-mode') %}
+
+{# Debug mode: Overwrite expert mode #}
+{% if config('TcinnThemeWareFitApp.config.debugMode') is not empty and config('TcinnThemeWareFitApp.config.debugMode') == 'true' %}
+    {% set twtExpertMode = 1 %}
+{% endif %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Add styles and stylesheets to <head> #}
+{% block twt_layout_head_style %}
+    {# ThemeWare: CSS-Datei egänzen. #}
+    {% if twtAdditionalCssFile and twtAdditionalCssFileLoad == 2 and twtExpertMode == 2 %}
+        <!-- Custom css file -->
+        <link rel="stylesheet" href="{{ twtAdditionalCssFile }}" crossorigin="anonymous">
+    {% endif %}
+
+    {# ThemeWare: Add CSS code via snippets (v1) @deprecated #}
+    {% set twtSnippetCssCode = 'twt.custom.css'|trans|raw %}
+
+    {% if twtCustomCss == 2 and twtSnippetCssCode is not empty and twtExpertMode == 2 %}
+    <!-- Custom css code (old) -->
+    <style>{% apply spaceless %}
+        {{ twtSnippetCssCode }}
+    {% endapply %}</style>
+    {% endif %}
+
+    {# ThemeWare: Add CSS code via theme configuration (v2) #}
+    {% if twtCustomCssCode and twtCustomCssCode is not empty and twtExpertMode == 2 %}
+    <!-- Custom css code -->
+    <style>{% apply spaceless %}
+        {{ twtCustomCssCode|raw }}
+    {% endapply %}</style>
+    {% endif %}
+{% endblock %}

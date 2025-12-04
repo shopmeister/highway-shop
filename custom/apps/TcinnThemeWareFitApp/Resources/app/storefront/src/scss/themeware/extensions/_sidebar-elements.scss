@@ -1,0 +1,67 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® 'Sidebar elements'
+	==================================================
+
+*/
+
+@if $twt-sidebar-element-1 != 'none' or $twt-sidebar-element-2 != 'none' or $twt-sidebar-element-3 != 'none' {
+  .cms-section {
+    .cms-section-sidebar {
+      @if $twt-sidebar-element-1 != 'none' {
+        .twt-element-1 {
+          // ThemeWare: Set element order
+          order: $twt-sidebar-element-1-order;
+          padding-top: null-pixel-unit($twt-sidebar-element-1-margin-top);
+          padding-bottom: null-pixel-unit($twt-sidebar-element-1-margin-bottom);
+
+          // ThemeWare: Check display mobile
+          @if $twt-sidebar-element-1-toggle == 1 {
+            @include media-breakpoint-down(md) { // max 767.98px
+              display: none;
+            }
+          }
+        }
+      }
+
+      @if $twt-sidebar-element-2 != 'none' {
+        .twt-element-2 {
+          // ThemeWare: Set element order
+          order: $twt-sidebar-element-2-order;
+          padding-top: null-pixel-unit($twt-sidebar-element-2-margin-top);
+          padding-bottom: null-pixel-unit($twt-sidebar-element-2-margin-bottom);
+
+          // ThemeWare: Check display mobile
+          @if $twt-sidebar-element-2-toggle == 1 {
+            @include media-breakpoint-down(md) { // max 767.98px
+              display: none;
+            }
+          }
+        }
+      }
+
+      @if $twt-sidebar-element-3 != 'none' {
+        .twt-element-3 {
+          // ThemeWare: Set element order
+          order: $twt-sidebar-element-3-order;
+          padding-top: null-pixel-unit($twt-sidebar-element-3-margin-top);
+          padding-bottom: null-pixel-unit($twt-sidebar-element-3-margin-bottom);
+
+          // ThemeWare: Check display mobile
+          @if $twt-sidebar-element-3-toggle == 1 {
+            @include media-breakpoint-down(md) { // max 767.98px
+              display: none;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

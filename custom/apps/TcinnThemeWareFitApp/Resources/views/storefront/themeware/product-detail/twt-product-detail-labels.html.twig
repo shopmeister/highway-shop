@@ -1,0 +1,167 @@
+{# ThemeWare® "Labels" on prodcut pages #}
+{#
+    Create container and include the labels
+    position: top/bottom
+
+    @Storefront/storefront/themeware/product-detail/twt-product-detail-labels.html.twig
+#}
+
+{# @TODO:
+    - Add icon support
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailDeliverytimeAvailableLabelShow = theme_config('twt-product-detail-deliverytime-available-label-show') %}
+{% set twtProductDetailDeliverytimeRestockLabelShow = theme_config('twt-product-detail-deliverytime-restock-label-show') %}
+{% set twtProductDetailNotavailableLabelShow = theme_config('twt-product-detail-notavailable-label-show') %}
+{% set twtProductDetailPreorderLabelShow = theme_config('twt-product-detail-preorder-label-show') %}
+{% set twtProductDetailShippingFreeLabelShow = theme_config('twt-product-detail-shipping-free-label-show') %}
+{% set twtProductDetailSoldLabelShow = theme_config('twt-product-detail-sold-label-show') %}
+{% set twtProductDetailStockLabelShow = theme_config('twt-product-detail-stock-label-show') %}
+{% set twtProductDetailStockLabelThresholdLowstock = theme_config('twt-product-detail-stock-label-threshold-lowstock') %}
+{% set twtProductDetailStockLabelThresholdHighstock = theme_config('twt-product-detail-stock-label-threshold-highstock') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# INFO: Apply "spaceless" to hide an empty element via css ":empty" and avoid unwanted spacings #}
+
+{% block twt_delivery_information_labels %}{% apply spaceless %}
+    {% set downloadFlag = constant('Shopware\\Core\\Content\\Product\\State::IS_DOWNLOAD') %}
+
+    {# ThemeWare: Create container and add labels #}
+    {# @deprecated: Classes is-{{ position }} and {{ position }} will be removed with a future update. #}
+    <div class="twt-product-detail-delivery-information-labels position-{{ position }} is-{{ position }} {{ position }}" id="twt-delivery-information-labels">
+        {% block twt_delivery_information_labels_inner %}
+            {# ThemeWare: "Stock-Label" hinzufügen #}
+            {# @TODO:
+                > stock/availableStock via configuration... waiting for multi-select fix
+                - stock-label as include
+                - Check availability: if product.stock >= product.minPurchase and product.deliveryTime
+            #}
+            {% if twtProductDetailStockLabelShow == 2 %}
+                {%  block twt_delivery_information_labels_stock %}
+{#                    {% if product.availableStock > 0 and product.availableStock <= twtProductDetailStockLabelThresholdLowstock %} tag:v6.6.8 #}
+                    {% if product.stock > 0 and product.stock <= twtProductDetailStockLabelThresholdLowstock %}
+                        {# ThemeWare: "Nur noch ... lieferbar." #}
+                        <p class="twt-product-stock-label label label-warning-light">
+{#                            {{ 'twt.detail.stockLabel.lowStock.label'|trans({'%stock%': product.availableStock })|sw_sanitize }} tag:v6.6.8 #}
+                            {{ 'twt.detail.stockLabel.lowStock.label'|trans({'%stock%': product.stock })|sw_sanitize }}
+                        </p>
+
+{#                    {% elseif product.availableStock > twtProductDetailStockLabelThresholdLowstock and product.availableStock <= twtProductDetailStockLabelThresholdHighstock %} tag:v6.6.8 #}
+                    {% elseif product.stock > twtProductDetailStockLabelThresholdLowstock and product.stock <= twtProductDetailStockLabelThresholdHighstock %}
+                        {# ThemeWare: "Auf Lager." bzw. ".. auf Lager." #}
+                        {#% if "instock" in theme_config('twt-product-detail-stock-label-options') %}
+                            <p class="label label-success-light">
+                                {{ 'twt.detail.stockLabel.inStock'|trans|sw_sanitize }}
+                            </p>
+                        {% endif %#}
+
+{#                    {% elseif product.availableStock > twtProductDetailStockLabelThresholdHighstock %} tag:v6.6.8 #}
+                    {% elseif product.stock > twtProductDetailStockLabelThresholdHighstock %}
+                        {# ThemeWare: "Über ... lieferbar." #}
+                        <p class="twt-product-stock-label label label-success-light">
+                            {{ 'twt.detail.stockLabel.highStock.label'|trans({'%stock%': twtProductDetailStockLabelThresholdHighstock })|sw_sanitize }}
+                        </p>
+
+                    {% endif %}
+                {% endblock %}
+            {% endif %}
+
+            {# ThemeWare: "Versandkostenfrei-Label" hinzufügen (replaces the Shopware indicator) #}
+            {# Original: component_delivery_information_shipping_free #}
+            {% if product.shippingFree %}
+                {% if twtProductDetailShippingFreeLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_shipping_free %}
+                        {# ThemeWare: "Versandkostenfrei" #}
+                        <p class="twt-product-shipping-free-label label label-info-light">
+                            {{ 'twt.detail.shippingFreeLabel'|trans|sw_sanitize }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+            {% endif %}
+
+            {#  ThemeWare: "Delivery information"-Labels hinzufügen (replaces the Shopware indicators) #}
+            {% if not product.active %}
+                {# ThemeWare: "NotAvailable-Label" hinzufügen #}
+                {# Original: component_delivery_information_not_available #}
+                {% if twtProductDetailNotavailableLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_not_available %}
+                        <link itemprop="availability"
+                              href="https://schema.org/LimitedAvailability">
+                        <p class="twt-product-not-available-label label label-danger-light">
+                            {# @TODO: Replace snippet ? #}
+                            {{ 'general.deliveryNotAvailable'|trans|sw_sanitize }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+
+            {% elseif product.releaseDate and product.releaseDate|date('U') > 'now'|date('U') %}
+                {# ThemeWare: "PreOrder-Label" hinzufügen #}
+                {# Original: component_delivery_information_pre_order #}
+                {% if twtProductDetailPreorderLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_pre_order %}
+                        <link itemprop="availability"
+                              href="https://schema.org/PreOrder">
+                        <p class="twt-product-pre-order-label label label-warning-light">
+                            {# @TODO: Replace snippet ? #}
+                            {{ 'general.deliveryShipping'|trans|sw_sanitize }} {{ product.releaseDate|format_date('long', locale=app.request.locale) }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+
+{#            {% elseif (product.availableStock >= product.minPurchase or (downloadFlag in product.states and not product.isCloseout)) and product.deliveryTime %} tag:v6.6.8 #}
+            {% elseif (product.stock >= product.minPurchase or (downloadFlag in product.states and not product.isCloseout)) and product.deliveryTime %}
+                {# ThemeWare: "Lieferzeit-Label" hinzufügen #}
+                {# Original: component_delivery_information_available #}
+                {% if twtProductDetailDeliverytimeAvailableLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_available %}
+                        <link itemprop="availability" href="https://schema.org/InStock">
+                        <p class="twt-product-delivery-time-label available label label-success-light">
+                            {# @TODO: Replace snippet ? #}
+                            {{ 'detail.deliveryTimeAvailable'|trans({
+                                '%name%': product.deliveryTime.translation('name')
+                            })|sw_sanitize }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+
+{#            {% elseif product.isCloseout and product.availableStock < product.minPurchase %} tag:v6.6.8 #}
+            {% elseif product.isCloseout and product.stock < product.minPurchase %}
+                {# ThemeWare: "Ausverkauft-Label" hinzufügen #}
+                {# Original: component_delivery_information_soldout #}
+                {% if twtProductDetailSoldLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_soldout %}
+                        {# ThemeWare: "Derzeit nicht auf Lager." #}
+                        <link itemprop="availability" href="https://schema.org/OutOfStock">
+                        <p class="twt-product-stock-label soldout label label-danger-light">
+                            {{ 'twt.detail.stockLabel.noStock'|trans }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+
+{#            {% elseif product.availableStock < product.minPurchase and product.deliveryTime and product.restockTime %} tag:v6.6.8 #}
+            {% elseif product.stock < product.minPurchase and product.deliveryTime and product.restockTime %}
+                {# ThemeWare: "Restock-Label" hinzufügen #}
+                {# Original: component_delivery_information_restock #}
+                {% if twtProductDetailDeliverytimeRestockLabelShow == 2 %}
+                    {% block twt_delivery_information_labels_restock %}
+                        <link itemprop="availability" href="https://schema.org/LimitedAvailability">
+                        <p class="twt-product-delivery-time-label restock label label-warning-light">
+                            {# @TODO: Replace snippet ? #}
+                            {{ 'detail.deliveryTimeRestock'|trans({
+                                '%count%': product.restockTime,
+                                '%restockTime%': product.restockTime,
+                                '%name%': product.deliveryTime.translation('name')
+                            })|sw_sanitize }}
+                        </p>
+                    {% endblock %}
+                {% endif %}
+
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endapply %}{% endblock %}

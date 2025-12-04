@@ -1,0 +1,27 @@
+{
+    "name": "shm/order-printer",
+    "description": "Order Printer plugin",
+    "type": "shopware-platform-plugin",
+    "version": "1.0.2",
+    "license": "MIT",
+    "require": {
+        "shopware/core": "6.6.*"
+    },
+    "extra": {
+        "shopware-plugin-class": "Shm\\OrderPrinter\\ShmOrderPrinter",
+        "label": {
+            "de-DE": "Order Printer plugin",
+            "en-GB": "Order Printer plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Shm\\OrderPrinter\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shm\\OrderPrinter\\": "tests/"
+        }
+    }
+}

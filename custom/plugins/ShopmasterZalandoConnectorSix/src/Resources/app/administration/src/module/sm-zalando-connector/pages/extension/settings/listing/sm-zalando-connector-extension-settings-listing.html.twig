@@ -1,0 +1,26 @@
+{% block sm_zalando_connector_extension_settings_listing %}
+    <div>
+        <sm-zalando-connector-components-settings-sales-channel v-model="form.salesChannelId"></sm-zalando-connector-components-settings-sales-channel>
+        <br>
+        <div v-if="form.data">
+            <sw-switch-field 
+                v-model="form.data.activeListing"
+                :label="$tc('activeListing')"
+                :helpText="$tc('activeListingHelpText')"
+            ></sw-switch-field>
+            
+            <sw-number-field
+                v-model="form.data.listingInterval"
+                :label="$tc('listingInterval')"
+                :helpText="$tc('listingIntervalHelpText')"
+                :min="5"
+                :max="1440"
+                numberType="int"
+            ></sw-number-field>
+            
+            <sw-button @click="saveData" variant="primary">
+                {{ $tc('sw-settings.index.title.saveButtonText') }}
+            </sw-button>
+        </div>
+    </div>
+{% endblock %}

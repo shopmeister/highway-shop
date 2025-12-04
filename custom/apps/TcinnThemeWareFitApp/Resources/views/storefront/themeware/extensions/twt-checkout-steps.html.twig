@@ -1,0 +1,25 @@
+{# ThemeWare® 'Checkout steps' (Extension container) #}
+{#
+    Create container and include banner
+
+    @Storefront/storefront/themeware/extensions/twt-checkout-steps.html.twig
+#}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCheckoutStepsStyle = theme_config('twt-checkout-steps-style') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_checkout_steps %}
+    {# ThemeWare: 'Checkout steps' (checkout) #}
+
+    {% block twt_checkout_steps_container %}
+        <div class="twt-checkout-steps-container container layout-{{ twtCheckoutStepsStyle }}">
+            {% sw_include '@Storefront/storefront/themeware/includes/twt-checkout-steps-include.html.twig' ignore missing %}
+        </div>
+    {% endblock %}
+{% endblock %}

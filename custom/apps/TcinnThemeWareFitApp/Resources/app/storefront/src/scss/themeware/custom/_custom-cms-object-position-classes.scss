@@ -1,0 +1,46 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS object position classes
+	==================================================
+    see @TODO
+
+	Info: ThemeWare CSS-Klassen mit welchen Überschriften in Standard-CMS-Elementen modifiziert werden können.
+*/
+
+// UNDER CONSTRUCTION
+
+/* @TODO:
+     - Finalize classes...
+     - object-position: 0-100%;
+     - Add classes to cms elements
+     - Add variables
+        - make variables configuriable
+     - Add classes to docs
+ */
+
+// ThemeWare: Adds CSS 'object-position' classes for manual use in Shopping Experiences.
+// Apply to a cms block to modify the cms block.
+
+//@if $twt-custom-cms-...-classes == 2 {
+
+.twt-object-fit-s, // min #BS5 #unofficial
+.twt-object-fit-start, // shorthand #BS5 #unofficial
+.twt-object-fit-left, // shorthand #unofficial
+.twt-cms-object-fit-left {
+    object-fit: left;
+}
+
+.twt-object-fit-e, // min #BS5 #unofficial
+.twt-object-fit-end, // shorthand #BS5 #unofficial
+.twt-object-fit-right, // shorthand #unofficial
+.twt-cms-object-fit-right {
+    object-fit: right;
+}
+
+//}

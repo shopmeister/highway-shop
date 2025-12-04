@@ -1,0 +1,175 @@
+{# ThemeWare® CMS element "Testimonial" (Customer review) #}
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtTestimonial = element.fieldConfig.elements %}
+
+{% set twtTstmnlName = element.translated.config.name.value %}
+{% set twtTstmnlReview = element.translated.config.review.value %}
+
+{% set twtTstmnlRating = twtTestimonial.rating.value %}
+{% set twtTstmnlAvatar = twtTestimonial.avatar.value %}
+
+{# Tab "Layout" #}
+{% set twtTstmnlTextAlignment = twtTestimonial.textAlignment.value %}
+{% set twtTstmnlBackgroundColor = twtTestimonial.backgroundColor.value %}
+{% set twtTstmnlPadding = twtTestimonial.padding.value %}
+{% set twtTstmnlRounded = twtTestimonial.rounded.value %}
+
+{% set twtTstmnlFontFamilyName = twtTestimonial.fontFamilyName.value %}
+{% set twtTstmnlTextColorName = twtTestimonial.textColorName.value %}
+
+{% set twtTstmnlRatingStyle = twtTestimonial.ratingStyle.value %}
+{% set twtTstmnlColorRating = twtTestimonial.colorRating.value %}
+{% set twtTstmnlRatingBgColor = twtTestimonial.ratingBgColor.value %}
+
+{% set twtTstmnlFontFamilyReview = twtTestimonial.fontFamilyReview.value %}
+{% set twtTstmnlTextColorReview = twtTestimonial.textColorReview.value %}
+{% set twtTstmnlReviewPosition = twtTestimonial.reviewPosition.value %}
+
+{# Tab "SEO" #}
+{% set twtTstmnlHtmlTag = twtTestimonial.htmlTag.value %}
+{% if twtTstmnlHtmlTag is empty %}
+    {% set twtTstmnlHtmlTag = 'p' %}
+{% endif %}
+{% set twtTstmnlHtmlTagClass = twtTestimonial.htmlTagClass.value %}
+
+{# Tab "Advanced" #}
+{% set twtTstmnlCssClass = twtTestimonial.cssClass.value %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{% set contentClasses = ['content'] %}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block element_twt_testimonial %}
+    {% set config = element.fieldConfig.elements %} {# @TODO: Add vars instead #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }} {% if twtTstmnlRounded %} rounded{% endif %}{% if twtTstmnlAvatar != 'none' %} has-avatar{% endif %}{% if twtTstmnlCssClass is not empty %} {{ twtTstmnlCssClass }}{% endif %}"
+        style="padding: {{ twtTstmnlPadding }}; text-align: {{ twtTstmnlTextAlignment }};{% if twtTstmnlBackgroundColor %} background-color: {{ twtTstmnlBackgroundColor }}"{% endif %}>
+
+        {% block element_twt_testimonial_content %}
+            {# @TODO: {% if config.verticalAlign.value and not isCover %} #}
+            {#
+            {% if config.verticalAlign.value %}
+                <div class="cms-element-alignment{% if config.verticalAlign.value == 'center' %} align-self-center{% elseif config.verticalAlign.value == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                {% if element.translated.config.displayMode.value == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+            #}
+
+            {% block element_twt_testimonial_image_inner %}
+                {# ThemeWare: Set avatar (image or initials) #}
+                {% set avatarElement %}
+                    {% if twtTstmnlAvatar != 'none' %}
+                        {% if twtTstmnlAvatar == 'image' and element.data.media %}
+                            {# Image #}
+                            {% block element_twt_testimonial_image_container %}
+                                <div class="twt-testimonial-image-container {# w-100 #} cms-image-container image-container">
+                                    {% block element_twt_testimonial_image_media %}
+                                        {% set attributes = {
+                                            class: 'cms-image',
+                                            alt: (twtTstmnlName ?: ''),
+                                            title: (twtTstmnlName ?: ''),
+                                            loading: 'lazy'
+                                        } %}
+
+                                        {% sw_thumbnails 'cms-image-thumbnails' with {
+                                            media: element.data.media,
+                                            sizes: {
+                                                default: '100px'
+                                            }
+                                        } %}
+                                    {% endblock %}
+                                </div>
+                            {% endblock %}
+
+                        {% elseif twtTstmnlAvatar == 'image' and element.data.media is null %}
+                            {# Image > Fallback #}
+                            <div class="twt-testimonial-image-container {# w-100 #} cms-image-container image-container is-fallback">
+                                <img src="{{ asset('assets/images/twt-avatar-square.svg', 'theme') }}"
+                                     alt="{{ twtTstmnlName }}"
+                                     title="{{ twtTstmnlName }}"
+                                     width="{{ twtWidgetAwardsImageSize }}px"
+                                     height="75px"
+                                     loading="lazy"
+                                >
+                            </div>
+
+                        {% else %}
+                            {# Initials #}
+                            {% set alphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'] %}
+                            <div class="twt-testimonial-avatar-container cms-avatar-container is-rainbow">
+                                <span class="{% if twtTstmnlName|first in alphabet %}is-{{ twtTstmnlName|first|lower }}{% else %}is-default{% endif %}">
+                                    {{ twtTstmnlName|first }}
+                                </span>
+                            </div>
+
+                        {% endif %}
+                    {% endif %}
+                {% endset %}
+
+                {# ThemeWare: Set "Testimonial" element #}
+                {% set customerReview %}
+                    {# ThemeWare: Load image #}
+                    {{ avatarElement }}
+
+                    <div class="twt-testimonial-content-container cms-content-container content-container">
+                        {# Content #}
+                        <div class="twt-testimonial-content{% if twtTstmnlReviewPosition == 'top' %} order-2{% endif %} {{ contentClasses|sort|join(' ') }}"
+                             style="max-width: {{ config.maxWidth.value }};">
+                            {# Name (mandatory) #}
+                            <{{ twtTstmnlHtmlTag }} class="twt-testimonial-name name {{ twtTstmnlHtmlTagClass }} twt-font-family-{{ twtTstmnlFontFamilyName }}"
+                               style="color: {{ twtTstmnlTextColorName }};">
+                                {{ twtTstmnlName }}
+                            </{{ twtTstmnlHtmlTag }}>
+
+                            {# Rating (mandatory) #}
+                            <div class="twt-testimonial-rating rating{% if twtTstmnlRatingStyle == 'number' %} is-badge{% endif %}"
+                                 title="{{ twtTstmnlRating }} / 5"{% if twtTstmnlRatingStyle == 'number' %}
+                                 style="color: {{ twtTstmnlColorRating }}; background-color: {{ twtTstmnlRatingBgColor }};"{% endif %}>
+                                {% if twtTstmnlRatingStyle == 'stars' %}
+                                    {% sw_include '@Storefront/storefront/themeware/component/twt-customer-rating.html.twig' with {
+                                        points: twtTstmnlRating
+                                    } %}
+
+                                {% else %}
+                                    {{ twtTstmnlRating }}
+                                    {% sw_icon 'star' style { size: 'xs', pack: 'solid' } %}
+
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {# Review (mandatory) #}
+                        {# @TODO: <blockquote cite="http://www..."> #}
+                        <blockquote class="twt-testimonial-review review{% if twtTstmnlReviewPosition == 'top' %} order-1{% endif %}{% if twtTstmnlFontFamilyReview == 'base' %} twt-font-family-{{ twtTstmnlFontFamilyReview }}{% endif %}"
+                                    style="color: {{ twtTstmnlTextColorReview }};">
+                            {{ twtTstmnlReview|raw }}
+                        </blockquote>
+                    </div>
+                {% endset %}
+
+                {# ThemeWare: Load "Testimonial" element #}
+                {{ customerReview }}
+            {% endblock %}
+
+            {# @TODO: {% if config.verticalAlign.value and not isCover %} #}
+            {#
+            {% if config.verticalAlign.value %}
+                </div>
+            {% endif %}
+            #}
+        {% endblock %}
+
+    </div>
+{% endblock %}

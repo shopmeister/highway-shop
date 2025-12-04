@@ -1,0 +1,63 @@
+{# ThemeWare® CMS element "Custom code" #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtCustomCode = element.fieldConfig.elements %}
+
+{# Tab "HTML" #}
+{% set twtCstmCdAddHtml = twtCustomCode.addHtml.value %}
+{% set twtCstmCdHtml = twtCustomCode.html.value %}
+{% set twtCstmCdEnableTwig = twtCustomCode.enableTwig.value %}
+
+{# Tab "CSS" #}
+{% set twtCstmCdAddCss = twtCustomCode.addCss.value %}
+{% set twtCstmCdCss = twtCustomCode.css.value %}
+
+{# Tab "JS" #}
+{% set twtCstmCdAddJs = twtCustomCode.addJs.value %}
+{% set twtCstmCdJs = twtCustomCode.js.value %}
+
+{# Consider "Debug mode" #}
+{% set twtExpertMode = 2 %}
+{% if config('TcinnThemeWareFitApp.config.debugMode') is not empty and config('TcinnThemeWareFitApp.config.debugMode') == 'true' %}
+	{% set twtExpertMode = 1 %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{# @TODO: Element classes... #}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{% block element_twt_custom_code %}
+
+	<div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}">
+		{# Add CSS code #}
+		{% if twtCstmCdAddCss == 1 and twtCstmCdCss and twtExpertMode == 2 %}
+			<style>{% apply spaceless %}{{ twtCstmCdCss|raw }}{% endapply %}</style>
+		{% endif %}
+
+		{# Add HTML code #}
+		{% if twtCstmCdAddHtml == 1 and twtCstmCdHtml %}
+			{% if(twtCstmCdEnableTwig) %}
+				{% include(template_from_string(twtCstmCdHtml)) %}
+			{% else %}
+				{{ twtCstmCdHtml|raw }}
+			{% endif %}
+		{% endif %}
+
+		{# Add JS code #}
+		{% if twtCstmCdAddJs == 1 and twtCstmCdJs and twtExpertMode == 2 %}
+			<script>{% apply spaceless %}{{ twtCstmCdJs|raw }}{% endapply %}</script>
+		{% endif %}
+	</div>
+
+{% endblock %}

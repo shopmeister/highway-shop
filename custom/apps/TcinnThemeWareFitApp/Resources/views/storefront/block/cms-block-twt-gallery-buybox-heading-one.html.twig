@@ -1,0 +1,70 @@
+{# ThemeWare® CMS block "Image gallery and buy box (with product name & manufacturer logo)" + Slot below buy box #}
+
+{% block block_twt_gallery_buybox_heading_one %}
+    {% block block_twt_gallery_buybox_heading_one_column_left %}
+        {% set element = block.slots.getSlot('left') %}
+        {% set config = element.fieldConfig.elements %}
+
+        <div class="col-lg-7 product-detail-media left" data-cms-element-id="{{ element.id }}">
+            {% block block_twt_gallery_buybox_heading_one_column_left_inner %}
+                {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with {
+                    isProduct: config.sliderItems.value == 'product.media' and config.sliderItems.source == 'mapped',
+                    startIndexThumbnails: 1,
+                    startIndexSlider: 1
+                } %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_twt_gallery_buybox_heading_one_column_right %}
+        <div class="col-lg-5 product-detail-buy right">
+
+            <div class="product-detail-buy-inner twt-product-detail-buy-container"> {# INFO: Fix sticky feature by merging the both divs #}
+                {% block block_twt_gallery_buybox_heading_one_column_right_top %}
+                    <div class="row product-detail-headline mb-3 right-top">
+                        {% block block_product_heading_product_name_element %}
+                            {% set element = block.slots.getSlot('right-top-left') %}
+    
+                            <div class="col product-heading-name-container" data-cms-element-id="{{ element.id }}">
+                                {% block block_product_heading_product_name_inner %}
+                                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with {
+                                        element: element
+                                    } %}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+    
+                        {% block block_product_heading_product_manufacturer_logo_element %}
+                            {% set element = block.slots.getSlot('right-top-right') %}
+    
+                            <div class="col-md-auto product-heading-manufacturer-logo-container" data-cms-element-id="{{ element.id }}">
+                                {% block block_product_heading_product_manufacturer_logo_inner %}
+                                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing with {
+                                        element: element
+                                    } %}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block block_twt_gallery_buybox_heading_one_column_right_center %}
+                    {% set element = block.slots.getSlot('right-center') %}
+
+                    <div class="right-center" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+
+                {% block block_twt_gallery_buybox_heading_one_column_right_bottom %}
+                    {% set element = block.slots.getSlot('right-bottom') %}
+
+                    <div class="right-bottom" data-cms-element-id="{{ element.id }}">
+                        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                    </div>
+                {% endblock %}
+            </div>
+
+        </div>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,10 @@
+{% sw_extends '@Storefront/storefront/component/account/register.html.twig' %}
+
+{% block component_account_register_personal_password %}{% endblock %}
+{% block component_account_register_personal_password_confirmation %}{% endblock %}
+
+{% block component_account_register_form_action %}
+    <input type="hidden"
+           name="amazonAccountId"
+           value="{{ data.get('amazonAccountId') }}"/>
+{% endblock %}

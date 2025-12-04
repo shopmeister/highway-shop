@@ -1,0 +1,108 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS custom classes for CMS pages
+	==================================================
+	see https://service.tc-innovations.de/themeware/sw6/article/2129-themeware-css-klassen-bibliothek-fuer-cms-erlebniswelten
+*/
+
+// ThemeWare: Equal height ------------------------------
+
+// @TODO: Check if necessary
+.twt-custom-cms-eq-height {
+	.col-md-6 > div {
+		height: 100%;
+	}
+}
+
+// ThemeWare: Full-width sections ------------------------------
+// - Info: Add section-padding with px-4
+
+.twt-block-boxed-s, // min #BS5 #unofficial
+.twt-block-boxed-start, // shorthand #BS5 #unofficial
+.twt-block-boxed-left, // shorthand #unofficial
+.twt-cms-block-boxed-left {
+	.column-1 {
+		align-self: center;
+		margin-left: auto;
+		padding: 20px 40px;
+
+		@include media-breakpoint(max, $twt-container-max-width + 20) {
+			padding: 20px 40px;
+		}
+
+		@include media-breakpoint(min,$twt-container-max-width) {
+			max-width: null-pixel-unit($twt-container-max-width / 2);
+			padding-right: 4rem;
+			padding-left: 20px;
+
+		}
+	}
+	.column-2 {
+		padding: 0;
+	}
+}
+
+.twt-block-boxed-e, // min #BS5 #unofficial
+.twt-block-boxed-end, // shorthand #BS5 #unofficial
+.twt-block-boxed-right, // shorthand #unofficial
+.twt-cms-block-boxed-right {
+	.column-1 {
+		padding: 0;
+	}
+	.column-2 {
+		align-self: center;
+		margin-right: auto;
+		padding: 20px 40px;
+
+		@include media-breakpoint(max, $twt-container-max-width + 20) {
+			padding: 20px 40px;
+		}
+
+		@include media-breakpoint(min,$twt-container-max-width) {
+			max-width: null-pixel-unit($twt-container-max-width / 2);
+			padding-right: 20px;
+			padding-left: 4rem;
+
+		}
+	}
+}
+
+// ThemeWare: Boxed sections ------------------------------
+
+.twt-boxed-content, // shorthand #unofficial
+.twt-cms-boxed-content {
+	.cms-block {
+		max-width: calc(#{$twt-container-max-width}px - 40px);
+		margin: auto;
+	}
+
+	/*.cms-section-default {
+		max-width: $twt-container-max-width;
+		margin: auto;
+	}
+
+	.cms-block {
+		padding: 20px;
+	}*/
+}
+
+// ThemeWare: Boxed blocks ------------------------------
+
+.twt-block-boxed, // shorthand #unofficial
+.twt-cms-block-boxed {
+	max-width: calc(#{$twt-container-max-width}px - 40px);
+	margin: auto;
+}
+
+// ThemeWare: Manufacturer logo ------------------------------
+
+.twt-hide-manufacturer-logo, // shorthand #unofficial
+.twt-cms-hide-manufacturer-logo {
+	.product-heading-manufacturer-logo-container { display: none; }
+}

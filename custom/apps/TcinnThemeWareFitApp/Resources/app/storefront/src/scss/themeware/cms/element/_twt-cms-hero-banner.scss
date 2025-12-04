@@ -1,0 +1,100 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Hero banner"
+	==================================================
+
+*/
+
+@if $twt-cms-hero-banner-css == 2 { // #performance
+    .cms-element-twt-hero-banner {
+        //.twt-hero-banner-container {}
+
+        .twt-hero-banner-image-container {
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            &.is-cover {
+                background-size: cover;
+            }
+
+            @include media-breakpoint-up(md) { // min 768px"
+                &.is-fixed {
+                    background-attachment: fixed;
+                }
+            }
+
+            &.is-scroll {
+                background-attachment: scroll;
+            }
+
+            // iOS fix
+            @supports (-webkit-overflow-scrolling: touch) {
+                &.is-fixed {
+                    background-attachment: scroll !important;
+                }
+            }
+        }
+
+        .twt-hero-banner-content {
+            //width: 100%; // @TODO
+
+            // Headline
+            // @TODO: Add 'default' option ?!
+            //.headline.default {
+            //    // h2 fallback
+            //    font-size: calc(1.3rem + 0.6vw);
+            //    font-weight: 700; // $twt-font-weight-bold;
+            //    line-height: 34px;
+            //    margin-bottom: 10px;
+            //
+            //    @media (min-width: 1200px) {
+            //        font-size: 1.75rem;
+            //    }
+            //}
+
+            // Subheadline
+            p.subheadline.none {
+                margin-bottom: 0;
+            }
+
+            // Text
+            .text {
+                // Links
+                a {
+                    color: var(--twt-link-color); // Wird Inline in der entsprechenden Template-Datei gesetzt
+                    text-decoration: underline;
+
+                    &:hover {
+                        color: var(--twt-link-color-hover); // Wird Inline in der entsprechenden Template-Datei gesetzt
+                        //filter: brightness(0.8);
+                        //text-decoration: none;
+                    }
+                }
+
+                > *:last-child {
+                    margin-bottom: 0 !important;;
+                }
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+
+            &.is-styled {
+                padding: $twt-basegrid-spacing;
+            }
+
+            //&:not(.is-styled) {}
+        }
+
+        .twt-hero-banner-btn {
+            margin-top: $paragraph-margin-bottom;
+        }
+    }
+}

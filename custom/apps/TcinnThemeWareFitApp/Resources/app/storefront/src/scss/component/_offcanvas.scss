@@ -1,0 +1,36 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: OffCanvas
+    ==============================================
+    Move page content like the navigation menu in a sliding OffCanvas menu.
+    The sliding direction can be left or right.
+    @see https://getbootstrap.com/docs/5.2/components/offcanvas
+
+	Origin: Shopware base
+*/
+
+.offcanvas {
+    --bs-offcanvas-bg: #fff; // Fix background color as 'bg-color' is used otherwise (this can result in a black text on a black background)
+
+    // ThemeWare: Adjust "Close" button
+    .offcanvas-close {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.offcanvas-backdrop {
+    // Adjust background color
+    background-color: $twt-modal-backdrop-color; // formerly $twt-modal-background-color
+
+    // Add backdrop blur effect
+    @if $twt-modal-backdrop-effect-blur > 0 {
+        backdrop-filter: blur($twt-modal-backdrop-effect-blur + px);
+    }
+}

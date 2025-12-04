@@ -1,0 +1,42 @@
+{
+    "name": "pickware/units-of-measurement",
+    "description": "A library that provides functionality for dealing with units of measurement such as length and weight.",
+    "license": "proprietary",
+    "type": "library",
+    "version": "3.5.0",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">= 8.2",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pickware\\UnitsOfMeasurement\\": "src"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true,
+            "symfony/runtime": true,
+            "viison/composer-git-hooks-installer-plugin": true
+        },
+        "lock": false
+    },
+    "extra": {
+        "ci-min-supported-shopware-version": "6.6.2.0"
+    },
+    "scripts": {
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

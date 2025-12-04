@@ -1,0 +1,211 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    _base.scss
+    ======================================
+    Basic styles - Contains the imports to all individual ThemeWare® styles.
+
+*/
+
+// ThemeWare® base ----------------------------------------------------------------
+@import 'base/accessibility';
+@import 'base/anchor';
+@import 'base/animations';
+//@import 'base/box-shwadows'; // @TODO
+@import 'base/dev';
+@import 'base/fallback';
+@import 'base/font'; // Add webfonts
+@import 'base/grid';
+@import 'base/iconset';
+//@import 'base/ios-fixes'; // see at the end of this file
+//@import 'base/root'; // see main base.scss
+//@import 'base/touch-fixes'; // see at the end of this file
+@import 'base/utilities';
+
+// ThemeWare® bootstrap adjustments ----------------------------------------------------------------
+@import 'bootstrap/custom-forms';
+
+// ThemeWare® components ----------------------------------------------------------------
+@import 'component/badge';
+//@import 'component/background';
+@import 'component/button';
+@import 'component/breadcrumb';
+@import 'component/flags';
+@import 'component/flags-extended';
+@import 'component/label';
+@import 'component/product-box';
+@import 'component/quickview';
+@import 'component/quickview-modal';
+@import 'component/sidebar';
+@import 'component/table';
+
+// ThemeWare® custom CMS classes ----------------------------------------------------------------
+@import 'custom/custom-cms';
+@import 'custom/custom-cms-box-shadow-classes';
+@import 'custom/custom-cms-col-margin';
+@import 'custom/custom-cms-col-padding';
+@import 'custom/custom-cms-col-padding-grids';
+//@import 'custom/custom-cms-col-spacing';
+@import 'custom/custom-cms-fallback'; // @deprecated
+@import 'custom/custom-cms-font-family-classes';
+@import 'custom/custom-cms-grid-gaps';
+@import 'custom/custom-cms-headlines';
+@import 'custom/custom-cms-home';
+@import 'custom/custom-cms-image-decoration-classes';
+@import 'custom/custom-cms-image-hover-effects';
+@import 'custom/custom-cms-max-width-classes';
+@import 'custom/custom-cms-object-position-classes';
+@import 'custom/custom-cms-spacing-classes';
+@import 'custom/custom-cms-text-shadow-classes';
+
+// ThemeWare® layout ----------------------------------------------------------------
+@import 'layout/container';
+@import 'layout/flyout-search';
+@import 'layout/footer';
+@import 'layout/fullscreen-search';
+@import 'layout/global-search';
+
+@import 'layout/header';
+@import 'layout/shopping-experiences-header';
+@import 'layout/custom-header';
+@import 'layout/header-phone';
+@import 'layout/dropdown-navigation';
+
+// ThemeWare® page ----------------------------------------------------------------
+@import 'page/checkout/checkout';
+@import 'page/product-detail/benefits';
+@import 'page/product-detail/payment-logos';
+@import 'page/product-detail/product-badges';
+@import 'page/product-detail/product-detail';
+@import 'page/product-detail/product-labels';
+@import 'page/product-detail/sharing-links';
+@import 'page/product-detail/short-description';
+@import 'page/product-detail/tabs';
+@import 'page/custom-non-cms-pages';
+
+// ThemeWare® extensions ----------------------------------------------------------------
+@import 'extensions/announcement-banner';
+@import 'extensions/checkout-steps';
+@import 'extensions/custom-announcement';
+@import 'extensions/floating-widget';
+@import 'extensions/hero-section';
+@import 'extensions/listing-subcategories';
+//@import 'extensions/promotion-widget';
+@import 'extensions/slideout-communities';
+@import 'extensions/social-proofing';
+//@import 'extensions/subshop-navigation';
+@import 'extensions/usp-bar';
+
+@import 'extensions/scroll-animations'; // @TODO: Extension ?
+@import 'extensions/sidebar-elements'; // @TODO: Extension ?
+@import 'extensions/sidebar-widgets'; // @TODO: Extension ?
+@import 'extensions/sticky-main-navigation'; // @TODO: Extension ?
+
+// ThemeWare® widgets ----------------------------------------------------------------
+@import 'widgets/about';
+@import 'widgets/awards';
+@import 'widgets/benefits';
+@import 'widgets/communities';
+@import 'widgets/hotline';
+@import 'widgets/location';
+@import 'widgets/newsletter';
+@import 'widgets/payment';
+@import 'widgets/paymentshipping';
+@import 'widgets/shipping';
+
+// ThemeWare® CMS ----------------------------------------------------------------
+@import 'cms/twt-cms-backdrop-effects';
+@import 'cms/twt-cms-image-effects';
+@import 'cms/twt-cms-image-hover-effects';
+@import 'cms/twt-cms-overlay-animations';
+
+// ThemeWare® custom CMS styles ----------------------------------------------------------------
+@import 'cms/custom/custom-cms-element-overlay';
+@import 'cms/custom/custom-cms-icon-box';
+
+// ThemeWare® CMS pages ----------------------------------------------------------------
+@import 'cms/page/custom-cms-pages';
+@import 'cms/page/custom-cms-landing-pages';
+@import 'cms/page/custom-cms-listing-pages';
+@import 'cms/page/custom-cms-product-pages';
+@import 'cms/page/custom-cms-shop-pages';
+
+// ThemeWare® CMS blocks ----------------------------------------------------------------
+@import 'cms/block/twt-cms-grid';
+@import 'cms/block/twt-cms-grid-columns';
+@import 'cms/block/twt-cms-hero-slider';
+
+@import 'cms/block/twt-cms-gallery-buybox-heading';
+@import 'cms/block/twt-cms-gallery-buybox-name';
+
+// ThemeWare® CMS elements ----------------------------------------------------------------
+@import 'cms/element/twt-cms-base';
+@import 'cms/element/twt-cms-advanced-banner';
+@import 'cms/element/twt-cms-advanced-teaser';
+@import 'cms/element/twt-cms-button-teaser';
+@import 'cms/element/twt-cms-breadcrumb';
+@import 'cms/element/twt-cms-call-to-action';
+@import 'cms/element/twt-cms-classic-teaser';
+@import 'cms/element/twt-cms-countdown-banner';
+@import 'cms/element/twt-cms-countdown-banner-compact';
+@import 'cms/element/twt-cms-discount-banner';
+@import 'cms/element/twt-cms-hero-banner';
+@import 'cms/element/twt-cms-hero-countdown-headline';
+@import 'cms/element/twt-cms-hero-slider';
+@import 'cms/element/twt-cms-hero-teaser';
+@import 'cms/element/twt-cms-hover-box';
+@import 'cms/element/twt-cms-image-banner';
+@import 'cms/element/twt-cms-image-gallery-grid';
+@import 'cms/element/twt-cms-image-teaser';
+@import 'cms/element/twt-cms-image-text-layered';
+//@import 'cms/element/twt-cms-listing-subcategories';
+@import 'cms/element/twt-cms-listing-subcategories-hero';
+@import 'cms/element/twt-cms-modern-teaser';
+@import 'cms/element/twt-cms-parallax-banner';
+@import 'cms/element/twt-cms-product-description-reviews-accordion';
+@import 'cms/element/twt-cms-round-teaser';
+@import 'cms/element/twt-cms-testimonial';
+@import 'cms/element/twt-cms-text-teaser';
+@import 'cms/element/twt-cms-text-teaser-decorated';
+
+// ThemeWare® footer-elements (widgets) ----------------------------------------------------------------
+//@import 'footer-elements/about';
+//@import 'footer-elements/awards';
+//@import 'footer-elements/benefits';
+//@import 'footer-elements/communities';
+@import 'footer-elements/footernav';
+@import 'footer-elements/hotline';
+//@import 'footer-elements/location';
+@import 'footer-elements/newsletter';
+//@import 'footer-elements/payment';
+//@import 'footer-elements/paymentshipping';
+//@import 'footer-elements/shipping';
+
+// ThemeWare® variants ----------------------------------------------------------------
+//@import 'variants/bio';
+//@import 'variants/clean';
+//@import 'variants/electric';
+//@import 'variants/exquisite';
+//@import 'variants/living';
+//@import 'variants/modern';
+//@import 'variants/outdoor';
+//@import 'variants/strong';
+//@import 'variants/bath';
+//@import 'variants/fit';
+//@import 'variants/lights';
+//@import 'variants/kids';
+//@import 'variants/global';
+//@import 'variants/bike';
+//@import 'variants/plants';
+
+// ThemeWare® browser specific fixes ----------------------------------------------------------------
+@import 'base/ios-fixes';
+//@import 'base/touch-fixes';
+
+// Extension adjustments and fixes ----------------------------------------------------------------
+@import 'other/shopware-b2b-components';

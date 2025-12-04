@@ -1,0 +1,29 @@
+{# ThemeWare® 'Service menu' as list #}
+{#
+	@Storefront/storefront/themeware/twt-service-menu-list-widget.html.twig
+
+    NOTE: May be build with snippets in a futre version to have a seperate footer navigation.
+#}
+
+{# @deprecated tag:v4.0.0 - File will be replaced by 'includes/twt-service-menu-widget-list.html.twig' #}
+
+{# @TODO: Align html structure with footer navigation... #}
+
+{# @TODO: Blöcke prüfen... #}
+
+{# ThemeWare: Show 'Service menu' as list #}
+{% block twt_layout_header_actions_service_menu_list_widget %}
+	{% if page.header.serviceMenu|length > 0 %}
+		<div class="top-bar-nav-item top-bar-menu-list">
+			{% for serviceMenuItem in page.header.serviceMenu %}
+				<a href="{{ category_url(serviceMenuItem) }}"
+				   class="top-bar-list-item"
+				   title="{{ serviceMenuItem.translated.name }}"
+				   {% if category_linknewtab(serviceMenuItem) %}target="_blank"{% endif %}
+				>
+					{{ serviceMenuItem.translated.name }}
+				</a>
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock%}

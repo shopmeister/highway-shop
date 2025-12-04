@@ -1,0 +1,214 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Testimonial"
+	==================================================
+
+*/
+
+// @TODO: Add performance if
+
+// ThemeWare: Adjustments on ThemeWare® testimonials
+.cms-element-twt-testimonial {
+    position: relative;
+    width: 100%;
+    height: 100%; // equal height
+
+    // Avatar container
+    .twt-testimonial-avatar-container {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px; // Fix without avatar
+        border-radius: 50%;
+
+        span {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: #fff;
+            border-radius: 50%;
+        }
+
+        .is-default { background-color: #939393; }
+
+        // @TODO: Apply styles via cms block...
+        // Rainbow (default)
+        &.is-rainbow {
+            .is-a, .is-m, .is-y { background-color: #efd31a; }
+            .is-b, .is-n, .is-z { background-color: #f4ae1a; }
+            .is-c, .is-o { background-color: #f36b28; }
+            .is-d, .is-p { background-color: #ef4924; }
+            .is-e, .is-q { background-color: #ee2f44; }
+            .is-f, .is-r { background-color: #ec468b; }
+            .is-g, .is-s { background-color: #b856a1; }
+            .is-h, .is-t { background-color: #915ba6; }
+            .is-i, .is-u { background-color: #518bc9; }
+            .is-j, .is-v { background-color: #27beb6; }
+            .is-k, .is-w { background-color: #67bf6b; }
+            .is-l, .is-x { background-color: #a1cd49; }
+        }
+
+        // Pastel
+        &.is-pastel {
+            .is-a, .is-m, .is-y { background-color: #f7e49a; }
+            .is-b, .is-n, .is-z { background-color: #fece79; }
+            .is-c, .is-o { background-color: #f8a656; }
+            .is-d, .is-p { background-color: #f48170; }
+            .is-e, .is-q { background-color: #f38193; }
+            .is-f, .is-r { background-color: #f391bc; }
+            .is-g, .is-s { background-color: #e4b7d5; }
+            .is-h, .is-t { background-color: #8b8bc3; }
+            .is-i, .is-u { background-color: #94cae3; }
+            .is-j, .is-v { background-color: #a0d9d9; }
+            .is-k, .is-w { background-color: #97d1a9; }
+            .is-l, .is-x { background-color: #cae089; }
+
+        }
+
+        // Dark
+        &.is-dark {
+            .is-a, .is-m, .is-y { background-color: #1a1333; }
+            .is-b, .is-n, .is-z { background-color: #3d4062; }
+            .is-c, .is-o { background-color: #045459; }
+            .is-d, .is-p { background-color: #087353; }
+            .is-e, .is-q { background-color: #15c286; }
+            .is-f, .is-r { background-color: #abd96d; }
+            .is-g, .is-s { background-color: #fbbf54; }
+            .is-h, .is-t { background-color: #ee6b3b; }
+            .is-i, .is-u { background-color: #ec0f47; }
+            .is-j, .is-v { background-color: #a02c5d; }
+            .is-k, .is-w { background-color: #700460; }
+            .is-l, .is-x { background-color: #022c7a; }
+        }
+
+        // A
+        //.is-a, .is-h, .is-o, .is-v { background-color: #b381b3; }
+        //.is-b, .is-i, .is-p, .is-w { background-color: #939393; }
+        //.is-c, .is-j, .is-q, .is-x { background-color: #e3bc00; }
+        //.is-d, .is-k, .is-r, .is-y { background-color: #d47500; }
+        //.is-e, .is-l, .is-s, .is-z { background-color: #dc2a2a; }
+        //.is-f, .is-m, .is-t { background-color: #00aa55; }
+        //.is-g, .is-n, .is-u { background-color: #009fd4; }
+
+        // B (light)
+        //.is-a, .is-h, .is-o, .is-v { background-color: #77b9e0; }
+        //.is-b, .is-i, .is-p, .is-w { background-color: #6365cf; }
+        //.is-c, .is-j, .is-q, .is-x { background-color: #ba7ddb; }
+        //.is-d, .is-k, .is-r, .is-y { background-color: #ff739d; }
+        //.is-e, .is-l, .is-s, .is-z { background-color: #ffd954; }
+        //.is-f, .is-m, .is-t { background-color: #a6cf63; }
+        //.is-g, .is-n, .is-u { background-color: #939393; }
+
+        // C
+        //.is-a, .is-k, .is-u { color: #ffb900; }
+        //.is-b, .is-l, .is-v { color: #d83b01; }
+        //.is-c, .is-m, .is-w { color: #b50e0e; }
+        //.is-d, .is-n, .is-x { color: #e81123; }
+        //.is-e, .is-o, .is-y { color: #b4009e; }
+        //.is-f, .is-p, .is-z{ color: #5c2d91; }
+        //.is-g, .is-q { color: #0078d7; }
+        //.is-h, .is-r { color: #00b4ff; }
+        //.is-i, .is-s { color: #008272; }
+        //.is-j, .is-t { color: #107c10; }
+
+        // D
+        //.is-a, .is-j, .is-s { background-color: #40a4d8; }
+        //.is-b, .is-k, .is-t { background-color: #33beb8; }
+        //.is-c, .is-l, .is-u { background-color: #b2c225; }
+        //.is-d, .is-m, .is-v { background-color: #fecc2f; }
+        //.is-e, .is-n, .is-w { background-color: #f9a228; }
+        //.is-f, .is-o, .is-x { background-color: #f6621f; }
+        //.is-g, .is-p, .is-y { background-color: #db3838; }
+        //.is-h, .is-q, .is-z { background-color: #ee657a; }
+        //.is-i, .is-r { background-color: #a363d9; }
+    }
+
+    // Image container
+    .twt-testimonial-image-container {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px; // Fix without avatar
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+
+    // Content container
+    .twt-testimonial-content-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: -10px; // Fix without avatar
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    // Content container > Content
+    .twt-testimonial-content {
+        margin-top: 15px;
+
+        .name {
+            //font-size: 16px; // handled via html-tag
+            font-weight: 600;
+            position: relative;
+            display: block;
+            margin-bottom: 0;
+        }
+
+        .rating {
+            position: relative;
+            display: block;
+            margin-top: 10px;
+            cursor: default;
+
+            &.is-badge {
+                font-size: 14px;
+                display: inline-block;
+                padding: 3px 10px;
+                border-radius: 50px;
+
+                .icon {
+                    width: 12px;
+                    height: 12px;
+                    margin-left: 3px;
+                    color: inherit;
+
+                    svg {
+                        top: 1px;
+                    }
+                }
+            }
+        }
+    }
+
+    // Content container > Review
+    .twt-testimonial-review {
+        @include font-size($font-size-base);
+        position: relative;
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 0;
+
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    //blockquote.twt-testimonial-review {
+    //}
+}

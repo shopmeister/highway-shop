@@ -1,0 +1,10 @@
+<?php
+
+MLI18n::gi()->{'form_config_orderimport_imagesize_help'} = 'Donnez ici la largeur en pixel, que votre image doit avoir sur votre page. La hauteur sera automatiquement ajustée. <br>
+Vos images originales se trouvent dans le dossier image sous l’adresse : <i>shop-root/media/image</i>. Après ajustage,  elles sont versées dans le dossier : <i>shop-root/media/image/magnalister</i>, et sont prêtes à être utilisées par les places de marché.';
+MLI18n::gi()->{'form_config_send_mailcontentcontailner_testmail'} = 'Aperçu';
+MLI18n::gi()->{'form_orderimport_paymentandshipping_values_textfield_title'} = 'Champs de texte';
+MLI18n::gi()->{'form_config_orderimport_shop_lable'} = 'Boutique à exploiter';
+MLI18n::gi()->{'form_config_orderimport_shop_help'} = 'Si vous gérez une multiboutique, veuillez sélectionner la boutique que vous souhaitez connecter aux places de marché.';
+MLI18n::gi()->{'form_config_orderimport_imagesize_hint'} = 'Enregistrée sous l\'onglet: {#setting:sImagePath#}';
+MLI18n::gi()->{'form_config_orderimport_imagesize_lable'} = 'Taille d\'image';

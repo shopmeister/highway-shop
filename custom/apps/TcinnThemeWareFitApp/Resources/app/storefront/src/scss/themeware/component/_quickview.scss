@@ -1,0 +1,52 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Extension 'Quickview' #quickview #beta
+	==================================================
+	Quickview button in product boxes
+
+    Info: This file is for adjusting the ThemeWare® 'Quickview'.
+*/
+
+@if $twt-quickview-show == 2 {
+    //.twt-product-quickview,
+    .product-quickview {
+        margin-top: 10px;
+
+        .icon-quickview {
+            width: 20px;
+            height: 20px;
+            color: $twt-product-box-wishlist-button-color;
+            display: flex;
+
+            svg {
+                top: 0;
+            }
+        }
+
+        &-action-circle {
+            position: absolute;
+            bottom: .25rem; // 1rem
+            left: 0; // right: 1rem;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border-style: none;
+            border-radius: 50%;
+            background: $twt-product-box-wishlist-button-background-color;
+
+            &:focus {
+                outline: none; // @TODO tag:v6.7.0 - Remove for better accessabillty
+            }
+
+            &:hover {
+                background: shade-color($twt-product-box-wishlist-button-background-color, 10);
+            }
+        }
+    }
+}

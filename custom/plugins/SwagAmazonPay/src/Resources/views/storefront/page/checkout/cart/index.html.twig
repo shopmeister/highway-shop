@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{# Adds the Amazon Pay button below the "Go to checkout"-button #}
+{% block page_checkout_cart_action_proceed %}
+    {{ parent() }}
+    {% block page_checkout_cart_action_proceed_amazon_pay_button %}
+        {% sw_include '@Storefront/storefront/component/swag-amazon-pay/amazon-pay-button.html.twig' with {
+            'identifier': 'checkout-cart'
+        } %}
+    {% endblock %}
+{% endblock %}

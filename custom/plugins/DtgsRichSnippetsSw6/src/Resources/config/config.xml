@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic configuration</title>
+        <title lang="de-DE">Basis-Konfiguration</title>
+
+        <input-field type="bool">
+            <name>showReviewTexts</name>
+            <label lang="de-DE">Review Texte ebenfalls ausgeben?</label>
+            <label>Enable reviews?</label>
+            <defaultValue>true</defaultValue>
+            <helpText lang="de-DE">Wenn dies deaktiviert ist, wird nur ein durchschnittlicher Punktwert übergeben.</helpText>
+            <helpText>If deactivated, just the star-rating will be submitted</helpText>
+        </input-field>
+
+        <input-field type="bool">
+            <name>outofstockOnlyForClearanceProducts</name>
+            <label lang="de-DE">Sollen Produkte mit "Auf Lager" gekennzeichnet werden, wenn Lagerbestand unter 0 (gilt nur, wenn "Abverkauf" NICHT aktiviert)?</label>
+            <label>Set availability to "In Stock" for products with stock below 0, when "Clearance"-Mode is not active?</label>
+            <defaultValue>false</defaultValue>
+            <helpText lang="de-DE">Normalerweise wird als Verfügbarkeit "ausverkauft" angegeben, wenn der Lagerbestand unter 0 fällt. Manche Kunden wünschen, dass dies nur der Fall ist, wenn die Option "Abverkauf" am Produkt aktiviert ist.</helpText>
+            <helpText>Normally, products are marked "out of stock" when stock drops below 0. Some clients want this to be the case ONLY when the "clearance" option is active for a product.</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>fieldForMpn</name>
+            <options>
+                <option>
+                    <id>mpn_ean_separately</id>
+                    <name lang="de-DE">Herstellernummer und EAN separat ausgeben</name>
+                    <name>Supplier number and EAN/GTIN should both be included</name>
+                </option>
+                <option>
+                    <id>suppliernumber</id>
+                    <name lang="de-DE">Nur Herstellernummer als MPN ausgeben, keine EAN</name>
+                    <name>Use supplier number as MPN, no GTIN should be included</name>
+                </option>
+                <option>
+                    <id>ean</id>
+                    <name lang="de-DE">EAN als MPN ausgeben, keine Herstellernummer</name>
+                    <name>Use EAN as MPN, nur supplier number should be included</name>
+                </option>
+            </options>
+            <defaultValue>mpn_ean_separately</defaultValue>
+            <label lang="de-DE">Einstellung für MPN/GTIN (Herstellernummer/EAN):</label>
+            <label>Settings for MPN/GTIN (Supplier number/EAN):</label>
+        </input-field>
+
+    </card>
+
+    <card>
+        <title>Advanced configuration</title>
+        <title lang="de-DE">Erweiterte Konfiguration</title>
+
+        <input-field type="bool">
+            <name>addReturnPolicy</name>
+            <label lang="de-DE">Abschnitt "hasMerchantReturnPolicy" ausgeben?</label>
+            <label>Add block "hasMerchantReturnPolicy"?</label>
+            <helpText lang="de-DE">Wenn Sie dies aktivieren, füllen Sie bitte auch die entsprechenden Folgefelder aus.</helpText>
+            <helpText>When activating, please also fill out the following fields.</helpText>
+        </input-field>
+
+        <input-field>
+            <name>applicableCountry</name>
+            <label>Country applicable for return</label>
+            <label lang="de-DE">Zulässiges Land für eine Rückgabe</label>
+            <defaultValue>DE</defaultValue>
+            <helpText>Example: DE</helpText>
+            <helpText lang="de-DE">Beispiel: DE</helpText>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>policyCategory</name>
+            <options>
+                <option>
+                    <id>MerchantReturnFiniteReturnWindow</id>
+                    <name lang="de-DE">begrenzter Rückgabezeitraum</name>
+                    <name>finite return window</name>
+                </option>
+                <option>
+                    <id>MerchantReturnNotPermitted</id>
+                    <name lang="de-DE">keine Rückgabe möglich</name>
+                    <name>not permitted</name>
+                </option>
+                <option>
+                    <id>MerchantReturnUnlimitedWindow</id>
+                    <name lang="de-DE">unbegrenzter Rückgabezeitraum</name>
+                    <name>unlimited return window</name>
+                </option>
+                <option>
+                    <id>MerchantReturnUnspecified</id>
+                    <name lang="de-DE">keine spezifische Rückgabepolicy</name>
+                    <name>unspecified</name>
+                </option>
+            </options>
+            <defaultValue>MerchantReturnFiniteReturnWindow</defaultValue>
+            <label lang="de-DE">Welche Rückgabepolicy gilt für Ihren Shop?</label>
+            <label>Which policy applies to your shop?</label>
+        </input-field>
+
+        <input-field type="int">
+            <name>merchantReturnDays</name>
+            <label lang="de-DE">Rückgabefrist in Tagen</label>
+            <label>Amount of days in which a customer may return a purchase</label>
+            <defaultValue>30</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>returnMethod</name>
+            <options>
+                <option>
+                    <id>KeepProduct</id>
+                    <name lang="de-DE">Kund*innen dürfen das Produkt behalten</name>
+                    <name>customers may keep the product</name>
+                </option>
+                <option>
+                    <id>ReturnAtKiosk</id>
+                    <name lang="de-DE">Rückgabe an einer Station</name>
+                    <name>return at kiosk</name>
+                </option>
+                <option>
+                    <id>ReturnByMail</id>
+                    <name lang="de-DE">Rückgabe per Post</name>
+                    <name>return by mail</name>
+                </option>
+                <option>
+                    <id>ReturnInStore</id>
+                    <name lang="de-DE">Rückgabe im Ladengeschäft</name>
+                    <name>return in store</name>
+                </option>
+            </options>
+            <defaultValue>ReturnByMail</defaultValue>
+            <label lang="de-DE">Wie geben Kund*innen die Ware zurück?</label>
+            <label>How do customers return a purchase?</label>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>returnFees</name>
+            <options>
+                <option>
+                    <id>FreeReturn</id>
+                    <name lang="de-DE">kostenlose Rücksendung</name>
+                    <name>free return</name>
+                </option>
+                <option>
+                    <id>OriginalShippingFees</id>
+                    <name lang="de-DE">Kund*innen bezahlen die angefallenen Versandkosten</name>
+                    <name>customer must pay the original shipping costs</name>
+                </option>
+                <option>
+                    <id>RestockingFees</id>
+                    <name lang="de-DE">Kund*innen bezahlen die Kosten der Wiedereinlagerung</name>
+                    <name>customer must pay a restocking fee</name>
+                </option>
+                <option>
+                    <id>ReturnShippingFees</id>
+                    <name lang="de-DE">Kosten für die Rücksendung liegen bei dem*der Kund*in</name>
+                    <name>customer must pay the return shipping costs</name>
+                </option>
+            </options>
+            <defaultValue>FreeReturn</defaultValue>
+            <label lang="de-DE">Kosten für die Rückgabe</label>
+            <label>Return fees</label>
+        </input-field>
+
+        <input-field type="bool">
+            <name>addShippingDetails</name>
+            <label lang="de-DE">Abschnitt "shippingDetails" / "deliveryTime" ausgeben?</label>
+            <label>Add block "shippingDetails" / "deliveryTime"?</label>
+            <helpText lang="de-DE">Wenn Sie dies aktivieren, füllen Sie bitte auch die entsprechenden Folgefelder aus.</helpText>
+            <helpText>When activating, please also fill out the following fields.</helpText>
+        </input-field>
+
+        <input-field type="int">
+            <name>handlingTimeMin</name>
+            <label lang="de-DE">Versandvorbereitung Dauer Minimum (in Tagen)</label>
+            <label>Handling Time: min. amount of days</label>
+            <defaultValue>0</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>handlingTimeMax</name>
+            <label lang="de-DE">Versandvorbereitung Dauer Maximum (in Tagen)</label>
+            <label>Handling Time: max. amount of days</label>
+            <defaultValue>1</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>transitTimeMin</name>
+            <label lang="de-DE">Versanddauer Minimum (in Tagen)</label>
+            <label>Transit Time: min. amount of days</label>
+            <defaultValue>1</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>transitTimeMax</name>
+            <label lang="de-DE">Versanddauer Maximum (in Tagen)</label>
+            <label>Transit Time: max. amount of days</label>
+            <defaultValue>3</defaultValue>
+        </input-field>
+
+    </card>
+
+</config>

@@ -1,0 +1,25 @@
+{% block sm_zalando_connector_components_settings_sales_channel_index %}
+    <div>
+{#        <div>#}
+{#            select {{ selected }}#}
+{#        </div>#}
+        {% block sm_zalando_connector_components_settings_sales_channel_selector %}
+            <sw-select-field
+                    v-if="show"
+                    :label="$tc('sm_zalando_connector_components.settings.sales_channel_selector_label')"
+                    required
+                    :placeholder="$tc('sm_zalando_connector_components.settings.sales_channel_selector_placeholder')"
+                    @update:value="updateSelected($event)"
+            >
+                <option
+                        v-for="salesChannel in salesChannels"
+                        :key="salesChannel.salesChannelId"
+                        :value="salesChannel.salesChannelId"
+                        :selected="salesChannel.salesChannelId === selected"
+                >
+                    {{ salesChannel.countryName }} ({{ salesChannel.countryCode }})
+                </option>
+            </sw-select-field>
+        {% endblock %}
+    </div>
+{% endblock %}

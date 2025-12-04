@@ -1,0 +1,182 @@
+/*
+    _____ _                __      __
+   |_   _| |_  ___ _ __  __\ \    / /_ _ _ _ ___  (R)
+     | | | ' \/ -_) '  \/ -_) \/\/ / _` | '_/ -_)
+     |_| |_||_\___|_|_|_\___|\_/\_/\__,_|_| \___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Tables
+	==============================================
+
+	Origin: Bootstrap
+*/
+
+// ThemeWare: Bootstrap (light, dark) table adjustments
+/*
+table,
+.table {
+	//border-bottom: 1px solid $twt-table-body-border-bottom-color; // @deprecated
+
+	// ThemeWare: Bordered version
+	//&.table-bordered {
+	//	* {
+	//		border-color: $twt-table-border-color; // @deprecated
+	//	}
+	//}
+
+	// ThemeWare: Head styles
+	//&:not(.table-dark) {
+	//	thead {
+	//		th {
+	//			border-bottom-color: $twt-table-head-border-bottom-color; // @deprecated
+	//		}
+	//	}
+	//}
+	//thead:not(.thead-dark) {
+	//	th {
+	//		border-bottom-color: $twt-table-head-border-bottom-color; // @deprecated
+	//	}
+	//}
+
+	//&.table-dark {
+	//	thead {
+	//		th {
+	//			border-bottom-color: $twt-table-dark-head-border-bottom-color; // @deprecated
+	//		}
+	//	}
+	//}
+	//thead.thead-dark {
+	//	th {
+	//		border-bottom-color: $twt-table-dark-head-border-bottom-color; // @deprecated
+	//	}
+	//}
+
+	//&.table-light {
+	//	thead {
+	//		th {
+	//			border-bottom-color: $twt-table-head-border-bottom-color; // @deprecated
+	//		}
+	//	}
+	//}
+	//thead.thead-light {
+	//	th {
+	//		border-bottom-color: $twt-table-head-border-bottom-color; // @deprecated
+	//	}
+	//}
+
+}
+*/
+
+
+// ThemeWare: Artikel Preis-Tabelle
+// @TODO: Shopware Vererbung prüfen...
+
+.product-detail-price-container table.product-block-prices-grid thead tr th,
+.product-detail-price-container table.product-block-prices-grid tbody tr th { padding-right: .75rem !important; }
+
+.product-detail-price-container table.product-block-prices-grid thead tr td,
+.product-detail-price-container table.product-block-prices-grid tbody tr td { padding-right: .5rem !important; }
+
+@if $twt-product-detail-prices-table-layout != 1 { // ThemeWare styling
+    .product-detail-price-container {
+        // Deprecated: 6.4.0 > class "product-block-prices-table" will be removed use "product-block-prices-grid" instead
+        table.product-block-prices-table,
+        table.product-block-prices-grid {
+            border: none;
+            border-radius: null-pixel-unit($twt-border-radius);
+            //border-bottom: 1px solid $twt-table-body-border-bottom-color; // @deprecated
+
+            // Width: schmal
+            @if $twt-product-detail-prices-table-width == 2 {
+                width: auto;
+            }
+
+            thead {
+                tr {
+                    th {
+                        border: none;
+                        //border-bottom: 2px solid $twt-table-head-border-bottom-color; // @deprecated
+                        color: $twt-product-detail-prices-table-head-color;
+                        background-color: $twt-product-detail-prices-table-head-background-color;
+
+                        // Layout: kompakt
+                        @if $twt-product-detail-prices-table-style == 2 {
+                            //line-height: 1.1;
+                            padding: $table-cell-padding-y-sm $table-cell-padding-x-sm; //5px 8px; => .table-sm
+                        } @else {
+                            //line-height: 1.1;
+                            padding: $table-cell-padding-y $table-cell-padding-x;
+                        }
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    th,
+                    td {
+                        border: none;
+                        //border-top: 1px solid $twt-table-body-border-color; // @deprecated
+                        color: $twt-table-body-color;
+                        background-color: $twt-table-body-background-color;
+
+                        // Layout: kompakt
+                        @if $twt-product-detail-prices-table-style == 2 {
+                            //line-height: 1.1;
+                            padding: $table-cell-padding-y-sm $table-cell-padding-x-sm; //5px 8px; => .table-sm
+                        } @else {
+                            //line-height: 1.1;
+                            padding: $table-cell-padding-y $table-cell-padding-x;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// ThemeWare: Artikel Eigenschaften-Tabelle (table-striped)
+// @TODO: Shopware Vererbung prüfen...
+
+.product-detail-properties table {
+    margin-bottom: .5rem;
+}
+
+.product-detail-properties-container table.product-detail-properties-table tbody tr th.properties-label {
+    padding-right: .75rem;
+}
+
+.product-detail-properties-container table.product-detail-properties-table tbody tr td.properties-value {
+    padding-right: .5rem;
+}
+
+@if $twt-product-detail-properties-table-layout != 1 { // ThemeWare styling
+    .product-detail-properties-container {
+        table.product-detail-properties-table {
+            border-radius: null-pixel-unit($twt-border-radius);
+
+            // Width 'schmal'
+            @if $twt-product-detail-properties-table-width == 2 {
+                width: auto;
+            }
+
+            tbody {
+                tr {
+                    th,
+                    td {
+                        color: $twt-table-body-color;
+                        background-color: $twt-table-body-background-color;
+
+                        // Layout 'kompakt'
+                        @if $twt-product-detail-properties-table-style == 2 {
+                            //line-height: 1.1;
+                            padding: $table-cell-padding-y-sm $table-cell-padding-x-sm; //5px 20px 5px 0; => .table-sm
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

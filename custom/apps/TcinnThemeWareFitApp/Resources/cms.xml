@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<cms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/trunk/src/Core/Framework/App/Cms/Schema/cms-1.0.xsd">
+    <blocks>
+
+        <block>
+            <!-- A unique technical name for your block. We recommend to use a shorthand prefix for your company, e.g. "Swag" for shopware AG. -->
+            <name>twt-grid-one-column</name>
+
+            <!-- The category your block is associated with. See the XSD for available categories. -->
+            <!--     'text', 'image', 'video', 'text-image', 'sidebar', 'commerce', 'form' -->
+            <category>text-image</category>
+
+            <!-- Your block's label which will be shown in the CMS module in the Administration. -->
+            <label>ThemeWare® – One column</label>
+            <label lang="de-DE">ThemeWare® – Eine Spalte</label>
+
+            <!-- The slots that your block holds which again hold CMS elements. -->
+            <slots>
+                <!-- A slot requires a unique name and a type which refers to the CMS element it shows. Right now you can only use the CMS elements provided by Shopware but at a later point you will be able to add custom elements too. -->
+                <slot name="content" type="text">
+                    <!-- The slot requires some basic configuration. The following config-value elements highly depend on which element the slot holds. -->
+                    <config>
+                        <!-- The following config-value will be interpreted as 'verticalAlign: { source: "static", value: "top"}' in the JavaScript. -->
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <!-- Each block comes with a default configuration which is pre-filled and customizable when adding a block to a section in the CMS module in the Administration. -->
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <!-- The sizing mode of your block. Allowed values are "boxed" or "full_width". -->
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <!-- A unique technical name for your block. We recommend to use a shorthand prefix for your company, e.g. "Swag" for shopware AG. -->
+            <name>twt-grid-two-column</name>
+
+            <!-- The category your block is associated with. See the XSD for available categories. -->
+            <!--     'text', 'image', 'video', 'text-image', 'sidebar', 'commerce', 'form' -->
+            <category>text-image</category>
+
+            <!-- Your block's label which will be shown in the CMS module in the Administration. -->
+            <label>ThemeWare® – Two columns</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten</label>
+
+            <!-- The slots that your block holds which again hold CMS elements. -->
+            <slots>
+                <!-- A slot requires a unique name and a type which refers to the CMS element it shows. Right now you can only use the CMS elements provided by Shopware but at a later point you will be able to add custom elements too. -->
+                <slot name="left" type="text">
+                    <!-- The slot requires some basic configuration. The following config-value elements highly depend on which element the slot holds. -->
+                    <config>
+                        <!-- The following config-value will be interpreted as 'verticalAlign: { source: "static", value: "top"}' in the JavaScript. -->
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <!-- Each block comes with a default configuration which is pre-filled and customizable when adding a block to a section in the CMS module in the Administration. -->
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <!-- The sizing mode of your block. Allowed values are "boxed" or "full_width". -->
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-2-8-2</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 2-8-2</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 2-8-2</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-3-6-3</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 3-6-3</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 3-6-3</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-2-2-8</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 2-2-8</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 2-2-8</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-3-3-6</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 3-3-6</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 3-3-6</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-6-3-3</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 6-3-3</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 6-3-3</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-three-column-8-2-2</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Three columns, 8-2-2</label>
+            <label lang="de-DE">ThemeWare® – Drei Spalten, 8-2-2</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="center" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-four-column</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Four columns</label>
+            <label lang="de-DE">ThemeWare® – Vier Spalten</label>
+
+            <slots>
+                <slot name="col1" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col2" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col3" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col4" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-five-column</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Five columns</label>
+            <label lang="de-DE">ThemeWare® – Fünf Spalten</label>
+
+            <slots>
+                <slot name="col1" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col2" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col3" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col4" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col5" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-six-column</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Six columns</label>
+            <label lang="de-DE">ThemeWare® – Sechs Spalten</label>
+
+            <slots>
+                <slot name="col1" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col2" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col3" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col4" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col5" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="col6" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-3-9</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 3-9</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 3-9</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-3-9-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 3-9 (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 3-9 (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-4-8</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 4-8</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 4-8</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-4-8-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 4-8 (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 4-8 (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-5-7</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 5-7</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 5-7</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-5-7-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 5-7 (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 5-7 (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-7-5</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 7-5</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 7-5</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-7-5-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 7-5 (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 7-5 (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-8-4</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 8-4</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 8-4</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-9-3</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 9-3</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 9-3</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+        <block>
+            <name>twt-grid-two-column-9-3-swapped</name>
+            <category>text-image</category>
+            <label>ThemeWare® – Two columns, 9-3 (swapped on phones)</label>
+            <label lang="de-DE">ThemeWare® – Zwei Spalten, 9-3 (auf Handys getauscht)</label>
+
+            <slots>
+                <slot name="left" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+
+                <slot name="right" type="text">
+                    <config>
+                        <config-value name="vertical-align" source="static" value="top"/>
+                    </config>
+                </slot>
+            </slots>
+
+            <default-config>
+                <margin-top>20px</margin-top>
+                <margin-right>20px</margin-right>
+                <margin-bottom>20px</margin-bottom>
+                <margin-left>20px</margin-left>
+                <sizing-mode>boxed</sizing-mode>
+            </default-config>
+        </block>
+
+    </blocks>
+</cms>

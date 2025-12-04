@@ -1,0 +1,57 @@
+{% block sm_zalando_connector_extension_settings_priceSync %}
+    <div>
+        <div>
+{#            priceSync {{ form }}#}
+            <sm-zalando-connector-components-settings-sales-channel
+                    v-model=form.salesChannelId
+                    :selected=form.salesChannelId
+            ></sm-zalando-connector-components-settings-sales-channel>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data"
+                    {#                    type="checkbox" #}
+                    v-model:value="form.data.active"
+                    checked="form.data.active ? 'checked' : false"
+                    :label="$tc('active')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-entity-single-select
+                    v-if="form.data && form.data.active"
+                    v-model:value="form.data.ruleId"
+                    :value="form.data.ruleId"
+                    entity="rule"
+                    :label="$tc('ruleId')">
+            </sw-entity-single-select>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data && form.data.active"
+                    type="checkbox"
+                    v-model:value="form.data.ignoreWarnings"
+                    checked="form.data.ignoreWarnings ? 'checked' : false"
+                    :label="$tc('ignoreWarnings')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data && form.data.active"
+                    type="checkbox"
+                    v-model:value="form.data.activePromotionalPrice"
+                    checked="form.data.activePromotionalPrice ? 'checked' : false"
+                    :label="$tc('activePromotionalPrice')"
+            ></sw-switch-field>
+        </div>
+
+
+        <div>
+            <sw-button
+                    @click="saveData"
+                    variant="primary"
+                    size="small">
+                {{ $tc('save') }}
+            </sw-button>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+<?php
+
+MLI18n::gi()->{'sModuleNameIdealo'} = 'idealo';
+MLI18n::gi()->{'ML_COMPARISON_SHOPPING_TEXT_NO_CSV_TABLE_YET'} = 'ML_COMPARISON_SHOPPING_TEXT_NO_CSV_TABLE_YET';

@@ -1,0 +1,29 @@
+{% block swag_amazon_pay_configuration_card_logging_content_download %}
+    <sw-container>
+        {% block swag_amazon_pay_configuration_card_logging_content_download_available_logfiles %}
+            <sw-multi-select
+                v-model:value="selectedLogFiles"
+                valueProperty="fileName"
+                labelProperty="fileName"
+                :label="$tc('swag-amazon-pay-configuration.logDownload.selectLabel')"
+                :options="availableLogFiles"
+                :value="selectedLogFiles"
+                :disabled="isPreparingArchive"
+                @change="onChangeFileSelection">
+            </sw-multi-select>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_logging_content_download_button %}
+            <div class="column-left">
+                <sw-button
+                    v-if="selectedLogFiles"
+                    :isLoading="isPreparingArchive"
+                    :disabled="selectedLogFiles.length < 1"
+                    @click="onDownloadLogFile">
+
+                    {{ $tc('swag-amazon-pay-configuration.logDownload.buttonDownload') }}
+                </sw-button>
+            </div>
+        {% endblock %}
+    </sw-container>
+{% endblock %}

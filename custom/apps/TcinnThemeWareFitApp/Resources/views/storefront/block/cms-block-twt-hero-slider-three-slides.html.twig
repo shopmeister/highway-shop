@@ -1,0 +1,212 @@
+{# ThemeWare® CMS block "Hero slider (3 slides)" #}
+
+{# @TODO: "twt-" prefix für Blöcke... #}
+
+{% set elementID = block.id|replace({'a':'','b':'','c':'','d':'','e':'','f':'','g':'','h':'','i':'','j':'','k':'','l':'','m':'','n':'','o':'','p':'','q':'','r':'','s':'','t':'','u':'','v':'','w':'','x':'','y':'','z':''}) %}
+{% set elementID = elementID|slice(-7) ~ block.position %}
+
+{% set columns = 1 %}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set dateNow = 'now'|date('Y-m-d H:i:s', false) %}
+
+{% set showElement1 = false %}
+{% set showElement2 = false %}
+{% set showElement3 = false %}
+
+{% set elements = 0 %}
+
+{# Check date from/until of element 1 -------------- #}
+{% set element = block.slots.getSlot('item1') %}
+
+{% set elementDateFrom = element.config.dateFrom.value %}
+{% if elementDateFrom is not empty %}
+	{% set elementDateFrom = elementDateFrom|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% set elementDateUntil = element.config.dateUntil.value %}
+{% if elementDateUntil is not empty %}
+	{% set elementDateUntil = elementDateUntil|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% if (elementDateFrom is empty and elementDateUntil is empty) or (elementDateFrom < dateNow and elementDateUntil > dateNow) or (elementDateFrom is empty and elementDateUntil > dateNow) or (elementDateFrom < dateNow and elementDateUntil is empty) %}
+	{% set showElement1 = true %}
+	{% set elements = elements + 1 %}
+{% endif %}
+
+{# Check date from/until of element 2 -------------- #}
+{% set element = block.slots.getSlot('item2') %}
+
+{% set elementDateFrom = element.config.dateFrom.value %}
+{% if elementDateFrom is not empty %}
+	{% set elementDateFrom = elementDateFrom|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% set elementDateUntil = element.config.dateUntil.value %}
+{% if elementDateUntil is not empty %}
+	{% set elementDateUntil = elementDateUntil|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% if (elementDateFrom is empty and elementDateUntil is empty) or (elementDateFrom < dateNow and elementDateUntil > dateNow) or (elementDateFrom is empty and elementDateUntil > dateNow) or (elementDateFrom < dateNow and elementDateUntil is empty) %}
+	{% set showElement2 = true %}
+	{% set elements = elements + 1 %}
+{% endif %}
+
+{# Check date from/until of element 3 -------------- #}
+{% set element = block.slots.getSlot('item3') %}
+
+{% set elementDateFrom = element.config.dateFrom.value %}
+{% if elementDateFrom is not empty %}
+	{% set elementDateFrom = elementDateFrom|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% set elementDateUntil = element.config.dateUntil.value %}
+{% if elementDateUntil is not empty %}
+	{% set elementDateUntil = elementDateUntil|date('Y-m-d H:i:s', false) %}
+{% endif %}
+
+{% if (elementDateFrom is empty and elementDateUntil is empty) or (elementDateFrom < dateNow and elementDateUntil > dateNow) or (elementDateFrom is empty and elementDateUntil > dateNow) or (elementDateFrom < dateNow and elementDateUntil is empty) %}
+	{% set showElement3 = true %}
+	{% set elements = elements + 1 %}
+{% endif %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{% block block_twt_hero_slider_three_slides %}
+	<div class="col-md-12" {#data-cms-element-id="{{ block.id }}"#}>
+
+		{# ThemeWare: Check if block ist empty or has visible slides #}
+		{% if elements == 0 %}
+			{# @TODO: Hide block... #}
+			{# Show hint as block is empty #}
+			{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+				type: 'secondary',
+				content: 'twt.cms.heroSlider.empty'|trans|sw_sanitize
+			} %}
+
+		{% elseif elements < 2 %}
+			{# Show hint as block has not enough slides > min 2 #}
+			{% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+				type: 'info',
+				content: 'twt.cms.heroSlider.notEnough'|trans|sw_sanitize
+			} %}
+
+		{% else %}
+			{# Show slides as block is NOT empty #}
+			{# ThemeWare® Bootstrap slider: https://getbootstrap.com/docs/4.1/components/carousel/ #}
+			<div id="twt-hero-slider-{{ elementID }}" class="twt-hero-slider three-slides base-slider image-slider carousel slide" data-bs-ride="carousel" data-bs-pause="hover">
+
+				{# Show indicators #}
+				<div class="tns-nav carousel-indicators">
+					{% set count = 0 %}
+					{% set total = 0 %}
+					{% set slides = [showElement1, showElement2, showElement3] %}
+
+					{# Berechne die Gesamtanzahl der sichtbaren Elemente #}
+					{% for showElement in slides %}
+						{% if showElement %}
+							{% set total = total + 1 %}
+						{% endif %}
+					{% endfor %}
+
+					{# Buttons für jedes sichtbare Slide-Element erstellen #}
+					{% for showElement in slides %}
+						{% if showElement %}
+							{% set count = count + 1 %}
+							<button
+								type="button"
+								data-bs-target="#twt-hero-slider-{{ elementID }}"
+								data-bs-slide-to="{{ count -1 }}"
+								{% if count == 1 %}class="active" aria-current="true"{% endif %}
+								aria-label="{{ 'twt.cms.heroSlider.sliderDotLabel'|trans({ '%index%': count, '%total%': total })|striptags }}"
+								tabindex="-1"
+							>
+							</button>
+						{% endif %}
+					{% endfor %}
+				</div>
+
+				{# Show slides #}
+				<div class="carousel-inner twt-hero-slider-item-container">
+					{% set count = -1 %}
+
+					{# Slide 1 #}
+					{% if showElement1 %}
+						{% set count = count +1 %}
+						{% block block_twt_hero_slider_three_slides_slot_item1 %}
+							{% set element = block.slots.getSlot('item1') %} {# Set var for cms element #}
+							<div
+								class="twt-hero-slider-item carousel-item {% if count == 0 %}active{% endif %}"
+								data-cms-element-id="{{ element.id }}"
+								data-bs-interval="{{ element.config.slideInterval.value * 1000 }}"
+							>
+								{% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+							</div>
+						{% endblock %}
+					{% endif %}
+
+					{# Slide 2 #}
+					{% if showElement2 %}
+						{% set count = count +1 %}
+						{% block block_twt_hero_slider_three_slides_slot_item2 %}
+							{% set element = block.slots.getSlot('item2') %} {# Set var for cms element #}
+							<div
+								class="twt-hero-slider-item carousel-item {% if count == 0 %}active{% endif %}"
+								data-cms-element-id="{{ element.id }}"
+								data-bs-interval="{{ element.config.slideInterval.value * 1000 }}"
+							>
+								{% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+							</div>
+						{% endblock %}
+					{% endif %}
+
+					{# Slide 3 #}
+					{% if showElement3 %}
+						{% set count = count +1 %}
+						{% block block_twt_hero_slider_three_slides_slot_item3 %}
+							{% set element = block.slots.getSlot('item3') %} {# Set var for cms element #}
+							<div
+								class="twt-image-slider-item carousel-item {% if count == 0 %}active{% endif %}"
+								data-cms-element-id="{{ element.id }}"
+								data-bs-interval="{{ element.config.slideInterval.value * 1000 }}"
+							>
+								{% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+							</div>
+						{% endblock %}
+					{% endif %}
+				</div>
+
+				{# Show controls #}
+				<div class="base-slider-controls">
+					<button
+						class="carousel-control-prev base-slider-controls-prev image-slider-controls-prev is-nav-prev-outside"
+						type="button"
+{#						href="#twt-hero-slider-{{ elementID }}"#}
+{#						role="button"#}
+						data-bs-target="#twt-hero-slider-{{ elementID }}"
+						data-bs-slide="prev"
+						aria-label="{{ 'twt.cms.heroSlider.previous'|trans|striptags }}"
+					>
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					</button>
+
+					<button
+						class="carousel-control-next base-slider-controls-next image-slider-controls-next is-nav-next-outside"
+						type="button"
+{#						href="#twt-hero-slider-{{ elementID }}"#}
+{#						role="button"#}
+						data-bs-target="#twt-hero-slider-{{ elementID }}"
+						data-bs-slide="next"
+						aria-label="{{ 'twt.cms.heroSlider.next'|trans|striptags }}"
+					>
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					</button>
+				</div>
+
+			</div>
+		{% endif %}
+	
+	</div>
+{% endblock %}

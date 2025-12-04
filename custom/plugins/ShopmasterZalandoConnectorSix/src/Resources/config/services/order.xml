@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\OrderDeliverySpecificationService">
+            <argument type="tagged_iterator" tag="sm.zalando_order"/>
+            <argument type="tagged_iterator" tag="sm.zalando_order.update_delivery_status"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\Specification\Shopware\OrderIsFromZalando">
+            <tag name="sm.zalando_order"/> <!-- for general zalando orders checking -->
+        </service>
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\Specification\Shopware\OrderStatusIsSync">
+            <tag name="sm.zalando_order"/>
+        </service>
+
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\Specification\Shopware\OrderDeliveryStatusCheck">
+            <tag name="sm.zalando_order.update_delivery_status"/> <!-- only for order delivery status  -->
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Order\DeliveryStatusOrderSetter">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service"
+                      id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\OrderDeliverySpecificationService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Order\OrderDeliveryStatusHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\OrderDeliveryStatusUpdateService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\MessageQueue\Handler\Order\ReturnLineItemHandler">
+            <tag name="messenger.message_handler"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Order\LineItem\LineItemService"/>
+            <argument type="service" id="order.repository"/>
+        </service>
+
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\OrderDeliveryStatusUpdateService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Order\ApiZalandoOrderService"/>
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\TrackingNumbersService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Order\LineItem\LineItemService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\Backend\OrderDataBackendService">
+            <argument type="service" id="order.repository"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\DeliveryStatus\TrackingNumbersService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+        </service>
+
+        <service id="ShopmasterZalandoConnectorSix\Services\Order\LineItem\LineItemService">
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Logger"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Api\Zalando\Order\ApiZalandoOrderService"/>
+            <argument type="service" id="ShopmasterZalandoConnectorSix\Services\Config\ConfigService"/>
+        </service>
+
+
+    </services>
+</container>

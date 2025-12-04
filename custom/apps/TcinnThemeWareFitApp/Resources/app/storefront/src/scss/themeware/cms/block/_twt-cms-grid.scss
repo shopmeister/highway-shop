@@ -1,0 +1,450 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS block "Grid .."
+	==================================================
+    General styling for cms grid blocks
+*/
+
+@if $twt-cms-block-grid-classes == 2 {
+
+    // --- Grid "ONE" ---------------------------------------------------
+
+    .cms-block-twt-grid-one {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right {
+            height: 100%;
+        }
+    }
+
+    @include media-breakpoint-down(md) { // max 767.98px
+        .cms-block-twt-grid-one {
+            .left-top {
+                margin-bottom: var(--bs-gutter-y);
+            }
+
+            //.left-bottom {
+            //    margin-bottom: var(--bs-gutter-y);
+            //}
+
+            .right {
+                height: auto;
+            }
+        }
+    }
+
+
+    // --- Grid "ONE" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-one-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left {
+            height: 100%;
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    @include media-breakpoint-down(md) { // max 767.98px
+        .cms-block-twt-grid-one-swapped {
+            .left {
+                height: auto;
+                //margin-bottom: var(--bs-gutter-y);
+            }
+
+            .right-top {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+    }
+
+
+    // --- Grid "TWO" ---------------------------------------------------
+
+    .cms-block-twt-grid-two {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-two {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-two {}
+    //}
+
+
+    // --- Grid "TWO" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-two-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-two-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-two-swapped {}
+    //}
+
+
+    // --- Grid "THREE" ---------------------------------------------------
+
+    .cms-block-twt-grid-three {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right {
+            height: 100%;
+        }
+
+        //.right-top {
+        //    margin-bottom: var(--bs-gutter-y);
+        //}
+
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-three {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-three {}
+    //}
+
+
+    // --- Grid "THREE" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-three-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left {
+            height: 100%;
+        }
+
+        //.left-top {
+        //    margin-bottom: var(--bs-gutter-y);
+        //}
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-three-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-three-swapped {}
+    //}
+
+
+    // --- Grid "FOUR" ---------------------------------------------------
+
+    .cms-block-twt-grid-four {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+
+        .right {
+            height: 100%;
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-four {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-four {}
+    //}
+
+
+    // --- Grid "FOUR" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-four-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left {
+            height: 100%;
+        }
+
+        .right-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-four-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-four-swapped {}
+    //}
+
+
+    // --- Grid "FIVE" ---------------------------------------------------
+
+    .cms-block-twt-grid-five {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-five {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-five {}
+    //}
+
+
+    // --- Grid "FIVE" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-five-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-five-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-five-swapped {}
+    //}
+
+
+    // --- Grid "SIX" ---------------------------------------------------
+
+    .cms-block-twt-grid-six {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-six {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-six {}
+    //}
+
+
+    // --- Grid "SIX" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-six-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-six-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-six-swapped {}
+    //}
+
+
+    // --- Grid "MODERN" ---------------------------------------------------
+
+    .cms-block-twt-grid-modern {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+
+        .right-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+    }
+
+    @include media-breakpoint-down(md) { // max 767.98px
+        .cms-block-twt-grid-modern {
+            .left-top {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-modern {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-modern {}
+    //}
+
+
+    // --- Grid "MODERN" (swapped) ---------------------------------------------------
+
+    .cms-block-twt-grid-modern-swapped {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+
+        .left-top {
+            margin-bottom: var(--bs-gutter-y);
+        }
+
+        .right-top {
+            &.cms-row {
+                margin-bottom: var(--bs-gutter-y);
+            }
+        }
+    }
+
+    @include media-breakpoint-down(md) { // max 767.98px
+        .cms-block-twt-grid-modern-swapped {
+            .right-top {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    //@include media-breakpoint-down(sm) { // max 575.98px
+    //    .cms-block-twt-grid-modern-swapped {}
+    //}
+
+    //@include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+    //    .cms-block-twt-grid-modern-swapped {}
+    //}
+
+
+    // --- Shopware default grid block ---------------------------------------------------
+
+    .cms-block-image-simple-grid {
+        .cms-row {
+            --bs-gutter-x: 40px;
+            --bs-gutter-y: 40px;
+        }
+    }
+
+    .cms-block-image-simple-grid .left-top {
+        margin-bottom: var(--bs-gutter-y);
+    }
+
+    @include media-breakpoint-down(md) { // max 767.98px
+        .cms-block-image-simple-grid .left-bottom {
+            //margin-bottom: var(--bs-gutter-y);
+            margin-bottom: 0;
+        }
+    }
+}

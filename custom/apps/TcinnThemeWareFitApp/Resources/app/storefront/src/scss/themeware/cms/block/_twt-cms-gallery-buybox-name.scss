@@ -1,0 +1,137 @@
+/*
+   _____ _  _ ___ __  ________      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\__|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® CMS block 'Image gallery and buy box (with product name)'
+	==================================================
+
+    - cms-block-twt-gallery-buybox-name
+    - cms-block-twt-gallery-buybox-name-one
+    - cms-block-twt-gallery-buybox-name-two
+    - cms-block-twt-gallery-buybox-name-three
+*/
+
+// @TODO... #performance
+
+div[class*="cms-block-twt-gallery-buybox-name"] {
+    // ThemeWare: Fix sticky "Image gallery and buy box"
+    @if $twt-product-detail-sticky-gallery-buybox != 1 {
+        overflow: inherit;
+    }
+
+    .product-detail-headline {
+        // Overwrite 3rem from the div to 0.5rem, since the h1 has 1rem and we use a spacing of 1.5rem in the buybox
+        margin-bottom: 0.5rem; // $twt-basegrid-spacing
+    }
+
+    //.product-detail-buy {
+    //    margin-bottom: 0;
+    //}
+}
+
+// "Image gallery and buy box (with product name)"
+.cms-block-twt-gallery-buybox-name {
+}
+
+// "Image gallery and buy box (with product name)" + Slot below buy box
+.cms-block-twt-gallery-buybox-name-one {
+    .right-bottom {
+        margin-top: 2rem;
+    }
+
+    .product-detail-media {
+        margin-bottom: 0;
+    }
+}
+
+// "Image gallery and buy box (with product name)" + Slot below gallery
+.cms-block-twt-gallery-buybox-name-two {
+    .left-bottom {
+        margin-top: 2rem;
+    }
+}
+
+// "Image gallery and buy box (with product name)" + Slot below buy box and gallery
+.cms-block-twt-gallery-buybox-name-three {
+    .left-bottom {
+        margin-top: 2rem;
+    }
+
+    .right-bottom {
+        margin-top: 2rem;
+    }
+}
+
+// "Image gallery and buy box (with product name)" + Slot below gallery
+// "Image gallery and buy box (with product name)" + Slot below buy box and gallery
+.cms-block-twt-gallery-buybox-name-two,
+.cms-block-twt-gallery-buybox-name-three {
+    .product-detail-media {
+        margin-bottom: 2rem;
+
+        @include media-breakpoint-up(lg) { // min 992px
+            margin-bottom: 0;
+        }
+    }
+}
+
+// ThemeWare: Sticky "Image gallery and buy box"
+// General styling can be found in '_product-detail.scss'
+@if $twt-product-detail-sticky-gallery-buybox != 1 {
+    .is-ctl-product:not(.modal-open) {
+        .cms-block-twt-gallery-buybox-name,
+        .cms-block-twt-gallery-buybox-name-one {
+            .product-detail-media .cms-element-image-gallery,
+            .product-detail-buy .twt-product-detail-buy-container {
+                position: sticky;
+                transition: top .3s;
+
+                @if $twt-header-type == 10 {
+                    top: 160px; // #customHeader
+                } @else {
+                    top: 30px;
+                }
+            }
+        }
+
+        .cms-block-twt-gallery-buybox-name-two,
+        .cms-block-twt-gallery-buybox-name-three {
+            .product-detail-media .twt-product-detail-media-container,
+            .product-detail-buy .twt-product-detail-buy-container {
+                position: sticky;
+                transition: top .3s;
+
+                @if $twt-header-type == 10 {
+                    top: 160px; // #customHeader
+                } @else {
+                    top: 30px;
+                }
+            }
+        }
+
+    }
+
+    // Header is sticky
+    .is-ctl-product.is-sticky-nav-main:not(.modal-open) {
+        .cms-block-twt-gallery-buybox-name,
+        .cms-block-twt-gallery-buybox-name-one {
+            .product-detail-media .cms-element-image-gallery,
+            .product-detail-buy .twt-product-detail-buy-container {
+                top: strip-unit($twt-sticky-nav-main-height) + 30px;
+            }
+        }
+
+        .cms-block-twt-gallery-buybox-name-two,
+        .cms-block-twt-gallery-buybox-name-three {
+            .product-detail-media .twt-product-detail-media-container,
+            .product-detail-buy .twt-product-detail-buy-container {
+                top: strip-unit($twt-sticky-nav-main-height) + 30px;
+            }
+        }
+
+    }
+}

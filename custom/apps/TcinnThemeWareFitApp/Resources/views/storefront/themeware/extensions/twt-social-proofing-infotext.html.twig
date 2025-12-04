@@ -1,0 +1,51 @@
+{# ThemeWare 'Social proofing infotext' (Extension container) #}
+{#
+    Create container and include text
+
+    @Storefront/storefront/themeware/extensions/twt-social-proofing-infotext.html.twig
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{% set twtSocialProofingThreshold = theme_config('twt-social-proofing-threshold') %}
+{% set twtSocialProofingVisibility = theme_config('twt-social-proofing-visibility') %}
+
+{% set twtSocialProofingInfotextFontWeight = theme_config('twt-social-proofing-infotext-font-weight') %}
+{% set twtSocialProofingInfotextIconShow = theme_config('twt-social-proofing-infotext-icon-show') %}
+
+{% set icon = 'twt.extension.socialProofing.icon'|trans %}
+
+{% set sales = product.sales %}
+{% if dockware %} {# @DEV #}
+    {% set sales = random(999, 9999) %}
+{% endif %}
+
+{% set topseller = product.markAsTopseller %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block twt_social_proofing_infotext %}
+    {# ThemeWare: 'Social proofing infotext' (product detail) #}
+
+    {% if sales > twtSocialProofingThreshold and (twtSocialProofingVisibility == 1 or twtSocialProofingVisibility == 2 and topseller) %}
+        {# @deprecated: Classes is-{{ position }} and {{ position }} will be removed with a future update. #}
+        <div class="twt-social-proofing-infotext position-{{ position }} is-{{ position }} {{ position }}">
+            {# Icon #}
+            {% if twtSocialProofingInfotextIconShow == 2 %}
+                {% if twtSocialProofingInfotextFontWeight == 'bold' %}
+                    {% sw_include '@Storefront/storefront/utilities/icon.html.twig' with { name: icon, size: 'xs', pack: 'solid' } %}
+                {% else %}
+                    {% sw_include '@Storefront/storefront/utilities/icon.html.twig' with { name: icon, size: 'xs' } %}
+                {% endif %}
+            {% endif %}
+
+            {# Text #}
+            <span class="twt-social-proofing text small">
+                {% sw_include '@Storefront/storefront/themeware/includes/twt-social-proofing-text.html.twig' ignore missing with {
+                    sales: sales,
+                    type: type
+                } %}
+            </span>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,53 @@
+{% block sm_zalando_connector_extension_settings_stockSync %}
+    <div v-if="form.data">
+{#        <div>#}
+{#            stock sync {{ form }}#}
+{#        </div>#}
+{#        <br>#}
+        <div>
+            <sw-switch-field
+                    v-if="form.data"
+                    type="checkbox"
+                    v-model:value="form.data.active"
+                    checked="form.data.active ? 'checked' : false"
+                    :label="$tc('activestock')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data.active"
+                    type="checkbox"
+                    v-model:value="form.data.isHoliday"
+                    checked="form.data.isHoliday ? 'checked' : false"
+                    :label="$tc('isHoliday')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-switch-field
+                    v-if="form.data.active"
+                    type="checkbox"
+                    v-model:value="form.data.isIndividualStock"
+                    checked="form.data.isIndividualStock ? 'checked' : false"
+                    :label="$tc('isIndividualStock')"
+            ></sw-switch-field>
+        </div>
+        <div>
+            <sw-number-field
+                    v-if="form.data.active"
+{#                    type="number"#}
+                    {#                    allow-empty #}
+                    v-model:value="form.data.stockCache"
+                    :min="0"
+                    :label="$tc('stockCache')"
+            ></sw-number-field>
+        </div>
+    </div>
+    <div>
+        <sw-button
+                @click="saveData"
+                variant="primary"
+                size="small">
+            {{ $tc('save') }}
+        </sw-button>
+    </div>
+{% endblock %}

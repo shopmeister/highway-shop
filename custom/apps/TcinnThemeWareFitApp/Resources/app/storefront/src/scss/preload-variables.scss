@@ -1,0 +1,1780 @@
+﻿/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    preload-variables.scss
+    ======================================
+    Set theme default variables for "storefront:hot-proxy".
+
+    Info: Loaded via theme.json (1.)
+*/
+
+@import 'themeware/functions/base'; // is moved from base.scss to preloaded our functions
+
+// Layout > Main colors ----------------------------------------------------------------
+$twt-color-brand-primary-light: #166d9a !default;
+$twt-color-brand-primary-dark: #104d6e !default;
+$twt-color-brand-secondary-light: #4b5867 !default;
+$twt-color-brand-secondary-dark: #353e49 !default;
+
+// Layout > Typography ----------------------------------------------------------------
+$twt-font-size-base: 16 !default;
+$twt-font-size-h1: 36 !default;
+$twt-font-size-h2: 28 !default;
+$twt-font-size-h3: 24 !default;
+$twt-font-size-h4: 20 !default;
+$twt-font-size-h5: 16 !default;
+$twt-font-size-h6: 14 !default;
+
+$twt-link-color: $sw-color-brand-primary !default;
+
+$twt-font-weight-light: 400 !default;
+$twt-font-weight-normal: 400 !default;
+$twt-font-weight-bold: 600 !default;
+$twt-google-font-import: 1 !default;
+$twt-font-family-base-font-weight: 400,600 !default;
+$twt-font-family-headline-font-weight: 400,600 !default;
+$twt-sticky-nav-main-logo-image: none !default;
+$twt-shopping-experiences-header-logo-image: none !default;
+
+$twt-iconset: default !default;
+$twt-icon-cart: bag !default;
+$twt-icon-newsletter-submit: envelope !default;
+
+// Layout > eCommerce ----------------------------------------------------------------
+$twt-color-details-button: #f9f9f9 !default;
+
+// Layout > Layout ----------------------------------------------------------------
+$twt-container-layout: 2 !default;
+$twt-border-radius: 2 !default;
+$twt-background-image: none !default;
+$twt-background-image-show: 2 !default;
+$twt-background-image-size: auto !default;
+$twt-background-image-position: left top !default;
+$twt-background-image-repeat: repeat !default;
+$twt-background-image-attachment: scroll !default;
+
+$twt-container-max-width: 1400 !default; // body-container
+
+$twt-container-layout-margin-top-bottom: 30 !default; // body-container, boxed
+$twt-container-layout-box-shadow: 0 0 30px !default; // body-container, boxed
+$twt-container-layout-box-shadow-color: rgba(0, 0, 0, 0.3) !default; // body-container, boxed
+
+// Non-CMS pages
+$twt-container-padding-left-right: 7 !default; // container > div
+$twt-container-main-margin-top: 20 !default;
+$twt-container-main-margin-bottom: 20 !default;
+$twt-container-main-padding-phone-xs: 8 !default;
+$twt-container-main-padding-phone: 15 !default;
+$twt-container-main-padding-tablet: 20 !default;
+$twt-container-main-padding: 30 !default;
+$twt-container-main-border-color: #eeeeee !default; // $gray-200
+$twt-container-main-background-color: #ffffff !default;
+
+// Layout > Badges ----------------------------------------------------------------
+$twt-product-badges-corner-type: 3 !default;
+$twt-product-badges-font-size: 16 !default;
+
+$twt-product-badges-stock-badge-show: 2 !default;
+//$twt-product-badges-stock-badge-threshold-lowstock > no css
+//$twt-product-badges-stock-badge-threshold-highstock > no css
+$twt-product-badges-stock-badge-coloration: 1 !default;
+$twt-product-badges-stock-badge-background-color: #f1c40f !default;
+$twt-product-badges-stock-badge-icon-show: 1 !default;
+// @TODO: add more colors for all 3 steps...
+
+$twt-product-badges-sold-badge-show: 2 !default;
+$twt-product-badges-sold-badge-coloration: 1 !default;
+$twt-product-badges-sold-badge-background-color: #e74c3c !default;
+$twt-product-badges-sold-badge-icon-show: 1 !default;
+
+$twt-product-badges-shipping-free-badge-show: 2 !default;
+$twt-product-badges-shipping-free-badge-coloration: 1 !default;
+$twt-product-badges-shipping-free-badge-background-color: #4aa3df !default;
+$twt-product-badges-shipping-free-badge-icon-show: 1 !default;
+
+$twt-product-badges-discount-badge-show: 2 !default;
+$twt-product-badges-discount-badge-type: 2 !default;
+$twt-product-badges-discount-badge-round: 1 !default;
+$twt-product-badges-discount-badge-coloration: 1 !default;
+$twt-product-badges-discount-badge-background-color: #e74c3c !default;
+
+$twt-product-badges-topseller-badge-show: 2 !default;
+$twt-product-badges-topseller-badge-coloration: 1 !default;
+$twt-product-badges-topseller-badge-background-color: #f1c40f !default;
+$twt-product-badges-topseller-badge-icon-show: 1 !default;
+
+$twt-product-badges-new-badge-show: 2 !default;
+$twt-product-badges-new-badge-coloration: 1 !default;
+$twt-product-badges-new-badge-background-color: #2ecc71 !default;
+$twt-product-badges-new-badge-icon-show: 1 !default;
+
+// Layout > Buttons ----------------------------------------------------------------
+$twt-color-primary-button: $sw-color-brand-primary !default;
+$twt-color-secondary-button: $sw-color-brand-secondary !default;
+$twt-color-light-button: #f9f9f9 !default;
+
+// Layout > Modal ----------------------------------------------------------------
+$twt-modal-backdrop-color: rgba(0, 0, 0, 0.5) !default;
+$twt-modal-backdrop-effect-blur: 0 !default;
+
+// Layout > Rating ----------------------------------------------------------------
+$twt-product-review-point-blank-color: #bcc1c7 !default; // $gray-300
+$twt-product-review-point-color: #fedc70 !default;
+
+// Layout > Tables ----------------------------------------------------------------
+$twt-table-body-color: #333333 !default;
+$twt-table-body-border-color: #eeeeee !default; // $gray-200
+$twt-table-body-background-color: #ffffff !default;
+$twt-table-accent-background-color: rgba(0, 0, 0, 0.05) !default;
+$twt-table-hover-color: $twt-table-body-color !default;
+$twt-table-hover-background-color: rgba(0, 0, 0, 0.075) !default;
+$twt-table-active-background-color: $twt-table-hover-background-color !default;
+
+$twt-table-head-color: #ffffff !default;
+$twt-table-head-background-color: $sw-color-brand-primary !default;
+
+$twt-table-dark-color: #ffffff !default; // @deprecated > disabled
+$twt-table-dark-border-color: #5b6770 !default; // @deprecated > disabled
+$twt-table-dark-background-color: #4a545b !default; // @deprecated > disabled
+$twt-table-dark-accent-background-color: rgba(255, 255, 255, 0.05) !default; // @deprecated > disabled
+$twt-table-dark-hover-color: $twt-table-dark-color !default; // @deprecated > disabled
+$twt-table-dark-hover-background-color: rgba(255, 255, 255, 0.075) !default; // @deprecated > disabled
+// table-dark-active-bg ?
+
+$twt-table-border-color: #dddddd !default; // @deprecated > disabled
+$twt-table-body-border-bottom-color: rgba(0, 0, 0, 0) !default; // @deprecated > disabled
+$twt-table-head-border-bottom-color: $twt-table-body-border-color !default; // @deprecated > disabled
+$twt-table-dark-head-border-bottom-color: $twt-table-dark-border-color !default; // @deprecated > disabled
+
+// Header > Layout ----------------------------------------------------------------
+$twt-header-type: 1 !default;
+$twt-header-width: 1 !default;
+$twt-header-height: 40 !default;
+$twt-header-margin-top: 1 !default;
+$twt-header-padding-top: 10 !default;
+$twt-header-padding-bottom: 20 !default;
+
+$twt-header-background-color-desktop: #ffffff !default;
+$twt-header-actions-background-color: rgba(255, 255, 255, 0) !default;
+
+$twt-header-background-image: none !default;
+$twt-header-background-image-show: 2 !default;
+$twt-header-background-image-size: auto !default;
+$twt-header-background-image-position: left top !default;
+$twt-header-background-image-repeat: repeat !default;
+$twt-header-background-image-attachment: scroll !default;
+
+$twt-header-dropdown-font-size: 14 !default;
+$twt-header-dropdown-color: #111111 !default;
+$twt-header-dropdown-color-hover: #135d84 !default;
+$twt-header-dropdown-border-color: #e0e0e0 !default;
+$twt-header-dropdown-background-color: #ffffff !default;
+
+// Header > Logo ----------------------------------------------------------------
+$twt-header-logo-type: 1 !default;
+$twt-header-logo-width: 220 !default;
+$twt-header-logo-height: auto !default;
+$twt-header-logo-margin-top: 1 !default;
+$twt-header-logo-hover-type: 2 !default;
+
+// Header > Text logo ----------------------------------------------------------------
+//$twt-textlogo-content > no css
+$twt-textlogo-fill: $sw-color-brand-primary !default;
+//$twt-textlogo-font-family > no css
+$twt-textlogo-font-size: 24 !default; // @TODO: unused
+$twt-textlogo-font-weight: bold !default;
+
+// Header > Top bar ----------------------------------------------------------------
+$twt-header-top-bar-show: 2 !default;
+
+$twt-header-top-bar-width: 0 !default;
+
+$twt-header-top-bar-color: #555555 !default;
+$twt-header-top-bar-color-hover: #135d84 !default;
+$twt-header-top-bar-color-hotline: #555555 !default;
+$twt-header-top-bar-border-color: #ffffff !default;
+$twt-header-top-bar-background-color: #ffffff !default;
+$twt-header-top-bar-font-size: 14 !default;
+$twt-header-top-bar-line-height: 30 !default;
+$twt-header-top-bar-height: $twt-header-top-bar-line-height !default;
+$twt-header-top-bar-justify-content: flex-end !default;
+$twt-header-top-bar-icon-font-size: 1 !default;
+
+$twt-header-top-bar-hotline-show: 1 !default;
+$twt-header-top-bar-hotline-label-show: 1 !default;
+
+$twt-header-top-bar-languages-menu-show: 2 !default;
+$twt-header-top-bar-languages-menu-text-show: 2 !default;
+$twt-languages-menu-additional-flags: 1 !default;
+$twt-languages-menu-additional-flags-extended: 1 !default;
+$twt-languages-menu-shopware-language-pack: 1 !default;
+
+$twt-header-top-bar-currencies-menu-show: 2 !default;
+$twt-header-top-bar-currencies-menu-text-show: 2 !default;
+
+$twt-header-top-bar-service-menu-show: 2 !default;
+$twt-header-top-bar-service-menu-text-show: 2 !default;
+
+// Header > Search ----------------------------------------------------------------
+$twt-header-search-show: 2 !default;
+
+$twt-header-search-type: 1 !default;
+$twt-header-search-input-corner-type: 1 !default;
+$twt-header-search-input-border-radius: 10 !default;
+
+$twt-header-search-input-color: #333333 !default;
+$twt-header-search-input-border-color: #e4e7ea !default;
+$twt-header-search-input-background-color: #ffffff !default;
+$twt-header-search-btn-icon-color: #ffffff !default;
+$twt-header-search-btn-border-color: #135d84 !default;
+$twt-header-search-btn-background-color: #135d84 !default;
+
+$twt-header-search-text-align: left !default;
+
+$twt-header-search-max-width: 500 !default;
+$twt-header-search-width-desktop: 100% !default;
+
+$twt-header-search-flyout-container-width: 1 !default;
+$twt-header-search-flyout-max-width: 500 !default;
+$twt-header-search-flyout-max-width-desktop: 100% !default;
+$twt-header-search-flyout-padding: 15 !default;
+$twt-header-search-flyout-background-color: #0e557b !default;
+
+$twt-header-search-fullscreen-backdrop-color: rgba(0, 0, 0, 0.9) !default;
+$twt-header-search-fullscreen-backdrop-effect-blur: 0 !default;
+
+// Header > Action buttons ----------------------------------------------------------------
+$twt-header-actions-btn-text-show: 5 !default;
+$twt-header-actions-btn-icon-position: 1 !default;
+$twt-header-actions-btn-corner-type: 2 !default;
+
+$twt-header-actions-btn-font-size: 14 !default;
+$twt-header-actions-btn-font-weight: normal !default;
+$twt-header-actions-btn-line-height: 35 !default;
+$twt-header-actions-btn-icon-font-size: 14 !default;
+$twt-header-actions-btn-color: #333333 !default;
+$twt-header-actions-btn-color-hover: #135d84 !default;
+$twt-header-actions-btn-icon-color: #333333 !default;
+$twt-header-actions-btn-icon-color-hover: #135d84 !default;
+$twt-header-actions-btn-border-color: #e4e7ea !default;
+$twt-header-actions-btn-border-color-hover: #e6e6e6 !default;
+$twt-header-actions-btn-background-color: #fff !default;
+$twt-header-actions-btn-background-color-hover: #f6f6f6 !default;
+
+$twt-header-actions-wishlist-btn-badge-background-color: $sw-color-brand-primary !default;
+
+$twt-header-actions-account-menu-btn-badge-show: 1 !default;
+$twt-header-actions-account-menu-btn-badge-background-color: $sw-color-brand-primary !default;
+
+$twt-header-actions-cart-btn-total-show: 6 !default;
+$twt-header-actions-cart-btn-badge-show: 3 !default;
+$twt-header-actions-cart-btn-text-show: 5 !default;
+$twt-header-actions-cart-btn-separator-show: 1 !default;
+$twt-header-actions-cart-btn-font-weight: normal !default;
+$twt-header-actions-cart-btn-color: #333333 !default;
+$twt-header-actions-cart-btn-color-hover: #135d84 !default;
+$twt-header-actions-cart-btn-icon-color: #333333 !default;
+$twt-header-actions-cart-btn-icon-color-hover: #135d84 !default;
+$twt-header-actions-cart-btn-border-color: #e4e7ea !default;
+$twt-header-actions-cart-btn-border-color-hover: #e6e6e6 !default;
+$twt-header-actions-cart-btn-separator-border-color: #e4e7ea !default;
+$twt-header-actions-cart-btn-background-color: #eef2f5 !default;
+$twt-header-actions-cart-btn-background-color-hover: #ffffff !default;
+$twt-header-actions-cart-btn-badge-background-color: $sw-color-brand-primary !default;
+
+// Header > Top navigation ----------------------------------------------------------------
+$twt-nav-main-show: 2 !default;
+
+$twt-nav-main-home-link-show: 2 !default;
+$twt-nav-main-home-link: 1 !default;
+$twt-nav-main-arrows-show: 1 !default;
+$twt-nav-main-hover-type: 1 !default;
+$twt-nav-main-height: 60 !default;
+$twt-nav-main-padding: 17 !default;
+$twt-nav-main-padding-bottom: 1 !default;
+$twt-nav-main-margin-left: 1 !default;
+$twt-nav-main-margin-right: 1 !default;
+
+$twt-nav-main-width: 0 !default;
+
+$twt-nav-main-background-color: #ffffff !default;
+$twt-nav-main-border: #cccccc !default;
+$twt-nav-main-border-bottom-color: #135d84 !default;
+$twt-nav-main-border-bottom-color-hover: #135d84 !default;
+
+$twt-nav-main-font-family: 1 !default;
+// @TODO: border-bottom active ?!
+$twt-nav-main-font-size: 18 !default;
+$twt-nav-main-font-weight: bold !default;
+// @TODO: font-weight hover ?!
+$twt-nav-main-font-weight-active: bold !default;
+$twt-nav-main-justify-content: flex-start !default;
+$twt-nav-main-text-transform: none !default;
+
+$twt-nav-main-home-link-color: #333333 !default;
+$twt-nav-main-home-link-color-hover: #135d84 !default;
+$twt-nav-main-home-link-color-active: #135d84 !default;
+
+$twt-nav-main-color: #333333 !default; // $twt-nav-main-link-color
+$twt-nav-main-color-hover: #135d84 !default; // $twt-nav-main-link-color-hover
+$twt-nav-main-color-active: #135d84 !default; // $twt-nav-main-link-color-active
+$twt-nav-main-icon-color: #333333 !default; // $twt-nav-main-link-icon-color
+$twt-nav-main-icon-color-hover: #135d84 !default; // $twt-nav-main-link-icon-color-hover
+$twt-nav-main-icon-color-active: #135d84 !default; // $twt-nav-main-link-icon-color-active
+$twt-nav-main-link-background-color: #ffffff !default;
+$twt-nav-main-background-color-hover: #eef2f5 !default; // $twt-nav-main-link-background-color-hover
+$twt-nav-main-background-color-active: #ffffff !default; // $twt-nav-main-link-background-color-active
+
+$twt-nav-main-link-highlighted-color: #ef2f3c !default;
+$twt-nav-main-link-highlighted-color-hover: #feecee !default;
+$twt-nav-main-link-highlighted-color-active: #ef2f3c !default;
+$twt-nav-main-link-highlighted-icon-color: #ef2f3c !default;
+$twt-nav-main-link-highlighted-icon-color-hover: #feecee !default;
+$twt-nav-main-link-highlighted-icon-color-active: #ef2f3c !default;
+$twt-nav-main-link-highlighted-background-color: rgba(255, 255, 255, 0) !default;
+$twt-nav-main-link-highlighted-background-color-hover: #ef2f3c !default;
+$twt-nav-main-link-highlighted-background-color-active: #ffffff !default;
+// @TODO: font-weight highlighted ?!
+
+// Header > Top navigation flyout ----------------------------------------------------------------
+$twt-nav-main-flyout-width: 100% !default;
+$twt-nav-main-flyout-style: 2 !default;
+$twt-nav-main-flyout-animation: 1 !default;
+
+$twt-nav-main-flyout-categories-margin-left: 10 !default;
+
+$twt-nav-main-flyout-categories-color: #333333 !default;
+$twt-nav-main-flyout-categories-color-hover: #135d84 !default;
+$twt-nav-main-flyout-categories-color-active: #135d84 !default;
+$twt-nav-main-flyout-categories-icon-color: #135d84 !default;
+$twt-nav-main-flyout-background-color: #eef2f5 !default;
+$twt-nav-main-flyout-seperator-color: #bcc1c7 !default;
+
+$twt-nav-main-flyout-font-family: 1 !default;
+$twt-nav-main-flyout-font-size: 18 !default;
+$twt-nav-main-flyout-font-weight: normal !default;
+$twt-nav-main-flyout-text-transform: none !default;
+
+$twt-nav-main-flyout-level1-font-family: 1 !default;
+$twt-nav-main-flyout-level1-font-size: 18 !default;
+$twt-nav-main-flyout-level1-font-weight: normal !default;
+$twt-nav-main-flyout-level1-text-transform: none !default;
+
+$twt-nav-main-flyout-level2-font-family: 1 !default;
+$twt-nav-main-flyout-level2-font-size: 18 !default;
+$twt-nav-main-flyout-level2-font-weight: normal !default;
+$twt-nav-main-flyout-level2-text-transform: none !default;
+
+$twt-nav-main-flyout-bar-show: 3 !default;
+$twt-nav-main-flyout-bar-padding-top-bottom: 1 !default;
+$twt-nav-main-flyout-bar-color: #135d84 !default;
+$twt-nav-main-flyout-bar-color-hover: #333333 !default;
+$twt-nav-main-flyout-bar-background-color: #e3e8ec !default;
+
+// Header > Sticky top navigation ----------------------------------------------------------------
+$twt-sticky-nav-main-show: 2 !default;
+$twt-sticky-nav-main-type: 2 !default;
+$twt-sticky-nav-main-scroll-top: 0 !default;
+$twt-sticky-nav-main-breakpoint: 6 !default; // @TODO: use "breakpoint" for equal fields...
+$twt-sticky-nav-main-height: 50 !default;
+$twt-sticky-nav-main-justify-content: center !default;
+$twt-sticky-nav-main-toggle: 1 !default; // @TODO: "toggle" vs. "show" ?!
+$twt-sticky-nav-main-cart-show: 2 !default;
+$twt-sticky-nav-main-search-show: 1 !default;
+$twt-sticky-nav-main-background-color: #ffffff !default;
+$twt-sticky-nav-main-logo-show: 2 !default;
+$twt-sticky-nav-main-logo-width: 120 !default;
+$twt-sticky-nav-main-logo-height: auto !default;
+$twt-sticky-nav-main-logo-margin-right: 20 !default;
+
+// Header > Minimal header (Checkout) ----------------------------------------------------------------
+$twt-header-minimal-fixed: 1 !default;
+$twt-header-minimal-height: 90 !default;
+$twt-header-minimal-color: #555555 !default;
+$twt-header-minimal-link-color: #555555 !default;
+$twt-header-minimal-link-color-hover: #222222 !default;
+$twt-header-minimal-border-bottom-color: #eeeeee !default; // $gray-200
+$twt-header-minimal-background-color: #fafafa !default;
+$twt-header-minimal-home-btn-color: #444444 !default;
+$twt-header-minimal-home-btn-color-hover: #666666 !default;
+$twt-header-minimal-home-btn-border-color: #e9e9e9 !default;
+$twt-header-minimal-home-btn-border-color-hover: #d4d4d4 !default;
+$twt-header-minimal-home-btn-background-color: #ffffff !default;
+$twt-header-minimal-home-btn-background-color-hover: #f1f1f1 !default;
+
+// Header > Mobile header ----------------------------------------------------------------
+$twt-header-phone-background-color: #ffffff !default;
+$twt-header-phone-nav-background-color: #ffffff !default;
+
+$twt-header-phone-btn-color: #333333 !default;
+$twt-header-phone-btn-color-hover: #135d84 !default;
+$twt-header-phone-btn-icon-color: #333333 !default;
+$twt-header-phone-btn-icon-color-hover: #135d84 !default;
+$twt-header-phone-btn-border-color: #ffffff !default;
+$twt-header-phone-btn-border-color-hover: #ffffff !default;
+$twt-header-phone-btn-background-color: #ffffff !default;
+$twt-header-phone-btn-background-color-hover: #ffffff !default;
+
+$twt-header-phone-fixed: 2 !default;
+$twt-header-height-mobile: 82 !default; // TODO
+$twt-header-logo-max-width-mobile: 160 !default;
+$twt-header-phone-nav-main-toggle-label-show: 2 !default;
+
+$twt-header-phone-type: 1 !default;
+$twt-header-phone-cart-btn-highlighting: 2 !default;
+$twt-header-phone-nav-height: 70 !default;
+$twt-header-phone-btn-corner-type: 3 !default;
+$twt-header-phone-nav-type: 1 !default;
+$twt-header-phone-nav-box-shadow: 0 0 20px !default;
+$twt-header-phone-nav-box-shadow-color: rgba(0, 0, 0, 0.1) !default;
+$twt-header-phone-search-flyout-background-color: #e4e7ea !default;
+$twt-header-phone-search-flyout-position: 2 !default;
+$twt-header-phone-logo-position: center !default;
+$twt-header-phone-btn-home: 1 !default;
+$twt-header-phone-btn-home-order: 100 !default;
+$twt-header-phone-btn-navigation-order: 200 !default;
+$twt-header-phone-btn-search-order: 300 !default;
+$twt-header-phone-btn-cart-order: 400 !default;
+$twt-header-phone-btn-wishlist-order: 500 !default;
+$twt-header-phone-btn-account-order: 600 !default;
+
+
+// Header > Full-width sticky header   #customHeader ----------------------------------------------------------------
+$twt-custom-header-nav-max-width: 1200 !default;
+
+/*
+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |b|y| |T|C|-|I|n|n|o|v|a|t|i|o|n|s|
+ +-+-+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+*/
+
+// Footer > Layout (footer-main) ----------------------------------------------------------------
+$twt-footer-margin-top: 20 !default;
+$twt-footer-padding-top: 1 !default;
+$twt-footer-padding-bottom: 1 !default;
+$twt-footer-padding: 1 !default;
+
+$twt-footer-background-color: #ffffff !default;
+
+$twt-footer-background-image: none !default;
+$twt-footer-background-image-show: 2 !default;
+$twt-footer-background-image-size: auto !default;
+$twt-footer-background-image-position: left top !default;
+$twt-footer-background-image-repeat: repeat !default;
+$twt-footer-background-image-attachment: scroll !default;
+
+$twt-footer-column-font-family: text !default;
+$twt-footer-column-font-size: 16 !default;
+$twt-footer-column-headline-font-size: 18 !default;
+$twt-footer-column-headline-font-weight: bold !default;
+$twt-footer-column-headline-text-transform: none !default;
+
+$twt-footer-grid-columns-tablet: 4 !default;
+$twt-footer-grid-columns: 3 !default;
+
+// Footer > Upper section [footerColumnsTop] ----------------------------------------------------------------
+$twt-footer-width-columns-top: 2 !default;
+$twt-footer-upper-section-margin-bottom: 0 !default;
+$twt-footer-columns-top-padding-top: 20 !default;   // twt-footer-upper-section-padding-top
+$twt-footer-columns-top-padding-right: 1 !default;  // twt-footer-upper-section-padding-right
+$twt-footer-columns-top-padding-bottom: 1 !default; // twt-footer-upper-section-padding-bottom
+$twt-footer-columns-top-padding-left: 1 !default;   // twt-footer-upper-section-padding-left
+$twt-footer-columns-top-justify-content: space-around !default;
+
+$twt-footer-column-top-color: #ffffff !default;
+$twt-footer-column-top-link-color: #ffffff !default;
+$twt-footer-column-top-link-color-hover: #eeeeee !default; // $gray-200
+$twt-footer-columns-top-background-color: #135d84 !default;
+$twt-footer-column-top-headline-color: #ffffff !default;
+$twt-footer-column-top-headline-border-color: #ffffff !default;
+
+$twt-footer-upper-section-background-image: none !default;
+$twt-footer-upper-section-background-image-show: 2 !default;
+$twt-footer-upper-section-background-image-size: auto !default;
+$twt-footer-upper-section-background-image-position: left top !default;
+$twt-footer-upper-section-background-image-repeat: repeat !default;
+$twt-footer-upper-section-background-image-attachment: scroll !default;
+
+$twt-footer-column-top-text-align: center !default;
+
+// Footer > Main section [footerColumns] (default footer) ----------------------------------------------------------------
+$twt-footer-width: 1 !default;
+$twt-footer-main-section-margin-bottom: 0 !default;
+$twt-footer-columns-padding-top: 20 !default;   // twt-footer-main-section-padding-top
+$twt-footer-columns-padding-right: 1 !default;  // twt-footer-main-section-padding-right
+$twt-footer-columns-padding-bottom: 1 !default; // twt-footer-main-section-padding-bottom
+$twt-footer-columns-padding-left: 1 !default;   // twt-footer-main-section-padding-left
+$twt-footer-justify-content: space-between !default;
+
+$twt-footer-column-color: #333333 !default;
+$twt-footer-column-link-color: #333333 !default;
+$twt-footer-column-link-color-hover: #135d84 !default;
+$twt-footer-columns-background-color: rgba(0, 0, 0, 0) !default;
+$twt-footer-column-headline-color: #135d84 !default;
+$twt-footer-column-headline-border-color: #ffffff !default;
+
+$twt-footer-main-section-background-image: none !default;
+$twt-footer-main-section-background-image-show: 2 !default;
+$twt-footer-main-section-background-image-size: auto !default;
+$twt-footer-main-section-background-image-position: left top !default;
+$twt-footer-main-section-background-image-repeat: repeat !default;
+$twt-footer-main-section-background-image-attachment: scroll !default;
+
+$twt-footer-column-text-align: left !default;
+
+// Footer > Lower section [footerColumnsBottom] ----------------------------------------------------------------
+$twt-footer-width-columns-bottom: 2 !default;
+$twt-footer-lower-section-margin-bottom: 20 !default;
+$twt-footer-columns-bottom-padding-top: 20 !default;    // twt-footer-lower-section-padding-top
+$twt-footer-columns-bottom-padding-right: 1 !default;   // twt-footer-lower-section-padding-right
+$twt-footer-columns-bottom-padding-bottom: 20 !default; // twt-footer-lower-section-padding-bottom
+$twt-footer-columns-bottom-padding-left: 1 !default;    // twt-footer-lower-section-padding-left
+$twt-footer-columns-bottom-justify-content: space-around !default;
+
+$twt-footer-column-bottom-color: #333333 !default;
+$twt-footer-column-bottom-link-color: #333333 !default;
+$twt-footer-column-bottom-link-color-hover: #135d84 !default;
+$twt-footer-columns-bottom-background-color: #eef2f5 !default;
+$twt-footer-column-bottom-headline-color: #135d84 !default;
+$twt-footer-column-bottom-headline-border-color: #135d84 !default;
+
+$twt-footer-lower-section-background-image: none !default;
+$twt-footer-lower-section-background-image-show: 2 !default;
+$twt-footer-lower-section-background-image-size: auto !default;
+$twt-footer-lower-section-background-image-position: left top !default;
+$twt-footer-lower-section-background-image-repeat: repeat !default;
+$twt-footer-lower-section-background-image-attachment: scroll !default;
+
+$twt-footer-column-bottom-text-align: center !default;
+
+// Footer > Assigning and arranging content ----------------------------------------------------------------
+$twt-footer-element-1: about !default;
+$twt-footer-element-1-toggle: 2 !default;
+$twt-footer-element-1-newcol: 2 !default;
+$twt-footer-element-1-position: 3 !default;
+$twt-footer-element-1-order: 100 !default;
+$twt-footer-element-2: hotline !default;
+$twt-footer-element-2-toggle: 2 !default;
+$twt-footer-element-2-newcol: 1 !default;
+$twt-footer-element-2-position: 1 !default;
+$twt-footer-element-2-order: 200 !default;
+$twt-footer-element-3: footernav !default;
+$twt-footer-element-3-toggle: 2 !default;
+$twt-footer-element-3-newcol: 1 !default;
+$twt-footer-element-3-position: 1 !default;
+$twt-footer-element-3-order: 300 !default;
+$twt-footer-element-4: benefits !default;
+$twt-footer-element-4-toggle: 2 !default;
+$twt-footer-element-4-newcol: 1 !default;
+$twt-footer-element-4-position: 1 !default;
+$twt-footer-element-4-order: 400 !default;
+$twt-footer-element-5: shipping !default;
+$twt-footer-element-5-toggle: 2 !default;
+$twt-footer-element-5-newcol: 1 !default;
+$twt-footer-element-5-position: 1 !default;
+$twt-footer-element-5-order: 500 !default;
+$twt-footer-element-6: communities !default;
+$twt-footer-element-6-toggle: 2 !default;
+$twt-footer-element-6-newcol: 2 !default;
+$twt-footer-element-6-position: 3 !default;
+$twt-footer-element-6-order: 600 !default;
+$twt-footer-element-7: none !default;
+$twt-footer-element-7-toggle: 2 !default;
+$twt-footer-element-7-newcol: 1 !default;
+$twt-footer-element-7-position: 1 !default;
+$twt-footer-element-7-order: 700 !default;
+$twt-footer-element-8: payment !default;
+$twt-footer-element-8-toggle: 2 !default;
+$twt-footer-element-8-newcol: 1 !default;
+$twt-footer-element-8-position: 1 !default;
+$twt-footer-element-8-order: 800 !default;
+$twt-footer-element-9: location !default;
+$twt-footer-element-9-toggle: 2 !default;
+$twt-footer-element-9-newcol: 1 !default;
+$twt-footer-element-9-position: 1 !default;
+$twt-footer-element-9-order: 900 !default;
+$twt-footer-element-10: awards !default;
+$twt-footer-element-10-toggle: 2 !default;
+$twt-footer-element-10-newcol: 1 !default;
+$twt-footer-element-10-position: 1 !default;
+$twt-footer-element-10-order: 1000 !default;
+$twt-footer-element-11: newsletter !default;
+$twt-footer-element-11-toggle: 2 !default;
+$twt-footer-element-11-newcol: 3 !default;
+$twt-footer-element-11-position: 2 !default;
+$twt-footer-element-11-order: 1100 !default;
+
+// Footer > Minimal footer (Checkout) ----------------------------------------------------------------
+$twt-footer-minimal-color: #b4b4b4 !default;
+$twt-footer-minimal-link-color: #b4b4b4 !default;
+$twt-footer-minimal-background-color: #555 !default;
+$twt-footer-minimal-service-menu-link-color: #ffffff !default;
+$twt-footer-minimal-copyright-border-top-color: #5d5d5d !default;
+$twt-footer-minimal-font-size: 14 !default;
+
+// Footer > Logos footer ----------------------------------------------------------------
+$twt-footer-logos-show: none !default;
+
+// Footer > Copyright footer ----------------------------------------------------------------
+$twt-footer-service-menu-show: 5 !default;
+$twt-footer-bottom-element-1: none !default;
+//$twt-footer-bottom-shopname > no css
+
+$twt-footer-bottom-color: #666666 !default;
+$twt-footer-bottom-link-color: #666666 !default;
+$twt-footer-bottom-link-color-hover: #333333 !default;
+
+$twt-footer-bottom-background-color: rgba(0, 0, 0, 0) !default;
+$twt-footer-bottom-background-image: none !default;
+$twt-footer-bottom-background-image-show: 2 !default;
+$twt-footer-bottom-background-image-size: auto !default;
+$twt-footer-bottom-background-image-position: left top !default;
+$twt-footer-bottom-background-image-repeat: repeat !default;
+$twt-footer-bottom-background-image-attachment: scroll !default;
+
+$twt-footer-bottom-font-size: 14 !default;
+//$twt-footer-lizenzkey > no css
+
+// Content > Breadcrumb ----------------------------------------------------------------
+$twt-breadcrumb-show-home: 1 !default;
+$twt-breadcrumb-show-cms-shop-pages: 2 !default;
+$twt-breadcrumb-show-cms-landing-pages: 2 !default;
+$twt-breadcrumb-show-cms-category-pages: 2 !default;
+$twt-breadcrumb-show-cms-product-pages: 2 !default;
+$twt-breadcrumb-show-product-detail: 2 !default;
+
+$twt-breadcrumb-style: 1 !default;
+$twt-breadcrumb-separator-style: 1 !default;
+$twt-breadcrumb-further-information: 1 !default;
+
+$twt-breadcrumb-text-color: #999999 !default;
+$twt-breadcrumb-link-color: #999999 !default;
+$twt-breadcrumb-link-active-color: #135d84 !default;
+$twt-breadcrumb-divider-color: #999999 !default;
+
+$twt-breadcrumb-container-styling: 1 !default;
+$twt-breadcrumb-container-corner-type: 2 !default;
+$twt-breadcrumb-width: 1 !default;
+$twt-breadcrumb-margin-top: 10 !default;
+$twt-breadcrumb-margin-bottom: 10 !default;
+$twt-breadcrumb-padding-top-bottom: 1 !default;
+$twt-breadcrumb-padding-left-right: 1 !default;
+$twt-breadcrumb-justify-content: flex-start !default;
+
+$twt-breadcrumb-border-color: rgba(0, 0, 0, 0) !default;
+$twt-breadcrumb-border-top-color: rgba(0, 0, 0, 0) !default;
+$twt-breadcrumb-border-bottom-color: rgba(0, 0, 0, 0) !default;
+$twt-breadcrumb-background-color: rgba(0, 0, 0, 0) !default;
+
+$twt-breadcrumb-list-corner-type: 2 !default;
+$twt-breadcrumb-border-color-list: #bcc1c7 !default; // $gray-300
+$twt-breadcrumb-background-color-list: #eeeeee !default; // $gray-200
+
+$twt-breadcrumb-buttons-corner-type: 2 !default;
+$twt-breadcrumb-buttons-border-color: #bcc1c7 !default;
+$twt-breadcrumb-buttons-background-color: #eeeeee !default;
+$wt-breadcrumb-buttons-border-color-active: #bcc1c7 !default;
+$twt-breadcrumb-buttons-background-color-active: #ffffff !default;
+
+// Content > Cookie permission ----------------------------------------------------------------
+$twt-cookie-permission-show: 2 !default;
+$twt-cookie-permission-position: 1 !default;
+$twt-cookie-permission-padding: 10 !default;
+$twt-cookie-permission-box-shadow: 0 0 30px !default;
+$twt-cookie-permission-box-shadow-color: rgba(0, 0, 0, 0.2) !default;
+$twt-cookie-permission-overlay-color: rgba(0, 0, 0, 0.5) !default;
+$twt-cookie-permission-overlay-effect-blur: 0 !default;
+$twt-cookie-permission-width: 1 !default;
+$twt-cookie-permission-max-width: 260 !default;
+$twt-cookie-permission-top: 40 !default;
+$twt-cookie-permission-right: 25 !default;
+$twt-cookie-permission-bottom: 40 !default;
+$twt-cookie-permission-left: 25 !default;
+$twt-cookie-permission-color: #555 !default;
+$twt-cookie-permission-border-color: #ccc !default;
+$twt-cookie-permission-background-color: #fff !default;
+$twt-cookie-permission-deny-btn-background-color: $sw-border-color !default;
+$twt-cookie-permission-configuration-btn-background-color: $sw-color-brand-secondary !default;
+$twt-cookie-permission-accept-all-btn-background-color: $sw-color-brand-primary !default;
+
+// Content > Offcanvas navigation ----------------------------------------------------------------
+$twt-offcanvas-nav-currencies-menu-text-show: 1 !default;
+
+$twt-offcanvas-nav-languages-menu-text-show: 1 !default;
+
+$twt-offcanvas-nav-service-menu-show: 1 !default;
+$twt-offcanvas-nav-service-menu-icon-show: 2 !default;
+$twt-offcanvas-nav-service-menu-text-show: 1 !default;
+
+// Content > Pagination ----------------------------------------------------------------
+$twt-pagination-style: 1 !default;
+$twt-pagination-corner-type: 2 !default;
+$twt-pagination-buttons-corner-type: 2 !default;
+
+$twt-pagination-color: $sw-color-brand-primary !default;
+$twt-pagination-border-color: #bcc1c7 !default; // $gray-300
+$twt-pagination-background-color: #ffffff !default;
+
+$twt-pagination-hover-color: darken($sw-color-brand-primary, 15%) !default;
+$twt-pagination-hover-border-color: #bcc1c7 !default; // $gray-300
+$twt-pagination-hover-background-color: #eeeeee !default; // $gray-200
+
+$twt-pagination-active-color: #ffffff !default;
+$twt-pagination-active-border-color: $sw-color-brand-primary !default;
+$twt-pagination-active-background-color: $sw-color-brand-primary !default;
+
+$twt-pagination-disabled-color: #798490 !default; // $gray-600
+$twt-pagination-disabled-border-color: #bcc1c7 !default; // $gray-300
+$twt-pagination-disabled-background-color: #eeeeee !default; // $white - SW: $gray-200
+
+// Content > Scroll up button ----------------------------------------------------------------
+$twt-scroll-up-corner-type: 2 !default;
+$twt-scroll-up-box-shadow: 1px 2px 6px !default;
+$twt-scroll-up-box-shadow-color: rgba(0, 0, 0, 0.3) !default;
+
+$twt-scroll-up-color: #ffffff !default;
+$twt-scroll-up-border-color: #135d84 !default;
+$twt-scroll-up-background-color: #135d84 !default;
+$twt-scroll-up-color-hover: #ffffff !default;
+$twt-scroll-up-border-color-hover: #135d84 !default;
+$twt-scroll-up-background-color-hover: #135d84 !default;
+
+// Content > Sliders ----------------------------------------------------------------
+$twt-base-slider-controls-style: 1 !default;
+$twt-base-slider-controls-corner-type: 2 !default;
+$twt-base-slider-controls-hover-type: 2 !default;
+$twt-base-slider-controls-color: $sw-color-brand-primary !default;
+$twt-base-slider-controls-color-hover: $sw-color-brand-secondary !default;
+$twt-base-slider-controls-border-color: transparent !default;
+$twt-base-slider-controls-border-color-hover: darken($twt-base-slider-controls-border-color, 10%) !default;
+$twt-base-slider-controls-background-color: transparent !default;
+$twt-base-slider-controls-background-color-hover: darken($twt-base-slider-controls-background-color, 7.5%) !default;
+
+$twt-base-slider-navigation-dots-style: 2 !default;
+$twt-base-slider-navigation-dots-type: 1 !default;
+$twt-base-slider-navigation-dots-hover-type: 1 !default;
+$twt-base-slider-navigation-dots-alignment: 3 !default;
+$twt-base-slider-navigation-dots-background-color: #bcc1c7 !default; // $gray-300
+$twt-base-slider-navigation-dots-background-color-active: #798490 !default; // $gray-600
+
+// Shopping Experiences > All types ----------------------------------------------------------------
+$twt-cms-section-boxed-padding-left-right: 20 !default; // .cms-section .boxed
+
+$twt-cms-section-boxed-sidebar-combined: 2 !default;
+$twt-cms-section-boxed-margin-top-home: 1 !default;
+$twt-cms-section-boxed-margin-top: 20 !default;
+$twt-cms-section-margin-bottom: 1 !default; // @TODO: unused
+$twt-cms-section-padding-top-bottom: 20 !default; // @TODO: unused
+$twt-cms-section-background-color: rgba(0, 0, 0, 0) !default; // @TODO: unused
+$twt-cms-section-boxed-border-color: #eeeeee !default; // $gray-200 // @TODO: Rename to 'twt-cms-block-border-color' (only working in boxed shopping experiences, but block is more accurate)
+$twt-cms-section-boxed-background-color: #ffffff !default; // @TODO: Rename to 'twt-cms-block-background-color' (only working in boxed shopping experiences, but block is more accurate)
+//$twt-cms-section-boxed-box-shadow: 1 !default; // @TODO: Rename to 'twt-cms-block-box-shadow' (only working in boxed shopping experiences, but block is more accurate)
+
+$twt-cms-animations-name: none !default;
+$twt-cms-animations-name-headlines: none !default;
+
+// Shopping Experiences > 'ThemeWare® CMS styling' ----------------------------------------------------------------
+$twt-shopping-experiences-header-position: 1 !default;
+$twt-cms-layout-adjustments-landing-pages: 1 !default;
+$twt-cms-layout-adjustments-category-pages: 1 !default;
+$twt-cms-layout-adjustments-product-pages: 1 !default;
+$twt-cms-layout-adjustments-shop-pages: 1 !default;
+
+// Shopping Experiences > CMS block 'Image slider' ----------------------------------------------------------------
+$twt-image-slider-controls-individual: 1 !default;
+$twt-image-slider-controls-style: 1 !default;
+$twt-image-slider-controls-corner-type: 2 !default;
+$twt-image-slider-controls-hover-type: 2 !default;
+$twt-image-slider-controls-color: $sw-color-brand-primary !default;
+$twt-image-slider-controls-color-hover: $sw-color-brand-secondary !default;
+$twt-image-slider-controls-border-color: transparent !default;
+$twt-image-slider-controls-border-color-hover: darken($twt-image-slider-controls-border-color, 10%) !default;
+$twt-image-slider-controls-background-color: transparent !default;
+$twt-image-slider-controls-background-color-hover: darken($twt-image-slider-controls-background-color, 7.5%) !default;
+
+$twt-image-slider-navigation-dots-alignment: 3 !default;
+
+// Shopping Experiences > CMS block 'Image gallery' ----------------------------------------------------------------
+$twt-gallery-slider-controls-individual: 2 !default;
+$twt-gallery-slider-controls-style: 1 !default;
+$twt-gallery-slider-controls-corner-type: 2 !default;
+$twt-gallery-slider-controls-hover-type: 1 !default;
+$twt-gallery-slider-controls-color: $sw-color-brand-primary !default;
+$twt-gallery-slider-controls-color-hover: $sw-color-brand-secondary !default;
+$twt-gallery-slider-controls-border-color: transparent !default;
+$twt-gallery-slider-controls-border-color-hover: darken($twt-gallery-slider-controls-border-color, 10%) !default;
+$twt-gallery-slider-controls-background-color: #fff !default;
+$twt-gallery-slider-controls-background-color-hover: darken($twt-gallery-slider-controls-background-color, 7.5%) !default;
+
+$twt-gallery-slider-navigation-dots-alignment: 3 !default;
+
+// Shopping Experiences > CMS block 'Two columns, boxed image & text' ----------------------------------------------------------------
+$twt-cms-block-image-position-mobile: 1 !default;
+$twt-cms-block-image-position-desktop: 1 !default;
+$twt-cms-block-image-font-size: 16 !default;
+$twt-cms-block-image-align-items: flex-start !default;
+
+// Shopping Experiences > CMS block 'Product slider' ----------------------------------------------------------------
+$twt-product-slider-controls-individual: 1 !default;
+$twt-product-slider-controls-style: 1 !default;
+$twt-product-slider-controls-corner-type: 2 !default;
+$twt-product-slider-controls-hover-type: 2 !default;
+$twt-product-slider-controls-color: $sw-color-brand-primary !default;
+$twt-product-slider-controls-color-hover: $sw-color-brand-secondary !default;
+$twt-product-slider-controls-border-color: transparent !default;
+$twt-product-slider-controls-border-color-hover: darken($twt-product-slider-controls-border-color, 10%) !default;
+$twt-product-slider-controls-background-color: transparent !default;
+$twt-product-slider-controls-background-color-hover: darken($twt-product-slider-controls-background-color, 7.5%) !default;
+
+// Shopping Experiences > CMS Category 'Commerce' ----------------------------------------------------------------
+$twt-product-box-image-background-color: rgba(0, 0, 0, 0) !default;
+$twt-cms-element-product-box: rgba(0, 0, 0, 0) !default;
+
+// Shopping Experiences > CMS block 'Product filter' ----------------------------------------------------------------
+$twt-sidebar-filter-headline-show: 1 !default;
+$twt-filter-panel-item-color: #333333 !default;
+$twt-filter-panel-item-border-color: #eeeeee !default; // $gray-200
+$twt-filter-panel-item-background-color: #ffffff !default;
+$twt-filter-panel-content-padding-top: 20 !default;
+$twt-filter-panel-content-padding-right: 1 !default;
+$twt-filter-panel-content-padding-bottom: 1 !default;
+$twt-filter-panel-content-padding-left: 20 !default;
+$twt-filter-panel-content-border: 1px solid !default;
+$twt-filter-panel-content-border-color: #eeeeee !default; // $gray-200
+$twt-filter-panel-content-background-color: #eeeeee !default; // $gray-200
+$twt-filter-panel-item-toggle-color: #008490 !default;
+$twt-filter-panel-item-toggle-border-color: #008490 !default;
+$twt-filter-panel-item-toggle-background-color: #ffffff !default;
+$twt-filter-panel-content-filter-active-background-color: #ffffff !default;
+
+// Shopping Experiences > CMS block 'Category navigation' ----------------------------------------------------------------
+$twt-category-navigation-border-color: #eeeeee !default; // $gray-200
+$twt-category-navigation-link-color: #111111 !default;
+$twt-category-navigation-link-color-hover: #135d84 !default;
+$twt-category-navigation-link-color-active: #135d84 !default;
+$twt-category-navigation-link-background-color: #ffffff !default;
+$twt-category-navigation-link-background-color-hover: #ffffff !default;
+$twt-category-navigation-link-background-color-active: #ffffff !default;
+
+// Listing > Layout ----------------------------------------------------------------
+$twt-listing-column-count-xs: 12 !default;
+$twt-listing-column-count-sm: 6 !default;
+$twt-listing-column-count-md: 6 !default;
+$twt-listing-column-count-lg: 4 !default;
+$twt-listing-column-count-xl: 3 !default;
+$twt-listing-column-count-sidebar-xs: 12 !default;
+$twt-listing-column-count-sidebar-sm: 6 !default;
+$twt-listing-column-count-sidebar-md: 6 !default;
+$twt-listing-column-count-sidebar-lg: 6 !default;
+$twt-listing-column-count-sidebar-xl: 4 !default;
+
+$twt-listing-column-count-xs-image: 12 !default;
+$twt-listing-column-count-sm-image: 6 !default;
+$twt-listing-column-count-md-image: 6 !default;
+$twt-listing-column-count-lg-image: 4 !default;
+$twt-listing-column-count-xl-image: 3 !default;
+$twt-listing-column-count-sidebar-xs-image: 12 !default;
+$twt-listing-column-count-sidebar-sm-image: 6 !default;
+$twt-listing-column-count-sidebar-md-image: 6 !default;
+$twt-listing-column-count-sidebar-lg-image: 6 !default;
+$twt-listing-column-count-sidebar-xl-image: 4 !default;
+
+$twt-listing-column-count-xs-minimal: 12 !default;
+$twt-listing-column-count-sm-minimal: 6 !default;
+$twt-listing-column-count-md-minimal: 6 !default;
+$twt-listing-column-count-lg-minimal: 4 !default;
+$twt-listing-column-count-xl-minimal: 3 !default;
+$twt-listing-column-count-sidebar-xs-minimal: 12 !default;
+$twt-listing-column-count-sidebar-sm-minimal: 6 !default;
+$twt-listing-column-count-sidebar-md-minimal: 6 !default;
+$twt-listing-column-count-sidebar-lg-minimal: 6 !default;
+$twt-listing-column-count-sidebar-xl-minimal: 4 !default;
+
+// Listing > Product box ----------------------------------------------------------------
+$twt-product-box-layout-type: 1 !default;
+$twt-product-box-hover-type: 1 !default;
+$twt-product-box-hover-apply: 1 !default;
+$twt-product-box-text-align: center !default;
+$twt-product-box-variant-characteristics-show: 2 !default;
+$twt-product-box-ordernumber-show: 1 !default;
+$twt-product-box-manufacturer-show: 1 !default;
+$twt-product-box-price-unit-show: 2 !default;
+$twt-product-box-cheapest-price-show: 2 !default;
+$twt-product-box-list-price-price-show: 2 !default;
+$twt-product-box-list-price-percentage-show: 2 !default;
+$twt-product-box-action-buy-btn-show: 2 !default;
+$twt-product-box-action-buy-btn-hover: 1 !default;
+
+// Listing > Product box > Colour configuration ----------------------------------------------------------------
+$twt-product-box-border-color: #cccccc !default;
+$twt-product-box-border-color-hover: #008490 !default;
+$twt-product-box-background-color: #ffffff !default;
+$twt-product-box-background-color-hover: #f7f7f7 !default;
+
+// Listing > Product box > Drop shadow ----------------------------------------------------------------
+$twt-product-box-box-shadow-type: 11 !default;
+$twt-product-box-box-shadow-type-hover: 13 !default;
+$twt-product-box-box-shadow: 0 5px 10px !default;
+$twt-product-box-box-shadow-hover: 0 10px 20px !default;
+$twt-product-box-box-shadow-color: rgba(0, 0, 0, 0.075) !default;
+$twt-product-box-box-shadow-color-hover: rgba(0, 0, 0, 0.15) !default;
+// @TODO: Add 2nd layer or "expert" textfield for complex shadows ?! > box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.8), 0px 0px 25px 0px rgba(0,0,0,0.6);
+
+// Listing > Product box > Product image ----------------------------------------------------------------
+$twt-product-box-image-layout-type: 1 !default;
+$twt-product-box-image-hover-type: 3 !default;
+$twt-product-box-image-height: 200 !default;
+$twt-product-box-image-object-fit: standard !default;
+$twt-product-box-image-align-items: center !default;
+$twt-product-box-image-background-color: rgba(0, 0, 0, 0) !default;
+
+// Listing > Product box > Wishlist button ----------------------------------------------------------------
+$twt-product-box-wishlist-button-position: bottom !default;
+$twt-product-box-wishlist-button-color: #4a545b !default;
+$twt-product-box-wishlist-button-background-color: #f9f9f9 !default;
+
+// Listing > Product box > Product rating ----------------------------------------------------------------
+$twt-product-box-product-review-rating-show: 2 !default;
+$twt-product-box-product-review-rating-corner-type: 2 !default;
+$twt-product-box-product-review-rating-position: 1 !default;
+
+// Listing > Product box > Product name ----------------------------------------------------------------
+$twt-product-box-product-name-line-clamp: 2 !default;
+
+// Listing > Product box > Buy button ----------------------------------------------------------------
+$twt-product-box-btn-buy-layout: 1 !default;
+$twt-product-box-btn-buy-icon-position: 1 !default;
+
+// Listing > Product box "Standard" ----------------------------------------------------------------
+$twt-product-box-short-description-show: 1 !default;
+$twt-product-box-ordernumber-show-box-standard: 1 !default;
+$twt-product-box-manufacturer-show-box-standard: 1 !default;
+$twt-product-box-product-name-line-clamp-box-standard: 2 !default;
+
+// Listing > Product box "Big image"  ----------------------------------------------------------------
+$twt-product-box-ordernumber-show-box-image: 1 !default;
+$twt-product-box-manufacturer-show-box-image: 1 !default;
+$twt-product-box-product-name-line-clamp-box-image: 2 !default;
+
+// Listing > Product box "Minimal content" ----------------------------------------------------------------
+$twt-product-box-ordernumber-show-box-minimal: 1 !default;
+$twt-product-box-manufacturer-show-box-minimal: 1 !default;
+$twt-product-box-product-name-line-clamp-box-minimal: 2 !default;
+
+// Detail > Layout ----------------------------------------------------------------
+$twt-product-detail-sticky-gallery-buybox: 1 !default;
+
+$twt-product-detail-properties-table-layout: 2 !default;
+$twt-product-detail-properties-table-style: 2 !default;
+$twt-product-detail-properties-table-width: 2 !default;
+
+// Detail > Gallery ----------------------------------------------------------------
+$twt-product-detail-slider-image-similar-note-show: 1 !default;
+
+// Detail > Buybox ----------------------------------------------------------------
+$twt-product-detail-short-description-show: 1 !default;
+
+$twt-product-detail-prices-table-layout: 2 !default;
+$twt-product-detail-prices-table-style: 2 !default;
+$twt-product-detail-prices-table-width: 2 !default;
+
+$twt-product-detail-prices-table-head-color: #ffffff !default;
+$twt-product-detail-prices-table-head-background-color: $sw-color-brand-primary !default;
+
+// Detail > Buy button ----------------------------------------------------------------
+$twt-product-detail-btn-buy-layout: 1 !default;
+$twt-product-detail-btn-buy-icon-position: 1 !default;
+
+// Detail > Labels [Extension] ----------------------------------------------------------------
+//$twt-product-detail-labels-show: 1 !default;
+
+$twt-product-detail-labels-style: 1 !default;
+$twt-product-detail-labels-arrangement: 2 !default;
+$twt-product-detail-labels-position: 2 !default;
+
+// Detail > Labels > Shipping free label in buybox ----------------------------------------------------------------
+$twt-product-detail-shipping-free-label-show: 1 !default;
+
+// Detail > Labels > Stock label in buybox ----------------------------------------------------------------
+$twt-product-detail-stock-label-show: 1 !default;
+$twt-product-detail-stock-label-threshold-lowstock: 10 !default;
+$twt-product-detail-stock-label-threshold-highstock: 500 !default;
+
+// Detail > Labels > Sold out label in buybox ----------------------------------------------------------------
+$twt-product-detail-sold-label-show: 1 !default;
+
+// Detail > Labels > Not available label in buybox ----------------------------------------------------------------
+$twt-product-detail-notavailable-label-show: 1 !default;
+
+// Detail > Labels > Pre orde label in buybox ----------------------------------------------------------------
+$twt-product-detail-preorder-label-show: 1 !default;
+
+// Detail > Labels > Delivery time labels in buybox ----------------------------------------------------------------
+$twt-product-detail-deliverytime-available-label-show: 1 !default;
+$twt-product-detail-deliverytime-restock-label-show: 1 !default;
+
+// Detail > Product badges [Extension] ----------------------------------------------------------------
+// Color          SW        BS4       Modern
+// Success        #3cc261   #28a745   #2ecc71
+// Information    #26b6cf   #17a2b8   #4aa3df
+// Warning/Notice #ffbd5d   #ffc107   #f1c40f
+// Danger/Error   #e52427   #dc3545   #e74c3c
+$twt-product-detail-badges: 1 !default;
+
+$twt-product-detail-badges-position: 2 !default;
+
+$twt-product-detail-badges-stock-badge-show: 2 !default;
+$twt-product-detail-badges-sold-badge-show: 2 !default;
+$twt-product-detail-badges-shipping-free-badge-show: 2 !default;
+$twt-product-detail-badges-discount-badge-show: 2 !default;
+$twt-product-detail-badges-topseller-badge-show: 2 !default;
+$twt-product-detail-badges-new-badge-show: 2 !default;
+
+// Detail > Product specifications in buybox ----------------------------------------------------------------
+$twt-product-detail-specifications-section-spacing: 5 !default;
+
+$twt-product-detail-ordernumber-show: 2 !default;
+$twt-product-detail-manufacturer-show: 1 !default;
+$twt-product-detail-manufacturernumber-show: 1 !default;
+$twt-product-detail-ean-show: 1 !default;
+$twt-product-detail-custom-field-1-show: 2 !default;
+$twt-product-detail-weight-show: 1 !default;
+$twt-product-detail-length-show: 1 !default;
+$twt-product-detail-width-show: 1 !default;
+$twt-product-detail-height-show: 1 !default;
+$twt-product-detail-custom-field-2-show: 2 !default;
+$twt-product-detail-stock-show: 1 !default;
+$twt-product-detail-availablestock-show: 1 !default;
+$twt-product-detail-deliverytime-show: 1 !default;
+$twt-product-detail-minpurchase-show: 1 !default;
+$twt-product-detail-maxpurchase-show: 1 !default;
+$twt-product-detail-custom-field-3-show: 1 !default;
+
+$twt-product-detail-specifications-label-font-weight: bold !default;
+$twt-product-detail-specifications-label-transform: none !default;
+$twt-product-detail-specifications-text-font-weight: normal !default;
+
+// Detail > Product videos ----------------------------------------------------------------
+$twt-product-detail-videos-max-width: 0 !default;
+$twt-product-detail-product-videos-show-controls: 2 !default;
+$twt-product-detail-product-videos-advanced-privacy: 2 !default;
+$twt-product-detail-product-videos-need-confirmation: 1 !default;
+
+$twt-product-detail-product-videos-placeholder-layout-type: 1 !default;
+$twt-product-detail-product-videos-placeholder-background-color: #eeeeee !default; // $gray-200
+$twt-product-detail-product-videos-backdrop-background-color: rgba(255, 255, 255, 0.5) !default;
+$twt-product-detail-product-videos-overlay-background-color: rgba(255, 255, 255, 0.5) !default;
+$twt-product-detail-product-videos-placeholder-preview-image: none !default;
+
+// Detail > Social proofing (Infotext) ----------------------------------------------------------------
+$twt-social-proofing-infotext-show: 1 !default;
+
+$twt-social-proofing-threshold: 1000 !default;
+$twt-social-proofing-visibility: 1 !default;
+$twt-social-proofing-infotext-position: 2 !default;
+$twt-social-proofing-infotext-icon-show: 2 !default;
+
+$twt-social-proofing-infotext-color: $sw-color-brand-primary !default;
+$twt-social-proofing-infotext-icon-color: $sw-color-brand-primary !default;
+
+$twt-social-proofing-infotext-font-weight: bold !default;
+$twt-social-proofing-infotext-transform: none !default;
+
+// Detail > Sharing links in buybox ----------------------------------------------------------------
+$twt-product-detail-sharing-links-show: 1 !default;
+$twt-product-detail-sharing-links-icon-style: 4 !default;
+$twt-product-detail-sharing-links-icon-size: 45 !default;
+
+$twt-product-detail-sharing-links-icon-coloration: 1 !default;
+$twt-product-detail-sharing-links-icon-color: #135d84 !default;
+
+$twt-product-detail-sharing-links-headline-font-weight: normal !default;
+$twt-product-detail-sharing-links-headline-transform: none !default;
+
+//$twt-product-detail-sharing-links-facebook-show > no css
+//$twt-product-detail-sharing-links-twitter-show > no css
+//$twt-product-detail-sharing-links-x-show > no css
+//$twt-product-detail-sharing-links-pinterest-show > no css
+//$twt-product-detail-sharing-links-whatsapp-show > no css
+//$twt-product-detail-sharing-links-email-show > no css
+
+// Detail > Benefits in buybox ----------------------------------------------------------------
+$twt-product-detail-benefits-show: 1 !default;
+
+$twt-product-detail-benefits-layout-type: 1 !default;
+$twt-product-detail-benefits-content: 1 !default;
+$twt-product-detail-benefits-position: 2 !default;
+$twt-product-detail-benefits-headline-show: 2 !default;
+
+$twt-product-detail-benefits-icon-color: $sw-color-success !default;
+$twt-product-detail-benefits-border-color: #eeeeee !default;
+$twt-product-detail-benefits-background-color: #fafafa !default;
+
+// Detail > Payment logos in buybox ----------------------------------------------------------------
+$twt-product-detail-payment-logos-show: 1 !default;
+$twt-product-detail-payment-logos-position: 1 !default;
+
+$twt-product-detail-payment-logos-headline-font-weight: normal !default;
+$twt-product-detail-payment-logos-headline-transform: none !default;
+
+// Detail > Tabs ----------------------------------------------------------------
+$twt-product-detail-tabs-layout-type: 2 !default;
+$twt-product-detail-tabs-background-border-bottom: 2px solid !default;
+$twt-product-detail-tabs-container-background-color: #fafafa !default;
+$twt-product-detail-tabs-color: #333333 !default;
+$twt-product-detail-tabs-color-hover: #111111 !default;
+$twt-product-detail-tabs-color-active: #ffffff !default;
+$twt-product-detail-tabs-border-bottom-color: #eeeeee !default; // $gray-200
+$twt-product-detail-tabs-border-bottom-color-hover: #dcdcdc !default;
+$twt-product-detail-tabs-border-bottom-color-active: #135d84 !default;
+$twt-product-detail-tabs-background-color: #eeeeee !default; // $gray-200
+$twt-product-detail-tabs-background-color-hover: #f5f5f5 !default;
+$twt-product-detail-tabs-background-color-active: #135d84 !default;
+
+// Detail > Tab 'Description' ----------------------------------------------------------------
+$twt-product-detail-description-title-show: 2 !default;
+
+$twt-product-detail-properties-headline-show: 1 !default;
+$twt-product-detail-properties-info-show: 1 !default;
+
+$twt-product-detail-product-videos-show: 2 !default;
+$twt-product-detail-product-videos-position: 2 !default;
+
+$twt-product-detail-datasheets-show: 1 !default;
+
+$twt-product-detail-further-links-show: 1 !default;
+$twt-product-detail-further-links-new-tab: 2 !default;
+
+$twt-product-detail-downloads-show: 1 !default;
+
+$twt-product-detail-comment-show: 1 !default;
+
+// Detail > Tab 'Properties' ----------------------------------------------------------------
+$twt-product-detail-properties-position: 2 !default;
+
+$twt-product-detail-tab-properties-title-show: 2 !default;
+$twt-product-detail-tab-properties-info-show: 1 !default;
+
+// Detail > Tab 'Product videos' ----------------------------------------------------------------
+$twt-product-detail-tab-product-videos-show: 1 !default;
+$twt-product-detail-tab-product-videos-headline-show: 2 !default;
+
+// Detail > Tab 'Datasheets' ----------------------------------------------------------------
+$twt-product-detail-tab-datasheets-show: 1 !default;
+$twt-product-detail-tab-datasheets-headline-show: 2 !default;
+
+// Detail > Tab 'Custom content' ----------------------------------------------------------------
+$twt-product-detail-tab-custom-content-show: 1 !default;
+$twt-product-detail-tab-custom-content-headline-show: 2 !default;
+
+// Detail > Tab 'Manufacturer' ----------------------------------------------------------------
+$twt-product-detail-tab-manufacturer-show: 1 !default;
+
+$twt-product-detail-tab-manufacturer-title-show: 2 !default;
+$twt-product-detail-tab-manufacturer-logo-show: 2 !default;
+
+$twt-product-detail-tab-manufacturer-related-links-subheadline-show: 2 !default;
+$twt-product-detail-tab-manufacturer-link-products-show: 1 !default;
+$twt-product-detail-tab-manufacturer-link-website-show: 2 !default;
+
+// Detail > Cross Selling ----------------------------------------------------------------
+$twt-product-detail-cross-selling-show: 2 !default;
+
+// Pages > General ----------------------------------------------------------------
+$twt-payment-shipping-method-name-color: #111111 !default; // $body-color
+$twt-payment-shipping-method-description-color: #71767b !default;
+
+// Pages > Login ----------------------------------------------------------------
+$twt-cms-layout-adjustments-login-pages: 2 !default;
+
+// Pages > Account ----------------------------------------------------------------
+$twt-cms-layout-adjustments-account-pages: 2 !default;
+//$twt-account-newsletter-subscription-show > no css
+
+// Pages > Checkout > Complete order ----------------------------------------------------------------
+$twt-cms-layout-adjustments-checkout-pages: 2 !default;
+$twt-confirmpage-container-layout: 2 !default;
+
+// Shopware 'B2B Components' ----------------------------------------------------------------
+$twt-cms-layout-adjustments-b2b-components: 1 !default;
+
+// Sidebar ----------------------------------------------------------------
+$twt-sidebar-content-sticky: 1 !default;
+
+$twt-sidebar-block-content-layout-type: 1 !default;
+$twt-sidebar-block-upper-section-margin-top: 20 !default;
+$twt-sidebar-block-upper-section-margin-bottom: 30 !default;
+$twt-sidebar-block-lower-section-margin-top: 30 !default;
+$twt-sidebar-block-lower-section-margin-bottom: 30 !default;
+
+$twt-sidebar-block-content-color: #000000 !default;
+$twt-sidebar-block-content-background-color: #ffffff !default;
+
+$twt-sidebar-block-container-padding-top: 0 !default;
+$twt-sidebar-block-container-padding-bottom: 0 !default;
+$twt-sidebar-block-container-padding-left: 0 !default;
+$twt-sidebar-block-container-padding-right: 0 !default;
+
+$twt-sidebar-block-headline-layout-type: 1 !default;
+$twt-sidebar-block-headline-padding-top: 7 !default;
+$twt-sidebar-block-headline-padding-bottom: 7 !default;
+
+$twt-sidebar-block-headline-color: #000000 !default;
+$twt-sidebar-block-headline-background-color: #eeeeee !default; // $gray-200
+
+$twt-sidebar-block-headline-font-family: 1 !default;
+$twt-sidebar-block-headline-font-size: 16 !default;
+$twt-sidebar-block-headline-font-weight: normal !default;
+$twt-sidebar-block-headline-text-transform: none !default;
+
+// Sidebar > Sidebar widgets ----------------------------------------------------------------
+$twt-sidebar-element-1: none !default;
+$twt-sidebar-element-1-toggle: 1 !default;
+$twt-sidebar-element-1-position: 2 !default;
+$twt-sidebar-element-1-order: 100 !default;
+$twt-sidebar-element-1-margin-top: 0 !default;
+$twt-sidebar-element-1-margin-bottom: 0 !default;
+
+$twt-sidebar-element-2: none !default;
+$twt-sidebar-element-2-toggle: 1 !default;
+$twt-sidebar-element-2-position: 3 !default;
+$twt-sidebar-element-2-order: 200 !default;
+$twt-sidebar-element-2-margin-top: 0 !default;
+$twt-sidebar-element-2-margin-bottom: 0 !default;
+
+$twt-sidebar-element-3: none !default;
+$twt-sidebar-element-3-toggle: 1 !default;
+$twt-sidebar-element-3-position: 3 !default;
+$twt-sidebar-element-3-order: 300 !default;
+$twt-sidebar-element-3-margin-top: 30 !default;
+$twt-sidebar-element-3-margin-bottom: 0 !default;
+
+// Widgets > Footer navigation ----------------------------------------------------------------
+$twt-footer-footernav-list-style: 2 !default;
+$twt-footer-footernav-padding-left: 17 !default;
+$twt-footer-footernav-link-color: #111111 !default;
+$twt-footer-footernav-link-color-hover: #104d6e !default;
+$twt-footer-footernav-marker-color: #104d6e !default;
+$twt-footer-footernav-border-bottom-color: #111111 !default;
+$twt-footer-footernav-text-transform: none !default;
+
+// Widgets > Awards ----------------------------------------------------------------
+$twt-widget-awards-image-max-width: 100 !default;
+$twt-widget-awards-image-max-height: none !default;
+$twt-widget-awards-text-show: 2 !default;
+$twt-widget-awards-standard-ssl: 2 !default;
+
+//$twt-widget-awards-custom-image-1 > no css
+//$twt-widget-awards-custom-image-1-link > no css
+//$twt-widget-awards-custom-image-1-nofollow > no css
+//$twt-widget-awards-custom-image-1-url > no css
+
+//$twt-widget-awards-custom-image-2 > no css
+//$twt-widget-awards-custom-image-2-link > no css
+//$twt-widget-awards-custom-image-2-nofollow > no css
+//$twt-widget-awards-custom-image-2-url > no css
+
+//$twt-widget-awards-custom-image-3 > no css
+//$twt-widget-awards-custom-image-3-link > no css
+//$twt-widget-awards-custom-image-3-nofollow > no css
+//$twt-widget-awards-custom-image-3-url > no css
+
+//$twt-widget-awards-custom-image-4 > no css
+//$twt-widget-awards-custom-image-4-link > no css
+//$twt-widget-awards-custom-image-4-nofollow > no css
+//$twt-widget-awards-custom-image-4-url > no css
+
+//$twt-widget-awards-custom-image-5 > no css
+//$twt-widget-awards-custom-image-5-link > no css
+//$twt-widget-awards-custom-image-5-nofollow > no css
+//$twt-widget-awards-custom-image-5-url > no css
+
+//$twt-widget-awards-custom-image-6 > no css
+//$twt-widget-awards-custom-image-6-link > no css
+//$twt-widget-awards-custom-image-6-nofollow > no css
+//$twt-widget-awards-custom-image-6-url > no css
+
+// Widgets > Benefits ----------------------------------------------------------------
+$twt-widget-benefits-content-type: 1 !default;
+$twt-widget-benefits-icons-show: 2 !default;
+$twt-widget-benefits-content-max-items: 6 !default;
+$twt-widget-benefits-font-size-item: 16 !default;
+$twt-widget-benefits-font-size-icon: 16 !default;
+
+// Widgets > Communities ----------------------------------------------------------------
+$twt-widget-communities-layout-type: 1 !default;
+$twt-widget-communities-icon-style: 3 !default;
+$twt-widget-communities-icon-size: 45 !default;
+$twt-widget-communities-additional-text-show: 1 !default;
+$twt-widget-communities-label-show: 2 !default;
+$twt-widget-communities-label-position: 1 !default;
+$twt-widget-communities-link-nofollow: 2 !default;
+
+$twt-widget-communities-icon-coloration: 2 !default;
+$twt-widget-communities-icon-color: #135d84 !default;
+$twt-widget-communities-icon-coloration-sidebar: 2 !default;
+$twt-widget-communities-icon-color-sidebar: #135d84 !default;
+$twt-widget-communities-facebook: 2 !default;
+$twt-widget-communities-instagram: 2 !default;
+$twt-widget-communities-twitter: 2 !default;
+$twt-widget-communities-x: 1 !default;
+$twt-widget-communities-youtube: 2 !default;
+$twt-widget-communities-vimeo: 2 !default;
+$twt-widget-communities-twitch: 1 !default;
+$twt-widget-communities-flickr: 2 !default;
+$twt-widget-communities-pinterest: 2 !default;
+$twt-widget-communities-tiktok: 2 !default;
+$twt-widget-communities-blogger: 2 !default;
+$twt-widget-communities-blog: 2 !default;
+$twt-widget-communities-whatsapp: 2 !default;
+$twt-widget-communities-linkedin: 2 !default;
+$twt-widget-communities-xing: 1 !default;
+$twt-widget-communities-website: 2 !default;
+
+// Widgets > Hotline ----------------------------------------------------------------
+$twt-widget-hotline-contact-form-show: 2 !default;
+$twt-widget-hotline-font-size: 16 !default;
+$twt-widget-hotline-font-size-phone-number: 20 !default;
+
+// Widgets > Location ----------------------------------------------------------------
+$twt-widget-location-route-button-show: 1 !default;
+$twt-widget-location-route-button-color: #111111 !default;
+$twt-widget-location-route-button-color-hover: #333333 !default;
+$twt-widget-location-route-button-border-color: #ffffff !default;
+$twt-widget-location-route-button-border-color-hover: #eeeeee !default; // $gray-200
+$twt-widget-location-route-button-background-color: #cccccc !default;
+$twt-widget-location-route-button-background-color-hover: #dddddd !default;
+
+// Widgets > Newsletter ----------------------------------------------------------------
+$twt-widget-newsletter-input-corner-type: 1 !default;
+$twt-widget-newsletter-input-border-radius: 10 !default;
+$twt-widget-newsletter-input-color: #333333 !default;
+$twt-widget-newsletter-button-border-color: #ffffff !default;
+$twt-widget-newsletter-input-background-color: #ffffff !default;
+$twt-widget-newsletter-button-color: #ffffff !default;
+$twt-widget-newsletter-button-color-hover: #eeeeee !default; // $gray-200
+$twt-widget-newsletter-input-border-color: #eeeeee !default; // $gray-200
+$twt-widget-newsletter-button-border-color-hover: #ffffff !default;
+$twt-widget-newsletter-button-background-color: #0e557b !default;
+$twt-widget-newsletter-button-background-color-hover: #104d6e !default;
+$twt-widget-newsletter-input-text-align: left !default;
+
+// Widgets > Payment ----------------------------------------------------------------
+$twt-widget-payment-logo-max-height: 45 !default;
+$twt-widget-payment-logo-corner-type: 2 !default;
+$twt-widget-payment-logo-link: 2 !default;
+$twt-widget-payment-logo-fallback-badge: 2 !default;
+//$twt-widget-payment-logo-custom-images-only > no css
+$twt-widget-payment-logo-coloration: 1 !default;
+$twt-widget-payment-logo-fallback-badge-color: #333333 !default;
+$twt-widget-payment-logo-border-color: #e9f2f9 !default;
+$twt-widget-payment-logo-fallback-badge-border-color: #e9f2f9 !default;
+$twt-widget-payment-logo-fallback-badge-background-color: #eef2f5 !default;
+$twt-widget-payment-logo-fallback-badge-font-size: 10 !default;
+$twt-widget-payment-logo-fallback-badge-text-transform: none !default;
+$twt-widget-payment-logo-fallback-badge-font-weight: bold !default;
+
+// Widgets > Shipping ----------------------------------------------------------------
+$twt-widget-shipping-logo-max-height: 45 !default;
+$twt-widget-shipping-logo-corner-type: 2 !default;
+$twt-widget-shipping-logo-link: 2 !default;
+$twt-widget-shipping-logo-fallback-badge: 2 !default;
+//$twt-widget-shipping-logo-custom-images-only > no css
+$twt-widget-shipping-logo-coloration: 1 !default;
+$twt-widget-shipping-logo-fallback-badge-color: #333333 !default;
+$twt-widget-shipping-logo-border-color: #e9f2f9 !default;
+$twt-widget-shipping-logo-fallback-badge-border-color: #e9f2f9 !default;
+$twt-widget-shipping-logo-fallback-badge-background-color: #eef2f5 !default;
+$twt-widget-shipping-logo-fallback-badge-font-size: 10 !default;
+$twt-widget-shipping-logo-fallback-badge-text-transform: none !default;
+$twt-widget-shipping-logo-fallback-badge-font-weight: bold !default;
+
+// Extensions > Announcement banner ----------------------------------------------------------------
+$twt-announcement-banner-show: 1 !default;
+
+$twt-announcement-banner-closable: 1 !default;
+//$twt-announcement-banner-start-date > no css
+//$twt-announcement-banner-end-date > no css
+$twt-announcement-banner-link: 2 !default;
+$twt-announcement-banner-link-newtab: 1 !default;
+$twt-announcement-banner-link-nofollow: 2 !default;
+
+$twt-announcement-banner-color: #ffffff !default;
+$twt-announcement-banner-background-color: #135d84 !default;
+$twt-announcement-banner-font-size: 14 !default;
+$twt-announcement-banner-text-transform: none !default;
+$twt-announcement-banner-font-weight: normal !default;
+
+// Extensions > Checkout steps ----------------------------------------------------------------
+$twt-checkout-steps-show: 1 !default;
+$twt-checkout-steps-cart-show: 1 !default;
+
+$twt-checkout-steps-style: 1 !default;
+$twt-checkout-steps-icon-style: 1 !default;
+$twt-checkout-steps-item-text-show: 5 !default;
+$twt-checkout-steps-item-box-shadow-type: 1 !default;
+$twt-checkout-steps-item-corner-type: 3 !default;
+$twt-checkout-steps-item-border-radius: 10 !default;
+
+$twt-checkout-steps-item-color: #000000 !default;
+$twt-checkout-steps-item-color-active: #000000 !default;
+$twt-checkout-steps-item-color-completed: #000000 !default;
+$twt-checkout-steps-item-icon-color: #dddddd !default;
+$twt-checkout-steps-item-icon-color-active: #000000 !default;
+$twt-checkout-steps-item-icon-color-completed: $sw-color-success !default;
+$twt-checkout-steps-item-border-color: #dddddd !default;
+$twt-checkout-steps-item-border-color-active: #000000 !default;
+$twt-checkout-steps-item-border-color-completed: $sw-color-success !default;
+$twt-checkout-steps-item-background-color: #ffffff !default;
+$twt-checkout-steps-item-background-color-active: #ffffff !default;
+$twt-checkout-steps-item-background-color-completed: #ffffff !default;
+$twt-checkout-steps-item-seperator-color: #dddddd !default;
+$twt-checkout-steps-item-seperator-color-active: #000000 !default;
+$twt-checkout-steps-item-seperator-color-completed: $sw-color-success !default;
+
+$twt-checkout-steps-item-font-size: 14 !default;
+$twt-checkout-steps-item-text-transform: none !default;
+$twt-checkout-steps-item-font-weight: normal !default;
+
+// Extensions > Custom announcement ----------------------------------------------------------------
+$twt-custom-announcement-show: 1 !default;
+//$twt-custom-announcement-start-date > no css
+//$twt-custom-announcement-end-date > no css
+$twt-custom-announcement-border-color: #ffe79a !default;
+$twt-custom-announcement-background-color: #fff3cd !default;
+$twt-custom-announcement-font-size: 14 !default;
+
+// Extensions > Floating slideout widget
+$twt-floating-widget-show: 1 !default;
+$twt-floating-widget-mobile: 1 !default;
+
+$twt-floating-widget-position: 1 !default;
+$twt-floating-widget-hover-type: 2 !default;
+//$twt-floating-widget-show-opened > no css
+//$twt-floating-widget-backdrop > no css
+//$twt-floating-widget-animation > no css
+//$twt-floating-widget-link > no css
+$twt-floating-widget-width: 400 !default;
+$twt-floating-widget-height: 200 !default;
+$twt-floating-widget-title-width: 200 !default;
+$twt-floating-widget-title-height: 40 !default;
+$twt-floating-widget-padding: 20 !default;
+$twt-floating-widget-align-items: center !default;
+$twt-floating-widget-justify-content: center !default;
+$twt-floating-widget-side-bottom-distance: 20 !default;
+$twt-floating-widget-side-bottom-distance-unit: 1 !default;
+
+$twt-floating-widget-color: #333333 !default;
+$twt-floating-widget-link-color: $sw-color-brand-primary !default;
+$twt-floating-widget-link-color-hover: $twt-color-brand-primary-dark !default;
+$twt-floating-widget-background-color: #ffffff !default;
+$twt-floating-widget-title-color: #ffffff !default;
+$twt-floating-widget-title-background-color: $sw-color-brand-primary !default;
+
+$twt-floating-widget-background-image: none !default;
+$twt-floating-widget-background-image-object-fit: none !default;
+
+$twt-floating-widget-font-size: 16 !default;
+$twt-floating-widget-title-font-size: 18 !default;
+$twt-floating-widget-text-align: center !default;
+$twt-floating-widget-title-text-transform: none !default;
+
+// Extensions > Hero section (Listing pages) ----------------------------------------------------------------
+//$twt-hero-section-show: 1 !default;
+$twt-hero-section-show-cms-shop-pages: 1 !default;
+//$twt-hero-section-show-cms-landing-pages: 1 !default;
+$twt-hero-section-show-cms-category-pages: 1 !default;
+//$twt-hero-section-show-cms-product-pages: 1 !default;
+
+$twt-hero-section-pull-up: 1 !default;
+
+$twt-hero-section-text-coloration: light !default;
+$twt-hero-section-text-align: left !default;
+$twt-hero-section-sizing-mode: 1 !default;
+$twt-hero-section-content-max-width: 100% !default;
+$twt-hero-section-padding-top-sm: 170 !default;
+$twt-hero-section-padding-top-lg: 210 !default;
+
+$twt-hero-section-overlay-background-color: #0c72a7 !default;
+$twt-hero-section-overlay-opacity: 90 !default;
+
+$twt-hero-section-background-image-attachment: fixed !default;
+$twt-hero-section-background-image-parallax: 1 !default;
+
+$twt-hero-section-breadcrumb-show: 1 !default;
+$twt-hero-section-breadcrumb-position: bottom !default;
+$twt-hero-section-breadcrumb-justify-content: flex-start !default;
+
+// Extension > Listing subcategories (Listing pages) ----------------------------------------------------------------
+$twt-listing-subcategories-show: 1 !default;
+$twt-listing-subcategories-layout: textBelow !default;
+$twt-listing-subcategories-justify-content: flex-start !default;
+$twt-listing-subcategories-display-mode: contain !default;
+$twt-listing-subcategories-image-width: 100% !default;
+$twt-listing-subcategories-image-height: 140px !default;
+$twt-listing-subcategories-image-max-height: 140px !default;
+$twt-listing-subcategories-image-min-height: 140px !default;
+
+$twt-listing-subcategories-color: $sw-text-color !default;
+$twt-listing-subcategories-color-hover: $sw-color-brand-primary !default;
+$twt-listing-subcategories-background-color: #ffffff !default;
+$twt-listing-subcategories-background-color-hover: #ffffff !default;
+$twt-listing-subcategories-border-color: $sw-border-color !default;
+$twt-listing-subcategories-border-color-hover: $sw-color-brand-primary !default;
+$twt-listing-subcategories-image-background-color: #eef2f5 !default;
+
+$twt-listing-subcategories-font-family: 1 !default;
+$twt-listing-subcategories-font-size: 16 !default;
+$twt-listing-subcategories-font-weight: normal !default;
+$twt-listing-subcategories-text-transform: none !default;
+
+$twt-listing-subcategories-column-count-xs: 12 !default;
+$twt-listing-subcategories-column-count-sm: 6 !default;
+$twt-listing-subcategories-column-count-md: 6 !default;
+$twt-listing-subcategories-column-count-lg: 4 !default;
+$twt-listing-subcategories-column-count-xl: 3 !default;
+$twt-listing-subcategories-column-count-xxl: 3 !default;
+
+$twt-listing-subcategories-lazy-loading: eager !default;
+
+// Extensions > Slideout communities ----------------------------------------------------------------
+$twt-slideout-communities-show: 2 !default;
+
+$twt-slideout-communities-style: 1 !default;
+$twt-slideout-communities-icon-size: 36 !default;
+
+$twt-slideout-communities-icon-coloration: 1 !default;
+$twt-slideout-communities-icon-color: $sw-color-brand-primary !default;
+$twt-slideout-communities-color: #ffffff !default;
+$twt-slideout-communities-background-color: #eeeeee !default;
+
+// Extensions > Social proofing ----------------------------------------------------------------
+
+// Extensions > USP bar ----------------------------------------------------------------
+$twt-usp-bar-header: 2 !default;
+$twt-usp-bar-footer: 2 !default;
+$twt-usp-bar-header-position: 1 !default;
+$twt-usp-bar-footer-position: 1 !default;
+$twt-usp-bar-header-layout: 1 !default;
+$twt-usp-bar-footer-layout: 1 !default;
+$twt-usp-bar-widget-content: communities !default;
+$twt-usp-bar-header-width: 1 !default;
+$twt-usp-bar-width: 1 !default;
+$twt-usp-bar-height-small-icons: 40 !default;
+$twt-usp-bar-height-large-icons: 110 !default;
+$twt-usp-bar-small-icons-justify-content: space-between !default;
+$twt-usp-bar-large-icons-justify-content: space-around !default;
+$twt-usp-bar-header-color: #263842 !default;
+$twt-usp-bar-header-icon-color: #263842 !default;
+$twt-usp-bar-header-border-color: #eef2f5 !default;
+$twt-usp-bar-header-background-color: #eef2f5 !default;
+$twt-usp-bar-footer-color: #555555 !default;
+$twt-usp-bar-footer-icon-color: #555555 !default;
+$twt-usp-bar-footer-border-color: #e5ebf0 !default;
+$twt-usp-bar-footer-background-color: #eef2f5 !default;
+$twt-usp-bar-font-family: 1 !default;
+$twt-usp-bar-font-size: 14 !default;
+$twt-usp-bar-font-weight: normal !default;
+$twt-usp-bar-text-transform: none !default;
+$twt-usp-bar-icon-size-small: 15 !default;
+$twt-usp-bar-icon-size-large: 48 !default;
+$twt-usp-bar-breakpoint-item-1: 3 !default;
+$twt-usp-bar-breakpoint-item-2: 4 !default;
+$twt-usp-bar-breakpoint-item-3: 5 !default;
+$twt-usp-bar-breakpoint-item-4: 6 !default;
+$twt-usp-bar-breakpoint-item-5: 1 !default;
+$twt-usp-bar-breakpoint-item-6: 8 !default;
+
+// Others > Performance ----------------------------------------------------------------
+$twt-custom-cms-spacing-classes: 2 !default;
+$twt-custom-cms-spacing-classes-more: 1 !default;
+$twt-custom-cms-image-decoration-classes: 2 !default;
+$twt-custom-cms-box-shadow-classes: 2 !default;
+$twt-custom-cms-image-hover-classes: 2 !default;
+$twt-cms-animations-more: 1 !default;
+$twt-custom-cms-column-padding-classes: 2 !default;
+$twt-custom-cms-headline-classes: 2 !default;
+$twt-custom-css-max-width-classes: 1 !default;
+
+// CMS Blocks
+$twt-cms-block-cloumns-classes: 2 !default;
+$twt-cms-block-grid-classes: 2 !default;
+
+// CMS Elements
+$twt-cms-hero-slider-css: 2 !default;
+$twt-cms-text-teaser-css: 2 !default;
+$twt-cms-text-teaser-decorated-css: 2 !default;
+$twt-cms-button-teaser-css: 2 !default;
+$twt-cms-call-to-action-css: 2 !default;
+$twt-cms-hover-box-css: 2 !default;
+$twt-cms-image-teaser-css: 2 !default;
+$twt-cms-classic-teaser-css: 2 !default;
+$twt-cms-modern-teaser-css: 2 !default;
+$twt-cms-round-teaser-css: 2 !default;
+//$twt-cms-fit-teaser-css: 2 !default;
+$twt-cms-image-banner-css: 2 !default;
+$twt-cms-parallax-banner-css: 2 !default;
+$twt-cms-hero-banner-css: 2 !default;
+$twt-cms-image-text-layered-css: 2 !default;
+//$twt-cms-category-banner-css: 2 !default;
+//$twt-cms-category-banner-fit-css: 2 !default;
+$twt-cms-listing-subcategories-css: 2 !default;
+$twt-cms-countdown-banner-css: 2 !default;
+$twt-cms-discount-banner-css: 2 !default;
+$twt-cms-testimonials-css: 2 !default;
+// TODO ...
+
+// jQuery
+$twt-jquery-load: 2 !default;
+
+// Others > Expert settings
+//$twt-expert-mode > no css
+//$twt-body-class > no css
+
+//$twt-custom-css-code > no css
+//$twt-custom-html-code > no css
+//$twt-custom-html-code > no css
+//$twt-custom-js-code > no css
+
+//$twt-additional-css-file-load > no css
+//$twt-additional-css-file > no css
+
+//$twt-additional-js-file-load > no css
+//$twt-additional-js-file > no css
+//$twt-additional-js-file-async > no css
+
+// Others > Compatibility ----------------------------------------------------------------
+$twt-header-type-compatibility: 2 !default; // @TODO: Disable all twig-adjustments and scss-stylings...
+$twt-header-account-btn-compatibility: 2 !default;
+$twt-header-cart-btn-compatibility: 2 !default;
+$twt-header-wishlist-btn-compatibility: 2 !default;
+$twt-nav-main-home-link-compatibility: 2 !default;
+$twt-nav-main-menu-items-compatibility: 2 !default;
+//$twt-cms-form-newsletter-select-salutation: 2 !default;
+$twt-top-bar-compatibility: 2 !default;
+
+$twt-product-badges-discount-badge-compatibility: 2 !default;
+$twt-product-badges-topseller-badge-compatibility: 2 !default;
+$twt-product-badges-new-badge-compatibility: 2 !default;
+$twt-breadcrumb-compatibility: 2 !default;
+
+$twt-product-box-image-compatibility: 2 !default;
+
+$twt-product-detail-buy-widget-compatibility: 2 !default;
+
+$twt-footer-type-compatibility: 2 !default; // @TODO: Disable all twig-adjustments and scss-stylings...
+$twt-footer-logos-compatibility: 2 !default;
+
+// Others > Beta ----------------------------------------------------------------
+$twt-quickview-show: 1 !default;
+
+$twt-product-box-quantity-selection-show: 1 !default;
+
+$twt-nav-main-dropdown: 1 !default;
+$twt-nav-main-dropdown-box-shadow-type: 1 !default;
+//$twt-nav-main-dropdown-plugin > no css
+
+$twt-nav-main-external-links-icon-show: 1 !default;
+
+$twt-product-box-compact-layout: 1 !default;
+$twt-product-image-resizing: 1 !default;
+$twt-product-image-resizing-breakpoint: 3 !default;
+$twt-product-box-sold: 1 !default;
+$twt-product-box-sold-style: 1 !default;
+$twt-product-box-image-srcset-and-sizes: 2 !default; // no css
+
+// Others > Deprecated ----------------------------------------------------------------
+//$twt-custom-css > no css
+$twt-custom-css-deprecated-classes: 1 !default;
+$twt-modal-background-color: rgba(0, 0, 0, 0.5) !default; // @deprecated
+$twt-header-search-fullscreen-background-color: rgba(0, 0, 0, 0.9) !default; // @deprecated
+
+//$twt-floating-widget-side-distance: 20% !default; // #REMOVED @1.2.0
+//$twt-footer-type: 2 !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-color-weighting: 1 !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-primary-background-color: #ffffff !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-primary-border-color: #eeeeee !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-primary-color: #333333 !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-secondary-background-color: #eeeeee !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-secondary-border-color: #cccccc !default; // #REMOVED @1.2.0
+//$twt-cookie-permission-btn-secondary-color: #333333 !default; // #REMOVED @1.2.0
+
+//$twt-breadcrumb-show: 1 !default; // #REMOVED @2.0
+//$twt-breadcrumb-height: 20 !default; // #REMOVED @2.0
+//$twt-breadcrumb-arrow-icon-color: #999999 !default; // #REMOVED @2.0
+
+//$twt-product-detail-breadcrumb-show: 1 !default; // #REMOVED @2.0
+
+//$twt-product-detail-slider-image-align-items: center !default; // #REMOVED @2.0
+//$twt-product-detail-thumbnails-image-align-items: center !default; // #REMOVED @2.0
+
+//$twt-annoncement-banner-show // #REMOVED @2.0
+//$twt-annoncement-banner-link // #REMOVED @2.0
+//$twt-annoncement-banner-color // #REMOVED @2.0
+//$twt-annoncement-banner-background-color // #REMOVED @2.0
+//$twt-annoncement-banner-font-size // #REMOVED @2.0
+//$twt-annoncement-banner-text-transform // #REMOVED @2.0
+//$twt-annoncement-banner-font-weight // #REMOVED @2.0
+
+// Detail > Gallery ----------------------------------------------------------------
+$twt-product-detail-slider-image-object-fit: contain !default; // @deprecated tag:v6.6.0
+
+// Detail > Gallery > Thumbnails ----------------------------------------------------------------
+$twt-product-detail-thumbnails-position: 2 !default; // @deprecated tag:v6.6.0
+$twt-product-detail-thumbnails-image-object-fit: none !default; // @deprecated tag:v6.6.0
+
+// Forms ----------------------------------------------------------------
+// @TODO: Prüfen was für Felder im 1. Schritt über den ThemeWare bereitgestellt werden sollten.
+
+// Forms > Layout Type ----------------------------------------------------------------
+$twt-forms-layout-type: 2 !default;
+
+// Forms > Group ----------------------------------------------------------------
+$twt-forms-group-margin-bottom: 10px !default;
+
+// Forms > Label ----------------------------------------------------------------
+$twt-forms-label-show: 1 !default;
+$twt-forms-label-font-size: 12 !default; // no configuration
+$twt-forms-label-color: #666666 !default;
+$twt-forms-label-margin-bottom: 1px !default;
+$twt-forms-label-font-family: 1 !default;
+
+// Forms > Input & Select ----------------------------------------------------------------
+$twt-forms-input-color: #222222 !default;
+$twt-forms-input-color-hover: $sw-color-brand-primary !default;
+$twt-forms-input-focus-color: $sw-color-brand-primary !default;
+$twt-forms-input-border-color: #cccccc !default;
+$twt-forms-input-border-color-hover: $sw-color-brand-primary !default;
+$twt-forms-input-focus-border-color: $sw-color-brand-primary !default;
+$twt-forms-input-placeholder-color: #8e8e8e !default;
+$twt-forms-input-background-color: #fafafa !default;
+$twt-forms-input-focus-background-color: #e7e7e7 !default;
+$twt-forms-input-font-family: 1 !default;
+$twt-forms-input-font-size: 15 !default;
+
+// Forms > Checks & Radios ----------------------------------------------------------------
+$twt-forms-check-input-background-color: #cccccc !default;
+$twt-forms-check-input-checked-background-color: $sw-color-brand-primary !default;
+
+// Forms > Accessibility ----------------------------------------------------------------
+$twt-forms-input-btn-focus-color: $sw-color-brand-primary !default;
+
+// Forms > Feedback ----------------------------------------------------------------
+$twt-forms-feedback-valid-color: $sw-color-success !default;
+$twt-forms-feedback-icon-valid-color: $twt-forms-feedback-valid-color !default;
+$twt-forms-feedback-invalid-color: $sw-color-danger !default;
+$twt-forms-feedback-icon-invalid-color: $twt-forms-feedback-invalid-color !default;
+
+// Alerts ----------------------------------------------------------------
+$twt-alert-font-size: 15 !default; // no configuration
+
+// HTML base font-size ----------------------------------------------------------------
+// @TODO: Prüfen was für Felder im 1. Schritt über den ThemeWare bereitgestellt werden sollten
+$twt-html-font-size-xl: 100% !default;
+$twt-html-font-size-lg: 90% !default;
+$twt-html-font-size-xs: 80% !default;

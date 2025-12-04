@@ -1,0 +1,566 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS deprecated fallback classes
+	==================================================
+*/
+
+// @TODO: Add notes
+
+@if $twt-custom-css-deprecated-classes == 2 {
+
+    // ThemeWare: Custom column padding (0 Pixel left/right)
+    .twt-custom-cms-col-padding-0 {
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+
+        div[class*="col-"] {
+            padding-right: 0;
+            padding-left: 0;
+
+            .left, .left-top {
+                margin-bottom: 0;
+            }
+
+            .right-top {
+                margin-bottom: 0;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 0;
+                    padding-right: 0;
+                }
+
+                .right.column {
+                    margin-bottom: 0;
+                    padding-left: 0;
+                }
+            }
+        }
+    }
+
+    // ThemeWare: Custom column padding (5 Pixel left/right)
+    .twt-custom-cms-col-padding-5 {
+        .row {
+            margin-right: -5px;
+            margin-left: -5px;
+        }
+
+        div[class*="col-"] {
+            padding-right: 5px;
+            padding-left: 5px;
+
+            .left, .left-top {
+                margin-bottom: 10px;
+            }
+
+            .right-top {
+                margin-bottom: 10px;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 10px !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 10px;
+                    padding-right: 5px;
+                }
+
+                .right.column {
+                    margin-bottom: 10px;
+                    padding-left: 5px;
+                }
+            }
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Custom column padding (10 Pixel left/right)
+    .twt-custom-cms-col-padding-10 {
+        .row {
+            margin-right: -10px;
+            margin-left: -10px;
+        }
+
+        div[class*="col-"] {
+            padding-right: 10px;
+            padding-left: 10px;
+
+            .left, .left-top {
+                margin-bottom: 20px;
+            }
+
+            .right-top {
+                margin-bottom: 20px;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 20px !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 20px;
+                    padding-right: 10px;
+                }
+
+                .right.column {
+                    margin-bottom: 20px;
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+
+    // ThemeWare: Custom column padding (15 Pixel left/right)
+    .twt-custom-cms-col-padding-15 {
+        .row {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        div[class*="col-"] {
+            padding-right: 15px;
+            padding-left: 15px;
+
+            .left, .left-top {
+                margin-bottom: 30px;
+            }
+
+            .right-top {
+                margin-bottom: 30px;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 30px !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 30px;
+                    padding-right: 15px;
+                }
+
+                .right.column {
+                    margin-bottom: 30px;
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // ThemeWare: Default padding (20 Pixel left/right)
+
+    // ThemeWare: Custom column padding (25 Pixel left/right)
+    .twt-custom-cms-col-padding-25 {
+        .row {
+            margin-right: -25px;
+            margin-left: -25px;
+        }
+
+        div[class*="col-"] {
+            padding-right: 25px;
+            padding-left: 25px;
+
+            .left, .left-top {
+                margin-bottom: 50px;
+            }
+
+            .right-top {
+                margin-bottom: 50px;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 50px !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 50px;
+                    padding-right: 25px;
+                }
+
+                .right.column {
+                    margin-bottom: 50px;
+                    padding-left: 25px;
+                }
+            }
+        }
+    }
+
+    // ThemeWare: Custom column padding (30 Pixel left/right)
+    .twt-custom-cms-col-padding-30 {
+        .row {
+            margin-right: -30px;
+            margin-left: -30px;
+        }
+
+        div[class*="col-"] {
+            padding-right: 30px;
+            padding-left: 30px;
+
+            .left, .left-top {
+                margin-bottom: 60px;
+            }
+
+            .right-top {
+                margin-bottom: 60px;
+            }
+        }
+
+        // Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            .left-bottom {
+                margin-bottom: 60px !important;
+            }
+        }
+
+        // ThemeWare Grid adjustments
+        @include media-breakpoint-down(md) { // max 767.98px
+            &[class*="twt-grid-"] {
+                .left.column {
+                    margin-bottom: 60px;
+                    padding-right: 30px;
+                }
+
+                .right.column {
+                    margin-bottom: 60px;
+                    padding-left: 30px;
+                }
+            }
+        }
+    }
+
+    /*
+      _           _____ ___   ____                       _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+
+
+    // Bath Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-bath {
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: $font-weight-normal;
+            font-style: normal;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: $gray-600;
+
+            &::before {
+                position: relative;
+                right: 70px;
+                bottom: -5px;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-left: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 1px solid $gray-600;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            &::after {
+                position: relative;
+                bottom: -5px;
+                left: 70px;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-right: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 1px solid $gray-600;
+                background-color: rgba(0, 0, 0, 0);
+            }
+        }
+
+        p {
+            font-family: $sw-font-family-headline;
+            font-weight: $font-weight-normal;
+            font-style: normal;
+            line-height: 1;
+            margin-top: 4px;
+            text-align: center;
+            text-transform: uppercase;
+            color: $sw-text-color;
+        }
+    }
+
+    // Clean Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-clean {
+        h1, h2, h3, h4, h5, h6 {
+            font-style: normal;
+            display: block;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-transform: none;
+            color: $sw-text-color;
+            text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, .1);
+
+            &::before {
+                display: inline-block;
+                margin: 0 .6em;
+                content: "\00a0\00a0\00a0\00a0\00a0\00a0";
+                text-decoration: line-through !important;
+                opacity: 0.7;
+            }
+
+            &::after {
+                display: inline-block;
+                margin: 0 .6em;
+                content: "\00a0\00a0\00a0\00a0\00a0\00a0";
+                text-decoration: line-through !important;
+                opacity: 0.7;
+            }
+        }
+
+        p {
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+            text-transform: uppercase;
+            color: $gray-600;
+        }
+    }
+
+    /*
+      _           _____ ___   ___                        _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // Flower Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-flower {
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+            font-style: normal;
+            overflow: hidden;
+            text-align: center;
+            letter-spacing: 1px;
+            color: $sw-color-brand-primary;
+
+            &::before {
+                position: relative;
+                right: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-left: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 1px dotted $sw-color-brand-primary;
+            }
+
+            &::after {
+                position: relative;
+                left: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-right: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 1px dotted $sw-color-brand-primary;
+            }
+        }
+    }
+
+    // Kids Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-kids {
+        h1, h2, h3, h4, h5, h6,
+        .cms-element-title-paragraph {
+            overflow: hidden;
+            text-align: center;
+
+            &::before {
+                position: relative;
+                right: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 2px;
+                margin-left: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 2px dashed $sw-headline-color;
+            }
+
+            &::after {
+                position: relative;
+                left: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 2px;
+                margin-right: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 2px dashed $sw-headline-color;
+            }
+        }
+    }
+
+    /*
+      _           _____ ___   ___                        _   _
+     | |__ _  _  |_   _/ __|_|_ _|_ _  _ _  _____ ____ _| |_(_)___ _ _  ___
+     | '_ \ || |   | || (_|___| || ' \| ' \/ _ \ V / _` |  _| / _ \ ' \(_-<
+     |_.__/\_, |   |_| \___| |___|_||_|_||_\___/\_/\__,_|\__|_\___/_||_/__/
+           |__/
+    */
+
+    // Ladieswear Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-ladieswear {
+        h1, h2, h3, h4, h5, h6 {
+            font-style: normal;
+            display: block;
+            text-align: center;
+            color: $sw-color-brand-primary;
+            text-shadow: 0.07em 0.07em 0 rgba(0, 0, 0, .1);
+
+            &::before {
+                display: inline-block;
+                margin: 0 20px;
+                content: "- - - - -";
+                opacity: 0.7;
+            }
+
+            &::after {
+                display: inline-block;
+                margin: 0 20px;
+                content: "- - - - -";
+                opacity: 0.7;
+            }
+        }
+
+        p {
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+            text-transform: uppercase;
+            color: $sw-color-brand-primary;
+        }
+    }
+
+    // Plants Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-plants {
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            font-style: normal;
+            overflow: hidden;
+            max-width: 1400px;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #000;
+
+            &::before {
+                position: relative;
+                right: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-left: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 3px double $sw-color-brand-primary;
+            }
+
+            &::after {
+                position: relative;
+                left: 0.5em;
+                display: inline-block;
+                width: 50%;
+                height: 1px;
+                margin-right: -50%;
+                content: "";
+                vertical-align: middle;
+                border-top: 3px double $sw-color-brand-primary;
+            }
+        }
+    }
+
+    // Classic Shopping Experience Headline ------------------------------
+
+    .twt-custom-cms-headline-classic {
+        h1, h2, h3, h4, h5, h6 {
+            padding: 0 0 .625rem 0;
+            //border-bottom: 1px solid $gray-300;
+            border-bottom: 1px solid $border-color;
+        }
+    }
+
+}

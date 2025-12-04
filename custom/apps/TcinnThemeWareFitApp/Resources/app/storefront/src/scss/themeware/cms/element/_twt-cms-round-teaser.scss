@@ -1,0 +1,125 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Circle teaser"
+	==================================================
+
+*/
+
+@if $twt-cms-round-teaser-css == 2 { // #performance
+    .cms-element-twt-round-teaser {
+        .twt-round-teaser-container { // @TOOD: ..-content-container
+            z-index: 1;
+        }
+
+        .twt-round-teaser-text {
+            line-height: 1.25rem;
+            display: inline-block;
+            max-width: 100%;
+            padding: 10px 12px;
+            border-radius: 2px; // @TODO...
+
+            // @TODO: Add 'default' option ?!
+            //&.default {
+            //    // fallback
+            //    font-size: 1rem;
+            //}
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+
+        .twt-round-teaser-image-container {
+            border-radius: 9999px;
+
+            // @TODO: Blitzer korrigieren
+            img {
+                border-radius: 9999px;
+            }
+        }
+
+
+        // @TODO: align with _twt-cms-base.css
+        // Add hover effects (except on phones)
+        // - Hover effects are always applied because this elements have a explicit hover configuration. (alternatively use a:hover instead of .cms-image-container:hover)
+
+        @include media-breakpoint-up(sm) { // min 576px
+            &.is-hover {
+                .content:not(.fade-out),
+                .overlay:not(.fade-out) {
+                    opacity: 0;
+                }
+
+                .content,
+                .overlay {
+                    &.fade-out {
+                        opacity: 1;
+                    }
+                }
+
+                .overlay {
+                    transition: all .3s ease-in-out .1s;
+                    animation-duration: .3s;
+                    animation-timing-function: ease-in-out;
+
+                    // fade in opacity
+                    animation-delay: .25s;
+                    animation-fill-mode: both;
+                }
+
+                .content {
+                    transition: all .25s ease-in-out;
+                    animation-duration: .25s;
+
+                    // fade in opacity
+                    animation-timing-function: ease-in-out;
+                    animation-fill-mode: both;
+                }
+
+                // @TODO: align with _twt-cms-base.css
+                &:hover {
+                    .cms-content-container {
+                        .content:not(.fade-out),
+                        .overlay:not(.fade-out) {
+                            opacity: 1;
+
+                            &.fade-in-up {
+                                animation-name: cmsOverlaySlideInUp;
+                            }
+
+                            &.fade-in-right {
+                                animation-name: cmsOverlaySlideInRight;
+                            }
+
+                            &.fade-in-down {
+                                animation-name: cmsOverlaySlideInDown;
+                            }
+
+                            &.fade-in-left {
+                                animation-name: cmsOverlaySlideInLeft;
+                            }
+
+                            &.zoom-in {
+                                animation-name: cmsOverlayZoomIn;
+                            }
+                        }
+
+                        .content,
+                        .overlay {
+                            &.fade-out {
+                                opacity: 0;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

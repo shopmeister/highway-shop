@@ -1,0 +1,524 @@
+{% block sw_system_config %}
+    <div class="sw-system-config">
+        {% block swag_amazon_pay_configuration_sales_channel_switch %}
+            <div class="sw-system-config__global-sales-channel-switch swag-amazon-pay-saleschannel-switch">
+
+                <sw-alert variant="info"
+                          :title="$tc('swag-amazon-pay-configuration.configForm.cards.help')"
+                          :showIcon="true"
+                          :closable="false">
+                    <span v-html="$tc('swag-amazon-pay-configuration.help.helpText')" class="swag-amazon-pay-configuration-text"></span>
+                </sw-alert>
+
+                <sw-switch-field v-model:value="hasSalesChannelSelect"
+                                 :label="$tc('swag-amazon-pay-configuration.configForm.hasSalesChannelSelectLabel')"
+                >
+                </sw-switch-field>
+                <sw-sales-channel-switch :label="$tc('sw-settings.system-config.labelSalesChannelSelect')"
+                                         v-if="hasSalesChannelSelect"
+                                         @change-sales-channel-id="onSalesChannelChanged">
+                </sw-sales-channel-switch>
+
+
+
+                {% block swag_amazon_pay_configuration_sales_channel_switch_set_default_payment_method %}
+                    <sw-button class="swag-amazon-pay-configuration__salesChannelDefaultButton"
+                               :isLoading="settingDefaultSalesChannelLoading"
+                               :disabled="!acl.can('swag_amazonpay.editor')"
+                               @click="onSetAmazonPayAsDefaultPaymentMethod">
+                        {{ $tc('swag-amazon-pay-configuration.actions.setAsDefaultPaymentMethod') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block swag_amazon_pay_configiguration_sales_channel_switch_insecure_domain_notification %}
+                    <swag-amazon-pay-insecure-domain-notification :salesChannelId="salesChannelId">
+                    </swag-amazon-pay-insecure-domain-notification>
+                {% endblock %}
+
+                {% block swag_amazon_pay_configiguration_sales_channel_switch_inherit_configuration %}
+                    <sw-switch-field v-if="isInheritanceSwitchVisible && !showLoader"
+                                     v-model:value="config.inheritFromDefault"
+                                     class="swag-amazon-pay-configuration-inheritance-field"
+                                     :disabled="!acl.can('swag_amazonpay.editor')"
+                                     :label="$tc('swag-amazon-pay-configuration.configForm.fields.inheritFromDefault.label')"
+                                     @change="onSwitchInheritance">
+                    </sw-switch-field>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_loading %}
+            <sw-loader v-if="showLoader"></sw-loader>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_account %}
+            <sw-card v-if="!showLoader"
+                     class="swag-amazon-pay-configuration"
+                     :title="$tc('swag-amazon-pay-configuration.configForm.cards.account')">
+
+                {% block swag_amazon_pay_configuration_card_account_content %}
+                    {% block swag_amazon_pay_configuration_card_account_content_configuration_text %}
+                        <div class="swag-amazon-pay-configuration-text" v-if="!config.merchantId">
+                            <span class="headline headline-m">{{ $tc('swag-amazon-pay-configuration.configForm.registerHeadline') }}</span>
+                            <span v-html="$tc('swag-amazon-pay-configuration.configForm.registerExplanation')" class="swag-amazon-pay-configuration-text-register-explanation"></span>
+                        </div>
+
+                        <div class="swag-amazon-pay-configuration-text" v-if="!config.merchantId">
+                            <span class="headline headline-m">{{ $tc('swag-amazon-pay-configuration.configForm.existingAccountHeadline') }}</span>
+                            <span v-html="$tc('swag-amazon-pay-configuration.configForm.existingAccountExplanation')" class="swag-amazon-pay-configuration-text-existing-explanation"></span>
+                        </div>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_headline_account_information %}
+                        <div class="swag-amazon-pay-configuration-text add-margin-top">
+                            <span class="headline headline-s">
+                                {{ $tc('swag-amazon-pay-configuration.configForm.accountHeadline') }}
+                            </span>
+                        </div>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_option_ledger_currency %}
+                        <div class="sw-field--margin-top">
+                            <sw-single-select v-model:value="config.ledgerCurrency"
+                                              required
+                                              :options="getLedgerCurrencyOptions"
+                                              :label="$tc('swag-amazon-pay-configuration.configForm.fields.ledgerCurrency.label')"
+                                              :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.ledgerCurrency.placeholder')"
+                                              :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.ledgerCurrency.helpText')"
+                                              :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                            </sw-single-select>
+                        </div>
+                    {% endblock %}
+                    <div class="swag-amazon-pay-configuration-columns">
+                        <div class="column">
+
+                            {% block swag_amazon_pay_configuration_card_account_content_option_merchant_id %}
+                                <sw-text-field v-model:value="config.merchantId"
+                                               required
+                                               :label="$tc('swag-amazon-pay-configuration.configForm.fields.merchantId.label')"
+                                               :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.merchantId.placeholder')"
+                                               :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.merchantId.helpText')"
+                                               :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-text-field>
+                            {% endblock %}
+                        </div>
+                        <div class="column"></div>
+                        <div class="column">
+
+                            {% block swag_amazon_pay_configuration_card_account_content_option_client_id %}
+                                <sw-text-field v-model:value="config.clientId"
+                                               required
+                                               :label="$tc('swag-amazon-pay-configuration.configForm.fields.clientId.label')"
+                                               :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.clientId.placeholder')"
+                                               :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.clientId.helpText')"
+                                               :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-text-field>
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    {% block swag_amazon_pay_configuration_card_account_content_headline_credentials %}
+                        <div class="swag-amazon-pay-configuration-text add-margin-top">
+                            <span class="headline headline-s">
+                                {{ $tc('swag-amazon-pay-configuration.configForm.credentialsHeadline') }}
+                            </span>
+                        </div>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_option_public_key_id %}
+                        <sw-text-field v-model:value="config.publicKeyId"
+                                       required
+                                       :label="$tc('swag-amazon-pay-configuration.configForm.fields.publicKeyId.label')"
+                                       :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.publicKeyId.placeholder')"
+                                       :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.publicKeyId.helpText')"
+                                       :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-text-field>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_settings_card_account_private_key_modal %}
+                        <swag-amazon-pay-configuration-input-key-modal v-if="showInputKeyModal"
+                                                                       @update-private-key="onUpdatePrivateKey"
+                                                                       @modal-close="onCloseModal()">
+                        </swag-amazon-pay-configuration-input-key-modal>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_field_private_key %}
+                        <sw-password-field :placeholder="getPrivateKeyPlaceholder()"
+                                           :label="$tc('swag-amazon-pay-configuration.configForm.fields.privateKey.label')"
+                                           :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.privateKey.helpText')"
+                                           required
+                                           disabled
+                                           :passwordToggleAble="false">
+                        </sw-password-field>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_button_input_private_key %}
+                        <sw-button variant="primary"
+                                   :disabled="isInherited || !acl.can('swag_amazonpay.editor')"
+                                   @click="displayInputKeyModal">
+                            {{ $tc('swag-amazon-pay-configuration.actions.insertPrivateKey') }}
+                        </sw-button>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_account_content_config_test %}
+                        <sw-button-process v-if="!showLoader"
+                                           class="sw-settings-login-registration__test-action"
+                                           :isLoading="showLoader"
+                                           :processSuccess="isTestSuccessful"
+                                           :disabled="showLoader || isTesting || isInherited"
+                                           @click="onTest">
+                            {{ $tc('swag-amazon-pay-configuration.actions.testConnection') }}
+                        </sw-button-process>
+                    {% endblock %}
+
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_general %}
+            <sw-card v-if="!showLoader"
+                     class="swag-amazon-pay-configuration"
+                     :title="$tc('swag-amazon-pay-configuration.configForm.cards.general')">
+
+                {% block swag_amazon_pay_configuration_card_general_content %}
+                    {% block swag_amazon_pay_configuration_card_general_content_option_sandbox %}
+                        <sw-switch-field v-model:value="config.sandbox"
+                                         :label="$tc('swag-amazon-pay-configuration.configForm.fields.sandbox.label')"
+                                         :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.sandbox.helpText')"
+                                         :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-switch-field>
+                    {% endblock %}
+
+
+                    <div class="sw-field sw-block-field sw-field--text is--disabled sw-field--default sw-field--margin-top">
+
+                        {% block swag_amazon_pay_configuration_card_general_content_ipn_url %}
+                            <sw-text-field v-if="ipnUrlLoaded"
+                                           v-model.trim="ipnUrl"
+                                           disabled
+                                           copyable
+                                           :label="$tc('swag-amazon-pay-configuration.configForm.labelIpnUrl')"
+                                           :helpText="$tc('swag-amazon-pay-configuration.configForm.ipnHelpText')">
+                            </sw-text-field>
+                        {% endblock %}
+                    </div>
+
+                    {% block swag_amazon_pay_configuration_card_accountgeneral_option_soft_descriptor %}
+                        <sw-text-field v-model:value="config.softDescriptor"
+                                       :label="$tc('swag-amazon-pay-configuration.configForm.fields.softDescriptor.label')"
+                                       :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.softDescriptor.placeholder')"
+                                       :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.softDescriptor.helpText')"
+                                       maxlength="16"
+                                       :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-text-field>
+                    {% endblock %}
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_display_options %}
+            <sw-card
+                    v-if="!showLoader"
+                    class="swag-amazon-pay-configuration"
+                    :title="$tc('swag-amazon-pay-configuration.configForm.cards.displayOptions')">
+
+                {% block swag_amazon_pay_configuration_card_display_options_content %}
+                    <div class="swag-amazon-pay-configuration-columns">
+                        <div class="column">
+
+                            {% block swag_amazon_pay_configuration_card_display_options_content_option_product_page %}
+                                <sw-switch-field v-model:value="config.displayButtonOnProductPage"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnProductPage.label')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnProductPage.helpText')"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-switch-field>
+                            {% endblock %}
+
+                            {% block swag_amazon_pay_configuration_card_display_options_content_option_listing_page %}
+                                <sw-switch-field v-model:value="config.displayButtonOnListingPage"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnListingPage.label')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnListingPage.helpText')"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-switch-field>
+                            {% endblock %}
+
+                            {% block swag_amazon_pay_configuration_card_display_options_content_option_checkout_register %}
+                                <sw-switch-field v-model:value="config.displayButtonOnCheckoutRegisterPage"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnCheckoutRegisterPage.label')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.displayButtonOnCheckoutRegisterPage.helpText')"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-switch-field>
+                            {% endblock %}
+
+                            {% block swag_amazon_pay_configuration_card_display_options_content_option_registration_page %}
+                                <sw-switch-field v-model:value="config.displayLoginButtonOnRegistrationPage"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.displayLoginButtonOnRegistrationPage.label')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.displayLoginButtonOnRegistrationPage.helpText')"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-switch-field>
+                            {% endblock %}
+
+                        </div>
+                    </div>
+
+                    <hr class="add-margin-top add-margin-bottom"/>
+
+                    {% block swag_amazon_pay_configuration_card_display_options_content_look %}
+                        <div class="swag-amazon-pay-configuration-columns">
+                            <div class="column">
+
+                                {% block swag_amazon_pay_configuration_card_display_options_content_option_button_color %}
+                                    <sw-single-select v-model:value="config.buttonColor"
+                                                      :options="buttonColorOptions"
+                                                      :label="$tc('swag-amazon-pay-configuration.configForm.fields.buttonColors.label')"
+                                                      :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.buttonColors.helpText')"
+                                                      :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                    </sw-single-select>
+                                {% endblock %}
+
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    <hr class="add-margin-top"/>
+
+                    <div class="swag-amazon-pay-configuration-columns add-margin-top">
+                        <div class="column">
+                            {% block swag_amazon_pay_configuration_card_display_options_content_option_hide_one_click_checkout %}
+                                <sw-switch-field v-model:value="config.hideOneClickCheckoutButtons"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.hideOneClickCheckoutButtons.label')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.hideOneClickCheckoutButtons.helpText')"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-switch-field>
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_state_mapping %}
+            <sw-card
+                    v-if="!showLoader"
+                    class="swag-amazon-pay-configuration"
+                    :title="$tc('swag-amazon-pay-configuration.configForm.cards.paymentStateMapping')">
+
+                {% block swag_amazon_pay_configuration_card_state_mapping_content %}
+                    <div class="swag-amazon-pay-configuration-text add-margin-top">
+                        {{ $tc('swag-amazon-pay-configuration.configForm.stateMappingExplanation') }}
+                    </div>
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_authorize %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingAuthorize"
+                                                 class="swag-amazon-pay-configuration-authorize"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingAuthorize.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingAuthorize.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingAuthorize.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_charge %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingCharge"
+                                                 class="swag-amazon-pay-configuration-charge"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCharge.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCharge.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCharge.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_partial_charge %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingPartialCharge"
+                                                 class="swag-amazon-pay-configuration-partial-charge"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialCharge.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialCharge.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialCharge.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_refund %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingRefund"
+                                                 class="swag-amazon-pay-configuration-refund"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingRefund.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingRefund.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingRefund.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_partial_refund %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingPartialRefund"
+                                                 class="swag-amazon-pay-configuration-partial-refund"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialRefund.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialRefund.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingPartialRefund.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_state_mapping_content_option_cancel %}
+                        <sw-entity-single-select v-model:value="config.paymentStateMappingCancel"
+                                                 class="swag-amazon-pay-configuration-cancel"
+                                                 entity="state_machine_state"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCancel.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCancel.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.paymentStateMappingCancel.helpText')"
+                                                 :criteria="getPaymentStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_advanced %}
+            <sw-card
+                    v-if="!showLoader"
+                    class="swag-amazon-pay-configuration"
+                    :title="$tc('swag-amazon-pay-configuration.configForm.cards.advanced')">
+
+                {% block swag_amazon_pay_configuration_card_advanced_content %}
+                    {% block swag_amazon_pay_configuration_card_advanced_content_option_auth_mode %}
+                        <sw-single-select v-model:value="config.authMode"
+                                          required
+                                          :label="$tc('swag-amazon-pay-configuration.configForm.fields.authMode.label')"
+                                          :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.authMode.helpText')"
+                                          :options="getAuthModeOptions"
+                                          :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_advanced_content_option_charge_mode %}
+                        <sw-single-select v-model:value="config.chargeMode"
+                                          required
+                                          :label="$tc('swag-amazon-pay-configuration.configForm.fields.chargeMode.label')"
+                                          :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.chargeMode.placeholder')"
+                                          :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.chargeMode.helpText')"
+                                          :options="getChargeModeOptions"
+                                          :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_advanced_content_option_charge_trigger_state %}
+                        <div v-if="isChargeOnShipping" class="sw-field--margin-top">
+                            <sw-entity-single-select v-model:value="config.orderChargeTriggerState"
+                                                     entity="state_machine_state"
+                                                     required
+                                                     :label="$tc('swag-amazon-pay-configuration.configForm.fields.orderChargeTriggerState.label')"
+                                                     :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.orderChargeTriggerState.placeholder')"
+                                                     :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.orderChargeTriggerState.helpText')"
+                                                     :criteria="getOrderStateCriteria"
+                                                     :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                            </sw-entity-single-select>
+                        </div>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_advanced_content_option_refund_trigger_state %}
+                        <sw-entity-single-select v-model:value="config.orderRefundTriggerState"
+                                                 entity="state_machine_state"
+                                                 :reset-option="$tc('swag-amazon-pay-configuration.configForm.fields.orderRefundTriggerState.resetOption')"
+                                                 :label="$tc('swag-amazon-pay-configuration.configForm.fields.orderRefundTriggerState.label')"
+                                                 :placeholder="$tc('swag-amazon-pay-configuration.configForm.fields.orderRefundTriggerState.placeholder')"
+                                                 :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.orderRefundTriggerState.helpText')"
+                                                 :criteria="getOrderStateCriteria"
+                                                 :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                        </sw-entity-single-select>
+                    {% endblock %}
+
+                    {% block swag_amazon_pay_configuration_card_advanced_content_exclusions %}
+                        {% block swag_amazon_pay_configuration_card_advanced_content_exclusions_products %}
+                            <sw-entity-multi-id-select v-model:value="config.excludedProductIds"
+                                                       :disabled="!acl.can('swag_amazonpay.editor')"
+                                                       :repository="productRepository"
+                                                       :criteria="excludedProductCriteria"
+                                                       :label="$tc('swag-amazon-pay-configuration.configForm.fields.excludedProductIds.label')"
+                                                       :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.excludedProductIds.helpText')">
+
+                                {% block swag_amazon_pay_configuration_card_advanced_content_exclusions_products_selection_label_property %}
+                                    <template #selection-label-property="{ item }">
+                                        <sw-product-variant-info
+                                                :variations="item.variation">
+                                            {{ item.translated.name || item.name }}
+                                        </sw-product-variant-info>
+                                    </template>
+                                {% endblock %}
+
+                                {% block swag_amazon_pay_configuration_card_advanced_content_exclusions_products_result_label_property %}
+                                    <template #result-label-property="{ item, searchTerm, highlightSearchTerm }">
+                                        <sw-product-variant-info
+                                                :variations="item.variation">
+                                            {{ item.translated.name || item.name }}
+                                        </sw-product-variant-info>
+                                    </template>
+                                {% endblock %}
+
+                            </sw-entity-multi-id-select>
+                        {% endblock %}
+
+                        {% block swag_amazon_pay_configuration_card_advanced_content_exclusions_product_streams %}
+                            <sw-entity-multi-id-select v-model:value="config.excludedProductStreamIds"
+                                                       :disabled="!acl.can('swag_amazonpay.editor')"
+                                                       :repository="productStreamRepository"
+                                                       :label="$tc('swag-amazon-pay-configuration.configForm.fields.excludedProductStreamIds.label')"
+                                                       :helpText="$tc('swag-amazon-pay-configuration.configForm.fields.excludedProductStreamIds.helpText')">
+                            </sw-entity-multi-id-select>
+                        {% endblock %}
+                    {% endblock %}
+
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_card_logging %}
+            <sw-card
+                    v-if="!showLoader"
+                    class="swag-amazon-pay-configuration"
+                    :title="$tc('swag-amazon-pay-configuration.configForm.cards.logHandling')">
+
+                {% block swag_amazon_pay_configuration_card_logging_content_mode %}
+                    <div class="swag-amazon-pay-configuration-text">
+                        {{ $tc('swag-amazon-pay-configuration.configForm.loggingExplanation') }}
+                        <span class="headline headline-s">{{ $tc('swag-amazon-pay-configuration.configForm.loggingHeadline') }}</span>
+                    </div>
+
+                    <div class="swag-amazon-pay-configuration-radio-help-text-columns">
+                        <div class="column-left">
+
+                            {% block swag_amazon_pay_configuration_card_logging_content_option_logging_mode %}
+                                <sw-radio-field v-model:value="config.loggingMode"
+                                                :options="getLoggingOptions"
+                                                :disabled="isInherited || !acl.can('swag_amazonpay.editor')">
+                                </sw-radio-field>
+                            {% endblock %}
+                        </div>
+                        <div class="column-right">
+                            <sw-help-text class="sw-field__help-text" :text="$tc('swag-amazon-pay-configuration.configForm.loggingBasicHelp')"></sw-help-text>
+                            <sw-help-text class="sw-field__help-text" :text="$tc('swag-amazon-pay-configuration.configForm.loggingAdvancedHelp')"></sw-help-text>
+                        </div>
+                    </div>
+                {% endblock %}
+
+                {% block swag_amazon_pay_configuration_card_logging_toolbar %}
+                    <template #toolbar>
+                        <swag-amazon-pay-configuration-log-download :availableLogFiles="availableLogFiles">
+                        </swag-amazon-pay-configuration-log-download>
+                    </template>
+                {% endblock %}
+            </sw-card>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+

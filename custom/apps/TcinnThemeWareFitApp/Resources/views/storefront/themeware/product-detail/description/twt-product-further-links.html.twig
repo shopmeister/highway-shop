@@ -1,0 +1,156 @@
+{# ThemeWare® 'Further links' on product pages via custom fileds #}
+{#
+    Create container and add product further links
+
+    @Storefront/storefront/themeware/product-detail/twt-further-links.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO
+    - ...
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailFurtherLinksNewTab = theme_config('twt-product-detail-further-links-new-tab') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# New tab #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1_new_tab is empty %}
+    {% set twtNewTab1 = twtProductDetailFurtherLinksNewTab %}
+{% else %}
+    {% set twtNewTab1 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1_new_tab %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2_new_tab is empty %}
+    {% set twtNewTab2 = twtProductDetailFurtherLinksNewTab %}
+{% else %}
+    {% set twtNewTab2 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2_new_tab %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3_new_tab is empty %}
+    {% set twtNewTab3 = twtProductDetailFurtherLinksNewTab %}
+{% else %}
+    {% set twtNewTab3 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3_new_tab %}
+{% endif %}
+
+{# Set 'Titles' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1_title is not empty %}
+    {% set twtTitle1 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1_title %}
+{% else %}
+    {% set twtTitle1 = 'twt.detail.furtherLinks.fallback'|trans|sw_sanitize ~ ' 1' %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2_title is not empty %}
+    {% set twtTitle2 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2_title %}
+{% else %}
+    {% set twtTitle2 = 'twt.detail.furtherLinks.fallback'|trans|sw_sanitize ~ ' 2' %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3_title is not empty %}
+    {% set twtTitle3 = twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3_title %}
+{% else %}
+    {% set twtTitle3 = 'twt.detail.furtherLinks.fallback'|trans|sw_sanitize ~ ' 3' %}
+{% endif %}
+
+{# Set 'Link titles' #}
+{% set twtLinkTitle1 = twtTitle1 %}
+{% set twtLinkTitle2 = twtTitle2 %}
+{% set twtLinkTitle3 = twtTitle3 %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ThemeWare: Add product 'Further links' #}
+{% block twt_product_detail_further_links_container %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3 is not empty %}
+
+        <div class="twt-product-detail-further-links twt-product-further-links">
+            {% block twt_product_detail_further_links_inner %}
+
+                {# Add 'Further links' subheadline (only in tab "Description") #}
+                {% block twt_product_detail_further_links_subheadline %}
+                    {#{% if position == 'description' %}#}
+                    <div class="h4 twt-product-detail-further-links-title twt-product-detail-description-subheadline">
+                        {{ 'twt.detail.furtherLinks.title'|trans({'%product%': product.translated.name })|sw_sanitize }}
+                    </div>
+                    {#{% endif %}#}
+                {% endblock %}
+
+                {# Add 'Further links' #}
+                {% block twt_product_detail_further_links_content %}
+                    <div class="twt-product-detail-further-links-content">
+
+                        <div class="further-links-list">
+                            <ul>
+                                {# ThemeWare: 'Further link' 1 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1 is not empty %}
+                                    <li>
+                                        {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                        {# Icon #}
+                                        {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                        {# Link #}
+                                        <a href="{{ twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_1 }}"
+                                           class="content--link link--further-links"
+                                           title="{{ twtLinkTitle1 }}"
+                                           {% if twtNewTab1 == 2 %}target="_blank"{% endif %}
+                                           rel="nofollow noopener noreferrer"
+                                        >
+                                            {{ twtTitle1 }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                                {# ThemeWare: 'Further link' 2 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2 is not empty %}
+                                    <li>
+                                        {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                        {# Icon #}
+                                        {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                        {# Link #}
+                                        <a href="{{ twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_2 }}"
+                                           class="content--link link--further-links"
+                                           title="{{ twtLinkTitle2 }}"
+                                           {% if twtNewTab2 == 2 %}target="_blank"{% endif %}
+                                           rel="nofollow noopener noreferrer"
+                                        >
+                                            {{ twtTitle2 }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                                {# ThemeWare: 'Further link' 3 #}
+                                {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3 is not empty %}
+                                    <li>
+                                        {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                        {# Icon #}
+                                        {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                        {# Link #}
+                                        <a href="{{ twtCustomFields.product.twt_fit_cloud_custom_field__product__further_link_3 }}"
+                                           class="content--link link--further-links"
+                                           title="{{ twtLinkTitle3 }}"
+                                           {% if twtNewTab3 == 2 %}target="_blank"{% endif %}
+                                           rel="nofollow noopener noreferrer"
+                                        >
+                                            {{ twtTitle3 }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </div>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

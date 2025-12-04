@@ -1,0 +1,12 @@
+{# ThemeWare® CMS block "Image & text layered" #}
+
+{% block block_twt_image_text_layered %}
+    {% set element = block.slots.getSlot('content') %}
+    {% set columns = 1 %}
+
+    <div class="col-12" data-cms-element-id="{{ element.id }}">
+        {% block block_twt_image_text_layered_inner %}
+            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{
+    "name": "pickware/pickware-dhl",
+    "description": "DHL shipping integration for Shopware",
+    "license": "proprietary",
+    "type": "shopware-platform-plugin",
+    "version": "3.7.2",
+    "authors": [
+        {
+            "name": "Pickware GmbH",
+            "email": "info@pickware.de"
+        }
+    ],
+    "require": {
+        "php": ">= 8.2",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "doctrine/dbal": "^3.6 || ^4.0",
+        "guzzlehttp/guzzle": "^7.5.0",
+        "guzzlehttp/psr7": "^2.4.5",
+        "pickware/api-error-handling-bundle": "^3.34.0",
+        "pickware/bundle-installer": "^3.7.0",
+        "pickware/dal-bundle": "^5.22.0",
+        "pickware/debug-bundle": "^4.26.0",
+        "pickware/dependency-loader": "^5.5.0",
+        "pickware/document-bundle": "^4.51.0",
+        "pickware/feature-flag-bundle": "^3.31.0",
+        "pickware/http-utils": "^4.14.0",
+        "pickware/installation-library": "^4.27.0",
+        "pickware/money-bundle": "^4.24.0",
+        "pickware/shipping-bundle": "^3.65.0",
+        "pickware/units-of-measurement": "^3.5.0",
+        "psr/http-message": "^1.1 || ^2.0",
+        "psr/log": "^3.0.0",
+        "shopware/core": "~6.6.2 || ~6.7.0",
+        "symfony/config": "^7.0.0",
+        "symfony/console": "^7.0.0",
+        "symfony/dependency-injection": "^7.0.0",
+        "symfony/event-dispatcher": "^7.0.0",
+        "symfony/http-foundation": "^7.0.0",
+        "symfony/monolog-bridge": "^7.0.0"
+    },
+    "require-dev": {
+        "league/flysystem-memory": "~3.10.0",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^9.5.0",
+        "pickware/shopware-integration-test-plugin": "@dev",
+        "pickware/unit-testing-tools": "*@dev",
+        "shopware/storefront": "~6.6.2 || ~6.7.0"
+    },
+    "suggest": {
+        "shopware/administration": "Enables DHL shipping to be operated via Shopware 6 administration frontend.",
+        "shopware/storefront": "Enables DHL shipping to be operated via Shopware 6 Storefront."
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../bundles/*"
+        },
+        {
+            "type": "path",
+            "url": "../../libraries/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../libraries-dev/composer-packages/*"
+        },
+        {
+            "type": "path",
+            "url": "../../plugins-dev/*"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Pickware\\PickwareDhl\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "**.unit.php",
+            "**.integration.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pickware\\PickwareDhl\\Test\\Migration\\": "test/migration/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "pickware/dependency-loader": true,
+            "symfony/runtime": true,
+            "viison/composer-git-hooks-installer-plugin": true
+        }
+    },
+    "extra": {
+        "ci-min-supported-shopware-version": "6.6.2.0",
+        "description": {
+            "de-DE": "Mit dem Plugin DHL Versand erstellst du DHL-Versandetiketten für deine Kundenbestellungen einfach und bequem in deiner Shopware-Administration.",
+            "en-GB": "With the DHL Shipping plugin, you can create DHL shipping labels for your customer orders easily and conveniently from your Shopware administration."
+        },
+        "label": {
+            "de-DE": "DHL Versand",
+            "en-GB": "DHL Shipping"
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.pickware.de",
+            "en-GB": "https://www.pickware.com"
+        },
+        "plugin-icon": "src/Resources/config/plugin.png",
+        "shopware-plugin-class": "Pickware\\PickwareDhl\\PickwareDhl",
+        "supportLink": {
+            "de-DE": "https://www.pickware.de/support",
+            "en-GB": "https://www.pickware.com/support"
+        }
+    },
+    "scripts": {
+        "test:integration": "APP_ENV=test ${SHOPWARE_DIR}/vendor/bin/phpunit --config phpunit.integration.xml --testdox",
+        "test:unit": "./vendor/bin/phpunit --config phpunit.unit.xml --testdox"
+    }
+}

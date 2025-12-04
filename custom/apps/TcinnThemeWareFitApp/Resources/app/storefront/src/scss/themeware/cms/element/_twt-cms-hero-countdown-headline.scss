@@ -1,0 +1,47 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Hero countdown headline"
+	==================================================
+
+*/
+
+// TODO: Add font styling and sizing
+
+@if $twt-cms-countdown-banner-css == 2 { // #performance
+
+    .cms-element-twt-hero-countdown-headline {
+        .twt-hero-countdown-headline-content {
+            text-align: center;
+
+            .headline {
+                font-size: 6vw;
+                font-weight: $twt-font-weight-bold;
+                line-height: 1;
+                margin: 0;
+                text-transform: uppercase;
+                text-align: center;
+
+                //&.twt-shadow-sm {
+                //    text-shadow: 0 1px 2px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 60%);
+                //}
+                //
+                //&.twt-shadow {
+                //    text-shadow: 0 1px 2px rgb(0 0 0 / 40%), 0 2px 4px rgb(0 0 0 / 80%);
+                //}
+                //
+                //&.twt-shadow-lg {
+                //    text-shadow: 0 1px 4px rgb(0 0 0 / 80%), 0 4px 8px #000000;
+                //}
+
+                // XL: text-shadow: 0 1px 6px rgb(0 0 0 / 80%), 0 12px 8px #000000;
+            }
+        }
+    }
+
+}

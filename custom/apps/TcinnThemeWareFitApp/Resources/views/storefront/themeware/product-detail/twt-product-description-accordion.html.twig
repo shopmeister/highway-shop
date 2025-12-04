@@ -1,0 +1,147 @@
+{# ThemeWare® "Description" in our CMS accordion #}
+
+{#
+    1zu1 von
+    https://github.com/shopware/shopware/blob/698ff11ca5c4d8d8bea2e7a0bc214b348fd7c45f/src/Storefront/Resources/views/storefront/component/product/description.html.twig
+    > 05-2024
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO
+    - extend the base template ?
+    - add product name to element headline ?!
+    - make 'Videos' available ?!
+        - consider 'Video tab'
+    - make 'Datasheets' available ?!
+        - consider 'Datasheets tab'
+    - ..
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailCommentShow = theme_config('twt-product-detail-comment-show') %}
+{% set twtProductDetailDescriptionTitleShow = theme_config('twt-product-detail-description-title-show') %}
+{% set twtProductDetailDownloadsShow = theme_config('twt-product-detail-downloads-show') %}
+{% set twtProductDetailFurtherLinksShow = theme_config('twt-product-detail-further-links-show') %}
+
+{% set twtProductDetailPropertiesHeadlineShow = theme_config('twt-product-detail-properties-headline-show') %}
+{% set twtProductDetailPropertiesInfoShow = theme_config('twt-product-detail-properties-info-show') %}
+{#
+{% set twtProductDetailPropertiesPosition = theme_config('twt-product-detail-properties-position') %}
+#}
+
+{# @TODO...
+{% set twtProductDetailDatasheetsShow = theme_config('twt-product-detail-datasheets-show') %}
+{% set twtProductDetailProductVideosPosition = theme_config('twt-product-detail-product-videos-position') %}
+{% set twtProductDetailProductVideosShow = theme_config('twt-product-detail-product-videos-show') %}
+{% set twtProductDetailTabDatasheetsShow = theme_config('twt-product-detail-tab-datasheets-show') %}
+{% set twtProductDetailTabProductVideosShow = theme_config('twt-product-detail-tab-product-videos-show') %}
+#}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block utilities_offcanvas_content %}
+    {% block component_product_description_container %}
+        <div class="product-detail-description tab-pane-container">
+            {#
+            {% block component_product_description_title %}
+                <div class="h3 product-detail-description-title">
+                    {{ 'detail.descriptionTitle'|trans|sw_sanitize }} "{{ product.translated.name }}"
+                </div>
+            {% endblock %}
+            #}
+
+            {% block component_product_description_content %}
+                {% block component_product_description_content_text %}
+                    <div class="product-detail-description-text"
+                         itemprop="description">
+                        {{ product.translated.description|raw }}
+                    </div>
+                {% endblock %}
+
+                {# ThemeWare: Include 'Videos' above properties (only if the videos tab is not displayed) #}
+                {#
+                {% if twtProductDetailProductVideosShow == 2 and twtProductDetailTabProductVideosShow == 1 and twtProductDetailProductVideosPosition == 1 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-videos.html.twig' ignore missing with {
+                        position: 'description',
+                        type: 'component'
+                    } %}
+                {% endif %}
+                #}
+
+                {# ThemeWare: Add properties headline #}
+                {% if twtProductDetailPropertiesHeadlineShow != 1 %}
+                    {% if product.sortedProperties|length > 0 %}
+                        {# block page_product_detail_properties_title @deprecated!! #}
+                        {% block page_product_detail_properties_subheadline %}
+                            <div class="h4 twt-product-properties-description-title twt-product-detail-description-subheadline">
+                                {{ 'twt.detail.properties.title'|trans|sw_sanitize }}
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                {% endif %}
+
+                {# ThemeWare: Show properties table #}
+                {% block component_product_description_content_properties %}
+                    {% if product.sortedProperties|length > 0 %}
+                        {% sw_include '@Storefront/storefront/component/product/properties.html.twig' %}
+                    {% endif %}
+                {% endblock %}
+
+                {# ThemeWare: Add properties infotext #}
+                {% if twtProductDetailPropertiesInfoShow != 1 %}
+                    {% if product.sortedProperties|length > 0 %}
+                        {% block page_product_detail_properties_info %}
+                            <div class="twt-product-detail-properties-info">
+                                {{ 'twt.detail.infoProperties'|trans|sw_sanitize }}
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                {% endif %}
+
+                {# ThemeWare: Include 'Videos' below properties (only if the videos tab is not displayed) #}
+                {#
+                {% if twtProductDetailProductVideosShow == 2 and twtProductDetailTabProductVideosShow == 1 and twtProductDetailProductVideosPosition == 2 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-videos.html.twig' ignore missing with {
+                        position: 'description',
+                        type: 'component'
+                    } %}
+                {% endif %}
+                #}
+
+                {# ThemeWare: Include 'Datasheets' #}
+                {#
+                {% if twtProductDetailDatasheetsShow == 2 and twtProductDetailTabDatasheetsShow == 1 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-datasheets.html.twig' ignore missing with {
+                        position: 'description',
+                        product: product
+                    } %}
+                {% endif %}
+                #}
+
+                {# ThemeWare: Add 'Further links' (description only) #}
+                {% if twtProductDetailFurtherLinksShow == 2 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/description/twt-product-further-links.html.twig' ignore missing with {
+                        product: product
+                    } %}
+                {% endif %}
+
+                {# ThemeWare: Include 'Downloads' (description only) #}
+                {% if twtProductDetailDownloadsShow == 2 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/description/twt-product-downloads.html.twig' ignore missing with {
+                        product: product
+                    } %}
+                {% endif %}
+
+                {# ThemeWare: Include 'Comment' (description only) #}
+                {% if twtProductDetailCommentShow == 2 %}
+                    {% sw_include '@Storefront/storefront/themeware/product-detail/description/twt-product-comment.html.twig' ignore missing with {
+                        product: product
+                    } %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

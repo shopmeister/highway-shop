@@ -1,0 +1,216 @@
+{# ThemeWare® CMS element "Parallax banner" #}
+
+{# @TODO: Fertigstellen > Config, Storefront etc. !!!!!!!! #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtParallaxBanner = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtPrllxBnnrTitle = element.translated.config.title.value %}
+{% set twtPrllxBnnrSubtitle = element.translated.config.subtitle.value %}
+
+{% set twtPrllxBnnrMinHeight = element.translated.config.minHeight.value %}
+
+{% set twtPrllxBnnrUrl = element.translated.config.url.value %}
+{% set twtPrllxBnnrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtPrllxBnnrPadding = twtParallaxBanner.padding.value %}
+{% set twtPrllxBnnrBorderRadius = twtParallaxBanner.borderRadius.value %}
+{% set twtPrllxBnnrBackgroundColor = twtParallaxBanner.backgroundColor.value %}
+
+{% set twtPrllxBnnrTextAlignment = twtParallaxBanner.textAlignment.value %}
+{% set twtPrllxBnnrTextShadow = twtParallaxBanner.textShadow.value %}
+
+{% set twtPrllxBnnrFontFamilyTitle = twtParallaxBanner.fontFamilyTitle.value %}
+{% set twtPrllxBnnrTextColorTitle = twtParallaxBanner.textColorTitle.value %}
+{% set twtPrllxBnnrFontWeightTitle = twtParallaxBanner.fontWeightTitle.value %}
+{% set twtPrllxBnnrTextTransformTitle = twtParallaxBanner.textTransformTitle.value %}
+
+{% set twtPrllxBnnrFontFamilySubtitle = twtParallaxBanner.fontFamilySubtitle.value %}
+{% set twtPrllxBnnrTextColorSubtitle = twtParallaxBanner.textColorSubtitle.value %}
+
+{% set twtPrllxBnnrAttachment = twtParallaxBanner.attachment.value %}
+{% set twtPrllxBnnrParallax = twtParallaxBanner.parallax.value %}
+
+{% set twtPrllxBnnrVerticalAlignment = twtParallaxBanner.verticalAlignment.value %}
+{% set twtPrllxBnnrHorizontalAlignment = twtParallaxBanner.horizontalAlignment.value %}
+{% set twtPrllxBnnrWidth = twtParallaxBanner.width.value %}
+{% set twtPrllxBnnrMaxWidth = twtParallaxBanner.maxWidth.value %}
+
+{% set twtPrllxBnnrColorOverlay = twtParallaxBanner.colorOverlay.value %}
+{% set twtPrllxBnnrColorOverlayBgColor = twtParallaxBanner.colorOverlayBgColor.value %}
+{% set twtPrllxBnnrColorOverlayBgGradient = twtParallaxBanner.colorOverlayBgGradient.value %}
+{% set twtPrllxBnnrColorOverlayBgColor2 = twtParallaxBanner.colorOverlayBgColor2.value %}
+{% set twtPrllxBnnrColorOverlayBgGradientAngle = twtParallaxBanner.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtPrllxBnnrHtmlTagTitle = twtParallaxBanner.htmlTagTitle.value %}
+{% if twtPrllxBnnrHtmlTagTitle is empty %}
+    {% set twtPrllxBnnrHtmlTagTitle = 'p' %}
+{% endif %}
+{% set twtPrllxBnnrHtmlTagClassTitle = twtParallaxBanner.htmlTagClassTitle.value %}
+
+{% set twtPrllxBnnrHtmlTagSubtitle = twtParallaxBanner.htmlTagSubtitle.value %}
+{% if twtPrllxBnnrHtmlTagSubtitle is empty %}
+    {% set twtPrllxBnnrHtmlTagSubtitle = 'p' %}
+{% endif %}
+{% set twtPrllxBnnrHtmlTagClassSubtitle = twtParallaxBanner.htmlTagClassSubtitle.value %}
+
+{# Tab "Advanced" #}
+{% set twtPrllxBnnrCssClass = twtParallaxBanner.cssClass.value %}
+{% set twtPrllxBnnrCssClassTitle = twtParallaxBanner.cssClassTitle.value %}
+{% set twtPrllxBnnrCssClassSubtitle = twtParallaxBanner.cssClassSubtitle.value %}
+
+{# Set title attribute #}
+{# INFO: 'Title' (mandatory) #}
+{# @TODO: Add title to seo config ? #}
+{% set title = twtPrllxBnnrTitle %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-banner']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% set contentClasses = ['content'] %}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% if twtPrllxBnnrTextShadow == 'small' %}
+    {% set textClasses = 'twt-text-shadow-sm' %}
+{% elseif twtPrllxBnnrTextShadow == 'regular' %}
+    {% set textClasses = 'twt-text-shadow' %}
+{% elseif twtPrllxBnnrTextShadow == 'large' %}
+    {% set textClasses = 'twt-text-shadow-lg' %}
+{% endif %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_parallax_banner %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtPrllxBnnrCssClass is not empty %} {{ twtPrllxBnnrCssClass }}{% endif %}"
+         style="background-color: {{ twtPrllxBnnrBackgroundColor }};{% if twtPrllxBnnrBorderRadius != '0' %} border-radius: {{ twtPrllxBnnrBorderRadius }};{% endif %}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_parallax_banner_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtPrllxBnnrBorderRadius }};
+        {% block element_twt_parallax_banner_styles_inside %}{% endblock %}
+   }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# block element_twt_parallax_banner_content @deprecated #}
+        {% block element_twt_parallax_banner_alignment %}
+            {# @TODO: {% if twtPrllxBnnrVerticalAlign and not isCover %} #}
+            {% if twtPrllxBnnrVerticalAlign %}
+                     {% if twtPrllxBnnrDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+                <div class="cms-element-alignment{% if twtPrllxBnnrVerticalAlign == 'center' %} align-self-center{% elseif twtPrllxBnnrVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+            {% endif %}
+
+            {# block element_twt_parallax_banner_image_inner @deprecated #}
+            {% block element_twt_parallax_banner_inner %}
+                {# ThemeWare: Set text element #}
+                {% set twtPrllxBnnr %}
+                    {% block element_twt_parallax_banner_content_container %}
+                        <div class="twt-parallax-banner-container cms-content-container content-container justify-content-{{ twtPrllxBnnrHorizontalAlignment }} align-items-{{ twtPrllxBnnrVerticalAlignment }}"
+                             style="padding: {{ twtPrllxBnnrPadding }};"
+                        >
+                            {# Colored overlay (if configured) #}
+                            {% if twtPrllxBnnrColorOverlay %}
+                                <div class="twt-parallax-banner-overlay color-overlay"
+                                     style="background: {{ twtPrllxBnnrColorOverlayBgColor }};{% if twtPrllxBnnrColorOverlayBgGradient %} background: linear-gradient({{ twtPrllxBnnrColorOverlayBgGradientAngle }}deg, {{ twtPrllxBnnrColorOverlayBgColor }} 0%, {{ twtPrllxBnnrColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# Content #}
+                            <div class="twt-parallax-banner-content {{ contentClasses|sort|join(' ') }}" style="text-align: {{ twtPrllxBnnrTextAlignment }}; width: {{ twtPrllxBnnrWidth }}; max-width: {{ twtPrllxBnnrMaxWidth }};">
+                                {# Title (mandatory) #}
+                                <{{ twtPrllxBnnrHtmlTagTitle }}
+                                class="twt-parallax-banner-title title text {{ twtPrllxBnnrHtmlTagClassTitle }}{% if twtPrllxBnnrFontWeightTitle and twtPrllxBnnrFontWeightTitle != 'unset' %} fw-{{ twtPrllxBnnrFontWeightTitle }}{% endif %}{% if twtPrllxBnnrTextTransformTitle != 'none' %} text-{{ twtPrllxBnnrTextTransformTitle }}{% endif %} twt-font-family-{{ twtPrllxBnnrFontFamilyTitle }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtPrllxBnnrCssClassTitle is not empty %} {{ twtPrllxBnnrCssClassTitle }}{% endif %}"
+                                style="color: {{ twtPrllxBnnrTextColorTitle }};">
+                                    {# Note: Experimental feature, may change later (placeholder not final) #}
+                                    {% if twtPrllxBnnrTitle == "{{ category.name }}" or twtPrllxBnnrTitle == "{{category.name}}" or twtPrllxBnnrTitle == "%category.name%" or twtPrllxBnnrTitle == "category.name" %}
+                                        <span>{{ page.header.navigation.active.name }}</span>
+                                    {% else %}
+                                        <span>{{ twtPrllxBnnrTitle }}
+                                    {% endif %}
+                                </{{ twtPrllxBnnrHtmlTagTitle }}>
+
+                                {# Subtitle #}
+                                {% if twtPrllxBnnrSubtitle %}
+                                    <{{ twtPrllxBnnrHtmlTagSubtitle }}
+                                       class="twt-parallax-banner-subtitle subtitle text {{ twtPrllxBnnrHtmlTagClassSubtitle }} twt-font-family-{{ twtPrllxBnnrFontFamilySubtitle }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtPrllxBnnrCssClassSubtitle is not empty %} {{ twtPrllxBnnrCssClassSubtitle }}{% endif %}"
+                                       style="color: {{ twtPrllxBnnrTextColorSubtitle }};">
+                                        <span>{{ twtPrllxBnnrSubtitle }}</span>
+                                    </{{ twtPrllxBnnrHtmlTagSubtitle }}>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_parallax_banner_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-parallax-banner-image-container twt-parallax-banner {# w-100 #} cms-image-container image-container is-cover is-{{ twtPrllxBnnrAttachment }}"
+                                 style="background-image: url({{ element.data.media.url }}); min-height: {{ twtPrllxBnnrMinHeight }}">
+                                {# ThemeWare: Load text element #}
+                                {{ twtPrllxBnnr }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Image banner" #}
+                {% block element_twt_parallax_banner_content %}
+                    {% if twtPrllxBnnrUrl %}
+                        <a href="{{ twtPrllxBnnrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtPrllxBnnrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtPrllxBnnrVerticalAlign and not isCover %} #}
+            {% if twtPrllxBnnrVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

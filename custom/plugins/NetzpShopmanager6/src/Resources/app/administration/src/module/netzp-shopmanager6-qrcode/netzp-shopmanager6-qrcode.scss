@@ -1,0 +1,47 @@
+.netzp-shopmanager6-qrcode {
+  display: block;
+  overflow: auto;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  height: 100%;
+
+  .qrcode {
+    display: block;
+    overflow: auto;
+    margin: .5rem auto .5rem auto;
+    width: 35%;
+  }
+
+  .info {
+    display: block;
+    overflow: auto;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    height: 100%;
+  }
+
+  .badges {
+    display: block;
+    overflow: auto;
+    margin-top: .5rem;
+
+    .android {
+      display: inline-block;
+      overflow: auto;
+      float: left;
+      margin-left: 20px;
+
+      img {
+        height: 60px;
+      }
+    }
+
+    .ios {
+      display: inline-block;
+      overflow: auto;
+      float: left;
+      height: 40px;
+      margin-top: 10px;
+    }
+  }
+}

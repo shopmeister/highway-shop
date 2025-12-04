@@ -1,0 +1,58 @@
+{
+    "name": "swag/amazon-pay",
+    "description": "Amazon Pay payment plugin for Shopware 6",
+    "version": "10.2.4",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "onlineshop.consulting",
+            "email": "info@onlineshop.consulting",
+            "homepage": "https://onlineshop.consulting/"
+        },
+        {
+            "name": "Shopware",
+            "email": "support@shopware.com",
+            "homepage": "https://www.shopware.com/"
+        }
+    ],
+    "require": {
+        "shopware/core": "~6.6.0",
+        "amzn/amazon-pay-api-sdk-php": "2.6.4",
+        "mkreusch/amazon-pay-api-sdk-php-extension": "^0.7.0",
+        "theiconic/name-parser": "^1.2.11"
+    },
+    "extra": {
+        "shopware-plugin-class": "Swag\\AmazonPay\\SwagAmazonPay",
+        "copyright": "(c) onlineshop.consulting",
+        "label": {
+            "de-DE": "Amazon Pay",
+            "en-GB": "Amazon Pay"
+        },
+        "description": {
+            "de-DE": "Das Amazon Pay plugin für Shopware 6 bietet ein nahtloses Zahlungserlebnis für Kunden, indem es ihnen ermöglicht, ihr vertrautes Amazon-Konto für Einkäufe zu nutzen.",
+            "en-GB": "The Amazon Pay plugin for Shopware 6 provides a seamless payment experience for customers by allowing them to use their trusted Amazon account to make purchases."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://onlineshop.consulting/",
+            "en-GB": "https://onlineshop.consulting/"
+        },
+        "supportLink": {
+            "de-DE": "https://amazon-pay-shopware6.onlineshop.consulting/de/",
+            "en-GB": "https://amazon-pay-shopware6.onlineshop.consulting/en/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Swag\\AmazonPay\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
+    }
+}

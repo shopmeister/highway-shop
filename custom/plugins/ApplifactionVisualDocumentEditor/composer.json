@@ -1,0 +1,49 @@
+{
+  "name": "applifaction/wysiwyg-document-editor-sw6",
+  "description": "PDF Template Editor",
+  "version": "2.5.1",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Applifaction LLC",
+      "role": "Manufacturer",
+      "homepage": "https://applifaction.com"
+    }
+  ],
+  "require": {
+    "shopware/core": "6.6.*",
+    "shopware/administration":"6.6.*",
+    "ext-dom": "*",
+    "endroid/qr-code": "^5.0",
+    "picqer/php-barcode-generator": "^2.4",
+    "ext-curl": "*"
+  },
+  "type": "shopware-platform-plugin",
+  "autoload": {
+    "psr-4": {
+      "Applifaction\\DragNDropDocumentEditor\\": "src/",
+      "Dde\\Endroid\\QrCode\\": "vendor/endroid/qr-code/src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "Applifaction\\DragNDropDocumentEditor\\ApplifactionVisualDocumentEditor",
+    "plugin-icon": "src/Resources/config/plugin.png",
+    "copyright": "(c) by Applifaction LLC",
+    "label": {
+      "de-DE": "PDF Template Editor",
+      "en-GB": "PDF Template Editor"
+    },
+    "description": {
+      "de-DE": "Templates für Rechnungen, Lieferscheine, Gutschriften, Stornos uvm. designen",
+      "en-GB": "Design templates for invoices, delivery notes, credit notes, invoice cancellations and  many more"
+    },
+    "manufacturerLink": {
+      "de-DE": "https://applifaction.com",
+      "en-GB": "https://applifaction.com"
+    },
+    "supportLink": {
+      "de-DE": "https://applifaction.com/de/contact/",
+      "en-GB": "https://applifaction.com/en/contact/"
+    }
+  }
+}

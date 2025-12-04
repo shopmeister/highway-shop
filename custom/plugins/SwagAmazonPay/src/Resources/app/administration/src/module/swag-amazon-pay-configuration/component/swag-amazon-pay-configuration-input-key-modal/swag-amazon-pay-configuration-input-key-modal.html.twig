@@ -1,0 +1,40 @@
+{% block swag_amazon_pay_configuration_input_key_modal %}
+
+    <sw-modal :title="$tc('swag-amazon-pay-configuration.inputKeyModal.title')" @modal-close="onCancel">
+
+        {% block swag_amazon_pay_configuration_input_key_modal_content %}
+            <sw-container gap="0px 10px">
+
+                {% block swag_amazon_pay_configuration_input_key_modal_content_info_text %}
+                    <sw-container gap="0px 10px">
+                        <sw-alert>
+                            <span v-html="$tc('swag-amazon-pay-configuration.inputKeyModal.infoText')"></span>
+                        </sw-alert>
+                    </sw-container>
+                {% endblock %}
+
+                {% block swag_amazon_pay_configuration_input_key_modal_content_private_key_input %}
+                    <sw-textarea-field :label="$tc('swag-amazon-pay-configuration.inputKeyModal.labelContent')" v-model:value="privateKey"></sw-textarea-field>
+                {% endblock %}
+
+            </sw-container>
+        {% endblock %}
+
+        {% block swag_amazon_pay_configuration_input_key_modal_actions %}
+            <template #modal-footer>
+
+                {% block swag_amazon_pay_configuration_input_key_modal_actions_cancel %}
+                    <sw-button size="small" @click="onCancel">
+                        {{ $tc('swag-amazon-pay-configuration.inputKeyModal.buttonCancel') }}
+                    </sw-button>
+                {% endblock %}
+
+                {% block swag_amazon_pay_configuration_input_key_modal_actions_send %}
+                    <sw-button variant="primary" size="small" :disabled="!privateKey" @click="onConfirm">
+                        {{ $tc('swag-amazon-pay-configuration.inputKeyModal.buttonSend') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+    </sw-modal>
+{% endblock %}

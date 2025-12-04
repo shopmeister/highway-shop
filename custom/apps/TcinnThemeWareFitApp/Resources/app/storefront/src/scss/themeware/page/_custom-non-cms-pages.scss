@@ -1,0 +1,249 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ____ (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: Other pages
+    ==================================================
+    Theme specific stylings for non-cms pages.
+
+*/
+
+// ThemeWare Set .twt-content-main-min for @extend ---------------------------------------------------------------------
+
+.twt-container-main-min {
+    padding: 20px 0;
+}
+
+// ThemeWare Set .twt-content-main for @extend -------------------------------------------------------------------------
+
+.twt-container-main {
+    margin-top: null-pixel-unit($twt-container-main-margin-top); // @TODO: Add more viewports...
+    margin-bottom: null-pixel-unit($twt-container-main-margin-bottom); // @TODO: Add more viewports...
+    background-color: $twt-container-main-background-color;
+
+    @include media-breakpoint-down(sm) { // max 575.98px
+        padding: null-pixel-unit($twt-container-main-padding-phone-xs);
+    }
+    @include media-breakpoint-up(sm) { // min 576px
+        padding: null-pixel-unit($twt-container-main-padding-phone);
+    }
+    @include media-breakpoint-up(md) { // min 768px
+        padding: null-pixel-unit($twt-container-main-padding-tablet);
+    }
+    @include media-breakpoint-up(xl) { // min 1200px
+        padding: null-pixel-unit($twt-container-main-padding);
+    }
+
+    // ThemeWare: @TODO: Clean style
+    @if ($twt-container-main-border-color != $twt-container-main-background-color) {
+        border: 1px solid $twt-container-main-border-color;
+    }
+}
+
+// @TODO: CSS-fix for plugins
+/*
+  .xyz .content-main .container-main > div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+ */
+
+// ThemeWare: Adjustments for non-cms pages ----------------------------------------------------------------------------
+
+// Other pages: Account
+// .is-ctl-accountprofile .is-act-index ("Overview")
+// .is-ctl-accountprofile .is-act-profileoverview ("Your profile")
+// .is-ctl-accountpayment .is-act-paymentoverview ("Payment methods")
+// .is-ctl-accountorder .is-act-orderoverview ("Orders")
+// .is-ctl-accountorder .is-act-editorder ("Complete payment") [minimal header]²
+.is-ctl-accountprofile,
+.is-act-profileoverview,
+.is-ctl-accountpayment,
+.is-act-paymentoverview,
+.is-ctl-accountorder,
+.is-act-orderoverview {
+    &.twt-cms-styling {
+        .content-main {
+            .container-main {
+                > div { // .account .account-content .row bzw. .checkout²
+                    margin-right: 0;
+                    margin-left: 0;
+
+                    // @TODO: Prüfen ob dies am .container-main möglich ist
+                    @extend .twt-container-main;
+                }
+            }
+        }
+    }
+
+    &:not(.twt-cms-styling) {
+        .content-main {
+            .container-main {
+                // @TODO: Prüfen ob dies am .container-main möglich ist
+                > div { // .account .account-content .row bzw. .checkout²
+                    @extend .twt-container-main-min;
+                }
+            }
+        }
+    }
+}
+
+// Other pages: Account > "Shopware Commercial" #extension
+// see other/_shopware-commercial.scss
+
+// Other pages: Account > Addresses
+// .is-ctl-address .is-act-accountaddressoverview ("Addresses")
+// .is-ctl-address .is-act-accountcreateaddress ("New address")
+// .is-ctl-address .is-act-accounteditaddres ("Edit address")
+.is-ctl-address,
+.is-act-accountaddressoverview,
+.is-act-accountcreateaddress,
+.is-act-accounteditaddres {
+    &.twt-cms-styling {
+        .content-main {
+            .container-main {
+                > div { // .account .account-content .row
+                    margin-right: 0;
+                    margin-left: 0;
+
+                    // @TODO: Prüfen ob dies am .container-main möglich ist
+                    @extend .twt-container-main;
+                }
+            }
+        }
+    }
+
+    &:not(.twt-cms-styling) {
+        .content-main {
+            .container-main {
+                // @TODO: Prüfen ob dies am .container-main möglich ist
+                > div { // .account .account-content .row
+                    @extend .twt-container-main-min;
+                }
+            }
+        }
+    }
+}
+
+// Other pages: Login
+// .is-ctl-auth .is-act-loginpage ("Log in")
+// .is-ctl-auth .is-act-recoveraccountform ("Password recovery")
+.is-ctl-auth,
+.is-act-loginpage,
+.is-act-recoveraccountform {
+    &.twt-cms-styling {
+        .content-main {
+            .container-main {
+                > div { // account-register bzw. .account-recover-password .row
+                    margin-right: 0;
+                    margin-left: 0;
+
+                    // @TODO: Prüfen ob dies am .container-main möglich ist
+                    @extend .twt-container-main;
+                }
+            }
+        }
+    }
+
+    &:not(.twt-cms-styling) {
+        .content-main {
+            .container-main {
+                // @TODO: Prüfen ob dies am .container-main möglich ist
+                > div { // account-register bzw. .account-recover-password .row
+                    @extend .twt-container-main-min;
+                }
+            }
+        }
+    }
+}
+
+// Other pages: Checkout
+// .is-ctl-checkout .is-act-cartpage ("Shopping cart")
+// .is-ctl-checkout .is-act-confirmpage ("Complete order") [minimal header]
+// .is-ctl-checkout .is-act-finishpage ("Thank you for your order") [minimal header]
+.is-ctl-checkout {
+    &.twt-cms-styling {
+        .content-main {
+            .container-main {
+                > div { // .checkout
+                    margin-right: 0;
+                    margin-left: 0;
+
+                    // @TODO: Prüfen ob dies am .container-main möglich ist
+                    @extend .twt-container-main;
+                }
+            }
+        }
+    }
+
+    &:not(.twt-cms-styling) {
+        .content-main {
+            .container-main {
+                // @TODO: Prüfen ob dies am .container-main möglich ist
+                > div { // .checkout
+                    @extend .twt-container-main-min;
+                }
+            }
+        }
+    }
+}
+
+// Other pages: Register (Checkout)
+// .is-ctl-register .is-act-checkoutregisterpage ("Shipping information") [minimal header]
+.is-ctl-register,
+.is-act-checkoutregisterpage {
+    &.twt-cms-styling {
+        .content-main {
+            .container-main {
+                > div { // .checkout
+                    margin-right: 0;
+                    margin-left: 0;
+
+                    // @TODO: Prüfen ob dies am .container-main möglich ist
+                    @extend .twt-container-main;
+                }
+            }
+        }
+    }
+
+    &:not(.twt-cms-styling) {
+        .content-main {
+            .container-main {
+                // @TODO: Prüfen ob dies am .container-main möglich ist
+                > div { // .checkout
+                    @extend .twt-container-main-min;
+                }
+            }
+        }
+    }
+}
+
+// Other pages: Search
+// @TODO...
+.is-ctl-search {
+    .content-main {
+        .container-main {
+            // @TODO: Prüfen ob dies am .container-main möglich ist
+            > div { // .cms-page .search-page
+                @extend .twt-container-main;
+            }
+        }
+    }
+}
+
+// Other pages: Wishlist
+// @TODO...
+.is-ctl-wishlist {
+    .content-main {
+        .container-main {
+            // @TODO: Prüfen ob dies am .container-main möglich ist
+            > div { // .cms-page .wishlist-page + .row
+                @extend .twt-container-main;
+            }
+        }
+    }
+}

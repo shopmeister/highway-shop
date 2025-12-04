@@ -1,0 +1,249 @@
+{# ThemeWare® CMS element "Classic teaser" #}
+
+{# @TODO: prüfen... #}
+
+{# Available effects:
+    Effect 1 "slide up"
+    Effect 2 "fade in"
+    Effect 3 "button" (e.g. Clean)
+    Effect 4 "slide up" (e.g. Bike)
+    Effect 5 "button" (e.g. Strong)
+    Effect 6 "button" (e.g. Ladieswear)
+    Effect 7 "overlay" (e.g. Global)
+#}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtClassicTeaser = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtClsscTsrTitle = element.translated.config.title.value %}
+
+{% set twtClsscTsrDisplayMode = element.translated.config.displayMode.value %}
+{% set twtClsscTsrMinHeight = element.translated.config.minHeight.value %}
+{% set twtClsscTsrVerticalAlign = twtClassicTeaser.verticalAlign.value %}
+
+{% set twtClsscTsrUrl = element.translated.config.url.value %}
+{% set twtClsscTsrNewTab = element.translated.config.newTab.value %}
+{# fullLink > allways 'true' (confing disabled) #}
+
+{# Tab "Layout" #}
+{% set twtClsscTsrBackgroundColor = twtClassicTeaser.backgroundColor.value %}
+
+{% set twtClsscTsrStyle = twtClassicTeaser.style.value %}
+{% set twtClsscTsrCustomStyling = twtClassicTeaser.customStyling.value %}
+
+{% set twtClsscTsrFontFamily = twtClassicTeaser.fontFamily.value %}
+{% set twtClsscTsrTextAlignment = twtClassicTeaser.textAlignment.value %}
+{% set twtClsscTsrTextColor = twtClassicTeaser.textColor.value %}
+{% set twtClsscTsrBorderColor = twtClassicTeaser.borderColor.value %}
+{% set twtClsscTsrBgColor = twtClassicTeaser.bgColor.value %}
+{% set twtClsscTsrBgColorHover = twtClassicTeaser.bgColorHover.value %}
+
+{% set twtClsscTsrObjectPosition = twtClassicTeaser.objectPosition.value %}
+
+{# Tab "SEO" #}
+{% set twtClsscTsrLzyLdng = twtClassicTeaser.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtClsscTsrCssClass = twtClassicTeaser.cssClass.value %}
+{% set twtClsscTsrCssClassCaption = twtClassicTeaser.cssClassCaption.value %}
+
+{# Set title attribute #}
+{# INFO: 'Title' (mandatory) #}
+{# @TODO: Add title to seo config ? #}
+{% set title = twtClsscTsrTitle %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-teaser']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% if twtClsscTsrDisplayMode == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{#
+{% set contentClasses = ['content'] %}
+#}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% if twtClsscTsrCustomStyling %}
+    {% if twtClsscTsrStyle != 'default' and twtClsscTsrStyle != 'effect5' and twtClsscTsrStyle != 'effect6' and twtClsscTsrStyle != 'effect7' %}
+        {% set textAlignment = 'text-' ~ twtClsscTsrTextAlignment %}
+    {% endif %}
+{% endif %}
+
+{% set lazyloading = twtClsscTsrLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_classic_teaser %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtClsscTsrVerticalAlign %} {# d-flex #} has-vertical-alignment{% endif %}{% if twtClsscTsrStyle %} is-{{ twtClsscTsrStyle }}{% endif %}{% if twtClsscTsrCustomStyling %} is-custom{% endif %}{% if twtClsscTsrCssClass is not empty %} {{ twtClsscTsrCssClass }}{% endif %}"
+         {% if twtClsscTsrBackgroundColor %}style="background-color: {{ twtClsscTsrBackgroundColor }}"{% endif %}
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_classic_teaser_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: 0;
+        {% block element_twt_classic_teaser_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# block element_twt_classic_teaser_content @deprecated #}
+        {% block element_twt_classic_teaser_alignment %}
+            {# @TODO: {% if twtClsscTsrVerticalAlign and not isCover %} #}
+            {% if twtClsscTsrVerticalAlign %}
+                <div class="cms-element-alignment{% if twtClsscTsrVerticalAlign == 'center' %} align-self-center{% elseif twtClsscTsrVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                    {% if twtClsscTsrDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {# block element_twt_classic_teaser_image_inner @deprecated #}
+            {% block element_twt_classic_teaser_inner %}
+                {# ThemeWare: Set text element #}
+                {% set classicTeaser %}
+                    {% block element_twt_classic_teaser_content_container %}
+                        <div class="twt-classic-teaser-container cms-title-container twt-font-family-base">
+                            {# Caption (mandatory) #}
+                            {% if twtClsscTsrStyle == 'default' %}
+                                {# Shopware 5 default style #}
+                                <div class="twt-classic-teaser-text text{% if textAlignment %} {{ textAlignment }}{% endif %}{% if twtClsscTsrFontFamily != 'base' %} twt-font-family-{{ twtClsscTsrFontFamily }}{% endif %}{% if twtClsscTsrCssClassCaption is not empty %} {{ twtClsscTsrCssClassCaption }}{% endif %}">
+                                    {{ twtClsscTsrTitle }}
+                                </div>
+
+                            {% else %}
+                                <div class="twt-classic-teaser-text text{% if textAlignment %} {{ textAlignment }}{% endif %}{% if twtClsscTsrFontFamily != 'base' %} twt-font-family-{{ twtClsscTsrFontFamily }}{% endif %}{% if twtClsscTsrCssClassCaption is not empty %} {{ twtClsscTsrCssClassCaption }}{% endif %}">
+                                    <span>{{ twtClsscTsrTitle }}</span>
+
+                                    {# Add icon when linked #}
+                                    {% if twtClsscTsrUrl %}
+                                        {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                        {% if twtClsscTsrStyle == 'effect1' or twtClsscTsrStyle == 'effect2' or twtClsscTsrStyle == 'effect3' %}
+                                            {% sw_icon 'arrow-medium-right' style { size: 'sm', pack: 'solid', color: 'dark', ariaHidden: true } %}
+                                        {% elseif twtClsscTsrStyle == 'effect4' %}
+                                            {% sw_icon 'arrow-medium-right' style { size: 'sm', pack: 'solid', color: 'light', ariaHidden: true } %}
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+
+                            {% endif %}
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Parse vars to css #}
+                {# @TODO: CSS Elemente vereinheitlichen (CSS-Variablen oder Inline-CSS)... #}
+                {% if twtClsscTsrCustomStyling %}
+                    {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{ element.id }}"] .text {
+        color: {{ twtClsscTsrTextColor }} !important;
+        background-color: {{ twtClsscTsrBgColor }} !important;
+
+        {% if twtClsscTsrStyle == 'effect3' %}
+            border-color: {{ twtClsscTsrBorderColor }} !important;
+        {% endif %}
+    }
+
+    div[data-cms-element-id="{{ element.id }}"] .icon {
+        color: {{ twtClsscTsrTextColor }} !important;
+    }
+
+    {% if twtClsscTsrStyle != 'default' %}
+        div[data-cms-element-id="{{ element.id }}"] a:hover .text {
+            background-color: {{ twtClsscTsrBgColorHover }} !important;
+        }
+    {% endif %}
+</style>
+                    {% endapply %}
+                {% endif %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_classic_teaser_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-classic-teaser-image-container {# w-100 #} cms-image-container image-container is-{{ twtClsscTsrDisplayMode }}"
+                                 {% if twtClsscTsrMinHeight and twtClsscTsrDisplayMode == 'cover' %}style="min-height: {{ twtClsscTsrMinHeight }};"{% endif %}>
+
+                                {# Add 'object-position' class to align the image horizontally if configured #}
+                                {% if twtClsscTsrDisplayMode == 'cover' and twtClsscTsrObjectPosition != 'center' %}
+                                    {% set imageClasses = 'cms-image object-position-'~twtClsscTsrObjectPosition %}
+                                {% else %}
+                                    {% set imageClasses = 'cms-image' %}
+                                {% endif %}
+
+                                {% block element_twt_classic_teaser_image_media %}
+                                    {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                    {% set attributes = {
+                                        class: imageClasses,
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: title),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtClsscTsrDisplayMode == 'cover' or twtClsscTsrDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtClsscTsrDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load text element #}
+                                {{ classicTeaser }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Classic teaser" #}
+                {% block element_twt_classic_teaser_content %}
+                    {% if twtClsscTsrUrl %}
+                        <a href="{{ twtClsscTsrUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtClsscTsrNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtClsscTsrVerticalAlign and not isCover %} #}
+            {% if twtClsscTsrVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% sw_extends '@Storefront/storefront/page/checkout/confirm/index.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ThemeWare: Adjustments to the checkout confirm page #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCustomAnnouncementShow = theme_config('twt-custom-announcement-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the confirmation block #}
+{% block page_checkout_confirm %}
+    {# ThemeWare: Add 'Custom announcement' #}
+    {% if twtCustomAnnouncementShow == 2 or twtCustomAnnouncementShow == 4 %}
+        {% sw_include '@Storefront/storefront/themeware/extensions/twt-custom-announcement.html.twig' ignore missing with {
+            type: 'checkout'
+        } %}
+    {% endif %}
+
+    {# Default block > Delivery information #}
+    {{ parent() }}
+{% endblock %}

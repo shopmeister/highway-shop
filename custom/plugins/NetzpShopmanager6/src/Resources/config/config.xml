@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+    <card>
+        <title>Shopmanager App</title>
+        <title lang="de-DE">Shopmanager App</title>
+
+        <input-field type="bool">
+            <name>usepush</name>
+            <label>Send push notification</label>
+            <label lang="de-DE">Push-Mitteilung senden</label>
+            <helpText>
+                <![CDATA[
+                Sends push messages on every order to the mobile app.
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Sendet Push-Mitteilungen bei jeder Bestellung an die mobile App.
+                ]]>
+            </helpText>
+            <defaultValue>true</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>pushtemplate</name>
+            <label>Push message template</label>
+            <label lang="de-DE">Template für Push-Mitteilung</label>
+            <helpText>
+                <![CDATA[
+                The following placeholders are available: {ordertime}, {name}, {email}, {positions}, {payment}, {total}, {shop}
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Folgende Platzhalter stehen zur Verfügung: {ordertime}, {name}, {email}, {positions}, {payment}, {total}, {shop}
+                ]]>
+            </helpText>
+            <defaultValue>[{shop}] Neue Bestellung am {ordertime} (UTC) von {name} ({email}). Positionen: {positions}, Zahlart: {payment}, Summe: {total}</defaultValue>
+        </input-field>
+
+        <input-field type="single-select">
+            <name>pricemode</name>
+            <label>Price mode</label>
+            <label lang="de-DE">Preisanzeige</label>
+            <defaultValue>gross</defaultValue>
+            <options>
+                <option>
+                    <id>gross</id>
+                    <name>GROSS</name>
+                    <name lang="de-DE">BRUTTO</name>
+                </option>
+                <option>
+                    <id>net</id>
+                    <name>NET</name>
+                    <name lang="de-DE">NETTO</name>
+                </option>
+            </options>
+        </input-field>
+
+        <input-field type="bool">
+            <name>onlypaid</name>
+            <label>List only paid orders in statistics</label>
+            <label lang="de-DE">Nur bezahlte Bestellungen in Statistik aufführen</label>
+            <helpText>
+                <![CDATA[
+                Lists only orders in the statistics with payment status 'paid'.
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Führt nur Bestellungen in der Statistik auf, die den Zahlungsstatus 'bezahlt' haben.
+                ]]>
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>demomode</name>
+            <label>Demo mode</label>
+            <label lang="de-DE">Demo-Modus</label>
+            <helpText>
+                <![CDATA[
+                Enabled: displays randomly generated data. NOT FOR PRODUCTIVE USE!
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Aktiviert: zeigt zufällig erzeugte Daten an. NICHT FüR DEN PRODUKTIVEINSATZ gedacht!
+                ]]>
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="int">
+            <name>listlimit</name>
+            <label>List limit</label>
+            <label lang="de-DE">Listen-Länge</label>
+            <helpText>
+                <![CDATA[
+                Defines how many entries are called up in lists (e.g. orders, customers). Higher values may slow down communication.
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Legt fest, wieviele Einträge in Listen (z.B. Bestellungen, Kunden) abgerufen werden. Höhere Werte können die Kommunikation verlangsamen.
+                ]]>
+            </helpText>
+            <defaultValue>50</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>message</name>
+            <label>Shop message</label>
+            <label lang="de-DE">Shop-Mitteilung</label>
+            <helpText>
+                <![CDATA[
+                This message is displayed above the shop and can also be set in the app.
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Diese Mitteilung wird oberhalb des Shops ausgegeben und kann auch in der App gesetzt werden.
+                ]]>
+            </helpText>
+            <defaultValue></defaultValue>
+        </input-field>
+
+        <input-field type="bool">
+            <name>countvisitors</name>
+            <label>Count visitors (anonymously)</label>
+            <label lang="de-DE">Besucher zählen (anonym)</label>
+            <helpText>
+                <![CDATA[
+                Creates some statistics (absolutely anonymized!), this may cost some additional performance.
+                ]]>
+            </helpText>
+            <helpText lang="de-DE">
+                <![CDATA[
+                Erstellt einige Statistiken (absolut anonymisiert!), das kann etwas zusätzliche Performance kosten.
+                ]]>
+            </helpText>
+            <defaultValue>false</defaultValue>
+        </input-field>
+
+        <input-field type="text">
+            <name>timezone</name>
+            <label>Time zone - please look at the docs: https://plugins.netzperfekt.de/doc/Netzp10138892889#Zeitzone</label>
+            <label lang="de-DE">Zeitzone - bitte die Dokumentation beachten: https://plugins.netzperfekt.de/doc/Netzp10138892889#Zeitzone</label>
+            <defaultValue></defaultValue>
+            <helpText>The time zone is important for correct assignment and display of the order date. Please be sure to read our FAQ about this: https://plugins.netzperfekt.de/faq/Netzp10138892889#162 (leave blank for no attention to time zone)</helpText>
+            <helpText lang="de-DE">Die Zeitzone ist wichtig für eine korrekte Zuordnung und Anzeige des Bestelldatums. Bitte beachten Sie unbedingt unsere FAQ dazu: https://plugins.netzperfekt.de/faq/Netzp10138892889#162 (leer lassen für keine Beachtung der Zeitzone)</helpText>
+        </input-field>
+
+        <component name="sw-entity-multi-id-select">
+            <name>salesChannels</name>
+            <entity>sales_channel</entity>
+            <label>Sales channels (none selected = show all)</label>
+            <label lang="de-DE">Verkaufs-Kanäle (keine ausgewählt = alle anzeigen)</label>
+            <helpText>Controls which sales channels are selectable in the mobile app. If none are selected in this field, all sales channels are available.</helpText>
+            <helpText lang="de-DE">Steuert, welche Verkaufskanäle in der mobilen App auswählbar sind. Wenn keine ausgewählt sind, stehen alle Verkaufskanäle zur Verfügung.</helpText>
+        </component>
+
+        <component name="netzp-shopmanager6-qrcode">
+            <name>qrcode</name>
+        </component>
+    </card>
+</config>

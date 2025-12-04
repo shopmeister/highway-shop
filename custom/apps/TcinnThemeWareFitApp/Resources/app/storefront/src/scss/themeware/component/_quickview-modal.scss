@@ -1,0 +1,211 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare® Extension 'Quickview' > Modal #quickview #beta
+	==================================================
+	Quickview modal in listings
+
+    Info: This file is for adjusting the ThemeWare® 'Quickview' modal.
+*/
+
+@if $twt-quickview-show == 2 {
+    .twt-quickview-modal {
+        --bs-modal-width: 1200px;
+
+        .modal-dialog {
+            max-width: 1200px;
+            transition: opacity 0.45s cubic-bezier(0.3, 0, 0.15, 1), visibility 0.45s linear, max-width 0.25s cubic-bezier(0.3, 0, 0.15, 1) !important;
+
+            //transition: opacity 0.45s cubic-bezier(0.3, 0, 0.15, 1), visibility 0.45s linear, max-width 0.25s cubic-bezier(0.3, 0, 0.15, 1), top 0.25s cubic-bezier(0.3, 0, 0.15, 1) !important;
+            //transform: translateY(-55%) !important;
+            //top: 50%;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+    }
+
+    .twt-quickview-container {
+        // Gallery slider thumbnails
+        .gallery-slider-thumbnails-container {
+            margin-top: 1rem;
+        }
+
+        // Price
+        .product-price-info {
+            margin-top: .5rem;
+            margin-bottom: 0;
+
+            // Minimise elements that may be empty
+            * {
+                height: unset;
+                min-height: unset;
+            }
+        }
+
+        //.btn-buy {
+        //    width: fit-content;
+        //}
+
+        .btn-detail {
+            //min-width: 140px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .btn-secondary {
+            //min-width: 140px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+    // Fade in content
+    .twt-quickview-content {
+        animation: fadeIn 0.25s ease-in 0.25s both;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    // Product heading
+    .twt-quickview-product-heading {
+        flex-direction: column;
+
+        @include media-breakpoint-between(sm, md) { // min 576px and max 767.98px
+            flex-direction: row;
+        }
+
+        @include media-breakpoint-up(lg) { // min 992px
+            flex-direction: row;
+        }
+
+        // Product name
+        //...
+
+        // Product number
+        .quickview-minimal-product-number {
+            margin-top: .25rem;
+            margin-bottom: .5rem;
+        }
+
+        // Manufacturer logo
+        .quickview-minimal-product-manufacturer-logo {
+            max-width: 160px;
+        }
+    }
+
+    // Description
+    .twt-quickview-product-description {
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+
+        //.quickview-minimal-product-description-heading {}
+
+        .quickview-minimal-product-description-text {
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    // Price (see above)
+
+    // Price container
+    .twt-quickview-product-price {
+        margin-top: 1.5rem;
+        margin-bottom: 1.25rem;
+
+        .product-detail-price {
+            font-size: calc(1.3rem + 0.6vw);
+
+            @media (min-width: 1200px) {
+                font-size: 1.75rem;
+            }
+        }
+    }
+
+    // Buy widget
+    .twt-quickview-buy-widget-form {
+        //margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        // Add moblie breakpoints
+        .buy-widget-container {
+            flex-direction: column;
+
+            @include media-breakpoint-up(xs) { // min 480px
+                flex-direction: row;
+            }
+
+            .col-4 {
+                width: 100%;
+            }
+
+            .col-8 {
+                width: 100%;
+            }
+
+
+            // Größe der 'Mengenauswahl' (ohne Verpackungseinheit) verbessern  #quantitySelection #beta
+            &:not(.has-pack-unit) {
+                @include media-breakpoint-up(xs) { // min 480px
+                    .col-4 {
+                        // > col-5
+                        width: 41.66666667%;
+                    }
+
+                    .col-8 {
+                        // > col-7
+                        width: 58.33333333%;
+                    }
+                }
+            }
+
+            // 'Mengenauswahl' mit Verpackungseinheit  #quantitySelection #beta
+            &.has-pack-unit {
+                input {
+                    max-width: 100px;
+                }
+
+                .product-detail-quantity-group {
+                    display: flex;
+
+                    .input-group-text {
+                        flex-grow: 1;
+
+                        @if $twt-forms-layout-type == 2 { // underlined
+                            border-top-width: 0;
+                            border-right-width: 0;
+                            border-bottom-width: 2px;
+                            border-left-width: 0;
+                            background: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Detail button
+    .twt-quickview-product-detail-button-container {
+        position: absolute;
+        //left: 50%;
+        //transform: translateX(-50%);
+        padding: 20px 0;
+        width: 100%;
+        bottom: -70px;
+        text-align: center;
+        left: 0;
+    }
+}

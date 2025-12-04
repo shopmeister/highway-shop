@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <!-- Core -->
+        <!-- Core\Content\Product -->
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\ProductExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\Aggregate\ProductAvailability\ProductAvailabilityDefinition">
+            <tag name="shopware.entity.definition"/>
+        </service>
+
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\DataAbstractionLayer\ProductAvailabilityUpdater">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="Shopware\Core\Content\ProductStream\Service\ProductStreamBuilder"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\SalesChannel\ProductAvailability\ProductAvailabilityCriteriaBuilder">
+            <argument>%elasticsearch.enabled%</argument>
+        </service>
+
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\SalesChannel\Subscriber\SalesChannelCriteriaSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Swkweb\HideSoldoutProducts\Core\Content\Product\SalesChannel\ProductAvailability\ProductAvailabilityCriteriaBuilder"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <service id="Swkweb\HideSoldoutProducts\Core\Content\Product\Cms\ProductCmsElementResolverDecorator"
+                 public="false"
+                 abstract="true">
+            <argument/> <!-- Decorated Resolver -->
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Swkweb\HideSoldoutProducts\Core\Content\Product\SalesChannel\ProductAvailability\ProductAvailabilityCriteriaBuilder"/>
+        </service>
+
+        <service id="swkweb.hide_soldout_products.sales_channel.product.product_box_cms_element_resolver"
+                 decorates="Shopware\Core\Content\Product\Cms\ProductBoxCmsElementResolver"
+                 parent="Swkweb\HideSoldoutProducts\Core\Content\Product\Cms\ProductCmsElementResolverDecorator">
+            <argument index="0" type="service" id="swkweb.hide_soldout_products.sales_channel.product.product_box_cms_element_resolver.inner"/>
+        </service>
+
+        <service id="swkweb.hide_soldout_products.sales_channel.product.product_slider_cms_element_resolver"
+                 decorates="Shopware\Core\Content\Product\Cms\ProductSliderCmsElementResolver"
+                 parent="Swkweb\HideSoldoutProducts\Core\Content\Product\Cms\ProductCmsElementResolverDecorator">
+            <argument index="0" type="service" id="swkweb.hide_soldout_products.sales_channel.product.product_slider_cms_element_resolver.inner"/>
+        </service>
+
+        <!-- Core\System\SalesChannel -->
+        <service id="Swkweb\HideSoldoutProducts\Core\System\SalesChannel\SalesChannelExtension">
+            <tag name="shopware.entity.extension"/>
+        </service>
+
+        <!-- Storefront -->
+        <!-- Storefront\Page\Product -->
+        <service id="Swkweb\HideSoldoutProducts\Storefront\Page\Product\Subscriber\CrossSellingLoaderSubscriber">
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService"/>
+            <argument type="service" id="Swkweb\HideSoldoutProducts\Core\Content\Product\SalesChannel\ProductAvailability\ProductAvailabilityCriteriaBuilder"/>
+            <tag name="kernel.event_subscriber"/>
+        </service>
+
+        <!-- Elasticsearch -->
+        <service id="Swkweb\HideSoldoutProducts\Elasticsearch\Product\HideSoldoutProductDefinition"
+                 decorates="Shopware\Elasticsearch\Product\ElasticsearchProductDefinition">
+            <argument type="service" id="Swkweb\HideSoldoutProducts\Elasticsearch\Product\HideSoldoutProductDefinition.inner"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+    </services>
+</container>

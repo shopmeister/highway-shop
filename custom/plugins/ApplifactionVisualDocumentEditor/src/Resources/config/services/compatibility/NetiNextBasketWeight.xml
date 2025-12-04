@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\NetiNextBasketWeight\BaskedWeightResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\NetiNextBasketWeight\BaskedWeightResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="NetInventors\NetiNextBasketWeight\Service\Order\OrderTotalWeightCalculator" on-invalid="null"/>
+            <argument type="service" id="Shopware\Core\System\SystemConfig\SystemConfigService" on-invalid="null"/>
+        </service>
+
+    </services>
+</container>

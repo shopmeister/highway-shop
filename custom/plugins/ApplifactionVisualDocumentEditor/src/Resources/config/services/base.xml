@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <imports>
+        <import resource="subscriber.xml"/>
+        <import resource="compatibility/SwagCustomizedProducts.xml"/>
+        <import resource="compatibility/NetiNextBasketWeight.xml"/>
+        <import resource="compatibility/PickwareErpStarter.xml"/>
+        <import resource="compatibility/PremsIndividualOffer6.xml"/>
+        <import resource="compatibility/RedMagnalisterSW6.xml"/>
+        <import resource="compatibility/SwagCommercial.xml"/>
+    </imports>
+
+    <services>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\EditorState\EditorStateDefinition">
+            <tag name="shopware.entity.definition" entity="dde_editor_state"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\EditorState\Aggregate\EditorStateTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="dde_editor_state_translation"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\CustomPreset\CustomPresetDefinition">
+            <tag name="shopware.entity.definition" entity="applifaction_dde_custom_preset"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\DefaultResolver">
+            <tag name="applifaction.dragndrop_document_editor.preview_data_resolver.resolver" priority="-1"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TestDataProvider\SupplierOrderDataProvider">
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Adapter\Twig\ApplifactionInitFunctionExtension">
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\TwigEnvironmentFactory">
+            <argument type="tagged_iterator" tag="twig.extension"/>
+            <argument type="service" id="slugify"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\TwigRenderer">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\TwigEnvironmentFactory"/>
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper">
+            <argument type="service" id="dde_editor_state.repository"/>
+            <argument type="service" id="language.repository"/>
+            <argument type="service" id="document_base_config.repository"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\TwigRenderer"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"/>
+            <argument type="service" id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"/>
+            <argument type="service" id="Shopware\Core\System\SalesChannel\Context\SalesChannelContextFactory"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\PreviewDataResolver">
+            <argument type="service" id="sales_channel.repository"/>
+            <argument type="tagged_iterator" tag="applifaction.dragndrop_document_editor.preview_data_resolver.resolver"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\EditorState\Api\DocumentEditorActionController" public="true">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\PreviewDataResolver"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentPreviewService"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Shopware\Core\Framework\Adapter\Twig\StringTemplateRenderer"/>
+            <argument type="service" id="Shopware\Core\Framework\Plugin\PluginService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TestDataProvider\OrderTestDataProvider">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\PreviewDataResolver"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver">
+            <argument type="service" id="order.repository"/>
+            <argument type="service" id="document.repository"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TestDataProvider\OrderTestDataProvider"/>
+            <argument type="service" id="media.repository"/>
+            <argument type="service" id="product.repository"/>
+            <argument type="service" id="custom_field_set.repository"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\CustomizedProducts\CustomizedProductsOrderItemSorter"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <tag name="applifaction.dragndrop_document_editor.preview_data_resolver.resolver"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentPreviewService">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Shopware\Core\Checkout\Document\Renderer\DocumentRendererRegistry"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TranslatorService"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Twig\DocumentTemplateRendererDecorator"
+                 decorates="Shopware\Core\Checkout\Document\Twig\DocumentTemplateRenderer"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Twig\DocumentTemplateRendererDecorator.inner"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Controller\DocumentGeneratorControllerDecorator"
+                 decorates="Shopware\Core\Checkout\Document\DocumentGeneratorController"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="serializer"/>
+            <argument type="service" id="Shopware\Core\Framework\Validation\DataValidator"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\DocumentGenerator"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Controller\DocumentControllerDecorator"
+                 decorates="Shopware\Core\Checkout\Document\Controller\DocumentController"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentMerger"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentPreviewService"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\DocumentGeneratorDecorator"
+                 decorates="Shopware\Core\Checkout\Document\Service\DocumentGenerator"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\DocumentGeneratorDecorator.inner"/>
+            <argument type="service" id="Shopware\Core\Checkout\Document\Renderer\DocumentRendererRegistry" />
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\DocumentFileRendererRegistry" on-invalid="null" />
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService" />
+            <argument type="service" id="document.repository" />
+            <argument type="service" id="Doctrine\DBAL\Connection" />
+            <argument type="service" id="Shopware\Core\Checkout\Document\Service\PdfRenderer" on-invalid="null" />
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\DocumentGenerator">
+            <argument>%kernel.project_dir%</argument>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Shopware\Core\Content\Media\MediaService"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer"/>
+            <argument type="service" id="document.repository"/>
+            <argument type="service" id="Shopware\Core\Checkout\Document\Renderer\DocumentRendererRegistry" on-invalid="null"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"/>
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\CreditNoteResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\CreditNoteResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\StornoResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\StornoResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\IntraCommunityDeliveryResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\IntraCommunityDeliveryResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\ManufacturerResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\ManufacturerResolverDecorator.inner"/>
+            <argument type="service" id="product_manufacturer.repository"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Content\Flow\Dispatching\Action\GenerateDocumentAction">
+            <argument type="service" id="Shopware\Core\Content\Flow\Dispatching\Action\GenerateDocumentAction" on-invalid="null"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\DocumentGenerator"/>
+            <argument type="service" id="dde.logger"/>
+            <tag name="flow.action" priority="600" key="action.generate.document"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TranslatorService">
+            <argument type="service" id="translator"/>
+            <argument type="service" id="user.repository"/>
+            <argument type="service" id="language.repository"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger">
+            <argument type="service" id="dde.logger"/>
+        </service>
+
+        <service id="dde.logger" class="Monolog\Logger">
+            <argument type="string">ApplifactionVisualDocumentEditor</argument>
+            <argument type="collection">
+                <argument type="service" id="dde.logger_handler"/>
+            </argument>
+        </service>
+
+        <service id="dde.logger_handler" class="Monolog\Handler\RotatingFileHandler">
+            <argument type="string">%kernel.logs_dir%/ApplifactionVisualDocumentEditor-%kernel.environment%.log</argument>
+        </service>
+
+    </services>
+</container>

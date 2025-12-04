@@ -1,0 +1,63 @@
+{
+  "zalando": {
+    "id": "Zalando Bestell-ID",
+    "orderNumber": "Zalando Bestellnummer",
+    "status": "Bestellstatus",
+    "createdAt": "Bestellung erstellt am"
+  },
+  "settings": {
+    "order-import": "Bestellimport",
+    "stock-sync": "Bestands-Synchronisation",
+    "price-sync": "Preis-Synchronisation",
+    "price-reporting": "Preis-Reporting",
+    "listing": "Listingverwaltung"
+  },
+  "shopware": {
+    "orderNumber": "Shopware Bestellnummer"
+  },
+  "sm-zalando-connector-components-settings-api-test-button": {
+    "title": "API-Verbindungstest"
+  },
+  "sales_channel": "Vertriebskanal",
+  "customer_group": "Kundengruppe",
+  "tax": "Steuersatz",
+  "shipping_method": "Versandmethode",
+  "order_status": "Bestellstatus",
+  "delivery_status": "Lieferstatus",
+  "payment_method": "Zahlungsmethode",
+  "payment_status": "Zahlungsstatus",
+  "oder_delivery_update_status": "Stati für Bestellupdates",
+  "delivery_shipped": "Status Lieferung versendet",
+  "delivery_canceled": "Status Lieferung storniert",
+  "delivery_returned": "Status Lieferung zurückgegeben",
+  "activeprice": "Aktiviere Preis-Synchronisation",
+  "active": "Aktivierung",
+  "activestock": "Aktiviere Lagerbestands-Synchronisation",
+  "activereport": "Aktiviere Preis-Reporting",
+  "isHoliday": "Aktiviere Feiertagsmodus",
+  "isIndividualStock": "Verwende individuellen Lagerbestand",
+  "stockCache": "Verwende folgenden Puffer-Lagerbestand (wird aufaddiert)",
+  "sm_zalando_connector_components.settings.sales_channel_selector_label": "Zalando Vertriebskanal",
+  "sm_zalando_connector_components.settings.sales_channel_selector_placeholder": "Bitte wähle einen Vertriebskanal (Verkaufsland)",
+  "ruleId": "Regel",
+  "ignoreWarnings": "Ignoriere API-Preis-Warnungen",
+  "activePromotionalPrice": "Aktiviere Angebotspreise",
+  "sm-zalando-connector-components-settings-api-test-button.success": "Verbindung zu Zalando erfolgreich hergestellt.",
+  "title": {
+    "success": "Erfolgreich"
+  },
+  "message": {
+    "success": "Der Vorgang wurde erfolgreich abgeschlossen."
+  },
+  "activeListing": "Listing-Synchronisation aktivieren",
+  "activeListingHelpText": "Automatisches Listing von Produkten aktivieren, die bei Zalando existieren",
+  "listingInterval": "Listing-Intervall (Minuten)",
+  "listingIntervalHelpText": "Wie oft soll die Listing-Synchronisation ausgeführt werden (5-1440 Minuten)",
+  "sw-settings": {
+    "index": {
+      "title": {
+        "saveButtonText": "Speichern"
+      }
+    }
+  }
+}

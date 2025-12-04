@@ -1,0 +1,426 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtFooterBottomElement1 = theme_config('twt-footer-bottom-element-1') %}
+{% set twtFooterElement1 = theme_config('twt-footer-element-1') %}
+{% set twtFooterElement2 = theme_config('twt-footer-element-2') %}
+{% set twtFooterElement3 = theme_config('twt-footer-element-3') %}
+{% set twtFooterElement4 = theme_config('twt-footer-element-4') %}
+{% set twtFooterElement5 = theme_config('twt-footer-element-5') %}
+{% set twtFooterElement6 = theme_config('twt-footer-element-6') %}
+{% set twtFooterElement7 = theme_config('twt-footer-element-7') %}
+{% set twtFooterElement8 = theme_config('twt-footer-element-8') %}
+{% set twtFooterElement9 = theme_config('twt-footer-element-9') %}
+{% set twtFooterElement10 = theme_config('twt-footer-element-10') %}
+{% set twtFooterElement11 = theme_config('twt-footer-element-11') %}
+{% set twtFooterGridColumns = theme_config('twt-footer-grid-columns') %}
+{% set twtFooterGridColumnsTablet = theme_config('twt-footer-grid-columns-tablet') %}
+{% set twtFooterLogosCompatibility = theme_config('twt-footer-logos-compatibility') %}
+{% set twtFooterLogosShow = theme_config('twt-footer-logos-show') %}
+{% set twtFooterTypeCompatibility = theme_config('twt-footer-type-compatibility') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the footer navigation #}
+{% block layout_footer_navigation %}
+
+	{# ThemeWare: Create Footer-Elements #}
+	{% set twtFooterElements = {} %}
+
+	{# ThemeWare: Set footer element 1 #}
+	{% if twtFooterElement1 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			1: {
+				element: theme_config('twt-footer-element-1'),
+				elementid: 1,
+				newcol: theme_config('twt-footer-element-1-newcol'),
+				order: theme_config('twt-footer-element-1-order'),
+				position: theme_config('twt-footer-element-1-position'),
+				toggle: theme_config('twt-footer-element-1-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 2 #}
+	{% if twtFooterElement2 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			2: {
+				element: theme_config('twt-footer-element-2'),
+				elementid: 2,
+				newcol: theme_config('twt-footer-element-2-newcol'),
+				order: theme_config('twt-footer-element-2-order'),
+				position: theme_config('twt-footer-element-2-position'),
+				toggle: theme_config('twt-footer-element-2-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 3 #}
+	{% if twtFooterElement3 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			3: {
+				element: theme_config('twt-footer-element-3'),
+				elementid: 3,
+				newcol: theme_config('twt-footer-element-3-newcol'),
+				order: theme_config('twt-footer-element-3-order'),
+				position: theme_config('twt-footer-element-3-position'),
+				toggle: theme_config('twt-footer-element-3-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 4 #}
+	{% if twtFooterElement4 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			4: {
+				element: theme_config('twt-footer-element-4'),
+				elementid: 4,
+				newcol: theme_config('twt-footer-element-4-newcol'),
+				order: theme_config('twt-footer-element-4-order'),
+				position: theme_config('twt-footer-element-4-position'),
+				toggle: theme_config('twt-footer-element-4-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 5 #}
+	{% if twtFooterElement5 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			5: {
+				element: theme_config('twt-footer-element-5'),
+				elementid: 5,
+				newcol: theme_config('twt-footer-element-5-newcol'),
+				order: theme_config('twt-footer-element-5-order'),
+				position: theme_config('twt-footer-element-5-position'),
+				toggle: theme_config('twt-footer-element-5-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 6 #}
+	{% if twtFooterElement6 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			6: {
+				element: theme_config('twt-footer-element-6'),
+				elementid: 6,
+				newcol: theme_config('twt-footer-element-6-newcol'),
+				order: theme_config('twt-footer-element-6-order'),
+				position: theme_config('twt-footer-element-6-position'),
+				toggle: theme_config('twt-footer-element-6-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 7 #}
+	{% if twtFooterElement7 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			7: {
+				element: theme_config('twt-footer-element-7'),
+				elementid: 7,
+				newcol: theme_config('twt-footer-element-7-newcol'),
+				order: theme_config('twt-footer-element-7-order'),
+				position: theme_config('twt-footer-element-7-position'),
+				toggle: theme_config('twt-footer-element-7-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 8 #}
+	{% if twtFooterElement8 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			8: {
+				element: theme_config('twt-footer-element-8'),
+				elementid: 8,
+				newcol: theme_config('twt-footer-element-8-newcol'),
+				order: theme_config('twt-footer-element-8-order'),
+				position: theme_config('twt-footer-element-8-position'),
+				toggle: theme_config('twt-footer-element-8-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 9 #}
+	{% if twtFooterElement9 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			9: {
+				element: theme_config('twt-footer-element-9'),
+				elementid: 9,
+				newcol: theme_config('twt-footer-element-9-newcol'),
+				order: theme_config('twt-footer-element-9-order'),
+				position: theme_config('twt-footer-element-9-position'),
+				toggle: theme_config('twt-footer-element-9-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 10 #}
+	{% if twtFooterElement10 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			10: {
+				element: theme_config('twt-footer-element-10'),
+				elementid: 10,
+				newcol: theme_config('twt-footer-element-10-newcol'),
+				order: theme_config('twt-footer-element-10-order'),
+				position: theme_config('twt-footer-element-10-position'),
+				toggle: theme_config('twt-footer-element-10-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set footer element 11 #}
+	{% if twtFooterElement11 != 'none' %}
+		{% set twtFooterElements = twtFooterElements|merge({
+			11: {
+				element: theme_config('twt-footer-element-11'),
+				elementid: 11,
+				newcol: theme_config('twt-footer-element-11-newcol'),
+				order: theme_config('twt-footer-element-11-order'),
+				position: theme_config('twt-footer-element-11-position'),
+				toggle: theme_config('twt-footer-element-11-toggle')
+			}
+		}) %}
+	{% endif %}
+
+	{# ThemeWare: Set variables #}
+	{% set counterTop = 0 %}
+	{% set counterMain = 0 %}
+	{% set counterBottom = 0 %}
+
+	{% set firstFooterTopElement = 10000 %}
+	{% set firstFooterMainElement = 10000 %}
+	{% set firstFooterBottomElement = 10000 %}
+
+	{% set lastFooterTopElement = 0 %}
+	{% set lastFooterMainElement = 0 %}
+	{% set lastFooterBottomElement = 0 %}
+
+	{% for footerElement in twtFooterElements %}
+		{% if footerElement.position == '1' %}
+			{# Count footer elements in 'main' section #}
+			{% set counterMain = counterMain + 1 %}
+
+			{# Get first element in 'main' section #}
+			{% if footerElement.order < firstFooterMainElement %}
+				{% set firstFooterMainElement = footerElement.order %}
+			{% endif %}
+
+			{# Get last element in 'main' section #}
+			{% if footerElement.order > lastFooterMainElement %}
+				{% set lastFooterMainElement = footerElement.order %}
+			{% endif %}
+		{% endif %}
+
+		{% if footerElement.position == '2' %}
+			{# Count footer elements in 'upper' section #}
+			{% set counterTop = counterTop + 1 %}
+
+			{# Get first element in 'main' section #}
+			{% if footerElement.order < firstFooterTopElement %}
+				{% set firstFooterTopElement = footerElement.order %}
+			{% endif %}
+
+			{# Get last element in 'upper' section #}
+			{% if footerElement.order > lastFooterTopElement %}
+				{% set lastFooterTopElement = footerElement.order %}
+			{% endif %}
+		{% endif %}
+
+		{% if footerElement.position == '3' %}
+			{# Count footer elements in 'bottom' section #}
+			{% set counterBottom = counterBottom + 1 %}
+
+			{# Get first element in 'main' section #}
+			{% if footerElement.order < firstFooterBottomElement %}
+				{% set firstFooterBottomElement = footerElement.order %}
+			{% endif %}
+
+			{# Get last element in 'bottom' section #}
+			{% if footerElement.order > lastFooterBottomElement %}
+				{% set lastFooterBottomElement = footerElement.order %}
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+
+	{# ThemeWare: Add upper (footer) section #}
+	{% if counterTop >= 1 %}
+		<div
+            id="footerColumnsTop"
+			class="row footer-columns first{% if counterMain == 0 and counterBottom == 0 %} last{% endif %}"
+			data-collapse-footer-columns="true"
+			role="list"
+		>
+			{% for footerValueTop in twtFooterElements %}
+				{% if footerValueTop.position == '2' %}
+					{% set first = false %}
+					{% if footerValueTop.order == firstFooterTopElement %}
+						{% set first = true %}
+					{% endif %}
+
+					{% set last = false %}
+					{% if footerValueTop.order == lastFooterTopElement %}
+						{% set last = true %}
+					{% endif %}
+
+					{% sw_include '@Storefront/storefront/themeware/footer-elements/twt-' ~ footerValueTop.element ~ '.html.twig' ignore missing with {
+						columns: twtFooterGridColumns,
+						columnsTablet: twtFooterGridColumnsTablet,
+						elementid: footerValueTop.elementid,
+						first: first,
+						last: last,
+						newcol: footerValueTop.newcol,
+						toggle: footerValueTop.toggle
+					} %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
+	{# ThemeWare: Adjust main (footer) section #}
+	{% if twtFooterTypeCompatibility == 1 %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% else %}
+		{% if counterMain >= 1 %}
+			<div
+				id="footerColumns"
+				class="row footer-columns{% if counterTop == 0 %} first{% endif %}{% if counterBottom == 0 %} last{% endif %}"
+				data-collapse-footer-columns="true"
+				role="list"
+			>
+				{% for footerValue in twtFooterElements %}
+					{% if footerValue.position == '1' %}
+						{% set first = false %}
+						{% if footerValue.order == firstFooterMainElement %}
+							{% set first = true %}
+						{% endif %}
+
+						{% set last = false %}
+						{% if footerValue.order == lastFooterMainElement %}
+							{% set last = true %}
+						{% endif %}
+
+						{% sw_include '@Storefront/storefront/themeware/footer-elements/twt-' ~ footerValue.element ~ '.html.twig' ignore missing with {
+							columns: twtFooterGridColumns,
+							columnsTablet: twtFooterGridColumnsTablet,
+							elementid: footerValue.elementid,
+							first: first,
+							last: last,
+							newcol: footerValue.newcol,
+							toggle: footerValue.toggle
+						} %}
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
+	{% endif %}
+
+	{# ThemeWare: Add lower (footer) section #}
+
+	{% if counterBottom >= 1 %}
+		<div
+            id="footerColumnsBottom"
+			class="row footer-columns{% if counterTop == 0 and counterMain == 0 %} first{% endif %} last"
+			data-collapse-footer-columns="true"
+			role="list"
+		>
+			{% for footerValueBottom in twtFooterElements %}
+				{% if footerValueBottom.position == '3' %}
+					{% set first = false %}
+					{% if footerValueBottom.order == firstFooterBottomElement %}
+						{% set first = true %}
+					{% endif %}
+
+					{% set last = false %}
+					{% if footerValueBottom.order == lastFooterBottomElement %}
+						{% set last = true %}
+					{% endif %}
+
+					{% sw_include '@Storefront/storefront/themeware/footer-elements/twt-' ~ footerValueBottom.element ~ '.html.twig' ignore missing with {
+						columns: twtFooterGridColumns,
+						columnsTablet: twtFooterGridColumnsTablet,
+						elementid: footerValueBottom.elementid,
+						first: first,
+						last: last,
+						newcol: footerValueBottom.newcol,
+						toggle: footerValueBottom.toggle
+					} %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments to the payment/shipping logos #}
+{# @TODO: Use payment/shipping footer #}
+{% block layout_footer_payment_shipping_logos %}
+	{% if twtFooterLogosCompatibility == 1 %}
+		{# Default block #}
+		{{ parent() }}
+
+	{% elseif twtFooterLogosShow == 'paymentshipping' %}
+		{# ThemeWare: Add footer logos #}
+        <div class="footer-logos">
+			{% sw_include '@Storefront/storefront/themeware/twt-footer-logos.html.twig' ignore missing %}
+		</div>
+
+	{% else %}
+		{# ThemeWare: Clear block #}
+
+	{% endif %}
+{% endblock %}
+
+
+{# ThemeWare: Adjustments to the footer service navigation #}
+{# @TODO: Check compatibility #}
+{% block layout_footer_service_menu %}
+	{# ThemeWare: Add communities #}
+	{% if twtFooterBottomElement1 == 'communities' %}
+		{% block twt_layout_footer_bottom_communities_container %}
+			<div class="twt-footer-bottom-element-1">
+				{% block twt_layout_footer_bottom_communities_content %}
+					{% sw_include '@Storefront/storefront/themeware/widgets/twt-communities-include.html.twig' ignore missing with {
+						type: 'footer-bottom'
+					} %}
+				{% endblock %}
+			</div>
+		{% endblock %}
+	{% endif %}
+
+	<div class="container">
+		{% block layout_footer_service_menu_content %}
+			{% apply spaceless %}
+				{# <ul class="footer-service-menu-list list-unstyled"> #}
+				<ul class="footer-service-menu list-unstyled">
+					{% for serviceMenuItem in page.header.serviceMenu %}
+						{% block layout_footer_service_menu_item %}
+							<li class="footer-service-menu-item">
+								<a href="{{ category_url(serviceMenuItem) }}"
+								   class="footer-service-menu-link"
+								   title="{{ serviceMenuItem.translated.name }}"
+								   {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+								   {% if category_linknewtab(serviceMenuItem) %}target="_blank"{% endif %}
+								>
+									{{ serviceMenuItem.translated.name }}
+								</a>
+							</li>
+						{% endblock %}
+					{% endfor %}
+				</ul>
+			{% endapply %}
+		{% endblock %}
+	</div>
+{% endblock %}
+
+
+{# ThemeWare: Adjustments to the copyright footer #}
+{% block layout_footer_copyright %}
+	<div class="footer-copyright">
+		{% sw_include '@Storefront/storefront/themeware/includes/tcinn.html.twig' with {hint:tcinn} %}
+	</div>
+{% endblock %}

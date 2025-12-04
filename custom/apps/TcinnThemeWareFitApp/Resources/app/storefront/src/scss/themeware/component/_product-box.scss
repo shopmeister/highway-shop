@@ -1,0 +1,469 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: Product box adjustments
+	==================================================
+
+    Info: This file contains adjustments for the product box.
+*/
+
+// ThemeWare: Add order number to product box ------------------------------
+
+@if $twt-product-box-ordernumber-show != 1 {
+    .twt-product-ordernumber {
+        //font-size: .875rem;
+        font-size: $font-size-sm;
+        display: -webkit-box;
+        overflow: hidden;
+        //height: 1.5em;
+        min-height: 1.5em;
+        margin-top: 1em;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1; // scheint nötig
+        line-clamp: 1;
+        word-break: break-all;
+
+        .product-ordernumber-label {
+            font-weight: 600;
+        }
+
+        //.product-ordernumber-text {
+        //    font-weight: 600;
+        //  }
+
+        //.product-ordernumber {}
+    }
+}
+
+
+// ThemeWare: Add manufacturer to product box ------------------------------
+
+@if $twt-product-box-manufacturer-show != 1 {
+    .twt-product-manufacturer {
+        //font-size: .875rem;
+        font-size: $font-size-sm;
+        display: -webkit-box;
+        overflow: hidden;
+        //height: 3em;
+        //min-height: 3em;
+        min-height: 1.5em;
+        margin-top: 1em;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; // scheint nötig
+        line-clamp: 2;
+
+        .product-manufacturer-label {
+            font-weight: 600;
+        }
+
+        //.product-manufacturer-text {
+        //  font-weight: 600;
+        //}
+
+        //.product-ordernumber {}
+    }
+}
+
+
+// ThemeWare: Weaken products after clearance ------------------------------
+
+// @TODO:
+// - add configuration for the opacity
+// - check transitions
+
+@if $twt-product-box-sold != 1 {
+    .twt-is-sold {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .twt-is-sold {
+        + .product-box {
+            .card-body {
+                @if $twt-product-box-sold-style == 1 {
+                    //-webkit-transition: opacity .2s ease;
+                    transition: opacity .2s ease;
+                    @include twt-opacity(.4);
+                } @else if $twt-product-box-sold-style == 2 {
+                    //-webkit-transition: grayscale .2s ease;
+                    transition: grayscale .2s ease;
+                    @include twt-grayscale(100%);
+                } @else if $twt-product-box-sold-style == 3 {
+                    //-webkit-transition: grayscale .2s ease, opacity .2s ease;
+                    transition: grayscale .2s ease, opacity .2s ease;
+                    @include twt-grayscale-opacity(100%, .4);
+                }
+
+                &:hover {
+                    @if $twt-product-box-sold-style == 1 {
+                        @include twt-opacity(1);
+                    } @else if $twt-product-box-sold-style == 2 {
+                        @include twt-grayscale(0%);
+                    } @else if $twt-product-box-sold-style == 3 {
+                        @include twt-grayscale-opacity(0%, 1);
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+
+// ThemeWare: Highlight product if topseller ------------------------------
+
+.twt-is-topseller {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+//.twt-is-topseller {
+//  + .product-box {
+//    border-width: 3px;
+//    border-color: $sw-color-warning;
+//  }
+//}
+
+
+// ThemeWare: Hover image for the cross-fade from the cover image ------------------------------
+
+@if $twt-product-box-image-hover-type == 10 or $twt-product-box-image-hover-type == 11 or $twt-product-box-image-hover-type == 12 {
+    .twt-is-crossfade {
+        .product-image-link {
+            position: relative;
+
+            img {
+                position: absolute;
+                left: 0;
+                //-webkit-transition: opacity .35s ease-in-out;
+                transition: opacity .35s ease-in-out;
+            }
+
+            img.twt-crossfade-image {
+                opacity: 0;
+            }
+
+            &:hover {
+                img:not(.twt-crossfade-image) {
+                    opacity: 0;
+                }
+
+                img.twt-crossfade-image {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+
+// ThemeWare: Compact product boxes #beta ------------------------------
+
+@if $twt-product-box-compact-layout == 2 {
+    .cms-element-product-listing,
+    .cms-element-product-slider {
+        .product-box .card-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-image-wrapper {
+            flex-grow: unset;
+        }
+
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            transition: all 0.25s ease;
+
+            * {
+                height: auto;
+                min-height: auto;
+            }
+        }
+
+        .product-cheapest-price {
+            margin-bottom: 16px; // 1 rem
+        }
+
+        // v1
+        .product-price-info {
+            padding-top: 10px;
+            
+            @include media-breakpoint-up(sm) { // max 576px
+                margin-top: auto;
+            }
+        }
+
+        :not(.product-price-info) + .product-action {
+            margin-top: auto;
+        }
+
+        // v2
+        /*
+        .product-price-info {
+            display: flex;
+            align-items: end;
+            flex-grow: 1;
+            justify-content: center; // @TODO: Consider configuration
+        }
+        */
+
+        // Produkt slider element
+        .tns-slider {
+            display: flex;
+        }
+    }
+
+    // ThemeWare: 'Product image resizing' #productImageResizing #beta ------------------------------
+    // Info: Nur mit product-box-compact
+    // @TODO...
+    @if $twt-product-image-resizing == 2 {
+        //@include media-breakpoint-down(sm) { // max 575.98px
+        //    .cms-block-product-listing .col-12 {
+        //        .product-box.box-standard,
+        //        .product-box.box-minimal,
+        //        .product-box.box-image {
+        //            .product-image-wrapper {
+        //                flex-basis: content;
+        //
+        //                .product-image {
+        //                    max-height: none;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        // X-Small devices (portrait phones, less than 576px)
+        @if $twt-product-image-resizing-breakpoint == 3 {
+            @include media-breakpoint-down(sm) { // max 575.98px
+                .product-box.box-standard,
+                .product-box.box-minimal,
+                .product-box.box-image {
+                    .product-image-wrapper {
+                        flex-basis: content;
+
+                        .product-image {
+                            max-height: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Small devices (landscape phones, less than 768px)
+        @if $twt-product-image-resizing-breakpoint == 4 {
+            @include media-breakpoint-down(md) { // max 767.98px
+                .product-box.box-standard,
+                .product-box.box-minimal,
+                .product-box.box-image {
+                    .product-image-wrapper {
+                        flex-basis: content;
+
+                        .product-image {
+                            max-height: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Medium devices (tablets, less than 992px)
+        @if $twt-product-image-resizing-breakpoint == 5 {
+            @include media-breakpoint-down(lg) { // max 991.98px
+                .product-box.box-standard,
+                .product-box.box-minimal,
+                .product-box.box-image {
+                    .product-image-wrapper {
+                        flex-basis: content;
+
+                        .product-image {
+                            max-height: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Large devices (desktops, less than 1200px)
+        @if $twt-product-image-resizing-breakpoint == 6 {
+            @include media-breakpoint-down(xl) {
+                .product-box.box-standard,
+                .product-box.box-minimal,
+                .product-box.box-image {
+                    .product-image-wrapper {
+                        flex-basis: content;
+
+                        .product-image {
+                            max-height: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // X-Large devices (large desktops, less than 1400px)
+        @if $twt-product-image-resizing-breakpoint == 7 {
+            @include media-breakpoint-down(xxl) {
+                .product-box.box-standard,
+                .product-box.box-minimal,
+                .product-box.box-image {
+                    .product-image-wrapper {
+                        flex-basis: content;
+
+                        .product-image {
+                            max-height: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        // All viewports...
+        @if $twt-product-image-resizing-breakpoint == 10 {
+            .product-box.box-standard,
+            .product-box.box-minimal,
+            .product-box.box-image {
+                .product-image-wrapper {
+                    flex-basis: content;
+
+                    .product-image {
+                        max-height: none;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+// ThemeWare: 'Mengenauswahl' in product boxes  #quantitySelection #beta ------------------------------
+// @TODO:
+//  - Verpackungseinheit berücksichtigen...
+//  - finalisieren...
+@if $twt-product-box-quantity-selection-show == 2 {
+    .product-box {
+        &.box-standard,
+        &.box-image,
+        &.box-minimal,
+        &.box-wishlist /* ?? */ {
+            * .btn-buy {
+                display: flex; // Firefox-Fix
+                justify-content: center; // Firefox-Fix
+
+                min-height: $twt-btn-min-height !important;
+
+                span {
+                    margin: 0 !important; // Remove margin-right
+                }
+            }
+
+            // 'Mengenauswahl' im buy-widget  #quantitySelection #beta
+            .buy-widget-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+
+                @include media-breakpoint-up(sm) { // min 576px
+                    transition: background-color 0.2s ease;
+                }
+
+                // @TODO:
+                //  - 'cms-listing-col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3' berücksichtigen
+
+                // Verpackungseinheit
+                .product-detail-quantity-group .input-group-text {
+                    @include twt-font-size-rem(12px);
+                }
+            }
+
+            // 'Mengenauswahl' im buy-widget @hover  #quantitySelection #beta
+            // @TODO: nur bei Hover-Effekt
+            @include media-breakpoint-up(sm) { // min 576px
+                &:hover {
+                    .buy-widget-container {
+                        background-color: $twt-product-box-background-color-hover;
+                    }
+                }
+            }
+
+            .product-action form {
+                width: 100%;
+            }
+        }
+    }
+}
+
+
+// ThemeWare: 'Listview' adjustments #listView #beta ------------------------------
+
+/*  @TODO...
+    - Add hover effects for the box
+    - Add configuration for line-clamp (name)
+    - Add configuration for line-clamp (description/short description)
+    - Add configuration for the text alignment ?
+*/
+
+.twt-listing-layout-list {
+    .product-box.box-twt-list {
+        padding: 20px;
+
+        &:not(:last-of-type) {
+            margin-bottom: 20px;
+        }
+
+        // 'Mengenauswahl' im buy-widget  #quantitySelection #beta
+        .buy-widget-container {
+            @include media-breakpoint-up(sm) { // min 576px
+                transition: background-color 0.2s ease;
+            }
+
+            .col-8 button {
+                width: 100%;
+            }
+        }
+
+        // 'Mengenauswahl' im buy-widget @hover  #quantitySelection #beta
+        // @TODO: nur bei Hover-Effekt
+        @include media-breakpoint-up(sm) { // min 576px
+            &:hover {
+                .buy-widget-container {
+                    background-color: $twt-product-box-background-color-hover;
+                }
+            }
+        }
+
+        .product-info {
+            text-align: left;
+        }
+
+        .product-variant-characteristics .product-variant-characteristics-text {
+            text-align: left;
+        }
+
+        // @TODO...
+    }
+
+    // Align buttons
+    .row {
+        position: relative;
+    }
+
+    // Align badges
+    .product-badges {
+        top: 1rem;
+        left: 20px;
+    }
+
+}

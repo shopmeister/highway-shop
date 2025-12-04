@@ -1,0 +1,73 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Call-to-Action"
+	==================================================
+
+*/
+
+// @TODO: Add font styling and sizing
+
+@if $twt-cms-call-to-action-css == 2 { // #performance
+    .cms-element-twt-call-to-action {
+        .twt-call-to-action-content {
+            &.is-styled {
+                padding: 20px;
+            }
+
+            // Headline
+            // @TODO: Add 'default' option ?!
+            //.headline.default {
+            //    // h2 fallback
+            //    font-size: calc(1.3rem + 0.6vw);
+            //    font-weight: 700; // $twt-font-weight-bold;
+            //    line-height: 34px;
+            //    margin-bottom: 10px;
+            //
+            //    @media (min-width: 1200px) {
+            //        font-size: 1.75rem;
+            //    }
+            //}
+
+            // Text
+            .text {
+                // Links
+                a {
+                    color: var(--twt-link-color); // Wird Inline in der entsprechenden Template-Datei gesetzt
+                    text-decoration: underline;
+
+                    &:hover {
+                        filter: brightness(0.8);
+                        //text-decoration: none;
+                    }
+                }
+
+                > *:last-child {
+                    margin-bottom: 0 !important;
+                }
+            }
+
+            button,
+            .btn {
+                max-width: 100%;
+            }
+        }
+
+        // Element linked completely
+        .twt-call-to-action-link {
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+        }
+
+        .twt-call-to-action-btn {
+            margin-top: $paragraph-margin-bottom;
+        }
+    }
+}

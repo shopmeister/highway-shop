@@ -1,0 +1,34 @@
+{# ThemeWare® 'Service menu' (header) #}
+{#
+    @Storefront/storefront/themeware/twt-service-menu.html.twig
+
+    @TODO: Change includes witch TWT 4.0.0...
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtHeaderTopBarServiceMenuShow = theme_config('twt-header-top-bar-service-menu-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Show 'Service menu' as dropdown or list #}
+{# @TODO: HC-Architecture... #}
+{% block twt_layout_header_top_bar_service_menu %}
+    {% if twtHeaderTopBarServiceMenuShow == 1 %}
+        {# ThemeWare: Don't show the 'Service menu' #}
+
+    {% elseif twtHeaderTopBarServiceMenuShow == 2 %}
+        {# ThemeWare: Show 'Service menu' as dropdown #}
+        {# @deprecated tag:v4.0.0 - File will be moved to includes subfolder (filename may change) #}
+        {% sw_include '@Storefront/storefront/themeware/twt-service-menu-widget.html.twig' %}
+        {# {% sw_include '@Storefront/storefront/themeware/includes/twt-service-menu-widget.html.twig' %} #}
+
+    {% elseif twtHeaderTopBarServiceMenuShow == 3 %}
+        {# ThemeWare: Show 'Service menu' as list #}
+        {# @deprecated tag:v4.0.0 - File will be moved to includes subfolder (filename may change) #}
+        {% sw_include '@Storefront/storefront/themeware/twt-service-menu-list-widget.html.twig' with { position: position } %}
+        {# {% sw_include '@Storefront/storefront/themeware/includes/twt-service-menu-widget-list.html.twig' %} #}
+
+    {% endif %}
+{% endblock %}

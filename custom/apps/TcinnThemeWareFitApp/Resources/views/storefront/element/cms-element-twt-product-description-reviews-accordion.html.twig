@@ -1,0 +1,369 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-description-reviews.html.twig' %}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO:
+    - add properties tab to CMS element
+    - manage properties tab
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set CMS variables #}
+{% set twtProductDescriptionReviews = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtDscrptnRvwsShowDescription = twtProductDescriptionReviews.descriptionShow.value %}
+{% set twtDscrptnRvwsShowReviews = twtProductDescriptionReviews.reviewsShow.value %}
+{% set twtDscrptnRvwsShowCustom = twtProductDescriptionReviews.customShow.value %}
+
+{# Tab "Layout" #}
+{% set twtDscrptnRvwsLayout = twtProductDescriptionReviews.layoutType.value %}
+
+{% set accordion = true %}
+{% if twtDscrptnRvwsLayout == 'list' %}
+    {% set accordion = false %}
+{% endif %}
+
+{% set alwaysOpen = false %}
+
+{# ThemeWare: Get first element #}
+{% set firstElement = null %}
+
+{% set elements = {
+    'description': twtDscrptnRvwsShowDescription,
+    'videos': false,
+    'datasheets': false,
+    'custom': twtDscrptnRvwsShowCustom,
+    'manufacturer': false,
+    'reviews': twtDscrptnRvwsShowReviews
+} %}
+
+{% for key, value in elements %}
+    {% if value is true or value == 'true' %}
+        {% set firstElement = key %}
+        {% break %}
+    {% endif %}
+{% endfor %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{% block element_product_description_reviews %}
+    {% set product = element.data.product %}
+
+    <div class="twt-product-description-reviews{% if accordion %} accordion accordion-flush{% else %} list{% endif %}"
+         {% if accordion %}id="accordionDescriptionReviews"{% endif %}
+    >
+        {# --- Description ------------------------------------------------------------------------------------------ #}
+
+        {% set descriptionTabId = "description-tab-" ~ product.id %}
+        {% set descriptionTabHref = "#description-tab-" ~ product.id ~ "-pane" %}
+        {% set descriptionTabContent = "description-tab-" ~ product.id ~ "-pane" %}
+
+        {% if twtDscrptnRvwsShowDescription == 'true' %}
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                    {% if accordion %}id="headingDescription"{% endif %}
+                >
+                    {% if accordion %}
+                        <button class="accordion-button"
+                                id="{{ descriptionTabId }}"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseDescription"
+                                {# data-off-canvas-tabs="true" #}
+                                {# href="{{ descriptionTabHref }}" #}
+                                {# role="tab" #}
+                                aria-expanded="{% if firstElement == 'description' %}true{% else %}false{% endif %}"
+                                {# aria-controls="collapseDescription" #}
+                                aria-controls="{{ reviewTabContent }}"
+                        >
+                            {{ "detail.tabsDescription"|trans|sw_sanitize }}
+                        </button>
+
+                    {% else %}
+                        {{ "detail.tabsDescription"|trans|sw_sanitize }}
+
+                    {% endif %}
+                </div>
+
+                <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'description' %} show{% endif %}{% else %}list-content{% endif %}"
+                     {% if accordion %}
+                         id="collapseDescription"
+                         aria-labelledby="headingDescription"
+                         {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+                    {% endif %}
+                >
+                    <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                        {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-description-accordion.html.twig' ignore missing with {
+                            position: 'accordion',
+                            product: element.data.product
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {# --- Eigenschaften ---------------------------------------------------------------------------------------- #}
+        {# @TODO...
+        <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                {% if accordion %}id="headingProperties"{% endif %}
+            >
+                {% if accordion %}
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseProperties"
+                            aria-expanded="{% if firstElement == 'properties' %}true{% else %}false{% endif %}"
+                            aria-controls="collapseProperties"
+                    >
+                        Eigenschaften
+                    </button>
+
+                {% else %}
+                    Eigenschaften
+
+                {% endif %}
+            </div>
+
+            <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'properties' %} show{% endif %}{% else %}list-content{% endif %}"
+                 {% if accordion %}id="collapseProperties"{% endif %}
+                 aria-labelledby="headingProperties"
+                 {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+            >
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                    ...
+                </div>
+            </div>
+        </div>
+        #}
+
+        {# --- Individueller Tab ------------------------------------------------------------------------------------ #}
+        {# Set 'Custom tab' title | Use custom field or snippet as fallback #}
+        {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title is not empty %}
+            {% set titleCustom = twtCustomFields.product.twt_fit_cloud_custom_field__product__custom_tab_title %}
+        {% else %}
+            {% set titleCustom = 'twt.detail.tabCustom.title'|trans|sw_sanitize %}
+        {% endif %}
+
+        {% if twtDscrptnRvwsShowCustom == 'true' %}
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                    {% if accordion %}id="headingCustom"{% endif %}
+                >
+                    {% if accordion %}
+                        <button class="accordion-button collapsed"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#collapseCustom"
+                                aria-expanded="{% if firstElement == 'custom' %}true{% else %}false{% endif %}"
+                                aria-controls="collapseCustom"
+                        >
+                            {{ titleCustom }}
+                        </button>
+
+                    {% else %}
+                        {{ titleCustom }}
+
+                    {% endif %}
+                </div>
+
+                <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'custom' %} show{% endif %}{% else %}list-content{% endif %}"
+                     {% if accordion %}
+                         id="collapseCustom"
+                         aria-labelledby="headingCustom"
+                         {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+                     {% endif %}
+                >
+                    <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                        {# ThemeWare: Include 'Custom tab' content #}
+                        {% sw_include '@Storefront/storefront/themeware/product-detail/includes/twt-product-custom-content.html.twig' ignore missing with {
+                            position: 'accordion'
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        {# --- Videos ----------------------------------------------------------------------------------------------- #}
+        {# @TODO...
+        <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                {% if accordion %}id="headingVideos"{% endif %}
+            >
+                {% if accordion %}
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseVideos"
+                            aria-expanded="{% if firstElement == 'videos' %}true{% else %}false{% endif %}"
+                            aria-controls="collapseVideos"
+                    >
+                        Videos
+                    </button>
+
+                {% else %}
+                    Videos
+
+                {% endif %}
+            </div>
+
+            <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'videos' %} show{% endif %}{% else %}list-content{% endif %}"
+                 {% if accordion %}id="collapseVideos"{% endif %}
+                 aria-labelledby="headingVideos"
+                 {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+            >
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                    ...
+                </div>
+            </div>
+        </div>
+        #}
+
+        {# --- Hersteller ------------------------------------------------------------------------------------------- #}
+        {# @TODO...
+        <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                {% if accordion %}id="headingManufacturer"{% endif %}
+            >
+                {% if accordion %}
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseManufacturer"
+                            aria-expanded="{% if firstElement == 'manufacturer' %}true{% else %}false{% endif %}"
+                            aria-controls="collapseManufacturer"
+                    >
+                        Hersteller
+                    </button>
+
+                {% else %}
+                    Hersteller
+
+                {% endif %}
+            </div>
+
+            <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'manufacturer' %} show{% endif %}{% else %}list-content{% endif %}"
+                 {% if accordion %}id="collapseManufacturer"{% endif %}
+                 aria-labelledby="headingManufacturer"
+                 {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+            >
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                    ...
+                </div>
+            </div>
+        </div>
+        #}
+
+        {# --- Datenblätter ---------------------------------------------------------------------------------------- #}
+        {# @TODO...
+        <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+            <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                {% if accordion %}id="headingDatasheet"{% endif %}
+            >
+                {% if accordion %}
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseDatasheets"
+                            aria-expanded="{% if firstElement == 'datasheets' %}true{% else %}false{% endif %}"
+                            aria-controls="collapseDatasheets"
+                    >
+                        Datenblätter
+                    </button>
+
+                {% else %}
+                    Datenblätter
+
+                {% endif %}
+            </div>
+
+            <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'datasheets' %} show{% endif %}{% else %}list-content{% endif %}"
+                 {% if accordion %}id="collapseDatasheets"{% endif %}
+                 aria-labelledby="headingDatasheets"
+                 {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+            >
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                    ...
+                </div>
+            </div>
+        </div>
+        #}
+
+        {# --- Reviews ---------------------------------------------------------------------------------------------- #}
+
+        {% set reviewTabId = "review-tab-" ~ product.id %}
+        {% set reviewTabHref = "#review-tab-" ~ product.id ~ "-pane" %}
+        {% set reviewTabContent = "review-tab-" ~ product.id ~ "-pane" %}
+
+        {% if twtDscrptnRvwsShowReviews == 'true' %}
+            {% if config('core.listing.showReview') %}
+                <div class="{% if accordion %}accordion{% else %}list{% endif %}-item">
+                    <div class="{% if accordion %}accordion{% else %}list{% endif %}-header"
+                        {% if accordion %}id="headingReview"{% endif %}
+                    >
+                        {% if accordion %}
+                            <button class="accordion-button collapsed"
+                                    id="{{ reviewTabId }}"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapseReview"
+                                    {# data-off-canvas-tabs="true" #}
+                                    {# href="{{ reviewTabHref }}" #}
+                                    {# role="tab" #}
+                                    {# aria-controls="collapseReview" #}
+                                    aria-controls="{{ reviewTabContent }}"
+                                    aria-expanded="{% if firstElement == 'reviews' %}true{% else %}false{% endif %}"
+                            >
+                                {{ "detail.tabsReview"|trans|sw_sanitize }}
+                            </button>
+
+                        {% else %}
+                            {{ "detail.tabsReview"|trans|sw_sanitize }}
+
+                        {% endif %}
+                    </div>
+
+                    <div class="{% if accordion %}accordion-collapse collapse{% if firstElement == 'reviews' %} show{% endif %}{% else %}list-content{% endif %}"
+                         {% if accordion %}
+                             id="collapseReview"
+                             aria-labelledby="headingReview"
+                             {% if not alwaysOpen %}data-bs-parent="#accordionDescriptionReviews"{% endif %}
+                         {% endif %}
+                    >
+                        <div class="{% if accordion %}accordion{% else %}list{% endif %}-body">
+                            {% sw_include '@Storefront/storefront/themeware/product-detail/twt-product-reviews-accordion.html.twig' with {
+                                reviews: element.data.reviews,
+                                product: element.data.product,
+                                position: 'accordion'
+                            } %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+    {# @TODO: Add js plugin #}
+    {% if accordion %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var accordionButtons = document.querySelectorAll('.accordion-button');
+            var scrollOffset = 100;
+
+            accordionButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    setTimeout(function() {
+                        var buttonPosition = button.getBoundingClientRect().top + window.pageYOffset;
+                        var offsetPosition = buttonPosition - scrollOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                    }, 400);
+                });
+            });
+        });
+    </script>
+    {% endif %}
+
+{% endblock %}

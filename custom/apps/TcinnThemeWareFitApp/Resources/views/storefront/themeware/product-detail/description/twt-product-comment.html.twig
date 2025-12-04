@@ -1,0 +1,49 @@
+{# ThemeWare® 'Comment' on product pages via custom fileds #}
+{#
+    Create container and add product comment
+
+    @Storefront/storefront/themeware/product-detail/twt-comment.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO
+    - ...
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtProductDetailCommentShow = theme_config('twt-product-detail-comment-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Add product 'Comment' #}
+{% block twt_product_detail_comment_container %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__comment is not empty %}
+
+        {# ThemeWare: 'Comment' #}
+        <div class="twt-product-detail-comment twt-product-comment">
+            {% block twt_product_detail_comment_inner %}
+
+                {# Add 'Comment' subheadline (only in tab "Description") #}
+                {% block twt_product_detail_comment_subheadline %}
+                    {#{% if position == 'description' %}#}
+                    <div class="h4 twt-product-detail-comment-title twt-product-detail-description-subheadline">
+                        {{ 'twt.detail.comment.title'|trans({'%product%': product.translated.name })|sw_sanitize }}
+                    </div>
+                    {#{% endif %}#}
+                {% endblock %}
+
+                {# Add 'Comment' #}
+                {% block twt_product_detail_comment_content %}
+                    <div class="twt-product-detail-comment-content">
+                        <blockquote>{{ twtCustomFields.product.twt_fit_cloud_custom_field__product__comment }}</blockquote>
+                    </div>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% sw_extends '@Storefront/storefront/page/content/product-detail.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{# set twtBreadcrumbShowCmsCategoryPages = theme_config('twt-breadcrumb-show-cms-category-pages') #}
+{# set twtBreadcrumbShowCmsLandingPages = theme_config('twt-breadcrumb-show-cms-landing-pages') #}
+{% set twtBreadcrumbShowCmsProductPages = theme_config('twt-breadcrumb-show-cms-product-pages') %}
+{# set twtBreadcrumbShowCmsShopPages = theme_config('twt-breadcrumb-show-cms-shop-pages') #}
+{# set twtBreadcrumbShowHome = theme_config('twt-breadcrumb-show-home') #}
+{% set twtBreadcrumbShowProductDetail = theme_config('twt-breadcrumb-show-product-detail') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Remove breadcrumb if configured #}
+{% block cms_breadcrumb %}
+    {% set showBreadcrumb = true %}
+
+    {% if page.cmsPage.type == 'product_detail' %}
+        {% if (twtBreadcrumbShowCmsProductPages == 1) %}
+            {% set showBreadcrumb = false %}
+        {% endif %}
+    {% endif %}
+
+    {% if showBreadcrumb %}
+        {# Default block #}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

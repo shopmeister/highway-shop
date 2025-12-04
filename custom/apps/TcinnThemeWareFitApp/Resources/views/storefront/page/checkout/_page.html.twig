@@ -1,0 +1,48 @@
+{% sw_extends '@Storefront/storefront/page/checkout/_page.html.twig' %}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtCheckoutStepsShow = theme_config('twt-checkout-steps-show') %}
+{% set twtCheckoutStepsCartShow = theme_config('twt-checkout-steps-cart-show') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments to the checkout page #}
+{# INFO: Add ThemeWare® 'Checkout steps' #}
+{% block page_checkout %}
+
+    {% if twtCheckoutStepsShow == 2 %}
+        {% set showSteps = true %}
+
+        {# ThemeWare: Check if steps should be shown on 'Cart page' #}
+        {% if controllerAction|lower == 'cartpage' %}
+            {% set isCartNotEmpty = (page.cart.lineItems|length > 0) %}
+
+            {# INFO: Don't show on 'Cart page' if configured. | Don't show on empty 'Cart page'. #}
+            {% if twtCheckoutStepsCartShow == 1 or not isCartNotEmpty %}
+                {% set showSteps = false %}
+            {% endif %}
+        {% endif %}
+
+        {% if showSteps %}
+            <div id="twt-checkout-steps" class="twt-checkout-steps">
+                {% if controllerAction|lower == 'cartpage' %}
+                    {% set step = 1 %}
+                {% elseif controllerAction|lower == 'checkoutregisterpage' %}
+                    {% set step = 2 %}
+                {% elseif controllerAction|lower == 'confirmpage' %}
+                    {% set step = 3 %}
+                {% elseif controllerAction|lower == 'finishpage' %}
+                    {% set step = 4 %}
+                {% endif %}
+                {% sw_include '@Storefront/storefront/themeware/extensions/twt-checkout-steps.html.twig' with {
+                    step: step
+                } %}
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}

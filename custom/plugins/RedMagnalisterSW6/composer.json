@@ -1,0 +1,50 @@
+{
+    "name": "redgecko/magnalister",
+    "description": "magnalister: To connect your shop to Amazon, eBay and ...",
+    "version": "v3.3.54",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Redgecko GmbH",
+            "homepage": "https://www.magnalister.com/"
+        }
+    ],
+    "require": {
+        "shopware/core": "6.6.*",
+        "shopware/administration": "6.6.*",
+        "shopware/storefront": "6.6.*"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "type": "shopware-platform-plugin",
+    "autoload": {
+        "psr-4": {
+            "Redgecko\\Magnalister\\": "src/"
+        }
+    },
+    "extra": {
+        "shopware-plugin-class": "Redgecko\\Magnalister\\RedMagnalisterSW6",
+        "copyright": "(c) Redgecko GmbH",
+        "label": {
+            "de-DE": "magnalister",
+            "en-GB": "magnalister"
+        },
+        "description": {
+            "de-DE": "magnalister ist die ultimative Schnittstelle zwischen Shopware und eBay, Amazon & Co. Kernfeatures: Produktupload, Bestellimport, Bestellstatus-Sync, Preis- & Lagerabgleich",
+            "en-GB": "magnalister is the ultimate interface between Shopware and Amazon, eBay & more. Core features: product upload, order import, order status sync, price & inventory synchronization."
+        },
+        "manufacturerLink": {
+            "de-DE": "https://www.magnalister.com/de/",
+            "en-GB": "https://www.magnalister.com/en/"
+        },
+        "supportLink": {
+            "de-DE": "https://www.magnalister.com/de/#support",
+            "en-GB": "https://www.magnalister.com/en/#support"
+        },
+        "preserve-paths": [
+            "vendor/Kint",
+            "vendor/magnalister"
+        ]
+    }
+}

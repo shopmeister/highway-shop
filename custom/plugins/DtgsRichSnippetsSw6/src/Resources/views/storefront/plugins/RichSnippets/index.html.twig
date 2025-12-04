@@ -1,0 +1,133 @@
+{% set richSnippetConfig = config('DtgsRichSnippetsSw6.config') %}
+
+{% if page.extensions.RichSnippetData.data|length > 0 %}
+    <script{% if app.request.attributes.get('_cspNonce') %} nonce="{{ app.request.attributes.get('_cspNonce') }}"{% endif %} type="application/ld+json">
+        {
+            {% block dtgs_richsnippets_before %}
+            {% endblock %}
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": "{{ page.extensions.RichSnippetData.data.productName }}",
+            "image": "{{ page.extensions.RichSnippetData.data.productImage }}",
+            "description": "{{ page.extensions.RichSnippetData.data.description|replace({"\n": "", "\r": "", "\t": ""}) }}",
+            "sku": "{{ page.extensions.RichSnippetData.data.productSku }}",
+            {% if page.extensions.RichSnippetData.data.productMpn != '' %}
+            "mpn": "{{ page.extensions.RichSnippetData.data.productMpn }}",
+            {% endif %}
+            {% if page.extensions.RichSnippetData.data.productGtin8 != '' %}
+            "gtin8": "{{ page.extensions.RichSnippetData.data.productGtin8 }}",
+            {% endif %}
+            {% if page.extensions.RichSnippetData.data.productGtin12 != '' %}
+            "gtin12": "{{ page.extensions.RichSnippetData.data.productGtin12 }}",
+            {% endif %}
+            {% if page.extensions.RichSnippetData.data.productGtin13 != '' %}
+            "gtin13": "{{ page.extensions.RichSnippetData.data.productGtin13 }}",
+            {% endif %}
+            {% if page.extensions.RichSnippetData.data.productGtin14 != '' %}
+            "gtin14": "{{ page.extensions.RichSnippetData.data.productGtin14 }}",
+            {% endif %}
+            "brand": {
+            "@type": "Brand",
+            "name": "{{ page.extensions.RichSnippetData.data.brandName }}"
+        },
+            {% if page.reviews.totalReviews > 0 %}
+            "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ page.reviews.matrix.averageRating }}",
+            "reviewCount": "{{ page.reviews.totalReviews }}",
+            "worstRating": "{{ page.extensions.RichSnippetData.data.worstRating }}",
+            "bestRating": "{{ page.extensions.RichSnippetData.data.bestRating }}"
+            },
+            "review": [
+                {% for review in page.reviews.elements %}
+                    {
+                        "@type": "Review",
+                        "author": {
+                            "@type": "Person",
+                            "name": "{{ review.externalUser }}"
+                        },
+                        "datePublished": "{{ review.createdAt|date("Y-m-d") }}",
+                        "description": "{{ review.content }}",
+                        "name": "{{ review.title }}",
+                        "reviewRating": {
+                            "@type": "Rating",
+                            "bestRating": "{{ page.extensions.RichSnippetData.data.bestRating }}",
+                            "ratingValue": "{{ review.points }}",
+                            "worstRating": "{{ page.extensions.RichSnippetData.data.worstRating }}"
+                        }
+                    }{% if not loop.last %},{% endif %}
+                {% endfor %}
+            ],
+            {% endif %}
+        "offers": {
+                {% if page.extensions.RichSnippetData.data.tierPrices == false %}
+                  "@type": "Offer",
+                {% else %}
+                  "@type": "AggregateOffer",
+                {% endif %}
+                "url": "{{ seoUrl('frontend.detail.page', {'productId': page.extensions.RichSnippetData.data.productID}) }}",
+                "priceCurrency": "{{ page.extensions.RichSnippetData.data.priceCurrency }}",
+                {% if page.extensions.RichSnippetData.data.tierPrices == false %}
+                   "price": "{{ page.extensions.RichSnippetData.data.price }}",
+                    {% else %}
+                    "lowPrice": "{{ page.extensions.RichSnippetData.data.lowPrice }}",
+                    "highPrice": "{{ page.extensions.RichSnippetData.data.highPrice }}",
+                    "offerCount": "{{ page.extensions.RichSnippetData.data.offerCount }}",
+                    "offers": [
+                        {% for tierPrice in page.extensions.RichSnippetData.data.tierPricesArray %}
+                            {
+                                "@type": "Offer",
+                                "priceCurrency": "{{ page.extensions.RichSnippetData.data.priceCurrency }}",
+                                "price": "{{ tierPrice.price }}"
+                            }{% if not loop.last %},{% endif %}
+                {% endfor %}
+                ],
+            {% endif %}
+            "itemCondition": "{{ page.extensions.RichSnippetData.data.itemCondition }}",
+            "availability": "{{ page.extensions.RichSnippetData.data.availability }}",
+            "seller": {
+            "@type": "Organization",
+            "name": "{{ page.extensions.RichSnippetData.data.sellerName }}"
+            }
+            {% block dtgs_richsnippets_offer_inner %}
+            {% endblock %}
+            {% if richSnippetConfig.addReturnPolicy %}
+                  ,"hasMerchantReturnPolicy": {
+                  "@type": "MerchantReturnPolicy",
+                  "returnPolicyCategory": "https://schema.org/{{ richSnippetConfig.policyCategory }}"
+                  {% if richSnippetConfig.policyCategory != 'MerchantReturnNotPermitted' %},
+                      "applicableCountry": "{{ richSnippetConfig.applicableCountry }}",
+                      "merchantReturnDays": {{ richSnippetConfig.merchantReturnDays }},
+                      "returnMethod": "https://schema.org/{{ richSnippetConfig.returnMethod }}",
+                      "returnFees": "https://schema.org/{{ richSnippetConfig.returnFees }}"
+                  {% endif %}
+                  }
+            {% endif %}
+            {% if richSnippetConfig.addShippingDetails %}
+                ,"shippingDetails": {
+                  "@type": "OfferShippingDetails",
+                  {% block dtgs_richsnippets_shippingdetails_inner %}
+                  {% endblock %}
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": {{ richSnippetConfig.handlingTimeMin }},
+                      "maxValue": {{ richSnippetConfig.handlingTimeMax }},
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": {{ richSnippetConfig.transitTimeMin }},
+                      "maxValue": {{ richSnippetConfig.transitTimeMax }},
+                      "unitCode": "DAY"
+                    }
+                  }
+                }
+            {% endif %}
+            {% block dtgs_richsnippets_after %}
+            {% endblock %}
+            }
+        }
+    </script>
+{% endif %}

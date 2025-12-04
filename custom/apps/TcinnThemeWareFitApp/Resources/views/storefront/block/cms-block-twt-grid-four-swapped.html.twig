@@ -1,0 +1,51 @@
+{# ThemeWare® CMS block "Grid 'Four' (swapped)" #}
+
+{% block block_grid_four_swapped %}
+    {% set columns = 2 %}
+    {# @deprecated tag:v6.5.0 - Use "element.id" directly instead. #}
+    {% set id = element.id %}
+
+    {% block block_grid_four_swapped_left %}
+        <div class="col-md-6">
+            {% block block_grid_four_swapped_left_inner %}
+                {% set element = block.slots.getSlot('left') %}
+
+                <div class="left" data-cms-element-id="{{ element.id }}">
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_grid_four_swapped_right %}
+        <div class="col-md-6">
+            {% block block_grid_four_swapped_right_top %}
+                <div class="right-top row cms-row">
+                    {% block block_grid_four_swapped_right_top_left %}
+                        {% set element = block.slots.getSlot('right-top_left') %}
+
+                        <div class="right-top left column col-sm-6" data-cms-element-id="{{ element.id }}">
+                            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                        </div>
+                    {% endblock %}
+
+                    {% block block_grid_four_swapped_right_top_right %}
+                        {% set element = block.slots.getSlot('right-top_right') %}
+
+                        <div class="right-top right column col-sm-6" data-cms-element-id="{{ element.id }}">
+                            {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                        </div>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block block_grid_four_swapped_right_bottom %}
+                {% set element = block.slots.getSlot('right-bottom') %}
+
+                <div class="right-bottom" data-cms-element-id="{{ element.id }}">
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

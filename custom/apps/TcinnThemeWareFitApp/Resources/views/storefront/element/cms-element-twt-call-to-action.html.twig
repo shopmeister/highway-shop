@@ -1,0 +1,326 @@
+{# ThemeWare® CMS element "Call-To-Action" #}
+
+{# @TODO: prüfen... #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{# ThemeWare: Set variables #}
+{% set twtCallToAction = element.fieldConfig.elements %}
+
+{# Tab "General" #}
+{% set twtCllTActnTitle = element.translated.config.title.value %}
+{% set twtCllTActnText = element.translated.config.text.value %}
+{% set twtCllTActnButtonText = element.translated.config.buttonText.value %}
+
+{% set twtCllTActnDisplayMode = element.translated.config.displayMode.value %}
+{% set twtCllTActnMinHeight = element.translated.config.minHeight.value %}
+{% set twtCllTActnVerticalAlign = twtCallToAction.verticalAlign.value %}
+
+{% set twtCllTActnUrl = element.translated.config.url.value %}
+{% set twtCllTActnNewTab = element.translated.config.newTab.value %}
+{% set twtCllTActnFullLink = twtCallToAction.fullLink.value %}
+
+{# Tab "Layout" #}
+{% set twtCllTActnPadding = twtCallToAction.padding.value %}
+{% set twtCllTActnBorderRadius = twtCallToAction.borderRadius.value %}
+{% set twtCllTActnBackgroundColor = twtCallToAction.backgroundColor.value %}
+
+{% set twtCllTActnTextAlignment = twtCallToAction.textAlignment.value %}
+{% set twtCllTActnTextShadow = twtCallToAction.textShadow.value %}
+
+{% set twtCllTActnFontFamilyHeadline = twtCallToAction.fontFamilyHeadline.value %}
+{% set twtCllTActnTextColorTitle = twtCallToAction.textColorTitle.value %}
+
+{% set twtCllTActnFontFamily = twtCallToAction.fontFamily.value %}
+{% set twtCllTActnTextColor = twtCallToAction.textColor.value %}
+
+{% set twtCllTActnButtonStyle = twtCallToAction.buttonStyle.value %}
+{% set twtCllTActnButtonOutline = twtCallToAction.buttonOutline.value %}
+
+{% set twtCllTActnVerticalAlignment = twtCallToAction.verticalAlignment.value %}
+{% set twtCllTActnHorizontalAlignment = twtCallToAction.horizontalAlignment.value %}
+{% set twtCllTActnWidth = twtCallToAction.width.value %}
+{% set twtCllTActnMaxWidth = twtCallToAction.maxWidth.value %}
+
+{% set twtCllTActnObjectPosition = twtCallToAction.objectPosition.value %}
+
+{% set twtCllTActnOverlay = twtCallToAction.overlay.value %}
+{% set twtCllTActnBgOverlay = twtCallToAction.bgOverlay.value %}
+{% set twtCllTActnBackdropEffect = twtCallToAction.backdropEffect.value %}
+{% set twtCllTActnShadow = twtCallToAction.shadow.value %}
+{% set twtCllTActnRounded = twtCallToAction.rounded.value %}
+
+{% set twtCllTActnHoverEffect = twtCallToAction.hoverEffect.value %}
+
+{% set twtCllTActnColorOverlay = twtCallToAction.colorOverlay.value %}
+{% set twtCllTActnColorOverlayBgColor = twtCallToAction.colorOverlayBgColor.value %}
+{% set twtCllTActnColorOverlayBgGradient = twtCallToAction.colorOverlayBgGradient.value %}
+{% set twtCllTActnColorOverlayBgColor2 = twtCallToAction.colorOverlayBgColor2.value %}
+{% set twtCllTActnColorOverlayBgGradientAngle = twtCallToAction.colorOverlayBgGradientAngle.value %}
+
+{# Tab "SEO" #}
+{% set twtCllTActnHtmlTag = twtCallToAction.htmlTag.value %}
+{% if twtCllTActnHtmlTag is empty %}
+    {% set twtCllTActnHtmlTag = 'p' %}
+{% endif %}
+{% set twtCllTActnHtmlTagClass = twtCallToAction.htmlTagClass.value %}
+
+{% set twtCllTActnLzyLdng = twtCallToAction.lazyLoading.value %}
+
+{# Tab "Advanced" #}
+{% set twtCllTActnCssClass = twtCallToAction.cssClass.value %}
+{% set twtCllTActnCssClassTitle = twtCallToAction.cssClassTitle.value %}
+{% set twtCllTActnCssClassText = twtCallToAction.cssClassText.value %}
+{% set twtCllTActnCssClassButton = twtCallToAction.cssClassButton.value %}
+
+{# Set title attribute #}
+{# INFO: 'Button text' (mandatory) #}
+{# => 'Title' OR 'Button text'* #}
+{# @TODO: Add title to seo config ? #}
+{% set title = twtCllTActnTitle ?: twtCllTActnButtonText %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ---------------- START: SET CLASSES ---------------- #}
+
+{% set elementClasses = ['element', 'twt-cms-element'] %}
+{% set elementClasses = ['twt-cms-teaser']|merge(elementClasses) %}
+{# @TODO: Element classes... #}
+
+{% if twtCllTActnDisplayMode == 'stretch' %}
+    {% set elementClasses = ['fit-content']|merge(elementClasses) %}
+{% endif %}
+
+{% set contentClasses = ['content'] %}
+
+{% if twtCllTActnOverlay %}
+    {% set contentClasses = ['is-styled']|merge(contentClasses) %}
+
+    {% if twtCllTActnShadow == 'default' %}
+        {% set contentClasses = ['shadow-twt']|merge(contentClasses) %}
+    {% elseif twtCllTActnShadow == 'smallBs' %}
+        {% set contentClasses = ['shadow-sm']|merge(contentClasses) %}
+    {% elseif twtCllTActnShadow == 'regularBs' %}
+        {% set contentClasses = ['shadow']|merge(contentClasses) %}
+    {% elseif twtCllTActnShadow == 'largeBs' %}
+        {% set contentClasses = ['shadow-lg']|merge(contentClasses) %}
+    {% endif %}
+
+    {% if twtCllTActnRounded == 'rounded' %}
+        {% set contentClasses = ['rounded']|merge(contentClasses) %}
+    {% endif %}
+{% endif %}
+
+{% if twtCllTActnHoverEffect != 'none' %}
+    {% if twtCllTActnHoverEffect == 'slideIn' %}
+        {% set contentClasses = ['fade-in']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'slideInUp' %}
+        {% set contentClasses = ['fade-in-up']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'slideInRight' %}
+        {% set contentClasses = ['fade-in-right']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'slideInDown' %}
+        {% set contentClasses = ['fade-in-down']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'slideInLeft' %}
+        {% set contentClasses = ['fade-in-left']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'zoomIn' %}
+        {% set contentClasses = ['zoom-in']|merge(contentClasses) %}
+    {% elseif twtCllTActnHoverEffect == 'fadeOut' %}
+        {% set contentClasses = ['fade-out']|merge(contentClasses) %}
+    {#% elseif twtCllTActnHoverEffect == null %}
+        {% set contentClasses = ['fade-in-right']|merge(contentClasses) %#}
+    {% endif %}
+{% endif %}
+
+{% if twtCllTActnOverlay %}
+    {% if twtCllTActnBackdropEffect is not empty and twtCllTActnBackdropEffect != 'none' %}
+        {% set contentClasses = ['twt-bg-'~twtCllTActnBackdropEffect]|merge(contentClasses) %}
+    {% endif %}
+{% endif %}
+
+{#
+{% set overlayClasses = ['overlay'] %}
+#}
+
+{# ---------------- END: SET CLASSES ---------------- #}
+
+{# ---------------- START: SET OTHER VARS ---------------- #}
+
+{% if twtCllTActnTextShadow == 'small' %}
+    {% set textClasses = 'twt-text-shadow-sm' %}
+{% elseif twtCllTActnTextShadow == 'regular' %}
+    {% set textClasses = 'twt-text-shadow' %}
+{% elseif twtCllTActnTextShadow == 'large' %}
+    {% set textClasses = 'twt-text-shadow-lg' %}
+{% endif %}
+
+{% set lazyloading = twtCllTActnLzyLdng ?: 'eager' %}
+
+{# ---------------- END: SET OTHER VARS ---------------- #}
+
+{% block element_twt_call_to_action %}
+    {% set config = element.fieldConfig.elements %} {# #Fallback #}
+    {# @TODO: {% set isCover = element.translated.config.displayMode.value == 'cover' %} #}
+
+    {# @TODO: Clean up if statements and classes... #}
+
+    <div class="cms-element-{{ element.type }} {{ elementClasses|sort|join(' ') }}{% if twtCllTActnVerticalAlign %} {# d-flex #} has-vertical-alignment{% endif %}{% if twtCllTActnHoverEffect != 'none' %} is-hover{% endif %}{% if twtCllTActnCssClass is not empty %} {{ twtCllTActnCssClass }}{% endif %}"
+         style="background-color: {{ twtCllTActnBackgroundColor }};{% if twtCllTActnBorderRadius != '0' %} border-radius: {{ twtCllTActnBorderRadius }};{% endif %}"
+    >
+
+        {# ThemeWare: Parse vars to css #}
+        {% block element_twt_call_to_action_styles %}
+            {% apply spaceless %}
+<style>
+    div[data-cms-element-id="{{element.id}}"] {
+        --twt-border-radius: {{ twtCllTActnBorderRadius }};
+        --twt-link-color: {{ twtCllTActnTextColor }};
+        {% block element_twt_call_to_action_styles_inside %}{% endblock %}
+    }
+</style>
+            {% endapply %}
+        {% endblock %}
+
+        {# block element_twt_call_to_action_element @deprecated #}
+        {% block element_twt_call_to_action_alignment %}
+            {# @TODO: {% if twtCllTActnVerticalAlign and not isCover %} #}
+            {% if twtCllTActnVerticalAlign %}
+                <div class="cms-element-alignment{% if twtCllTActnVerticalAlign == 'center' %} align-self-center{% elseif twtCllTActnVerticalAlign == 'flex-end' %} align-self-end{% else %} align-self-start{% endif %}"
+                    {% if twtCllTActnDisplayMode == 'stretch' %}style="width: 100%;"{% endif %}>
+            {% endif %}
+
+            {# block element_twt_call_to_action_image_inner @deprecated #}
+            {% block element_twt_call_to_action_inner %}
+                {# ThemeWare: Set text element #}
+                {% set callToAction %}
+                    {% block element_twt_call_to_action_content_container %}
+                        <div class="twt-call-to-action-container cms-content-container content-container justify-content-{{ twtCllTActnHorizontalAlignment }} align-items-{{ twtCllTActnVerticalAlignment }}"
+                             style="padding: {{ twtCllTActnPadding }};"
+                        >
+                            {# Colored overlay (if configured) #}
+                            {% if twtCllTActnColorOverlay %}
+                                <div class="twt-call-to-action-overlay color-overlay"
+                                     style="background: {{ twtCllTActnColorOverlayBgColor }};{% if twtCllTActnColorOverlayBgGradient %} background: linear-gradient({{ twtCllTActnColorOverlayBgGradientAngle }}deg, {{ twtCllTActnColorOverlayBgColor }} 0%, {{ twtCllTActnColorOverlayBgColor2 }} 100%);{% endif %}"></div>
+                            {% endif %}
+
+                            {# Content #}
+                            <div class="twt-call-to-action-content {{ contentClasses|sort|join(' ') }}"
+                                 style="text-align: {{ twtCllTActnTextAlignment }}; width: {{ twtCllTActnWidth }}; max-width: {{ twtCllTActnMaxWidth }};{% if twtCllTActnOverlay %} background-color: {{ twtCllTActnBgOverlay }};{% endif %}">
+                                {# Headline #}
+                                {% if twtCllTActnTitle %}
+                                    <{{ twtCllTActnHtmlTag }} class="twt-call-to-action-headline headline {{ twtCllTActnHtmlTagClass }} twt-font-family-{{ twtCllTActnFontFamilyHeadline }}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtCllTActnCssClassTitle is not empty %} {{ twtCllTActnCssClassTitle }}{% endif %}"
+                                    style="color: {{ twtCllTActnTextColorTitle }};">
+                                        {# Note: Experimental feature, may change later (placeholder not final) #}
+                                        {% if twtCllTActnTitle == "{{ category.name }}" or twtCllTActnTitle == "{{category.name}}" or twtCllTActnTitle == "%category.name%" or twtCllTActnTitle == "category.name" %}
+                                            <span>{{ page.header.navigation.active.name }}</span>
+                                        {% else %}
+                                            <span>{{ twtCllTActnTitle }}</span>
+                                        {% endif %}
+                                    </{{ twtCllTActnHtmlTag }}>
+                                {% endif %}
+
+                                {# Text (mandatory) #}
+                                {# Info: HTML möglich, Links werden im fullLinked nicht unterstützt! #}
+                                <div class="twt-call-to-action-text text{% if twtCllTActnFontFamily != 'base' %} twt-font-family-{{ twtCllTActnFontFamily }}{% endif %}{% if textClasses is not empty %} {{ textClasses }}{% endif %}{% if twtCllTActnCssClassText is not empty %} {{ twtCllTActnCssClassText }}{% endif %}"
+                                     style="color: {{ twtCllTActnTextColor }};">
+                                    {% if element.data.text %}
+                                        {{ element.data.text|raw }}
+                                    {% else %}
+                                        {# Fallback #}
+                                        {{ twtCllTActnText|raw }}
+                                    {% endif %}
+                                </div>
+
+                                {# Button (mandatory) #}
+                                {# if twtCllTActnButtonText and twtCllTActnUrl #}
+                                    {% if twtCllTActnFullLink %}
+                                        <div class="twt-call-to-action-btn btn btn-{% if twtCllTActnButtonOutline %}outline-{% endif %}{{ twtCllTActnButtonStyle }}{% if twtCllTActnCssClassButton is not empty %} {{ twtCllTActnCssClassButton }}{% endif %}">
+                                            {{ twtCllTActnButtonText }}
+                                        </div>
+
+                                    {% else %}
+                                        {# INFO: Title tag = Button text (as the text is mandatory) #}
+                                        <a href="{{ twtCllTActnUrl }}"
+                                           class="twt-call-to-action-btn btn btn-{% if twtCllTActnButtonOutline %}outline-{% endif %}{{ twtCllTActnButtonStyle }}{% if twtCllTActnCssClassButton is not empty %} {{ twtCllTActnCssClassButton }}{% endif %}"
+                                           title="{{ title }}"
+                                           {% if twtCllTActnNewTab %}target="_blank" rel="noopener"{% endif %}
+                                        >
+                                            {{ twtCllTActnButtonText }}
+                                        </a>
+
+                                    {% endif %}
+                                {# endif #}
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set image element #}
+                {% set imageElement %}
+                    {% block element_twt_call_to_action_image_container %}
+                        {% if element.data.media.url %}
+                            <div class="twt-call-to-action-image-container {# w-100 #} cms-image-container image-container is-{{ twtCllTActnDisplayMode }}"
+                                 {% if twtCllTActnMinHeight and twtCllTActnDisplayMode == 'cover' %} style="min-height: {{ twtCllTActnMinHeight }};"{% endif %}>
+
+                                {# Add 'object-position' class if configured #}
+                                {% if twtCllTActnDisplayMode == 'cover' and twtCllTActnObjectPosition != 'center' %}
+                                    {% set imageClasses = 'cms-image object-position-'~twtCllTActnObjectPosition %}
+                                {% else %}
+                                    {% set imageClasses = 'cms-image' %}
+                                {% endif %}
+
+                                {% block element_twt_call_to_action_image_media %}
+                                    {# INFO: Meida 'title' and 'alt' attributes can be implemented via the media manager. #}
+                                    {% set attributes = {
+                                        class: imageClasses,
+                                        alt: (element.data.media.translated.alt ?: ''),
+                                        title: (element.data.media.translated.title ?: title),
+                                        loading: lazyloading
+                                    } %}
+
+                                    {% if twtCllTActnDisplayMode == 'cover' or twtCllTActnDisplayMode == 'contain' %}
+                                        {% set attributes = attributes|merge({ 'data-object-fit': twtCllTActnDisplayMode }) %}
+                                    {% endif %}
+
+                                    {% sw_thumbnails 'cms-image-thumbnails' with {
+                                        media: element.data.media
+                                    } %}
+                                {% endblock %}
+
+                                {# ThemeWare: Load text element #}
+                                {{ callToAction }}
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                {% endset %}
+
+                {# ThemeWare: Set "Call-to-Action" #}
+                {% block element_twt_call_to_action_content %}
+                    {# if twtCllTActnFullLink and twtCllTActnUrl #}
+                    {% if twtCllTActnFullLink %}
+                        {# Info: Title tag = Title text (as the text is mandatory) #}
+                        <a href="{{ twtCllTActnUrl }}"
+                           class="cms-image-link is-fulllink"
+                           title="{{ title }}"
+                           {# @TODO tag:v6.7.0 - Check if aria-label is needed #}
+                           {% if twtCllTActnNewTab %}target="_blank" rel="noopener"{% endif %}
+                        >
+                            {# ThemeWare: Load image element #}
+                            {{ imageElement }}
+                        </a>
+
+                    {% else %}
+                        {# ThemeWare: Load image element #}
+                        {{ imageElement }}
+
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+
+            {# @TODO: {% if twtCllTActnVerticalAlign and not isCover %} #}
+            {% if twtCllTActnVerticalAlign %}
+                </div>
+            {% endif %}
+        {% endblock %}
+    
+    </div>
+{% endblock %}

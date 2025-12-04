@@ -1,0 +1,88 @@
+.inline-config-container {
+    margin-bottom: 16px;
+}
+
+.swag-amazon-pay-configuration-text {
+    color: rgb(82, 102, 122);
+    font-size: 14px;
+    margin-bottom: 20px;
+
+    a {
+        color: #0066d0;
+    }
+
+    ul {
+        margin-top: 10px;
+        list-style-position: inside;
+        padding-left: 25px;
+        line-height: 180%;
+        margin-bottom: 20px;
+    }
+
+    span.headline {
+        font-weight: 600;
+        height: 22px;
+        letter-spacing: 0.1px;
+        line-height: 22px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    span.headline-m {
+        font-size: 15px;
+    }
+}
+
+.swag-amazon-pay-configuration-inheritance-field {
+    margin: 0;
+
+    .sw-field--switch__content {
+        background: rgb(240, 242, 245);
+    }
+}
+
+.swag-amazon-pay-configuration, .swag-amazon-pay-configuration-inheritance-field {
+    .sw-field--switch__content {
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .sw-field--switch {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .sw-field--margin-top, .add-margin-top {
+        margin-top: 15px;
+    }
+
+    .sw-field--margin-bottom, .add-margin-bottom {
+        margin-bottom: 15px;
+    }
+}
+
+.swag-amazon-pay-configuration-radio-help-text-columns {
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 90% auto;
+
+    .column-left {
+        padding-top: 3px;
+    }
+
+    .column-right {
+        padding-top: 0;
+
+        .sw-help-text {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.swag-amazon-pay-saleschannel-switch {
+    background: rgb(240, 242, 245);
+    border: 1px solid rgb(209, 217, 224);
+    border-radius: 4px;
+    padding: 30px;
+}
+

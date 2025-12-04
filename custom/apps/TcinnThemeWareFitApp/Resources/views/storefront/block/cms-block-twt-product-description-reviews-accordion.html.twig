@@ -1,0 +1,26 @@
+{# ThemeWare® CMS block "..." #}
+
+{% block block_product_description_review %}
+    {% set element = block.slots.getSlot('content') %}
+
+    {% block block_product_description_review_column %}
+        {# ThemeWare: Only apply to cms pages with type 'product_detail' #}
+        {% if page.cmsPage.type == 'product_detail' %}
+            <div class="col-12" data-cms-element-id="{{ element.id }}">
+                {% block block_product_description_reviews_inner %}
+                    {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' ignore missing %}
+                {% endblock %}
+            </div>
+
+        {% else %}
+            {# Add alert "Only on detail pages" @TODO: Move alert to element... #}
+            <div class="col-12 twt-col-empty" data-cms-element-id="{{ element.id }}">
+                {% sw_include '@Storefront/storefront/utilities/alert.html.twig' with {
+                    type: 'info',
+                    content: 'twt.cms.alert.productPageOnly'|trans|sw_sanitize
+                } %}
+            </div>
+
+        {% endif %}
+    {% endblock %}
+{% endblock %}

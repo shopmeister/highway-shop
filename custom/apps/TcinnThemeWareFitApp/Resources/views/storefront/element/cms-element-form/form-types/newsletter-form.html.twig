@@ -1,0 +1,48 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-form/form-types/newsletter-form.html.twig' %}
+
+{# @TODO: prüfen... #}
+
+{# ThemeWare: Adjustments on the newsletter salutation #}
+{# @TODO: HC-Architecture... #}
+{% block cms_form_newsletter_select_salutation %}
+	{# ThemeWare: Hide newsletter salutation #}
+	{#
+	{% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-select-salutation.html.twig'
+		with { additionalClass: 'col-md-4' }
+	%}
+	#}
+{% endblock %}
+
+
+{# ThemeWare: Change some values of the newsletter form
+	- "required": true => false
+	- "additionalClass": 'col-md-4' => 'col-md-6'
+#}
+{# @TODO: HC-Architecture... #}
+{% block cms_form_newsletter_input_first_name %}
+	{% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig' with {
+		additionalClass: 'col-md-6',
+		fieldName: 'firstName',
+		autocomplete: 'section-personal given-name',
+		label: 'newsletter.labelFirstName',
+		placeholder: 'newsletter.placeholderFirstName',
+		required: false
+	} %}
+{% endblock %}
+
+
+{# ThemeWare: Change some values of the newsletter form
+	- "required": true => false
+	- "additionalClass": 'col-md-4' => 'col-md-6'
+#}
+{# @TODO: HC-Architecture... #}
+{% block cms_form_newsletter_input_last_name %}
+	{% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig' with {
+		additionalClass: 'col-md-6',
+		fieldName: 'lastName',
+		autocomplete: 'section-personal family-name',
+		label: 'newsletter.labelLastName',
+		placeholder: 'newsletter.placeholderLastName',
+		required: false
+	} %}
+{% endblock %}

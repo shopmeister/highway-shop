@@ -1,0 +1,41 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ThemeWare:
+	- see also product-detail\meta.html.twig
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtjQueryLoad = theme_config('twt-jquery-load') %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Add styles and stylesheets to <head> #}
+{# INFO: Styles können über ein Textarea über einen Textbaustein ergänzt werden. #}
+{% block layout_head_stylesheet %}
+	{# Default block #}
+	{{ parent() }}
+
+	{% sw_include '@Storefront/storefront/themeware/twt-base-meta-styles.html.twig' ignore missing %}
+{% endblock %}
+
+{# ThemeWare: Add meta tags to <head> #}
+{% block layout_head_meta_tags %}
+	{# Default block #}
+	{{ parent() }}
+
+	{% sw_include '@Storefront/storefront/themeware/twt-base-meta-tags.html.twig' ignore missing %}
+{% endblock %}
+
+{# ThemeWare: Add jQuery to Storefront since #}
+{# INFO: jQuery is removed from the default theme since tag:v6.5.0 #}
+{% block layout_head_javascript_jquery %}
+	{% if twtjQueryLoad == 2 %}
+		<script src="{{ asset('assets/js/jquery-3.5.1.slim.min.js', 'theme') }}"></script>
+	{% endif %}
+
+	{# Default block #}
+	{{ parent() }}
+{% endblock %}

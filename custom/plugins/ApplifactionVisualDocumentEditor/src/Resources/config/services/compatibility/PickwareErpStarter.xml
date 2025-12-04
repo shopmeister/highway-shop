@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!-- PickwareErpStarter: SupplierOrder -->
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentGenerator\PickwareSupplierOrderDocumentGeneratorDecorator"
+                 decorates="Pickware\PickwareErpStarter\SupplierOrder\Document\SupplierOrderDocumentGenerator"
+                 decoration-on-invalid="ignore">
+            <argument>%kernel.project_dir%</argument>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentGenerator\PickwareSupplierOrderDocumentGeneratorDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentEditorHelper"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\PdfRenderer"/>
+            <tag name="document.renderer"/>
+        </service>
+
+        <!-- PickwareErpStarter: Picklist -->
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\PicklistResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\PicklistResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="pickware_erp_warehouse.repository" on-invalid="null"/>
+            <argument type="service" id="Pickware\PickwareErpStarter\Picklist\PicklistGenerator" on-invalid="null"/>
+            <argument type="service" id="Pickware\PickwareErpStarter\Picklist\PicklistCustomProductGenerator" on-invalid="null"/>
+            <argument type="service" id="Pickware\PickwareErpStarter\Picklist\Renderer\PicklistDocumentContentGenerator" on-invalid="null"/>
+        </service>
+
+        <!-- PickwareErpStarter: Invoice correction -->
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\InvoiceCorrectionResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\InvoiceCorrectionResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\PickwareErpStarter\PickwareErpStarterService"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TranslatorService"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\Service\Logger"/>
+            <argument type="service" id="Pickware\PickwareErpStarter\InvoiceCorrection\InvoiceCorrectionConfigGenerator" on-invalid="null"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="Pickware\PickwareErpStarter\InvoiceCorrection\InvoiceCorrectionCalculator" on-invalid="null"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\PickwareErpStarter\PickwareErpStarterService">
+            <argument type="service" id="Doctrine\DBAL\Connection"/>
+        </service>
+
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\PickwareErpStarter\InvoiceCorrectionPreviewServiceDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\DocumentPreviewService"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\PickwareErpStarter\InvoiceCorrectionPreviewServiceDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Checkout\Document\PickwareErpStarter\PickwareErpStarterService"/>
+        </service>
+
+        <!-- PickwareErpStarter: Supplier order -->
+        <service id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\SupplierOrderResolverDecorator"
+                 decorates="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\OrderDocumentResolver"
+                 decoration-on-invalid="ignore">
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\DataResolver\Resolver\PickwareErpStarter\SupplierOrderResolverDecorator.inner"/>
+            <argument type="service" id="Applifaction\DragNDropDocumentEditor\Compatibility\Base\Core\Service\TestDataProvider\SupplierOrderDataProvider"/>
+        </service>
+
+    </services>
+</container>

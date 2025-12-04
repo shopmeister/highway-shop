@@ -1,0 +1,128 @@
+{% sw_extends '@Storefront/storefront/element/cms-element-product-listing.html.twig' %}
+{# ThemeWare® HC-Architecture® ready #}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{% set twtListingBoxLayout = element.fieldConfig.elements.boxLayout.value %}
+
+{% if twtListingBoxLayout == 'standard' %}
+    {# ThemeWare: Layout type "Standard" #}
+    {% set twtListingColumnCountXs = theme_config('twt-listing-column-count-xs') %}
+    {% set twtListingColumnCountSm = theme_config('twt-listing-column-count-sm') %}
+    {% set twtListingColumnCountMd = theme_config('twt-listing-column-count-md') %}
+    {% set twtListingColumnCountLg = theme_config('twt-listing-column-count-lg')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountXl = theme_config('twt-listing-column-count-xl')|replace({"24": "2-4"}) %}
+
+    {% set twtListingColumnCountSidebarXs = theme_config('twt-listing-column-count-sidebar-xs') %}
+    {% set twtListingColumnCountSidebarSm = theme_config('twt-listing-column-count-sidebar-sm') %}
+    {% set twtListingColumnCountSidebarMd = theme_config('twt-listing-column-count-sidebar-md') %}
+    {% set twtListingColumnCountSidebarLg = theme_config('twt-listing-column-count-sidebar-lg')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountSidebarXl = theme_config('twt-listing-column-count-sidebar-xl')|replace({"24": "2-4"}) %}
+
+{% elseif twtListingBoxLayout == 'image' %}
+    {# ThemeWare: Layout type "Big image" #}
+    {% set twtListingColumnCountXs = theme_config('twt-listing-column-count-xs-image') %}
+    {% set twtListingColumnCountSm = theme_config('twt-listing-column-count-sm-image') %}
+    {% set twtListingColumnCountMd = theme_config('twt-listing-column-count-md-image') %}
+    {% set twtListingColumnCountLg = theme_config('twt-listing-column-count-lg-image')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountXl = theme_config('twt-listing-column-count-xl-image')|replace({"24": "2-4"}) %}
+
+    {% set twtListingColumnCountSidebarXs = theme_config('twt-listing-column-count-sidebar-xs-image') %}
+    {% set twtListingColumnCountSidebarSm = theme_config('twt-listing-column-count-sidebar-sm-image') %}
+    {% set twtListingColumnCountSidebarMd = theme_config('twt-listing-column-count-sidebar-md-image') %}
+    {% set twtListingColumnCountSidebarLg = theme_config('twt-listing-column-count-sidebar-lg-image')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountSidebarXl = theme_config('twt-listing-column-count-sidebar-xl-image')|replace({"24": "2-4"}) %}
+
+{% elseif twtListingBoxLayout == 'minimal' %}
+    {# ThemeWare: Layout type "Minimal content" #}
+    {% set twtListingColumnCountXs = theme_config('twt-listing-column-count-xs-minimal') %}
+    {% set twtListingColumnCountSm = theme_config('twt-listing-column-count-sm-minimal') %}
+    {% set twtListingColumnCountMd = theme_config('twt-listing-column-count-md-minimal') %}
+    {% set twtListingColumnCountLg = theme_config('twt-listing-column-count-lg-minimal')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountXl = theme_config('twt-listing-column-count-xl-minimal')|replace({"24": "2-4"}) %}
+
+    {% set twtListingColumnCountSidebarXs = theme_config('twt-listing-column-count-sidebar-xs-minimal') %}
+    {% set twtListingColumnCountSidebarSm = theme_config('twt-listing-column-count-sidebar-sm-minimal') %}
+    {% set twtListingColumnCountSidebarMd = theme_config('twt-listing-column-count-sidebar-md-minimal') %}
+    {% set twtListingColumnCountSidebarLg = theme_config('twt-listing-column-count-sidebar-lg-minimal')|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountSidebarXl = theme_config('twt-listing-column-count-sidebar-xl-minimal')|replace({"24": "2-4"}) %}
+
+{% else %}
+    {# Fallback: Shopware default values #}
+    {% set twtListingColumnCountXs = 12 %}
+    {% set twtListingColumnCountSm = 6 %}
+    {% set twtListingColumnCountMd = 6 %}
+    {% set twtListingColumnCountLg = 4 %}
+    {% set twtListingColumnCountXl = 3 %}
+
+    {% set twtListingColumnCountSidebarXs = 12 %}
+    {% set twtListingColumnCountSidebarSm = 6 %}
+    {% set twtListingColumnCountSidebarMd = 6 %}
+    {% set twtListingColumnCountSidebarLg = 6 %}
+    {% set twtListingColumnCountSidebarXl = 4 %}
+
+{% endif %}
+
+{# ThemeWare: Overwrite theme variables with custom fields (if configured) #}
+{% set twtCustomFieldListingColsXs = twtCustomFields.category.twt_fit_cloud_custom_field__category__product_listing_columns_xs %}
+{% set twtCustomFieldListingColsSm = twtCustomFields.category.twt_fit_cloud_custom_field__category__product_listing_columns_sm %}
+{% set twtCustomFieldListingColsMd = twtCustomFields.category.twt_fit_cloud_custom_field__category__product_listing_columns_md %}
+{% set twtCustomFieldListingColsLg = twtCustomFields.category.twt_fit_cloud_custom_field__category__product_listing_columns_lg %}
+{% set twtCustomFieldListingColsXl = twtCustomFields.category.twt_fit_cloud_custom_field__category__product_listing_columns_xl %}
+
+{% if twtCustomFieldListingColsXs != 'inherit' and twtCustomFieldListingColsXs is not empty %}
+    {% set twtListingColumnCountSidebarXs = twtCustomFieldListingColsXs %}
+    {% set twtListingColumnCountXs = twtCustomFieldListingColsXs %}
+{% endif %}
+
+{% if twtCustomFieldListingColsSm != 'inherit' and twtCustomFieldListingColsSm is not empty %}
+    {% set twtListingColumnCountSidebarSm = twtCustomFieldListingColsSm %}
+    {% set twtListingColumnCountSm = twtCustomFieldListingColsSm %}
+{% endif %}
+
+{% if twtCustomFieldListingColsMd != 'inherit' and twtCustomFieldListingColsMd is not empty %}
+    {% set twtListingColumnCountMd = twtCustomFieldListingColsMd %}
+    {% set twtListingColumnCountSidebarMd = twtCustomFieldListingColsMd %}
+{% endif %}
+
+{% if twtCustomFieldListingColsLg != 'inherit' and twtCustomFieldListingColsLg is not empty %}
+    {% set twtListingColumnCountSidebarLg = twtCustomFieldListingColsLg|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountLg = twtCustomFieldListingColsLg|replace({"24": "2-4"}) %}
+{% endif %}
+
+{% if twtCustomFieldListingColsXl != 'inherit' and twtCustomFieldListingColsXl is not empty %}
+    {% set twtListingColumnCountSidebarXl = twtCustomFieldListingColsXl|replace({"24": "2-4"}) %}
+    {% set twtListingColumnCountXl = twtCustomFieldListingColsXl|replace({"24": "2-4"}) %}
+{% endif %}
+
+{# ThemeWare: Check if columns have beeing changed #}
+{% set twtListingCustomColumnCount = false %}
+{% if twtListingColumnCountXs != 12 or twtListingColumnCountSm != 6 or twtListingColumnCountMd != 6 or twtListingColumnCountLg != 4 or twtListingColumnCountXl != 3 %}
+    {% set twtListingCustomColumnCount = true %}
+{% endif %}
+
+{% set twtListingCustomColumnCountSidebar = false %}
+{% if twtListingColumnCountSidebarXs != 12 or twtListingColumnCountSidebarSm != 6 or twtListingColumnCountSidebarMd != 6 or twtListingColumnCountSidebarLg != 6 or twtListingColumnCountSidebarXl != 4 %}
+    {% set twtListingCustomColumnCountSidebar = true %}
+{% endif %}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Adjustments on the listing wrapper #}
+{% block element_product_listing_wrapper %}
+    {# ThemeWare: Define number of columns #}
+    {% if twtListingCustomColumnCount %}
+        {% set listingColumns = 'col-'~ twtListingColumnCountXs ~' col-sm-'~ twtListingColumnCountSm ~' col-md-'~ twtListingColumnCountMd ~' col-lg-'~ twtListingColumnCountLg ~' col-xl-'~ twtListingColumnCountXl %}
+    {% endif %}
+
+    {# ThemeWare: Define number of columns with active sidebar #}
+    {% if section and section.type == 'sidebar' %}
+        {% if twtListingCustomColumnCountSidebar %}
+            {% set listingColumns = 'col-'~ twtListingColumnCountSidebarXs ~' col-sm-'~ twtListingColumnCountSidebarSm ~' col-md-'~ twtListingColumnCountSidebarMd ~' col-lg-'~ twtListingColumnCountSidebarLg ~' col-xl-'~ twtListingColumnCountSidebarXl %}
+        {% endif %}
+    {% endif %}
+
+    {# Default block #}
+    {{ parent() }}
+{% endblock %}

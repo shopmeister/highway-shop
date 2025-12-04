@@ -1,0 +1,75 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS element "Parallax banner"
+	==================================================
+
+*/
+
+@if $twt-cms-parallax-banner-css == 2 { // #performance
+    .cms-element-twt-parallax-banner {
+        //.twt-parallax-banner-container {}
+
+        .twt-parallax-banner-image-container {
+            background-repeat: no-repeat;
+            background-position: center center;
+
+            &.is-cover {
+                background-size: cover;
+            }
+
+            @include media-breakpoint-up(md) { // min 768px"
+                &.is-fixed {
+                    background-attachment: fixed;
+                }
+            }
+
+            &.is-scroll {
+                background-attachment: scroll;
+            }
+
+            // iOS fix
+            @supports (-webkit-overflow-scrolling: touch) {
+                &.is-fixed {
+                    background-attachment: scroll !important;
+                }
+            }
+        }
+
+        .twt-parallax-banner-content {
+            //width: 100%; // @TODO
+
+            > *:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            &.is-styled {
+                padding: $twt-basegrid-spacing;
+            }
+
+            //&:not(.is-styled) {}
+
+            // Title (default)
+            p.title.default {
+                // fallback
+                @include twt-font-size(20);
+                margin-bottom: 0;
+            }
+
+            // Title (none)
+            p.title.none {
+                margin-bottom: 0;
+            }
+
+            // Subtitle (none)
+            p.subtitle.none {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

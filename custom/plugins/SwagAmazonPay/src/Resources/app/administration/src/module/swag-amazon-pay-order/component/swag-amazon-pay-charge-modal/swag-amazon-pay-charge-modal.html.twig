@@ -1,0 +1,65 @@
+{% block swag_amazon_pay_order_charge_modal %}
+<sw-modal :title="$tc('swag-amazon-pay-order.charge-modal.title')"
+          @modal-close="closeModal">
+
+    {% block swag_amazon_pay_order_charge_modal_content %}
+    <template #default>
+
+        {% block swag_amazon_pay_order_charge_modal_content_info_text %}
+            <div class="swag-amazon-pay-charge-modal__info-text">
+                <span>
+                    {{ $tc('swag-amazon-pay-order.charge-modal.infoText') }}
+                </span>
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_charge_modal_content_max_amount %}
+            <div class="swag-amazon-pay-charge-modal__info-maximum-amount">
+                 <span>
+                      {{ $tc('swag-amazon-pay-order.charge-modal.maximumAmount', 0, { amount: chargeAmountLimitFormatted }) }}
+                 </span>
+            </div>
+        {% endblock %}
+
+        {% block swag_amazon_pay_order_charge_modal_content_fields %}
+            <div class="swag-amazon-pay-charge-modal__field-container">
+
+                {% block swag_amazon_pay_order_charge_modal_content_fields_amount %}
+                    <sw-number-field v-model:value="chargeAmount"
+                              {# The template string is used to convert the refund amount to a string #}
+                              :placeholder="`${chargeAmountLimit}`"
+                              :label="$tc('swag-amazon-pay-order.charge-modal.amountFieldLabel')"
+                              :min="0"
+                              :max="chargeAmountLimit">
+                        <template #suffix>
+                            <span class="swag-amazon-pay-charge-modal__currency-code">{{ paymentDetails.chargePermission.currency }}</span>
+                        </template>
+                    </sw-number-field>
+                {% endblock %}
+
+            </div>
+        {% endblock %}
+    </template>
+    {% endblock %}
+
+    {% block swag_amazon_pay_order_charge_modal_actions %}
+        <template #modal-footer>
+
+            {% block swag_amazon_pay_order_charge_modal_cancel %}
+                <sw-button size="small" @click="closeModal">
+                    {{ $tc('global.default.cancel') }}
+                </sw-button>
+            {% endblock %}
+
+            {% block swag_amazon_pay_order_charge_modal_confirm %}
+            <sw-button variant="primary"
+                       size="small"
+                       :isLoading="isLoading"
+                       @click="onConfirm">
+                {{ $tc('swag-amazon-pay-order.charge-modal.buttonConfirm') }}
+            </sw-button>
+            {% endblock %}
+        </template>
+    {% endblock %}
+</sw-modal>
+{% endblock %}

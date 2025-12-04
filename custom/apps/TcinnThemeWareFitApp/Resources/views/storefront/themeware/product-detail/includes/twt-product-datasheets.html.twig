@@ -1,0 +1,286 @@
+{# ThemeWare® 'Datasheets' on product pages via custom fileds #}
+{#
+    Add 'Datasheets'
+
+    Der Dateiupload im Medienmanager ist für folgende Dateitypen möglich:
+    jpg, jpeg, png, webp, gif, svg, bmp, tiff, tif, eps, webm, mkv, flv, ogv, ogg, mov, mp4, avi, wmv, pdf, aac, mp3, wav, flac, oga, wma, txt, doc, glb
+
+    Unterstützte Formate: pdf
+
+    @Storefront/storefront/themeware/product-detail/includes/twt-product-datasheets.html.twig
+#}
+
+{# ---------------- #BETA (file may change in further releases) ---------------- #}
+
+{# @TODO
+    - https://mozilla.github.io/pdf.js/
+#}
+
+{# ---------------- START: SET TEMPLATE VARS ---------------- #}
+
+{# ThemeWare: Set theme variables #}
+{# ... #}
+
+{# ---------------- END: SET TEMPLATE VARS ---------------- #}
+
+{# ---------------- START: SET VARS ---------------- #}
+
+{% set formats = ['pdf'] %}
+
+{# Set 'Datasheets' #}
+{% set datasheetMediaIds = [
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2,
+    twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3
+] | filter(item => item is not null) %}
+
+{% set mediaCollection = searchMedia(datasheetMediaIds, context.context) %}
+
+{% set twtDatasheet1 = mediaCollection.get(datasheetMediaIds.0) %}
+{% set twtDatasheet2 = mediaCollection.get(datasheetMediaIds.1) %}
+{% set twtDatasheet3 = mediaCollection.get(datasheetMediaIds.2) %}
+
+{# Set 'Titles' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1_title is not empty %}
+    {% set twtTitle1 = 'twt.detail.datasheets.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1_title })|sw_sanitize %}
+{% else %}
+    {% if twtDatasheet1.title is not empty %}
+        {% set twtTitle1 = 'twt.detail.datasheets.link'|trans({'%name%': twtDatasheet1.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle1 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 1' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2_title is not empty %}
+    {% set twtTitle2 = 'twt.detail.datasheets.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2_title })|sw_sanitize %}
+{% else %}
+    {% if twtDatasheet2.title is not empty %}
+        {% set twtTitle2 = 'twt.detail.datasheets.link'|trans({'%name%': twtDatasheet2.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle2 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 2' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3_title is not empty %}
+    {% set twtTitle3 = 'twt.detail.datasheets.link'|trans({'%name%': twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3_title })|sw_sanitize %}
+{% else %}
+    {% if twtDatasheet3.title is not empty %}
+        {% set twtTitle3 = 'twt.detail.datasheets.link'|trans({'%name%': twtDatasheet3.title })|sw_sanitize %}
+    {% else %}
+        {% set twtTitle3 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 3' %}
+    {% endif %}
+{% endif %}
+
+{# Set 'Link titles' #}
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1_title is not empty %}
+    {% set twtLinkTitle1 = twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1_title %}
+{% else %}
+    {% if twtDatasheet1.title is not empty %}
+        {% set twtLinkTitle1 = twtDatasheet1.title %}
+    {% else %}
+        {% set twtLinkTitle1 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 1' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2_title is not empty %}
+    {% set twtLinkTitle2 = twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2_title %}
+{% else %}
+    {% if twtDatasheet2.title is not empty %}
+        {% set twtLinkTitle2 = twtDatasheet2.title %}
+    {% else %}
+        {% set twtLinkTitle2 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 2' %}
+    {% endif %}
+{% endif %}
+
+{% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3_title is not empty %}
+    {% set twtLinkTitle3 = twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3_title %}
+{% else %}
+    {% if twtDatasheet3.title is not empty %}
+        {% set twtLinkTitle3 = twtDatasheet3.title %}
+    {% else %}
+        {% set twtLinkTitle3 = 'twt.detail.datasheets.fallback'|trans|sw_sanitize ~ ' 3' %}
+    {% endif %}
+{% endif %}
+
+{# Set 'Headlines' #}
+{% set twtHeadline1 = twtLinkTitle1 %}
+{% set twtHeadline2 = twtLinkTitle2 %}
+{% set twtHeadline3 = twtLinkTitle3 %}
+
+{# ---------------- END: SET VARS ---------------- #}
+
+{# ThemeWare: Add product "datasheets" #}
+{% block twt_product_detail_datasheets_container %}
+    {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2 is not empty or twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3 is not empty %}
+
+        <div class="twt-product-detail-datasheets twt-product-datasheets">
+            {% block twt_product_detail_datasheets_inner %}
+
+                {# Add 'Datasheets' subheadline (only in tab "Description")  #}
+                {% block twt_product_detail_datasheets_subheadline %}
+                    {% if position == 'description' %}
+                        <div class="h4 twt-product-detail-datasheets-title twt-product-detail-description-subheadline">
+                            {{ 'twt.detail.datasheets.title'|trans({'%product%': product.translated.name })|sw_sanitize }}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {# Add 'Datasheets' #}
+                {% block twt_product_detail_datasheets_content %}
+                    <div class="twt-product-detail-datasheets-content">
+
+                        {#  Add description text #}
+                        {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheets_text is not empty %}
+                            <p>
+                                {{ twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheets_text|raw }}
+                            </p>
+                        {% endif %}
+
+                        {# Embed datasheets #}
+                        <div class="twt-product-detail-datasheets datasheets-embeds">
+                            {# ThemeWare: Datasheet 1 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_1 is not empty %}
+                                {% if twtDatasheet1.mediaType.name is same as ('DOCUMENT') and twtDatasheet1.fileExtension in formats %}
+                                    <div class="twt-product-detail-datasheets-datasheet">
+                                        {# Title #}
+                                        <div class="twt-product-detail-datasheets-datasheet-title mt-3">
+                                            <h5>{{ twtHeadline1 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <object
+                                            class="twt-product-detail-datasheets-datasheet-embed d-none d-sm-block"
+                                            data="{{ twtDatasheet1.url }}"
+                                            style="width:100%; height: auto; aspect-ratio: 5/7"
+                                        >
+                                            <p class="d-none">Oops! Your browser doesn't support PDFs!</p>
+                                        </object>
+
+                                        {# Download #}
+                                        <div class="twt-product-detail-datasheets-datasheet-download mt-2">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                            {# Link #}
+                                            <a href="{{ twtDatasheet1.url }}"
+                                               class="twt-product-detail-datasheets-datasheet-download-link content-link link-download"
+                                               title="{{ twtLinkTitle1 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle1 }}</a>
+
+                                            {% set fileSizeKB = twtDatasheet1.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                            <small class="twt-product-detail-datasheets-datasheet-download-filesize download-filesize">({{ fileSize}})</small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            {# ThemeWare: Datasheet 2 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_2 is not empty %}
+                                {% if twtDatasheet2.mediaType.name is same as ('DOCUMENT') and twtDatasheet2.fileExtension in formats %}
+                                    <div class="twt-product-detail-datasheets-datasheet">
+                                        {# Title #}
+                                        <div class="twt-product-detail-datasheets-datasheet-title mt-3">
+                                            <h5>{{ twtHeadline2 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <object
+                                            class="twt-product-detail-datasheets-datasheet-embed d-none d-sm-block"
+                                            data="{{ twtDatasheet2.url }}"
+                                            style="width:100%; height: auto; aspect-ratio: 5/7"
+                                        >
+                                            <p class="d-none">Oops! Your browser doesn't support PDFs!</p>
+                                        </object>
+
+                                        {# Download #}
+                                        <div class="twt-product-detail-datasheets-datasheet-download mt-2">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                            {# Link #}
+                                            <a href="{{ twtDatasheet2.url }}"
+                                               class="twt-product-detail-datasheets-datasheet-download-link content-link link-download"
+                                               title="{{ twtLinkTitle2 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle2 }}</a>
+
+                                            {% set fileSizeKB = twtDatasheet2.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                            <small class="twt-product-detail-datasheets-datasheet-download-filesize download-filesize">({{ fileSize}})</small>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+
+                            {# ThemeWare: Datasheet 3 #}
+                            {% if twtCustomFields.product.twt_fit_cloud_custom_field__product__datasheet_3 is not empty %}
+                                {% if twtDatasheet3.mediaType.name is same as ('DOCUMENT') and twtDatasheet3.fileExtension in formats %}
+                                    <div class="twt-product-detail-datasheets-datasheet">
+                                        {# Title #}
+                                        <div class="twt-product-detail-datasheets-datasheet-title mt-3">
+                                            <h5>{{ twtHeadline3 }}</h5>
+                                        </div>
+
+                                        {# Embed #}
+                                        <object
+                                            class="twt-product-detail-datasheets-datasheet-embed d-none d-sm-block"
+                                            data="{{ twtDatasheet3.url }}"
+                                            style="width:100%; height: auto; aspect-ratio: 5/7"
+                                        >
+                                            <p class="d-none">Oops! Your browser doesn't support PDFs!</p>
+                                        </object>
+
+                                        {# Download #}
+                                        <div class="twt-product-detail-datasheets-datasheet-download mt-2">
+                                            {# @TODO tag:v6.7.0 - Check if aria-label or ariaHidden is needed #}
+                                            {# Icon #}
+                                            {% sw_icon 'arrow-large-right' style { pack: 'solid', ariaHidden: true } %}
+
+                                            {# Link #}
+                                            <a href="{{ twtDatasheet3.url }}"
+                                               class="twt-product-detail-datasheets-datasheet-download-link content-link link-download"
+                                               title="{{ twtLinkTitle3 }}"
+                                               target="_blank"
+                                               rel="noopener noreferrer"
+                                               download
+                                            >{{ twtTitle3 }}</a>
+
+                                            {% set fileSizeKB = twtDatasheet3.fileSize / 1024 %}
+                                            {% if fileSizeKB >= 1024 %}
+                                                {% set fileSize = (fileSizeKB / 1024)|number_format(2, '.', ',') ~ ' MB' %}
+                                            {% else %}
+                                                {% set fileSize = fileSizeKB|number_format(2, '.', ',') ~ ' KB' %}
+                                            {% endif %}
+
+                                        <small class="twt-product-detail-datasheets-datasheet-download-filesize download-filesize">({{ fileSize}})</small>                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+
+                    </div>
+                {% endblock %}
+
+            {% endblock %}
+        </div>
+
+    {% endif %}
+{% endblock %}

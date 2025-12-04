@@ -1,0 +1,592 @@
+{
+	"twt": {
+		"copyright": "© %date% %shopname% - All Rights Reserved.",
+		"tcinn": "<a href=\"%href%\" title=\"%title%\" rel=\"dofollow noopener\" target=\"_blank\">%name%</a>",
+		"general": {
+			"close": "Close"
+		},
+		"header": {
+			"accountText": "My account",
+			"cartText": "Shopping cart",
+			"offcanvasMenuText": "Navigation",
+			"searchText": "Search",
+			"serviceHotline": "Service hotline",
+			"serviceHotlineText": "<a href=\"tel:+49180000000\">0180 - 000000</a> Mon-Fri, 9 am - 5 pm",
+			"wishlistText": "Wishlist"
+		},
+		"breadcrumb": {
+			"furtherInformation": "You are here:"
+		},
+		"custom": {
+			"css": ""
+		},
+		"listing": {
+			"filter": {
+				"title": "Filter"
+			},
+			"manufacturerLabel": "Manufacturer:",
+			"navigation": {
+				"title": "Navigation"
+			},
+			"ordernumberLabel": "Product number:"
+		},
+		"detail": {
+			"availableStockLabel": "Available stock:",
+			"backordersNote": {
+				"backordersDenied": "Backorders denied",
+				"backordersPossible": "Backorders possible"
+			},
+			"benefits": {
+				"headline": "Our benefits",
+				"content": "Free shipping; Shipping within 24h; 30 days money back guarantee; Purchase comfortable on account"
+			},
+			"comment": {
+				"title": "Our comment on \"%product%\""
+			},
+			"customFields": {
+				"customField1": {
+					"label": "Custom field 1:"
+				},
+				"customField2": {
+					"label": "Custom field 2:"
+				},
+				"customField3": {
+					"label": "Custom field 3:"
+				}
+			},
+			"datasheets": {
+				"title": "Datasheets",
+				"link": "Download \"%name%\"",
+				"fallback": "Datasheet"
+			},
+			"deliveryTimeLabel": "Delivery time:",
+			"downloads": {
+				"title": "Available downloads",
+				"link": "Download \"%name%\"",
+				"fallback": "Download"
+			},
+			"eanLabel": "EAN:",
+			"furtherLinks": {
+				"title": "Related links to \"%product%\"",
+				"fallback": "Link"
+			},
+			"headlineProperties": "Properties",
+			"heightLabel": "Height:",
+			"imageSimilarNote": "Picture similar to product",
+			"infoProperties": "Data according to manufacturer. Errors and changes reserved.",
+			"isCloseoutNote": "Clearance sale",
+			"lengthLabel": "Length:",
+			"manufacturerLabel": "Manufacturer:",
+			"manufacturernumberLabel": "Manufacturer product number:",
+			"maxpurchaseLabel": "Max. order quantity:",
+			"minpurchaseLabel": "Min. order quantity:",
+			"paymentLogos": {
+				"headline": "Our payment methods:"
+			},
+			"productVideos": {
+				"title": "Videos",
+				"fallback": "Video"
+			},
+			"properties": {
+				"title": "Properties"
+			},
+			"shippingFreeLabel": "Free shipping",
+			"socialSharingLinks": {
+				"headline": "Share this product:",
+				"facebook": {
+					"label": "Facebook",
+					"title": "Share with Facebook"
+				},
+				"twitter": {
+					"label": "Twitter",
+					"title": "Share with Twitter"
+				},
+				"pinterest": {
+					"label": "Pinterest",
+					"title": "Share with Pinterest"
+				},
+				"whatsapp": {
+					"label": "WhatsApp",
+					"title": "Share with WhatsApp"
+				},
+				"email": {
+					"body": "look what I have found!",
+					"closing": "Best regards",
+					"label": "E-Mail",
+					"salutation": "Hello,",
+					"title": "Share with E-Mail"
+				},
+				"x": {
+					"label": "X / Twitter",
+					"title": "Share with X / Twitter"
+				}
+			},
+			"stockLabel": {
+				"label": "Stock:",
+				"noStock": "Sold out",
+				"lowStock": {
+					"label": "Only %stock% available",
+					"prefix": "This snippet is #deprecated and will be removed soon!",
+					"suffix": "This snippet is #deprecated and will be removed soon!"
+				},
+				"inStock": "Available",
+				"availableStock": "This snippet is #deprecated and will be removed soon!",
+				"highStock": {
+					"label": "Over %stock% available",
+					"prefix": "This snippet is #deprecated and will be removed soon!",
+					"suffix": "This snippet is #deprecated and will be removed soon!"
+				}
+			},
+			"tabCustom": {
+				"title": "Custom tab",
+				"headline": "Custom tab"
+			},
+			"tabDatasheets": {
+				"title": "Datasheets",
+				"headline": "Datasheets"
+			},
+			"tabManufacturer": {
+				"title": "Manufacturer",
+				"headline": "Manufacturer",
+				"linkProducts": {
+					"label": "Further products by %manufacturer%"
+				},
+				"linkWebsite": {
+					"label": "Manufacturer website"
+				},
+				"moreInformation": "Related links of the manufacturer"
+			},
+			"tabProperties": {
+				"title": "Properties",
+				"headline": "Properties"
+			},
+			"tabVideos": {
+				"alt": "Video",
+				"title": "Videos",
+				"headline": "Videos"
+			},
+			"weightLabel": "Weight:",
+			"widthLabel": "Width:"
+		},
+		"extension": {
+			"announcementBanner": {
+				"content": "<span class=\"label label-info\">Info</span> <span class=\"text\">Please note our changed delivery times while we are on vacation.</span>",
+				"link": "/#"
+			},
+			"checkoutSteps": {
+				"step1": "Shopping cart",
+				"step2": "Log in / Sing up",
+				"step3": "Complete order"
+			},
+			"customAnnouncement": {
+				"content": "<span>Please note that we are XX.YY. to XX.YY. in the company vacation. The delivery times indicated with our products are therefore extended in each case by XX days. - We thank you for your understanding.</span>"
+			},
+			"discountBadge": {
+				"discount": "%discount% %currency% saved",
+				"discountShort": "%discount% %currency%",
+				"percentage": "%discount%% saved",
+				"percentageShort": "%discount%%",
+				"suffix": "This snippet is #deprecated and will be removed soon!"
+			},
+			"floatingWidget": {
+				"title": "Floating widget",
+				"body": "This is the floating widget.",
+				"link": "#"
+			},
+			"newBadge": {
+				"label": "New",
+				"icon": "star"
+			},
+			"quickview": {
+				"title": "Quickview"
+			},
+			"shippingFreeBadge": {
+				"label": "Free shipping",
+				"icon": "package-open"
+			},
+			"socialProofing": {
+				"infotext": "%sales%+ bought in past months",
+				"icon": "thumb-up"
+			},
+			"soldBadge": {
+				"icon": "blocked"
+			},
+			"stockBadge": {
+				"availableStock": "This snippet is #deprecated and will be removed soon!",
+				"highStock": {
+					"label": "> %stock% available",
+					"prefix": "This snippet is #deprecated and will be removed soon!",
+					"suffix": "This snippet is #deprecated and will be removed soon!",
+					"icon": "layers"
+				},
+				"icon": "checkmark",
+				"inStock": "Available",
+				"lowStock": {
+					"label": "Only %stock% available",
+					"prefix": "This snippet is #deprecated and will be removed soon!",
+					"suffix": "This snippet is #deprecated and will be removed soon!",
+					"icon": "warning"
+				},
+				"noStock": "Sold out"
+			},
+			"topsellerBadge": {
+				"label": "Tipp",
+				"icon": "heart"
+			},
+			"uspBar": {
+				"usp1": {
+					"title": "Free shipping",
+					"icon": "rocket",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp2": {
+					"title": "Shipping within 24h",
+					"icon": "clock",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp3": {
+					"title": "30 days money back guarantee",
+					"icon": "thumb-up",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp4": {
+					"title": "Purchase comfortable on account",
+					"icon": "briefcase",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp5": {
+					"title": "Buy direct from the manufacturer",
+					"icon": "home",
+					"tooltip": "",
+					"subtitle": ""
+				},
+				"usp6": {
+					"title": "Hotline +49 800 123 454 321",
+					"icon": "headset",
+					"tooltip": "",
+					"subtitle": ""
+				}
+			}
+		},
+		"widget": {
+			"about": {
+				"headline": "About us",
+				"content": "<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p><p>Gadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</p>"
+			},
+			"awards": {
+				"headline": "Safe shopping",
+				"content": "Multiple awards and certified!",
+				"customImage1": {
+					"title": "Custom image 1",
+					"url": "/#"
+				},
+				"customImage2": {
+					"title": "Custom image 2",
+					"url": "/#"
+				},
+				"customImage3": {
+					"title": "Custom image 3",
+					"url": "/#"
+				},
+				"customImage4": {
+					"title": "Custom image 4",
+					"url": "/#"
+				},
+				"customImage5": {
+					"title": "Custom image 5",
+					"url": "/#"
+				},
+				"customImage6": {
+					"title": "Custom image 6",
+					"url": "/#"
+				},
+				"customImages": {
+					"title1": "This snippet is #deprecated and will be removed soon!",
+					"title2": "This snippet is #deprecated and will be removed soon!",
+					"title3": "This snippet is #deprecated and will be removed soon!",
+					"title4": "This snippet is #deprecated and will be removed soon!",
+					"title5": "This snippet is #deprecated and will be removed soon!",
+					"title6": "This snippet is #deprecated and will be removed soon!"
+				},
+				"sslSeal": {
+					"url": "This snippet is #deprecated and will be removed soon!"
+				}
+			},
+			"benefits": {
+				"headline": "Our benefits",
+				"content": "Free shipping; Shipping within 24h; 30 days money back guarantee; Purchase comfortable on account; Buy direct from the manufacturer"
+			},
+			"communities": {
+				"headline": "Our communities",
+				"additionalText": "You will no longer miss any news on our social media platforms.",
+				"facebook": {
+					"name": "Facebook",
+					"link": "/#facebook"
+				},
+				"instagram": {
+					"name": "Instagram",
+					"link": "/#instagram"
+				},
+				"twitter": {
+					"name": "Twitter",
+					"link": "/#twitter"
+				},
+				"youtube": {
+					"name": "YouTube",
+					"link": "/#youtube"
+				},
+				"vimeo": {
+					"name": "Vimeo",
+					"link": "/#vimeo"
+				},
+				"flickr": {
+					"name": "Flickr",
+					"link": "/#flickr"
+				},
+				"pinterest": {
+					"name": "Pinterest",
+					"link": "/#pinterest"
+				},
+				"tiktok": {
+					"name": "TikTok",
+					"link": "/#tiktok"
+				},
+				"blogger": {
+					"name": "Blogger",
+					"link": "/#blogger"
+				},
+				"blog": {
+					"name": "Blog",
+					"link": "/#blog"
+				},
+				"whatsapp": {
+					"name": "WhatsApp",
+					"link": "/#whatsapp"
+				},
+				"linkedin": {
+					"name": "LinkedIn",
+					"link": "/#linkedin"
+				},
+				"website": {
+					"name": "Website",
+					"link": "/#website"
+				},
+				"xing": {
+					"name": "Xing",
+					"link": "/#xing"
+				},
+				"twitch": {
+					"name": "Twitch",
+					"link": "/#twitch"
+				},
+				"x": {
+					"name": "X / Twitter",
+					"link": "/#x"
+				}
+			},
+			"hotline": "This snippet is #deprecated and will be removed soon!",
+			"location": {
+				"headline": "Retail store",
+				"content": "<p>Demoshop Store im Gewerbepark<br>Muster Straße 10-12<br>12345 Musterhausen</p><p><strong>Opening hours:</strong><br>Mo - Fr: 09:00 - 20:00 Uhr<br>Sa: 09:00 - 18:00 Uhr</p>",
+				"route": {
+					"name": "Start route planner",
+					"link": "/#google-maps-link"
+				}
+			},
+			"newsletter": {
+				"headline": "Newsletter",
+				"content": "Just subscribe to our newsletter and you will always be among the first to be informed about new products and offers.",
+				"formInput": "This snippet is #deprecated and will be removed soon!",
+				"formPrivacy": "This snippet is #deprecated and will be removed soon!",
+				"formSubmit": "This snippet is #deprecated and will be removed soon!"
+			},
+			"payment": {
+				"headline": "Payment methods",
+				"customImages": {
+					"title1": "Custom image 1",
+					"title2": "Custom image 2",
+					"title3": "Custom image 3"
+				},
+				"link": "/#payment"
+			},
+			"paymentshipping": {
+				"headline": "Payment and shipping methods"
+			},
+			"shipping": {
+				"headline": "Shipping methods",
+				"customImages": {
+					"title1": "Custom image 1",
+					"title2": "Custom image 2",
+					"title3": "Custom image 3"
+				},
+				"link": "/#shipping"
+			},
+			"text": {
+				"headline": "Custom text",
+				"content": "<p>Lorem ipsum dolor sit amet, <b>custom text</b> consetetur sadipscing elitr, sed diam nonumy eirmod <u>footer widget</u> tempor invidunt magna erat.</p><p>Gadipscing elitr, <i>snippet</i> sed diam nonumy eirmod tempor dolore aliquyam.</p>"
+			}
+		},
+		"cookie": {
+			"localStorage": {
+				"description": "Stores a timestamp to hide elements for a certain time if desired.",
+				"name": "Local Storage"
+			}
+		},
+		"alert": {
+			"spatialObject": "3D content is currently not supported. Please remove the corresponding 3D element or use the standard gallery."
+		},
+		"cms": {
+			"alert": {
+				"listingSubcategories": "This element is available on listing or shop pages.",
+				"productPageOnly": "This element is only available on product pages.",
+				"productListOnly": "This element is only available on listing pages."
+			},
+			"countdownBanner": {
+				"days": "Tage",
+				"hours": "Stunden",
+				"minutes": "Minuten",
+				"seconds": "Sekunden"
+			},
+			"heroSlider": {
+				"empty": "The slider is empty.",
+				"next": "Next",
+				"notEnough": "Not enough slides available.",
+				"previous": "Previous",
+				"sliderDotLabel": "Show image %index% of %total%"
+			}
+		}
+	},
+	"component": {
+		"cms": {
+			"defaultMedia": {
+				"preview_one_large": {
+					"title": "Banana",
+					"alt": "Banana on yellow background"
+				},
+				"preview_one_small": {
+					"title": "Banana",
+					"alt": "Banana on yellow background"
+				},
+				"preview_two_large": {
+					"title": "Apple",
+					"alt": "Apple on red background"
+				},
+				"preview_two_small": {
+					"title": "Apple",
+					"alt": "Apple on red background"
+				},
+				"preview_three_large": {
+					"title": "Fig",
+					"alt": "Figs on purple background"
+				},
+				"preview_three_small": {
+					"title": "Fig",
+					"alt": "Figs on purple background"
+				},
+				"preview_four_large": {
+					"title": "Lime",
+					"alt": "Limes on green background"
+				},
+				"preview_four_small": {
+					"title": "Lime",
+					"alt": "Limes on green background"
+				},
+				"preview_five_large": {
+					"title": "Orange",
+					"alt": "Orange on orange background"
+				},
+				"preview_five_small": {
+					"title": "Orange",
+					"alt": "Orange on orange background"
+				},
+				"preview_six_large": {
+					"title": "Blueberry",
+					"alt": "Blueberries on blue background"
+				},
+				"preview_six_small": {
+					"title": "Blueberry",
+					"alt": "Blueberries on blue background"
+				},
+
+				"preview_seven_large": {
+					"title": "Avocado",
+					"alt": "Avocados on grey background"
+				},
+				"preview_seven_small": {
+					"title": "Avocado",
+					"alt": "Avocados on grey background"
+				},
+				"preview_eight_large": {
+					"title": "Cherry",
+					"alt": "Cherries on purple background"
+				},
+				"preview_eight_small": {
+					"title": "Cherry",
+					"alt": "Cherries on purple background"
+				},
+				"preview_nine_large": {
+					"title": "Dragon fruit",
+					"alt": "Dragon fruit on pink background"
+				},
+				"preview_nine_small": {
+					"title": "Dragon fruit",
+					"alt": "Dragon fruit on pink background"
+				},
+				"preview_ten_large": {
+					"title": "Kiwi",
+					"alt": "Kiwi on green background"
+				},
+				"preview_ten_small": {
+					"title": "Kiwi",
+					"alt": "Kiwi on green background"
+				},
+				"preview_eleven_large": {
+					"title": "Papaya",
+					"alt": "Papaya on orange background"
+				},
+				"preview_eleven_small": {
+					"title": "Papaya",
+					"alt": "Papaya on orange background"
+				},
+
+				"preview_twelve_large": {
+					"title": "Dates",
+					"alt": "Dates on grey background"
+				},
+				"preview_twelve_small": {
+					"title": "Dates",
+					"alt": "Dates on grey background"
+				},
+				"preview_fourteen_large": {
+					"title": "Persimmon",
+					"alt": "Persimmon on grey background"
+				},
+				"preview_fourteen_small": {
+					"title": "Persimmon",
+					"alt": "Persimmon on grey background"
+				},
+				"preview_twenty_large": {
+					"title": "Dates",
+					"alt": "Dates on grey background"
+				},
+				"preview_twenty_small": {
+					"title": "Dates",
+					"alt": "Dates on grey background"
+				},
+
+				"preview_zero_large": {
+					"title": "Wheat",
+					"alt": "Ears of corn"
+				},
+				"preview_zero_small": {
+					"title": "Wheat",
+					"alt": "Ears of corn"
+				}
+			}
+		}
+	}
+}

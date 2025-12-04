@@ -1,0 +1,127 @@
+﻿/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___  (R)
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __|
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+    ThemeWare: SCSS-Functions
+    ==================================================
+
+*/
+
+// @TODO: Add 'twt-' prefix?!
+
+// ThemeWare: Strip-unit Function
+// - Example: "min-width: strip-unit($twt-container-max-width)+60 + px"
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+// ThemeWare: Null-pixel-unit Function
+// - Temporarily fix until shopware fixes the 'null'-bug in theme-fields
+// - Example: "margin: null-pixel-unit($twt-container-max-width)"
+@function null-pixel-unit($string) {
+	@if $string == 1 {
+		@return 0 + px;
+	} @else {
+		@return $string + px;
+	}
+
+	@return $string;
+}
+
+// ThemeWare: Auto-pixel-unit Function
+// - Example: "margin: auto-pixel-unit($twt-container-max-width)"
+@function auto-pixel-unit($string) {
+	// @TODO: @if (...  and not str-index("%", $string)) {
+	@if ($string != 'auto' and $string != '100%' and $string != 'none' and $string != 'inherit' and $string != 'initial' and $string != 'unset') {
+		@if type-of($string) == 'number' and not unitless($string) {
+			@return $string / ($string * 0 + 1) + px; // entfernt etwaige Einheiten und ergänzt 'px'
+		} @else {
+			@return $string + px;
+		}
+	}
+
+	@return $string;
+}
+
+@function auto-pixel-unit-v2($value) {
+	// auto-pixel-unit-v2(none); => wird zu 'none'
+	// auto-pixel-unit-v2(20px); => wird zu '20px'
+	// auto-pixel-unit-v2(50%); => wird zu '50%'
+	// auto-pixel-unit-v2(16em); => wird zu '16px'
+	// auto-pixel-unit-v2(5rem); => wird zu '5rem'
+	// auto-pixel-unit-v2(100); => wird zu '100px'
+
+	@if type-of($value) == string {
+		@return $value;
+	} @else {
+		@if unit($value) == 'px' {
+			@return $value;
+		} @else if unit($value) == '%' {
+			@return $value;
+		} @else if unit($value) == 'em' {
+			@return $value;
+		} @else if unit($value) == 'rem' {
+			@return $value;
+		} @else {
+			@return #{$value}px;
+		}
+	}
+}
+
+// ThemeWare: Replace function `$search` with `$replace` in `$string`
+// - Example:
+// - $string: 'Das ist ein Test';
+// - content: str-replace($string, 'ein', 'kein');
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  
+  @return $string;
+}
+
+// ThemeWare: lighten a color
+// - Example: color: tint(#BADA55, 42%);
+@function tint($color, $percentage) {
+	@return mix(white, $color, $percentage);
+}
+
+// ThemeWare: darken a color
+// - Example: color: shade(#663399, 42%);
+@function shade($color, $percentage) {
+	@return mix(black, $color, $percentage);
+}
+
+// ThemeWare: Convert px to rem.
+// - add @mixin fontSize
+@function rem($size) {
+	// @TODO tag:Sass2.0 - Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+	// Recommendation: math.div(strip-unit($size), 16) or calc(strip-unit($size) / 16)
+	//$value: calc(strip-unit($size) / 16) * 1rem;
+	$value: strip-unit($size) / 16 * 1rem;
+	@return $value;
+}
+
+// ThemeWare: fontWeight function
+// - Example: "font-weight: fontWeight($twt-footer-column-headline-font-weight)"
+@function fontWeight($weight) {
+	@if $weight == "light" {
+		@return $twt-font-weight-light;
+	} @else if $weight == "lighter" {
+		@return $twt-font-weight-light;
+	} @else if $weight == "normal" {
+		@return $twt-font-weight-normal;
+	} @else if $weight == "bold" {
+		@return $twt-font-weight-bold;
+	}
+}

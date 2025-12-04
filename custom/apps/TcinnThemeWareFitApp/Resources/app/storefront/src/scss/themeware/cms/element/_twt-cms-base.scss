@@ -1,0 +1,363 @@
+/*
+   _____ _  _ ___ __  __ _____      ___   ___ ___
+  |_   _| || | __|  \/  | __\ \    / /_\ | _ \ __| (R)
+    | | | __ | _|| |\/| | _| \ \/\/ / _ \|   / _|
+    |_| |_||_|___|_|  |_|___| \_/\_/_/ \_\_|_\___|
+
+    Copyright (c) TC-Innovations GmbH
+
+	ThemeWare: CMS elements basic styling
+	==================================================
+
+*/
+
+// Hover effects:
+// - Text teaser*              > linked + unlinked
+// - Text teaser (decorated)*  > linked + unlinked
+// - Button teaser*            > linked + unlinked
+// - Call to action*           > linked + unlinked
+// - Hover box*                > linked + unlinked
+// - Hover teaser*             > linked + unlinked
+// - Classic teaser            > linked only
+// - Modern teaser             > linked only
+// - Circle teaser             > linked only
+
+// Hover effects are always applied because this elements have a explicit hover configuration.
+// - Otherwise, hover effects are only applied if the element is linked.
+
+/* @TODO
+ * [ ] Add performance configuration to disable styling
+ *
+ */
+
+// Images
+
+div[class^="cms-element-twt-text-teaser"],
+div.cms-element-twt-advanced-banner,
+div.cms-element-twt-advanced-teaser,
+div.cms-element-twt-button-teaser,
+div.cms-element-twt-call-to-action,
+div.cms-element-twt-classic-teaser,
+div.cms-element-twt-countdown-banner,
+div.cms-element-twt-countdown-banner-compact,
+div.cms-element-twt-hero-banner,
+div.cms-element-twt-hero-countdown-headline,
+div.cms-element-twt-hero-teaser,
+div.cms-element-twt-hover-box,
+div.cms-element-twt-image-banner,
+div.cms-element-twt-image-teaser,
+div.cms-element-twt-hover-teaser,
+div.cms-element-twt-modern-teaser,
+div.cms-element-twt-parallax-banner,
+div.cms-element-twt-round-teaser
+{
+    position: relative;
+    display: flex;
+    overflow: hidden; // Fix: Hover animations
+    height: 100%;
+
+    // Link
+    .cms-image-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    // Image container
+    .cms-image-container {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
+
+        &.is-cover {
+            height: 100%;
+
+            .cms-image {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &.is-cover,
+        &.is-stretch {
+            .cms-image {
+                width: 100%;
+            }
+        }
+
+        //&.is-stretch {
+        //}
+    }
+
+    .cms-image {
+        display: block;
+        max-width: 100%;
+    }
+
+}
+
+
+// Content container
+
+div[class^="cms-element-twt-text-teaser"],
+div.cms-element-twt-advanced-banner,
+div.cms-element-twt-advanced-teaser,
+div.cms-element-twt-button-teaser,
+div.cms-element-twt-call-to-action,
+div.cms-element-twt-hero-banner,
+div.cms-element-twt-hero-countdown-headline,
+div.cms-element-twt-hero-teaser,
+div.cms-element-twt-hover-box,
+div.cms-element-twt-modern-teaser,
+div.cms-element-twt-parallax-banner,
+div.cms-element-twt-round-teaser
+{
+    .cms-content-container {
+        font-family: $sw-font-family-base; // @TODO: check if necessary
+        position: absolute; // relative
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+
+        .content {
+            position: relative; // Position content above overlay
+        }
+    }
+
+    //.is-cover {}
+    //.is-standard {}
+    //.is-stretch {}
+}
+
+
+// Color overlay
+
+div[class^="cms-element-twt-text-teaser"],
+div.cms-element-twt-advanced-banner,
+div.cms-element-twt-advanced-teaser,
+div.cms-element-twt-button-teaser,
+div.cms-element-twt-call-to-action,
+div.cms-element-twt-call-to-action-slide,
+div.cms-element-twt-countdown-banner,
+div.cms-element-twt-hero-banner,
+div.cms-element-twt-hero-teaser,
+div.cms-element-twt-hover-teaser,
+div.cms-element-twt-image-banner,
+div.cms-element-twt-image-slide,
+div.cms-element-twt-image-teaser,
+div.cms-element-twt-parallax-banner,
+div.cms-element-twt-round-teaser,
+div.cms-element-twt-text-image-slide
+{
+    .color-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+// Conten/overlay hover effects
+
+div[class^="cms-element-twt-text-teaser"],
+div.cms-element-twt-advanced-banner,
+div.cms-element-twt-advanced-teaser,
+div.cms-element-twt-button-teaser,
+div.cms-element-twt-call-to-action,
+div.cms-element-twt-hero-banner,
+div.cms-element-twt-hero-teaser,
+div.cms-element-twt-image-banner,
+div.cms-element-twt-parallax-banner
+{
+    // Add hover effects (except on phones)
+    // - Hover effects are always applied because this elements have a explicit hover configuration. (alternatively use a:hover instead of .cms-image-container:hover)
+
+    // @TODO: only when linked !?
+
+    @include media-breakpoint-up(sm) { // min 576px
+        &.is-hover {
+            // Colored overlay
+            .color-overlay.fade-in {
+                opacity: 0;
+            }
+
+            /*.color-overlay.fade-out {
+                opacity: 1;
+            }*/
+
+            .color-overlay {
+                transition: all .5s ease-in-out;
+            }
+
+            // Content or content overlay
+            .content:not(.fade-out),
+            .overlay:not(.fade-out) {
+                opacity: 0;
+            }
+
+            .content,
+            .overlay {
+                &.fade-out {
+                    opacity: 1;
+                }
+            }
+
+            .overlay {
+                // opacity
+                transition: all .3s ease-in-out .1s;
+                transition-delay: .03s; // only with colored-overley hover effect ?!
+
+                // animation
+                animation-duration: .3s;
+                animation-timing-function: ease-in-out;
+                animation-delay: .025s;
+                animation-fill-mode: both;
+            }
+
+            .content {
+                // opacity
+                transition: all .3s ease-in-out;
+                transition-delay: .03s; // only with colored-overley hover effect ?!
+
+                // animation
+                animation-duration: .3s;
+                animation-timing-function: ease-in-out;
+                animation-delay: .025s;
+                animation-fill-mode: both;
+            }
+
+            .cms-image-container:hover {
+                .cms-content-container {
+                    // Colored overlay
+                    .color-overlay.fade-in {
+                        opacity: 1;
+                    }
+
+                    .color-overlay.fade-out {
+                        opacity: 0;
+                    }
+
+                    // Content or content overlay
+                    .content:not(.fade-out),
+                    .overlay:not(.fade-out) {
+                        opacity: 1;
+
+                        &.fade-in-up {
+                            animation-name: cmsOverlaySlideInUp;
+                        }
+
+                        &.fade-in-right {
+                            animation-name: cmsOverlaySlideInRight;
+                        }
+
+                        &.fade-in-down {
+                            animation-name: cmsOverlaySlideInDown;
+                        }
+
+                        &.fade-in-left {
+                            animation-name: cmsOverlaySlideInLeft;
+                        }
+
+                        &.zoom-in {
+                            animation-name: cmsOverlayZoomIn;
+                        }
+                    }
+
+                    .content,
+                    .overlay {
+                        &.fade-out {
+                            opacity: 0;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+// Fix heights in display mode "stretch" (= .fit-content)
+
+.fit-content {
+    > div {
+        position: relative;
+        //height: fit-content !important;
+    }
+
+    //a.is-fulllink {
+    //    height: fit-content !important;
+    //}
+
+    //.is-stretch {
+    //    height: fit-content !important;
+    //}
+}
+
+
+// Completely linked elements
+
+a.is-fulllink {
+    //position: absolute;
+    //width: 100%;
+    //height: 100%;
+    //z-index: 2;
+
+    &:hover { text-decoration: none; }
+
+    a {
+        &:hover { text-decoration: underline; }
+    }
+}
+
+
+// Reset width of twt-flex-columns
+
+.twt-col-flex { width: auto; }
+
+
+// Reset width of twt-flex-columns
+
+.twt-col-empty .alert { margin-bottom: 0 !important; }
+
+
+// Add object-position classes for images with display mode 'cover' (currently only in the Call-to-Action)
+
+.object-position-right,
+.twt-object-position-right { object-position: right; }
+
+.object-position-left,
+.twt-object-position-left { object-position: left; }
+
+
+
+// Bootstrap fixes with ThemeWare® CMS styling
+body.twt-cms-styling {
+    .cms-block {
+        .accordion-item {
+            --bs-accordion-bg: $twt-cms-section-boxed-background-color;
+        }
+
+        .accordion-button {
+            --bs-accordion-btn-bg: $twt-cms-section-boxed-background-color;
+        }
+        .accordion-button:not(.collapsed) {
+            --bs-accordion-active-bg: $twt-cms-section-boxed-background-color;
+        }
+    }
+}
