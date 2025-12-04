@@ -99,3 +99,42 @@ install: ## Fresh install (⚠️  deletes all data!)
 		make up; \
 		echo "✓ Fresh installation started. Check logs with: make logs"; \
 	fi
+
+# Git Submodule Management
+submodule-update: ## Update all plugin submodules to latest
+	git submodule update --remote --merge
+	@echo "✓ All submodules updated!"
+
+submodule-status: ## Show status of all plugin submodules
+	@echo "=== Submodule Status ==="
+	@git submodule status
+	@echo ""
+	@git submodule foreach 'echo "=== $$name ===" && git branch && echo ""'
+
+submodule-pull: ## Pull latest changes in all submodules
+	git submodule foreach 'git pull origin $$(git rev-parse --abbrev-ref HEAD) || git pull origin main || git pull origin master'
+	@echo "✓ All submodules pulled!"
+
+submodule-branch: ## Create branch in all submodules (usage: make submodule-branch BRANCH=shopware-6.7)
+	@if [ -z "$(BRANCH)" ]; then \
+		echo "❌ Usage: make submodule-branch BRANCH=your-branch-name"; \
+		exit 1; \
+	fi
+	git submodule foreach 'git checkout -b $(BRANCH) || git checkout $(BRANCH)'
+	@echo "✓ Branch '$(BRANCH)' created/checked out in all submodules!"
+
+submodule-push: ## Push all submodule changes (usage: make submodule-push MESSAGE="commit message")
+	@if [ -z "$(MESSAGE)" ]; then \
+		echo "❌ Usage: make submodule-push MESSAGE=\"your commit message\""; \
+		exit 1; \
+	fi
+	git submodule foreach 'git add -A && (git diff --staged --quiet || git commit -m "$(MESSAGE)") && git push origin HEAD'
+	@echo "✓ All submodules pushed!"
+
+submodule-sync: ## Sync submodule URLs from .gitmodules
+	git submodule sync
+	@echo "✓ Submodule URLs synced!"
+
+submodule-init: ## Initialize and clone all submodules
+	git submodule update --init --recursive
+	@echo "✓ All submodules initialized!"

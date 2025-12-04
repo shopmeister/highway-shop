@@ -1,0 +1,18 @@
+[submodule "custom/plugins/ShmBackendTweaks"]
+	path = custom/plugins/ShmBackendTweaks
+	url = git@github.com:shopmeister/ShmBackendTweaks.git
+[submodule "custom/plugins/ShmCustomTasks"]
+	path = custom/plugins/ShmCustomTasks
+	url = git@github.com:shopmeister/ShmCustomTasks.git
+[submodule "custom/plugins/ShmKindsgutDocuments"]
+	path = custom/plugins/ShmKindsgutDocuments
+	url = git@github.com:shopmeister/ShmKindsgutDocuments.git
+[submodule "custom/plugins/ShmOrderPrinter"]
+	path = custom/plugins/ShmOrderPrinter
+	url = git@github.com:shopmeister/ShmOrderPrinter.git
+[submodule "custom/plugins/ShopmasterGDriveStockImportSix"]
+	path = custom/plugins/ShopmasterGDriveStockImportSix
+	url = git@github.com:shopmeister/ShopmasterGDriveStockImportSix.git
+[submodule "custom/plugins/ShopmasterZalandoConnectorSix"]
+	path = custom/plugins/ShopmasterZalandoConnectorSix
+	url = git@github.com:shopmeister/ShopmasterZalandoConnectorSix.git

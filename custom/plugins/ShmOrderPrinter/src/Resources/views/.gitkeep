@@ -1,2 +1,0 @@
-# Keep this directory for Shopware 6.6 Twig compatibility
-# Prevents "directory does not exist" error in FilesystemLoader.php
